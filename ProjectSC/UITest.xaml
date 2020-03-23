@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="ProjectSC.UITest"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:ProjectSC"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid Background="White" Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="280*"/>
+            <RowDefinition Height="70*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="440*"/>
+            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,7,0,0" Height="50" Width="50" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <materialDesign:PackIcon Kind="ArrowBack" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30"/>
+        </Button>
+
+        <Viewbox Grid.Column="1" Margin="0" Grid.Row="0">
+            <TextBlock Text="Clean the disk" TextWrapping="Wrap" ToolTip="tooltip"/>
+        </Viewbox>
+
+        <TextBlock Text="Description:" Grid.Row="1" FontSize="20" Margin="5,0,0,0"/>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,30,0,0">
+            <TextBlock Text="Ten years ago, I was nearly 30 and over $90,000 in debt. I had spent my twenties trying to build an interesting life; I had two degrees; I had lived in New York and the Bay Area; I had worked in a series of interesting jobs; I spent a lot of time traveling overseas. But I had also made a couple of critically stupid and shortsighted decisions. I had invested tens of thousands of dollars in a master's degree in landscape architecture that I realized I didn't want halfway through. While maxing out my student loans, I had also collected a toxic mix of maxed-out credit cards, personal loans, and $2,000 I had borrowed from my father for a crisis long since forgotten. My life consisted of loan deferments and minimum payments.
+
+Like so many other lost children, I had fallen into a career in IT. The work was boring, but led to jobs with cool organizations — a lot of jobs, because I kept quitting them. As soon as I had any money in the bank, I'd quit and go backpacking in Southeast Asia. My adventures were life-changing experiences, but I was eventually left with a CV that was pretty scattershot.
+
+My luck securing interesting jobs dried up. In 2001, I ended up living with my dad for four months and working at a banking infrastructure company in suburban Pittsburgh. I should have taken that as a warning that I needed to get it together, but I thought it was just an aberration. It was not.
+
+A year later, I was living in a one room Brooklyn apartment with a cat that compulsively peed on my bathmat. (This was a questionable upgrade to living with Dad.) I was trapped in a low paying IT job that I hated, I was in a relationship with a woman who hated me, and I was barely getting by, never mind getting control over my financial situation.
+
+I was finally reckoning with the fact that I was facing decades of unaffordable minimum debt payments. Any career ambitions I might have had would be put on hold indefinitely, possibly permanently. Travel was over. The full amount that I would have to pay off at the end of it all was too awful to contemplate. I felt trapped and hopeless. I was in a dark place.
+
+And so like many people in dark places, I looked for an escape hatch. I came up with two options: going back to graduate school or getting a job with a non-governmental organization (NGO) overseas. Graduate school would be the ultimate escape — it was better than working, and it would allow me to continue to defer my existing student loans (notwithstanding, of course, the small fact that I would potentially be doubling them). But while school was attractive in the short term, the financial implications were absolutely insane." TextWrapping="Wrap" Margin="10,0,0,0" FontSize="15"/>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
