@@ -299,7 +299,7 @@ namespace ProjectSC
                 {
                     if (!IsOpen)
                     {
-                        OpenDetailsPanel();
+                        OpenDetailsPanel(ParseId(border));
                     }
                 }
             }
@@ -328,7 +328,6 @@ namespace ProjectSC
             {
                 Border border = (Border)sender;
                 border.Background = Brushes.LightGray;
-                border.Child.IsMouseOver;
             }
             if (sender.GetType() == typeof(CheckBox))
             {
@@ -497,7 +496,7 @@ namespace ProjectSC
         bool IsOpen = false;
         Grid darkenGrid;
 
-        private void OpenDetailsPanel()
+        private void OpenDetailsPanel(int id)
         {
             darkenGrid = new Grid
             {
@@ -560,7 +559,8 @@ namespace ProjectSC
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 TextWrapping = TextWrapping.Wrap,
                 MaxLength = 100,
-                FontSize = 20
+                FontSize = 20,
+                Text = $"{Inventory[id].Title}"
             };
             HintAssist.SetHint(textBoxTitle, "Title");
 
@@ -571,7 +571,8 @@ namespace ProjectSC
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 TextWrapping = TextWrapping.Wrap,
                 MaxLength = 500,
-                FontSize = 20
+                FontSize = 20,
+                Text = $"{Inventory[id].Description}"
             };
             HintAssist.SetHint(textBoxDetails, "Details");
 
@@ -583,7 +584,8 @@ namespace ProjectSC
                 Margin = new Thickness(20, 5, 0, 5),
                 HorizontalAlignment = HorizontalAlignment.Left,
                 Width = 120,
-                FontSize = 20
+                FontSize = 20,
+                Text = $"{string.Format("{0:MM/dd}", Inventory[id].BeginDateTime)}"
             };
             HintAssist.SetHint(BeginDatePicker, "Begin Date");
 
@@ -593,7 +595,8 @@ namespace ProjectSC
                 Margin = new Thickness(20, 5, 0, 5),
                 HorizontalAlignment = HorizontalAlignment.Left,
                 Width = 120,
-                FontSize = 20
+                FontSize = 20,
+                Text = $"{string.Format("{0:MM/dd}", Inventory[id].EndDateTime)}"
             };
             HintAssist.SetHint(EndDatePicker, "End Date");
 
@@ -605,7 +608,8 @@ namespace ProjectSC
                 Margin = new Thickness(0, 5, 20, 5),
                 HorizontalAlignment = HorizontalAlignment.Right,
                 Width = 120,
-                FontSize = 20
+                FontSize = 20,
+                Text = $"{string.Format("{0:h:mm tt}", Inventory[id].BeginDateTime)}"
             };
             HintAssist.SetHint(BeginTimePicker, "Begin Time");
 
@@ -615,7 +619,8 @@ namespace ProjectSC
                 Margin = new Thickness(0, 5, 20, 5),
                 HorizontalAlignment = HorizontalAlignment.Right,
                 Width = 120,
-                FontSize = 20
+                FontSize = 20,
+                Text = $"{string.Format("{0:h:mm tt}", Inventory[id].EndDateTime)}"
             };
             HintAssist.SetHint(EndTimePicker, "End Time");
 

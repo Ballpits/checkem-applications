@@ -39,7 +39,7 @@
                 </Viewbox>
             </Grid>
 
-            <Separator Grid.Row="1" Margin="15,0" Background="White" IsTabStop="False"/>
+            <Separator Grid.Row="1" Margin="15,0" Background="White" IsTabStop="False" Height="15"/>
 
             <Button x:Name="ButtonMyD" Background="#FF2196F3" Grid.Row="2" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False">
                 <Button.ContentTemplate>
@@ -71,7 +71,7 @@
                 </Button.ContentTemplate>
             </Button>
             
-            <Separator Grid.Row="5" Margin="15,0" Background="White" IsTabStop="False"/>
+            <Separator Grid.Row="5" Margin="15,0" Background="White" IsTabStop="False" Height="15"/>
             
         </Grid>
 

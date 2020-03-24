@@ -85,6 +85,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MyDayUSC.cs" />
     <Compile Include="PageTest.xaml.cs">
       <DependentUpon>PageTest.xaml</DependentUpon>
     </Compile>
@@ -131,9 +132,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyDayUSC.xaml.cs">
-      <DependentUpon>MyDayUSC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="NewTaskUSC.xaml.cs">
       <DependentUpon>NewTaskUSC.xaml</DependentUpon>
     </Compile>

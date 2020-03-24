@@ -37,10 +37,8 @@ namespace ProjectSC
         private void Timer_Tick(object sender, EventArgs e)
         {
             dt = DateTime.Now;
-            string hour = DateTime.Now.Hour.ToString();
-            string min = DateTime.Now.Minute.ToString();
-            TimeTB.Text = $"{hour}:{min}";
-            DateTB.Text = String.Format("{0:MMMM d}", dt);
+            TimeTB.Text = string.Format("{0:hh:mm tt}",dt);
+            DateTB.Text = string.Format("{0:MMMM d}", dt);
         }
 
         public void MouseEnterHighLight(object sender, RoutedEventArgs e)
@@ -66,38 +64,6 @@ namespace ProjectSC
 
         private void AppWindow_Loaded(object sender, RoutedEventArgs e)
         {
-        //    var myPanel = new StackPanel();
-        //    myPanel.Margin = new Thickness(10);
-
-        //    var myRectangle = new Rectangle();
-        //    myRectangle.Name = "myRectangle";
-        //    this.RegisterName(myRectangle.Name, myRectangle);
-        //    myRectangle.Width = 100;
-        //    myRectangle.Height = 100;
-        //    myRectangle.Fill = Brushes.Blue;
-        //    myPanel.Children.Add(myRectangle);
-        //    this.Content = myPanel;
-
-        //    var myDoubleAnimation = new DoubleAnimation();
-        //    myDoubleAnimation.From = 1.0;
-        //    myDoubleAnimation.To = 0.0;
-
-        //    myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(5));
-
-        //    myDoubleAnimation.AutoReverse = true;
-        //    myDoubleAnimation.RepeatBehavior = RepeatBehavior.Forever;
-
-        //    myStoryboard = new Storyboard();
-        //    myStoryboard.Children.Add(myDoubleAnimation);
-
-        //    Storyboard.SetTargetName(myDoubleAnimation, myRectangle.Name);
-
-        //    Storyboard.SetTargetProperty(myDoubleAnimation, new PropertyPath(Rectangle.OpacityProperty));
-        //    //Page p = new Page
-        //    //{
-        //    //    Background = Brushes.Violet
-        //    //};
-        //    //this.Content = p;
         }
     }
 }
