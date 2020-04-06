@@ -5,6 +5,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Input;
+using System.Threading;
+using System.Windows.Threading;
+//using WinniesMessageBox;
 
 namespace ProjectSC
 {
@@ -30,6 +33,7 @@ namespace ProjectSC
         private List<Border> borderlist = new List<Border>();
         private List<CheckBox> checkBoxList = new List<CheckBox>();
         private List<TextBlock> textBlockList = new List<TextBlock>();
+        private List<Grid> cBoxList = new List<Grid>();
 
         private void AddItem(int id)
         {
@@ -65,6 +69,7 @@ namespace ProjectSC
                 Width = 30,
                 Background = Brushes.White
             };
+            cBoxList.Add(cBoxGrid);
             cBoxGrid.MouseDown += new MouseButtonEventHandler(this.Grid_MouseDown);
             cBoxGrid.MouseEnter += new MouseEventHandler(this.MouseEnterHighLight);
             cBoxGrid.MouseLeave += new MouseEventHandler(this.MouseLeaveUnHighLight);
@@ -108,6 +113,7 @@ namespace ProjectSC
             grid.Children.Add(textBlock);
         }
 
+        #region//Check events
         private void ToDoChecked(object sender, RoutedEventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender;
@@ -141,132 +147,25 @@ namespace ProjectSC
 
             textBlockList[ParseId(checkBox)].TextDecorations = null;
         }
+        #endregion
+
+        #region//Button evnts
+        private void AddNewButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenDetailsPanel();
+        }
 
         private void MarkButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        readonly List<UserControl> usclist = new List<UserControl>();
-
-        private void DetailButton_Click(object sender, RoutedEventArgs e)
-        {
-            Button btn = (Button)sender;
-
-            UserControl usc = new UserControl
-            {
-                Background = Brushes.White,
-            };
-
-            ColumnDefinition ColDef1 = new ColumnDefinition
-            {
-                Width = new GridLength(440, GridUnitType.Star)
-            };
-            ColumnDefinition ColDef2 = new ColumnDefinition
-            {
-                Width = new GridLength(300, GridUnitType.Star)
-            };
-            ColumnDefinition ColDef3 = new ColumnDefinition
-            {
-                Width = new GridLength(10, GridUnitType.Star)
-            };
-
-            RowDefinition RowDef1 = new RowDefinition
-            {
-                Height = new GridLength(60, GridUnitType.Star)
-            };
-            RowDefinition RowDef2 = new RowDefinition
-            {
-                Height = new GridLength(280, GridUnitType.Star)
-            };
-            RowDefinition RowDef3 = new RowDefinition
-            {
-                Height = new GridLength(70, GridUnitType.Star)
-            };
-
-            Grid MoreDetailGrid = new Grid();
-            MoreDetailGrid.ColumnDefinitions.Add(ColDef1);
-            MoreDetailGrid.ColumnDefinitions.Add(ColDef2);
-            MoreDetailGrid.ColumnDefinitions.Add(ColDef3);
-            MoreDetailGrid.RowDefinitions.Add(RowDef1);
-            MoreDetailGrid.RowDefinitions.Add(RowDef2);
-            MoreDetailGrid.RowDefinitions.Add(RowDef3);
-
-            Viewbox ViewboxTB = new Viewbox();
-            Grid.SetRow(ViewboxTB, 0);
-            Grid.SetColumn(ViewboxTB, 1);
-
-            TextBlock TitleTB = new TextBlock();
-            //TitleTB.Text = $"{Inventory[stpMain.Children.IndexOf(borderlist[ParseId(btn)])].Title}";
-            TitleTB.Text = $"{Inventory[ParseId(btn)].Title}";
-            ViewboxTB.Child = TitleTB;
-
-            MoreDetailGrid.Children.Add(ViewboxTB);
-
-            TextBlock DesTB = new TextBlock
-            {
-                Text = "Description:",
-                FontSize = 30,
-                Margin = new Thickness(5, 0, 0, 0)
-            };
-            Grid.SetColumn(DesTB, 0);
-            Grid.SetRow(DesTB, 1);
-
-            TextBlock DescriptionTB = new TextBlock
-            {
-                //Text = $"{Inventory[stpMain.Children.IndexOf(borderlist[ParseId(btn)])].Description}",
-                Text = $"{Inventory[ParseId(btn)].Description}",
-                FontSize = 20,
-                Margin = new Thickness(10, 10, 0, 0),
-                TextWrapping = TextWrapping.Wrap
-            };
-
-            ScrollViewer scrollViewer = new ScrollViewer
-            {
-                Margin = new Thickness(0, 40, 0, 0),
-                Content = DescriptionTB,
-                VerticalScrollBarVisibility = ScrollBarVisibility.Auto
-            };
-            Grid.SetColumn(scrollViewer, 0);
-            Grid.SetRow(scrollViewer, 1);
-
-            MoreDetailGrid.Children.Add(DesTB);
-            MoreDetailGrid.Children.Add(scrollViewer);
-
-
-            Button buttonreturn = new Button
-            {
-                Height = 50,
-                Width = 50,
-                HorizontalAlignment = HorizontalAlignment.Left,
-                VerticalAlignment = VerticalAlignment.Top,
-                Background = Brushes.White,
-                BorderThickness = new Thickness(0),
-            };
-
-            CornerRadius cr = new CornerRadius(100);
-            ButtonAssist.SetCornerRadius(buttonreturn, cr);
-            ShadowAssist.SetShadowDepth(buttonreturn, 0);
-            buttonreturn.Click += new RoutedEventHandler(this.ReturnButton_Click);
-
-            var icon = new PackIcon { Kind = PackIconKind.ArrowBack };
-            icon.Height = 30;
-            icon.Width = 30;
-            icon.HorizontalAlignment = HorizontalAlignment.Center;
-            icon.VerticalAlignment = VerticalAlignment.Center;
-            icon.Foreground = Brushes.Black;
-            buttonreturn.Content = icon;
-
-            MoreDetailGrid.Children.Add(buttonreturn);
-            DataGrid.Children.Add(usc);
-            usclist.Add(usc);
-
-            usc.Content = MoreDetailGrid;
-        }
-
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
+
+            //OpenRemoveWarningMBox();
+            //MyMessageBox.ShowDialog("Hello", MyMessageBox.Buttons.OK);
 
             //items.Remove(stpMain.Children.IndexOf(borderlist[ParseId(btn)]), Inventory);
             //stpMain.Children.RemoveAt(stpMain.Children.IndexOf(borderlist[ParseId(btn)]));
@@ -275,19 +174,67 @@ namespace ProjectSC
             items.ResetId(Inventory);
 
             borderlist.Clear();
+            checkBoxList.Clear();
             textBlockList.Clear();
+            cBoxList.Clear();
             stpMain.Children.Clear();
+
+            CloseDetailsPanel();
 
             LoadInList();
         }
 
         private void ReturnButton_Click(object sender, RoutedEventArgs e)
         {
-            Button btn = (Button)sender;
-            DataGrid.Children.Remove(darkenGrid);
-            IsOpen = false;
+            CloseDetailsPanel();
         }
 
+        int ID;
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (IsNew)
+            {
+                items.AddNew(textBoxTitle.Text, textBoxDescription.Text, Inventory);
+            }
+            else
+            {
+                items.Update(ID,textBoxTitle.Text, textBoxDescription.Text, Inventory);
+            }
+
+            items.ResetId(Inventory);
+
+            borderlist.Clear();
+            checkBoxList.Clear();
+            textBlockList.Clear();
+            cBoxList.Clear();
+            stpMain.Children.Clear();
+
+            LoadInList();
+
+            OpenSnakeBar("Saved");
+        }
+
+        private void OpenSnakeBar(string content)
+        {
+            SnackbarMessageQueue msgQueue = new SnackbarMessageQueue(TimeSpan.FromSeconds(1));
+            msgQueue.Enqueue("Saved");
+
+            SnackbarMessage snackbarMessage = new SnackbarMessage
+            {
+                Content = content,
+            };
+            Snackbar snackbar = new Snackbar
+            {
+                Message = snackbarMessage,
+                IsActive = true,
+                MessageQueue = msgQueue
+            };
+            //snackbarMessage.ActionClick += new RoutedEventHandler(this.ReturnButton_Click);
+            DetailsGrid.Children.Add(snackbar);
+        }
+        #endregion
+
+        #region//Mouse down events
         bool BorderEvtCanActivate = true;
         private void Border_MouseDown(object sender, RoutedEventArgs e)
         {
@@ -299,7 +246,8 @@ namespace ProjectSC
                 {
                     if (!IsOpen)
                     {
-                        OpenDetailsPanel();
+                        ID = ParseId(border);
+                        OpenDetailsPanel(ParseId(border));
                     }
                 }
             }
@@ -321,14 +269,16 @@ namespace ProjectSC
                 }
             }
         }
+        #endregion
 
+        #region//Mouse over events
         public void MouseEnterHighLight(object sender, RoutedEventArgs e)
         {
             if (sender.GetType() == typeof(Border))
             {
                 Border border = (Border)sender;
                 border.Background = Brushes.LightGray;
-                border.Child.IsMouseOver;
+                cBoxList[ParseId(border)].Background = Brushes.LightGray;
             }
             if (sender.GetType() == typeof(CheckBox))
             {
@@ -369,13 +319,14 @@ namespace ProjectSC
             {
                 Border border = (Border)sender;
                 border.Background = Brushes.White;
+                cBoxList[ParseId(border)].Background = Brushes.White;
             }
             if (sender.GetType() == typeof(CheckBox))
             {
                 CheckBox checkBox = (CheckBox)sender;
                 if (checkBox.IsChecked == false)
                 {
-                    var icon = new PackIcon { Kind = PackIconKind.CheckboxBlankCircleOutline };
+                    var icon = new PackIcon { Kind = PackIconKind.Check };
                     icon.Height = 20;
                     icon.Width = 20;
                     icon.HorizontalAlignment = HorizontalAlignment.Center;
@@ -388,7 +339,11 @@ namespace ProjectSC
             {
                 BorderEvtCanActivate = true;
                 Grid grid = (Grid)sender;
-                grid.Background = Brushes.White;
+
+                if (borderlist[ParseId(grid)].IsMouseOver == false)
+                {
+                    grid.Background = Brushes.White;
+                }
 
                 if (checkBoxList[ParseId(grid)].IsChecked == false)
                 {
@@ -402,15 +357,17 @@ namespace ProjectSC
                 }
             }
         }
+        #endregion
 
-        private int ParseId(Button btn)
+        #region//Parse Id from control
+        private int ParseId(Button button)
         {
             string idtext = string.Empty;
 
-            for (int i = 0; i < btn.Name.Length; i++)
+            for (int i = 0; i < button.Name.Length; i++)
             {
-                if (char.IsDigit(btn.Name[i]))
-                    idtext += btn.Name[i];
+                if (char.IsDigit(button.Name[i]))
+                    idtext += button.Name[i];
             }
 
             return int.Parse(idtext);
@@ -454,7 +411,7 @@ namespace ProjectSC
 
             return int.Parse(idtext);
         }
-
+        #endregion
 
         private void LoadInList()
         {
@@ -463,10 +420,10 @@ namespace ProjectSC
                 AddItem(i);
             }
 
-            AddNewButton();
+            AddAddNewButton();
         }
 
-        private void AddNewButton()
+        private void AddAddNewButton()
         {
             Button ButtonAddNew = new Button
             {
@@ -481,7 +438,7 @@ namespace ProjectSC
             CornerRadius cr = new CornerRadius(100);
             ButtonAssist.SetCornerRadius(ButtonAddNew, cr);
             ShadowAssist.SetShadowDepth(ButtonAddNew, 0);
-            //ButtonAddNew.Click += new RoutedEventHandler(this.ReturnButton_Click);
+            ButtonAddNew.Click += new RoutedEventHandler(this.AddNewButton_Click);
 
             var icon = new PackIcon { Kind = PackIconKind.Plus };
             icon.Height = 30;
@@ -495,10 +452,22 @@ namespace ProjectSC
         }
 
         bool IsOpen = false;
-        Grid darkenGrid;
+        bool IsNew;
+        Grid darkenGrid, DetailsGrid;
+
+        TextBox textBoxTitle;
+        TextBox textBoxDescription;
+        DatePicker BeginDatePicker;
+        DatePicker EndDatePicker;
+        TimePicker BeginTimePicker;
+        TimePicker EndTimePicker;
 
         private void OpenDetailsPanel()
         {
+            IsNew = true;
+
+            int id = Inventory.Count + 1;
+
             darkenGrid = new Grid
             {
                 HorizontalAlignment = HorizontalAlignment.Stretch,
@@ -507,7 +476,7 @@ namespace ProjectSC
                 Margin = new Thickness(0, 70, 0, 0)
             };
 
-            Grid DetailsGrid = new Grid
+            DetailsGrid = new Grid
             {
                 HorizontalAlignment = HorizontalAlignment.Right,
                 VerticalAlignment = VerticalAlignment.Stretch,
@@ -523,7 +492,7 @@ namespace ProjectSC
                 VerticalAlignment = VerticalAlignment.Top,
                 Background = Brushes.White,
                 BorderThickness = new Thickness(0),
-                Margin = new Thickness(5, 5, 0, 0)
+                ToolTip = "Return"
             };
             CornerRadius cr = new CornerRadius(100);
             ButtonAssist.SetCornerRadius(buttonreturn, cr);
@@ -538,7 +507,29 @@ namespace ProjectSC
             icon.Foreground = Brushes.Black;
             buttonreturn.Content = icon;
 
+            Button buttonSave = new Button
+            {
+                Height = 50,
+                Width = 50,
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Top,
+                Background = Brushes.White,
+                BorderThickness = new Thickness(0),
+                ToolTip = "Save"
+            };
+            ButtonAssist.SetCornerRadius(buttonSave, cr);
+            ShadowAssist.SetShadowDepth(buttonSave, 0);
+            buttonSave.Click += new RoutedEventHandler(this.SaveButton_Click);
+
+            icon = new PackIcon { Kind = PackIconKind.ContentSaveEdit };
+            icon.Height = 30;
+            icon.Width = 30;
+            icon.HorizontalAlignment = HorizontalAlignment.Center;
+            icon.VerticalAlignment = VerticalAlignment.Center;
+            icon.Foreground = Brushes.Black;
+            buttonSave.Content = icon;
             ScrollViewer scrollViewer = new ScrollViewer()
+
             {
                 VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
                 Margin = new Thickness(0, 50, 0, 0)
@@ -553,7 +544,7 @@ namespace ProjectSC
 
             Style style = this.FindResource("MaterialDesignFilledTextFieldTextBox") as Style;
 
-            TextBox textBoxTitle = new TextBox
+            textBoxTitle = new TextBox
             {
                 Style = style,
                 Margin = new Thickness(10, 5, 10, 5),
@@ -564,7 +555,7 @@ namespace ProjectSC
             };
             HintAssist.SetHint(textBoxTitle, "Title");
 
-            TextBox textBoxDetails = new TextBox
+            textBoxDescription = new TextBox
             {
                 Style = style,
                 Margin = new Thickness(10, 5, 10, 5),
@@ -573,11 +564,11 @@ namespace ProjectSC
                 MaxLength = 500,
                 FontSize = 20
             };
-            HintAssist.SetHint(textBoxDetails, "Details");
+            HintAssist.SetHint(textBoxDescription, "Description");
 
             style = this.FindResource("MaterialDesignFloatingHintDatePicker") as Style;
 
-            DatePicker BeginDatePicker = new DatePicker
+            BeginDatePicker = new DatePicker
             {
                 Style = style,
                 Margin = new Thickness(20, 5, 0, 5),
@@ -587,7 +578,7 @@ namespace ProjectSC
             };
             HintAssist.SetHint(BeginDatePicker, "Begin Date");
 
-            DatePicker EndDatePicker = new DatePicker
+            EndDatePicker = new DatePicker
             {
                 Style = style,
                 Margin = new Thickness(20, 5, 0, 5),
@@ -599,7 +590,7 @@ namespace ProjectSC
 
             style = this.FindResource("MaterialDesignFloatingHintTimePicker") as Style;
 
-            TimePicker BeginTimePicker = new TimePicker
+            BeginTimePicker = new TimePicker
             {
                 Style = style,
                 Margin = new Thickness(0, 5, 20, 5),
@@ -609,7 +600,7 @@ namespace ProjectSC
             };
             HintAssist.SetHint(BeginTimePicker, "Begin Time");
 
-            TimePicker EndTimePicker = new TimePicker
+            EndTimePicker = new TimePicker
             {
                 Style = style,
                 Margin = new Thickness(0, 5, 20, 5),
@@ -634,15 +625,232 @@ namespace ProjectSC
             darkenGrid.Children.Add(DetailsGrid);
 
             DetailsSTP.Children.Add(textBoxTitle);
-            DetailsSTP.Children.Add(textBoxDetails);
+            DetailsSTP.Children.Add(textBoxDescription);
             DetailsSTP.Children.Add(BeginRow);
             DetailsSTP.Children.Add(EndRow);
 
             DetailsGrid.Children.Add(buttonreturn);
+            DetailsGrid.Children.Add(buttonSave);
             DetailsGrid.Children.Add(scrollViewer);
 
             DataGrid.Children.Add(darkenGrid);
             IsOpen = true;
+        }
+
+        private void OpenDetailsPanel(int id)
+        {
+            IsNew = false;
+
+            darkenGrid = new Grid
+            {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Stretch,
+                Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#CC000000")),
+                Margin = new Thickness(0, 70, 0, 0)
+            };
+
+            DetailsGrid = new Grid
+            {
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Stretch,
+                Background = Brushes.White,
+                Width = 400
+            };
+
+            Button buttonreturn = new Button
+            {
+                Height = 50,
+                Width = 50,
+                HorizontalAlignment = HorizontalAlignment.Left,
+                VerticalAlignment = VerticalAlignment.Top,
+                Background = Brushes.White,
+                BorderThickness = new Thickness(0),
+                ToolTip = "Return"
+            };
+            CornerRadius cr = new CornerRadius(100);
+            ButtonAssist.SetCornerRadius(buttonreturn, cr);
+            ShadowAssist.SetShadowDepth(buttonreturn, 0);
+            buttonreturn.Click += new RoutedEventHandler(this.ReturnButton_Click);
+
+            var icon = new PackIcon { Kind = PackIconKind.ArrowBack };
+            icon.Height = 30;
+            icon.Width = 30;
+            icon.HorizontalAlignment = HorizontalAlignment.Center;
+            icon.VerticalAlignment = VerticalAlignment.Center;
+            icon.Foreground = Brushes.Black;
+            buttonreturn.Content = icon;
+
+            Button buttonSave = new Button
+            {
+                Height = 50,
+                Width = 50,
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Top,
+                Background = Brushes.White,
+                BorderThickness = new Thickness(0),
+                ToolTip = "Save"
+            };
+            ButtonAssist.SetCornerRadius(buttonSave, cr);
+            ShadowAssist.SetShadowDepth(buttonSave, 0);
+            buttonSave.Click += new RoutedEventHandler(this.SaveButton_Click);
+
+            icon = new PackIcon { Kind = PackIconKind.ContentSaveEdit };
+            icon.Height = 30;
+            icon.Width = 30;
+            icon.HorizontalAlignment = HorizontalAlignment.Center;
+            icon.VerticalAlignment = VerticalAlignment.Center;
+            icon.Foreground = Brushes.Black;
+            buttonSave.Content = icon;
+
+            Button buttonRemove = new Button
+            {
+                Name = $"removeButton{id}",
+                Height = 50,
+                Width = 50,
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Top,
+                Margin = new Thickness(0, 0, 50, 0),
+                Background = Brushes.White,
+                BorderThickness = new Thickness(0),
+                ToolTip = "Remove"
+            };
+            ButtonAssist.SetCornerRadius(buttonRemove, cr);
+            ShadowAssist.SetShadowDepth(buttonRemove, 0);
+            buttonRemove.Click += new RoutedEventHandler(this.RemoveButton_Click);
+
+            icon = new PackIcon { Kind = PackIconKind.TrashCan };
+            icon.Height = 30;
+            icon.Width = 30;
+            icon.HorizontalAlignment = HorizontalAlignment.Center;
+            icon.VerticalAlignment = VerticalAlignment.Center;
+            icon.Foreground = Brushes.Black;
+            buttonRemove.Content = icon;
+
+            ScrollViewer scrollViewer = new ScrollViewer()
+            {
+                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
+                Margin = new Thickness(0, 50, 0, 0)
+            };
+
+            StackPanel DetailsSTP = new StackPanel
+            {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Stretch,
+            };
+            scrollViewer.Content = DetailsSTP;
+
+            Style style = this.FindResource("MaterialDesignFilledTextFieldTextBox") as Style;
+
+            textBoxTitle = new TextBox
+            {
+                Text = $"{Inventory[id].Title}",
+                Style = style,
+                Margin = new Thickness(10, 5, 10, 5),
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                TextWrapping = TextWrapping.Wrap,
+                MaxLength = 100,
+                FontSize = 20
+            };
+            HintAssist.SetHint(textBoxTitle, "Title");
+
+            textBoxDescription = new TextBox
+            {
+                Text = $"{Inventory[id].Description}",
+                Style = style,
+                Margin = new Thickness(10, 5, 10, 5),
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                TextWrapping = TextWrapping.Wrap,
+                MaxLength = 500,
+                FontSize = 20
+            };
+            HintAssist.SetHint(textBoxDescription, "Description");
+
+            style = this.FindResource("MaterialDesignFloatingHintDatePicker") as Style;
+
+            BeginDatePicker = new DatePicker
+            {
+                Text = $"{string.Format("{0:MM/dd/yy}", Inventory[id].BeginDateTime)}",
+                Style = style,
+                Margin = new Thickness(20, 5, 0, 5),
+                HorizontalAlignment = HorizontalAlignment.Left,
+                Width = 120,
+                FontSize = 20
+            };
+            HintAssist.SetHint(BeginDatePicker, "Begin Date");
+
+            EndDatePicker = new DatePicker
+            {
+                Text = $"{string.Format("{0:MM/dd/yy}", Inventory[id].EndDateTime)}",
+                Style = style,
+                Margin = new Thickness(20, 5, 0, 5),
+                HorizontalAlignment = HorizontalAlignment.Left,
+                Width = 120,
+                FontSize = 20
+            };
+            HintAssist.SetHint(EndDatePicker, "End Date");
+
+            style = this.FindResource("MaterialDesignFloatingHintTimePicker") as Style;
+
+            BeginTimePicker = new TimePicker
+            {
+                Text = $"{string.Format("{0:h:mm tt}", Inventory[id].BeginDateTime)}",
+                Style = style,
+                Margin = new Thickness(0, 5, 20, 5),
+                HorizontalAlignment = HorizontalAlignment.Right,
+                Width = 120,
+                FontSize = 20
+            };
+            HintAssist.SetHint(BeginTimePicker, "Begin Time");
+
+            EndTimePicker = new TimePicker
+            {
+                Text = $"{string.Format("{0:h:mm tt}", Inventory[id].EndDateTime)}",
+                Style = style,
+                Margin = new Thickness(0, 5, 20, 5),
+                HorizontalAlignment = HorizontalAlignment.Right,
+                Width = 120,
+                FontSize = 20
+            };
+            HintAssist.SetHint(EndTimePicker, "End Time");
+
+            Grid BeginRow = new Grid();
+            BeginRow.Margin = new Thickness(10, 5, 10, 5);
+            BeginRow.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#89E7E7E7"));
+            BeginRow.Children.Add(BeginDatePicker);
+            BeginRow.Children.Add(BeginTimePicker);
+
+            Grid EndRow = new Grid();
+            EndRow.Margin = new Thickness(10, 5, 10, 5);
+            EndRow.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#89E7E7E7"));
+            EndRow.Children.Add(EndDatePicker);
+            EndRow.Children.Add(EndTimePicker);
+
+            darkenGrid.Children.Add(DetailsGrid);
+
+            DetailsSTP.Children.Add(textBoxTitle);
+            DetailsSTP.Children.Add(textBoxDescription);
+            DetailsSTP.Children.Add(BeginRow);
+            DetailsSTP.Children.Add(EndRow);
+
+            DetailsGrid.Children.Add(buttonreturn);
+            DetailsGrid.Children.Add(buttonSave);
+            DetailsGrid.Children.Add(buttonRemove);
+            DetailsGrid.Children.Add(scrollViewer);
+
+            DataGrid.Children.Add(darkenGrid);
+            IsOpen = true;
+        }
+
+        private void CloseDetailsPanel()
+        {
+            DataGrid.Children.Remove(darkenGrid);
+            IsOpen = false;
+        }
+
+        private void OpenRemoveWarningMBox()
+        {
+            System.Windows.Forms.MessageBox.Show("Test");
+            //darkenGrid.Children.Add()
         }
     }
 }

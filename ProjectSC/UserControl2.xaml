@@ -12,6 +12,7 @@
             <Button HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="50" Height="50" materialDesign:ButtonAssist.CornerRadius="100" Background="White" BorderBrush="{x:Null}" Foreground="Black" materialDesign:ShadowAssist.ShadowDepth="Depth0">
                 <materialDesign:PackIcon Kind="ArrowBack" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Button>
+            <Button Margin="0" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Right"/>
             <ScrollViewer Margin="0,50,0,0">
                 <StackPanel>
                     <Canvas Height="58" Margin="0" VerticalAlignment="Center" Background="#FFD19999"/>

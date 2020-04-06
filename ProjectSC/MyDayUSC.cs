@@ -30,6 +30,7 @@ namespace ProjectSC
         private List<Border> borderlist = new List<Border>();
         private List<CheckBox> checkBoxList = new List<CheckBox>();
         private List<TextBlock> textBlockList = new List<TextBlock>();
+        private List<Grid> cBoxList = new List<Grid>();
 
         private void AddItem(int id)
         {
@@ -65,6 +66,7 @@ namespace ProjectSC
                 Width = 30,
                 Background = Brushes.White
             };
+            cBoxList.Add(cBoxGrid);
             cBoxGrid.MouseDown += new MouseButtonEventHandler(this.Grid_MouseDown);
             cBoxGrid.MouseEnter += new MouseEventHandler(this.MouseEnterHighLight);
             cBoxGrid.MouseLeave += new MouseEventHandler(this.MouseLeaveUnHighLight);
@@ -322,12 +324,14 @@ namespace ProjectSC
             }
         }
 
+        #region//Mouse highlight
         public void MouseEnterHighLight(object sender, RoutedEventArgs e)
         {
             if (sender.GetType() == typeof(Border))
             {
                 Border border = (Border)sender;
                 border.Background = Brushes.LightGray;
+                cBoxList[ParseId(border)].Background = Brushes.LightGray;
             }
             if (sender.GetType() == typeof(CheckBox))
             {
@@ -368,6 +372,7 @@ namespace ProjectSC
             {
                 Border border = (Border)sender;
                 border.Background = Brushes.White;
+                cBoxList[ParseId(border)].Background = Brushes.White;
             }
             if (sender.GetType() == typeof(CheckBox))
             {
@@ -387,7 +392,10 @@ namespace ProjectSC
             {
                 BorderEvtCanActivate = true;
                 Grid grid = (Grid)sender;
-                grid.Background = Brushes.White;
+                if (borderlist[ParseId(grid)].IsMouseOver == false)
+                {
+                    grid.Background = Brushes.White;
+                }
 
                 if (checkBoxList[ParseId(grid)].IsChecked == false)
                 {
@@ -401,7 +409,9 @@ namespace ProjectSC
                 }
             }
         }
+        #endregion
 
+        #region//ParseId()
         private int ParseId(Button btn)
         {
             string idtext = string.Empty;
@@ -453,7 +463,7 @@ namespace ProjectSC
 
             return int.Parse(idtext);
         }
-
+        #endregion
 
         private void LoadInList()
         {

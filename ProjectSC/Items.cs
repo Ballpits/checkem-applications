@@ -60,9 +60,10 @@ namespace ProjectSC
             Save(inventory);
         }
 
-        public void Update(ref List<Items> inventory)
+        public void Update(int id,string title,string description,List<Items> inventory)
         {
-            throw new System.NotImplementedException();
+            inventory[id].Title = title;
+            inventory[id].Description = description;
         }
 
         public string FindById(int id, List<Items> inventory)
@@ -93,13 +94,13 @@ namespace ProjectSC
         {
             int id = inventory.Count + 1;
             inventory.Add(new Items { Id = id, Title = title, Description = description });
-            File.WriteAllText(@"inv.json", JsonConvert.SerializeObject(inventory));
+            Save(inventory);
         }
 
         public void Remove(int id, List<Items> inventory)
         {
             inventory.RemoveAt(id);
-            File.WriteAllText(@"inv.json", JsonConvert.SerializeObject(inventory));
+            Save(inventory);
         }
 
         public void ResetId(List<Items> inventory)
@@ -109,7 +110,7 @@ namespace ProjectSC
                 item.Id = inventory.IndexOf(item);
             }
 
-            File.WriteAllText(@"inv.json", JsonConvert.SerializeObject(inventory));
+            Save(inventory);
         }
 
         public override string ToString()

@@ -56,7 +56,7 @@ namespace ProjectSC
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             timer.Tick += new EventHandler(Timer_Tick);
-            timer.Start();
+            //timer.Start();
             UserControl usc;
             usc = new MyDayUSC();
             GridMain.Children.Add(usc);
