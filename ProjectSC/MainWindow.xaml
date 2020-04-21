@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ProjectSC"
         mc:Ignorable="d"
-        Title="Check'em" Height="500" Width="750" WindowStartupLocation="CenterScreen" WindowState="Maximized" MinWidth="750" MinHeight="500" Icon="Icon/Icon-1024.ico" Loaded="AppWindow_Loaded" Background="White">
+        Title="Check'em" Height="500" Width="750" WindowStartupLocation="CenterScreen" WindowState="Maximized" MinWidth="750" MinHeight="500" Icon="Icon/Icon-1024.ico" Background="White">
     <Grid Loaded="Grid_Loaded">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

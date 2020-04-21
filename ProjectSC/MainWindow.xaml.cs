@@ -17,9 +17,6 @@ using System.Windows.Threading;
 
 namespace ProjectSC
 {
-    /// <summary>
-    /// MainWindow.xaml 的互動邏輯
-    /// </summary>
     public partial class MainWindow : Window, IUIControl
     {
         public MainWindow()
@@ -56,14 +53,10 @@ namespace ProjectSC
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             timer.Tick += new EventHandler(Timer_Tick);
-            //timer.Start();
+            timer.Start();
             UserControl usc;
             usc = new MyDayUSC();
             GridMain.Children.Add(usc);
-        }
-
-        private void AppWindow_Loaded(object sender, RoutedEventArgs e)
-        {
         }
     }
 }

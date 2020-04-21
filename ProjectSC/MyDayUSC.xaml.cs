@@ -20,8 +20,8 @@ namespace ProjectSC
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            items.StoreTestData(Inventory);
-            //items.LoadInData(ref Inventory);
+            //items.StoreTestData(Inventory);
+            items.LoadInData(ref Inventory);
             items.ResetId(Inventory);
             LoadInList();
         }
@@ -103,7 +103,7 @@ namespace ProjectSC
             {
                 Name = $"textBlock{id}",
                 Text = $"{Inventory[id].Title}",
-                Margin = new Thickness(50, 0, 0, 0),
+                Margin = new Thickness(35, 0, 0, 0),
                 FontSize = 20
             };
             textBlockList.Add(textBlock);
