@@ -7,7 +7,7 @@ using System.Windows.Media;
 using System.Windows.Input;
 using System.Threading;
 using System.Windows.Threading;
-//using WinniesMessageBox;
+using Notifications.Wpf;
 
 namespace ProjectSC
 {
@@ -18,22 +18,24 @@ namespace ProjectSC
             InitializeComponent();
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            //items.StoreTestData(Inventory);
-            items.LoadInData(ref Inventory);
-            items.ResetId(Inventory);
-            LoadInList();
-        }
 
-        Items items = new Items();
+        ToDoItem items = new ToDoItem();
 
-        private List<Items> Inventory = new List<Items>();
+        private List<ToDoItem> Inventory = new List<ToDoItem>();
 
         private List<Border> borderlist = new List<Border>();
         private List<CheckBox> checkBoxList = new List<CheckBox>();
         private List<TextBlock> textBlockList = new List<TextBlock>();
         private List<Grid> cBoxList = new List<Grid>();
+
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            //items.StoreTestData(Inventory);
+            items.LoadFullData(ref Inventory);
+            items.ResetId(Inventory);
+            LoadInList();
+        }
 
         private void AddItem(int id)
         {
@@ -113,7 +115,7 @@ namespace ProjectSC
             grid.Children.Add(textBlock);
         }
 
-        #region//Check events
+        #region Checkbox events
         private void ToDoChecked(object sender, RoutedEventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender;
@@ -149,7 +151,7 @@ namespace ProjectSC
         }
         #endregion
 
-        #region//Button evnts
+        #region Button evnts
         private void AddNewButton_Click(object sender, RoutedEventArgs e)
         {
             OpenDetailsPanel();
@@ -194,11 +196,11 @@ namespace ProjectSC
         {
             if (IsNew)
             {
-                items.AddNew(textBoxTitle.Text, textBoxDescription.Text, Inventory);
+                items.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), Inventory);
             }
             else
             {
-                items.Update(ID,textBoxTitle.Text, textBoxDescription.Text, Inventory);
+                items.Update(ID, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), Inventory);
             }
 
             items.ResetId(Inventory);
@@ -234,7 +236,7 @@ namespace ProjectSC
         }
         #endregion
 
-        #region//Mouse down events
+        #region Mouse down events
         bool BorderEvtCanActivate = true;
         private void Border_MouseDown(object sender, RoutedEventArgs e)
         {
@@ -271,7 +273,7 @@ namespace ProjectSC
         }
         #endregion
 
-        #region//Mouse over events
+        #region Mouse over events
         public void MouseEnterHighLight(object sender, RoutedEventArgs e)
         {
             if (sender.GetType() == typeof(Border))
@@ -359,7 +361,7 @@ namespace ProjectSC
         }
         #endregion
 
-        #region//Parse Id from control
+        #region Id parser
         private int ParseId(Button button)
         {
             string idtext = string.Empty;
@@ -421,6 +423,8 @@ namespace ProjectSC
             }
 
             AddAddNewButton();
+
+
         }
 
         private void AddAddNewButton()
@@ -473,7 +477,6 @@ namespace ProjectSC
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Stretch,
                 Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#CC000000")),
-                Margin = new Thickness(0, 70, 0, 0)
             };
 
             DetailsGrid = new Grid
@@ -646,7 +649,6 @@ namespace ProjectSC
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Stretch,
                 Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#CC000000")),
-                Margin = new Thickness(0, 70, 0, 0)
             };
 
             DetailsGrid = new Grid
@@ -845,12 +847,6 @@ namespace ProjectSC
         {
             DataGrid.Children.Remove(darkenGrid);
             IsOpen = false;
-        }
-
-        private void OpenRemoveWarningMBox()
-        {
-            System.Windows.Forms.MessageBox.Show("Test");
-            //darkenGrid.Children.Add()
         }
     }
 }

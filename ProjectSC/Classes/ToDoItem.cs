@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ProjectSC.Classes;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjectSC
 {
-    public class Items : IDataManipulation<Items>
+    public class ToDoItem : IDataManipulation<ToDoItem>
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -19,20 +20,20 @@ namespace ProjectSC
         public DateTime EndDateTime { get; set; }
 
 
-        public void StoreTestData(List<Items> inventory)
+        public void StoreTestData(List<ToDoItem> inventory)
         {
-            inventory.Add(new Items { Id = 100, Title = "Clean the disk", Description = "nothing to say here" });
-            inventory.Add(new Items { Id = 1, Title = "Update the software", Description = "windows sucks" });
-            inventory.Add(new Items { Id = 2, Title = "Meeting", Description = "meet the CEO" });
-            inventory.Add(new Items { Id = 3, Title = "Math Homework", Description = "kinda hard" });
-            inventory.Add(new Items { Id = 4, Title = "Read Pro Angular 6", Description = "" });
-            inventory.Add(new Items { Id = 5, Title = "Call Mom", Description = "No Signal" });
-            inventory.Add(new Items { Id = 6, Title = "Review EE", Description = "study for the test" });
-            inventory.Add(new Items { Id = 7, Title = "Programming", Description = "Angular + JS" });
-            inventory.Add(new Items { Id = 8, Title = "EE test 1-1", Description = "RC coupler" });
-            inventory.Add(new Items { Id = 9, Title = "Go home", Description = "just go" });
-            inventory.Add(new Items { Id = 10, Title = "EE test 1-2~1-3", Description = "Direct coupler" });
-            inventory.Add(new Items
+            inventory.Add(new ToDoItem { Id = 100, Title = "Notify Test", Description = "It works !"});
+            inventory.Add(new ToDoItem { Id = 1, Title = "Update the software", Description = "windows sucks" });
+            inventory.Add(new ToDoItem { Id = 2, Title = "Meeting", Description = "meet the CEO" });
+            inventory.Add(new ToDoItem { Id = 3, Title = "Math Homework", Description = "kinda hard" });
+            inventory.Add(new ToDoItem { Id = 4, Title = "Read Pro Angular 6", Description = "" });
+            inventory.Add(new ToDoItem { Id = 5, Title = "Call Mom", Description = "No Signal" });
+            inventory.Add(new ToDoItem { Id = 6, Title = "Review EE", Description = "study for the test" });
+            inventory.Add(new ToDoItem { Id = 7, Title = "Programming", Description = "Angular + JS" });
+            inventory.Add(new ToDoItem { Id = 8, Title = "EE test 1-1", Description = "RC coupler" });
+            inventory.Add(new ToDoItem { Id = 9, Title = "Go home", Description = "just go" });
+            inventory.Add(new ToDoItem { Id = 10, Title = "EE test 1-2~1-3", Description = "Direct coupler" });
+            inventory.Add(new ToDoItem
             {
                 Id = 11,
                 Title = "Detail test",
@@ -42,25 +43,40 @@ namespace ProjectSC
             Save(inventory);
         }
 
-        public void Save(List<Items> inventory)
+        public void Save(List<ToDoItem> inventory)
         {
             File.WriteAllText(@"inv.json", JsonConvert.SerializeObject(inventory));
         }
 
-        public void LoadInData(ref List<Items> inventory)
+        public void LoadFullData(ref List<ToDoItem> inventory)
         {
             string json = File.ReadAllText(@"inv.json");
-            inventory = JsonConvert.DeserializeObject<List<Items>>(json);
-            Save(inventory);
+            inventory = JsonConvert.DeserializeObject<List<ToDoItem>>(json);
+            //Save(inventory);
         }
 
-        public void Update(int id,string title,string description,List<Items> inventory)
+        public void LoadTimeData(ref List<TimeRecord> timeRecords)
+        {
+            timeRecords.Clear();
+
+            string json = File.ReadAllText(@"inv.json");
+            List<ToDoItem> inventory = JsonConvert.DeserializeObject<List<ToDoItem>>(json);
+
+            for (int i = 0; i < inventory.Count; i++)
+            {
+                timeRecords.Add(new TimeRecord { Title = inventory[i].Title, BeginDateTime = inventory[i].BeginDateTime, EndDateTime = inventory[i].EndDateTime });
+            }
+        }
+
+        public void Update(int id, string title, string description, DateTime beginDateTime, DateTime endDateTime, List<ToDoItem> inventory)
         {
             inventory[id].Title = title;
             inventory[id].Description = description;
+            inventory[id].BeginDateTime = beginDateTime;
+            inventory[id].EndDateTime = endDateTime;
         }
 
-        public string FindById(int id, List<Items> inventory)
+        public string FindById(int id, List<ToDoItem> inventory)
         {
             if (inventory.Exists(x => x.Id == id))
             {
@@ -72,7 +88,7 @@ namespace ProjectSC
             }
         }
 
-        public string FindByTitle(string title, List<Items> inventory)
+        public string FindByTitle(string title, List<ToDoItem> inventory)
         {
             if (inventory.Exists(x => x.Title == title))
             {
@@ -84,20 +100,27 @@ namespace ProjectSC
             }
         }
 
-        public void AddNew(string title, string description, List<Items> inventory)
+        public void AddNew(string title, string description, DateTime begineDateTime, DateTime endDateTime, List<ToDoItem> inventory)
         {
             int id = inventory.Count + 1;
-            inventory.Add(new Items { Id = id, Title = title, Description = description });
+            inventory.Add(new ToDoItem
+            {
+                Id = id,
+                Title = title,
+                Description = description,
+                BeginDateTime = begineDateTime,
+                EndDateTime = endDateTime
+            });
             Save(inventory);
         }
 
-        public void Remove(int id, List<Items> inventory)
+        public void Remove(int id, List<ToDoItem> inventory)
         {
             inventory.RemoveAt(id);
             Save(inventory);
         }
 
-        public void ResetId(List<Items> inventory)
+        public void ResetId(List<ToDoItem> inventory)
         {
             foreach (var item in inventory)
             {

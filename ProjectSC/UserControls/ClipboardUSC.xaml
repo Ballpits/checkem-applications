@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="ProjectSC.ClipboardUSC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:ProjectSC"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContentFade" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:1}">
+        <Canvas x:Name="canvasBoard" Background="White">
+            <Grid x:Name="pinner" Canvas.Left="10" Canvas.Top="10" Height="119" Width="337" MouseDown="Grid_MouseDown" MouseUp="Grid_MouseUp" MouseMove="pinner_MouseMove" AllowDrop="True">
+                <Rectangle Fill="#FFF3A14F" RadiusX="10" RadiusY="10"/>
+                <TextBlock Text="hello sir,would you like a Maltizer?" HorizontalAlignment="Center" Margin="0,10" FontSize="20" TextWrapping="Wrap"/>
+                <Ellipse HorizontalAlignment="Left" VerticalAlignment="Top" Width="10" Fill="Black" Height="10" Margin="0"/>
+            </Grid>
+        </Canvas>
+    </materialDesign:TransitioningContent>
+</UserControl>

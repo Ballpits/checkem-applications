@@ -7,14 +7,13 @@
              xmlns:local="clr-namespace:ProjectSC"
              mc:Ignorable="d" 
              d:DesignHeight="469" d:DesignWidth="619" Loaded="UserControl_Loaded">
-    <Grid Name="DataGrid">
-        <Grid Margin="0" Background="#FF2196F3" VerticalAlignment="Top" Height="70">
 
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContentFade" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:1}">
+        <Grid Name="DataGrid">
+            <ScrollViewer x:Name="scrollBar" VerticalScrollBarVisibility="Auto" Margin="0">
+                <StackPanel Name="stpMain">
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
-
-        <ScrollViewer x:Name="scrollBar" VerticalScrollBarVisibility="Auto" Margin="0,70,0,0">
-            <StackPanel Name="stpMain">
-            </StackPanel>
-        </ScrollViewer>
-    </Grid>
+    </materialDesign:TransitioningContent>
 </UserControl>
