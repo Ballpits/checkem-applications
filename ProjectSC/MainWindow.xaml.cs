@@ -1,20 +1,12 @@
-﻿using ProjectSC.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
+
+
+using ProjectSC.Classes;
+using ProjectSC.Classes.Functions.MainWindow;
 
 namespace ProjectSC
 {
@@ -61,7 +53,11 @@ namespace ProjectSC
             {
                 if (DateTime.Now.Year == item.BeginDateTime.Year && DateTime.Now.Month == item.BeginDateTime.Month && DateTime.Now.Hour == item.BeginDateTime.Hour && DateTime.Now.Minute == item.BeginDateTime.Minute)
                 {
-                    Notifications.Notify(item.Title, "It's time to finish this");
+                    Notifications.Notify(item.Title, Notifications.RandomMessage("begin"));
+                }
+                if (DateTime.Now.Year == item.EndDateTime.Year && DateTime.Now.Month == item.EndDateTime.Month && DateTime.Now.Hour == item.EndDateTime.Hour && DateTime.Now.Minute == item.EndDateTime.Minute)
+                {
+                    Notifications.Notify(item.Title, Notifications.RandomMessage("end"));
                 }
             }
 
@@ -69,14 +65,12 @@ namespace ProjectSC
 
         public void MouseEnterHighLight(object sender, RoutedEventArgs e)
         {
-            Button button = (Button)sender;
-            button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF5CB7FF"));
+            MainWindowMouseover.Highlight(sender);
         }
 
         public void MouseLeaveUnHighLight(object sender, RoutedEventArgs e)
         {
-            Button button = (Button)sender;
-            button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+            MainWindowMouseover.UnHighlight(sender);
         }
 
 

@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
-using ProjectSC.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
+
+
+using ProjectSC.Classes;
+using ProjectSC.UserControls;
 
 namespace ProjectSC
 {
@@ -19,10 +19,10 @@ namespace ProjectSC
         public DateTime BeginDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
 
-
+        #region test data
         public void StoreTestData(List<ToDoItem> inventory)
         {
-            inventory.Add(new ToDoItem { Id = 100, Title = "Notify Test", Description = "It works !"});
+            inventory.Add(new ToDoItem { Id = 100, Title = "Notify Test", Description = "It works !" });
             inventory.Add(new ToDoItem { Id = 1, Title = "Update the software", Description = "windows sucks" });
             inventory.Add(new ToDoItem { Id = 2, Title = "Meeting", Description = "meet the CEO" });
             inventory.Add(new ToDoItem { Id = 3, Title = "Math Homework", Description = "kinda hard" });
@@ -42,6 +42,7 @@ namespace ProjectSC
 
             Save(inventory);
         }
+        #endregion
 
         public void Save(List<ToDoItem> inventory)
         {
@@ -112,6 +113,7 @@ namespace ProjectSC
                 EndDateTime = endDateTime
             });
             Save(inventory);
+
         }
 
         public void Remove(int id, List<ToDoItem> inventory)

@@ -1,13 +1,12 @@
 ﻿using System;
-using MaterialDesignThemes.Wpf;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Input;
-using System.Threading;
-using System.Windows.Threading;
-using Notifications.Wpf;
+using System.Windows.Media;
+using MaterialDesignThemes.Wpf;
+
+using ProjectSC.Classes.Functions;
 
 namespace ProjectSC
 {
@@ -127,7 +126,7 @@ namespace ProjectSC
             icon.Foreground = Brushes.Black;
             checkBox.Content = icon;
 
-            textBlockList[ParseId(checkBox)].TextDecorations = TextDecorations.Strikethrough;
+            textBlockList[IdParser.ParseId(checkBox)].TextDecorations = TextDecorations.Strikethrough;
         }
 
         private void ToDoUnchecked(object sender, RoutedEventArgs e)
@@ -147,7 +146,7 @@ namespace ProjectSC
                 checkBox.Content = icon;
             }
 
-            textBlockList[ParseId(checkBox)].TextDecorations = null;
+            textBlockList[IdParser.ParseId(checkBox)].TextDecorations = null;
         }
         #endregion
 
@@ -166,13 +165,8 @@ namespace ProjectSC
         {
             Button btn = (Button)sender;
 
-            //OpenRemoveWarningMBox();
-            //MyMessageBox.ShowDialog("Hello", MyMessageBox.Buttons.OK);
-
-            //items.Remove(stpMain.Children.IndexOf(borderlist[ParseId(btn)]), Inventory);
-            //stpMain.Children.RemoveAt(stpMain.Children.IndexOf(borderlist[ParseId(btn)]));
-            items.Remove(ParseId(btn), Inventory);
-            stpMain.Children.RemoveAt(ParseId(btn));
+            items.Remove(IdParser.ParseId(btn), Inventory);
+            stpMain.Children.RemoveAt(IdParser.ParseId(btn));
             items.ResetId(Inventory);
 
             borderlist.Clear();
@@ -248,8 +242,8 @@ namespace ProjectSC
                 {
                     if (!IsOpen)
                     {
-                        ID = ParseId(border);
-                        OpenDetailsPanel(ParseId(border));
+                        ID = IdParser.ParseId(border);
+                        OpenDetailsPanel(IdParser.ParseId(border));
                     }
                 }
             }
@@ -261,13 +255,13 @@ namespace ProjectSC
 
             if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
-                if (checkBoxList[ParseId(grid)].IsChecked == true)
+                if (checkBoxList[IdParser.ParseId(grid)].IsChecked == true)
                 {
-                    checkBoxList[ParseId(grid)].IsChecked = false;
+                    checkBoxList[IdParser.ParseId(grid)].IsChecked = false;
                 }
                 else
                 {
-                    checkBoxList[ParseId(grid)].IsChecked = true;
+                    checkBoxList[IdParser.ParseId(grid)].IsChecked = true;
                 }
             }
         }
@@ -280,7 +274,7 @@ namespace ProjectSC
             {
                 Border border = (Border)sender;
                 border.Background = Brushes.LightGray;
-                cBoxList[ParseId(border)].Background = Brushes.LightGray;
+                cBoxList[IdParser.ParseId(border)].Background = Brushes.LightGray;
             }
             if (sender.GetType() == typeof(CheckBox))
             {
@@ -302,7 +296,7 @@ namespace ProjectSC
                 Grid grid = (Grid)sender;
                 grid.Background = Brushes.LightGray;
 
-                if (checkBoxList[ParseId(grid)].IsChecked == false)
+                if (checkBoxList[IdParser.ParseId(grid)].IsChecked == false)
                 {
                     var icon = new PackIcon { Kind = PackIconKind.Check };
                     icon.Height = 20;
@@ -310,7 +304,7 @@ namespace ProjectSC
                     icon.HorizontalAlignment = HorizontalAlignment.Center;
                     icon.VerticalAlignment = VerticalAlignment.Center;
                     icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-                    checkBoxList[ParseId(grid)].Content = icon;
+                    checkBoxList[IdParser.ParseId(grid)].Content = icon;
                 }
             }
         }
@@ -321,7 +315,7 @@ namespace ProjectSC
             {
                 Border border = (Border)sender;
                 border.Background = Brushes.White;
-                cBoxList[ParseId(border)].Background = Brushes.White;
+                cBoxList[IdParser.ParseId(border)].Background = Brushes.White;
             }
             if (sender.GetType() == typeof(CheckBox))
             {
@@ -342,12 +336,12 @@ namespace ProjectSC
                 BorderEvtCanActivate = true;
                 Grid grid = (Grid)sender;
 
-                if (borderlist[ParseId(grid)].IsMouseOver == false)
+                if (borderlist[IdParser.ParseId(grid)].IsMouseOver == false)
                 {
                     grid.Background = Brushes.White;
                 }
 
-                if (checkBoxList[ParseId(grid)].IsChecked == false)
+                if (checkBoxList[IdParser.ParseId(grid)].IsChecked == false)
                 {
                     var icon = new PackIcon { Kind = PackIconKind.CheckboxBlankCircleOutline };
                     icon.Height = 20;
@@ -355,63 +349,9 @@ namespace ProjectSC
                     icon.HorizontalAlignment = HorizontalAlignment.Center;
                     icon.VerticalAlignment = VerticalAlignment.Center;
                     icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-                    checkBoxList[ParseId(grid)].Content = icon;
+                    checkBoxList[IdParser.ParseId(grid)].Content = icon;
                 }
             }
-        }
-        #endregion
-
-        #region Id parser
-        private int ParseId(Button button)
-        {
-            string idtext = string.Empty;
-
-            for (int i = 0; i < button.Name.Length; i++)
-            {
-                if (char.IsDigit(button.Name[i]))
-                    idtext += button.Name[i];
-            }
-
-            return int.Parse(idtext);
-        }
-
-        private int ParseId(CheckBox checkbox)
-        {
-            string idtext = string.Empty;
-
-            for (int i = 0; i < checkbox.Name.Length; i++)
-            {
-                if (char.IsDigit(checkbox.Name[i]))
-                    idtext += checkbox.Name[i];
-            }
-
-            return int.Parse(idtext);
-        }
-
-        private int ParseId(Border border)
-        {
-            string idtext = string.Empty;
-
-            for (int i = 0; i < border.Name.Length; i++)
-            {
-                if (char.IsDigit(border.Name[i]))
-                    idtext += border.Name[i];
-            }
-
-            return int.Parse(idtext);
-        }
-
-        private int ParseId(Grid grid)
-        {
-            string idtext = string.Empty;
-
-            for (int i = 0; i < grid.Name.Length; i++)
-            {
-                if (char.IsDigit(grid.Name[i]))
-                    idtext += grid.Name[i];
-            }
-
-            return int.Parse(idtext);
         }
         #endregion
 
@@ -771,7 +711,7 @@ namespace ProjectSC
 
             BeginDatePicker = new DatePicker
             {
-                Text = $"{string.Format("{0:MM/dd/yy}", Inventory[id].BeginDateTime)}",
+                Text = $"{Inventory[id].BeginDateTime.Month}/{Inventory[id].BeginDateTime.Day}/{Inventory[id].BeginDateTime.Year}",
                 Style = style,
                 Margin = new Thickness(20, 5, 0, 5),
                 HorizontalAlignment = HorizontalAlignment.Left,
@@ -782,7 +722,7 @@ namespace ProjectSC
 
             EndDatePicker = new DatePicker
             {
-                Text = $"{string.Format("{0:MM/dd/yy}", Inventory[id].EndDateTime)}",
+                Text = $"{Inventory[id].EndDateTime.Month}/{Inventory[id].EndDateTime.Day}/{Inventory[id].EndDateTime.Year}",
                 Style = style,
                 Margin = new Thickness(20, 5, 0, 5),
                 HorizontalAlignment = HorizontalAlignment.Left,
