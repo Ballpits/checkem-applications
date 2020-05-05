@@ -92,6 +92,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Bookmark.cs" />
     <Compile Include="Classes\Functions\Common\IdParser.cs" />
     <Compile Include="Classes\Functions\MainWindow\MainWindowMouseover.cs" />
     <Compile Include="Classes\Model\TimeRecord.cs" />
@@ -105,6 +106,13 @@
       <DependentUpon>MyDayUSC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Functions\Common\Notifications.cs" />
+    <Compile Include="UserControls\NotebookUSC.xaml.cs">
+      <DependentUpon>NotebookUSC.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\ClipboardUSC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -129,6 +137,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\MyDayUSC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\NotebookUSC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -12,7 +12,7 @@
         <Canvas x:Name="canvasBoard" Background="White">
             <Grid x:Name="pinner" Canvas.Left="10" Canvas.Top="10" Height="119" Width="337" MouseDown="Grid_MouseDown" MouseUp="Grid_MouseUp" MouseMove="pinner_MouseMove" AllowDrop="True">
                 <Rectangle Fill="#FFF3A14F" RadiusX="10" RadiusY="10"/>
-                <TextBlock Text="hello sir,would you like a Maltizer?" HorizontalAlignment="Center" Margin="0,10" FontSize="20" TextWrapping="Wrap"/>
+                <TextBlock x:Name="tbTest" Text="hello sir,would you like a Maltizer?" HorizontalAlignment="Center" Margin="0,10" FontSize="20" TextWrapping="Wrap"/>
                 <Ellipse HorizontalAlignment="Left" VerticalAlignment="Top" Width="10" Fill="Black" Height="10" Margin="0"/>
             </Grid>
         </Canvas>

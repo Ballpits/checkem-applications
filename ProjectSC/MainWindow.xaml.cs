@@ -7,6 +7,7 @@ using System.Windows.Threading;
 
 using ProjectSC.Classes;
 using ProjectSC.Classes.Functions.MainWindow;
+using ProjectSC.UserControls;
 
 namespace ProjectSC
 {
@@ -17,10 +18,12 @@ namespace ProjectSC
             InitializeComponent();
         }
 
+        ClipboardUSC clipBoard = new ClipboardUSC();
+        UserControl myDayUSC;
+        UserControl noteBookUSC = new NotebookUSC();
+
         ToDoItem todoitem = new ToDoItem();
         List<TimeRecord> timeRecord = new List<TimeRecord>();
-
-        UserControl usc;
 
         DispatcherTimer timer = new DispatcherTimer();
 
@@ -32,11 +35,8 @@ namespace ProjectSC
 
             timer.Tick += new EventHandler(Timer_Tick);
             timer.Start();
-
-
-            UserControl usc;
-            usc = new MyDayUSC();
-            GridMain.Children.Add(usc);
+            myDayUSC = new MyDayUSC(clipBoard);
+            GridMain.Children.Add(myDayUSC);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -77,15 +77,19 @@ namespace ProjectSC
         private void ButtonClipBoard_Click(object sender, RoutedEventArgs e)
         {
             GridMain.Children.Clear();
-            usc = new ClipboardUSC();
-            GridMain.Children.Add(usc);
+            GridMain.Children.Add(clipBoard);
         }
 
         private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
         {
             GridMain.Children.Clear();
-            usc = new MyDayUSC();
-            GridMain.Children.Add(usc);
+            GridMain.Children.Add(myDayUSC);
+        }
+
+        private void ButtonNotebook_Click(object sender, RoutedEventArgs e)
+        {
+            GridMain.Children.Clear();
+            GridMain.Children.Add(noteBookUSC);
         }
     }
 }

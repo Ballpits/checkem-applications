@@ -7,17 +7,26 @@ using System.Windows.Media;
 using MaterialDesignThemes.Wpf;
 
 using ProjectSC.Classes.Functions;
+using ProjectSC.UserControls.Custom;
 
 namespace ProjectSC
 {
     public partial class MyDayUSC : UserControl, IUIControl
     {
-        public MyDayUSC()
+        private ClipboardUSC user;
+
+        public MyDayUSC(ClipboardUSC control)
         {
             InitializeComponent();
+
+            items.LoadFullData(ref Inventory);
+            items.ResetId(Inventory);
+            LoadInList();
+
+            this.user = control;
         }
 
-
+        #region Variables
         ToDoItem items = new ToDoItem();
 
         private List<ToDoItem> Inventory = new List<ToDoItem>();
@@ -26,16 +35,55 @@ namespace ProjectSC
         private List<CheckBox> checkBoxList = new List<CheckBox>();
         private List<TextBlock> textBlockList = new List<TextBlock>();
         private List<Grid> cBoxList = new List<Grid>();
-
+        #endregion
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             //items.StoreTestData(Inventory);
-            items.LoadFullData(ref Inventory);
-            items.ResetId(Inventory);
-            LoadInList();
+            //items.LoadFullData(ref Inventory);
+            //items.ResetId(Inventory);
+            //LoadInList();
+        }
+        private void LoadInList()
+        {
+            for (int i = 0; i < Inventory.Count; i++)
+            {
+                AddItem(i);
+            }
+
+            AddAddNewButton();
+
+
+        }
+        private void AddAddNewButton()
+        {
+            Button ButtonAddNew = new Button
+            {
+                Height = 50,
+                Width = 50,
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Top,
+                Margin = new Thickness(0, 10, 10, 0),
+                Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3")),
+                BorderThickness = new Thickness(0),
+            };
+            CornerRadius cr = new CornerRadius(100);
+            ButtonAssist.SetCornerRadius(ButtonAddNew, cr);
+            ShadowAssist.SetShadowDepth(ButtonAddNew, 0);
+            ButtonAddNew.Click += new RoutedEventHandler(this.AddNewButton_Click);
+
+            var icon = new PackIcon { Kind = PackIconKind.Plus };
+            icon.Height = 30;
+            icon.Width = 30;
+            icon.HorizontalAlignment = HorizontalAlignment.Center;
+            icon.VerticalAlignment = VerticalAlignment.Center;
+            icon.Foreground = Brushes.White;
+            ButtonAddNew.Content = icon;
+
+            stpMain.Children.Add(ButtonAddNew);
         }
 
+        #region Item
         private void AddItem(int id)
         {
             Border border = new Border
@@ -113,6 +161,7 @@ namespace ProjectSC
             grid.Children.Add(cBoxGrid);
             grid.Children.Add(textBlock);
         }
+        #endregion
 
         #region Checkbox events
         private void ToDoChecked(object sender, RoutedEventArgs e)
@@ -153,7 +202,15 @@ namespace ProjectSC
         #region Button evnts
         private void AddNewButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenDetailsPanel();
+            DetailsPanel panel = new DetailsPanel(this);
+            user.Testter();
+            DataGrid.Children.Add(panel);
+            //OpenDetailsPanel();
+        }
+
+        public void removePanel()
+        {
+            DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
         }
 
         private void MarkButton_Click(object sender, RoutedEventArgs e)
@@ -265,6 +322,11 @@ namespace ProjectSC
                 }
             }
         }
+
+        private void DarkGrid_MouseDown(object sender, RoutedEventArgs e)
+        {
+            CloseDetailsPanel();
+        }
         #endregion
 
         #region Mouse over events
@@ -355,56 +417,22 @@ namespace ProjectSC
         }
         #endregion
 
-        private void LoadInList()
-        {
-            for (int i = 0; i < Inventory.Count; i++)
-            {
-                AddItem(i);
-            }
-
-            AddAddNewButton();
-
-
-        }
-
-        private void AddAddNewButton()
-        {
-            Button ButtonAddNew = new Button
-            {
-                Height = 50,
-                Width = 50,
-                HorizontalAlignment = HorizontalAlignment.Right,
-                VerticalAlignment = VerticalAlignment.Top,
-                Margin = new Thickness(0, 10, 10, 0),
-                Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3")),
-                BorderThickness = new Thickness(0),
-            };
-            CornerRadius cr = new CornerRadius(100);
-            ButtonAssist.SetCornerRadius(ButtonAddNew, cr);
-            ShadowAssist.SetShadowDepth(ButtonAddNew, 0);
-            ButtonAddNew.Click += new RoutedEventHandler(this.AddNewButton_Click);
-
-            var icon = new PackIcon { Kind = PackIconKind.Plus };
-            icon.Height = 30;
-            icon.Width = 30;
-            icon.HorizontalAlignment = HorizontalAlignment.Center;
-            icon.VerticalAlignment = VerticalAlignment.Center;
-            icon.Foreground = Brushes.White;
-            ButtonAddNew.Content = icon;
-
-            stpMain.Children.Add(ButtonAddNew);
-        }
-
+        #region Details panel
         bool IsOpen = false;
-        bool IsNew;
-        Grid darkenGrid, DetailsGrid;
+        public bool IsNew;
+        Grid DarkGrid = new Grid();
+        Grid DetailsGrid = new Grid();
+        TextBox textBoxTitle = new TextBox();
+        TextBox textBoxDescription = new TextBox();
+        DatePicker BeginDatePicker = new DatePicker();
+        DatePicker EndDatePicker = new DatePicker();
+        TimePicker BeginTimePicker = new TimePicker();
+        TimePicker EndTimePicker = new TimePicker();
 
-        TextBox textBoxTitle;
-        TextBox textBoxDescription;
-        DatePicker BeginDatePicker;
-        DatePicker EndDatePicker;
-        TimePicker BeginTimePicker;
-        TimePicker EndTimePicker;
+        private void DetailsPanelSetup()
+        {
+
+        }
 
         private void OpenDetailsPanel()
         {
@@ -412,171 +440,9 @@ namespace ProjectSC
 
             int id = Inventory.Count + 1;
 
-            darkenGrid = new Grid
-            {
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                VerticalAlignment = VerticalAlignment.Stretch,
-                Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#CC000000")),
-            };
+            DetailsPanel detailsPanel = new DetailsPanel(this);
 
-            DetailsGrid = new Grid
-            {
-                HorizontalAlignment = HorizontalAlignment.Right,
-                VerticalAlignment = VerticalAlignment.Stretch,
-                Background = Brushes.White,
-                Width = 400
-            };
-
-            Button buttonreturn = new Button
-            {
-                Height = 50,
-                Width = 50,
-                HorizontalAlignment = HorizontalAlignment.Left,
-                VerticalAlignment = VerticalAlignment.Top,
-                Background = Brushes.White,
-                BorderThickness = new Thickness(0),
-                ToolTip = "Return"
-            };
-            CornerRadius cr = new CornerRadius(100);
-            ButtonAssist.SetCornerRadius(buttonreturn, cr);
-            ShadowAssist.SetShadowDepth(buttonreturn, 0);
-            buttonreturn.Click += new RoutedEventHandler(this.ReturnButton_Click);
-
-            var icon = new PackIcon { Kind = PackIconKind.ArrowBack };
-            icon.Height = 30;
-            icon.Width = 30;
-            icon.HorizontalAlignment = HorizontalAlignment.Center;
-            icon.VerticalAlignment = VerticalAlignment.Center;
-            icon.Foreground = Brushes.Black;
-            buttonreturn.Content = icon;
-
-            Button buttonSave = new Button
-            {
-                Height = 50,
-                Width = 50,
-                HorizontalAlignment = HorizontalAlignment.Right,
-                VerticalAlignment = VerticalAlignment.Top,
-                Background = Brushes.White,
-                BorderThickness = new Thickness(0),
-                ToolTip = "Save"
-            };
-            ButtonAssist.SetCornerRadius(buttonSave, cr);
-            ShadowAssist.SetShadowDepth(buttonSave, 0);
-            buttonSave.Click += new RoutedEventHandler(this.SaveButton_Click);
-
-            icon = new PackIcon { Kind = PackIconKind.ContentSaveEdit };
-            icon.Height = 30;
-            icon.Width = 30;
-            icon.HorizontalAlignment = HorizontalAlignment.Center;
-            icon.VerticalAlignment = VerticalAlignment.Center;
-            icon.Foreground = Brushes.Black;
-            buttonSave.Content = icon;
-            ScrollViewer scrollViewer = new ScrollViewer()
-
-            {
-                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
-                Margin = new Thickness(0, 50, 0, 0)
-            };
-
-            StackPanel DetailsSTP = new StackPanel
-            {
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                VerticalAlignment = VerticalAlignment.Stretch,
-            };
-            scrollViewer.Content = DetailsSTP;
-
-            Style style = this.FindResource("MaterialDesignFilledTextFieldTextBox") as Style;
-
-            textBoxTitle = new TextBox
-            {
-                Style = style,
-                Margin = new Thickness(10, 5, 10, 5),
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                TextWrapping = TextWrapping.Wrap,
-                MaxLength = 100,
-                FontSize = 20
-            };
-            HintAssist.SetHint(textBoxTitle, "Title");
-
-            textBoxDescription = new TextBox
-            {
-                Style = style,
-                Margin = new Thickness(10, 5, 10, 5),
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                TextWrapping = TextWrapping.Wrap,
-                MaxLength = 500,
-                FontSize = 20
-            };
-            HintAssist.SetHint(textBoxDescription, "Description");
-
-            style = this.FindResource("MaterialDesignFloatingHintDatePicker") as Style;
-
-            BeginDatePicker = new DatePicker
-            {
-                Style = style,
-                Margin = new Thickness(20, 5, 0, 5),
-                HorizontalAlignment = HorizontalAlignment.Left,
-                Width = 120,
-                FontSize = 20
-            };
-            HintAssist.SetHint(BeginDatePicker, "Begin Date");
-
-            EndDatePicker = new DatePicker
-            {
-                Style = style,
-                Margin = new Thickness(20, 5, 0, 5),
-                HorizontalAlignment = HorizontalAlignment.Left,
-                Width = 120,
-                FontSize = 20
-            };
-            HintAssist.SetHint(EndDatePicker, "End Date");
-
-            style = this.FindResource("MaterialDesignFloatingHintTimePicker") as Style;
-
-            BeginTimePicker = new TimePicker
-            {
-                Style = style,
-                Margin = new Thickness(0, 5, 20, 5),
-                HorizontalAlignment = HorizontalAlignment.Right,
-                Width = 120,
-                FontSize = 20
-            };
-            HintAssist.SetHint(BeginTimePicker, "Begin Time");
-
-            EndTimePicker = new TimePicker
-            {
-                Style = style,
-                Margin = new Thickness(0, 5, 20, 5),
-                HorizontalAlignment = HorizontalAlignment.Right,
-                Width = 120,
-                FontSize = 20
-            };
-            HintAssist.SetHint(EndTimePicker, "End Time");
-
-            Grid BeginRow = new Grid();
-            BeginRow.Margin = new Thickness(10, 5, 10, 5);
-            BeginRow.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#89E7E7E7"));
-            BeginRow.Children.Add(BeginDatePicker);
-            BeginRow.Children.Add(BeginTimePicker);
-
-            Grid EndRow = new Grid();
-            EndRow.Margin = new Thickness(10, 5, 10, 5);
-            EndRow.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#89E7E7E7"));
-            EndRow.Children.Add(EndDatePicker);
-            EndRow.Children.Add(EndTimePicker);
-
-            darkenGrid.Children.Add(DetailsGrid);
-
-            DetailsSTP.Children.Add(textBoxTitle);
-            DetailsSTP.Children.Add(textBoxDescription);
-            DetailsSTP.Children.Add(BeginRow);
-            DetailsSTP.Children.Add(EndRow);
-
-            DetailsGrid.Children.Add(buttonreturn);
-            DetailsGrid.Children.Add(buttonSave);
-            DetailsGrid.Children.Add(scrollViewer);
-
-            DataGrid.Children.Add(darkenGrid);
+            DataGrid.Children.Add(detailsPanel);
             IsOpen = true;
         }
 
@@ -584,12 +450,13 @@ namespace ProjectSC
         {
             IsNew = false;
 
-            darkenGrid = new Grid
+            DarkGrid = new Grid
             {
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Stretch,
                 Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#CC000000")),
             };
+            DarkGrid.MouseDown += new MouseButtonEventHandler(this.DarkGrid_MouseDown);
 
             DetailsGrid = new Grid
             {
@@ -767,7 +634,7 @@ namespace ProjectSC
             EndRow.Children.Add(EndDatePicker);
             EndRow.Children.Add(EndTimePicker);
 
-            darkenGrid.Children.Add(DetailsGrid);
+            DarkGrid.Children.Add(DetailsGrid);
 
             DetailsSTP.Children.Add(textBoxTitle);
             DetailsSTP.Children.Add(textBoxDescription);
@@ -779,14 +646,16 @@ namespace ProjectSC
             DetailsGrid.Children.Add(buttonRemove);
             DetailsGrid.Children.Add(scrollViewer);
 
-            DataGrid.Children.Add(darkenGrid);
+            DataGrid.Children.Add(DarkGrid);
             IsOpen = true;
         }
 
-        private void CloseDetailsPanel()
+        public void CloseDetailsPanel()
         {
-            DataGrid.Children.Remove(darkenGrid);
+            DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
+
             IsOpen = false;
         }
+        #endregion
     }
 }

@@ -3,10 +3,47 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:ProjectSC.UserControls.Custom"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#CC000000">
-        <Grid Width="400" HorizontalAlignment="Right" Background="White"></Grid>
+        <Grid Background="White" HorizontalAlignment="Right" Width="400">
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="Black" Click="RetunButton_Click" ToolTip="Retun">
+                <materialDesign:PackIcon Kind="ArrowBack" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="50" Height="50" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="Black" ToolTip="Save" Click="RemoveButton_Click">
+                <materialDesign:PackIcon Kind="ContentSave" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="50" Height="50" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="Black" ToolTip="Remove" Margin="0,0,50,0" Click="RemoveButton_Click">
+                <materialDesign:PackIcon Kind="Trash" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+            
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,50,0,0">
+                <StackPanel>
+                    <TextBox Margin="10,5" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="Title" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial"/>
+                    <TextBox Margin="10,5" TextWrapping="Wrap" MaxLength="500" FontSize="20" materialDesign:HintAssist.Hint="Description" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial"/>
+                    
+                    <Grid Margin="10,20,10,5">
+                        <materialDesign:PackIcon Kind="Bell" Foreground="#FFF4DE1F"/>
+                        <TextBlock Text="Use reminder" FontSize="16" FontFamily="Arial" Margin="20,0,0,0"/>
+                        <ToggleButton x:Name="ReminderToggle" HorizontalAlignment="Right" Click="ReminderToggle_Click"/>
+                    </Grid>
+                    
+                    <Expander x:Name="ReminderExpander" Header="Reminder" FontFamily="Arial" Margin="10,0" IsEnabled="False">
+                        <StackPanel>
+                            <Grid Margin="10,5" Background="#FFF0F0F0">
+                                <DatePicker HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Begin Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="0,0,30,2" Width="120" FontSize="20" FontFamily="Arial"/>
+                                <materialDesign:TimePicker Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="Begin Time"/>
+                            </Grid>
+                            <Grid Margin="10,5,10,0" Background="#FFF0F0F0">
+                                <DatePicker HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Due Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="0,0,30,2" Width="120" FontSize="20" FontFamily="Arial"/>
+                                <materialDesign:TimePicker Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="End Time"/>
+                            </Grid>
+                        </StackPanel>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </UserControl>

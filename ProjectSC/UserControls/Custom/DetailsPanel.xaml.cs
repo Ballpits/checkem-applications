@@ -20,9 +20,40 @@ namespace ProjectSC.UserControls.Custom
     /// </summary>
     public partial class DetailsPanel : UserControl
     {
-        public DetailsPanel()
+        MyDayUSC MyDay;
+        public DetailsPanel(MyDayUSC myDayUSC)
         {
             InitializeComponent();
+            MyDay = myDayUSC;
+        }
+
+        private void RetunButton_Click(object sender, RoutedEventArgs e)
+        {
+            MyDay.CloseDetailsPanel();
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ReminderToggle_Click(object sender, RoutedEventArgs e)
+        {
+            if (ReminderToggle.IsChecked == true)
+            {
+                ReminderToggle.Content = "1";
+                ReminderExpander.IsEnabled = true;
+            }
+            else
+            {
+                ReminderToggle.Content = "0";
+                ReminderExpander.IsEnabled = false;
+            }
         }
     }
 }
