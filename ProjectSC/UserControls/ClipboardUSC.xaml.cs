@@ -27,11 +27,6 @@ namespace ProjectSC
             //canvasBoard.MouseWheel += new MouseWheelEventHandler(StackPanel_MouseWheel);
         }
 
-        public void Testter()
-        {
-            tbTest.Text += " it works";
-        }
-
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
 

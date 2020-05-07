@@ -19,7 +19,7 @@ namespace ProjectSC
         }
 
         ClipboardUSC clipBoard = new ClipboardUSC();
-        UserControl myDayUSC;
+        UserControl myDayUSC = new MyDayUSC();
         UserControl noteBookUSC = new NotebookUSC();
 
         ToDoItem todoitem = new ToDoItem();
@@ -35,7 +35,6 @@ namespace ProjectSC
 
             timer.Tick += new EventHandler(Timer_Tick);
             timer.Start();
-            myDayUSC = new MyDayUSC(clipBoard);
             GridMain.Children.Add(myDayUSC);
         }
 

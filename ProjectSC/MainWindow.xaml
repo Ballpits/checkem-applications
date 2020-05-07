@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     	xmlns:tn="clr-namespace:WPFTaskbarNotifier;assembly=WPFTaskbarNotifier"      
         xmlns:local="clr-namespace:ProjectSC"
         mc:Ignorable="d"
         Title="Check'em" Height="500" Width="750" WindowStartupLocation="CenterScreen" MinWidth="750" MinHeight="500" Icon="Icon/Icon-1024.ico" Background="White" WindowState="Maximized">
@@ -14,14 +13,6 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-
-        <!--<tn:NotifyIcon x:Name="NotifyIcon" Text="Example Notifier" Icon="Icon/Icon-16.ico" Width="Auto" Height="Auto">
-            <tn:NotifyIcon.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Exit" Click="NotifyIconExit_Click" />
-                </ContextMenu>
-            </tn:NotifyIcon.ContextMenu>
-        </tn:NotifyIcon>-->
 
         <Grid x:Name="SideBar" Margin="0" Background="#FF2196F3">
             <Grid.RowDefinitions>

@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 
 
 using ProjectSC.Classes;
-using ProjectSC.UserControls;
 
 namespace ProjectSC
 {
@@ -18,6 +17,8 @@ namespace ProjectSC
         public DateTime CreatedDateTime { get; set; }
         public DateTime BeginDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
+
+
 
         #region test data
         public void StoreTestData(List<ToDoItem> inventory)
@@ -43,17 +44,11 @@ namespace ProjectSC
             Save(inventory);
         }
         #endregion
-
-        public void Save(List<ToDoItem> inventory)
-        {
-            File.WriteAllText(@"inv.json", JsonConvert.SerializeObject(inventory));
-        }
-
+        
         public void LoadFullData(ref List<ToDoItem> inventory)
         {
             string json = File.ReadAllText(@"inv.json");
             inventory = JsonConvert.DeserializeObject<List<ToDoItem>>(json);
-            //Save(inventory);
         }
 
         public void LoadTimeData(ref List<TimeRecord> timeRecords)
@@ -69,6 +64,43 @@ namespace ProjectSC
             }
         }
 
+        public void ResetId(List<ToDoItem> inventory)
+        {
+            foreach (var item in inventory)
+            {
+                item.Id = inventory.IndexOf(item);
+            }
+
+            Save(inventory);
+        }
+
+
+
+        public void AddNew(string title, string description, DateTime begineDateTime, DateTime endDateTime, List<ToDoItem> inventory)
+        {
+            int id = inventory.Count + 1;
+            inventory.Add(new ToDoItem
+            {
+                Id = id,
+                Title = title,
+                Description = description,
+                BeginDateTime = begineDateTime,
+                EndDateTime = endDateTime
+            });
+            Save(inventory);
+        }
+
+        public void Remove(int id, List<ToDoItem> inventory)
+        {
+            inventory.RemoveAt(id);
+            Save(inventory);
+        }
+
+        public void Save(List<ToDoItem> inventory)
+        {
+            File.WriteAllText(@"inv.json", JsonConvert.SerializeObject(inventory));
+        }
+        
         public void Update(int id, string title, string description, DateTime beginDateTime, DateTime endDateTime, List<ToDoItem> inventory)
         {
             inventory[id].Title = title;
@@ -76,6 +108,8 @@ namespace ProjectSC
             inventory[id].BeginDateTime = beginDateTime;
             inventory[id].EndDateTime = endDateTime;
         }
+
+
 
         public string FindById(int id, List<ToDoItem> inventory)
         {
@@ -99,42 +133,6 @@ namespace ProjectSC
             {
                 return $"\t{title} does not exist in the list";
             }
-        }
-
-        public void AddNew(string title, string description, DateTime begineDateTime, DateTime endDateTime, List<ToDoItem> inventory)
-        {
-            int id = inventory.Count + 1;
-            inventory.Add(new ToDoItem
-            {
-                Id = id,
-                Title = title,
-                Description = description,
-                BeginDateTime = begineDateTime,
-                EndDateTime = endDateTime
-            });
-            Save(inventory);
-
-        }
-
-        public void Remove(int id, List<ToDoItem> inventory)
-        {
-            inventory.RemoveAt(id);
-            Save(inventory);
-        }
-
-        public void ResetId(List<ToDoItem> inventory)
-        {
-            foreach (var item in inventory)
-            {
-                item.Id = inventory.IndexOf(item);
-            }
-
-            Save(inventory);
-        }
-
-        public override string ToString()
-        {
-            return string.Format("\tid:{0},name:{1},degree:{2}\n", Id, Title, Description);
         }
     }
 }

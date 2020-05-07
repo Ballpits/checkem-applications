@@ -1,35 +1,29 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using ProjectSC.Classes.Functions;
+using ProjectSC.UserControls.Custom;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using MaterialDesignThemes.Wpf;
-
-using ProjectSC.Classes.Functions;
-using ProjectSC.UserControls.Custom;
 
 namespace ProjectSC
 {
     public partial class MyDayUSC : UserControl, IUIControl
     {
-        private ClipboardUSC user;
-
-        public MyDayUSC(ClipboardUSC control)
+        public MyDayUSC()
         {
             InitializeComponent();
 
             items.LoadFullData(ref Inventory);
             items.ResetId(Inventory);
             LoadInList();
-
-            this.user = control;
         }
 
         #region Variables
         ToDoItem items = new ToDoItem();
 
-        private List<ToDoItem> Inventory = new List<ToDoItem>();
+        public List<ToDoItem> Inventory = new List<ToDoItem>();
 
         private List<Border> borderlist = new List<Border>();
         private List<CheckBox> checkBoxList = new List<CheckBox>();
@@ -37,13 +31,6 @@ namespace ProjectSC
         private List<Grid> cBoxList = new List<Grid>();
         #endregion
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            //items.StoreTestData(Inventory);
-            //items.LoadFullData(ref Inventory);
-            //items.ResetId(Inventory);
-            //LoadInList();
-        }
         private void LoadInList()
         {
             for (int i = 0; i < Inventory.Count; i++)
@@ -51,11 +38,10 @@ namespace ProjectSC
                 AddItem(i);
             }
 
-            AddAddNewButton();
-
-
+            AddNewButton();
         }
-        private void AddAddNewButton()
+
+        private void AddNewButton()
         {
             Button ButtonAddNew = new Button
             {
@@ -83,6 +69,19 @@ namespace ProjectSC
             stpMain.Children.Add(ButtonAddNew);
         }
 
+        public void Refresh()
+        {
+            items.ResetId(Inventory);
+
+            borderlist.Clear();
+            checkBoxList.Clear();
+            textBlockList.Clear();
+            cBoxList.Clear();
+            stpMain.Children.Clear();
+
+            LoadInList();
+        }
+
         #region Item
         private void AddItem(int id)
         {
@@ -90,7 +89,7 @@ namespace ProjectSC
             {
                 Name = $"border{id}",
                 BorderThickness = new Thickness(0, 0, 0, 0.5),
-                Height = 30,
+                Height = 50,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFA8A8A8")),
                 Background = Brushes.White
@@ -152,6 +151,7 @@ namespace ProjectSC
             {
                 Name = $"textBlock{id}",
                 Text = $"{Inventory[id].Title}",
+                VerticalAlignment = VerticalAlignment.Center,
                 Margin = new Thickness(35, 0, 0, 0),
                 FontSize = 20
             };
@@ -202,106 +202,22 @@ namespace ProjectSC
         #region Button evnts
         private void AddNewButton_Click(object sender, RoutedEventArgs e)
         {
-            DetailsPanel panel = new DetailsPanel(this);
-            user.Testter();
-            DataGrid.Children.Add(panel);
-            //OpenDetailsPanel();
-        }
-
-        public void removePanel()
-        {
-            DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
-        }
-
-        private void MarkButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void RemoveButton_Click(object sender, RoutedEventArgs e)
-        {
-            Button btn = (Button)sender;
-
-            items.Remove(IdParser.ParseId(btn), Inventory);
-            stpMain.Children.RemoveAt(IdParser.ParseId(btn));
-            items.ResetId(Inventory);
-
-            borderlist.Clear();
-            checkBoxList.Clear();
-            textBlockList.Clear();
-            cBoxList.Clear();
-            stpMain.Children.Clear();
-
-            CloseDetailsPanel();
-
-            LoadInList();
-        }
-
-        private void ReturnButton_Click(object sender, RoutedEventArgs e)
-        {
-            CloseDetailsPanel();
-        }
-
-        int ID;
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (IsNew)
-            {
-                items.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), Inventory);
-            }
-            else
-            {
-                items.Update(ID, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), Inventory);
-            }
-
-            items.ResetId(Inventory);
-
-            borderlist.Clear();
-            checkBoxList.Clear();
-            textBlockList.Clear();
-            cBoxList.Clear();
-            stpMain.Children.Clear();
-
-            LoadInList();
-
-            OpenSnakeBar("Saved");
-        }
-
-        private void OpenSnakeBar(string content)
-        {
-            SnackbarMessageQueue msgQueue = new SnackbarMessageQueue(TimeSpan.FromSeconds(1));
-            msgQueue.Enqueue("Saved");
-
-            SnackbarMessage snackbarMessage = new SnackbarMessage
-            {
-                Content = content,
-            };
-            Snackbar snackbar = new Snackbar
-            {
-                Message = snackbarMessage,
-                IsActive = true,
-                MessageQueue = msgQueue
-            };
-            //snackbarMessage.ActionClick += new RoutedEventHandler(this.ReturnButton_Click);
-            DetailsGrid.Children.Add(snackbar);
+            OpenDetailsPanel();
         }
         #endregion
 
         #region Mouse down events
-        bool BorderEvtCanActivate = true;
+        private bool BorderEvtCanActivate = true;
         private void Border_MouseDown(object sender, RoutedEventArgs e)
         {
             Border border = new Border();
             if (BorderEvtCanActivate)
             {
                 border = (Border)sender;
+
                 if (Mouse.LeftButton == MouseButtonState.Pressed)
                 {
-                    if (!IsOpen)
-                    {
-                        ID = IdParser.ParseId(border);
-                        OpenDetailsPanel(IdParser.ParseId(border));
-                    }
+                    OpenDetailsPanel(IdParser.ParseId(border));
                 }
             }
         }
@@ -321,11 +237,6 @@ namespace ProjectSC
                     checkBoxList[IdParser.ParseId(grid)].IsChecked = true;
                 }
             }
-        }
-
-        private void DarkGrid_MouseDown(object sender, RoutedEventArgs e)
-        {
-            CloseDetailsPanel();
         }
         #endregion
 
@@ -418,243 +329,33 @@ namespace ProjectSC
         #endregion
 
         #region Details panel
-        bool IsOpen = false;
-        public bool IsNew;
-        Grid DarkGrid = new Grid();
-        Grid DetailsGrid = new Grid();
-        TextBox textBoxTitle = new TextBox();
-        TextBox textBoxDescription = new TextBox();
-        DatePicker BeginDatePicker = new DatePicker();
-        DatePicker EndDatePicker = new DatePicker();
-        TimePicker BeginTimePicker = new TimePicker();
-        TimePicker EndTimePicker = new TimePicker();
-
-        private void DetailsPanelSetup()
-        {
-
-        }
-
         private void OpenDetailsPanel()
         {
-            IsNew = true;
-
-            int id = Inventory.Count + 1;
-
             DetailsPanel detailsPanel = new DetailsPanel(this);
 
+            detailsPanel.IsNew = true;
+
             DataGrid.Children.Add(detailsPanel);
-            IsOpen = true;
         }
 
         private void OpenDetailsPanel(int id)
         {
-            IsNew = false;
+            DetailsPanel detailsPanel = new DetailsPanel(this);
 
-            DarkGrid = new Grid
-            {
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                VerticalAlignment = VerticalAlignment.Stretch,
-                Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#CC000000")),
-            };
-            DarkGrid.MouseDown += new MouseButtonEventHandler(this.DarkGrid_MouseDown);
+            detailsPanel.IsNew = false;
 
-            DetailsGrid = new Grid
-            {
-                HorizontalAlignment = HorizontalAlignment.Right,
-                VerticalAlignment = VerticalAlignment.Stretch,
-                Background = Brushes.White,
-                Width = 400
-            };
+            detailsPanel.Id = Inventory[id].Id;
+            detailsPanel.Title = Inventory[id].Title;
+            detailsPanel.Description = Inventory[id].Description;
+            detailsPanel.BeginDateTime = Inventory[id].BeginDateTime;
+            detailsPanel.EndDateTime = Inventory[id].EndDateTime;
 
-            Button buttonreturn = new Button
-            {
-                Height = 50,
-                Width = 50,
-                HorizontalAlignment = HorizontalAlignment.Left,
-                VerticalAlignment = VerticalAlignment.Top,
-                Background = Brushes.White,
-                BorderThickness = new Thickness(0),
-                ToolTip = "Return"
-            };
-            CornerRadius cr = new CornerRadius(100);
-            ButtonAssist.SetCornerRadius(buttonreturn, cr);
-            ShadowAssist.SetShadowDepth(buttonreturn, 0);
-            buttonreturn.Click += new RoutedEventHandler(this.ReturnButton_Click);
-
-            var icon = new PackIcon { Kind = PackIconKind.ArrowBack };
-            icon.Height = 30;
-            icon.Width = 30;
-            icon.HorizontalAlignment = HorizontalAlignment.Center;
-            icon.VerticalAlignment = VerticalAlignment.Center;
-            icon.Foreground = Brushes.Black;
-            buttonreturn.Content = icon;
-
-            Button buttonSave = new Button
-            {
-                Height = 50,
-                Width = 50,
-                HorizontalAlignment = HorizontalAlignment.Right,
-                VerticalAlignment = VerticalAlignment.Top,
-                Background = Brushes.White,
-                BorderThickness = new Thickness(0),
-                ToolTip = "Save"
-            };
-            ButtonAssist.SetCornerRadius(buttonSave, cr);
-            ShadowAssist.SetShadowDepth(buttonSave, 0);
-            buttonSave.Click += new RoutedEventHandler(this.SaveButton_Click);
-
-            icon = new PackIcon { Kind = PackIconKind.ContentSaveEdit };
-            icon.Height = 30;
-            icon.Width = 30;
-            icon.HorizontalAlignment = HorizontalAlignment.Center;
-            icon.VerticalAlignment = VerticalAlignment.Center;
-            icon.Foreground = Brushes.Black;
-            buttonSave.Content = icon;
-
-            Button buttonRemove = new Button
-            {
-                Name = $"removeButton{id}",
-                Height = 50,
-                Width = 50,
-                HorizontalAlignment = HorizontalAlignment.Right,
-                VerticalAlignment = VerticalAlignment.Top,
-                Margin = new Thickness(0, 0, 50, 0),
-                Background = Brushes.White,
-                BorderThickness = new Thickness(0),
-                ToolTip = "Remove"
-            };
-            ButtonAssist.SetCornerRadius(buttonRemove, cr);
-            ShadowAssist.SetShadowDepth(buttonRemove, 0);
-            buttonRemove.Click += new RoutedEventHandler(this.RemoveButton_Click);
-
-            icon = new PackIcon { Kind = PackIconKind.TrashCan };
-            icon.Height = 30;
-            icon.Width = 30;
-            icon.HorizontalAlignment = HorizontalAlignment.Center;
-            icon.VerticalAlignment = VerticalAlignment.Center;
-            icon.Foreground = Brushes.Black;
-            buttonRemove.Content = icon;
-
-            ScrollViewer scrollViewer = new ScrollViewer()
-            {
-                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
-                Margin = new Thickness(0, 50, 0, 0)
-            };
-
-            StackPanel DetailsSTP = new StackPanel
-            {
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                VerticalAlignment = VerticalAlignment.Stretch,
-            };
-            scrollViewer.Content = DetailsSTP;
-
-            Style style = this.FindResource("MaterialDesignFilledTextFieldTextBox") as Style;
-
-            textBoxTitle = new TextBox
-            {
-                Text = $"{Inventory[id].Title}",
-                Style = style,
-                Margin = new Thickness(10, 5, 10, 5),
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                TextWrapping = TextWrapping.Wrap,
-                MaxLength = 100,
-                FontSize = 20
-            };
-            HintAssist.SetHint(textBoxTitle, "Title");
-
-            textBoxDescription = new TextBox
-            {
-                Text = $"{Inventory[id].Description}",
-                Style = style,
-                Margin = new Thickness(10, 5, 10, 5),
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                TextWrapping = TextWrapping.Wrap,
-                MaxLength = 500,
-                FontSize = 20
-            };
-            HintAssist.SetHint(textBoxDescription, "Description");
-
-            style = this.FindResource("MaterialDesignFloatingHintDatePicker") as Style;
-
-            BeginDatePicker = new DatePicker
-            {
-                Text = $"{Inventory[id].BeginDateTime.Month}/{Inventory[id].BeginDateTime.Day}/{Inventory[id].BeginDateTime.Year}",
-                Style = style,
-                Margin = new Thickness(20, 5, 0, 5),
-                HorizontalAlignment = HorizontalAlignment.Left,
-                Width = 120,
-                FontSize = 20
-            };
-            HintAssist.SetHint(BeginDatePicker, "Begin Date");
-
-            EndDatePicker = new DatePicker
-            {
-                Text = $"{Inventory[id].EndDateTime.Month}/{Inventory[id].EndDateTime.Day}/{Inventory[id].EndDateTime.Year}",
-                Style = style,
-                Margin = new Thickness(20, 5, 0, 5),
-                HorizontalAlignment = HorizontalAlignment.Left,
-                Width = 120,
-                FontSize = 20
-            };
-            HintAssist.SetHint(EndDatePicker, "End Date");
-
-            style = this.FindResource("MaterialDesignFloatingHintTimePicker") as Style;
-
-            BeginTimePicker = new TimePicker
-            {
-                Text = $"{string.Format("{0:h:mm tt}", Inventory[id].BeginDateTime)}",
-                Style = style,
-                Margin = new Thickness(0, 5, 20, 5),
-                HorizontalAlignment = HorizontalAlignment.Right,
-                Width = 120,
-                FontSize = 20
-            };
-            HintAssist.SetHint(BeginTimePicker, "Begin Time");
-
-            EndTimePicker = new TimePicker
-            {
-                Text = $"{string.Format("{0:h:mm tt}", Inventory[id].EndDateTime)}",
-                Style = style,
-                Margin = new Thickness(0, 5, 20, 5),
-                HorizontalAlignment = HorizontalAlignment.Right,
-                Width = 120,
-                FontSize = 20
-            };
-            HintAssist.SetHint(EndTimePicker, "End Time");
-
-            Grid BeginRow = new Grid();
-            BeginRow.Margin = new Thickness(10, 5, 10, 5);
-            BeginRow.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#89E7E7E7"));
-            BeginRow.Children.Add(BeginDatePicker);
-            BeginRow.Children.Add(BeginTimePicker);
-
-            Grid EndRow = new Grid();
-            EndRow.Margin = new Thickness(10, 5, 10, 5);
-            EndRow.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#89E7E7E7"));
-            EndRow.Children.Add(EndDatePicker);
-            EndRow.Children.Add(EndTimePicker);
-
-            DarkGrid.Children.Add(DetailsGrid);
-
-            DetailsSTP.Children.Add(textBoxTitle);
-            DetailsSTP.Children.Add(textBoxDescription);
-            DetailsSTP.Children.Add(BeginRow);
-            DetailsSTP.Children.Add(EndRow);
-
-            DetailsGrid.Children.Add(buttonreturn);
-            DetailsGrid.Children.Add(buttonSave);
-            DetailsGrid.Children.Add(buttonRemove);
-            DetailsGrid.Children.Add(scrollViewer);
-
-            DataGrid.Children.Add(DarkGrid);
-            IsOpen = true;
+            DataGrid.Children.Add(detailsPanel);
         }
 
         public void CloseDetailsPanel()
         {
             DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
-
-            IsOpen = false;
         }
         #endregion
     }
