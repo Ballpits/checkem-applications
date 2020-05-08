@@ -35,11 +35,11 @@
                     <Expander x:Name="ReminderExpander" Header="Reminder" FontFamily="Arial" Margin="10,0" Background="#FFFAFAFA" Foreground="#66000000">
                         <StackPanel>
                             <Grid Margin="10,5" Background="#FFF0F0F0">
-                                <DatePicker x:Name="BeginDatePicker" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Begin Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="0,0,30,2" Width="120" FontSize="20" FontFamily="Arial"/>
+                                <DatePicker x:Name="BeginDatePicker" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Begin Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="0,0,40,2" Width="120" FontSize="20" FontFamily="Arial"/>
                                 <materialDesign:TimePicker x:Name="BeginTimePicker" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="Begin Time"/>
                             </Grid>
                             <Grid Margin="10,5,10,0" Background="#FFF0F0F0">
-                                <DatePicker x:Name="EndDatePicker" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Due Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="0,0,30,2" Width="120" FontSize="20" FontFamily="Arial"/>
+                                <DatePicker x:Name="EndDatePicker" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Due Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="0,0,40,2" Width="120" FontSize="20" FontFamily="Arial"/>
                                 <materialDesign:TimePicker x:Name="EndTimePicker" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="End Time"/>
                             </Grid>
                         </StackPanel>

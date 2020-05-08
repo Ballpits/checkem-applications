@@ -1,11 +1,14 @@
-﻿using MaterialDesignThemes.Wpf;
-using ProjectSC.Classes.Functions;
-using ProjectSC.UserControls.Custom;
-using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Collections.Generic;
+
+using MaterialDesignThemes.Wpf;
+
+using ProjectSC.Classes.Functions;
+using ProjectSC.UserControls.Custom;
+
 
 namespace ProjectSC
 {
@@ -152,7 +155,7 @@ namespace ProjectSC
                 Name = $"textBlock{id}",
                 Text = $"{Inventory[id].Title}",
                 VerticalAlignment = VerticalAlignment.Center,
-                Margin = new Thickness(35, 0, 0, 0),
+                Margin = new Thickness(35, 0, 0, 3.5),
                 FontSize = 20
             };
             textBlockList.Add(textBlock);
@@ -345,8 +348,12 @@ namespace ProjectSC
             detailsPanel.IsNew = false;
 
             detailsPanel.Id = Inventory[id].Id;
+
             detailsPanel.Title = Inventory[id].Title;
             detailsPanel.Description = Inventory[id].Description;
+
+            detailsPanel.CanNotify = Inventory[id].CanNotify;
+
             detailsPanel.BeginDateTime = Inventory[id].BeginDateTime;
             detailsPanel.EndDateTime = Inventory[id].EndDateTime;
 

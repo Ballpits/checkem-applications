@@ -7,9 +7,6 @@ using System.Windows.Media;
 
 namespace ProjectSC.UserControls.Custom
 {
-    /// <summary>
-    /// Interaction logic for DetailsPanel.xaml
-    /// </summary>
     public partial class DetailsPanel : UserControl
     {
         public DetailsPanel(MyDayUSC myDayUSC)
@@ -22,9 +19,16 @@ namespace ProjectSC.UserControls.Custom
         public bool IsNew { get; set; }
 
         public int Id { get; set; }
+
         public string Title { get; set; }
         public string Description { get; set; }
+
+        public bool IsCompleted { get; set; }
         public bool IsImportant { get; set; }
+
+        public bool CanNotify { get; set; }
+        public int NotifyType { get; set; }
+
         public DateTime CreatedDateTime { get; set; }
         public DateTime BeginDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
@@ -44,8 +48,13 @@ namespace ProjectSC.UserControls.Custom
             {
                 textBoxTitle.Text = Title;
                 textBoxDescription.Text = Description;
+
+                ReminderToggle.IsChecked = CanNotify;
+                CheckToggleState();
+
                 BeginDatePicker.Text = $"{BeginDateTime.Month}/{BeginDateTime.Day}/{BeginDateTime.Year}";
                 BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", BeginDateTime)}";
+
                 EndDatePicker.Text = $"{EndDateTime.Month}/{EndDateTime.Day}/{EndDateTime.Year}";
                 EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", EndDateTime)}";
 
@@ -61,13 +70,23 @@ namespace ProjectSC.UserControls.Custom
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (IsNew)
+            bool canNotify;
+            if (ReminderToggle.IsChecked == true)
             {
-                items.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), MyDay.Inventory);
+                canNotify = true;
             }
             else
             {
-                items.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), MyDay.Inventory);
+                canNotify = false;
+            }
+
+            if (IsNew)
+            {
+                items.AddNew(textBoxTitle.Text, textBoxDescription.Text, canNotify, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), DateTime.Now, MyDay.Inventory);
+            }
+            else
+            {
+                items.Update(Id, textBoxTitle.Text, textBoxDescription.Text,canNotify, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), MyDay.Inventory);
 
             }
 
@@ -89,6 +108,11 @@ namespace ProjectSC.UserControls.Custom
         }
 
         private void ReminderToggle_Click(object sender, RoutedEventArgs e)
+        {
+            CheckToggleState();
+        }
+
+        private void CheckToggleState()
         {
             if (ReminderToggle.IsChecked == true)
             {
