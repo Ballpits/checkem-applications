@@ -67,7 +67,10 @@ namespace ProjectSC
 
             for (int i = 0; i < inventory.Count; i++)
             {
-                timeRecords.Add(new TimeRecord { Title = inventory[i].Title, BeginDateTime = inventory[i].BeginDateTime, EndDateTime = inventory[i].EndDateTime });
+                if (inventory[i].CanNotify)
+                {
+                    timeRecords.Add(new TimeRecord { Title = inventory[i].Title, BeginDateTime = inventory[i].BeginDateTime, EndDateTime = inventory[i].EndDateTime });
+                }
             }
         }
 

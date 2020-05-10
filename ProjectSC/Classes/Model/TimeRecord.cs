@@ -6,7 +6,6 @@ namespace ProjectSC.Classes
     {
         public string Title { get; set; }
 
-        public bool CanNotify { get; set; }
         public int NotifyType { get; set; }
 
         public DateTime BeginDateTime { get; set; }

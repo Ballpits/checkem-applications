@@ -50,16 +50,13 @@ namespace ProjectSC
 
             foreach (var item in timeRecord)
             {
-                if (item.CanNotify)
+                if (DateTime.Now.Year == item.BeginDateTime.Year && DateTime.Now.Month == item.BeginDateTime.Month && DateTime.Now.Hour == item.BeginDateTime.Hour && DateTime.Now.Minute == item.BeginDateTime.Minute)
                 {
-                    if (DateTime.Now.Year == item.BeginDateTime.Year && DateTime.Now.Month == item.BeginDateTime.Month && DateTime.Now.Hour == item.BeginDateTime.Hour && DateTime.Now.Minute == item.BeginDateTime.Minute)
-                    {
-                        Notifications.Notify(item.Title, Notifications.RandomMessage("begin"));
-                    }
-                    if (DateTime.Now.Year == item.EndDateTime.Year && DateTime.Now.Month == item.EndDateTime.Month && DateTime.Now.Hour == item.EndDateTime.Hour && DateTime.Now.Minute == item.EndDateTime.Minute)
-                    {
-                        Notifications.Notify(item.Title, Notifications.RandomMessage("end"));
-                    }
+                    Notifications.Notify(item.Title, Notifications.RandomMessage("begin"));
+                }
+                if (DateTime.Now.Year == item.EndDateTime.Year && DateTime.Now.Month == item.EndDateTime.Month && DateTime.Now.Hour == item.EndDateTime.Hour && DateTime.Now.Minute == item.EndDateTime.Minute)
+                {
+                    Notifications.Notify(item.Title, Notifications.RandomMessage("end"));
                 }
             }
 

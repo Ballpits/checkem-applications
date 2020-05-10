@@ -24,8 +24,7 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,50">
                 <StackPanel>
                     <TextBox x:Name="textBoxTitle" Margin="10,5" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="Title" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial"/>
-                    <TextBox x:Name="textBoxDescription" Margin="10,5" TextWrapping="Wrap" MaxLength="500" FontSize="20" materialDesign:HintAssist.Hint="Description" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial"/>
-
+                    <TextBox x:Name="textBoxDescription" Margin="10,5" TextWrapping="Wrap" MaxLength="500" FontSize="20" materialDesign:HintAssist.Hint="Description" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial" AcceptsReturn="True" AcceptsTab="True"/>
                     <Grid Margin="10,15,10,5" Height="30">
                         <materialDesign:PackIcon Kind="AddAlertOutline" Foreground="#FFF4DE1F" Height="Auto" Width="Auto" Margin="5,0,0,5"/>
                         <TextBlock Text="Use reminder" FontSize="16" FontFamily="Arial" Margin="35,5,40,5"/>
@@ -49,7 +48,7 @@
 
             <ScrollViewer x:Name="RemoveButtonBar" VerticalAlignment="Bottom" Height="50" VerticalScrollBarVisibility="Disabled">
                 <Grid>
-                    <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="50" Height="50" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="#FFD63838" ToolTip="Remove" Margin="0,0,0,-0.4" Click="RemoveButton_Click">
+                    <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="50" Height="50" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="#FFD63838" ToolTip="Remove" Margin="0,0,0,-0.4" Click="RemoveButton_Click" IsTabStop="False">
                         <materialDesign:PackIcon Kind="TrashCan" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Button>
                 </Grid>
