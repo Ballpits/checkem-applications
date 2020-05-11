@@ -102,6 +102,9 @@
     <Compile Include="UserControls\Custom\DetailsPanel.xaml.cs">
       <DependentUpon>DetailsPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Custom\ItemBar.xaml.cs">
+      <DependentUpon>ItemBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MyDayUSC.xaml.cs">
       <DependentUpon>MyDayUSC.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserControls\Custom\DetailsPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Custom\ItemBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

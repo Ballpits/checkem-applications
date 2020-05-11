@@ -43,6 +43,12 @@ namespace ProjectSC.UserControls.Custom
             {
                 RemoveButtonBar.IsEnabled = false;
                 RemoveButtonBar.Visibility = Visibility.Hidden;
+
+                BeginDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
+                BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", DateTime.Now)}";
+
+                EndDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
+                EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", DateTime.Now)}";
             }
             else
             {
@@ -52,11 +58,22 @@ namespace ProjectSC.UserControls.Custom
                 ReminderToggle.IsChecked = CanNotify;
                 CheckToggleState();
 
-                BeginDatePicker.Text = $"{BeginDateTime.Month}/{BeginDateTime.Day}/{BeginDateTime.Year}";
-                BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", BeginDateTime)}";
+                if (CanNotify)
+                {
+                    BeginDatePicker.Text = $"{BeginDateTime.Month}/{BeginDateTime.Day}/{BeginDateTime.Year}";
+                    BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", BeginDateTime)}";
 
-                EndDatePicker.Text = $"{EndDateTime.Month}/{EndDateTime.Day}/{EndDateTime.Year}";
-                EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", EndDateTime)}";
+                    EndDatePicker.Text = $"{EndDateTime.Month}/{EndDateTime.Day}/{EndDateTime.Year}";
+                    EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", EndDateTime)}";
+                }
+                else
+                {
+                    BeginDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
+                    BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", DateTime.Now)}";
+
+                    EndDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
+                    EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", DateTime.Now)}";
+                }
 
                 RemoveButtonBar.IsEnabled = true;
                 RemoveButtonBar.Visibility = Visibility.Visible;
@@ -86,7 +103,7 @@ namespace ProjectSC.UserControls.Custom
             }
             else
             {
-                items.Update(Id, textBoxTitle.Text, textBoxDescription.Text,canNotify, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), MyDay.Inventory);
+                items.Update(Id, textBoxTitle.Text, textBoxDescription.Text, canNotify, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), MyDay.Inventory);
 
             }
 

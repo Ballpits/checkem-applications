@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ProjectSC.UserControls.Custom.ItemBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:ProjectSC.UserControls.Custom"
+             mc:Ignorable="d" 
+             d:DesignWidth="800" Height="50" Loaded="UserControl_Loaded">
+    
+    <Border x:Name="border" Height="50" Background="White" BorderBrush="#FFA8A8A8" MouseDown="Border_MouseDown" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight">
+        <Grid>
+            <Grid x:Name="cBoxGrid" HorizontalAlignment="Left" Margin="0" Width="35" Background="White" MouseDown="Grid_MouseDown" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight">
+                <CheckBox x:Name="checkBox" Width="25" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}" Checked="ToDoChecked" Unchecked="ToDoUnchecked" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight">
+                    <materialDesign:PackIcon Kind="CheckboxBlankCircleOutline" Width="25" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF2196F3"/>
+                </CheckBox>
+            </Grid>
+
+            <TextBlock x:Name="textBlock" VerticalAlignment="Center" Margin="40,13,50,15.6" FontSize="20" FontFamily="Arial" Height="23"/>
+
+            <ToggleButton Style="{StaticResource MaterialDesignActionToggleButton}" ToolTip="MaterialDesignActionLightToggleButton" HorizontalAlignment="Right" Margin="0,0,10,0" Background="White" BorderBrush="{x:Null}" Foreground="#FF2196F3">
+                <ToggleButton.Content>
+                    <materialDesign:PackIcon Kind="StarBorder" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="25" />
+                </ToggleButton.Content>
+                <materialDesign:ToggleButtonAssist.OnContent>
+                    <materialDesign:PackIcon Kind="Star" />
+                </materialDesign:ToggleButtonAssist.OnContent>
+            </ToggleButton>
+        </Grid>
+    </Border>
+</UserControl>
