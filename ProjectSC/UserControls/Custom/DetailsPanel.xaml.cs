@@ -35,7 +35,7 @@ namespace ProjectSC.UserControls.Custom
 
 
         MyDayUSC MyDay = new MyDayUSC();
-        ToDoItem items = new ToDoItem();
+        ToDoItem item = new ToDoItem();
 
         private void DarkGrid_Loaded(object sender, RoutedEventArgs e)
         {
@@ -99,12 +99,11 @@ namespace ProjectSC.UserControls.Custom
 
             if (IsNew)
             {
-                items.AddNew(textBoxTitle.Text, textBoxDescription.Text, canNotify, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), DateTime.Now, MyDay.Inventory);
+                item.AddNew(textBoxTitle.Text, textBoxDescription.Text, canNotify, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), DateTime.Now, MyDay.Inventory);
             }
             else
             {
-                items.Update(Id, textBoxTitle.Text, textBoxDescription.Text, canNotify, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), MyDay.Inventory);
-
+                item.Update(Id, textBoxTitle.Text, textBoxDescription.Text, canNotify, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), MyDay.Inventory);
             }
 
             MyDay.Refresh();
@@ -115,9 +114,9 @@ namespace ProjectSC.UserControls.Custom
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            items.Remove(Id, MyDay.Inventory);
+            item.Remove(Id, MyDay.Inventory);
             MyDay.stpMain.Children.RemoveAt(Id);
-            items.ResetId(MyDay.Inventory);
+            item.ResetId(MyDay.Inventory);
 
             MyDay.Refresh();
 

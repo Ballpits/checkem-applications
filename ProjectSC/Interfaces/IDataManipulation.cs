@@ -14,8 +14,9 @@ namespace ProjectSC
         void AddNew(string title, string description, bool canNotify, DateTime beginDateTime, DateTime endDateTime, DateTime CreatedDateTime, List<T> inventory);
         void Remove(int id, List<T> inventory);
         void SaveToJson(List<T> inventory);
-        void Update(int id, string title, string description, bool canNotify, DateTime beginDateTime, DateTime endDateTime, List<T> inventory);
 
+        void Update(int id, string title, string description, bool canNotify, DateTime beginDateTime, DateTime endDateTime, List<T> inventory);
+        void Update(int id, bool isImportant, List<T> inventory);
 
 
         string FindById(int id, List<T> inventory);

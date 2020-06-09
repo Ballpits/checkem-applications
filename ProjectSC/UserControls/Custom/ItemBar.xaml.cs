@@ -1,18 +1,8 @@
 ﻿using MaterialDesignThemes.Wpf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ProjectSC.UserControls.Custom
 {
@@ -25,15 +15,27 @@ namespace ProjectSC.UserControls.Custom
             MyDay = myDay;
         }
 
+        MyDayUSC MyDay;
+
+        ToDoItem item = new ToDoItem();
+
+
         public int Id { get; set; }
 
         public string Title { get; set; }
 
-        MyDayUSC MyDay;
-
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             textBlock.Text = Title;
+
+            if (MyDay.Inventory[Id].IsImportant == true)
+            {
+                StarToggle.IsChecked = true;
+            }
+            else
+            {
+                StarToggle.IsChecked = false;
+            }
         }
 
 
@@ -190,11 +192,11 @@ namespace ProjectSC.UserControls.Custom
         {
             if (StarToggle.IsChecked == true)
             {
-
+                item.Update(Id, true, MyDay.Inventory);
             }
             else
             {
-
+                item.Update(Id, false, MyDay.Inventory);
             }
         }
     }

@@ -89,6 +89,7 @@ namespace ProjectSC
         public void AddNew(string title, string description, bool canNotify, DateTime begineDateTime, DateTime endDateTime, DateTime createdDateTime, List<ToDoItem> inventory)
         {
             int id = inventory.Count + 1;
+
             inventory.Add(new ToDoItem
             {
                 Id = id,
@@ -99,6 +100,7 @@ namespace ProjectSC
                 EndDateTime = endDateTime,
                 CreatedDateTime = createdDateTime
             });
+
             SaveToJson(inventory);
         }
 
@@ -120,8 +122,16 @@ namespace ProjectSC
             inventory[id].CanNotify = canNotify;
             inventory[id].BeginDateTime = beginDateTime;
             inventory[id].EndDateTime = endDateTime;
+
+            SaveToJson(inventory);
         }
 
+        public void Update(int id, bool isImportant, List<ToDoItem> inventory)
+        {
+            inventory[id].IsImportant = isImportant;
+
+            SaveToJson(inventory);
+        }
 
 
         public string FindById(int id, List<ToDoItem> inventory)

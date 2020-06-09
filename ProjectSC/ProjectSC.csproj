@@ -92,8 +92,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Classes\Functions\Common\IdParser.cs" />
-    <Compile Include="Classes\Functions\Common\SnackbarControl.cs" />
+    <Compile Include="Classes\Functions\DetailsPanel\SnackbarControl.cs" />
     <Compile Include="Classes\Functions\MainWindow\MainWindowMouseover.cs" />
     <Compile Include="Classes\Model\TimeRecord.cs" />
     <Compile Include="UserControls\ClipboardUSC.xaml.cs">
@@ -108,7 +107,7 @@
     <Compile Include="UserControls\MyDayUSC.xaml.cs">
       <DependentUpon>MyDayUSC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Functions\Common\Notifications.cs" />
+    <Compile Include="Classes\Functions\MainWindow\Notifications.cs" />
     <Compile Include="UserControls\NotebookUSC.xaml.cs">
       <DependentUpon>NotebookUSC.xaml</DependentUpon>
     </Compile>

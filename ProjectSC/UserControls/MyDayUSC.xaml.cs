@@ -18,13 +18,13 @@ namespace ProjectSC
         {
             InitializeComponent();
 
-            items.LoadFullData(ref Inventory);
-            items.ResetId(Inventory);
+            item.LoadFullData(ref Inventory);
+            item.ResetId(Inventory);
             LoadInList();
         }
 
         #region Variables
-        ToDoItem items = new ToDoItem();
+        ToDoItem item = new ToDoItem();
 
         public List<ToDoItem> Inventory = new List<ToDoItem>();
 
@@ -74,7 +74,7 @@ namespace ProjectSC
 
         public void Refresh()
         {
-            items.ResetId(Inventory);
+            item.ResetId(Inventory);
 
             borderlist.Clear();
             checkBoxList.Clear();
@@ -94,42 +94,6 @@ namespace ProjectSC
             itemBar.Title = Inventory[id].Title;
 
             stpMain.Children.Add(itemBar);
-        }
-        #endregion
-
-        #region Checkbox events
-        private void ToDoChecked(object sender, RoutedEventArgs e)
-        {
-            CheckBox checkBox = (CheckBox)sender;
-            var icon = new PackIcon { Kind = PackIconKind.Check };
-            icon.Height = 19;
-            icon.Width = 19;
-            icon.HorizontalAlignment = HorizontalAlignment.Center;
-            icon.VerticalAlignment = VerticalAlignment.Center;
-            icon.Foreground = Brushes.Black;
-            checkBox.Content = icon;
-
-            textBlockList[IdParser.ParseId(checkBox)].TextDecorations = TextDecorations.Strikethrough;
-        }
-
-        private void ToDoUnchecked(object sender, RoutedEventArgs e)
-        {
-            CheckBox checkBox = (CheckBox)sender;
-            Grid grid = new Grid();
-            grid = (Grid)checkBox.Parent;
-
-            if (grid.IsMouseOver)
-            {
-                var icon = new PackIcon { Kind = PackIconKind.Check };
-                icon.Height = 19;
-                icon.Width = 19;
-                icon.HorizontalAlignment = HorizontalAlignment.Center;
-                icon.VerticalAlignment = VerticalAlignment.Center;
-                icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-                checkBox.Content = icon;
-            }
-
-            textBlockList[IdParser.ParseId(checkBox)].TextDecorations = null;
         }
         #endregion
 
