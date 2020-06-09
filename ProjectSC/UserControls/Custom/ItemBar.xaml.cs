@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace ProjectSC.UserControls.Custom
 {
-    /// <summary>
-    /// Interaction logic for ItemBar.xaml
-    /// </summary>
     public partial class ItemBar : UserControl
     {
         public ItemBar(MyDayUSC myDay)
@@ -107,6 +104,7 @@ namespace ProjectSC.UserControls.Custom
             {
                 border.Background = Brushes.LightGray;
                 cBoxGrid.Background = Brushes.LightGray;
+                StarToggle.Background = Brushes.LightGray;
             }
             if (sender.GetType() == typeof(CheckBox))
             {
@@ -126,6 +124,7 @@ namespace ProjectSC.UserControls.Custom
             {
                 BorderEvtCanActivate = false;
                 cBoxGrid.Background = Brushes.LightGray;
+                StarToggle.Background = Brushes.LightGray;
 
                 if (checkBox.IsChecked == false)
                 {
@@ -147,6 +146,7 @@ namespace ProjectSC.UserControls.Custom
             {
                 border.Background = Brushes.White;
                 cBoxGrid.Background = Brushes.White;
+                StarToggle.Background = Brushes.White;
             }
             if (sender.GetType() == typeof(CheckBox))
             {
@@ -185,5 +185,17 @@ namespace ProjectSC.UserControls.Custom
             }
         }
         #endregion
+
+        private void StarToggle_Click(object sender, RoutedEventArgs e)
+        {
+            if (StarToggle.IsChecked == true)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
     }
 }

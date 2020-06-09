@@ -45,9 +45,6 @@ namespace ProjectSC
 
             todoitem.LoadTimeData(ref timeRecord);
 
-            TimeTB.Text = string.Format("{0:hh:mm tt}", DateTime.Now);
-            DateTB.Text = string.Format("{0:MMMM d}", DateTime.Now);
-
             foreach (var item in timeRecord)
             {
                 if (DateTime.Now.Year == item.BeginDateTime.Year && DateTime.Now.Month == item.BeginDateTime.Month && DateTime.Now.Hour == item.BeginDateTime.Hour && DateTime.Now.Minute == item.BeginDateTime.Minute)

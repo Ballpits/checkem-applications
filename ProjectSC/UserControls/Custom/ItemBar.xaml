@@ -18,7 +18,7 @@
 
             <TextBlock x:Name="textBlock" VerticalAlignment="Center" Margin="40,13,50,15.6" FontSize="20" FontFamily="Arial" Height="23"/>
 
-            <ToggleButton Style="{StaticResource MaterialDesignActionToggleButton}" ToolTip="MaterialDesignActionLightToggleButton" HorizontalAlignment="Right" Margin="0,0,10,0" Background="White" BorderBrush="{x:Null}" Foreground="#FF2196F3">
+            <ToggleButton x:Name="StarToggle" Style="{StaticResource MaterialDesignActionToggleButton}" ToolTip="Mark As Important" HorizontalAlignment="Right" Margin="0,0,10,0" Background="White" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="StarToggle_Click">
                 <ToggleButton.Content>
                     <materialDesign:PackIcon Kind="StarBorder" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="25" />
                 </ToggleButton.Content>

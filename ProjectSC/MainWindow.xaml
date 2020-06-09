@@ -17,28 +17,28 @@
         <Grid x:Name="SideBar" Margin="0" Background="#FF2196F3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50*"/>
-                <RowDefinition Height="10*"/>
                 <RowDefinition Height="20*"/>
                 <RowDefinition Height="20*"/>
                 <RowDefinition Height="20*"/>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="5*"/>
                 <RowDefinition Height="155*"/>
             </Grid.RowDefinitions>
 
-            <Grid Margin="0,0,0,0.4">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60*"/>
-                    <RowDefinition Height="45*"/>
-                </Grid.RowDefinitions>
-            </Grid>
-
-            <Separator Grid.Row="1" Margin="15,0" Background="White" IsTabStop="False" Height="15"/>
-
-            <Button x:Name="ButtonClipBoard" Background="#FF2196F3" Grid.Row="2" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonClipBoard_Click">
+            <Button x:Name="ButtonClipBoard" Background="#FF2196F3" Grid.Row="1" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonClipBoard_Click" IsEnabled="False">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <Viewbox>
-                            <TextBlock TextAlignment="Center" FontFamily="Arial">Clipboard</TextBlock>
+                            <TextBlock TextAlignment="Center" FontFamily="Arial">Important</TextBlock>
+                        </Viewbox>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            
+            <Button x:Name="ButtonNotebook" Background="#FF2196F3" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" Grid.Row="2" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonNotebook_Click" IsEnabled="False">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <Viewbox>
+                            <TextBlock TextAlignment="Center" FontFamily="Arial">Reminder</TextBlock>
                         </Viewbox>
                     </DataTemplate>
                 </Button.ContentTemplate>
@@ -48,33 +48,15 @@
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <Viewbox>
-                            <TextBlock TextAlignment="Center" FontFamily="Arial">To-Do List</TextBlock>
+                            <TextBlock TextAlignment="Center" FontFamily="Arial">All items</TextBlock>
                         </Viewbox>
                     </DataTemplate>
                 </Button.ContentTemplate>
             </Button>
 
-            <Button x:Name="ButtonNotebook" Background="#FF2196F3" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" Grid.Row="4" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonNotebook_Click">
-                <Button.ContentTemplate>
-                    <DataTemplate>
-                        <Viewbox>
-                            <TextBlock TextAlignment="Center" FontFamily="Arial">Notebook</TextBlock>
-                        </Viewbox>
-                    </DataTemplate>
-                </Button.ContentTemplate>
-            </Button>
-
-            <Separator Grid.Row="5" Margin="15,0" Background="White" IsTabStop="False" Height="15"/>
-
-        </Grid>
-        <Grid Grid.Column="1" >
-            <Grid Margin="0" Background="#FF2196F3" Height="40" VerticalAlignment="Top">
-                <TextBlock x:Name="TimeTB" TextWrapping="Wrap" Foreground="White" Margin="0,10,80,10" FontFamily="Arial" TextDecorations="{x:Null}" TextAlignment="Center" HorizontalAlignment="Right" FontSize="16" />
-                <!--<TextBlock x:Name="TimeTB" TextWrapping="Wrap" Text="2 26" Foreground="White" Margin="0,10,75,10" FontFamily="Arial" TextDecorations="{x:Null}" TextAlignment="Center" HorizontalAlignment="Right" FontSize="16" />-->
-                <TextBlock x:Name="DateTB" TextWrapping="Wrap" FontFamily="Arial" Margin="0,10,10,10" TextAlignment="Center" Foreground="White" HorizontalAlignment="Right" FontSize="16" />
-            </Grid>
-            <Grid x:Name="GridMain" Margin="0,40,0,0"/>
+            <Separator Grid.Row="4" Margin="5,0" Background="White" IsTabStop="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Grid>
 
+        <Grid x:Name="GridMain" Margin="0" Grid.Column="1"/>
     </Grid>
 </Window>

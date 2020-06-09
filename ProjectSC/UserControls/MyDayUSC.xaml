@@ -8,9 +8,23 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <materialDesign:TransitioningContent x:Name="TrainsitionigContentFade" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:1}">
-        <Grid Name="DataGrid">
-            <ScrollViewer x:Name="scrollBar" VerticalScrollBarVisibility="Auto" Margin="0">
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContentFade" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromTop, Duration=0:0:1}">
+
+        <Grid Name="DataGrid" Margin="0">
+            <Grid Margin="0" Background="#FF2196F3" Height="40" VerticalAlignment="Top">
+                <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,25,0" Foreground="White" Width="35" Height="35">
+                    <materialDesign:PopupBox.ToggleContent>
+                        <materialDesign:PackIcon Kind="Filter" Foreground="White" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Stretch" Width="25" Height="25" />
+                    </materialDesign:PopupBox.ToggleContent>
+                    <StackPanel>
+                        <TextBlock Text="Test1" />
+                        <TextBlock Text="Test2" />
+                        <TextBlock Text="Test3" />
+                    </StackPanel>
+                </materialDesign:PopupBox>                
+            </Grid>
+
+            <ScrollViewer x:Name="scrollBar" VerticalScrollBarVisibility="Auto" Margin="0,40,0,0">
                 <StackPanel Name="stpMain">
                 </StackPanel>
             </ScrollViewer>
