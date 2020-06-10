@@ -15,14 +15,12 @@ namespace ProjectSC.UserControls.Custom
             MyDay = myDay;
         }
 
-        MyDayUSC MyDay;
-
-        ToDoItem item = new ToDoItem();
-
+        private MyDayUSC MyDay;
+        private ToDoItem item = new ToDoItem();
 
         public int Id { get; set; }
-
         public string Title { get; set; }
+
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -42,8 +40,8 @@ namespace ProjectSC.UserControls.Custom
         private void ToDoChecked(object sender, RoutedEventArgs e)
         {
             var icon = new PackIcon { Kind = PackIconKind.Check };
-            icon.Height = 25;
-            icon.Width = 25;
+            icon.Height = 27;
+            icon.Width = 27;
             icon.HorizontalAlignment = HorizontalAlignment.Center;
             icon.VerticalAlignment = VerticalAlignment.Center;
             icon.Foreground = Brushes.Black;
@@ -58,8 +56,8 @@ namespace ProjectSC.UserControls.Custom
             if (cBoxGrid.IsMouseOver)
             {
                 var icon = new PackIcon { Kind = PackIconKind.Check };
-                icon.Height = 25;
-                icon.Width = 25;
+                icon.Height = 27;
+                icon.Width = 27;
                 icon.HorizontalAlignment = HorizontalAlignment.Center;
                 icon.VerticalAlignment = VerticalAlignment.Center;
                 icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
@@ -113,8 +111,8 @@ namespace ProjectSC.UserControls.Custom
                 if (checkBox.IsChecked == false)
                 {
                     var icon = new PackIcon { Kind = PackIconKind.Check };
-                    icon.Height = 25;
-                    icon.Width = 25;
+                    icon.Height = 27;
+                    icon.Width = 27;
                     icon.HorizontalAlignment = HorizontalAlignment.Center;
                     icon.VerticalAlignment = VerticalAlignment.Center;
                     icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
@@ -131,8 +129,8 @@ namespace ProjectSC.UserControls.Custom
                 if (checkBox.IsChecked == false)
                 {
                     var icon = new PackIcon { Kind = PackIconKind.Check };
-                    icon.Height = 25;
-                    icon.Width = 25;
+                    icon.Height = 27;
+                    icon.Width = 27;
                     icon.HorizontalAlignment = HorizontalAlignment.Center;
                     icon.VerticalAlignment = VerticalAlignment.Center;
                     icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
@@ -155,8 +153,8 @@ namespace ProjectSC.UserControls.Custom
                 if (checkBox.IsChecked == false)
                 {
                     var icon = new PackIcon { Kind = PackIconKind.Check };
-                    icon.Height = 25;
-                    icon.Width = 25;
+                    icon.Height = 27;
+                    icon.Width = 27;
                     icon.HorizontalAlignment = HorizontalAlignment.Center;
                     icon.VerticalAlignment = VerticalAlignment.Center;
                     icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
@@ -176,8 +174,8 @@ namespace ProjectSC.UserControls.Custom
                 if (checkBox.IsChecked == false)
                 {
                     var icon = new PackIcon { Kind = PackIconKind.CheckboxBlankCircleOutline };
-                    icon.Height = 25;
-                    icon.Width = 25;
+                    icon.Height = 27;
+                    icon.Width = 27;
                     icon.HorizontalAlignment = HorizontalAlignment.Center;
                     icon.VerticalAlignment = VerticalAlignment.Center;
                     icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));

@@ -7,55 +7,59 @@
              xmlns:local="clr-namespace:ProjectSC.UserControls.Custom"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid Background="#CC000000" MouseDown="DarkGrid_MouseDown" Loaded="DarkGrid_Loaded">
-        <Grid x:Name="DetailsGrid" Background="White" HorizontalAlignment="Right" Width="400">
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromRight, Duration=0:0:0.5}">
 
-            <ScrollViewer Margin="0" VerticalAlignment="Top" Height="50" VerticalScrollBarVisibility="Disabled">
-                <Grid>
-                    <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="Black" Click="RetunButton_Click" ToolTip="Retun">
-                        <materialDesign:PackIcon Kind="ArrowBack" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Button>
-                    <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="50" Height="50" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="#FF2196F3" ToolTip="Save" Click="SaveButton_Click">
-                        <materialDesign:PackIcon Kind="ContentSave" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Button>
-                </Grid>
-            </ScrollViewer>
+            <Grid x:Name="DetailsGrid" Background="White" HorizontalAlignment="Right" Width="400">
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,50">
-                <StackPanel>
-                    <TextBox x:Name="textBoxTitle" Margin="10,5" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="Title" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial"/>
-                    
-                    <Grid Margin="10,15,10,5" Height="30">
-                        <materialDesign:PackIcon Kind="AddAlertOutline" Foreground="#FFD1C131" Height="Auto" Width="Auto" Margin="5,0,0,5"/>
-                        <TextBlock Text="Use reminder" FontSize="16" FontFamily="Arial" Margin="35,5,40,5"/>
-                        <ToggleButton x:Name="ReminderToggle" HorizontalAlignment="Right" Click="ReminderToggle_Click"/>
+                <ScrollViewer Margin="0" VerticalAlignment="Top" Height="50" VerticalScrollBarVisibility="Disabled">
+                    <Grid>
+                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="Black" Click="RetunButton_Click" ToolTip="Retun">
+                            <materialDesign:PackIcon Kind="ArrowBack" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="50" Height="50" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="#FF2196F3" ToolTip="Save" Click="SaveButton_Click">
+                            <materialDesign:PackIcon Kind="ContentSave" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Button>
                     </Grid>
+                </ScrollViewer>
 
-                    <Expander x:Name="ReminderExpander" Header="Reminder" FontFamily="Arial" Margin="10,0,10,5" Background="#FFFAFAFA" Foreground="#66000000">
-                        <StackPanel UseLayoutRounding="True">
-                            <Grid Margin="10,5" Background="#FFF0F0F0">
-                                <DatePicker x:Name="BeginDatePicker" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Begin Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="5,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="True"/>
-                                <materialDesign:TimePicker x:Name="BeginTimePicker" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="Begin Time"/>
-                            </Grid>
-                            <Grid Margin="10,5,10,0" Background="#FFF0F0F0" UseLayoutRounding="True">
-                                <DatePicker x:Name="EndDatePicker" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Due Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="5,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="False"/>
-                                <materialDesign:TimePicker x:Name="EndTimePicker" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="End Time"/>
-                            </Grid>
-                        </StackPanel>
-                    </Expander>
-                    
-                    <TextBox x:Name="textBoxDescription" Margin="10,15,10,5" TextWrapping="Wrap" MaxLength="500" FontSize="20" materialDesign:HintAssist.Hint="Description" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial" AcceptsReturn="True" AcceptsTab="True"/>
-                </StackPanel>
-            </ScrollViewer>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,50">
+                    <StackPanel>
+                        <TextBox x:Name="textBoxTitle" Margin="10,5" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="Title" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial"/>
 
-            <ScrollViewer x:Name="RemoveButtonBar" VerticalAlignment="Bottom" Height="50" VerticalScrollBarVisibility="Disabled">
-                <Grid>
-                    <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="50" Height="50" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="#FFD63838" ToolTip="Remove" Margin="0,0,0,-0.4" Click="RemoveButton_Click" IsTabStop="False">
-                        <materialDesign:PackIcon Kind="TrashCan" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Button>
-                </Grid>
-            </ScrollViewer>
+                        <Grid Margin="10,15,10,5" Height="30">
+                            <materialDesign:PackIcon Kind="AddAlertOutline" Foreground="#FFD1C131" Height="Auto" Width="Auto" Margin="5,0,0,5"/>
+                            <TextBlock Text="Use reminder" FontSize="16" FontFamily="Arial" Margin="35,5,40,5"/>
+                            <ToggleButton x:Name="ReminderToggle" HorizontalAlignment="Right" Click="ReminderToggle_Click"/>
+                        </Grid>
 
-        </Grid>
+                        <Expander x:Name="ReminderExpander" Header="Reminder" FontFamily="Arial" Margin="10,0,10,5" Background="#FFFAFAFA" Foreground="#66000000">
+                            <StackPanel UseLayoutRounding="True">
+                                <Grid Margin="10,5" Background="#FFF0F0F0">
+                                    <DatePicker x:Name="BeginDatePicker" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Begin Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="5,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="True"/>
+                                    <materialDesign:TimePicker x:Name="BeginTimePicker" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="Begin Time"/>
+                                </Grid>
+                                <Grid Margin="10,5,10,0" Background="#FFF0F0F0" UseLayoutRounding="True">
+                                    <DatePicker x:Name="EndDatePicker" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Due Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="5,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="False"/>
+                                    <materialDesign:TimePicker x:Name="EndTimePicker" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="End Time"/>
+                                </Grid>
+                            </StackPanel>
+                        </Expander>
+
+                        <TextBox x:Name="textBoxDescription" Margin="10,15,10,5" TextWrapping="Wrap" MaxLength="500" FontSize="20" materialDesign:HintAssist.Hint="Description" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial" AcceptsReturn="True" AcceptsTab="True"/>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <ScrollViewer x:Name="RemoveButtonBar" VerticalAlignment="Bottom" Height="50" VerticalScrollBarVisibility="Disabled">
+                    <Grid>
+                        <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="50" Height="50" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="#FFD63838" ToolTip="Remove" Margin="0,0,0,-0.4" Click="RemoveButton_Click" IsTabStop="False">
+                            <materialDesign:PackIcon Kind="TrashCan" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Button>
+                    </Grid>
+                </ScrollViewer>
+
+            </Grid>
+        </materialDesign:TransitioningContent>
     </Grid>
 </UserControl>

@@ -14,7 +14,21 @@
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid x:Name="SideBar" Margin="0" Background="#FF2196F3">
+        <Grid x:Name="SideBar" Margin="0">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="3,1" StartPoint="1,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF2196F3"/>
+                    <GradientStop Color="#FF9708CC" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50*"/>
                 <RowDefinition Height="20*"/>
@@ -33,7 +47,7 @@
                     </DataTemplate>
                 </Button.ContentTemplate>
             </Button>
-            
+
             <Button x:Name="ButtonNotebook" Background="#FF2196F3" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" Grid.Row="2" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonNotebook_Click" IsEnabled="False">
                 <Button.ContentTemplate>
                     <DataTemplate>
@@ -57,6 +71,6 @@
             <Separator Grid.Row="4" Margin="5,0" Background="White" IsTabStop="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Grid>
 
-        <Grid x:Name="GridMain" Margin="0" Grid.Column="1"/>
+        <Grid x:Name="GridMain" Margin="-0.5,0,0,0" Grid.Column="1"/>
     </Grid>
 </Window>

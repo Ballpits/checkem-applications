@@ -8,23 +8,47 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <materialDesign:TransitioningContent x:Name="TrainsitionigContentFade" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromTop, Duration=0:0:1}">
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.7}">
 
         <Grid Name="DataGrid" Margin="0">
-            <Grid Margin="0" Background="#FF2196F3" Height="40" VerticalAlignment="Top">
-                <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,25,0" Foreground="White" Width="35" Height="35">
+            <Grid Margin="0" Height="40" VerticalAlignment="Top">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="400,40" StartPoint="400,0" MappingMode="Absolute">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#FF2196F3"/>
+                        <GradientStop Color="#FF268ADA" Offset="0.5"/>
+                        <GradientStop Color="#FF2196F3" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+                <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Foreground="White" Width="35" Height="35">
                     <materialDesign:PopupBox.ToggleContent>
                         <materialDesign:PackIcon Kind="Filter" Foreground="White" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Stretch" Width="25" Height="25" />
                     </materialDesign:PopupBox.ToggleContent>
+
                     <StackPanel>
-                        <TextBlock Text="Test1" />
-                        <TextBlock Text="Test2" />
-                        <TextBlock Text="Test3" />
+
+                        <Button>
+                            <materialDesign:PackIcon Kind="Abc"/>
+                        </Button>
+
+                        <Button Content="2"/>
+
+                        <Button Content="3"/>
                     </StackPanel>
-                </materialDesign:PopupBox>                
+
+                </materialDesign:PopupBox>
+
             </Grid>
 
-            <ScrollViewer x:Name="scrollBar" VerticalScrollBarVisibility="Auto" Margin="0,40,0,0">
+            <ScrollViewer x:Name="scrollBar" VerticalScrollBarVisibility="Auto" Margin="0,40,0,0" Background="#FFE5E5E5">
                 <StackPanel Name="stpMain">
                 </StackPanel>
             </ScrollViewer>

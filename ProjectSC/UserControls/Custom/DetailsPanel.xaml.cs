@@ -114,7 +114,7 @@ namespace ProjectSC.UserControls.Custom
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            item.Remove(Id, MyDay.Inventory);
+            item.RemoveAt(Id, MyDay.Inventory);
             MyDay.stpMain.Children.RemoveAt(Id);
             item.ResetId(MyDay.Inventory);
 

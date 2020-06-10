@@ -1,13 +1,11 @@
-﻿using System;
+﻿using ProjectSC.Classes;
+using ProjectSC.Classes.Functions.MainWindow;
+using ProjectSC.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-
-
-using ProjectSC.Classes;
-using ProjectSC.Classes.Functions.MainWindow;
-using ProjectSC.UserControls;
 
 namespace ProjectSC
 {
@@ -18,32 +16,33 @@ namespace ProjectSC
             InitializeComponent();
         }
 
-        ClipboardUSC clipBoard = new ClipboardUSC();
-        UserControl myDayUSC = new MyDayUSC();
-        UserControl noteBookUSC = new NotebookUSC();
+        #region 
+        private UserControl clipBoard = new ClipboardUSC();
+        private UserControl myDayUSC = new MyDayUSC();
+        private UserControl noteBookUSC = new NotebookUSC();
+        #endregion
 
-        ToDoItem todoitem = new ToDoItem();
-        List<TimeRecord> timeRecord = new List<TimeRecord>();
+        private ToDoItem todoitem = new ToDoItem();
+        private List<TimeRecord> timeRecord = new List<TimeRecord>();
 
-        DispatcherTimer timer = new DispatcherTimer();
-
-        int TimerOffset = 60 - DateTime.Now.Second;
+        private DispatcherTimer timer = new DispatcherTimer();
+        private int TimerOffset = 60 - DateTime.Now.Second;
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            todoitem.LoadTimeData(ref timeRecord);
-
             timer.Tick += new EventHandler(Timer_Tick);
             timer.Start();
+
+
             GridMain.Children.Add(myDayUSC);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
             TimerOffset = 60 - DateTime.Now.Second;
-            timer.Interval = TimeSpan.FromSeconds(TimerOffset);
+            timer.Interval = TimeSpan.FromSeconds(TimerOffset);//Fix timer delay time
 
-            todoitem.LoadTimeData(ref timeRecord);
+            todoitem.RetrieveTimeData(ref timeRecord);
 
             foreach (var item in timeRecord)
             {
@@ -55,10 +54,11 @@ namespace ProjectSC
                 {
                     Notifications.Notify(item.Title, Notifications.RandomMessage("end"));
                 }
-            }
+            }//Check if the begin or end time is matched with the current time
 
         }
 
+        #region Mouse enter events
         public void MouseEnterHighLight(object sender, RoutedEventArgs e)
         {
             MainWindowMouseover.Highlight(sender);
@@ -68,7 +68,7 @@ namespace ProjectSC
         {
             MainWindowMouseover.UnHighlight(sender);
         }
-
+        #endregion
 
         private void ButtonClipBoard_Click(object sender, RoutedEventArgs e)
         {
@@ -79,6 +79,7 @@ namespace ProjectSC
         private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
         {
             GridMain.Children.Clear();
+            
             GridMain.Children.Add(myDayUSC);
         }
 

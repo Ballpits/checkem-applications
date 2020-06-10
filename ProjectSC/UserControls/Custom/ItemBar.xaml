@@ -6,21 +6,21 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:ProjectSC.UserControls.Custom"
              mc:Ignorable="d" 
-             d:DesignWidth="800" Height="50" Loaded="UserControl_Loaded">
-    
+             d:DesignWidth="800" Height="50" Loaded="UserControl_Loaded" Margin="5,5,5,0">
+
     <Border x:Name="border" Height="50" Background="White" BorderBrush="#FFA8A8A8" MouseDown="Border_MouseDown" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight">
         <Grid>
-            <Grid x:Name="cBoxGrid" HorizontalAlignment="Left" Margin="0" Width="35" Background="White" MouseDown="Grid_MouseDown" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight">
-                <CheckBox x:Name="checkBox" Width="25" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}" Checked="ToDoChecked" Unchecked="ToDoUnchecked" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight">
-                    <materialDesign:PackIcon Kind="CheckboxBlankCircleOutline" Width="25" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF2196F3"/>
+            <Grid x:Name="cBoxGrid" HorizontalAlignment="Left" Margin="0,0,0,-0.4" Width="40" Background="White" MouseDown="Grid_MouseDown" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight">
+                <CheckBox x:Name="checkBox" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}" Checked="ToDoChecked" Unchecked="ToDoUnchecked" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight">
+                    <materialDesign:PackIcon Kind="CheckboxBlankCircleOutline" Width="28" Height="27" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF2196F3"/>
                 </CheckBox>
             </Grid>
 
-            <TextBlock x:Name="textBlock" VerticalAlignment="Center" Margin="40,13,50,15.6" FontSize="20" FontFamily="Arial" Height="23"/>
+            <TextBlock x:Name="textBlock" VerticalAlignment="Center" Margin="40,12,50,14.6" FontSize="20" FontFamily="Arial" Height="23"/>
 
-            <ToggleButton x:Name="StarToggle" Style="{StaticResource MaterialDesignActionToggleButton}" ToolTip="Mark As Important" HorizontalAlignment="Right" Margin="0,0,10,0" Background="White" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="StarToggle_Click">
+            <ToggleButton x:Name="StarToggle" Style="{StaticResource MaterialDesignActionToggleButton}" ToolTip="Mark As Important" HorizontalAlignment="Right" Margin="0,0,10,0" Background="White" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="StarToggle_Click" Height="40" Width="40">
                 <ToggleButton.Content>
-                    <materialDesign:PackIcon Kind="StarBorder" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="25" />
+                    <materialDesign:PackIcon Kind="StarBorder" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" />
                 </ToggleButton.Content>
                 <materialDesign:ToggleButtonAssist.OnContent>
                     <materialDesign:PackIcon Kind="Star" />

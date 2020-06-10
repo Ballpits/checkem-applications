@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using ProjectSC.Classes;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
-
-
-using ProjectSC.Classes;
 
 namespace ProjectSC
 {
@@ -52,16 +50,14 @@ namespace ProjectSC
         }
         #endregion
 
-        public void LoadFullData(ref List<ToDoItem> inventory)
+        public void RetrieveData(ref List<ToDoItem> inventory)
         {
             string json = File.ReadAllText(@"inv.json");
             inventory = JsonConvert.DeserializeObject<List<ToDoItem>>(json);
-        }
+        }//Get all the data from the json file and save it to the list
 
-        public void LoadTimeData(ref List<TimeRecord> timeRecords)
+        public void RetrieveTimeData(ref List<TimeRecord> timeRecords)
         {
-            timeRecords.Clear();
-
             string json = File.ReadAllText(@"inv.json");
             List<ToDoItem> inventory = JsonConvert.DeserializeObject<List<ToDoItem>>(json);
 
@@ -72,7 +68,7 @@ namespace ProjectSC
                     timeRecords.Add(new TimeRecord { Title = inventory[i].Title, BeginDateTime = inventory[i].BeginDateTime, EndDateTime = inventory[i].EndDateTime });
                 }
             }
-        }
+        }//Get the time data and save it to the list
 
         public void ResetId(List<ToDoItem> inventory)
         {
@@ -104,16 +100,17 @@ namespace ProjectSC
             SaveToJson(inventory);
         }
 
-        public void Remove(int id, List<ToDoItem> inventory)
+        public void RemoveAt(int id, List<ToDoItem> inventory)
         {
             inventory.RemoveAt(id);
             SaveToJson(inventory);
-        }
+        }//Remove the to-do item from the json file
 
         public void SaveToJson(List<ToDoItem> inventory)
         {
             File.WriteAllText(@"inv.json", JsonConvert.SerializeObject(inventory));
         }
+
 
         public void Update(int id, string title, string description, bool canNotify, DateTime beginDateTime, DateTime endDateTime, List<ToDoItem> inventory)
         {

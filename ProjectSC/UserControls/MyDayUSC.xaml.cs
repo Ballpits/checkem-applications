@@ -1,27 +1,25 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Collections.Generic;
-
-using MaterialDesignThemes.Wpf;
-
-using ProjectSC.Classes.Functions;
+﻿using MaterialDesignThemes.Wpf;
 using ProjectSC.UserControls.Custom;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 
 namespace ProjectSC
 {
-    public partial class MyDayUSC : UserControl 
+    public partial class MyDayUSC : UserControl
     {
         public MyDayUSC()
         {
             InitializeComponent();
 
-            item.LoadFullData(ref Inventory);
+            item.RetrieveData(ref Inventory);
             item.ResetId(Inventory);
             LoadInList();
         }
+
+        public int TransitionMode { get; set; }
 
         #region Variables
         ToDoItem item = new ToDoItem();
@@ -88,10 +86,11 @@ namespace ProjectSC
         #region Item
         private void AddItem(int id)
         {
-            ItemBar itemBar = new ItemBar(this);
-
-            itemBar.Id = id;
-            itemBar.Title = Inventory[id].Title;
+            ItemBar itemBar = new ItemBar(this)
+            {
+                Id = id,
+                Title = Inventory[id].Title
+            };
 
             stpMain.Children.Add(itemBar);
         }
