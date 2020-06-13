@@ -42,7 +42,7 @@ namespace ProjectSC
             TimerOffset = 60 - DateTime.Now.Second;
             timer.Interval = TimeSpan.FromSeconds(TimerOffset);//Fix timer delay time
 
-            todoitem.RetrieveTimeData(ref timeRecord);
+            //DataAccess.RetrieveTimeData(ref timeRecord);
 
             foreach (var item in timeRecord)
             {
@@ -79,7 +79,7 @@ namespace ProjectSC
         private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
         {
             GridMain.Children.Clear();
-            
+
             GridMain.Children.Add(myDayUSC);
         }
 

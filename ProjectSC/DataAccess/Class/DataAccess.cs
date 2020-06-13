@@ -4,29 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace ProjectSC
+namespace ProjectSC.DataAccess.Interfaces
 {
-    public class ToDoItem : IDataManipulation<ToDoItem>
+    static class DataAccess
     {
-        public int Id { get; set; }
-
-        public string Title { get; set; }
-        public string Description { get; set; }
-
-        public bool IsCompleted { get; set; }
-        public bool IsImportant { get; set; }
-
-        public bool CanNotify { get; set; }
-        public int NotifyType { get; set; }
-        public DateTime BeginDateTime { get; set; }
-        public DateTime EndDateTime { get; set; }
-
-        public DateTime CreatedDateTime { get; set; }
-
-
-
         #region test data
-        public void StoreTestData(List<ToDoItem> inventory)
+        public static void StoreTestData(List<ToDoItem> inventory)
         {
             inventory.Add(new ToDoItem { Id = 100, Title = "Notify Test", Description = "It works !" });
             inventory.Add(new ToDoItem { Id = 1, Title = "Update the software", Description = "windows sucks" });
@@ -50,13 +33,13 @@ namespace ProjectSC
         }
         #endregion
 
-        public void RetrieveData(ref List<ToDoItem> inventory)
+        public static void RetrieveData(ref List<ToDoItem> inventory)
         {
             string json = File.ReadAllText(@"inv.json");
             inventory = JsonConvert.DeserializeObject<List<ToDoItem>>(json);
         }//Get all the data from the json file and save it to the list
 
-        public void RetrieveTimeData(ref List<TimeRecord> timeRecords)
+        public static void RetrieveTimeData(ref List<TimeRecord> timeRecords)
         {
             string json = File.ReadAllText(@"inv.json");
             List<ToDoItem> inventory = JsonConvert.DeserializeObject<List<ToDoItem>>(json);
@@ -70,7 +53,7 @@ namespace ProjectSC
             }
         }//Get the time data and save it to the list
 
-        public void ResetId(List<ToDoItem> inventory)
+        public static void ResetId(List<ToDoItem> inventory)
         {
             foreach (var item in inventory)
             {
@@ -82,7 +65,7 @@ namespace ProjectSC
 
 
 
-        public void AddNew(string title, string description, bool canNotify, DateTime begineDateTime, DateTime endDateTime, DateTime createdDateTime, List<ToDoItem> inventory)
+        public static void AddNew(string title, string description, bool canNotify, DateTime begineDateTime, DateTime endDateTime, DateTime createdDateTime, List<ToDoItem> inventory)
         {
             int id = inventory.Count + 1;
 
@@ -100,19 +83,19 @@ namespace ProjectSC
             SaveToJson(inventory);
         }
 
-        public void RemoveAt(int id, List<ToDoItem> inventory)
+        public static void RemoveAt(int id, List<ToDoItem> inventory)
         {
             inventory.RemoveAt(id);
             SaveToJson(inventory);
         }//Remove the to-do item from the json file
 
-        public void SaveToJson(List<ToDoItem> inventory)
+        private static void SaveToJson(List<ToDoItem> inventory)
         {
             File.WriteAllText(@"inv.json", JsonConvert.SerializeObject(inventory));
         }
 
 
-        public void Update(int id, string title, string description, bool canNotify, DateTime beginDateTime, DateTime endDateTime, List<ToDoItem> inventory)
+        public static void Update(int id, string title, string description, bool canNotify, DateTime beginDateTime, DateTime endDateTime, List<ToDoItem> inventory)
         {
             inventory[id].Title = title;
             inventory[id].Description = description;
@@ -123,7 +106,7 @@ namespace ProjectSC
             SaveToJson(inventory);
         }
 
-        public void Update(int id, bool isImportant, List<ToDoItem> inventory)
+        public static void Update(int id, bool isImportant, List<ToDoItem> inventory)
         {
             inventory[id].IsImportant = isImportant;
 
@@ -131,7 +114,7 @@ namespace ProjectSC
         }
 
 
-        public string FindById(int id, List<ToDoItem> inventory)
+        public static string FindById(int id, List<ToDoItem> inventory)
         {
             if (inventory.Exists(x => x.Id == id))
             {
@@ -143,7 +126,7 @@ namespace ProjectSC
             }
         }
 
-        public string FindByTitle(string title, List<ToDoItem> inventory)
+        public static string FindByTitle(string title, List<ToDoItem> inventory)
         {
             if (inventory.Exists(x => x.Title == title))
             {

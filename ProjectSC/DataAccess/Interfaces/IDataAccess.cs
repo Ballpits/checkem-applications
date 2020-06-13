@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProjectSC
 {
-    interface IDataManipulation<T>
+    interface IDataAccess<T>
     {
         void StoreTestData(List<T> inventory);
         void RetrieveData(ref List<T> inventory);
