@@ -22,7 +22,6 @@ namespace ProjectSC
         private UserControl noteBookUSC = new NotebookUSC();
         #endregion
 
-        private ToDoItem todoitem = new ToDoItem();
         private List<TimeRecord> timeRecord = new List<TimeRecord>();
 
         private DispatcherTimer timer = new DispatcherTimer();

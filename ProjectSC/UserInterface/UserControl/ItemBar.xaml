@@ -16,7 +16,7 @@
                 </CheckBox>
             </Grid>
 
-            <TextBlock x:Name="textBlock" VerticalAlignment="Center" Margin="40,12,50,14.6" FontSize="20" FontFamily="Arial" Height="23"/>
+            <TextBlock x:Name="textBlock" VerticalAlignment="Center" Margin="40,0,50,0" FontSize="20" FontFamily="Arial" Height="23" Text="AAAAAAAAAAAAAAA"/>
 
             <ToggleButton x:Name="StarToggle" Style="{StaticResource MaterialDesignActionToggleButton}" ToolTip="Mark As Important" HorizontalAlignment="Right" Margin="0,0,10,0" Background="White" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="StarToggle_Click" Height="40" Width="40">
                 <ToggleButton.Content>

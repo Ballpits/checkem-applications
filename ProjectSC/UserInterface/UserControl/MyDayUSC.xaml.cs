@@ -3,6 +3,7 @@ using ProjectSC.UserControls.Custom;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media;
 
 
@@ -14,25 +15,21 @@ namespace ProjectSC
         {
             InitializeComponent();
 
-            item.RetrieveData(ref Inventory);
-            item.ResetId(Inventory);
-            LoadInList();
+            DataAccess.StoreTestData(Inventory);
+
+            DataAccess.RetrieveData(ref Inventory);
+            DataAccess.ResetId(Inventory);
+
+            LoadList();
         }
 
-        public int TransitionMode { get; set; }
-
         #region Variables
-        ToDoItem item = new ToDoItem();
-
         public List<ToDoItem> Inventory = new List<ToDoItem>();
 
-        private List<Border> borderlist = new List<Border>();
-        private List<CheckBox> checkBoxList = new List<CheckBox>();
-        private List<TextBlock> textBlockList = new List<TextBlock>();
-        private List<Grid> cBoxList = new List<Grid>();
+        private List<ItemBar> itemBarList = new List<ItemBar>();
         #endregion
 
-        private void LoadInList()
+        private void LoadList()
         {
             for (int i = 0; i < Inventory.Count; i++)
             {
@@ -70,17 +67,16 @@ namespace ProjectSC
             stpMain.Children.Add(ButtonAddNew);
         }
 
-        public void Refresh()
+        public void UpdateItemBar()
         {
-            item.ResetId(Inventory);
+            
+        }
 
-            borderlist.Clear();
-            checkBoxList.Clear();
-            textBlockList.Clear();
-            cBoxList.Clear();
-            stpMain.Children.Clear();
-
-            LoadInList();
+        public void RemoveItemBar(int id)
+        {
+            stpMain.Children.RemoveAt(itemBarList.IndexOf(itemBarList[id]));
+            itemBarList.RemoveAt(itemBarList.IndexOf(itemBarList[id]));
+            DataAccess.ResetId(Inventory);
         }
 
         #region Item
@@ -88,10 +84,11 @@ namespace ProjectSC
         {
             ItemBar itemBar = new ItemBar(this)
             {
-                Id = id,
+                Id = Inventory[id].Id,
                 Title = Inventory[id].Title
             };
 
+            itemBarList.Add(itemBar);
             stpMain.Children.Add(itemBar);
         }
         #endregion
@@ -106,28 +103,27 @@ namespace ProjectSC
         #region Details panel
         public void OpenDetailsPanel()
         {
-            DetailsPanel detailsPanel = new DetailsPanel(this);
-
-            detailsPanel.IsNew = true;
+            DetailsPanel detailsPanel = new DetailsPanel(this)
+            {
+                IsNew = true
+            };
 
             DataGrid.Children.Add(detailsPanel);
         }
 
         public void OpenDetailsPanel(int id)
         {
-            DetailsPanel detailsPanel = new DetailsPanel(this);
+            DetailsPanel detailsPanel = new DetailsPanel(this)
+            {
+                IsNew = false,
 
-            detailsPanel.IsNew = false;
-
-            detailsPanel.Id = Inventory[id].Id;
-
-            detailsPanel.Title = Inventory[id].Title;
-            detailsPanel.Description = Inventory[id].Description;
-
-            detailsPanel.CanNotify = Inventory[id].CanNotify;
-
-            detailsPanel.BeginDateTime = Inventory[id].BeginDateTime;
-            detailsPanel.EndDateTime = Inventory[id].EndDateTime;
+                Id = Inventory[id].Id,
+                Title = Inventory[id].Title,
+                Description = Inventory[id].Description,
+                CanNotify = Inventory[id].CanNotify,
+                BeginDateTime = Inventory[id].BeginDateTime,
+                EndDateTime = Inventory[id].EndDateTime
+            };
 
             DataGrid.Children.Add(detailsPanel);
         }

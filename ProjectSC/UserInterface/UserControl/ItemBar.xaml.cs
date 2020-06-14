@@ -24,7 +24,8 @@ namespace ProjectSC.UserControls.Custom
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            textBlock.Text = Title;
+            //textBlock.Text = Title;
+            textBlock.Text = Id.ToString();
 
             if (MyDay.Inventory[Id].IsImportant == true)
             {
@@ -190,11 +191,11 @@ namespace ProjectSC.UserControls.Custom
         {
             if (StarToggle.IsChecked == true)
             {
-                item.Update(Id, true, MyDay.Inventory);
+                DataAccess.Update(Id, true, MyDay.Inventory);
             }
             else
             {
-                item.Update(Id, false, MyDay.Inventory);
+                DataAccess.Update(Id, false, MyDay.Inventory);
             }
         }
     }
