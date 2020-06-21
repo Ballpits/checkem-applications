@@ -103,9 +103,9 @@ namespace ProjectSC.UserControls.Custom
             else
             {
                 DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, canNotify, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), MyDay.Inventory);
-            }
 
-            MyDay.UpdateItemBar();
+                MyDay.UpdateItemBar(Id);
+            }
 
             DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Saved"));
         }

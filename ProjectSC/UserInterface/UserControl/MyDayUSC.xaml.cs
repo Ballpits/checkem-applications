@@ -67,16 +67,14 @@ namespace ProjectSC
             stpMain.Children.Add(ButtonAddNew);
         }
 
-        public void UpdateItemBar()
+        public void UpdateItemBar(int id)
         {
             
         }
 
         public void RemoveItemBar(int id)
         {
-            stpMain.Children.RemoveAt(itemBarList.IndexOf(itemBarList[id]));
-            itemBarList.RemoveAt(itemBarList.IndexOf(itemBarList[id]));
-            DataAccess.ResetId(Inventory);
+            stpMain.Children.RemoveAt(stpMain.Children.IndexOf(itemBarList[id]));
         }
 
         #region Item
@@ -84,7 +82,7 @@ namespace ProjectSC
         {
             ItemBar itemBar = new ItemBar(this)
             {
-                Id = Inventory[id].Id,
+                Id = id,
                 Title = Inventory[id].Title
             };
 
@@ -117,12 +115,12 @@ namespace ProjectSC
             {
                 IsNew = false,
 
-                Id = Inventory[id].Id,
-                Title = Inventory[id].Title,
-                Description = Inventory[id].Description,
-                CanNotify = Inventory[id].CanNotify,
-                BeginDateTime = Inventory[id].BeginDateTime,
-                EndDateTime = Inventory[id].EndDateTime
+                Id = id,
+                Title = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Title,
+                Description = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Description,
+                CanNotify = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].CanNotify,
+                BeginDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].BeginDateTime,
+                EndDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].EndDateTime
             };
 
             DataGrid.Children.Add(detailsPanel);

@@ -16,7 +16,6 @@ namespace ProjectSC.UserControls.Custom
         }
 
         private MyDayUSC MyDay;
-        private ToDoItem item = new ToDoItem();
 
         public int Id { get; set; }
         public string Title { get; set; }
@@ -24,8 +23,8 @@ namespace ProjectSC.UserControls.Custom
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            //textBlock.Text = Title;
-            textBlock.Text = Id.ToString();
+            textBlock.Text = Title;
+            //textBlock.Text = Id.ToString();
 
             if (MyDay.Inventory[Id].IsImportant == true)
             {
