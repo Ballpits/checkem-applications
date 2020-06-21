@@ -29,24 +29,34 @@
                     </LinearGradientBrush>
                 </Grid.Background>
 
+                <Button HorizontalAlignment="Left" Margin="10,0,0,0" Width="35" Height="35" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#002196F3" BorderBrush="{x:Null}" Padding="0" Click="AddNewButton_Click" ToolTip="Add New">
+                    <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
+                </Button>
+
                 <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Foreground="White" Width="35" Height="35" ToolTip="Sort">
                     <materialDesign:PopupBox.ToggleContent>
-                        <materialDesign:PackIcon Kind="Filter" Foreground="White" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Stretch" Width="25" Height="25" />
+                        <materialDesign:PackIcon Kind="Sort" Foreground="White" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="25" Height="25" ToolTip="Sort" />
                     </materialDesign:PopupBox.ToggleContent>
 
                     <StackPanel>
-
-                        <Button>
-                            <materialDesign:PackIcon Kind="Abc"/>
+                        <Button ToolTip="Importance" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="16,0">
+                            <materialDesign:PackIcon Kind="StarBorder" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
                         </Button>
 
-                        <Button Content="2"/>
+                        <Button ToolTip="Due Date" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="16,0">
+                            <materialDesign:PackIcon Kind="CalendarClock" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
+                        </Button>
 
-                        <Button Content="3"/>
+                        <Button ToolTip="Alphabetically" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="16,0">
+                            <materialDesign:PackIcon Kind="SortAlphabetically" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="25"/>
+                        </Button>
+
+                        <Button ToolTip="Creation Date" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="16,0">
+                            <materialDesign:PackIcon Kind="CalendarAdd" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="25"/>
+                        </Button>
                     </StackPanel>
 
                 </materialDesign:PopupBox>
-
             </Grid>
 
             <ScrollViewer x:Name="scrollBar" VerticalScrollBarVisibility="Auto" Margin="0,40,0,0" Background="#FFE5E5E5">

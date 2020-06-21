@@ -175,7 +175,7 @@ namespace ProjectSC
                 CanNotify = canNotify,
                 BeginDateTime = begineDateTime,
                 EndDateTime = endDateTime,
-                CreatedDateTime = createdDateTime
+                CreationDateTime = createdDateTime
             });
 
             SaveToJson(inventory);

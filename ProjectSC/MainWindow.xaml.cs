@@ -1,6 +1,5 @@
 ﻿using ProjectSC.Classes;
 using ProjectSC.Classes.Functions.MainWindow;
-using ProjectSC.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -17,9 +16,7 @@ namespace ProjectSC
         }
 
         #region 
-        private UserControl clipBoard = new ClipboardUSC();
         private UserControl myDayUSC = new MyDayUSC();
-        private UserControl noteBookUSC = new NotebookUSC();
         #endregion
 
         private List<TimeRecord> timeRecord = new List<TimeRecord>();
@@ -41,7 +38,7 @@ namespace ProjectSC
             TimerOffset = 60 - DateTime.Now.Second;
             timer.Interval = TimeSpan.FromSeconds(TimerOffset);//Fix timer delay time
 
-            //DataAccess.RetrieveTimeData(ref timeRecord);
+            DataAccess.RetrieveTimeData(ref timeRecord);
 
             foreach (var item in timeRecord)
             {
@@ -71,8 +68,7 @@ namespace ProjectSC
 
         private void ButtonClipBoard_Click(object sender, RoutedEventArgs e)
         {
-            GridMain.Children.Clear();
-            GridMain.Children.Add(clipBoard);
+
         }
 
         private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
@@ -84,8 +80,7 @@ namespace ProjectSC
 
         private void ButtonNotebook_Click(object sender, RoutedEventArgs e)
         {
-            GridMain.Children.Clear();
-            GridMain.Children.Add(noteBookUSC);
+
         }
     }
 }

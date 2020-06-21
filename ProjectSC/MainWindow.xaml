@@ -39,7 +39,7 @@
                 <RowDefinition Height="155*"/>
             </Grid.RowDefinitions>
 
-            <Button x:Name="ButtonClipBoard" Background="#FF2196F3" Grid.Row="1" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonClipBoard_Click" IsEnabled="False">
+            <Button x:Name="ButtonClipBoard" Background="#002196F3" Grid.Row="1" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonClipBoard_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <Viewbox>
@@ -49,7 +49,7 @@
                 </Button.ContentTemplate>
             </Button>
 
-            <Button x:Name="ButtonNotebook" Background="#FF2196F3" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" Grid.Row="2" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonNotebook_Click" IsEnabled="False">
+            <Button x:Name="ButtonNotebook" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" Grid.Row="2" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonNotebook_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <Viewbox>
@@ -59,7 +59,7 @@
                 </Button.ContentTemplate>
             </Button>
 
-            <Button x:Name="ButtonToDoList" Background="#FF2196F3" Grid.Row="3" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonToDoList_Click">
+            <Button x:Name="ButtonToDoList" Background="#002196F3" Grid.Row="3" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonToDoList_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <Viewbox>

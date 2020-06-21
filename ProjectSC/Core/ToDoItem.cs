@@ -24,7 +24,7 @@ namespace ProjectSC
         public DateTime EndDateTime { get; set; }
 
 
-        public DateTime CreatedDateTime { get; set; }
+        public DateTime CreationDateTime { get; set; }
         #endregion
     }
 }

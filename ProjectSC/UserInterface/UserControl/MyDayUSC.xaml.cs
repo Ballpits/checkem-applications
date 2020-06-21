@@ -3,7 +3,6 @@ using ProjectSC.UserControls.Custom;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Media;
 
 
@@ -15,7 +14,7 @@ namespace ProjectSC
         {
             InitializeComponent();
 
-            DataAccess.StoreTestData(Inventory);
+            //DataAccess.StoreTestData(Inventory);
 
             DataAccess.RetrieveData(ref Inventory);
             DataAccess.ResetId(Inventory);
@@ -45,9 +44,9 @@ namespace ProjectSC
             {
                 Height = 50,
                 Width = 50,
-                HorizontalAlignment = HorizontalAlignment.Right,
+                HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Top,
-                Margin = new Thickness(0, 10, 10, 0),
+                Margin = new Thickness(0, 50, 0, 20),
                 Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3")),
                 BorderThickness = new Thickness(0),
             };
@@ -69,7 +68,7 @@ namespace ProjectSC
 
         public void UpdateItemBar(int id)
         {
-            
+
         }
 
         public void RemoveItemBar(int id)

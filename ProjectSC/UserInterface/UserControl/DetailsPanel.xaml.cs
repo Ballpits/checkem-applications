@@ -40,8 +40,8 @@ namespace ProjectSC.UserControls.Custom
         {
             if (IsNew)
             {
-                RemoveButtonBar.IsEnabled = false;
-                RemoveButtonBar.Visibility = Visibility.Hidden;
+                RemoveButton.IsEnabled = false;
+                RemoveButton.Visibility = Visibility.Hidden;
 
                 BeginDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
                 BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", DateTime.Now)}";
@@ -73,9 +73,6 @@ namespace ProjectSC.UserControls.Custom
                     EndDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
                     EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", DateTime.Now)}";
                 }
-
-                RemoveButtonBar.IsEnabled = true;
-                RemoveButtonBar.Visibility = Visibility.Visible;
             }
         }
 
@@ -129,15 +126,15 @@ namespace ProjectSC.UserControls.Custom
         {
             if (ReminderToggle.IsChecked == true)
             {
-                ReminderExpander.IsEnabled = true;
-                ReminderExpander.Foreground = Brushes.Black;
-                ReminderExpander.IsExpanded = true;
+                AdvReminderExpander.IsEnabled = true;
+                AdvReminderExpander.Foreground = Brushes.Black;
+                AdvReminderExpander.IsExpanded = true;
             }
             else
             {
-                ReminderExpander.IsEnabled = false;
-                ReminderExpander.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#66000000"));
-                ReminderExpander.IsExpanded = false;
+                AdvReminderExpander.IsEnabled = false;
+                AdvReminderExpander.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#66000000"));
+                AdvReminderExpander.IsExpanded = false;
             }
         }
 
