@@ -8,6 +8,11 @@ namespace ProjectSC.UserControls.Custom
 {
     public partial class ItemBar : UserControl
     {
+        public ItemBar()
+        {
+            InitializeComponent();
+        }
+
         public ItemBar(MyDayUSC myDay)
         {
             InitializeComponent();
@@ -69,14 +74,14 @@ namespace ProjectSC.UserControls.Custom
         }
 
         #region Mouse down events
-        private bool BorderEvtCanActivate = true;
+        private bool BorderEventCanActivate = true;
         private void Border_MouseDown(object sender, RoutedEventArgs e)
         {
-            if (BorderEvtCanActivate)
+            if (BorderEventCanActivate)
             {
                 if (Mouse.LeftButton == MouseButtonState.Pressed)
                 {
-                    MyDay.OpenDetailsPanel(Id);
+                    MyDay.OpenDetailsPanel(Id, this);
                 }
             }
         }
@@ -122,7 +127,7 @@ namespace ProjectSC.UserControls.Custom
             }
             if (sender.GetType() == typeof(Grid))
             {
-                BorderEvtCanActivate = false;
+                BorderEventCanActivate = false;
                 cBoxGrid.Background = Brushes.LightGray;
                 StarToggle.Background = Brushes.LightGray;
 
@@ -164,7 +169,7 @@ namespace ProjectSC.UserControls.Custom
             }
             if (sender.GetType() == typeof(Grid))
             {
-                BorderEvtCanActivate = true;
+                BorderEventCanActivate = true;
 
                 if (cBoxGrid.IsMouseOver == false && border.IsMouseOver == false)
                 {
@@ -196,6 +201,11 @@ namespace ProjectSC.UserControls.Custom
             {
                 DataAccess.Update(Id, false, MyDay.Inventory);
             }
+        }
+
+        public void Update(string title)
+        {
+            textBlock.Text = title;
         }
     }
 }

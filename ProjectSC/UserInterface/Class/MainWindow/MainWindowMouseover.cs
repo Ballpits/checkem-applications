@@ -13,7 +13,7 @@ namespace ProjectSC.Classes.Functions.MainWindow
         public static void UnHighlight(object sender)
         {
             Button button = (Button)sender;
-            button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+            button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#002196F3"));
         }
     }
 }

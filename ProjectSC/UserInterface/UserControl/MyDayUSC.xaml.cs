@@ -66,11 +66,6 @@ namespace ProjectSC
             stpMain.Children.Add(ButtonAddNew);
         }
 
-        public void UpdateItemBar(int id)
-        {
-
-        }
-
         public void RemoveItemBar(int id)
         {
             stpMain.Children.RemoveAt(stpMain.Children.IndexOf(itemBarList[id]));
@@ -108,9 +103,9 @@ namespace ProjectSC
             DataGrid.Children.Add(detailsPanel);
         }
 
-        public void OpenDetailsPanel(int id)
+        public void OpenDetailsPanel(int id, ItemBar itemBar)
         {
-            DetailsPanel detailsPanel = new DetailsPanel(this)
+            DetailsPanel detailsPanel = new DetailsPanel(this, itemBar)
             {
                 IsNew = false,
 

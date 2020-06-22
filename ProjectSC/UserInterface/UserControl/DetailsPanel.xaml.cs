@@ -13,7 +13,15 @@ namespace ProjectSC.UserControls.Custom
         {
             InitializeComponent();
 
-            MyDay = myDayUSC;
+            myDay = myDayUSC;
+        }
+
+        public DetailsPanel(MyDayUSC myDayUSC, ItemBar itembar)
+        {
+            InitializeComponent();
+
+            myDay = myDayUSC;
+            itemBar = itembar;
         }
 
         public bool IsNew { get; set; }
@@ -34,7 +42,8 @@ namespace ProjectSC.UserControls.Custom
         public DateTime EndDateTime { get; set; }
 
 
-        MyDayUSC MyDay = new MyDayUSC();
+        MyDayUSC myDay = new MyDayUSC();
+        ItemBar itemBar = new ItemBar();
 
         private void DarkGrid_Loaded(object sender, RoutedEventArgs e)
         {
@@ -78,7 +87,7 @@ namespace ProjectSC.UserControls.Custom
 
         private void RetunButton_Click(object sender, RoutedEventArgs e)
         {
-            MyDay.CloseDetailsPanel();
+            myDay.CloseDetailsPanel();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -95,13 +104,13 @@ namespace ProjectSC.UserControls.Custom
 
             if (IsNew)
             {
-                DataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, canNotify, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), DateTime.Now, MyDay.Inventory);
+                DataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, canNotify, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), DateTime.Now, myDay.Inventory);
             }
             else
             {
-                DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, canNotify, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), MyDay.Inventory);
+                DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, canNotify, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), myDay.Inventory);
 
-                MyDay.UpdateItemBar(Id);
+                itemBar.Update(textBoxTitle.Text);
             }
 
             DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Saved"));
@@ -110,11 +119,11 @@ namespace ProjectSC.UserControls.Custom
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.RemoveAt(Id, MyDay.Inventory);
+            DataAccess.RemoveAt(Id, myDay.Inventory);
 
-            MyDay.RemoveItemBar(Id);
+            myDay.RemoveItemBar(Id);
 
-            MyDay.CloseDetailsPanel();
+            myDay.CloseDetailsPanel();
         }
 
         private void ReminderToggle_Click(object sender, RoutedEventArgs e)
@@ -142,7 +151,7 @@ namespace ProjectSC.UserControls.Custom
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed || Mouse.XButton1 == MouseButtonState.Pressed)
             {
-                MyDay.CloseDetailsPanel();
+                myDay.CloseDetailsPanel();
             }
         }
     }
