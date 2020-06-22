@@ -96,9 +96,6 @@
     <Compile Include="UserInterface\Class\DetailsPanel\SnackbarControl.cs" />
     <Compile Include="UserInterface\Class\MainWindow\MainWindowMouseover.cs" />
     <Compile Include="UserInterface\Class\TimeRecord.cs" />
-    <Compile Include="UserInterface\UserControl\ClipboardUSC.xaml.cs">
-      <DependentUpon>ClipboardUSC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserInterface\UserControl\DetailsPanel.xaml.cs">
       <DependentUpon>DetailsPanel.xaml</DependentUpon>
     </Compile>
@@ -109,13 +106,9 @@
       <DependentUpon>MyDayUSC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserInterface\Class\Notifications.cs" />
-    <Compile Include="UserInterface\UserControl\NotebookUSC.xaml.cs">
-      <DependentUpon>NotebookUSC.xaml</DependentUpon>
+    <Compile Include="UserPrefenceWindow.xaml.cs">
+      <DependentUpon>UserPrefenceWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="UserInterface\UserControl\ClipboardUSC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -143,7 +136,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserInterface\UserControl\NotebookUSC.xaml">
+    <Page Include="UserPrefenceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

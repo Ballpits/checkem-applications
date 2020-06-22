@@ -71,7 +71,7 @@
 
             <Separator Grid.Row="4" Margin="5,0" Background="White" IsTabStop="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
-            <Button Grid.Row="5" VerticalAlignment="Bottom" Margin="0,0,0,10" HorizontalAlignment="Center" Width="50" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="40" ToolTip="Settings">
+            <Button x:Name="ButtonUserPref" Grid.Row="5" VerticalAlignment="Bottom" Margin="0,0,0,10" HorizontalAlignment="Center" Width="50" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="40" ToolTip="Preferces..." Click="ButtonUserPref_Click">
                 <materialDesign:PackIcon Kind="SettingsApplications" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24"/>
             </Button>
         </Grid>

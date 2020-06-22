@@ -1,6 +1,6 @@
 A.fix
 	
 B.new
-	1.filter
-	2.sort
-	3.adv reminder
+	1.sort
+	2.adv reminder(almost done)
+	3.uprefs

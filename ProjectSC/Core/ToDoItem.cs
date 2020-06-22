@@ -16,7 +16,8 @@ namespace ProjectSC
         public bool IsImportant { get; set; }
 
 
-        public bool CanNotify { get; set; }
+        public bool IsReminderOn { get; set; }
+        public bool IsAdvRemider { get; set; }
         public int NotifyType { get; set; }
 
 

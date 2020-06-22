@@ -3,7 +3,6 @@ using ProjectSC.Classes.Functions.MainWindow;
 using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Threading;
 
 namespace ProjectSC
@@ -31,6 +30,7 @@ namespace ProjectSC
             timer.Start();
 
             GridMain.Children.Add(myDayUSC);
+            myDayUSC.LoadList(2);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -69,15 +69,24 @@ namespace ProjectSC
         private void ButtonImportantFilter_Click(object sender, RoutedEventArgs e)
         {
             myDayUSC.LoadList(0);
+            myDayUSC.CloseDetailsPanel();
         }
         private void ButtonDueDateFilter_Click(object sender, RoutedEventArgs e)
         {
             myDayUSC.LoadList(1);
+            myDayUSC.CloseDetailsPanel();
         }
 
         private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
         {
             myDayUSC.LoadList(2);
+            myDayUSC.CloseDetailsPanel();
+        }
+
+        private void ButtonUserPref_Click(object sender, RoutedEventArgs e)
+        {
+            UserPrefenceWindow userPrefenceWindow = new UserPrefenceWindow();
+            userPrefenceWindow.Show();
         }
     }
 }

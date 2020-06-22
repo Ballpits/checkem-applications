@@ -1,7 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
 using ProjectSC.UserControls.Custom;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -45,7 +44,7 @@ namespace ProjectSC
                 }
                 if (filterMode == 1)
                 {
-                    if (Inventory[i].CanNotify)
+                    if (Inventory[i].IsReminderOn)
                     {
                         AddItem(i);
                     }
@@ -132,8 +131,9 @@ namespace ProjectSC
 
                 Id = id,
                 Title = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Title,
+                //Title = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Id.ToString(),
                 Description = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Description,
-                CanNotify = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].CanNotify,
+                IsReminderOn = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsReminderOn,
                 BeginDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].BeginDateTime,
                 EndDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].EndDateTime
             };
@@ -143,7 +143,10 @@ namespace ProjectSC
 
         public void CloseDetailsPanel()
         {
-            DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
+            if (DataGrid.Children.Count > 2)
+            {
+                DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
+            }
         }
         #endregion
     }

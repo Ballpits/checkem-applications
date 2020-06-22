@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjectSC.UserControls
+namespace ProjectSC
 {
     /// <summary>
-    /// Interaction logic for NotebookUSC.xaml
+    /// Interaction logic for UserPrefenceWindow.xaml
     /// </summary>
-    public partial class NotebookUSC : UserControl
+    public partial class UserPrefenceWindow : Window
     {
-        public NotebookUSC()
+        public UserPrefenceWindow()
         {
             InitializeComponent();
         }

@@ -144,7 +144,7 @@ namespace ProjectSC
 
             for (int i = 0; i < inventory.Count; i++)
             {
-                if (inventory[i].CanNotify)
+                if (inventory[i].IsReminderOn)
                 {
                     timeRecords.Add(new TimeRecord { Title = inventory[i].Title, BeginDateTime = inventory[i].BeginDateTime, EndDateTime = inventory[i].EndDateTime });
                 }
@@ -172,7 +172,7 @@ namespace ProjectSC
                 Id = id,
                 Title = title,
                 Description = description,
-                CanNotify = canNotify,
+                IsReminderOn = canNotify,
                 BeginDateTime = begineDateTime,
                 EndDateTime = endDateTime,
                 CreationDateTime = createdDateTime
@@ -198,7 +198,7 @@ namespace ProjectSC
         {
             inventory[id].Title = title;
             inventory[id].Description = description;
-            inventory[id].CanNotify = canNotify;
+            inventory[id].IsReminderOn = canNotify;
             inventory[id].BeginDateTime = beginDateTime;
             inventory[id].EndDateTime = endDateTime;
 

@@ -24,22 +24,31 @@ namespace ProjectSC.UserControls.Custom
             itemBar = itembar;
         }
 
+        #region Properties
         public bool IsNew { get; set; }
 
         public int Id { get; set; }
 
+
         public string Title { get; set; }
         public string Description { get; set; }
+
 
         public bool IsCompleted { get; set; }
         public bool IsImportant { get; set; }
 
-        public bool CanNotify { get; set; }
+
+        public bool IsReminderOn { get; set; }
+        public bool IsAdvRemider { get; set; }
         public int NotifyType { get; set; }
 
-        public DateTime CreatedDateTime { get; set; }
+
         public DateTime BeginDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
+
+
+        public DateTime CreationDateTime { get; set; }
+        #endregion
 
 
         MyDayUSC myDay = new MyDayUSC();
@@ -63,24 +72,32 @@ namespace ProjectSC.UserControls.Custom
                 textBoxTitle.Text = Title;
                 textBoxDescription.Text = Description;
 
-                ReminderToggle.IsChecked = CanNotify;
+
+                ReminderToggle.IsChecked = IsReminderOn;
                 CheckToggleState();
 
-                if (CanNotify)
-                {
-                    BeginDatePicker.Text = $"{BeginDateTime.Month}/{BeginDateTime.Day}/{BeginDateTime.Year}";
-                    BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", BeginDateTime)}";
+                AdvReminderToggle.IsChecked = IsReminderOn;
+                CheckAdvToggleState();
 
-                    EndDatePicker.Text = $"{EndDateTime.Month}/{EndDateTime.Day}/{EndDateTime.Year}";
-                    EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", EndDateTime)}";
-                }
-                else
+                if (IsReminderOn)
                 {
-                    BeginDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
-                    BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", DateTime.Now)}";
 
-                    EndDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
-                    EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", DateTime.Now)}";
+                    if (IsAdvRemider)
+                    {
+                        BeginDatePicker.Text = $"{BeginDateTime.Month}/{BeginDateTime.Day}/{BeginDateTime.Year}";
+                        BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", BeginDateTime)}";
+
+                        EndDatePicker.Text = $"{EndDateTime.Month}/{EndDateTime.Day}/{EndDateTime.Year}";
+                        EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", EndDateTime)}";
+                    }
+                    else
+                    {
+                        BeginDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
+                        BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", DateTime.Now)}";
+
+                        EndDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
+                        EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", DateTime.Now)}";
+                    }
                 }
             }
         }
@@ -92,23 +109,23 @@ namespace ProjectSC.UserControls.Custom
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            bool canNotify;
+            bool isReminderOn;
             if (ReminderToggle.IsChecked == true)
             {
-                canNotify = true;
+                isReminderOn = true;
             }
             else
             {
-                canNotify = false;
+                isReminderOn = false;
             }
 
             if (IsNew)
             {
-                DataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, canNotify, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), DateTime.Now, myDay.Inventory);
+                DataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, isReminderOn, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), DateTime.Now, myDay.Inventory);
             }
             else
             {
-                DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, canNotify, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), myDay.Inventory);
+                DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, isReminderOn, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), myDay.Inventory);
 
                 itemBar.Update(textBoxTitle.Text);
             }
@@ -130,10 +147,29 @@ namespace ProjectSC.UserControls.Custom
         {
             CheckToggleState();
         }
+        private void AdvReminderToggle_Click(object sender, RoutedEventArgs e)
+        {
+            CheckAdvToggleState();
+        }
 
         private void CheckToggleState()
         {
             if (ReminderToggle.IsChecked == true)
+            {
+                OutterExpender.IsEnabled = true;
+                OutterExpender.Foreground = Brushes.Black;
+                OutterExpender.IsExpanded = true;
+            }
+            else
+            {
+                OutterExpender.IsEnabled = false;
+                OutterExpender.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#66000000"));
+                OutterExpender.IsExpanded = false;
+            }
+        }
+        private void CheckAdvToggleState()
+        {
+            if (AdvReminderToggle.IsChecked == true)
             {
                 AdvReminderExpander.IsEnabled = true;
                 AdvReminderExpander.Foreground = Brushes.Black;
