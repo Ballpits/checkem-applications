@@ -1,6 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using ProjectSC.UserControls.Custom;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -19,20 +20,40 @@ namespace ProjectSC
             DataAccess.RetrieveData(ref Inventory);
             DataAccess.ResetId(Inventory);
 
-            LoadList();
+            LoadList(filterMode);
         }
 
         #region Variables
         public List<ToDoItem> Inventory = new List<ToDoItem>();
-
         private List<ItemBar> itemBarList = new List<ItemBar>();
+
+        private int filterMode = 0;
         #endregion
 
-        private void LoadList()
+        public void LoadList(int filterMode)
         {
+            stpMain.Children.Clear();
+
             for (int i = 0; i < Inventory.Count; i++)
             {
-                AddItem(i);
+                if (filterMode == 0)
+                {
+                    if (Inventory[i].IsImportant)
+                    {
+                        AddItem(i);
+                    }
+                }
+                if (filterMode == 1)
+                {
+                    if (Inventory[i].CanNotify)
+                    {
+                        AddItem(i);
+                    }
+                }
+                if (filterMode == 2)
+                {
+                    AddItem(i);
+                }
             }
 
             AddNewButton();

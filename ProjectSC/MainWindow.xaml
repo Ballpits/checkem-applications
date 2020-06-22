@@ -39,7 +39,7 @@
                 <RowDefinition Height="155*"/>
             </Grid.RowDefinitions>
 
-            <Button x:Name="ButtonClipBoard" Background="#002196F3" Grid.Row="1" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonClipBoard_Click">
+            <Button x:Name="ButtonImportantFilter" Background="#002196F3" Grid.Row="1" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonImportantFilter_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <Viewbox>
@@ -49,7 +49,7 @@
                 </Button.ContentTemplate>
             </Button>
 
-            <Button x:Name="ButtonNotebook" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" Grid.Row="2" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonNotebook_Click">
+            <Button x:Name="ButtonDueDate" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="Auto" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" Grid.Row="2" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonDueDateFilter_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <Viewbox>

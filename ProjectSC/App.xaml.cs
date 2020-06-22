@@ -22,7 +22,7 @@ namespace ProjectSC
         private void CreateContextMenu()
         {
             TrayIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
-            //_notifyIcon.ContextMenuStrip.Items.Add("MainWindow...").Click += (s, e) => ShowMainWindow();
+            TrayIcon.ContextMenuStrip.Items.Add("Main menu").Click += (s, e) => ShowMainWindow();
             TrayIcon.ContextMenuStrip.Items.Add("Exit").Click += (s, e) => Shutdown();
         }
 

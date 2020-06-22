@@ -16,19 +16,19 @@ namespace ProjectSC
         }
 
         #region 
-        private UserControl myDayUSC = new MyDayUSC();
+        private MyDayUSC myDayUSC = new MyDayUSC();
         #endregion
 
+        #region Reminder variables
         private List<TimeRecord> timeRecord = new List<TimeRecord>();
-
         private DispatcherTimer timer = new DispatcherTimer();
         private int TimerOffset = 60 - DateTime.Now.Second;
+        #endregion
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             timer.Tick += new EventHandler(Timer_Tick);
             timer.Start();
-
 
             GridMain.Children.Add(myDayUSC);
         }
@@ -66,21 +66,18 @@ namespace ProjectSC
         }
         #endregion
 
-        private void ButtonClipBoard_Click(object sender, RoutedEventArgs e)
+        private void ButtonImportantFilter_Click(object sender, RoutedEventArgs e)
         {
-
+            myDayUSC.LoadList(0);
+        }
+        private void ButtonDueDateFilter_Click(object sender, RoutedEventArgs e)
+        {
+            myDayUSC.LoadList(1);
         }
 
         private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
         {
-            GridMain.Children.Clear();
-
-            GridMain.Children.Add(myDayUSC);
-        }
-
-        private void ButtonNotebook_Click(object sender, RoutedEventArgs e)
-        {
-
+            myDayUSC.LoadList(2);
         }
     }
 }
