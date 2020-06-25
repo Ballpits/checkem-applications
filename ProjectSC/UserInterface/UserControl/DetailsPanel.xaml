@@ -56,18 +56,18 @@
                     </StackPanel>
                 </ScrollViewer>
 
-                <ScrollViewer VerticalAlignment="Bottom" Height="50" VerticalScrollBarVisibility="Disabled">
+                <ScrollViewer VerticalAlignment="Bottom" Height="50" VerticalScrollBarVisibility="Disabled" Background="White">
                     <Grid>
-                        <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="50" Height="50" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="Black" Click="RetunButton_Click" ToolTip="Collaps" Padding="0">
-                            <materialDesign:PackIcon Kind="ArrowExpandRight" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Width="45" Height="45" materialDesign:ButtonAssist.CornerRadius="10" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#FFF0F0F0" BorderBrush="{x:Null}" Foreground="Black" Click="RetunButton_Click" ToolTip="Collaps" Padding="0" Margin="5,0,0,0">
+                            <materialDesign:PackIcon Kind="ArrowExpandRight" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                         </Button>
 
-                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="#FF2196F3" ToolTip="Save" Click="SaveButton_Click" Margin="0">
-                            <materialDesign:PackIcon Kind="ContentSave" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="45" Height="45" materialDesign:ButtonAssist.CornerRadius="10" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#FFF0F0F0" BorderBrush="{x:Null}" Foreground="#FF2196F3" ToolTip="Save" Click="SaveButton_Click" Margin="0" Padding="0">
+                            <materialDesign:PackIcon Kind="ContentSave" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                         </Button>
 
-                        <Button x:Name="RemoveButton" HorizontalAlignment="Center" VerticalAlignment="Top" Width="50" Height="50" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="#FFD63838" ToolTip="Remove" Margin="0,0,0,-0.4" Click="RemoveButton_Click" IsTabStop="False">
-                            <materialDesign:PackIcon Kind="TrashCan" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Button x:Name="RemoveButton" HorizontalAlignment="Right" VerticalAlignment="Center" Width="45" Height="45" materialDesign:ButtonAssist.CornerRadius="10" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#FFF0F0F0" BorderBrush="{x:Null}" Foreground="#FFD63838" ToolTip="Remove" Margin="0,0,5,0" Click="RemoveButton_Click" IsTabStop="False" Padding="0">
+                            <materialDesign:PackIcon Kind="TrashCan" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                         </Button>
                     </Grid>
                 </ScrollViewer>

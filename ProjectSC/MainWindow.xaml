@@ -16,7 +16,7 @@
 
         <Grid x:Name="SideBar" Margin="0">
             <Grid.Background>
-                <LinearGradientBrush EndPoint="3,1" StartPoint="1,0">
+                <LinearGradientBrush EndPoint="4,1" StartPoint="1,0">
                     <LinearGradientBrush.RelativeTransform>
                         <TransformGroup>
                             <ScaleTransform CenterY="0.5" CenterX="0.5"/>
@@ -26,7 +26,7 @@
                         </TransformGroup>
                     </LinearGradientBrush.RelativeTransform>
                     <GradientStop Color="#FF2196F3"/>
-                    <GradientStop Color="#FF9708CC" Offset="0.579"/>
+                    <GradientStop Color="#FF9708CC" Offset="0.525"/>
                 </LinearGradientBrush>
             </Grid.Background>
 
@@ -71,9 +71,17 @@
 
             <Separator Grid.Row="4" Margin="5,0" Background="White" IsTabStop="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
-            <Button x:Name="ButtonUserPref" Grid.Row="5" VerticalAlignment="Bottom" Margin="0,0,0,10" HorizontalAlignment="Center" Width="50" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="40" ToolTip="Preferces..." Click="ButtonUserPref_Click">
-                <materialDesign:PackIcon Kind="SettingsApplications" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24"/>
-            </Button>
+            <ScrollViewer Grid.Row="5" VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <StackPanel Margin="0,0,0,49.6">
+
+                    </StackPanel>
+
+                    <Button x:Name="ButtonUserPref" VerticalAlignment="Bottom" Margin="0,0,0,10" HorizontalAlignment="Center" Width="50" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="30" ToolTip="Preferces..." Click="ButtonUserPref_Click">
+                        <materialDesign:PackIcon Kind="SettingsApplications" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24"/>
+                    </Button>
+                </Grid>
+            </ScrollViewer>
         </Grid>
 
         <Grid x:Name="GridMain" Margin="-0.5,0,0,0" Grid.Column="1"/>

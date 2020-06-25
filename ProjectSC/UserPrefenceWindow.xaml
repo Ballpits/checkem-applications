@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectSC"
         mc:Ignorable="d"
-        Title="User Prefences" Height="450" Width="800">
+        Title="User Prefences" Height="500" Width="750" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" FontFamily="Arial">
     <Grid>
         
     </Grid>
