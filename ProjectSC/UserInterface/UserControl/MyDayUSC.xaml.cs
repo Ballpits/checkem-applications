@@ -14,7 +14,7 @@ namespace ProjectSC
         {
             InitializeComponent();
 
-            //DataAccess.StoreTestData(Inventory);
+            DataAccess.StoreTestData(Inventory);
 
             DataAccess.RetrieveData(ref Inventory);
             DataAccess.ResetId(Inventory);
@@ -32,6 +32,9 @@ namespace ProjectSC
         public void LoadList(int filterMode)
         {
             stpMain.Children.Clear();
+            itemBarList.Clear();
+            DataAccess.RetrieveData(ref Inventory);
+            DataAccess.ResetId(Inventory);
 
             for (int i = 0; i < Inventory.Count; i++)
             {
@@ -73,6 +76,7 @@ namespace ProjectSC
             CornerRadius cr = new CornerRadius(100);
             ButtonAssist.SetCornerRadius(ButtonAddNew, cr);
             ShadowAssist.SetShadowDepth(ButtonAddNew, 0);
+
             ButtonAddNew.Click += new RoutedEventHandler(this.AddNewButton_Click);
 
             var icon = new PackIcon { Kind = PackIconKind.Plus };
@@ -88,7 +92,14 @@ namespace ProjectSC
 
         public void RemoveItemBar(int id)
         {
-            stpMain.Children.RemoveAt(stpMain.Children.IndexOf(itemBarList[id]));
+            stpMain.Children.RemoveAt(stpMain.Children.IndexOf(itemBarList[itemBarList.FindIndex(x => x.Id == id)]));
+        }
+
+        public void AddItemBar()
+        {
+            int id = Inventory.Count - 1;
+
+            AddItem(id);
         }
 
         #region Item
@@ -129,7 +140,7 @@ namespace ProjectSC
             {
                 IsNew = false,
 
-                Id = id,
+                Id = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Id,
                 Title = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Title,
                 //Title = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Id.ToString(),
                 Description = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Description,

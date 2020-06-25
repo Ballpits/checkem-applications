@@ -26,7 +26,7 @@ namespace ProjectSC
             TrayIcon.ContextMenuStrip.Items.Add("Check'em").Click += (s, e) => ShowMainWindow();
             TrayIcon.ContextMenuStrip.Items.Add("Preferences...").Click += (s, e) => ShowMainWindow();
             TrayIcon.ContextMenuStrip.Items.Add("-");
-            TrayIcon.ContextMenuStrip.Items.Add("Exit").Click += (s, e) => Shutdown();
+            TrayIcon.ContextMenuStrip.Items.Add("Exit").Click += (s, e) => ShutdownApplication();
         }
 
         private void ShowMainWindow()
@@ -43,6 +43,12 @@ namespace ProjectSC
             {
                 MainWindow.Show();
             }
+        }
+
+        private void ShutdownApplication()
+        {
+            TrayIcon.Visible = false;
+            Application.Current.Shutdown();
         }
     }
 }

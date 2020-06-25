@@ -121,11 +121,30 @@ namespace ProjectSC.UserControls.Custom
 
             if (IsNew)
             {
-                DataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, isReminderOn, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), DateTime.Now, myDay.Inventory);
+                if (isReminderOn)
+                {
+                    DataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), DateTime.Now, myDay.Inventory);
+                }
+                else
+                {
+                    DataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, DateTime.Now, myDay.Inventory);
+                }
+
+                DataAccess.RetrieveData(ref myDay.Inventory);
+                DataAccess.ResetId(myDay.Inventory);
+
+                myDay.AddItemBar();
             }
             else
             {
-                DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, isReminderOn, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), myDay.Inventory);
+                if (isReminderOn)
+                {
+                    DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), myDay.Inventory);
+                }
+                else
+                {
+                    DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, myDay.Inventory);
+                }
 
                 itemBar.Update(textBoxTitle.Text);
             }
