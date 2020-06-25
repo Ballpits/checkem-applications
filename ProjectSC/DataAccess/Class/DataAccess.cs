@@ -137,6 +137,7 @@ namespace ProjectSC
             inventory = JsonConvert.DeserializeObject<List<ToDoItem>>(json);
         }//Get all the data from the json file and save it to the list
 
+
         public static void RetrieveTimeData(ref List<TimeRecord> timeRecords)
         {
             string json = File.ReadAllText(@"inv.json");
@@ -151,6 +152,8 @@ namespace ProjectSC
             }
         }//Get the time data and save it to the list
 
+
+
         public static void ResetId(List<ToDoItem> inventory)
         {
             foreach (var item in inventory)
@@ -163,6 +166,22 @@ namespace ProjectSC
 
 
 
+        public static void RemoveAt(int id, List<ToDoItem> inventory)
+        {
+            inventory.RemoveAt(inventory.FindIndex(x => x.Id == id));
+            SaveToJson(inventory);
+        }//Remove the to-do item from the json file
+
+
+
+        private static void SaveToJson(List<ToDoItem> inventory)
+        {
+            File.WriteAllText(@"inv.json", JsonConvert.SerializeObject(inventory));
+        }
+
+
+
+        #region Add new item
         public static void AddNew(string title, string description, DateTime begineDateTime, DateTime endDateTime, DateTime createdDateTime, List<ToDoItem> inventory)
         {
             int id = inventory.Count + 1;
@@ -196,33 +215,41 @@ namespace ProjectSC
 
             SaveToJson(inventory);
         }
+        #endregion
 
-        public static void RemoveAt(int id, List<ToDoItem> inventory)
+
+
+        #region Update
+        public static void Update(int id, string title, string description, DateTime endDateTime, List<ToDoItem> inventory)
         {
-            inventory.RemoveAt(inventory.FindIndex(x => x.Id == id));
+            inventory[id].Title = title;
+            inventory[id].Description = description;
+
+
+            inventory[id].IsReminderOn = true;
+            inventory[id].IsAdvanceOn = false;
+
+            inventory[id].EndDateTime = endDateTime;
+
             SaveToJson(inventory);
-        }//Remove the to-do item from the json file
-
-        private static void SaveToJson(List<ToDoItem> inventory)
-        {
-            File.WriteAllText(@"inv.json", JsonConvert.SerializeObject(inventory));
-        }
-
-
+        }//update with basic reminder
 
         public static void Update(int id, string title, string description, DateTime beginDateTime, DateTime endDateTime, List<ToDoItem> inventory)
         {
             inventory[id].Title = title;
             inventory[id].Description = description;
 
+
             inventory[id].IsReminderOn = true;
+            inventory[id].IsAdvanceOn = true;
+
             inventory[id].BeginDateTime = beginDateTime;
             inventory[id].EndDateTime = endDateTime;
 
             SaveToJson(inventory);
-        }
+        }//update with advance reminder
 
-        public static void Update(int id, string title, string description,  List<ToDoItem> inventory)
+        public static void Update(int id, string title, string description, List<ToDoItem> inventory)
         {
             inventory[id].Title = title;
             inventory[id].Description = description;
@@ -230,17 +257,19 @@ namespace ProjectSC
             inventory[id].IsReminderOn = false;
 
             SaveToJson(inventory);
-        }
+        }//Only update the texts
 
         public static void Update(int id, bool isImportant, List<ToDoItem> inventory)
         {
             inventory[id].IsImportant = isImportant;
 
             SaveToJson(inventory);
-        }
+        }//Update importance
+        #endregion
 
 
 
+        #region Search function
         public static string FindById(int id, List<ToDoItem> inventory)
         {
             if (inventory.Exists(x => x.Id == id))
@@ -264,5 +293,6 @@ namespace ProjectSC
                 return $"\t{title} does not exist in the list";
             }
         }
+        #endregion
     }
 }

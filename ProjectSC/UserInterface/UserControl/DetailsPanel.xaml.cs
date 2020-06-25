@@ -39,7 +39,7 @@ namespace ProjectSC.UserControls.Custom
 
 
         public bool IsReminderOn { get; set; }
-        public bool IsAdvRemider { get; set; }
+        public bool IsAdvanceOn { get; set; }
         public int NotifyType { get; set; }
 
 
@@ -76,13 +76,13 @@ namespace ProjectSC.UserControls.Custom
                 ReminderToggle.IsChecked = IsReminderOn;
                 CheckToggleState();
 
-                AdvReminderToggle.IsChecked = IsReminderOn;
+                AdvReminderToggle.IsChecked = IsAdvanceOn;
                 CheckAdvToggleState();
 
                 if (IsReminderOn)
                 {
 
-                    if (IsAdvRemider)
+                    if (IsAdvanceOn)
                     {
                         BeginDatePicker.Text = $"{BeginDateTime.Month}/{BeginDateTime.Day}/{BeginDateTime.Year}";
                         BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", BeginDateTime)}";
@@ -92,11 +92,8 @@ namespace ProjectSC.UserControls.Custom
                     }
                     else
                     {
-                        BeginDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
-                        BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", DateTime.Now)}";
-
-                        EndDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
-                        EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", DateTime.Now)}";
+                        EndDatePickerBasic.Text = $"{EndDateTime.Month}/{EndDateTime.Day}/{EndDateTime.Year}";
+                        EndTimePickerBasic.Text = $"{string.Format("{0:h:mm tt}", EndDateTime)}";
                     }
                 }
             }
@@ -109,19 +106,9 @@ namespace ProjectSC.UserControls.Custom
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            bool isReminderOn;
-            if (ReminderToggle.IsChecked == true)
-            {
-                isReminderOn = true;
-            }
-            else
-            {
-                isReminderOn = false;
-            }
-
             if (IsNew)
             {
-                if (isReminderOn)
+                if (ReminderToggle.IsChecked == true)
                 {
                     DataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), DateTime.Now, myDay.Inventory);
                 }
@@ -130,27 +117,40 @@ namespace ProjectSC.UserControls.Custom
                     DataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, DateTime.Now, myDay.Inventory);
                 }
 
+
                 DataAccess.RetrieveData(ref myDay.Inventory);
                 DataAccess.ResetId(myDay.Inventory);
 
                 myDay.AddItemBar();
+
+                DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Added"));
             }
             else
             {
-                if (isReminderOn)
+                if (ReminderToggle.IsChecked == true)
                 {
-                    DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), myDay.Inventory);
+                    if (AdvReminderToggle.IsChecked == true)
+                    {
+                        DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), myDay.Inventory);
+                    }
+                    else
+                    {
+                        DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePickerBasic.Text + " " + EndTimePickerBasic.Text), myDay.Inventory);
+                    }
                 }
                 else
                 {
                     DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, myDay.Inventory);
                 }
 
+
                 itemBar.Update(textBoxTitle.Text);
+
+                DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Saved"));
             }
 
-            DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Saved"));
         }
+
 
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
@@ -162,6 +162,7 @@ namespace ProjectSC.UserControls.Custom
             myDay.CloseDetailsPanel();
         }
 
+
         private void ReminderToggle_Click(object sender, RoutedEventArgs e)
         {
             CheckToggleState();
@@ -170,6 +171,8 @@ namespace ProjectSC.UserControls.Custom
         {
             CheckAdvToggleState();
         }
+
+
 
         private void CheckToggleState()
         {
@@ -186,21 +189,28 @@ namespace ProjectSC.UserControls.Custom
                 OutterExpender.IsExpanded = false;
             }
         }
+
         private void CheckAdvToggleState()
         {
             if (AdvReminderToggle.IsChecked == true)
             {
                 AdvReminderExpander.IsEnabled = true;
                 AdvReminderExpander.Foreground = Brushes.Black;
+
                 AdvReminderExpander.IsExpanded = true;
+                BasicReminderGrid.IsEnabled = false;
             }
             else
             {
                 AdvReminderExpander.IsEnabled = false;
                 AdvReminderExpander.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#66000000"));
+
                 AdvReminderExpander.IsExpanded = false;
+                BasicReminderGrid.IsEnabled = true;
             }
         }
+
+
 
         private void DarkGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {

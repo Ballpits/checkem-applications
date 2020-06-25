@@ -26,7 +26,7 @@
                         </TransformGroup>
                     </LinearGradientBrush.RelativeTransform>
                     <GradientStop Color="#FF2196F3"/>
-                    <GradientStop Color="#FF9708CC" Offset="1"/>
+                    <GradientStop Color="#FF9708CC" Offset="0.579"/>
                 </LinearGradientBrush>
             </Grid.Background>
 

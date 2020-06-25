@@ -22,12 +22,12 @@
                             <ToggleButton x:Name="ReminderToggle" HorizontalAlignment="Right" Click="ReminderToggle_Click"/>
                         </Grid>
 
-                        <Expander x:Name="OutterExpender" Header="Basic Reminder" FontFamily="Arial" Margin="10,0,10,15" Background="#FFFAFAFA" Foreground="#FF000000">
+                        <Expander x:Name="OutterExpender" Header="Reminder" FontFamily="Arial" Margin="10,0,10,15" Background="#FFFAFAFA" Foreground="#FF000000">
                             <StackPanel>
                                 <StackPanel UseLayoutRounding="True">
-                                    <Grid IsEnabled="False" Margin="10,15,10,0" Background="#FFF0F0F0" UseLayoutRounding="True">
-                                        <DatePicker x:Name="EndDPicker" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Due Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="5,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="False"/>
-                                        <materialDesign:TimePicker x:Name="EndTPicker" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="End Time"/>
+                                    <Grid x:Name="BasicReminderGrid" IsEnabled="True" Margin="10,15,10,0" Background="#FFF0F0F0" UseLayoutRounding="True">
+                                        <DatePicker x:Name="EndDatePickerBasic" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Due Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="5,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="False"/>
+                                        <materialDesign:TimePicker x:Name="EndTimePickerBasic" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="Due Time"/>
                                     </Grid>
                                 </StackPanel>
 

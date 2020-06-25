@@ -14,7 +14,7 @@ namespace ProjectSC
         {
             InitializeComponent();
 
-            DataAccess.StoreTestData(Inventory);
+            //DataAccess.StoreTestData(Inventory);
 
             DataAccess.RetrieveData(ref Inventory);
             DataAccess.ResetId(Inventory);
@@ -58,7 +58,7 @@ namespace ProjectSC
                 }
             }
 
-            AddNewButton();
+            //AddNewButton();
         }
 
         private void AddNewButton()
@@ -145,6 +145,7 @@ namespace ProjectSC
                 //Title = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Id.ToString(),
                 Description = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Description,
                 IsReminderOn = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsReminderOn,
+                IsAdvanceOn = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsAdvanceOn,
                 BeginDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].BeginDateTime,
                 EndDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].EndDateTime
             };
