@@ -14,15 +14,17 @@
             <Grid x:Name="DetailsGrid" Background="White" HorizontalAlignment="Right" Width="400">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,10,0,50">
                     <StackPanel>
-                        <TextBox x:Name="textBoxTitle" Margin="10,5" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="Title" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial"/>
+                        <TextBox x:Name="textBoxTitle" Margin="10,5,10,0" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="Title" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial"/>
 
-                        <Grid Margin="10,15,10,5" Height="30">
+                        
+                        
+                        <Grid Margin="10,30,10,5" Height="30">
                             <materialDesign:PackIcon Kind="BellRingOutline" Foreground="#FFD1C131" Height="Auto" Width="Auto" Margin="5,0,0,5"/>
                             <TextBlock Text="Reminder" FontSize="16" FontFamily="Arial" Margin="35,5,40,5"/>
                             <ToggleButton x:Name="ReminderToggle" HorizontalAlignment="Right" Click="ReminderToggle_Click"/>
                         </Grid>
 
-                        <Expander x:Name="OutterExpender" Header="Reminder" FontFamily="Arial" Margin="10,0,10,15" Background="#FFFAFAFA" Foreground="#FF000000">
+                        <Expander x:Name="OutterExpender" Header="Reminder" FontFamily="Arial" Margin="10,0,10,30" Background="#FFFAFAFA" Foreground="#FF000000">
                             <StackPanel>
                                 <StackPanel UseLayoutRounding="True">
                                     <Grid x:Name="BasicReminderGrid" IsEnabled="True" Margin="10,15,10,0" Background="#FFF0F0F0" UseLayoutRounding="True">
@@ -52,7 +54,7 @@
                             </StackPanel>
                         </Expander>
 
-                        <TextBox x:Name="textBoxDescription" Margin="10,15,10,5" TextWrapping="Wrap" MaxLength="500" FontSize="20" materialDesign:HintAssist.Hint="Description" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial" AcceptsReturn="True" AcceptsTab="True"/>
+                        <TextBox x:Name="textBoxDescription" Margin="10,0" TextWrapping="Wrap" MaxLength="500" FontSize="20" materialDesign:HintAssist.Hint="Description" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial" AcceptsReturn="True" AcceptsTab="True"/>
                     </StackPanel>
                 </ScrollViewer>
 

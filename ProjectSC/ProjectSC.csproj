@@ -106,8 +106,8 @@
       <DependentUpon>MyDayUSC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserInterface\Class\Notifications.cs" />
-    <Compile Include="UserPrefenceWindow.xaml.cs">
-      <DependentUpon>UserPrefenceWindow.xaml</DependentUpon>
+    <Compile Include="UserPreferenceWindow.xaml.cs">
+      <DependentUpon>UserPreferenceWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -136,7 +136,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserPrefenceWindow.xaml">
+    <Page Include="UserPreferenceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
