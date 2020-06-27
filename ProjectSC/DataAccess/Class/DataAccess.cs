@@ -265,6 +265,12 @@ namespace ProjectSC
 
             SaveToJson(inventory);
         }//Update importance
+        public static void Update(int id, string tagName, List<ToDoItem> inventory)
+        {
+            inventory[id].TagName = tagName;
+
+            SaveToJson(inventory);
+        }//Update tag
         #endregion
 
 

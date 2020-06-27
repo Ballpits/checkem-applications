@@ -12,19 +12,29 @@
         <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromRight, Duration=0:0:0.5}">
 
             <Grid x:Name="DetailsGrid" Background="White" HorizontalAlignment="Right" Width="400">
-                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,10,0,50">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,49.6">
                     <StackPanel>
+                        <Grid x:Name="ChipGrid" Height="25">
+                            <!--<Button HorizontalAlignment="Left" Width="40" Height="40" Margin="20,0,0,0" materialDesign:ButtonAssist.CornerRadius="10" Padding="0">
+                                <materialDesign:PackIcon Kind="ColorLens" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40"/>
+                            </Button>-->
+
+                            <materialDesign:Chip x:Name="TagChip" IsDeletable="True" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0" DeleteClick="Chip_DeleteClick">
+                                <Grid>
+                                    <TextBox x:Name="ChipTitleEditTextbox" BorderBrush="{x:Null}" Background="{x:Null}" Focusable="True" LostFocus="ChipTitleEditTextbox_LostFocus"/>
+                                </Grid>
+                            </materialDesign:Chip>
+                        </Grid>
+
                         <TextBox x:Name="textBoxTitle" Margin="10,5,10,0" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="Title" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial"/>
 
-                        
-                        
-                        <Grid Margin="10,30,10,5" Height="30">
+                        <Grid x:Name="ReminderTitleGrid" Margin="10,30,10,5" Height="30">
                             <materialDesign:PackIcon Kind="BellRingOutline" Foreground="#FFD1C131" Height="Auto" Width="Auto" Margin="5,0,0,5"/>
                             <TextBlock Text="Reminder" FontSize="16" FontFamily="Arial" Margin="35,5,40,5"/>
                             <ToggleButton x:Name="ReminderToggle" HorizontalAlignment="Right" Click="ReminderToggle_Click"/>
                         </Grid>
 
-                        <Expander x:Name="OutterExpender" Header="Reminder" FontFamily="Arial" Margin="10,0,10,30" Background="#FFFAFAFA" Foreground="#FF000000">
+                        <Expander Visibility="Collapsed" x:Name="OutterExpender" FontFamily="Arial" Margin="10,0,10,30" Background="#FFFAFAFA" Foreground="#FF000000">
                             <StackPanel>
                                 <StackPanel UseLayoutRounding="True">
                                     <Grid x:Name="BasicReminderGrid" IsEnabled="True" Margin="10,15,10,0" Background="#FFF0F0F0" UseLayoutRounding="True">
@@ -39,7 +49,7 @@
                                     <ToggleButton x:Name="AdvReminderToggle" HorizontalAlignment="Right" Click="AdvReminderToggle_Click"/>
                                 </Grid>
 
-                                <Expander x:Name="AdvReminderExpander" Header="Advance Reminder" FontFamily="Arial" Margin="10,0,10,15" Background="#FFFAFAFA" Foreground="#66000000">
+                                <Expander x:Name="AdvReminderExpander" FontFamily="Arial" Margin="10,0,10,15" Background="#FFFAFAFA" Foreground="#66000000">
                                     <StackPanel UseLayoutRounding="True">
                                         <Grid Margin="10,5" Background="#FFF0F0F0">
                                             <DatePicker x:Name="BeginDatePicker" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Begin Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="5,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="True"/>

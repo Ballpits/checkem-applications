@@ -7,7 +7,7 @@ using System.Windows.Threading;
 
 namespace ProjectSC
 {
-    public partial class MainWindow : Window, IUIControl
+    public partial class MainWindow : Window, IMouseEvents
     {
         public MainWindow()
         {
@@ -39,6 +39,7 @@ namespace ProjectSC
             timer.Interval = TimeSpan.FromSeconds(TimerOffset);//Fix timer delay time
 
             DataAccess.RetrieveTimeData(ref timeRecord);
+
 
             foreach (var item in timeRecord)
             {

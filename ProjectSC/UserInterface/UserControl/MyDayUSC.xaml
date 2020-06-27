@@ -29,11 +29,11 @@
                     </LinearGradientBrush>
                 </Grid.Background>
 
-                <Button HorizontalAlignment="Left" Margin="10,0,0,0" Width="35" Height="35" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#002196F3" BorderBrush="{x:Null}" Padding="0" Click="AddNewButton_Click" ToolTip="Add New">
+                <Button HorizontalAlignment="Left" Margin="10,0,0,0" Width="35" Height="35" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#002196F3" BorderBrush="{x:Null}" Padding="0" Click="AddNewButton_Click" ToolTip="Add New" IsTabStop="False">
                     <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
                 </Button>
 
-                <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Foreground="White" Width="35" Height="35" ToolTip="Sort">
+                <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Foreground="White" Width="35" Height="35" ToolTip="Sort" IsTabStop="False">
                     <materialDesign:PopupBox.ToggleContent>
                         <materialDesign:PackIcon Kind="Sort" Foreground="White" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="25" Height="25" ToolTip="Sort" />
                     </materialDesign:PopupBox.ToggleContent>

@@ -61,34 +61,34 @@ namespace ProjectSC
             //AddNewButton();
         }
 
-        private void AddNewButton()
-        {
-            Button ButtonAddNew = new Button
-            {
-                Height = 50,
-                Width = 50,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Top,
-                Margin = new Thickness(0, 50, 0, 20),
-                Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3")),
-                BorderThickness = new Thickness(0),
-            };
-            CornerRadius cr = new CornerRadius(100);
-            ButtonAssist.SetCornerRadius(ButtonAddNew, cr);
-            ShadowAssist.SetShadowDepth(ButtonAddNew, 0);
+        //private void AddNewButton()
+        //{
+        //    Button ButtonAddNew = new Button
+        //    {
+        //        Height = 50,
+        //        Width = 50,
+        //        HorizontalAlignment = HorizontalAlignment.Center,
+        //        VerticalAlignment = VerticalAlignment.Top,
+        //        Margin = new Thickness(0, 50, 0, 20),
+        //        Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3")),
+        //        BorderThickness = new Thickness(0),
+        //    };
+        //    CornerRadius cr = new CornerRadius(100);
+        //    ButtonAssist.SetCornerRadius(ButtonAddNew, cr);
+        //    ShadowAssist.SetShadowDepth(ButtonAddNew, 0);
 
-            ButtonAddNew.Click += new RoutedEventHandler(this.AddNewButton_Click);
+        //    ButtonAddNew.Click += new RoutedEventHandler(this.AddNewButton_Click);
 
-            var icon = new PackIcon { Kind = PackIconKind.Plus };
-            icon.Height = 30;
-            icon.Width = 30;
-            icon.HorizontalAlignment = HorizontalAlignment.Center;
-            icon.VerticalAlignment = VerticalAlignment.Center;
-            icon.Foreground = Brushes.White;
-            ButtonAddNew.Content = icon;
+        //    var icon = new PackIcon { Kind = PackIconKind.Plus };
+        //    icon.Height = 30;
+        //    icon.Width = 30;
+        //    icon.HorizontalAlignment = HorizontalAlignment.Center;
+        //    icon.VerticalAlignment = VerticalAlignment.Center;
+        //    icon.Foreground = Brushes.White;
+        //    ButtonAddNew.Content = icon;
 
-            stpMain.Children.Add(ButtonAddNew);
-        }
+        //    stpMain.Children.Add(ButtonAddNew);
+        //}
 
         public void RemoveItemBar(int id)
         {
@@ -108,7 +108,6 @@ namespace ProjectSC
             ItemBar itemBar = new ItemBar(this)
             {
                 Id = id,
-                Title = Inventory[id].Title
             };
 
             itemBarList.Add(itemBar);
@@ -141,13 +140,23 @@ namespace ProjectSC
                 IsNew = false,
 
                 Id = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Id,
+
+
                 Title = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Title,
                 //Title = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Id.ToString(),
+
                 Description = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Description,
+
+
                 IsReminderOn = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsReminderOn,
                 IsAdvanceOn = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsAdvanceOn,
+
                 BeginDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].BeginDateTime,
-                EndDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].EndDateTime
+                EndDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].EndDateTime,
+
+
+                IsUsingTag = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsUsingTag,
+                TagName = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].TagName
             };
 
             DataGrid.Children.Add(detailsPanel);

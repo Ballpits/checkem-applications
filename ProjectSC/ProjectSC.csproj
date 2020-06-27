@@ -95,7 +95,7 @@
     <Compile Include="DataAccess\Class\DataAccess.cs" />
     <Compile Include="UserInterface\Class\DetailsPanel\SnackbarControl.cs" />
     <Compile Include="UserInterface\Class\MainWindow\MainWindowMouseover.cs" />
-    <Compile Include="UserInterface\Class\TimeRecord.cs" />
+    <Compile Include="Core\Notification\TimeRecord.cs" />
     <Compile Include="UserInterface\UserControl\DetailsPanel.xaml.cs">
       <DependentUpon>DetailsPanel.xaml</DependentUpon>
     </Compile>
@@ -105,7 +105,7 @@
     <Compile Include="UserInterface\UserControl\MyDayUSC.xaml.cs">
       <DependentUpon>MyDayUSC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserInterface\Class\Notifications.cs" />
+    <Compile Include="Core\Notification\Notifications.cs" />
     <Compile Include="UserPreferenceWindow.xaml.cs">
       <DependentUpon>UserPreferenceWindow.xaml</DependentUpon>
     </Compile>
@@ -118,8 +118,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DataAccess\Interfaces\IDataAccess.cs" />
-    <Compile Include="Core\ToDoItem.cs" />
-    <Compile Include="UserInterface\Interface\IUIControl.cs" />
+    <Compile Include="Core\Todo\ToDoItem.cs" />
+    <Compile Include="UserInterface\Interface\IMouseEvents.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -186,9 +186,7 @@
     <Resource Include="Icon\Icon-16.ico" />
     <Resource Include="Icon\Icon-512.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\Icon1.ico" />
   </ItemGroup>

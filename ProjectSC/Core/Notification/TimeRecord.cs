@@ -6,7 +6,10 @@ namespace ProjectSC.Classes
     {
         public string Title { get; set; }
 
-        public int NotifyType { get; set; }
+
+        public bool IsReminderOn { get; set; }
+        public bool IsAdvanceOn { get; set; }
+
 
         public DateTime BeginDateTime { get; set; }
         public DateTime EndDateTime { get; set; }

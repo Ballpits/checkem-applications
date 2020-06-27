@@ -18,11 +18,15 @@ namespace ProjectSC
 
         public bool IsReminderOn { get; set; }
         public bool IsAdvanceOn { get; set; }
-        public int NotifyType { get; set; }
 
 
         public DateTime BeginDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
+
+
+        public bool IsUsingTag { get; set; }
+        public string TagName { get; set; }
+        //public Brushes TagColor { get; set; }
 
 
         public DateTime CreationDateTime { get; set; }

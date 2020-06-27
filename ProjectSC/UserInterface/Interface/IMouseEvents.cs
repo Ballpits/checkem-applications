@@ -2,7 +2,7 @@
 
 namespace ProjectSC
 {
-    interface IUIControl
+    interface IMouseEvents
     {
         void MouseEnterHighLight(object sender, RoutedEventArgs e);
 

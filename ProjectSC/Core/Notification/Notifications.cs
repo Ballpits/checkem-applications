@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Windows.Forms;
-using Notifications.Wpf;
+﻿using Notifications.Wpf;
+using System;
 
 namespace ProjectSC
 {
@@ -28,15 +22,15 @@ namespace ProjectSC
             switch (s)
             {
                 case "begin":
-                    return BeginMessages[GetRandomMessageId()];
+                    return BeginMessages[RandomMessageId()];
                 case "end":
-                    return EndMessages[GetRandomMessageId()];
+                    return EndMessages[RandomMessageId()];
                 default:
                     return "";
             }
         }
 
-        private static int GetRandomMessageId()
+        private static int RandomMessageId()
         {
             Random random = new Random();
 

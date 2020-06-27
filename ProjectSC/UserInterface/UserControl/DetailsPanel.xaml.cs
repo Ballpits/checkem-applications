@@ -1,4 +1,5 @@
-﻿using ProjectSC.Classes.Functions.Common;
+﻿using MaterialDesignThemes.Wpf;
+using ProjectSC.Classes.Functions.Common;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,10 +47,9 @@ namespace ProjectSC.UserControls.Custom
         public DateTime BeginDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
 
-
-        public DateTime CreationDateTime { get; set; }
+        public bool IsUsingTag { get; set; }
+        public string TagName { get; set; }
         #endregion
-
 
         MyDayUSC myDay = new MyDayUSC();
         ItemBar itemBar = new ItemBar();
@@ -74,10 +74,10 @@ namespace ProjectSC.UserControls.Custom
 
 
                 ReminderToggle.IsChecked = IsReminderOn;
-                CheckToggleState();
+                CheckBasicToggleState();
 
                 AdvReminderToggle.IsChecked = IsAdvanceOn;
-                CheckAdvToggleState();
+                CheckAdvanceToggleState();
 
                 if (IsReminderOn)
                 {
@@ -95,7 +95,17 @@ namespace ProjectSC.UserControls.Custom
                         EndDatePickerBasic.Text = $"{EndDateTime.Month}/{EndDateTime.Day}/{EndDateTime.Year}";
                         EndTimePickerBasic.Text = $"{string.Format("{0:h:mm tt}", EndDateTime)}";
                     }
-                }
+                }//Reminder texts
+
+                if (IsUsingTag)
+                {
+                    ChipGrid.Height = 50;
+
+                    TagChip.Visibility = Visibility.Visible;
+                    
+                    ChipTitleEditTextbox.Text = TagName;
+                }//Tag texts
+
             }
         }
 
@@ -165,32 +175,38 @@ namespace ProjectSC.UserControls.Custom
 
         private void ReminderToggle_Click(object sender, RoutedEventArgs e)
         {
-            CheckToggleState();
+            CheckBasicToggleState();
         }
         private void AdvReminderToggle_Click(object sender, RoutedEventArgs e)
         {
-            CheckAdvToggleState();
+            CheckAdvanceToggleState();
         }
 
 
 
-        private void CheckToggleState()
+        private void CheckBasicToggleState()
         {
             if (ReminderToggle.IsChecked == true)
             {
                 OutterExpender.IsEnabled = true;
                 OutterExpender.Foreground = Brushes.Black;
                 OutterExpender.IsExpanded = true;
+                OutterExpender.Visibility = Visibility.Visible;
+
+                ReminderTitleGrid.Margin = new Thickness(10, 30, 10, 5);
             }
             else
             {
                 OutterExpender.IsEnabled = false;
                 OutterExpender.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#66000000"));
                 OutterExpender.IsExpanded = false;
+                OutterExpender.Visibility = Visibility.Collapsed;
+
+                ReminderTitleGrid.Margin = new Thickness(10, 30, 10, 30);
             }
         }
 
-        private void CheckAdvToggleState()
+        private void CheckAdvanceToggleState()
         {
             if (AdvReminderToggle.IsChecked == true)
             {
@@ -198,7 +214,10 @@ namespace ProjectSC.UserControls.Custom
                 AdvReminderExpander.Foreground = Brushes.Black;
 
                 AdvReminderExpander.IsExpanded = true;
+                AdvReminderExpander.Visibility = Visibility.Visible;
+
                 BasicReminderGrid.IsEnabled = false;
+                BasicReminderGrid.Visibility = Visibility.Collapsed;
             }
             else
             {
@@ -206,7 +225,10 @@ namespace ProjectSC.UserControls.Custom
                 AdvReminderExpander.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#66000000"));
 
                 AdvReminderExpander.IsExpanded = false;
+                AdvReminderExpander.Visibility = Visibility.Collapsed;
+
                 BasicReminderGrid.IsEnabled = true;
+                BasicReminderGrid.Visibility = Visibility.Visible;
             }
         }
 
@@ -218,6 +240,18 @@ namespace ProjectSC.UserControls.Custom
             {
                 myDay.CloseDetailsPanel();
             }
+        }
+
+        private void Chip_DeleteClick(object sender, RoutedEventArgs e)
+        {
+            Chip chip = (Chip)sender;
+
+            chip.Visibility = Visibility.Collapsed;
+        }
+
+        private void ChipTitleEditTextbox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            DataAccess.Update(Id, ChipTitleEditTextbox.Text, myDay.Inventory);
         }
     }
 }

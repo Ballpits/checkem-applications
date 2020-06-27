@@ -23,12 +23,11 @@ namespace ProjectSC.UserControls.Custom
         private MyDayUSC MyDay;
 
         public int Id { get; set; }
-        public string Title { get; set; }
 
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            textBlock.Text = Title;
+            textBlock.Text = MyDay.Inventory[Id].Title;
             //textBlock.Text = Id.ToString();
 
             if (MyDay.Inventory[Id].IsImportant == true)
