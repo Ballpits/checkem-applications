@@ -2,5 +2,6 @@ A.fix
 	
 B.new
 	1.tags
-	2.notify user for passed events
-	3.uprefs
+	2.hide completed items to a expender
+	3.notify user for passed events
+	last.uprefs

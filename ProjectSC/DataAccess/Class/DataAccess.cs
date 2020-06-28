@@ -265,6 +265,14 @@ namespace ProjectSC
 
             SaveToJson(inventory);
         }//Update importance
+
+        public static void UpdateCompletion(int id, bool isCompleted, List<ToDoItem> inventory)
+        {
+            inventory[id].IsCompleted = isCompleted;
+
+            SaveToJson(inventory);
+        }//Update completed
+
         public static void Update(int id, string tagName, List<ToDoItem> inventory)
         {
             inventory[id].TagName = tagName;

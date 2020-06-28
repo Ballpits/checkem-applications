@@ -30,22 +30,16 @@ namespace ProjectSC.UserControls.Custom
             textBlock.Text = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].Title;
             //textBlock.Text = Id.ToString();
 
-            if (MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].IsImportant == true)
-            {
-                StarToggle.IsChecked = true;
-            }
-            else
-            {
-                StarToggle.IsChecked = false;
-            }
+            checkBox.IsChecked = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].IsCompleted;
+            StarToggle.IsChecked = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].IsImportant;
         }
 
 
         private void ToDoChecked(object sender, RoutedEventArgs e)
         {
             var icon = new PackIcon { Kind = PackIconKind.Check };
-            icon.Height = 27;
-            icon.Width = 27;
+            icon.Height = 25;
+            icon.Width = 25;
             icon.HorizontalAlignment = HorizontalAlignment.Center;
             icon.VerticalAlignment = VerticalAlignment.Center;
             icon.Foreground = Brushes.Black;
@@ -53,6 +47,8 @@ namespace ProjectSC.UserControls.Custom
             checkBox.Content = icon;
 
             textBlock.TextDecorations = TextDecorations.Strikethrough;
+
+            DataAccess.UpdateCompletion(Id, true, MyDay.Inventory);
         }
 
         private void ToDoUnchecked(object sender, RoutedEventArgs e)
@@ -60,8 +56,8 @@ namespace ProjectSC.UserControls.Custom
             if (cBoxGrid.IsMouseOver)
             {
                 var icon = new PackIcon { Kind = PackIconKind.Check };
-                icon.Height = 27;
-                icon.Width = 27;
+                icon.Height = 25;
+                icon.Width = 25;
                 icon.HorizontalAlignment = HorizontalAlignment.Center;
                 icon.VerticalAlignment = VerticalAlignment.Center;
                 icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
@@ -70,6 +66,8 @@ namespace ProjectSC.UserControls.Custom
             }
 
             textBlock.TextDecorations = null;
+
+            DataAccess.UpdateCompletion(Id, false, MyDay.Inventory);
         }
 
         #region Mouse down events

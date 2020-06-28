@@ -118,7 +118,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataAccess\Interfaces\IDataAccess.cs" />
     <Compile Include="Core\Todo\ToDoItem.cs" />
     <Compile Include="UserInterface\Interface\IMouseEvents.cs" />
     <Compile Include="MainWindow.xaml.cs">
