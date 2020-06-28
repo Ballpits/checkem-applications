@@ -1,8 +1,9 @@
-﻿using ProjectSC.UserControls.Custom;
+﻿using MaterialDesignThemes.Wpf;
+using ProjectSC.UserControls.Custom;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 
 namespace ProjectSC
@@ -19,8 +20,6 @@ namespace ProjectSC
             DataAccess.ResetId(Inventory);
 
             LoadList(filterMode);
-
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
 
         #region Variables
@@ -34,29 +33,28 @@ namespace ProjectSC
         {
             stpMain.Children.Clear();
             itemBarList.Clear();
-
             DataAccess.RetrieveData(ref Inventory);
             DataAccess.ResetId(Inventory);
 
-            for (int index = 0; index < Inventory.Count; index++)
+            for (int i = 0; i < Inventory.Count; i++)
             {
-                if (filterMode == 0)//Filter:Improtance
+                if (filterMode == 0)
                 {
-                    if (Inventory[index].IsImportant)
+                    if (Inventory[i].IsImportant)
                     {
-                        AddItem(index);
+                        AddItem(i);
                     }
                 }
-                if (filterMode == 1)//Filter:Reminder
+                if (filterMode == 1)
                 {
-                    if (Inventory[index].IsReminderOn)
+                    if (Inventory[i].IsReminderOn)
                     {
-                        AddItem(index);
+                        AddItem(i);
                     }
                 }
-                if (filterMode == 2)//Filter:None
+                if (filterMode == 2)
                 {
-                    AddItem(index);
+                    AddItem(i);
                 }
             }
 
@@ -105,11 +103,11 @@ namespace ProjectSC
         }
 
         #region Item
-        private void AddItem(int index)
+        private void AddItem(int id)
         {
             ItemBar itemBar = new ItemBar(this)
             {
-                Id = Inventory[index].Id,
+                Id = id,
             };
 
             itemBarList.Add(itemBar);
@@ -172,23 +170,5 @@ namespace ProjectSC
             }
         }
         #endregion
-
-        private void ButtonImp_Click(object sender, RoutedEventArgs e)
-        {
-            Inventory = Inventory.OrderBy(x => x.IsImportant == true).ToList();
-
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
-
-            LoadList(2);
-        }
-
-        private void ButtonDueDate_Click(object sender, RoutedEventArgs e)
-        {
-            Inventory = Inventory.OrderBy(x => x.EndDateTime).ToList();
-
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
-
-            //LoadList(2);
-        }
     }
 }
