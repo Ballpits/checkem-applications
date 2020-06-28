@@ -27,8 +27,8 @@ namespace ProjectSC.UserControls.Custom
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            //textBlock.Text = MyDay.Inventory[Id].Title;
-            textBlock.Text = Id.ToString();
+            textBlock.Text = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].Title;
+            //textBlock.Text = Id.ToString();
 
             if (MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].IsImportant == true)
             {

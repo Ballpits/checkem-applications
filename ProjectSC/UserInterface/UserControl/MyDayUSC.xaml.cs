@@ -18,7 +18,7 @@ namespace ProjectSC
             DataAccess.RetrieveData(ref Inventory);
             DataAccess.ResetId(Inventory);
 
-            LoadList(filterMode);
+            LoadFilteredList(filterMode);
 
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
@@ -28,15 +28,15 @@ namespace ProjectSC
         private List<ItemBar> itemBarList = new List<ItemBar>();
 
         private int filterMode = 0;
+
+        private bool DetailsPanelOpened = false;
         #endregion
 
-        public void LoadList(int filterMode)
+        public void LoadFilteredList(int filterMode)
         {
             stpMain.Children.Clear();
             itemBarList.Clear();
 
-            DataAccess.RetrieveData(ref Inventory);
-            DataAccess.ResetId(Inventory);
 
             for (int index = 0; index < Inventory.Count; index++)
             {
@@ -58,6 +58,17 @@ namespace ProjectSC
                 {
                     AddItem(index);
                 }
+            }
+        }
+
+        private void LoadList()
+        {
+            stpMain.Children.Clear();
+            itemBarList.Clear();
+
+            for (int i = 0; i < Inventory.Count; i++)
+            {
+                AddItem(i);
             }
         }
 
@@ -102,6 +113,8 @@ namespace ProjectSC
             };
 
             DataGrid.Children.Add(detailsPanel);
+
+            DetailsPanelOpened = true;
         }
 
         public void OpenDetailsPanel(int id, ItemBar itemBar)
@@ -120,7 +133,7 @@ namespace ProjectSC
 
 
                 IsReminderOn = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsReminderOn,
-                IsAdvanceOn = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsAdvanceOn,
+                IsAdvanceReminderOn = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsAdvanceReminderOn,
 
                 BeginDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].BeginDateTime,
                 EndDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].EndDateTime,
@@ -131,46 +144,56 @@ namespace ProjectSC
             };
 
             DataGrid.Children.Add(detailsPanel);
+
+
+            DetailsPanelOpened = true;
         }
 
         public void CloseDetailsPanel()
         {
-            if (DataGrid.Children.Count > 2)
+            if (DetailsPanelOpened)
             {
                 DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
+                DetailsPanelOpened = false;
             }
         }
         #endregion
 
-        private void ButtonImp_Click(object sender, RoutedEventArgs e)
+        private void FilterButton_Importance_Click(object sender, RoutedEventArgs e)
         {
             Inventory = Inventory.OrderBy(x => x.IsImportant == false).ToList();
 
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
 
-
-            stpMain.Children.Clear();
-            itemBarList.Clear();
-
-            for (int i = 0; i < Inventory.Count; i++)
-            {
-                ItemBar itemBar = new ItemBar(this)
-                {
-                    Id = Inventory[i].Id,
-                };
-
-                itemBarList.Add(itemBar);
-                stpMain.Children.Add(itemBar);
-            }
+            LoadList();
         }
 
-        private void ButtonDueDate_Click(object sender, RoutedEventArgs e)
+        private void FilterButton_DueDate_Click(object sender, RoutedEventArgs e)
         {
             Inventory = Inventory.OrderBy(x => x.EndDateTime).ToList();
+            Inventory = Inventory.OrderBy(x => x.IsReminderOn == false).ToList();
 
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
 
-            LoadList(2);
+            LoadList();
+        }
+
+        private void FilterButton_Alphabetically_Click(object sender, RoutedEventArgs e)
+        {
+            Inventory = Inventory.OrderBy(x => x.Title).ToList();
+
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+
+            LoadList();
+        }
+
+        private void FilterButton_CreationDate_Click(object sender, RoutedEventArgs e)
+        {
+            Inventory = Inventory.OrderBy(x => x.CreationDateTime).ToList();
+
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+
+            LoadList();
         }
     }
 }

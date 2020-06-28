@@ -39,7 +39,7 @@ namespace ProjectSC.UserControls.Custom
 
 
         public bool IsReminderOn { get; set; }
-        public bool IsAdvanceOn { get; set; }
+        public bool IsAdvanceReminderOn { get; set; }
         public int NotifyType { get; set; }
 
 
@@ -75,13 +75,13 @@ namespace ProjectSC.UserControls.Custom
                 ReminderToggle.IsChecked = IsReminderOn;
                 CheckBasicToggleState();
 
-                AdvReminderToggle.IsChecked = IsAdvanceOn;
+                AdvReminderToggle.IsChecked = IsAdvanceReminderOn;
                 CheckAdvanceToggleState();
 
                 if (IsReminderOn)
                 {
 
-                    if (IsAdvanceOn)
+                    if (IsAdvanceReminderOn)
                     {
                         BeginDatePicker.Text = $"{BeginDateTime.Month}/{BeginDateTime.Day}/{BeginDateTime.Year}";
                         BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", BeginDateTime)}";

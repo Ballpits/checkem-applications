@@ -227,7 +227,7 @@ namespace ProjectSC
 
 
             inventory[id].IsReminderOn = true;
-            inventory[id].IsAdvanceOn = false;
+            inventory[id].IsAdvanceReminderOn = false;
 
             inventory[id].EndDateTime = endDateTime;
 
@@ -241,7 +241,7 @@ namespace ProjectSC
 
 
             inventory[id].IsReminderOn = true;
-            inventory[id].IsAdvanceOn = true;
+            inventory[id].IsAdvanceReminderOn = true;
 
             inventory[id].BeginDateTime = beginDateTime;
             inventory[id].EndDateTime = endDateTime;

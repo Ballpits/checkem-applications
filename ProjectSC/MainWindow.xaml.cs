@@ -29,7 +29,7 @@ namespace ProjectSC
             timer.Start();
 
             GridMain.Children.Add(myDayUSC);
-            myDayUSC.LoadList(2);
+            myDayUSC.LoadFilteredList(2);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -68,18 +68,18 @@ namespace ProjectSC
 
         private void ButtonImportantFilter_Click(object sender, RoutedEventArgs e)
         {
-            myDayUSC.LoadList(0);
+            myDayUSC.LoadFilteredList(0);
             myDayUSC.CloseDetailsPanel();
         }
         private void ButtonDueDateFilter_Click(object sender, RoutedEventArgs e)
         {
-            myDayUSC.LoadList(1);
+            myDayUSC.LoadFilteredList(1);
             myDayUSC.CloseDetailsPanel();
         }
 
         private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
         {
-            myDayUSC.LoadList(2);
+            myDayUSC.LoadFilteredList(2);
             myDayUSC.CloseDetailsPanel();
         }
 

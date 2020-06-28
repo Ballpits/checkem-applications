@@ -40,19 +40,19 @@
                     </materialDesign:PopupBox.ToggleContent>
 
                     <StackPanel>
-                        <Button ToolTip="Importance" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="16,0" Click="ButtonImp_Click">
+                        <Button ToolTip="Importance" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="16,0" Click="FilterButton_Importance_Click">
                             <materialDesign:PackIcon Kind="StarBorder" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
                         </Button>
 
-                        <Button ToolTip="Due Date" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="16,0" Click="ButtonDueDate_Click">
+                        <Button ToolTip="Due Date" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="16,0" Click="FilterButton_DueDate_Click">
                             <materialDesign:PackIcon Kind="CalendarClock" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
                         </Button>
 
-                        <Button ToolTip="Alphabetically" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="16,0">
+                        <Button ToolTip="Alphabetically" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="16,0" Click="FilterButton_Alphabetically_Click">
                             <materialDesign:PackIcon Kind="SortAlphabetically" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="25"/>
                         </Button>
 
-                        <Button ToolTip="Creation Date" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="16,0">
+                        <Button ToolTip="Creation Date" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="16,0" Click="FilterButton_CreationDate_Click">
                             <materialDesign:PackIcon Kind="CalendarAdd" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="25"/>
                         </Button>
                     </StackPanel>
