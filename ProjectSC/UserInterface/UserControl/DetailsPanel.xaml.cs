@@ -251,6 +251,7 @@ namespace ProjectSC.UserControls.Custom
         private void ChipTitleEditTextbox_LostFocus(object sender, RoutedEventArgs e)
         {
             DataAccess.Update(Id, ChipTitleEditTextbox.Text, myDay.Inventory);
+            ChipTitleEditTextbox.Background = Brushes.Black;
         }
     }
 }

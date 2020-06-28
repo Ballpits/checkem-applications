@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-
+using System.Windows.Media;
 
 namespace ProjectSC
 {
@@ -194,6 +194,33 @@ namespace ProjectSC
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
 
             LoadList();
+        }
+
+
+        private void ListViewerButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewerGrid.Visibility == Visibility.Collapsed)
+            {
+                ListViewerGrid.Visibility = Visibility.Visible;
+                scrollBar.Margin = new Thickness(0, 40, 0, 200);
+            }
+            else
+            {
+                ListViewerGrid.Visibility = Visibility.Collapsed;
+                scrollBar.Margin = new Thickness(0, 40, 0, 0);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ListTesterTB.Background = Brushes.White;
+            ListTesterTB.Foreground = Brushes.Black;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ListTesterTB.Background = Brushes.Black;
+            ListTesterTB.Foreground = Brushes.White;
         }
     }
 }

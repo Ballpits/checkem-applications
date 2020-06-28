@@ -58,19 +58,27 @@
                     </StackPanel>
 
                 </materialDesign:PopupBox>
+
+
+                <Button Margin="0" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="{x:Null}" Click="ListViewerButton_Click" Padding="15,5" Grid.IsSharedSizeScope="True">
+                    <materialDesign:PackIcon Kind="Toolbox" Height="20" Width="20"/>
+                </Button>
             </Grid>
 
-            <ScrollViewer x:Name="scrollBar" VerticalScrollBarVisibility="Auto" Margin="0,40,0,199.6" Background="#FFE5E5E5">
+            <ScrollViewer x:Name="scrollBar" VerticalScrollBarVisibility="Auto" Margin="0,40,0,0" Background="#FFE5E5E5">
                 <StackPanel Name="stpMain">
                 </StackPanel>
             </ScrollViewer>
 
-            <Grid x:Name="ListViewerGrid" Margin="0" VerticalAlignment="Bottom">
+            
+            <Grid x:Name="ListViewerGrid" Visibility="Collapsed" Margin="0" VerticalAlignment="Bottom">
+              
                 <ScrollViewer Visibility="Visible" Margin="0,0,0,45" Height="150">
                     <TextBlock x:Name="ListTesterTB" Background="Black" Foreground="White"/>
                 </ScrollViewer>
+
                 <StackPanel Orientation="Horizontal" Margin="0,150,0,0.2" Background="#FFE5E5E5">
-                    <Button Margin="10,0,0,0" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="Black" Height="35" Width="35">
+                    <Button Margin="10,0,0,0" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="Black" Height="35" Width="35" Click="Button_Click">
                         <Button.Background>
                             <RadialGradientBrush>
                                 <GradientStop Color="Black"/>
@@ -79,7 +87,8 @@
                             </RadialGradientBrush>
                         </Button.Background>
                     </Button>
-                    <Button Margin="10,0,0,0" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="Black" Height="35" Width="35">
+                    
+                    <Button Margin="10,0,0,0" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="Black" Height="35" Width="35" Click="Button_Click_1">
                         <Button.Background>
                             <RadialGradientBrush>
                                 <GradientStop Color="Black" Offset="1"/>
@@ -90,6 +99,8 @@
                     </Button>
                 </StackPanel>
             </Grid>
+
+
         </Grid>
     </materialDesign:TransitioningContent>
 </UserControl>
