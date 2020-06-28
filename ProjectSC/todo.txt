@@ -1,6 +1,6 @@
 A.fix
 	
 B.new
-	1.sort
-	2.adv reminder(almost done)
+	1.tags
+	2.notify user for passed events
 	3.uprefs

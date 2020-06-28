@@ -59,12 +59,6 @@ namespace ProjectSC.UserControls.Custom
             {
                 RemoveButton.IsEnabled = false;
                 RemoveButton.Visibility = Visibility.Hidden;
-
-                BeginDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
-                BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", DateTime.Now)}";
-
-                EndDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
-                EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", DateTime.Now)}";
             }
             else
             {
@@ -104,7 +98,6 @@ namespace ProjectSC.UserControls.Custom
 
                     ChipTitleEditTextbox.Text = TagName;
                 }//Tag texts
-
             }
         }
 
@@ -193,6 +186,9 @@ namespace ProjectSC.UserControls.Custom
                 OutterExpender.Visibility = Visibility.Visible;
 
                 ReminderTitleGrid.Margin = new Thickness(10, 30, 10, 5);
+
+                EndDatePickerBasic.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day + 1}/{DateTime.Now.Year}";
+                EndTimePickerBasic.Text = "12:00 AM";
             }
             else
             {
@@ -217,6 +213,12 @@ namespace ProjectSC.UserControls.Custom
 
                 BasicReminderGrid.IsEnabled = false;
                 BasicReminderGrid.Visibility = Visibility.Collapsed;
+
+                BeginDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
+                BeginTimePicker.Text = "12:00 AM";
+
+                EndDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day + 1}/{DateTime.Now.Year}";
+                EndTimePicker.Text = "12:00 AM";
             }
             else
             {

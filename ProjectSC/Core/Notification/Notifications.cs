@@ -17,10 +17,12 @@ namespace ProjectSC
             });
         }
 
-        public static string RandomMessage(string s)
+        public static string RandomMessage(string msgType)
         {
-            switch (s)
+            switch (msgType)
             {
+                case "passed":
+                    return BeginMessages[RandomMessageId()];
                 case "begin":
                     return BeginMessages[RandomMessageId()];
                 case "end":
