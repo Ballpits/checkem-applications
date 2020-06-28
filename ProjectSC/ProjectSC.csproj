@@ -93,6 +93,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataAccess\Class\DataAccess.cs" />
+    <Compile Include="ListTester\ListViewer.cs" />
     <Compile Include="UserInterface\Class\DetailsPanel\SnackbarControl.cs" />
     <Compile Include="UserInterface\Class\MainWindow\MainWindowMouseover.cs" />
     <Compile Include="Core\Notification\TimeRecord.cs" />

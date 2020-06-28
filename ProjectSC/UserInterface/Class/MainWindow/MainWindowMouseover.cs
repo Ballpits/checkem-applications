@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace ProjectSC.Classes.Functions.MainWindow
+namespace ProjectSC
 {
     public static class MainWindowMouseover
     {

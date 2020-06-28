@@ -1,5 +1,4 @@
 ﻿using ProjectSC.Classes;
-using ProjectSC.Classes.Functions.MainWindow;
 using System;
 using System.Collections.Generic;
 using System.Windows;

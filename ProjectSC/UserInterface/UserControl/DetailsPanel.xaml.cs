@@ -1,5 +1,4 @@
 ﻿using MaterialDesignThemes.Wpf;
-using ProjectSC.Classes.Functions.Common;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -102,7 +101,7 @@ namespace ProjectSC.UserControls.Custom
                     ChipGrid.Height = 50;
 
                     TagChip.Visibility = Visibility.Visible;
-                    
+
                     ChipTitleEditTextbox.Text = TagName;
                 }//Tag texts
 

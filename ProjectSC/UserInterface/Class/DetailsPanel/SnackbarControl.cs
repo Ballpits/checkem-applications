@@ -1,7 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
 
-namespace ProjectSC.Classes.Functions.Common
+namespace ProjectSC
 {
     public static class SnackbarControl
     {
