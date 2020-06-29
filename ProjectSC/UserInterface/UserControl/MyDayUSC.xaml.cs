@@ -37,6 +37,7 @@ namespace ProjectSC
             stpMain.Children.Clear();
             itemBarList.Clear();
 
+            Inventory = Inventory.OrderBy(x => x.Id).ToList();
 
             for (int index = 0; index < Inventory.Count; index++)
             {
@@ -180,6 +181,8 @@ namespace ProjectSC
 
         private void FilterButton_Alphabetically_Click(object sender, RoutedEventArgs e)
         {
+            DataAccess.RetrieveData(ref Inventory);
+
             Inventory = Inventory.OrderBy(x => x.Title).ToList();
 
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
@@ -197,6 +200,9 @@ namespace ProjectSC
         }
 
 
+
+
+        #region List viewer button events
         private void ListViewerButton_Click(object sender, RoutedEventArgs e)
         {
             if (ListViewerGrid.Visibility == Visibility.Collapsed)
@@ -222,5 +228,6 @@ namespace ProjectSC
             ListTesterTB.Background = Brushes.Black;
             ListTesterTB.Foreground = Brushes.White;
         }
+        #endregion
     }
 }

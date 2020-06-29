@@ -25,12 +25,16 @@ namespace ProjectSC.UserControls.Custom
         public int Id { get; set; }
 
 
+        private bool CheckboxLoaded = false;
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             textBlock.Text = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].Title;
             //textBlock.Text = Id.ToString();
 
             checkBox.IsChecked = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].IsCompleted;
+            CheckboxLoaded = true;
+
             StarToggle.IsChecked = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].IsImportant;
         }
 
@@ -48,7 +52,10 @@ namespace ProjectSC.UserControls.Custom
 
             textBlock.TextDecorations = TextDecorations.Strikethrough;
 
-            DataAccess.UpdateCompletion(Id, true, MyDay.Inventory);
+            if (CheckboxLoaded)
+            {
+                DataAccess.UpdateCompletion(Id, true, MyDay.Inventory);
+            }
         }
 
         private void ToDoUnchecked(object sender, RoutedEventArgs e)
@@ -69,6 +76,19 @@ namespace ProjectSC.UserControls.Custom
 
             DataAccess.UpdateCompletion(Id, false, MyDay.Inventory);
         }
+
+        private void StarToggle_Click(object sender, RoutedEventArgs e)
+        {
+            if (StarToggle.IsChecked == true)
+            {
+                DataAccess.Update(Id, true, MyDay.Inventory);
+            }
+            else
+            {
+                DataAccess.Update(Id, false, MyDay.Inventory);
+            }
+        }
+
 
         #region Mouse down events
         private bool BorderEventCanActivate = true;
@@ -188,17 +208,6 @@ namespace ProjectSC.UserControls.Custom
         }
         #endregion
 
-        private void StarToggle_Click(object sender, RoutedEventArgs e)
-        {
-            if (StarToggle.IsChecked == true)
-            {
-                DataAccess.Update(Id, true, MyDay.Inventory);
-            }
-            else
-            {
-                DataAccess.Update(Id, false, MyDay.Inventory);
-            }
-        }
 
         public void Update(string title)
         {
