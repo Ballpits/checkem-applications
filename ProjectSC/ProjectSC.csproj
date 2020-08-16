@@ -93,7 +93,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataAccess\Class\DataAccess.cs" />
+    <Compile Include="HotKey.cs" />
     <Compile Include="ListTester\ListViewer.cs" />
+    <Compile Include="QuickViewWindow.xaml.cs">
+      <DependentUpon>QuickViewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserInterface\Class\DetailsPanel\SnackbarControl.cs" />
     <Compile Include="UserInterface\Class\MainWindow\MainWindowMouseover.cs" />
     <Compile Include="Core\Notification\TimeRecord.cs" />
@@ -124,6 +128,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="QuickViewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserInterface\UserControl\DetailsPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

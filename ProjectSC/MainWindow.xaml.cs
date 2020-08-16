@@ -29,7 +29,10 @@ namespace ProjectSC
             timer.Start();
 
             GridMain.Children.Add(myDayUSC);
-            myDayUSC.LoadFilteredList(2);
+            myDayUSC.ListFilter(2);
+
+            //QuickViewWindow quickView = new QuickViewWindow();
+            //quickView.Show();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -54,7 +57,7 @@ namespace ProjectSC
 
         }
 
-        #region Mouse enter events
+        #region Mouse over events
         public void MouseEnterHighLight(object sender, RoutedEventArgs e)
         {
             MainWindowMouseover.Highlight(sender);
@@ -68,18 +71,18 @@ namespace ProjectSC
 
         private void ButtonImportantFilter_Click(object sender, RoutedEventArgs e)
         {
-            myDayUSC.LoadFilteredList(0);
+            myDayUSC.ListFilter(0);
             myDayUSC.CloseDetailsPanel();
         }
         private void ButtonDueDateFilter_Click(object sender, RoutedEventArgs e)
         {
-            myDayUSC.LoadFilteredList(1);
+            myDayUSC.ListFilter(1);
             myDayUSC.CloseDetailsPanel();
         }
 
         private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
         {
-            myDayUSC.LoadFilteredList(2);
+            myDayUSC.ListFilter(2);
             myDayUSC.CloseDetailsPanel();
         }
 

@@ -60,7 +60,7 @@
                 </materialDesign:PopupBox>
 
 
-                <Button Margin="0" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="{x:Null}" Click="ListViewerButton_Click" Padding="15,5" Grid.IsSharedSizeScope="True">
+                <Button Visibility="Hidden" Margin="0" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="{x:Null}" Click="ListViewerButton_Click" Padding="15,5" Grid.IsSharedSizeScope="True">
                     <materialDesign:PackIcon Kind="Toolbox" Height="20" Width="20"/>
                 </Button>
             </Grid>

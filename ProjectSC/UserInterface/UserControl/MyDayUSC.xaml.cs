@@ -16,9 +16,10 @@ namespace ProjectSC
             //DataAccess.StoreTestData(Inventory);
 
             DataAccess.RetrieveData(ref Inventory);
+            Inventory = Inventory.OrderBy(x => x.Id).ToList();
             DataAccess.ResetId(Inventory);
 
-            LoadFilteredList(filterMode);
+            ListFilter(filterMode);
 
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
@@ -32,7 +33,7 @@ namespace ProjectSC
         private bool DetailsPanelOpened = false;
         #endregion
 
-        public void LoadFilteredList(int filterMode)
+        public void ListFilter(int filterMode)
         {
             stpMain.Children.Clear();
             itemBarList.Clear();

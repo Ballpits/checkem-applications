@@ -18,7 +18,7 @@
         </Grid>
 
         <Grid Margin="0,50,0,0">
-
+            <materialDesign:PackIcon Kind="CalendarAdd" Height="420" Width="420"/>
         </Grid>
     </Grid>
 </Window>

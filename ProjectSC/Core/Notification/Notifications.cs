@@ -41,6 +41,6 @@ namespace ProjectSC
 
         private static string[] BeginMessages = new string[5] { "It's time to begin", "m2", "m3", "m4", "m5" };
 
-        private static string[] EndMessages = new string[5] { "Time to wrap things up", "I hope you've finished this already,or at least on time", "You done ? Cause time's up", "Finally !", "m5" };
+        private static string[] EndMessages = new string[5] { "Time to wrap things up", "I hope you've finished already,or at least on time", "You done ? Cause time's up", "Finally !", "Time's up" };
     }
 }
