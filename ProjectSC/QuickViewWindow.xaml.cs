@@ -1,13 +1,9 @@
-﻿using System.Runtime.Remoting.Messaging;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
 namespace ProjectSC
 {
-    /// <summary>
-    /// Interaction logic for QuickViewWindow.xaml
-    /// </summary>
     public partial class QuickViewWindow : Window
     {
         //public QuickViewWindow()

@@ -11,7 +11,7 @@ namespace ProjectSC
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            MainWindow = new MainWindow();
+            MainWindow = new MainWindow(this);
 
             TrayIcon = new System.Windows.Forms.NotifyIcon();
             TrayIcon.DoubleClick += (s, args) => OpenMainWindow();
@@ -31,9 +31,11 @@ namespace ProjectSC
             TrayIcon.ContextMenuStrip.Items.Add("Exit").Click += (s, e) => ShutdownApplication();
         }
 
+
+        public bool IsMainWindowOpen = false;
         private void OpenMainWindow()
         {
-            if (MainWindow.IsVisible)
+            if (MainWindow.IsActive)
             {
                 if (MainWindow.WindowState == WindowState.Minimized)
                 {
@@ -43,7 +45,18 @@ namespace ProjectSC
             }
             else
             {
-                MainWindow.Show();
+                MainWindow window = new MainWindow(this);
+                window.Show();
+
+                IsMainWindowOpen = true;
+            }
+
+            if (!IsMainWindowOpen)
+            {
+                MainWindow window = new MainWindow(this);
+                window.Show();
+
+                IsMainWindowOpen = true;
             }
         }
 
@@ -78,11 +91,12 @@ namespace ProjectSC
 
         private void ShutdownApplication()
         {
+            TrayIcon.Icon = null;
             TrayIcon.Visible = false;
             Application.Current.Shutdown();
         }
 
-        private HotKey _hotKey;
+        private HotKey hotKey;
 
         protected override void OnActivated(EventArgs e)
         {
@@ -98,18 +112,18 @@ namespace ProjectSC
 
         private void RegisterHotKeys()
         {
-            if (_hotKey != null) return;
+            if (hotKey != null) return;
 
-            _hotKey = new HotKey(ModifierKeys.Alt, Key.C, Current.MainWindow);
-            _hotKey.HotKeyPressed += OnHotKeyPressed;
+            hotKey = new HotKey(ModifierKeys.Alt, Key.C, Current.MainWindow);
+            hotKey.HotKeyPressed += OnHotKeyPressed;
         }
 
         private void UnregisterHotKeys()
         {
-            if (_hotKey == null) return;
+            if (hotKey == null) return;
 
-            _hotKey.HotKeyPressed -= OnHotKeyPressed;
-            _hotKey.Dispose();
+            hotKey.HotKeyPressed -= OnHotKeyPressed;
+            hotKey.Dispose();
         }
 
         private void OnHotKeyPressed(HotKey hotKey)

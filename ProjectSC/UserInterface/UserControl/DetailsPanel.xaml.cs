@@ -1,5 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -9,18 +10,18 @@ namespace ProjectSC.UserControls.Custom
 {
     public partial class DetailsPanel : UserControl
     {
-        public DetailsPanel(MyDayUSC myDayUSC)
+        public DetailsPanel(ToDoListUSC myDayUSC)
         {
             InitializeComponent();
 
-            myDay = myDayUSC;
+            todo = myDayUSC;
         }
 
-        public DetailsPanel(MyDayUSC myDayUSC, ItemBar itembar)
+        public DetailsPanel(ToDoListUSC todolist, ItemBar itembar)
         {
             InitializeComponent();
 
-            myDay = myDayUSC;
+            todo = todolist;
             itemBar = itembar;
         }
 
@@ -50,7 +51,7 @@ namespace ProjectSC.UserControls.Custom
         public string TagName { get; set; }
         #endregion
 
-        MyDayUSC myDay = new MyDayUSC();
+        ToDoListUSC todo = new ToDoListUSC();
         ItemBar itemBar = new ItemBar();
 
         private void DarkGrid_Loaded(object sender, RoutedEventArgs e)
@@ -65,17 +66,25 @@ namespace ProjectSC.UserControls.Custom
                 textBoxTitle.Text = Title;
                 textBoxDescription.Text = Description;
 
-
-                ReminderToggle.IsChecked = IsReminderOn;
-                CheckBasicToggleState();
-
-                AdvReminderToggle.IsChecked = IsAdvanceReminderOn;
-                CheckAdvanceToggleState();
-
-                if (IsReminderOn)
+                if (IsReminderOn == true)
                 {
+                    if (IsAdvanceReminderOn == true)
+                    {
+                        reminderMode = 2;
+                    }
+                    else
+                    {
+                        reminderMode = 1;
+                    }
+                }
+                else
+                {
+                    reminderMode = 0;
+                }
 
-                    if (IsAdvanceReminderOn)
+                if (reminderMode != 0)
+                {
+                    if (reminderMode == 2)
                     {
                         BeginDatePicker.Text = $"{BeginDateTime.Month}/{BeginDateTime.Day}/{BeginDateTime.Year}";
                         BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", BeginDateTime)}";
@@ -90,6 +99,9 @@ namespace ProjectSC.UserControls.Custom
                     }
                 }//Reminder texts
 
+                ChangeReminderButtonMode(reminderMode);
+                ChangeReminderState();
+
                 if (IsUsingTag)
                 {
                     ChipGrid.Height = 50;
@@ -103,46 +115,46 @@ namespace ProjectSC.UserControls.Custom
 
         private void RetunButton_Click(object sender, RoutedEventArgs e)
         {
-            myDay.CloseDetailsPanel();
+            todo.CloseDetailsPanel();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (IsNew)
             {
-                if (ReminderToggle.IsChecked == true)
+                if (reminderMode != 0)
                 {
-                    DataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), DateTime.Now, myDay.Inventory);
+                    DataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), DateTime.Now, todo.Inventory);
                 }
                 else
                 {
-                    DataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, DateTime.Now, myDay.Inventory);
+                    DataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, DateTime.Now, todo.Inventory);
                 }
 
 
-                DataAccess.RetrieveData(ref myDay.Inventory);
-                DataAccess.ResetId(myDay.Inventory);
+                DataAccess.RetrieveData(ref todo.Inventory);
+                DataAccess.ResetId(todo.Inventory);
 
-                myDay.AddItemBar();
+                todo.AddItemBar();
 
                 DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Added"));
             }
             else
             {
-                if (ReminderToggle.IsChecked == true)
+                if (reminderMode != 0)
                 {
-                    if (AdvReminderToggle.IsChecked == true)
+                    if (reminderMode == 2)
                     {
-                        DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), myDay.Inventory);
+                        DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), todo.Inventory);
                     }
                     else
                     {
-                        DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePickerBasic.Text + " " + EndTimePickerBasic.Text), myDay.Inventory);
+                        DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePickerBasic.Text + " " + EndTimePickerBasic.Text), todo.Inventory);
                     }
                 }
                 else
                 {
-                    DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, myDay.Inventory);
+                    DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, todo.Inventory);
                 }
 
 
@@ -157,89 +169,64 @@ namespace ProjectSC.UserControls.Custom
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.RemoveAt(Id, myDay.Inventory);
+            DataAccess.RemoveAt(Id, todo.Inventory);
 
-            myDay.RemoveItemBar(Id);
+            todo.RemoveItemBar(Id);
 
-            myDay.CloseDetailsPanel();
+            todo.CloseDetailsPanel();
         }
 
 
-        private void ReminderToggle_Click(object sender, RoutedEventArgs e)
+        private void ChangeReminderState()
         {
-            CheckBasicToggleState();
-        }
-        private void AdvReminderToggle_Click(object sender, RoutedEventArgs e)
-        {
-            CheckAdvanceToggleState();
-        }
-
-
-
-        private void CheckBasicToggleState()
-        {
-            if (ReminderToggle.IsChecked == true)
+            switch (reminderMode)
             {
-                OutterExpender.IsEnabled = true;
-                OutterExpender.Foreground = Brushes.Black;
-                OutterExpender.IsExpanded = true;
-                OutterExpender.Visibility = Visibility.Visible;
+                case 0:
 
-                ReminderTitleGrid.Margin = new Thickness(10, 30, 10, 5);
+                    StpReminder.Visibility = Visibility.Collapsed;
 
-                EndDatePickerBasic.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day + 1}/{DateTime.Now.Year}";
-                EndTimePickerBasic.Text = "12:00 AM";
-            }
-            else
-            {
-                OutterExpender.IsEnabled = false;
-                OutterExpender.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#66000000"));
-                OutterExpender.IsExpanded = false;
-                OutterExpender.Visibility = Visibility.Collapsed;
+                    break;
 
-                ReminderTitleGrid.Margin = new Thickness(10, 30, 10, 30);
-            }
-        }
+                case 1:
 
-        private void CheckAdvanceToggleState()
-        {
-            if (AdvReminderToggle.IsChecked == true)
-            {
-                AdvReminderExpander.IsEnabled = true;
-                AdvReminderExpander.Foreground = Brushes.Black;
+                    StpReminder.Visibility = Visibility.Visible;
 
-                AdvReminderExpander.IsExpanded = true;
-                AdvReminderExpander.Visibility = Visibility.Visible;
+                    BasicReminderField.Visibility = Visibility.Visible;
+                    AdvanceRemidnerField.Visibility = Visibility.Collapsed;
 
-                BasicReminderGrid.IsEnabled = false;
-                BasicReminderGrid.Visibility = Visibility.Collapsed;
+                    ReminderTitleGrid.Margin = new Thickness(10, 30, 10, 5);
 
-                BeginDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
-                BeginTimePicker.Text = "12:00 AM";
+                    EndDatePickerBasic.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day + 1}/{DateTime.Now.Year}";
+                    EndTimePickerBasic.Text = "12:00 AM";
 
-                EndDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day + 1}/{DateTime.Now.Year}";
-                EndTimePicker.Text = "12:00 AM";
-            }
-            else
-            {
-                AdvReminderExpander.IsEnabled = false;
-                AdvReminderExpander.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#66000000"));
+                    break;
 
-                AdvReminderExpander.IsExpanded = false;
-                AdvReminderExpander.Visibility = Visibility.Collapsed;
+                case 2:
 
-                BasicReminderGrid.IsEnabled = true;
-                BasicReminderGrid.Visibility = Visibility.Visible;
+                    StpReminder.Visibility = Visibility.Visible;
+
+                    BasicReminderField.Visibility = Visibility.Collapsed;
+                    AdvanceRemidnerField.Visibility = Visibility.Visible;
+
+                    BeginDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
+                    BeginTimePicker.Text = "12:00 AM";
+
+                    EndDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day + 1}/{DateTime.Now.Year}";
+                    EndTimePicker.Text = "12:00 AM";
+
+                    break;
+
+                default:
+                    break;
             }
         }
-
 
 
         private void DarkGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed || Mouse.XButton1 == MouseButtonState.Pressed)
             {
-                myDay.CloseDetailsPanel();
+                todo.CloseDetailsPanel();
             }
         }
 
@@ -252,8 +239,64 @@ namespace ProjectSC.UserControls.Custom
 
         private void ChipTitleEditTextbox_LostFocus(object sender, RoutedEventArgs e)
         {
-            DataAccess.Update(Id, ChipTitleEditTextbox.Text, myDay.Inventory);
-            ChipTitleEditTextbox.Background = Brushes.Black;
+            DataAccess.Update(Id, ChipTitleEditTextbox.Text, todo.Inventory);
+        }
+
+        int reminderMode = 0;
+        private void ReminderBasicButton_Click(object sender, RoutedEventArgs e)
+        {
+            reminderMode = 1;
+            ChangeReminderButtonMode(reminderMode);
+        }
+
+        private void ReminderNoneButton_Click(object sender, RoutedEventArgs e)
+        {
+            reminderMode = 0;
+            ChangeReminderButtonMode(reminderMode);
+        }
+
+        private void ReminderAdvanceButton_Click(object sender, RoutedEventArgs e)
+        {
+            reminderMode = 2;
+            ChangeReminderButtonMode(reminderMode);
+        }
+
+        private void ChangeReminderButtonMode(int i)
+        {
+            switch (i)
+            {
+                case 0:
+                    ReminderBasicButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                    ReminderNoneButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+                    ReminderAdvanceButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+
+                    ReminderBasicButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+                    ReminderNoneButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                    ReminderAdvanceButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+                    break;
+                case 1:
+                    ReminderBasicButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+                    ReminderNoneButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                    ReminderAdvanceButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+
+                    ReminderBasicButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                    ReminderNoneButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+                    ReminderAdvanceButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+                    break;
+                case 2:
+                    ReminderBasicButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                    ReminderNoneButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                    ReminderAdvanceButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+
+                    ReminderBasicButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+                    ReminderNoneButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+                    ReminderAdvanceButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                    break;
+                default:
+                    break;
+            }
+
+            ChangeReminderState();
         }
     }
 }

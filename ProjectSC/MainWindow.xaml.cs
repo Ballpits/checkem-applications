@@ -13,8 +13,23 @@ namespace ProjectSC
             InitializeComponent();
         }
 
+        //App application;
+        //bool ClosedBefore = true;
+        public MainWindow(App app)
+        {
+            InitializeComponent();
+
+            //application = app;
+
+            //if (ClosedBefore)
+            //{
+            //    ClosedBefore = false;
+            //}
+        }
+
+
         #region 
-        private MyDayUSC myDayUSC = new MyDayUSC();
+        private ToDoListUSC myDayUSC = new ToDoListUSC();
         #endregion
 
         #region Reminder variables
@@ -30,9 +45,6 @@ namespace ProjectSC
 
             GridMain.Children.Add(myDayUSC);
             myDayUSC.ListFilter(2);
-
-            //QuickViewWindow quickView = new QuickViewWindow();
-            //quickView.Show();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -69,20 +81,23 @@ namespace ProjectSC
         }
         #endregion
 
-        private void ButtonImportantFilter_Click(object sender, RoutedEventArgs e)
+        private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
         {
-            myDayUSC.ListFilter(0);
+            MoveCursorMenu(0);
+            myDayUSC.ListFilter(2);
             myDayUSC.CloseDetailsPanel();
         }
         private void ButtonDueDateFilter_Click(object sender, RoutedEventArgs e)
         {
+            MoveCursorMenu(1);
             myDayUSC.ListFilter(1);
             myDayUSC.CloseDetailsPanel();
         }
 
-        private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
+        private void ButtonImportantFilter_Click(object sender, RoutedEventArgs e)
         {
-            myDayUSC.ListFilter(2);
+            MoveCursorMenu(2);
+            myDayUSC.ListFilter(0);
             myDayUSC.CloseDetailsPanel();
         }
 
@@ -90,6 +105,19 @@ namespace ProjectSC
         {
             UserPrefenceWindow userPrefenceWindow = new UserPrefenceWindow();
             userPrefenceWindow.Show();
+        }
+
+        private void MoveCursorMenu(int index)
+        {
+            GridCursor.Margin = new Thickness(0, (70 * index), 0, 0);
+        }
+
+        private void AppWindow_Closed(object sender, EventArgs e)
+        {
+            //if (!ClosedBefore)
+            //{
+            //    application.IsMainWindowOpen = false;
+            //}
         }
     }
 }

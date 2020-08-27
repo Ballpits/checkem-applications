@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace ProjectSC
 {
-    public partial class MyDayUSC : UserControl
+    public partial class ToDoListUSC : UserControl
     {
-        public MyDayUSC()
+        public ToDoListUSC()
         {
             InitializeComponent();
 
@@ -19,16 +20,12 @@ namespace ProjectSC
             Inventory = Inventory.OrderBy(x => x.Id).ToList();
             DataAccess.ResetId(Inventory);
 
-            ListFilter(filterMode);
-
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
 
         #region Variables
         public List<ToDoItem> Inventory = new List<ToDoItem>();
         private List<ItemBar> itemBarList = new List<ItemBar>();
-
-        private int filterMode = 0;
 
         private bool DetailsPanelOpened = false;
         #endregion
@@ -230,5 +227,15 @@ namespace ProjectSC
             ListTesterTB.Foreground = Brushes.White;
         }
         #endregion
+
+        private void SearchBox_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            //Keyboard.ClearFocus();
+        }
+
+        private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Keyboard.ClearFocus();
+        }
     }
 }
