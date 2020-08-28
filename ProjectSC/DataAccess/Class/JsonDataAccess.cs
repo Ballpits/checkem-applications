@@ -6,7 +6,7 @@ using System.IO;
 
 namespace ProjectSC
 {
-    static class DataAccess
+    static class JsonDataAccess
     {
 
         #region test data
@@ -162,7 +162,7 @@ namespace ProjectSC
             }
 
             SaveToJson(inventory);
-        }
+        }//Reset the id to align with stackpanel index
 
 
 

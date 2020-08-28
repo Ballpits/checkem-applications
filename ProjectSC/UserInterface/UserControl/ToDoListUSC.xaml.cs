@@ -14,11 +14,13 @@ namespace ProjectSC
         {
             InitializeComponent();
 
-            //DataAccess.StoreTestData(Inventory);
+            //JsonDataAccess.StoreTestData(Inventory);
 
-            DataAccess.RetrieveData(ref Inventory);
+            JsonDataAccess.RetrieveData(ref Inventory);
             Inventory = Inventory.OrderBy(x => x.Id).ToList();
-            DataAccess.ResetId(Inventory);
+            JsonDataAccess.ResetId(Inventory);
+
+            LoadList();
 
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
@@ -37,28 +39,49 @@ namespace ProjectSC
 
             Inventory = Inventory.OrderBy(x => x.Id).ToList();
 
-            for (int index = 0; index < Inventory.Count; index++)
+            int counter = 0;
+
+            if (filterMode == 0)//Filter:Improtant
             {
-                if (filterMode == 0)//Filter:Improtance
+                for (int index = 0; index < Inventory.Count; index++)
                 {
                     if (Inventory[index].IsImportant)
                     {
                         AddItem(index);
+                        counter++;
                     }
                 }
-                if (filterMode == 1)//Filter:Reminder
+
+                ToDoListTitleTextBlock.Text = "Impotant";
+            }
+            else if (filterMode == 1)//Filter:Reminder
+            {
+                for (int index = 0; index < Inventory.Count; index++)
                 {
+
                     if (Inventory[index].IsReminderOn)
                     {
                         AddItem(index);
+                        counter++;
                     }
                 }
-                if (filterMode == 2)//Filter:None
+
+                ToDoListTitleTextBlock.Text = "Reminder";
+            }
+            else if (filterMode == 2)//Filter:None
+            {
+                for (int index = 0; index < Inventory.Count; index++)
                 {
                     AddItem(index);
+                    counter++;
                 }
+
+                ToDoListTitleTextBlock.Text = "All Items";
             }
+
+            ToDoListItemCounterTextBlock.Text = $"{counter} Items";
         }
+
 
         private void LoadList()
         {
@@ -179,7 +202,7 @@ namespace ProjectSC
 
         private void FilterButton_Alphabetically_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.RetrieveData(ref Inventory);
+            //JsonDataAccess.RetrieveData(ref Inventory);
 
             Inventory = Inventory.OrderBy(x => x.Title).ToList();
 

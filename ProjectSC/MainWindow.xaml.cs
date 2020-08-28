@@ -52,7 +52,7 @@ namespace ProjectSC
             TimerOffset = 60 - DateTime.Now.Second;
             timer.Interval = TimeSpan.FromSeconds(TimerOffset);//Fix timer delay time
 
-            DataAccess.RetrieveTimeData(ref timeRecord);
+            JsonDataAccess.RetrieveTimeData(ref timeRecord);
 
 
             foreach (var item in timeRecord)

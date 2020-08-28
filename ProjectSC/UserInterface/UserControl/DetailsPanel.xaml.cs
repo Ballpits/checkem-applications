@@ -124,16 +124,16 @@ namespace ProjectSC.UserControls.Custom
             {
                 if (reminderMode != 0)
                 {
-                    DataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), DateTime.Now, todo.Inventory);
+                    JsonDataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), DateTime.Now, todo.Inventory);
                 }
                 else
                 {
-                    DataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, DateTime.Now, todo.Inventory);
+                    JsonDataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, DateTime.Now, todo.Inventory);
                 }
 
 
-                DataAccess.RetrieveData(ref todo.Inventory);
-                DataAccess.ResetId(todo.Inventory);
+                JsonDataAccess.RetrieveData(ref todo.Inventory);
+                JsonDataAccess.ResetId(todo.Inventory);
 
                 todo.AddItemBar();
 
@@ -145,16 +145,16 @@ namespace ProjectSC.UserControls.Custom
                 {
                     if (reminderMode == 2)
                     {
-                        DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), todo.Inventory);
+                        JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), todo.Inventory);
                     }
                     else
                     {
-                        DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePickerBasic.Text + " " + EndTimePickerBasic.Text), todo.Inventory);
+                        JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePickerBasic.Text + " " + EndTimePickerBasic.Text), todo.Inventory);
                     }
                 }
                 else
                 {
-                    DataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, todo.Inventory);
+                    JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, todo.Inventory);
                 }
 
 
@@ -169,7 +169,7 @@ namespace ProjectSC.UserControls.Custom
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.RemoveAt(Id, todo.Inventory);
+            JsonDataAccess.RemoveAt(Id, todo.Inventory);
 
             todo.RemoveItemBar(Id);
 
@@ -239,7 +239,7 @@ namespace ProjectSC.UserControls.Custom
 
         private void ChipTitleEditTextbox_LostFocus(object sender, RoutedEventArgs e)
         {
-            DataAccess.Update(Id, ChipTitleEditTextbox.Text, todo.Inventory);
+            JsonDataAccess.Update(Id, ChipTitleEditTextbox.Text, todo.Inventory);
         }
 
         int reminderMode = 0;

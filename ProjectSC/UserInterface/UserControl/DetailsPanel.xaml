@@ -42,7 +42,7 @@
                                         <TextBlock Text="Basic" FontFamily="Arial" Margin="0,0,0,1"/>
                                     </Button>
 
-                                    <Button x:Name="ReminderNoneButton" Width="56" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="0" Height="Auto" Padding="0" BorderThickness="0,1,1,1" Click="ReminderNoneButton_Click">
+                                    <Button x:Name="ReminderNoneButton" Width="56" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="0" Height="Auto" Padding="0" BorderThickness="0,1" Click="ReminderNoneButton_Click">
                                         <TextBlock Text="None" FontFamily="Arial" Margin="0,0,0,1"/>
                                     </Button>
 
@@ -57,21 +57,21 @@
                             <StackPanel x:Name="StpReminder">
                                 <Border x:Name="BasicReminderField" Background="#FFF0F0F0" Margin="10,15,10,0" UseLayoutRounding="True" CornerRadius="5">
                                     <Grid UseLayoutRounding="True">
-                                        <DatePicker x:Name="EndDatePickerBasic" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Due Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="5,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="False"/>
+                                        <DatePicker x:Name="EndDatePickerBasic" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Due Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="False"/>
                                         <materialDesign:TimePicker x:Name="EndTimePickerBasic" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="Due Time"/>
                                     </Grid>
                                 </Border>
 
                                 <StackPanel x:Name="AdvanceRemidnerField" UseLayoutRounding="True">
-                                    <Border Background="#FFF0F0F0" Margin="10,5" UseLayoutRounding="True" CornerRadius="5">
+                                    <Border Background="#FFF0F0F0" Margin="10,5,10,0" UseLayoutRounding="True" CornerRadius="5 5 0 0">
                                         <Grid>
-                                            <DatePicker x:Name="BeginDatePicker" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Begin Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="5,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="True"/>
+                                            <DatePicker x:Name="BeginDatePicker" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Begin Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="True"/>
                                             <materialDesign:TimePicker x:Name="BeginTimePicker" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="Begin Time"/>
                                         </Grid>
                                     </Border>
-                                    <Border Background="#FFF0F0F0" Margin="10,5,10,0" UseLayoutRounding="True" CornerRadius="5">
+                                    <Border Background="#FFF0F0F0" Margin="10,0" UseLayoutRounding="True" CornerRadius="0 0 5 5">
                                         <Grid>
-                                            <DatePicker x:Name="EndDatePicker" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="End Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="5,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="False"/>
+                                            <DatePicker x:Name="EndDatePicker" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="End Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="False"/>
                                             <materialDesign:TimePicker x:Name="EndTimePicker" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="End Time"/>
                                         </Grid>
                                     </Border>

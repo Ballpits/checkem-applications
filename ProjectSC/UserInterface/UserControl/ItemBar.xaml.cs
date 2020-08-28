@@ -36,6 +36,8 @@ namespace ProjectSC.UserControls.Custom
             CheckboxLoaded = true;
 
             StarToggle.IsChecked = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].IsImportant;
+
+            Update();
         }
 
 
@@ -54,7 +56,7 @@ namespace ProjectSC.UserControls.Custom
 
             if (CheckboxLoaded)
             {
-                DataAccess.UpdateCompletion(Id, true, MyDay.Inventory);
+                JsonDataAccess.UpdateCompletion(Id, true, MyDay.Inventory);
             }
         }
 
@@ -74,18 +76,18 @@ namespace ProjectSC.UserControls.Custom
 
             textBlock.TextDecorations = null;
 
-            DataAccess.UpdateCompletion(Id, false, MyDay.Inventory);
+            JsonDataAccess.UpdateCompletion(Id, false, MyDay.Inventory);
         }
 
         private void StarToggle_Click(object sender, RoutedEventArgs e)
         {
             if (StarToggle.IsChecked == true)
             {
-                DataAccess.Update(Id, true, MyDay.Inventory);
+                JsonDataAccess.Update(Id, true, MyDay.Inventory);
             }
             else
             {
-                DataAccess.Update(Id, false, MyDay.Inventory);
+                JsonDataAccess.Update(Id, false, MyDay.Inventory);
             }
         }
 
@@ -209,9 +211,39 @@ namespace ProjectSC.UserControls.Custom
         #endregion
 
 
+        public void Update()
+        {
+            VisualUpdate();
+        }
+
         public void Update(string title)
         {
             textBlock.Text = title;
+
+            VisualUpdate();
+
+        }
+
+        private void VisualUpdate()
+        {
+            if (MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].IsReminderOn == true)
+            {
+                this.Height = 70;
+                border.Height = 70;
+
+                ReminderIcon.Visibility = Visibility.Visible;
+                ReminderTimeTextBlock.Visibility = Visibility.Visible;
+                ReminderTimeTextBlock.Text = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].EndDateTime.ToString();
+            }
+            else
+            {
+                this.Height = 50;
+                border.Height = 50;
+
+                ReminderIcon.Visibility = Visibility.Hidden;
+                ReminderTimeTextBlock.Visibility = Visibility.Hidden;
+                ReminderTimeTextBlock.Text = string.Empty;
+            }
         }
     }
 }

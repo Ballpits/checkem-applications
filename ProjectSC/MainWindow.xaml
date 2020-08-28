@@ -36,10 +36,10 @@
                     </Grid>
                 </Button>
 
-                <Button x:Name="ButtonDueDate" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="70" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,70,0,0" Grid.Row="2" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonDueDateFilter_Click" VerticalAlignment="Top" Padding="0">
+                <Button x:Name="ButtonReminder" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="70" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,70,0,0" Grid.Row="2" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonDueDateFilter_Click" VerticalAlignment="Top" Padding="0">
                     <Grid Height="70">
                         <materialDesign:PackIcon Kind="Clock" Height="39" Width="39" HorizontalAlignment="Center" Padding="0,10,0,0" Margin="0,10,0,0"/>
-                        <TextBlock TextAlignment="Center" FontFamily="Arial" VerticalAlignment="Bottom" Margin="0,0,0.2,5" Text="Due Date"/>
+                        <TextBlock TextAlignment="Center" FontFamily="Arial" VerticalAlignment="Bottom" Margin="0,0,0.2,5" Text="Reminder"/>
                     </Grid>
                 </Button>
 

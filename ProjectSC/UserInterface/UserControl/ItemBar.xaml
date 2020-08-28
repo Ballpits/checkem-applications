@@ -6,9 +6,9 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:ProjectSC.UserControls.Custom"
              mc:Ignorable="d" 
-             d:DesignWidth="800" Height="50" Loaded="UserControl_Loaded" Margin="5,5,5,0">
+             d:DesignWidth="800" Height="70" Loaded="UserControl_Loaded" Margin="5">
 
-    <Border x:Name="border" CornerRadius="10" Height="50" Background="White" MouseDown="Border_MouseDown" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" materialDesign:ShadowAssist.ShadowDepth="Depth5">
+    <Border x:Name="border" CornerRadius="10" Background="White" MouseDown="Border_MouseDown" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" materialDesign:ShadowAssist.ShadowDepth="Depth5" Margin="0" Height="70">
         <Grid>
             <Grid x:Name="cBoxGrid" HorizontalAlignment="Left" Margin="10,0,0,0" Width="40" Background="White" MouseDown="Grid_MouseDown" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" Height="50">
                 <CheckBox x:Name="checkBox" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}" Checked="ToDoChecked" Unchecked="ToDoUnchecked" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight">
@@ -16,12 +16,13 @@
                 </CheckBox>
             </Grid>
 
-            <TextBlock x:Name="textBlock" VerticalAlignment="Center" Margin="85,14,127,11.6" FontSize="20" FontFamily="Arial" Height="24" Text="Some text"/>
+            <TextBlock x:Name="textBlock" VerticalAlignment="Top" Margin="70,14,0,0" FontSize="20" FontFamily="Arial" Height="24" Text="Some text"/>
 
-            <materialDesign:PackIcon x:Name="ReminderIcon" Kind="Bell" Margin="55,0,0,0" Width="20" Height="20" Foreground="#FFE3F321" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <materialDesign:PackIcon x:Name="ReminderIcon" Kind="Bell" Margin="70,0,0,7.5" Width="20" Height="20" Foreground="#FFE3F321" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBlock Name="ReminderTimeTextBlock" VerticalAlignment="Bottom" Margin="95,0,0,5" FontSize="14" FontFamily="Arial" Height="20" Text="Due date..."/>
 
-            <TextBlock x:Name="ProgressIndicator" Text="56%" Margin="0,0,55,1.6" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" TextAlignment="Center" FontFamily="Arial"/>
-            <ProgressBar x:Name="ProgressBar" Style="{StaticResource MaterialDesignCircularProgressBar}" Height="30" Margin="0,3,55,16.6" Value="70" Foreground="#FF2196F3" BorderBrush="{x:Null}" Background="{x:Null}" Width="30" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <!--<TextBlock x:Name="ProgressIndicator" Text="56%" Margin="0,0,55,1.6" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" TextAlignment="Center" FontFamily="Arial"/>
+            <ProgressBar x:Name="ProgressBar" Style="{StaticResource MaterialDesignCircularProgressBar}" Height="30" Margin="0,3,55,16.6" Value="70" Foreground="#FF2196F3" BorderBrush="{x:Null}" Background="{x:Null}" Width="30" HorizontalAlignment="Right" VerticalAlignment="Center"/>-->
 
             <ToggleButton x:Name="StarToggle" Style="{StaticResource MaterialDesignActionToggleButton}" ToolTip="Mark As Important" HorizontalAlignment="Right" Margin="0,0,10,0" Background="White" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="StarToggle_Click" Height="40" Width="40" IsTabStop="False">
                 <ToggleButton.Content>

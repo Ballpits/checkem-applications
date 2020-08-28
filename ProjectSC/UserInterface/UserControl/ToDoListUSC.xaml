@@ -56,7 +56,9 @@
 
             <Grid Background="#FFF0F0F0" Margin="0,50,0,0">
                 <Grid Height="75" VerticalAlignment="Top">
-                    <TextBlock Text="All items" Margin="0" Height="40" FontFamily="Arial" FontSize="36" Padding="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF2196F3"/>
+
+                    <TextBlock x:Name="ToDoListTitleTextBlock" Text="Name" Margin="0,5,0,0" Height="40" FontFamily="Arial" FontSize="36" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF2196F3"/>
+                    <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="0 Items" Margin="412,0,412,5" Height="20" FontFamily="Arial" FontSize="16" Padding="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="#FF2196F3" Width="136"/>
 
                     <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0"  Width="40" Height="40" ToolTip="Sort" IsTabStop="False" VerticalAlignment="Center">
                         <materialDesign:PopupBox.ToggleContent>
@@ -117,8 +119,8 @@
 
                     </materialDesign:PopupBox>
                 </Grid>
-                <ScrollViewer x:Name="scrollBar" VerticalScrollBarVisibility="Auto" BorderThickness="0" Margin="0,75,0,-0.4">
-                    <StackPanel Name="stpMain">
+                <ScrollViewer x:Name="scrollBar" BorderThickness="0" Margin="0,75,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto" UseLayoutRounding="True">
+                    <StackPanel Name="stpMain" Margin="0">
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
