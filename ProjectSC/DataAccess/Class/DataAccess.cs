@@ -6,7 +6,7 @@ using System.IO;
 
 namespace ProjectSC
 {
-    static class JsonDataAccess
+    static class DataAccess
     {
 
         #region test data
@@ -162,7 +162,7 @@ namespace ProjectSC
             }
 
             SaveToJson(inventory);
-        }//Reset the id to align with stackpanel index
+        }
 
 
 
@@ -192,32 +192,13 @@ namespace ProjectSC
                 Title = title,
                 Description = description,
                 IsReminderOn = true,
-                IsAdvanceReminderOn = true,
                 BeginDateTime = begineDateTime,
                 EndDateTime = endDateTime,
                 CreationDateTime = createdDateTime
             });
 
             SaveToJson(inventory);
-        }//Add new item with advance reminder
-
-        public static void AddNew(string title, string description, DateTime endDateTime, DateTime createdDateTime, List<ToDoItem> inventory)
-        {
-            int id = inventory.Count + 1;
-
-            inventory.Add(new ToDoItem
-            {
-                Id = id,
-                Title = title,
-                Description = description,
-                IsReminderOn = true,
-                IsAdvanceReminderOn= false,
-                EndDateTime = endDateTime,
-                CreationDateTime = createdDateTime
-            });
-
-            SaveToJson(inventory);
-        }//Add new item with bacis reminder
+        }
 
         public static void AddNew(string title, string description, DateTime createdDateTime, List<ToDoItem> inventory)
         {
@@ -233,7 +214,7 @@ namespace ProjectSC
             });
 
             SaveToJson(inventory);
-        }//Add new item without reminder
+        }
         #endregion
 
 
@@ -276,11 +257,11 @@ namespace ProjectSC
             inventory[id].IsReminderOn = false;
 
             SaveToJson(inventory);
-        }//Only update without reminder
+        }//Only update the texts
 
         public static void Update(int id, bool isImportant, List<ToDoItem> inventory)
         {
-            inventory[id].IsStarred = isImportant;
+            inventory[id].IsImportant = isImportant;
 
             SaveToJson(inventory);
         }//Update importance
@@ -290,7 +271,7 @@ namespace ProjectSC
             inventory[id].IsCompleted = isCompleted;
 
             SaveToJson(inventory);
-        }//Update completion
+        }//Update completed
 
         public static void Update(int id, string tagName, List<ToDoItem> inventory)
         {

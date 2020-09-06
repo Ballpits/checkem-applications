@@ -13,7 +13,7 @@ namespace ProjectSC
 
 
         public bool IsCompleted { get; set; }
-        public bool IsImportant { get; set; }
+        public bool IsStarred { get; set; }
 
 
         public bool IsReminderOn { get; set; }

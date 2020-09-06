@@ -41,13 +41,13 @@ namespace ProjectSC
 
             int counter = 0;
 
-            if (filterMode == 0)//Filter:Improtant
+            if (filterMode == 0)//Filter:Starred
             {
                 for (int index = 0; index < Inventory.Count; index++)
                 {
-                    if (Inventory[index].IsImportant)
+                    if (Inventory[index].IsStarred)
                     {
-                        AddItem(index);
+                        AddItem(index, Inventory);
                         counter++;
                     }
                 }
@@ -61,7 +61,7 @@ namespace ProjectSC
 
                     if (Inventory[index].IsReminderOn)
                     {
-                        AddItem(index);
+                        AddItem(index, Inventory);
                         counter++;
                     }
                 }
@@ -72,7 +72,7 @@ namespace ProjectSC
             {
                 for (int index = 0; index < Inventory.Count; index++)
                 {
-                    AddItem(index);
+                    AddItem(index,Inventory);
                     counter++;
                 }
 
@@ -80,6 +80,25 @@ namespace ProjectSC
             }
 
             ToDoListItemCounterTextBlock.Text = $"{counter} Items";
+        }
+
+        public void SearchItems(string searchString)
+        {
+            stpMain.Children.Clear();
+            itemBarList.Clear();
+
+            Inventory = Inventory.OrderBy(x => x.Id).ToList();
+
+            List<ToDoItem> result = new List<ToDoItem>();
+
+            result = Inventory.FindAll(x => x.Title.ToLower().Contains(searchString.ToLower()));
+
+            for (int index = 0; index < result.Count; index++)
+            {
+                AddItem(index,result);
+            }
+
+            ToDoListItemCounterTextBlock.Text = string.Empty;
         }
 
 
@@ -90,7 +109,7 @@ namespace ProjectSC
 
             for (int i = 0; i < Inventory.Count; i++)
             {
-                AddItem(i);
+                AddItem(i,Inventory);
             }
         }
 
@@ -103,15 +122,15 @@ namespace ProjectSC
         {
             int id = Inventory.Count - 1;
 
-            AddItem(id);
+            AddItem(id,Inventory);
         }
 
         #region Item
-        private void AddItem(int index)
+        private void AddItem(int index,List<ToDoItem> list)
         {
             ItemBar itemBar = new ItemBar(this)
             {
-                Id = Inventory[index].Id,
+                Id = list[index].Id,
             };
 
             itemBarList.Add(itemBar);
@@ -181,16 +200,16 @@ namespace ProjectSC
         }
         #endregion
 
-        private void FilterButton_Importance_Click(object sender, RoutedEventArgs e)
+        private void SortButton_Importance_Click(object sender, RoutedEventArgs e)
         {
-            Inventory = Inventory.OrderBy(x => x.IsImportant == false).ToList();
+            Inventory = Inventory.OrderBy(x => x.IsStarred == false).ToList();
 
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
 
             LoadList();
         }
 
-        private void FilterButton_DueDate_Click(object sender, RoutedEventArgs e)
+        private void SortButton_DueDate_Click(object sender, RoutedEventArgs e)
         {
             Inventory = Inventory.OrderBy(x => x.EndDateTime).ToList();
             Inventory = Inventory.OrderBy(x => x.IsReminderOn == false).ToList();
@@ -200,10 +219,8 @@ namespace ProjectSC
             LoadList();
         }
 
-        private void FilterButton_Alphabetically_Click(object sender, RoutedEventArgs e)
+        private void SortButton_AlphabeticalAscending_Click(object sender, RoutedEventArgs e)
         {
-            //JsonDataAccess.RetrieveData(ref Inventory);
-
             Inventory = Inventory.OrderBy(x => x.Title).ToList();
 
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
@@ -211,7 +228,17 @@ namespace ProjectSC
             LoadList();
         }
 
-        private void FilterButton_CreationDate_Click(object sender, RoutedEventArgs e)
+        private void SortButton_AlphabeticalDescending_Click(object sender, RoutedEventArgs e)
+        {
+            Inventory = Inventory.OrderBy(x => x.Title).ToList();
+            Inventory.Reverse();
+
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+
+            LoadList();
+        }
+
+        private void SortButton_CreationDate_Click(object sender, RoutedEventArgs e)
         {
             Inventory = Inventory.OrderBy(x => x.CreationDateTime).ToList();
 
@@ -223,7 +250,7 @@ namespace ProjectSC
 
 
 
-        #region List viewer button events
+        #region List tester button events
         private void ListViewerButton_Click(object sender, RoutedEventArgs e)
         {
             if (ListViewerGrid.Visibility == Visibility.Collapsed)
@@ -253,12 +280,31 @@ namespace ProjectSC
 
         private void SearchBox_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            //Keyboard.ClearFocus();
+
         }
 
         private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Keyboard.ClearFocus();
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchItems(SearchBox.Text);
+
+            if (SearchBox.Text == string.Empty)
+            {
+                ButtonClearSearchBox.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                ButtonClearSearchBox.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void ButtonClearSearchBox_Click(object sender, RoutedEventArgs e)
+        {
+            SearchBox.Clear();
         }
     }
 }

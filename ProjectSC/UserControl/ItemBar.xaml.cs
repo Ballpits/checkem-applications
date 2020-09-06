@@ -35,7 +35,7 @@ namespace ProjectSC.UserControls.Custom
             checkBox.IsChecked = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].IsCompleted;
             CheckboxLoaded = true;
 
-            StarToggle.IsChecked = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].IsImportant;
+            StarToggle.IsChecked = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].IsStarred;
 
             Update();
         }

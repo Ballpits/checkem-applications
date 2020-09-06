@@ -6,7 +6,7 @@ using System.Windows.Threading;
 
 namespace ProjectSC
 {
-    public partial class MainWindow : Window, IMouseEvents
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
@@ -43,7 +43,7 @@ namespace ProjectSC
             timer.Tick += new EventHandler(Timer_Tick);
             timer.Start();
 
-            GridMain.Children.Add(myDayUSC);
+            GridPrincipal.Children.Add(myDayUSC);
             myDayUSC.ListFilter(2);
         }
 
@@ -72,31 +72,31 @@ namespace ProjectSC
         #region Mouse over events
         public void MouseEnterHighLight(object sender, RoutedEventArgs e)
         {
-            MainWindowMouseover.Highlight(sender);
+            MouseoverHighlight.Highlight(sender, "#665CB7FF");
         }
 
         public void MouseLeaveUnHighLight(object sender, RoutedEventArgs e)
         {
-            MainWindowMouseover.UnHighlight(sender);
+            MouseoverHighlight.UnHighlight(sender, "#002196F3");
         }
         #endregion
 
         private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
         {
-            MoveCursorMenu(0);
+            MoveNavbarCursor(0);
             myDayUSC.ListFilter(2);
             myDayUSC.CloseDetailsPanel();
         }
         private void ButtonDueDateFilter_Click(object sender, RoutedEventArgs e)
         {
-            MoveCursorMenu(1);
+            MoveNavbarCursor(1);
             myDayUSC.ListFilter(1);
             myDayUSC.CloseDetailsPanel();
         }
 
-        private void ButtonImportantFilter_Click(object sender, RoutedEventArgs e)
+        private void ButtonStarredFilter_Click(object sender, RoutedEventArgs e)
         {
-            MoveCursorMenu(2);
+            MoveNavbarCursor(2);
             myDayUSC.ListFilter(0);
             myDayUSC.CloseDetailsPanel();
         }
@@ -104,12 +104,12 @@ namespace ProjectSC
         private void ButtonUserPref_Click(object sender, RoutedEventArgs e)
         {
             UserPrefenceWindow userPrefenceWindow = new UserPrefenceWindow();
-            userPrefenceWindow.Show();
+            GridPrincipal.Children.Add(userPrefenceWindow);
         }
 
-        private void MoveCursorMenu(int index)
+        private void MoveNavbarCursor(int index)
         {
-            GridCursor.Margin = new Thickness(0, (70 * index), 0, 0);
+            NavbarCursor.Margin = new Thickness(0, (70 * index), 0, 0);
         }
 
         private void AppWindow_Closed(object sender, EventArgs e)

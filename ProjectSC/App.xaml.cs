@@ -26,7 +26,6 @@ namespace ProjectSC
             TrayIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
 
             TrayIcon.ContextMenuStrip.Items.Add("Check'em").Click += (s, e) => OpenMainWindow();
-            TrayIcon.ContextMenuStrip.Items.Add("Preferences...").Click += (s, e) => OpenPrefWindow();
             TrayIcon.ContextMenuStrip.Items.Add("-");
             TrayIcon.ContextMenuStrip.Items.Add("Exit").Click += (s, e) => ShutdownApplication();
         }
@@ -57,23 +56,6 @@ namespace ProjectSC
                 window.Show();
 
                 IsMainWindowOpen = true;
-            }
-        }
-
-        private void OpenPrefWindow()
-        {
-            if (MainWindow.IsVisible)
-            {
-                if (MainWindow.WindowState == WindowState.Minimized)
-                {
-                    MainWindow.WindowState = WindowState.Normal;
-                }
-                MainWindow.Activate();
-            }
-            else
-            {
-                UserPrefenceWindow userPrefenceWindow = new UserPrefenceWindow();
-                userPrefenceWindow.Show();
             }
         }
 

@@ -17,7 +17,7 @@ namespace ProjectSC
     /// <summary>
     /// Interaction logic for UserPrefenceWindow.xaml
     /// </summary>
-    public partial class UserPrefenceWindow : Window
+    public partial class UserPrefenceWindow : UserControl
     {
         public UserPrefenceWindow()
         {

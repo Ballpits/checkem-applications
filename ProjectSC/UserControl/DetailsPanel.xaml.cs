@@ -41,7 +41,6 @@ namespace ProjectSC.UserControls.Custom
 
         public bool IsReminderOn { get; set; }
         public bool IsAdvanceReminderOn { get; set; }
-        public int NotifyType { get; set; }
 
 
         public DateTime BeginDateTime { get; set; }
@@ -60,6 +59,8 @@ namespace ProjectSC.UserControls.Custom
             {
                 RemoveButton.IsEnabled = false;
                 RemoveButton.Visibility = Visibility.Hidden;
+
+                reminderMode = 0;
             }
             else
             {
@@ -86,21 +87,18 @@ namespace ProjectSC.UserControls.Custom
                 {
                     if (reminderMode == 2)
                     {
-                        BeginDatePicker.Text = $"{BeginDateTime.Month}/{BeginDateTime.Day}/{BeginDateTime.Year}";
-                        BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", BeginDateTime)}";
+                        BeginDatePicker_Advance.Text = $"{BeginDateTime.Month}/{BeginDateTime.Day}/{BeginDateTime.Year}";
+                        BeginTimePicker_Advance.Text = $"{string.Format("{0:h:mm tt}", BeginDateTime)}";
 
-                        EndDatePicker.Text = $"{EndDateTime.Month}/{EndDateTime.Day}/{EndDateTime.Year}";
-                        EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", EndDateTime)}";
+                        EndDatePicker_Advance.Text = $"{EndDateTime.Month}/{EndDateTime.Day}/{EndDateTime.Year}";
+                        EndTimePicker_Advance.Text = $"{string.Format("{0:h:mm tt}", EndDateTime)}";
                     }
                     else
                     {
-                        EndDatePickerBasic.Text = $"{EndDateTime.Month}/{EndDateTime.Day}/{EndDateTime.Year}";
-                        EndTimePickerBasic.Text = $"{string.Format("{0:h:mm tt}", EndDateTime)}";
+                        EndDatePicker_Basic.Text = $"{EndDateTime.Month}/{EndDateTime.Day}/{EndDateTime.Year}";
+                        EndTimePicker_Basic.Text = $"{string.Format("{0:h:mm tt}", EndDateTime)}";
                     }
                 }//Reminder texts
-
-                ChangeReminderButtonMode(reminderMode);
-                ChangeReminderState();
 
                 if (IsUsingTag)
                 {
@@ -111,6 +109,10 @@ namespace ProjectSC.UserControls.Custom
                     ChipTitleEditTextbox.Text = TagName;
                 }//Tag texts
             }
+
+            ChangeReminderButtonMode(reminderMode);
+            ChangeReminderState();
+
         }
 
         private void RetunButton_Click(object sender, RoutedEventArgs e)
@@ -124,7 +126,14 @@ namespace ProjectSC.UserControls.Custom
             {
                 if (reminderMode != 0)
                 {
-                    JsonDataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), DateTime.Now, todo.Inventory);
+                    if (reminderMode == 2)
+                    {
+                        JsonDataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), DateTime.Now, todo.Inventory);
+                    }
+                    else
+                    {
+                        JsonDataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), DateTime.Now, todo.Inventory);
+                    }
                 }
                 else
                 {
@@ -137,7 +146,8 @@ namespace ProjectSC.UserControls.Custom
 
                 todo.AddItemBar();
 
-                DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Added"));
+                DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Incorrect format !"));
+                //DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Added"));
             }
             else
             {
@@ -145,11 +155,11 @@ namespace ProjectSC.UserControls.Custom
                 {
                     if (reminderMode == 2)
                     {
-                        JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker.Text + " " + BeginTimePicker.Text), Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text), todo.Inventory);
+                        JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), todo.Inventory);
                     }
                     else
                     {
-                        JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePickerBasic.Text + " " + EndTimePickerBasic.Text), todo.Inventory);
+                        JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), todo.Inventory);
                     }
                 }
                 else
@@ -196,8 +206,8 @@ namespace ProjectSC.UserControls.Custom
 
                     ReminderTitleGrid.Margin = new Thickness(10, 30, 10, 5);
 
-                    EndDatePickerBasic.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day + 1}/{DateTime.Now.Year}";
-                    EndTimePickerBasic.Text = "12:00 AM";
+                    EndDatePicker_Basic.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day + 1}/{DateTime.Now.Year}";
+                    EndTimePicker_Basic.Text = "12:00 AM";
 
                     break;
 
@@ -208,11 +218,11 @@ namespace ProjectSC.UserControls.Custom
                     BasicReminderField.Visibility = Visibility.Collapsed;
                     AdvanceRemidnerField.Visibility = Visibility.Visible;
 
-                    BeginDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
-                    BeginTimePicker.Text = "12:00 AM";
+                    BeginDatePicker_Advance.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day}/{DateTime.Now.Year}";
+                    BeginTimePicker_Advance.Text = "12:00 AM";
 
-                    EndDatePicker.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day + 1}/{DateTime.Now.Year}";
-                    EndTimePicker.Text = "12:00 AM";
+                    EndDatePicker_Advance.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day + 1}/{DateTime.Now.Year}";
+                    EndTimePicker_Advance.Text = "12:00 AM";
 
                     break;
 
@@ -297,6 +307,18 @@ namespace ProjectSC.UserControls.Custom
             }
 
             ChangeReminderState();
+        }
+
+        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+            MouseoverHighlight.Highlight(sender, "#FFF0F0F0");
+        }
+
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+            MouseoverHighlight.Highlight(sender, "#FFFFFFFF");
         }
     }
 }

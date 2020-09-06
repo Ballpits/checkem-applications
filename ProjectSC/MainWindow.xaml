@@ -27,51 +27,35 @@
                     </LinearGradientBrush>
                 </Grid.Background>
 
-                <Grid x:Name="GridCursor" Margin="0" Background="#665CB7FF" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="70"/>
+                <Grid x:Name="NavbarCursor" Background="#665CB7FF" Height="70" VerticalAlignment="Top"/>
 
                 <Button x:Name="ButtonAllItems" Background="#002196F3" Grid.Row="3" BorderBrush="{x:Null}" Foreground="White" Height="70" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonToDoList_Click" VerticalAlignment="Top" Padding="0">
                     <Grid Height="70">
-                        <materialDesign:PackIcon Kind="ClipboardList" Height="39" Width="39" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <TextBlock TextAlignment="Center" FontFamily="Arial" VerticalAlignment="Bottom" Margin="0,0,0.2,5">All Items</TextBlock>
+                        <materialDesign:PackIcon Kind="ClipboardList" Height="40" Width="40" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <TextBlock TextAlignment="Center" FontFamily="Arial" VerticalAlignment="Bottom" Margin="0,0,0,5" HorizontalAlignment="Center">All Items</TextBlock>
                     </Grid>
                 </Button>
 
                 <Button x:Name="ButtonReminder" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="70" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,70,0,0" Grid.Row="2" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonDueDateFilter_Click" VerticalAlignment="Top" Padding="0">
                     <Grid Height="70">
-                        <materialDesign:PackIcon Kind="Clock" Height="39" Width="39" HorizontalAlignment="Center" Padding="0,10,0,0" Margin="0,10,0,0"/>
-                        <TextBlock TextAlignment="Center" FontFamily="Arial" VerticalAlignment="Bottom" Margin="0,0,0.2,5" Text="Reminder"/>
+                        <materialDesign:PackIcon Kind="Bell" Height="40" Width="40" HorizontalAlignment="Center" Padding="0,10,0,0" Margin="0,10,0,0"/>
+                        <TextBlock TextAlignment="Center" FontFamily="Arial" VerticalAlignment="Bottom" Margin="0,0,0,5" Text="Reminder" HorizontalAlignment="Center"/>
                     </Grid>
                 </Button>
 
-                <Button x:Name="ButtonImportantFilter" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="70" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,140,0,0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonImportantFilter_Click" VerticalAlignment="Top" Padding="0">
+                <Button x:Name="ButtonStarredFilter" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="70" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,140,0,0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonStarredFilter_Click" VerticalAlignment="Top" Padding="0">
                     <Grid Height="70">
-                        <materialDesign:PackIcon Kind="Import" Height="39" Width="39" Margin="0,10,0,0" HorizontalAlignment="Center"/>
-                        <TextBlock TextAlignment="Center" FontFamily="Arial" VerticalAlignment="Bottom" Margin="0,0,0.2,5">Important</TextBlock>
+                        <materialDesign:PackIcon Kind="Star" Height="40" Width="40" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+                        <TextBlock TextAlignment="Center" FontFamily="Arial" VerticalAlignment="Bottom" Margin="0,0,0,5" HorizontalAlignment="Center">Starred</TextBlock>
                     </Grid>
                 </Button>
 
-                <Button x:Name="ButtonAddList" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="70" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,250,0,0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" VerticalAlignment="Top" Padding="0">
-                    <Grid Height="70">
-                        <materialDesign:PackIcon Kind="Plus" Height="39" Width="39" Margin="0,10,0,0" HorizontalAlignment="Center"/>
-                        <TextBlock TextAlignment="Center" FontFamily="Arial" VerticalAlignment="Bottom" Margin="0,0,0.2,5" Text="New List"/>
-                    </Grid>
-                </Button>
-
-
-                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,320,0,45">
-                    <Grid>
-                        <StackPanel Margin="0,0,0,49.6">
-
-                        </StackPanel>
-                    </Grid>
-                </ScrollViewer>
-
-                <Button x:Name="ButtonUserPref" VerticalAlignment="Bottom" Margin="0,0,0,10" HorizontalAlignment="Center" Width="50" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="30" ToolTip="Preferces..." Click="ButtonUserPref_Click" IsTabStop="False">
-                    <materialDesign:PackIcon Kind="SettingsApplications" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24"/>
+                <Button x:Name="ButtonUserPref" VerticalAlignment="Bottom" Margin="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="50" ToolTip="Preferces..." Click="ButtonUserPref_Click" IsTabStop="False" Padding="0">
+                    <materialDesign:PackIcon Kind="SettingsApplications" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35" Height="35"/>
                 </Button>
             </Grid>
 
-            <Grid x:Name="GridMain" Margin="69,0,-0.4,0.4" Grid.RowSpan="2"/>
+            <Grid x:Name="GridPrincipal" Margin="69,0,0,0" Grid.RowSpan="2"/>
         </Grid>
     </materialDesign:TransitioningContent>
 </Window>
