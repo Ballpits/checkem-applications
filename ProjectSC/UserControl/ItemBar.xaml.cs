@@ -1,4 +1,5 @@
 ﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -22,20 +23,43 @@ namespace ProjectSC.UserControls.Custom
 
         private ToDoListUSC MyDay;
 
+        #region Properties
         public int Id { get; set; }
+
+
+        public string Title { get; set; }
+        public string Description { get; set; }
+
+
+        public bool IsCompleted { get; set; }
+        public bool IsStarred { get; set; }
+
+
+        public bool IsReminderOn { get; set; }
+        public bool IsAdvanceReminderOn { get; set; }
+
+
+        public DateTime BeginDateTime { get; set; }
+        public DateTime EndDateTime { get; set; }
+
+
+        public bool IsUsingTag { get; set; }
+        public string TagName { get; set; }
+        //public Brushes TagColor { get; set; }
+        #endregion
 
         const int ChaeckBoxIconSize = 35;
 
         private bool CheckboxLoaded = false;
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            textBlock.Text = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].Title;
+            textBlockTitle.Text = Title;
             //textBlock.Text = Id.ToString();
 
-            checkBox.IsChecked = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].IsCompleted;
+            checkBox.IsChecked = IsCompleted;
             CheckboxLoaded = true;
 
-            StarToggle.IsChecked = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].IsStarred;
+            StarToggle.IsChecked = IsStarred;
 
             Update();
         }
@@ -52,7 +76,7 @@ namespace ProjectSC.UserControls.Custom
 
             checkBox.Content = icon;
 
-            textBlock.TextDecorations = TextDecorations.Strikethrough;
+            textBlockTitle.TextDecorations = TextDecorations.Strikethrough;
 
             if (CheckboxLoaded)
             {
@@ -74,7 +98,7 @@ namespace ProjectSC.UserControls.Custom
                 checkBox.Content = icon;
             }
 
-            textBlock.TextDecorations = null;
+            textBlockTitle.TextDecorations = null;
 
             JsonDataAccess.UpdateCompletion(Id, false, MyDay.Inventory);
         }
@@ -218,7 +242,7 @@ namespace ProjectSC.UserControls.Custom
 
         public void Update(string title)
         {
-            textBlock.Text = title;
+            textBlockTitle.Text = title;
 
             VisualUpdate();
 
@@ -226,7 +250,7 @@ namespace ProjectSC.UserControls.Custom
 
         private void VisualUpdate()
         {
-            if (MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].IsReminderOn == true)
+            if (IsReminderOn == true)
             {
                 this.Height = 70;
                 border.Height = 70;

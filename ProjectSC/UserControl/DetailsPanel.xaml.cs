@@ -60,33 +60,20 @@ namespace ProjectSC.UserControls.Custom
                 RemoveButton.IsEnabled = false;
                 RemoveButton.Visibility = Visibility.Hidden;
 
-                reminderMode = 0;
+                SetReminderState(0);
             }
             else
             {
                 textBoxTitle.Text = Title;
                 textBoxDescription.Text = Description;
 
-                if (IsReminderOn == true)
+                if (IsReminderOn)
                 {
-                    if (IsAdvanceReminderOn == true)
+                    if (IsAdvanceReminderOn)
                     {
-                        reminderMode = 2;
-                    }
-                    else
-                    {
-                        reminderMode = 1;
-                    }
-                }
-                else
-                {
-                    reminderMode = 0;
-                }
+                        SetReminderState(2);
 
-                if (reminderMode != 0)
-                {
-                    if (reminderMode == 2)
-                    {
+
                         BeginDatePicker_Advance.Text = $"{BeginDateTime.Month}/{BeginDateTime.Day}/{BeginDateTime.Year}";
                         BeginTimePicker_Advance.Text = $"{string.Format("{0:h:mm tt}", BeginDateTime)}";
 
@@ -95,10 +82,18 @@ namespace ProjectSC.UserControls.Custom
                     }
                     else
                     {
+                        SetReminderState(1);
+
+
                         EndDatePicker_Basic.Text = $"{EndDateTime.Month}/{EndDateTime.Day}/{EndDateTime.Year}";
                         EndTimePicker_Basic.Text = $"{string.Format("{0:h:mm tt}", EndDateTime)}";
                     }
-                }//Reminder texts
+                }
+                else
+                {
+                    SetReminderState(0);
+                }
+
 
                 if (IsUsingTag)
                 {
@@ -109,12 +104,11 @@ namespace ProjectSC.UserControls.Custom
                     ChipTitleEditTextbox.Text = TagName;
                 }//Tag texts
             }
-
-            ChangeReminderButtonMode(reminderMode);
-            ChangeReminderState();
-
         }
 
+
+
+        #region Button click event
         private void RetunButton_Click(object sender, RoutedEventArgs e)
         {
             todo.CloseDetailsPanel();
@@ -124,9 +118,9 @@ namespace ProjectSC.UserControls.Custom
         {
             if (IsNew)
             {
-                if (reminderMode != 0)
+                if (IsReminderOn)
                 {
-                    if (reminderMode == 2)
+                    if (IsAdvanceReminderOn)
                     {
                         JsonDataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), DateTime.Now, todo.Inventory);
                     }
@@ -151,9 +145,9 @@ namespace ProjectSC.UserControls.Custom
             }
             else
             {
-                if (reminderMode != 0)
+                if (IsReminderOn)
                 {
-                    if (reminderMode == 2)
+                    if (IsAdvanceReminderOn)
                     {
                         JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), todo.Inventory);
                     }
@@ -175,8 +169,6 @@ namespace ProjectSC.UserControls.Custom
 
         }
 
-
-
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
             JsonDataAccess.RemoveAt(Id, todo.Inventory);
@@ -185,19 +177,67 @@ namespace ProjectSC.UserControls.Custom
 
             todo.CloseDetailsPanel();
         }
+        #endregion
 
-
-        private void ChangeReminderState()
+        #region Chip function
+        private void Chip_DeleteClick(object sender, RoutedEventArgs e)
         {
-            switch (reminderMode)
+            Chip chip = (Chip)sender;
+
+            chip.Visibility = Visibility.Collapsed;
+        }
+
+        private void ChipTitleEditTextbox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            JsonDataAccess.Update(Id, ChipTitleEditTextbox.Text, todo.Inventory);
+        }
+        #endregion
+
+        #region Reminder selector funtion
+        private void ReminderBasicButton_Click(object sender, RoutedEventArgs e)
+        {
+            SetReminderState(1);
+        }
+
+        private void ReminderNoneButton_Click(object sender, RoutedEventArgs e)
+        {
+            SetReminderState(0);
+        }
+
+        private void ReminderAdvanceButton_Click(object sender, RoutedEventArgs e)
+        {
+            SetReminderState(2);
+        }
+
+        private void SetReminderState(int mode)
+        {
+            switch (mode)
             {
-                case 0:
+                case 0://no reminder
+                    ReminderBasicButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                    ReminderNoneButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+                    ReminderAdvanceButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+
+                    ReminderBasicButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+                    ReminderNoneButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                    ReminderAdvanceButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+
 
                     StpReminder.Visibility = Visibility.Collapsed;
 
+                    IsReminderOn = false;
+                    IsAdvanceReminderOn = false;
                     break;
 
-                case 1:
+                case 1://basic reminder
+                    ReminderBasicButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+                    ReminderNoneButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                    ReminderAdvanceButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+
+                    ReminderBasicButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                    ReminderNoneButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+                    ReminderAdvanceButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+
 
                     StpReminder.Visibility = Visibility.Visible;
 
@@ -209,9 +249,19 @@ namespace ProjectSC.UserControls.Custom
                     EndDatePicker_Basic.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day + 1}/{DateTime.Now.Year}";
                     EndTimePicker_Basic.Text = "12:00 AM";
 
+                    IsReminderOn = true;
+                    IsAdvanceReminderOn = false;
                     break;
 
-                case 2:
+                case 2://advance reminder
+                    ReminderBasicButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                    ReminderNoneButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                    ReminderAdvanceButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+
+                    ReminderBasicButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+                    ReminderNoneButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+                    ReminderAdvanceButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+
 
                     StpReminder.Visibility = Visibility.Visible;
 
@@ -224,91 +274,17 @@ namespace ProjectSC.UserControls.Custom
                     EndDatePicker_Advance.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day + 1}/{DateTime.Now.Year}";
                     EndTimePicker_Advance.Text = "12:00 AM";
 
+                    IsReminderOn = true;
+                    IsAdvanceReminderOn = true;
                     break;
 
                 default:
                     break;
             }
         }
+        #endregion
 
-
-        private void DarkGrid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (Mouse.LeftButton == MouseButtonState.Pressed || Mouse.XButton1 == MouseButtonState.Pressed)
-            {
-                todo.CloseDetailsPanel();
-            }
-        }
-
-        private void Chip_DeleteClick(object sender, RoutedEventArgs e)
-        {
-            Chip chip = (Chip)sender;
-
-            chip.Visibility = Visibility.Collapsed;
-        }
-
-        private void ChipTitleEditTextbox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            JsonDataAccess.Update(Id, ChipTitleEditTextbox.Text, todo.Inventory);
-        }
-
-        int reminderMode = 0;
-        private void ReminderBasicButton_Click(object sender, RoutedEventArgs e)
-        {
-            reminderMode = 1;
-            ChangeReminderButtonMode(reminderMode);
-        }
-
-        private void ReminderNoneButton_Click(object sender, RoutedEventArgs e)
-        {
-            reminderMode = 0;
-            ChangeReminderButtonMode(reminderMode);
-        }
-
-        private void ReminderAdvanceButton_Click(object sender, RoutedEventArgs e)
-        {
-            reminderMode = 2;
-            ChangeReminderButtonMode(reminderMode);
-        }
-
-        private void ChangeReminderButtonMode(int i)
-        {
-            switch (i)
-            {
-                case 0:
-                    ReminderBasicButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
-                    ReminderNoneButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-                    ReminderAdvanceButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
-
-                    ReminderBasicButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-                    ReminderNoneButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
-                    ReminderAdvanceButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-                    break;
-                case 1:
-                    ReminderBasicButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-                    ReminderNoneButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
-                    ReminderAdvanceButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
-
-                    ReminderBasicButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
-                    ReminderNoneButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-                    ReminderAdvanceButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-                    break;
-                case 2:
-                    ReminderBasicButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
-                    ReminderNoneButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
-                    ReminderAdvanceButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-
-                    ReminderBasicButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-                    ReminderNoneButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-                    ReminderAdvanceButton.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
-                    break;
-                default:
-                    break;
-            }
-
-            ChangeReminderState();
-        }
-
+        #region Mouse event
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
             Button button = (Button)sender;
@@ -320,5 +296,14 @@ namespace ProjectSC.UserControls.Custom
             Button button = (Button)sender;
             MouseoverHighlight.Highlight(sender, "#FFFFFFFF");
         }
+
+        private void DarkGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (Mouse.LeftButton == MouseButtonState.Pressed || Mouse.XButton1 == MouseButtonState.Pressed)
+            {
+                todo.CloseDetailsPanel();
+            }
+        }
+        #endregion
     }
 }

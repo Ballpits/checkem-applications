@@ -16,7 +16,7 @@
                 </CheckBox>
             </Grid>
 
-            <TextBlock x:Name="textBlock" VerticalAlignment="Top" Margin="70,14,0,0" FontSize="20" FontFamily="Arial" Height="24" Text="Some text"/>
+            <TextBlock x:Name="textBlockTitle" VerticalAlignment="Top" Margin="70,14,0,0" FontSize="20" FontFamily="Arial" Height="24" Text="Some text"/>
 
             <materialDesign:PackIcon x:Name="ReminderIcon" Kind="Bell" Margin="70,0,0,7.5" Width="20" Height="20" Foreground="#FFE3F321" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
             <TextBlock Name="ReminderTimeTextBlock" VerticalAlignment="Bottom" Margin="95,0,0,5" FontSize="14" FontFamily="Arial" Height="20" Text="Due date..."/>

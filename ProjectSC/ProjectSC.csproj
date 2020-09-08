@@ -94,7 +94,7 @@
     </ApplicationDefinition>
     <Compile Include="DataAccess\Class\JsonDataAccess.cs" />
     <Compile Include="Functions\HotKey.cs" />
-    <Compile Include="Tester Class\ListTester\ListViewer.cs" />
+    <Compile Include="TesterClass\ListTester\ListViewer.cs" />
     <Compile Include="QuickViewWindow.xaml.cs">
       <DependentUpon>QuickViewWindow.xaml</DependentUpon>
     </Compile>

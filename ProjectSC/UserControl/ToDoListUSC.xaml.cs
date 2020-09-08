@@ -14,7 +14,7 @@ namespace ProjectSC
         {
             InitializeComponent();
 
-            JsonDataAccess.StoreTestData(Inventory);
+            //JsonDataAccess.StoreTestData(Inventory);
 
             JsonDataAccess.RetrieveData(ref Inventory);
             Inventory = Inventory.OrderBy(x => x.Id).ToList();
@@ -129,6 +129,14 @@ namespace ProjectSC
             ItemBar itemBar = new ItemBar(this)
             {
                 Id = list[index].Id,
+                Title = list[index].Title,
+                Description = list[index].Description,
+                IsCompleted = list[index].IsCompleted,
+                IsStarred = list[index].IsStarred,
+                IsReminderOn = list[index].IsReminderOn,
+                IsAdvanceReminderOn = list[index].IsAdvanceReminderOn,
+                BeginDateTime = list[index].BeginDateTime,
+                EndDateTime = list[index].EndDateTime
             };
 
             stpMain.Children.Add(itemBar);
@@ -157,30 +165,28 @@ namespace ProjectSC
 
         public void OpenDetailsPanel(ItemBar itemBar)
         {
-            int id = itemBar.Id;
-
             DetailsPanel detailsPanel = new DetailsPanel(this, itemBar)
             {
                 IsNew = false,
 
-                Id = id,
+                Id = itemBar.Id,
 
 
                 //Title = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Title,
-                Title = itemBar.textBlock.Text,
+                Title = itemBar.Title,
 
-                //Description = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Description,
-
-
-                //IsReminderOn = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsReminderOn,
-                //IsAdvanceReminderOn = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsAdvanceReminderOn,
-
-                //BeginDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].BeginDateTime,
-                //EndDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].EndDateTime,
+                Description = itemBar.Description,
 
 
-                //IsUsingTag = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsUsingTag,
-                //TagName = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].TagName
+                IsReminderOn = itemBar.IsReminderOn,
+                IsAdvanceReminderOn = itemBar.IsAdvanceReminderOn,
+
+                BeginDateTime = itemBar.BeginDateTime,
+                EndDateTime = itemBar.EndDateTime,
+
+
+                IsUsingTag = itemBar.IsUsingTag,
+                TagName = itemBar.TagName
             };
 
             DataGrid.Children.Add(detailsPanel);
@@ -261,12 +267,12 @@ namespace ProjectSC
             if (ListViewerGrid.Visibility == Visibility.Collapsed)
             {
                 ListViewerGrid.Visibility = Visibility.Visible;
-                scrollBar.Margin = new Thickness(0, 40, 0, 200);
+                scrollBar.Margin = new Thickness(0, 75, 0, 200);
             }
             else
             {
                 ListViewerGrid.Visibility = Visibility.Collapsed;
-                scrollBar.Margin = new Thickness(0, 40, 0, 0);
+                scrollBar.Margin = new Thickness(0, 75, 0, 0);
             }
         }
 
