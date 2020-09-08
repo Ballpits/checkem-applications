@@ -100,7 +100,7 @@ namespace ProjectSC.UserControls.Custom
             {
                 if (Mouse.LeftButton == MouseButtonState.Pressed)
                 {
-                    MyDay.OpenDetailsPanel(Id, this);
+                    MyDay.OpenDetailsPanel(this);
                 }
             }
         }

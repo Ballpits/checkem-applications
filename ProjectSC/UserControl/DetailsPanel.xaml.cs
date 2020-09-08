@@ -10,11 +10,11 @@ namespace ProjectSC.UserControls.Custom
 {
     public partial class DetailsPanel : UserControl
     {
-        public DetailsPanel(ToDoListUSC myDayUSC)
+        public DetailsPanel(ToDoListUSC todolist)
         {
             InitializeComponent();
 
-            todo = myDayUSC;
+            todo = todolist;
         }
 
         public DetailsPanel(ToDoListUSC todolist, ItemBar itembar)
@@ -146,8 +146,8 @@ namespace ProjectSC.UserControls.Custom
 
                 todo.AddItemBar();
 
-                DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Incorrect format !"));
-                //DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Added"));
+                //DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Incorrect format !"));
+                todo.CloseDetailsPanel("Added");
             }
             else
             {
@@ -181,7 +181,7 @@ namespace ProjectSC.UserControls.Custom
         {
             JsonDataAccess.RemoveAt(Id, todo.Inventory);
 
-            todo.RemoveItemBar(Id);
+            todo.RemoveItemBar(itemBar);
 
             todo.CloseDetailsPanel();
         }

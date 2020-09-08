@@ -14,7 +14,7 @@ namespace ProjectSC
         {
             InitializeComponent();
 
-            //JsonDataAccess.StoreTestData(Inventory);
+            JsonDataAccess.StoreTestData(Inventory);
 
             JsonDataAccess.RetrieveData(ref Inventory);
             Inventory = Inventory.OrderBy(x => x.Id).ToList();
@@ -27,7 +27,6 @@ namespace ProjectSC
 
         #region Variables
         public List<ToDoItem> Inventory = new List<ToDoItem>();
-        private List<ItemBar> itemBarList = new List<ItemBar>();
 
         private bool DetailsPanelOpened = false;
         #endregion
@@ -35,7 +34,6 @@ namespace ProjectSC
         public void ListFilter(int filterMode)
         {
             stpMain.Children.Clear();
-            itemBarList.Clear();
 
             Inventory = Inventory.OrderBy(x => x.Id).ToList();
 
@@ -85,7 +83,6 @@ namespace ProjectSC
         public void SearchItems(string searchString)
         {
             stpMain.Children.Clear();
-            itemBarList.Clear();
 
             Inventory = Inventory.OrderBy(x => x.Id).ToList();
 
@@ -105,7 +102,6 @@ namespace ProjectSC
         private void LoadList()
         {
             stpMain.Children.Clear();
-            itemBarList.Clear();
 
             for (int i = 0; i < Inventory.Count; i++)
             {
@@ -113,14 +109,16 @@ namespace ProjectSC
             }
         }
 
-        public void RemoveItemBar(int id)
+        public void RemoveItemBar(ItemBar itembar)
         {
-            stpMain.Children.RemoveAt(stpMain.Children.IndexOf(itemBarList[itemBarList.FindIndex(x => x.Id == id)]));
+            stpMain.Children.RemoveAt(stpMain.Children.IndexOf(itembar));
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
 
         public void AddItemBar()
         {
             int id = Inventory.Count - 1;
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
 
             AddItem(id,Inventory);
         }
@@ -133,7 +131,6 @@ namespace ProjectSC
                 Id = list[index].Id,
             };
 
-            itemBarList.Add(itemBar);
             stpMain.Children.Add(itemBar);
         }
         #endregion
@@ -158,30 +155,32 @@ namespace ProjectSC
             DetailsPanelOpened = true;
         }
 
-        public void OpenDetailsPanel(int id, ItemBar itemBar)
+        public void OpenDetailsPanel(ItemBar itemBar)
         {
+            int id = itemBar.Id;
+
             DetailsPanel detailsPanel = new DetailsPanel(this, itemBar)
             {
                 IsNew = false,
 
-                Id = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Id,
+                Id = id,
 
 
-                Title = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Title,
-                //Title = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Id.ToString(),
+                //Title = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Title,
+                Title = itemBar.textBlock.Text,
 
-                Description = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Description,
-
-
-                IsReminderOn = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsReminderOn,
-                IsAdvanceReminderOn = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsAdvanceReminderOn,
-
-                BeginDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].BeginDateTime,
-                EndDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].EndDateTime,
+                //Description = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Description,
 
 
-                IsUsingTag = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsUsingTag,
-                TagName = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].TagName
+                //IsReminderOn = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsReminderOn,
+                //IsAdvanceReminderOn = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsAdvanceReminderOn,
+
+                //BeginDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].BeginDateTime,
+                //EndDateTime = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].EndDateTime,
+
+
+                //IsUsingTag = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].IsUsingTag,
+                //TagName = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].TagName
             };
 
             DataGrid.Children.Add(detailsPanel);
@@ -197,6 +196,12 @@ namespace ProjectSC
                 DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
                 DetailsPanelOpened = false;
             }
+        }
+
+        public void CloseDetailsPanel(string msg)
+        {
+            CloseDetailsPanel();
+            DataGrid.Children.Add(SnackbarControl.OpenSnackBar(msg));
         }
         #endregion
 
