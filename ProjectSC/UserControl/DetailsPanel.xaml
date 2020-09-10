@@ -24,6 +24,8 @@
                             <Button HorizontalAlignment="Left" VerticalAlignment="Center" Width="45" Height="45" materialDesign:ButtonAssist.CornerRadius="10" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="Black" Click="RetunButton_Click" Padding="0" Margin="10,10,0,0" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
                                 <materialDesign:PackIcon Kind="ArrowBack" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FF2196F3"/>
                             </Button>
+
+                            <TextBlock Name="Id_TB" Margin="60,0,0,0" FontSize="20"/>
                         </Grid>
 
                         <TextBox x:Name="textBoxTitle" Margin="10,10,10,0" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="Title" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial"/>

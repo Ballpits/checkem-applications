@@ -50,8 +50,8 @@ namespace ProjectSC.UserControls.Custom
         public string TagName { get; set; }
         #endregion
 
-        ToDoListUSC todo = new ToDoListUSC();
-        ItemBar itemBar = new ItemBar();
+        ToDoListUSC todo;
+        ItemBar itemBar;
 
         private void DarkGrid_Loaded(object sender, RoutedEventArgs e)
         {
@@ -64,6 +64,8 @@ namespace ProjectSC.UserControls.Custom
             }
             else
             {
+                Id_TB.Text = Id.ToString();
+
                 textBoxTitle.Text = Title;
                 textBoxDescription.Text = Description;
 
@@ -161,8 +163,12 @@ namespace ProjectSC.UserControls.Custom
                     JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, todo.Inventory);
                 }
 
+                itemBar.Title = textBoxTitle.Text;
+                itemBar.Description = textBoxDescription.Text;
+                itemBar.IsReminderOn = IsReminderOn;
+                itemBar.IsAdvanceReminderOn = IsAdvanceReminderOn;
 
-                itemBar.Update(textBoxTitle.Text);
+                itemBar.Update(itemBar);
 
                 DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Saved"));
             }

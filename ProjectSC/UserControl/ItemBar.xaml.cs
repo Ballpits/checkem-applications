@@ -14,14 +14,14 @@ namespace ProjectSC.UserControls.Custom
             InitializeComponent();
         }
 
-        public ItemBar(ToDoListUSC myDay)
+        public ItemBar(ToDoListUSC toDo)
         {
             InitializeComponent();
 
-            MyDay = myDay;
+            todo = toDo;
         }
 
-        private ToDoListUSC MyDay;
+        private ToDoListUSC todo;
 
         #region Properties
         public int Id { get; set; }
@@ -80,7 +80,7 @@ namespace ProjectSC.UserControls.Custom
 
             if (CheckboxLoaded)
             {
-                JsonDataAccess.UpdateCompletion(Id, true, MyDay.Inventory);
+                JsonDataAccess.UpdateCompletion(Id, true, todo.Inventory);
             }
         }
 
@@ -100,18 +100,18 @@ namespace ProjectSC.UserControls.Custom
 
             textBlockTitle.TextDecorations = null;
 
-            JsonDataAccess.UpdateCompletion(Id, false, MyDay.Inventory);
+            JsonDataAccess.UpdateCompletion(Id, false, todo.Inventory);
         }
 
         private void StarToggle_Click(object sender, RoutedEventArgs e)
         {
             if (StarToggle.IsChecked == true)
             {
-                JsonDataAccess.Update(Id, true, MyDay.Inventory);
+                JsonDataAccess.Update(Id, true, todo.Inventory);
             }
             else
             {
-                JsonDataAccess.Update(Id, false, MyDay.Inventory);
+                JsonDataAccess.Update(Id, false, todo.Inventory);
             }
         }
 
@@ -124,7 +124,7 @@ namespace ProjectSC.UserControls.Custom
             {
                 if (Mouse.LeftButton == MouseButtonState.Pressed)
                 {
-                    MyDay.OpenDetailsPanel(this);
+                    todo.OpenDetailsPanel(this);
                 }
             }
         }
@@ -240,12 +240,11 @@ namespace ProjectSC.UserControls.Custom
             VisualUpdate();
         }
 
-        public void Update(string title)
+        public void Update(ItemBar itemBar)
         {
-            textBlockTitle.Text = title;
-
+            textBlockTitle.Text = itemBar.Title;
+            this.IsReminderOn = itemBar.IsReminderOn;
             VisualUpdate();
-
         }
 
         private void VisualUpdate()
@@ -257,7 +256,7 @@ namespace ProjectSC.UserControls.Custom
 
                 ReminderIcon.Visibility = Visibility.Visible;
                 ReminderTimeTextBlock.Visibility = Visibility.Visible;
-                ReminderTimeTextBlock.Text = MyDay.Inventory[MyDay.Inventory.FindIndex(x => x.Id == Id)].EndDateTime.ToString();
+                ReminderTimeTextBlock.Text = todo.Inventory[todo.Inventory.FindIndex(x => x.Id == Id)].EndDateTime.ToString();
             }
             else
             {

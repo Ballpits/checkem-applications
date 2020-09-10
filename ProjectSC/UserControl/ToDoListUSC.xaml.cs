@@ -14,7 +14,7 @@ namespace ProjectSC
         {
             InitializeComponent();
 
-            //JsonDataAccess.StoreTestData(Inventory);
+            JsonDataAccess.StoreTestData(Inventory);
 
             JsonDataAccess.RetrieveData(ref Inventory);
             Inventory = Inventory.OrderBy(x => x.Id).ToList();
@@ -45,7 +45,7 @@ namespace ProjectSC
                 {
                     if (Inventory[index].IsStarred)
                     {
-                        AddItem(index, Inventory);
+                        AddItem(Inventory[index]);
                         counter++;
                     }
                 }
@@ -59,7 +59,7 @@ namespace ProjectSC
 
                     if (Inventory[index].IsReminderOn)
                     {
-                        AddItem(index, Inventory);
+                        AddItem(Inventory[index]);
                         counter++;
                     }
                 }
@@ -68,11 +68,7 @@ namespace ProjectSC
             }
             else if (filterMode == 2)//Filter:None
             {
-                for (int index = 0; index < Inventory.Count; index++)
-                {
-                    AddItem(index,Inventory);
-                    counter++;
-                }
+                LoadList();
 
                 ToDoListTitleTextBlock.Text = "All Items";
             }
@@ -90,10 +86,11 @@ namespace ProjectSC
 
             result = Inventory.FindAll(x => x.Title.ToLower().Contains(searchString.ToLower()));
 
-            for (int index = 0; index < result.Count; index++)
+            foreach (var item in result)
             {
-                AddItem(index,result);
+                AddItem(item);
             }
+
 
             ToDoListItemCounterTextBlock.Text = string.Empty;
         }
@@ -103,9 +100,9 @@ namespace ProjectSC
         {
             stpMain.Children.Clear();
 
-            for (int i = 0; i < Inventory.Count; i++)
+            foreach (var item in Inventory)
             {
-                AddItem(i,Inventory);
+                AddItem(item);
             }
         }
 
@@ -120,23 +117,23 @@ namespace ProjectSC
             int id = Inventory.Count - 1;
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
 
-            AddItem(id,Inventory);
+            AddItem(Inventory[Inventory.FindIndex(x => x.Id == id)]);
         }
 
         #region Item
-        private void AddItem(int index,List<ToDoItem> list)
+        private void AddItem(ToDoItem todoItem)
         {
             ItemBar itemBar = new ItemBar(this)
             {
-                Id = list[index].Id,
-                Title = list[index].Title,
-                Description = list[index].Description,
-                IsCompleted = list[index].IsCompleted,
-                IsStarred = list[index].IsStarred,
-                IsReminderOn = list[index].IsReminderOn,
-                IsAdvanceReminderOn = list[index].IsAdvanceReminderOn,
-                BeginDateTime = list[index].BeginDateTime,
-                EndDateTime = list[index].EndDateTime
+                Id = todoItem.Id,
+                Title = todoItem.Title,
+                Description = todoItem.Description,
+                IsCompleted = todoItem.IsCompleted,
+                IsStarred = todoItem.IsStarred,
+                IsReminderOn = todoItem.IsReminderOn,
+                IsAdvanceReminderOn = todoItem.IsAdvanceReminderOn,
+                BeginDateTime = todoItem.BeginDateTime,
+                EndDateTime = todoItem.EndDateTime
             };
 
             stpMain.Children.Add(itemBar);
@@ -236,7 +233,7 @@ namespace ProjectSC
 
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
 
-            LoadList();
+            //LoadList();
         }
 
         private void SortButton_AlphabeticalDescending_Click(object sender, RoutedEventArgs e)
