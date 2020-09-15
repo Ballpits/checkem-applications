@@ -64,7 +64,7 @@ namespace ProjectSC.UserControls.Custom
             }
             else
             {
-                Id_TB.Text = Id.ToString();
+                //Id_TB.Text = Id.ToString();
 
                 textBoxTitle.Text = Title;
                 textBoxDescription.Text = Description;
@@ -172,7 +172,6 @@ namespace ProjectSC.UserControls.Custom
 
                 DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Saved"));
             }
-
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)

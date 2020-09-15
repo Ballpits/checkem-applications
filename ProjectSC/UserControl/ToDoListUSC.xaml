@@ -30,7 +30,7 @@
                     </LinearGradientBrush>
                 </Grid.Background>
 
-                <Button HorizontalAlignment="Right" Margin="0,0,10,0" Width="35" Height="35" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#002196F3" BorderBrush="{x:Null}" Padding="0" Click="AddNewButton_Click" ToolTip="Add New" IsTabStop="False">
+                <Button HorizontalAlignment="Right" Margin="0,0,10,0" Width="35" Height="35" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#002196F3" BorderBrush="{x:Null}" Padding="0" Click="AddItemButton_Click" ToolTip="Add New" IsTabStop="False">
                     <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
                 </Button>
 

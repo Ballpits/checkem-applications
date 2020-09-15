@@ -14,12 +14,17 @@ namespace ProjectSC
         {
             InitializeComponent();
 
+            //test data
             JsonDataAccess.StoreTestData(Inventory);
 
-            JsonDataAccess.RetrieveData(ref Inventory);
+            //retrieve data from database
+            RetrieveData();
+
+            //refresh id
             Inventory = Inventory.OrderBy(x => x.Id).ToList();
             JsonDataAccess.ResetId(Inventory);
 
+            //load in itembars into stackpanel
             LoadList();
 
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
@@ -31,6 +36,61 @@ namespace ProjectSC
         private bool DetailsPanelOpened = false;
         #endregion
 
+        private void RetrieveData()
+        {
+            JsonDataAccess.RetrieveData(ref Inventory);
+        }
+
+        private void LoadList()
+        {
+            stpMain.Children.Clear();
+
+            foreach (var item in Inventory)
+            {
+                AddItem(item);
+            }
+        }
+
+        public void AddItemBar()
+        {
+            int id = Inventory.Count - 1;
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+
+            AddItem(Inventory[Inventory.FindIndex(x => x.Id == id)]);
+        }
+
+        public void RemoveItemBar(ItemBar itembar)
+        {
+            stpMain.Children.RemoveAt(stpMain.Children.IndexOf(itembar));
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+        }
+
+        private void AddItemButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenDetailsPanel();
+        }
+        #region Item
+        private void AddItem(ToDoItem todoItem)
+        {
+            ItemBar itemBar = new ItemBar(this)
+            {
+                Id = todoItem.Id,
+                Title = todoItem.Title,
+                Description = todoItem.Description,
+                IsCompleted = todoItem.IsCompleted,
+                IsStarred = todoItem.IsStarred,
+                IsReminderOn = todoItem.IsReminderOn,
+                IsAdvanceReminderOn = todoItem.IsAdvanceReminderOn,
+                BeginDateTime = todoItem.BeginDateTime,
+                EndDateTime = todoItem.EndDateTime
+            };
+
+            stpMain.Children.Add(itemBar);
+        }
+        #endregion
+
+
+        #region Filter
         public void ListFilter(int filterMode)
         {
             stpMain.Children.Clear();
@@ -75,7 +135,10 @@ namespace ProjectSC
 
             ToDoListItemCounterTextBlock.Text = $"{counter} Items";
         }
+        #endregion
 
+
+        #region Search
         public void SearchItems(string searchString)
         {
             stpMain.Children.Clear();
@@ -95,57 +158,86 @@ namespace ProjectSC
             ToDoListItemCounterTextBlock.Text = string.Empty;
         }
 
-
-        private void LoadList()
+        private void SearchBox_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            stpMain.Children.Clear();
 
-            foreach (var item in Inventory)
+        }
+
+        private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Keyboard.ClearFocus();
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchItems(SearchBox.Text);
+
+            if (SearchBox.Text == string.Empty)
             {
-                AddItem(item);
+                ButtonClearSearchBox.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                ButtonClearSearchBox.Visibility = Visibility.Visible;
             }
         }
 
-        public void RemoveItemBar(ItemBar itembar)
+        private void ButtonClearSearchBox_Click(object sender, RoutedEventArgs e)
         {
-            stpMain.Children.RemoveAt(stpMain.Children.IndexOf(itembar));
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
-        }
-
-        public void AddItemBar()
-        {
-            int id = Inventory.Count - 1;
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
-
-            AddItem(Inventory[Inventory.FindIndex(x => x.Id == id)]);
-        }
-
-        #region Item
-        private void AddItem(ToDoItem todoItem)
-        {
-            ItemBar itemBar = new ItemBar(this)
-            {
-                Id = todoItem.Id,
-                Title = todoItem.Title,
-                Description = todoItem.Description,
-                IsCompleted = todoItem.IsCompleted,
-                IsStarred = todoItem.IsStarred,
-                IsReminderOn = todoItem.IsReminderOn,
-                IsAdvanceReminderOn = todoItem.IsAdvanceReminderOn,
-                BeginDateTime = todoItem.BeginDateTime,
-                EndDateTime = todoItem.EndDateTime
-            };
-
-            stpMain.Children.Add(itemBar);
+            SearchBox.Clear();
         }
         #endregion
 
-        #region Button evnts
-        private void AddNewButton_Click(object sender, RoutedEventArgs e)
+
+        #region Sort
+        private void SortButton_Importance_Click(object sender, RoutedEventArgs e)
         {
-            OpenDetailsPanel();
+            Inventory = Inventory.OrderBy(x => x.IsStarred == false).ToList();
+
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+
+            LoadList();
+        }
+
+        private void SortButton_DueDate_Click(object sender, RoutedEventArgs e)
+        {
+            Inventory = Inventory.OrderBy(x => x.EndDateTime).ToList();
+            Inventory = Inventory.OrderBy(x => x.IsReminderOn == false).ToList();
+
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+
+            LoadList();
+        }
+
+        private void SortButton_AlphabeticalAscending_Click(object sender, RoutedEventArgs e)
+        {
+            Inventory = Inventory.OrderBy(x => x.Title).ToList();
+
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+
+            LoadList();
+        }
+
+        private void SortButton_AlphabeticalDescending_Click(object sender, RoutedEventArgs e)
+        {
+            Inventory = Inventory.OrderBy(x => x.Title).ToList();
+            Inventory.Reverse();
+
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+
+            LoadList();
+        }
+
+        private void SortButton_CreationDate_Click(object sender, RoutedEventArgs e)
+        {
+            Inventory = Inventory.OrderBy(x => x.CreationDateTime).ToList();
+
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+
+            LoadList();
         }
         #endregion
+
 
         #region Details panel
         public void OpenDetailsPanel()
@@ -208,54 +300,6 @@ namespace ProjectSC
         }
         #endregion
 
-        private void SortButton_Importance_Click(object sender, RoutedEventArgs e)
-        {
-            Inventory = Inventory.OrderBy(x => x.IsStarred == false).ToList();
-
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
-
-            LoadList();
-        }
-
-        private void SortButton_DueDate_Click(object sender, RoutedEventArgs e)
-        {
-            Inventory = Inventory.OrderBy(x => x.EndDateTime).ToList();
-            Inventory = Inventory.OrderBy(x => x.IsReminderOn == false).ToList();
-
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
-
-            LoadList();
-        }
-
-        private void SortButton_AlphabeticalAscending_Click(object sender, RoutedEventArgs e)
-        {
-            Inventory = Inventory.OrderBy(x => x.Title).ToList();
-
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
-
-            //LoadList();
-        }
-
-        private void SortButton_AlphabeticalDescending_Click(object sender, RoutedEventArgs e)
-        {
-            Inventory = Inventory.OrderBy(x => x.Title).ToList();
-            Inventory.Reverse();
-
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
-
-            LoadList();
-        }
-
-        private void SortButton_CreationDate_Click(object sender, RoutedEventArgs e)
-        {
-            Inventory = Inventory.OrderBy(x => x.CreationDateTime).ToList();
-
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
-
-            LoadList();
-        }
-
-
 
 
         #region List tester button events
@@ -285,34 +329,5 @@ namespace ProjectSC
             ListTesterTB.Foreground = Brushes.White;
         }
         #endregion
-
-        private void SearchBox_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-
-        }
-
-        private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Keyboard.ClearFocus();
-        }
-
-        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            SearchItems(SearchBox.Text);
-
-            if (SearchBox.Text == string.Empty)
-            {
-                ButtonClearSearchBox.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                ButtonClearSearchBox.Visibility = Visibility.Visible;
-            }
-        }
-
-        private void ButtonClearSearchBox_Click(object sender, RoutedEventArgs e)
-        {
-            SearchBox.Clear();
-        }
     }
 }

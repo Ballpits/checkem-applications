@@ -92,7 +92,7 @@ namespace ProjectSC
         #region Add new item
         public static void AddNew(string title, string description, DateTime begineDateTime, DateTime endDateTime, DateTime createdDateTime, List<ToDoItem> inventory)
         {
-            int id = inventory.Count + 1;
+            int id = inventory.Count;
 
             inventory.Add(new ToDoItem
             {
@@ -111,7 +111,7 @@ namespace ProjectSC
 
         public static void AddNew(string title, string description, DateTime endDateTime, DateTime createdDateTime, List<ToDoItem> inventory)
         {
-            int id = inventory.Count + 1;
+            int id = inventory.Count;
 
             inventory.Add(new ToDoItem
             {
@@ -129,7 +129,7 @@ namespace ProjectSC
 
         public static void AddNew(string title, string description, DateTime createdDateTime, List<ToDoItem> inventory)
         {
-            int id = inventory.Count + 1;
+            int id = inventory.Count;
 
             inventory.Add(new ToDoItem
             {
@@ -149,60 +149,72 @@ namespace ProjectSC
         #region Update
         public static void Update(int id, string title, string description, DateTime endDateTime, List<ToDoItem> inventory)
         {
-            inventory[id].Title = title;
-            inventory[id].Description = description;
+            int index = inventory.FindIndex(x => x.Id == id);
+
+            inventory[index].Title = title;
+            inventory[index].Description = description;
 
 
-            inventory[id].IsReminderOn = true;
-            inventory[id].IsAdvanceReminderOn = false;
+            inventory[index].IsReminderOn = true;
+            inventory[index].IsAdvanceReminderOn = false;
 
-            inventory[id].EndDateTime = endDateTime;
+            inventory[index].EndDateTime = endDateTime;
 
             SaveToJson(inventory);
         }//update with basic reminder
 
         public static void Update(int id, string title, string description, DateTime beginDateTime, DateTime endDateTime, List<ToDoItem> inventory)
         {
-            inventory[id].Title = title;
-            inventory[id].Description = description;
+            int index = inventory.FindIndex(x => x.Id == id);
+
+            inventory[index].Title = title;
+            inventory[index].Description = description;
 
 
-            inventory[id].IsReminderOn = true;
-            inventory[id].IsAdvanceReminderOn = true;
+            inventory[index].IsReminderOn = true;
+            inventory[index].IsAdvanceReminderOn = true;
 
-            inventory[id].BeginDateTime = beginDateTime;
-            inventory[id].EndDateTime = endDateTime;
+            inventory[index].BeginDateTime = beginDateTime;
+            inventory[index].EndDateTime = endDateTime;
 
             SaveToJson(inventory);
         }//update with advance reminder
 
         public static void Update(int id, string title, string description, List<ToDoItem> inventory)
         {
-            inventory[id].Title = title;
-            inventory[id].Description = description;
+            int index = inventory.FindIndex(x => x.Id == id);
 
-            inventory[id].IsReminderOn = false;
+            inventory[index].Title = title;
+            inventory[index].Description = description;
+
+            inventory[index].IsReminderOn = false;
 
             SaveToJson(inventory);
         }//Only update without reminder
 
-        public static void Update(int id, bool isImportant, List<ToDoItem> inventory)
+        public static void Update(int id, bool isStarred, List<ToDoItem> inventory)
         {
-            inventory[id].IsStarred = isImportant;
+            int index = inventory.FindIndex(x => x.Id == id);
+
+            inventory[index].IsStarred = isStarred;
 
             SaveToJson(inventory);
-        }//Update importance
+        }//Update starred
 
         public static void UpdateCompletion(int id, bool isCompleted, List<ToDoItem> inventory)
         {
-            inventory[id].IsCompleted = isCompleted;
+            int index = inventory.FindIndex(x => x.Id == id);
+
+            inventory[index].IsCompleted = isCompleted;
 
             SaveToJson(inventory);
         }//Update completion
 
         public static void Update(int id, string tagName, List<ToDoItem> inventory)
         {
-            inventory[id].TagName = tagName;
+            int index = inventory.FindIndex(x => x.Id == id);
+
+            inventory[index].TagName = tagName;
 
             SaveToJson(inventory);
         }//Update tag

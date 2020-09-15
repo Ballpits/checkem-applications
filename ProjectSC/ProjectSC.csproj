@@ -92,7 +92,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DataAccess\Class\JsonDataAccess.cs" />
+    <Compile Include="DataAccess\JsonDataAccess.cs" />
     <Compile Include="Functions\HotKey.cs" />
     <Compile Include="TesterClass\ListTester\ListViewer.cs" />
     <Compile Include="QuickViewWindow.xaml.cs">
