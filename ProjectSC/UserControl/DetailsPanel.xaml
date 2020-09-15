@@ -11,7 +11,7 @@
     <Grid Background="#CC000000" MouseDown="DarkGrid_MouseDown" Loaded="DarkGrid_Loaded">
         <materialDesign:TransitioningContent x:Name="TrainsitionigContent2" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromRight, Duration=0:0:0.3}">
 
-            <Grid x:Name="DetailsGrid" Background="White" HorizontalAlignment="Right" Width="400">
+            <Grid x:Name="DetailsGrid" Background="White" HorizontalAlignment="Right" Width="400" KeyDown="DetailsGrid_KeyDown" KeyUp="DetailsGrid_KeyUp">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,49.6">
                     <StackPanel>
                         <Grid x:Name="ChipGrid" Height="55">

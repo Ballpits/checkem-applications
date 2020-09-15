@@ -1,6 +1,5 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -53,8 +52,68 @@ namespace ProjectSC.UserControls.Custom
         ToDoListUSC todo;
         ItemBar itemBar;
 
+        private void Save()
+        {
+            if (IsNew)
+            {
+                if (IsReminderOn)
+                {
+                    if (IsAdvanceReminderOn)
+                    {
+                        JsonDataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), DateTime.Now, todo.Inventory);
+                    }
+                    else
+                    {
+                        JsonDataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), DateTime.Now, todo.Inventory);
+                    }
+                }
+                else
+                {
+                    JsonDataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, DateTime.Now, todo.Inventory);
+                }
+
+
+                JsonDataAccess.RetrieveData(ref todo.Inventory);
+                JsonDataAccess.ResetId(todo.Inventory);
+
+                todo.AddItemBar();
+
+                //DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Incorrect format !"));
+                todo.CloseDetailsPanel("Added");
+            }
+            else
+            {
+                if (IsReminderOn)
+                {
+                    if (IsAdvanceReminderOn)
+                    {
+                        JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), todo.Inventory);
+                    }
+                    else
+                    {
+                        JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), todo.Inventory);
+                    }
+                }
+                else
+                {
+                    JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, todo.Inventory);
+                }
+
+                itemBar.Title = textBoxTitle.Text;
+                itemBar.Description = textBoxDescription.Text;
+                itemBar.IsReminderOn = IsReminderOn;
+                itemBar.IsAdvanceReminderOn = IsAdvanceReminderOn;
+
+                itemBar.Update(itemBar);
+
+                DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Saved"));
+            }
+        }
+
         private void DarkGrid_Loaded(object sender, RoutedEventArgs e)
         {
+            DetailsGrid.Focus();
+
             if (IsNew)
             {
                 RemoveButton.IsEnabled = false;
@@ -118,60 +177,7 @@ namespace ProjectSC.UserControls.Custom
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (IsNew)
-            {
-                if (IsReminderOn)
-                {
-                    if (IsAdvanceReminderOn)
-                    {
-                        JsonDataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), DateTime.Now, todo.Inventory);
-                    }
-                    else
-                    {
-                        JsonDataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), DateTime.Now, todo.Inventory);
-                    }
-                }
-                else
-                {
-                    JsonDataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, DateTime.Now, todo.Inventory);
-                }
-
-
-                JsonDataAccess.RetrieveData(ref todo.Inventory);
-                JsonDataAccess.ResetId(todo.Inventory);
-
-                todo.AddItemBar();
-
-                //DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Incorrect format !"));
-                todo.CloseDetailsPanel("Added");
-            }
-            else
-            {
-                if (IsReminderOn)
-                {
-                    if (IsAdvanceReminderOn)
-                    {
-                        JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), todo.Inventory);
-                    }
-                    else
-                    {
-                        JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), todo.Inventory);
-                    }
-                }
-                else
-                {
-                    JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, todo.Inventory);
-                }
-
-                itemBar.Title = textBoxTitle.Text;
-                itemBar.Description = textBoxDescription.Text;
-                itemBar.IsReminderOn = IsReminderOn;
-                itemBar.IsAdvanceReminderOn = IsAdvanceReminderOn;
-
-                itemBar.Update(itemBar);
-
-                DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Saved"));
-            }
+            Save();
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
@@ -309,6 +315,40 @@ namespace ProjectSC.UserControls.Custom
                 todo.CloseDetailsPanel();
             }
         }
-        #endregion
+        #endregion        
+
+        bool IsLCtrlPressed = false;
+        bool IsSPressed = false;
+
+        private void DetailsGrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.LeftCtrl)
+            {
+                IsLCtrlPressed = true;
+            }
+
+            if (e.Key == Key.S)
+            {
+                IsSPressed = true;
+            }
+
+            if (IsLCtrlPressed && IsSPressed)
+            {
+                Save();
+            }
+        }
+
+        private void DetailsGrid_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.LeftCtrl)
+            {
+                IsLCtrlPressed = false;
+            }
+
+            if (e.Key == Key.S)
+            {
+                IsSPressed = false;
+            }
+        }
     }
 }
