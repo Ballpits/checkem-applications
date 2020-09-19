@@ -15,7 +15,7 @@ namespace ProjectSC
             InitializeComponent();
 
             //test data
-            JsonDataAccess.StoreTestData(Inventory);
+            //JsonDataAccess.StoreTestData(Inventory);
 
             //retrieve data from database
             RetrieveData();
@@ -33,12 +33,13 @@ namespace ProjectSC
         #region Variables
         public List<ToDoItem> Inventory = new List<ToDoItem>();
 
+        private string path = "Inventory.json";
         private bool DetailsPanelOpened = false;
         #endregion
 
         private void RetrieveData()
         {
-            JsonDataAccess.RetrieveData(ref Inventory);
+            JsonDataAccess.RetrieveData(ref Inventory, path);
         }
 
         private void LoadList()
@@ -131,6 +132,8 @@ namespace ProjectSC
                 LoadList();
 
                 ToDoListTitleTextBlock.Text = "All Items";
+
+                counter = Inventory.Count;
             }
 
             ToDoListItemCounterTextBlock.Text = $"{counter} Items";

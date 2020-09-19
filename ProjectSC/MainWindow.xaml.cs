@@ -28,11 +28,11 @@ namespace ProjectSC
         }
 
 
-        #region 
+        #region Variables
         private ToDoListUSC myDayUSC = new ToDoListUSC();
-        #endregion
 
-        #region Reminder variables
+        private string path = "Inventory.json";
+
         private List<TimeRecord> timeRecord = new List<TimeRecord>();
         private DispatcherTimer timer = new DispatcherTimer();
         private int TimerOffset = 60 - DateTime.Now.Second;
@@ -52,7 +52,7 @@ namespace ProjectSC
             TimerOffset = 60 - DateTime.Now.Second;
             timer.Interval = TimeSpan.FromSeconds(TimerOffset);//Fix timer delay time
 
-            JsonDataAccess.RetrieveTimeData(ref timeRecord);
+            JsonDataAccess.RetrieveTimeData(ref timeRecord, path);
 
 
             foreach (var item in timeRecord)

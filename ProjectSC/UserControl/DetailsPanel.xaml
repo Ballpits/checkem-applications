@@ -6,7 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:ProjectSC.UserControls.Custom"
              mc:Ignorable="d" 
-             d:DesignHeight="510" d:DesignWidth="885">
+             d:DesignHeight="1020" d:DesignWidth="885">
 
     <Grid Background="#CC000000" MouseDown="DarkGrid_MouseDown" Loaded="DarkGrid_Loaded">
         <materialDesign:TransitioningContent x:Name="TrainsitionigContent2" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromRight, Duration=0:0:0.3}">
@@ -15,17 +15,23 @@
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,49.6">
                     <StackPanel>
                         <Grid x:Name="ChipGrid" Height="55">
-                            <materialDesign:Chip x:Name="TagChip" IsDeletable="True" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,5,20,0" DeleteClick="Chip_DeleteClick" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-                                <Grid>
-                                    <TextBox x:Name="ChipTitleEditTextbox" BorderBrush="{x:Null}" Background="{x:Null}" Focusable="True" LostFocus="ChipTitleEditTextbox_LostFocus"/>
-                                </Grid>
-                            </materialDesign:Chip>
-                            
-                            <Button HorizontalAlignment="Left" VerticalAlignment="Center" Width="45" Height="45" materialDesign:ButtonAssist.CornerRadius="10" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="Black" Click="RetunButton_Click" Padding="0" Margin="10,10,0,0" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                            <Button HorizontalAlignment="Left" VerticalAlignment="Center" Width="45" Height="45" materialDesign:ButtonAssist.CornerRadius="10" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="White" BorderBrush="{x:Null}" Foreground="Black" Click="RetunButton_Click" Padding="0" Margin="10,0,0,0" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
                                 <materialDesign:PackIcon Kind="ArrowBack" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FF2196F3"/>
                             </Button>
 
-                            <TextBlock Name="Id_TB" Margin="60,0,0,0" FontSize="20"/>
+                            <materialDesign:PopupBox HorizontalAlignment="Right" Height="45" Width="45" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" Foreground="#FF2196F3" Margin="0,0,10,0">
+                                <materialDesign:PopupBox.ToggleContent>
+                                    <materialDesign:PackIcon x:Name="TagPopupIcon" Kind="TagAdd" Foreground="#FF2196F3" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" />
+                                </materialDesign:PopupBox.ToggleContent>
+
+                                <StackPanel x:Name="TagPopupStp">
+                                    <Button VerticalContentAlignment="Center" Padding="10,0" HorizontalContentAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}">
+                                        <TextBlock Text="Starred" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,0,0,0" Margin="0" Background="#FFCDCDCD" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Button>
+
+                                </StackPanel>
+
+                            </materialDesign:PopupBox>
                         </Grid>
 
                         <TextBox x:Name="textBoxTitle" Margin="10,10,10,0" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="Title" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial"/>

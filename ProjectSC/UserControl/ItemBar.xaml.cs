@@ -244,6 +244,7 @@ namespace ProjectSC.UserControls.Custom
         {
             textBlockTitle.Text = itemBar.Title;
             this.IsReminderOn = itemBar.IsReminderOn;
+
             VisualUpdate();
         }
 
@@ -256,7 +257,28 @@ namespace ProjectSC.UserControls.Custom
 
                 ReminderIcon.Visibility = Visibility.Visible;
                 ReminderTimeTextBlock.Visibility = Visibility.Visible;
-                ReminderTimeTextBlock.Text = todo.Inventory[todo.Inventory.FindIndex(x => x.Id == Id)].EndDateTime.ToString();
+
+
+                if (IsAdvanceReminderOn)
+                {
+                    ReminderTimeTextBlock.Text = "Start on: " + SimplifiedDate(BeginDateTime) + "\tEnd on: " + SimplifiedDate(EndDateTime);
+                }
+                else
+                {
+                    ReminderTimeTextBlock.Text = SimplifiedDate(EndDateTime);
+                }
+
+
+                if (Passed(EndDateTime))
+                {
+                    textBlockTitle.Foreground = Brushes.LightGray;
+                    ReminderTimeTextBlock.Foreground = Brushes.Red;
+                }
+                else
+                {
+                    textBlockTitle.Foreground = Brushes.LightGray;
+                    ReminderTimeTextBlock.Foreground = Brushes.Black;
+                }
             }
             else
             {
@@ -266,6 +288,35 @@ namespace ProjectSC.UserControls.Custom
                 ReminderIcon.Visibility = Visibility.Hidden;
                 ReminderTimeTextBlock.Visibility = Visibility.Hidden;
                 ReminderTimeTextBlock.Text = string.Empty;
+            }
+
+        }
+
+        private string SimplifiedDate(DateTime dateTime)
+        {
+            if (dateTime.Year == DateTime.Now.Year && dateTime.Month == DateTime.Now.Month && dateTime.Day == DateTime.Now.Day)
+            {
+                return "Today, " + dateTime.ToString("hh:mm tt");
+            }
+            else if (dateTime.Year == DateTime.Now.Year && dateTime.Month == DateTime.Now.Month && dateTime.Day == DateTime.Now.Day + 1)
+            {
+                return "Tomorrow, " + dateTime.ToString("hh:mm tt");
+            }
+            else
+            {
+                return dateTime.ToString("dd/M/yyyy, hh:mm tt");
+            }
+        }
+
+        private bool Passed(DateTime dateTime)
+        {
+            if (dateTime < DateTime.Now)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

@@ -73,7 +73,7 @@ namespace ProjectSC.UserControls.Custom
                 }
 
 
-                JsonDataAccess.RetrieveData(ref todo.Inventory);
+                JsonDataAccess.RetrieveData(ref todo.Inventory, "inv.json");
                 JsonDataAccess.ResetId(todo.Inventory);
 
                 todo.AddItemBar();
@@ -88,11 +88,17 @@ namespace ProjectSC.UserControls.Custom
                     if (IsAdvanceReminderOn)
                     {
                         JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), todo.Inventory);
+                        
+                        itemBar.BeginDateTime = Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text);
+                        itemBar.EndDateTime = Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text);
                     }
                     else
                     {
                         JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), todo.Inventory);
+
+                        itemBar.EndDateTime = Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text);
                     }
+
                 }
                 else
                 {
@@ -123,8 +129,6 @@ namespace ProjectSC.UserControls.Custom
             }
             else
             {
-                //Id_TB.Text = Id.ToString();
-
                 textBoxTitle.Text = Title;
                 textBoxDescription.Text = Description;
 
@@ -154,16 +158,6 @@ namespace ProjectSC.UserControls.Custom
                 {
                     SetReminderState(0);
                 }
-
-
-                if (IsUsingTag)
-                {
-                    ChipGrid.Height = 50;
-
-                    TagChip.Visibility = Visibility.Visible;
-
-                    ChipTitleEditTextbox.Text = TagName;
-                }//Tag texts
             }
         }
 
@@ -186,7 +180,7 @@ namespace ProjectSC.UserControls.Custom
 
             todo.RemoveItemBar(itemBar);
 
-            todo.CloseDetailsPanel();
+            todo.CloseDetailsPanel("Removed");
         }
         #endregion
 
@@ -200,7 +194,7 @@ namespace ProjectSC.UserControls.Custom
 
         private void ChipTitleEditTextbox_LostFocus(object sender, RoutedEventArgs e)
         {
-            JsonDataAccess.Update(Id, ChipTitleEditTextbox.Text, todo.Inventory);
+            //JsonDataAccess.Update(Id, ChipTitleEditTextbox.Text, todo.Inventory);
         }
         #endregion
 
