@@ -21,6 +21,8 @@ namespace ProjectSC.UserControls.Custom
             todo = toDo;
         }
 
+        private DataAccess_Json dataAccess = new DataAccess_Json();
+
         private ToDoListUSC todo;
 
         #region Properties
@@ -81,7 +83,7 @@ namespace ProjectSC.UserControls.Custom
 
             if (CheckboxLoaded)
             {
-                DataAccess_Json.UpdateCompletion(Id, true, todo.Inventory);
+                dataAccess.UpdateCompletion(Id, true, todo.Inventory);
             }
         }
 
@@ -102,18 +104,18 @@ namespace ProjectSC.UserControls.Custom
             textBlockTitle.Foreground = Brushes.Black;
             textBlockTitle.TextDecorations = null;
 
-            DataAccess_Json.UpdateCompletion(Id, false, todo.Inventory);
+            dataAccess.UpdateCompletion(Id, false, todo.Inventory);
         }
 
         private void StarToggle_Click(object sender, RoutedEventArgs e)
         {
             if (StarToggle.IsChecked == true)
             {
-                DataAccess_Json.Update(Id, true, todo.Inventory);
+                dataAccess.Update(Id, true, todo.Inventory);
             }
             else
             {
-                DataAccess_Json.Update(Id, false, todo.Inventory);
+                dataAccess.Update(Id, false, todo.Inventory);
             }
         }
 

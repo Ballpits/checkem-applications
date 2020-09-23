@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProjectSC.Classes
+namespace ProjectSC
 {
     public class TimeRecord
     {

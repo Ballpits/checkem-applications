@@ -1,16 +1,21 @@
 ﻿using Newtonsoft.Json;
-using ProjectSC.Classes;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace ProjectSC
 {
-    static class DataAccess_Json
+    public class DataAccess_Json : IDataAccess
     {
+        private static void SaveToJson(List<ToDoItem> inventory)
+        {
+            File.WriteAllText(@"Inventory.json", JsonConvert.SerializeObject(inventory));
+        }
+
+
 
         #region test data
-        public static void StoreTestData(List<ToDoItem> inventory)
+        public void StoreTestData(List<ToDoItem> inventory)
         {
             //inventory.Add(new ToDoItem { Id = 0, Title = "Item 0", Description = "Item 0's details !" });
             //inventory.Add(new ToDoItem { Id = 1, Title = "Item 1", Description = "Item 1's details !" });
@@ -39,14 +44,17 @@ namespace ProjectSC
         }
         #endregion
 
-        public static void RetrieveData(ref List<ToDoItem> inventory, string path)
+
+
+        public void RetrieveData(ref List<ToDoItem> inventory, string path)
         {
             string json = File.ReadAllText(path);
             inventory = JsonConvert.DeserializeObject<List<ToDoItem>>(json);
         }//Get all the data from the json file and save it to the list
 
 
-        public static void RetrieveTimeData(ref List<TimeRecord> timeRecords, string path)
+
+        public void RetrieveTimeData(ref List<TimeRecord> timeRecords, string path)
         {
             string json = File.ReadAllText(path);
             List<ToDoItem> inventory = JsonConvert.DeserializeObject<List<ToDoItem>>(json);
@@ -62,7 +70,7 @@ namespace ProjectSC
 
 
 
-        public static void ResetId(List<ToDoItem> inventory)
+        public void ResetId(List<ToDoItem> inventory)
         {
             foreach (var item in inventory)
             {
@@ -74,7 +82,7 @@ namespace ProjectSC
 
 
 
-        public static void RemoveAt(int id, List<ToDoItem> inventory)
+        public void RemoveAt(int id, List<ToDoItem> inventory)
         {
             inventory.RemoveAt(inventory.FindIndex(x => x.Id == id));
             SaveToJson(inventory);
@@ -82,15 +90,8 @@ namespace ProjectSC
 
 
 
-        private static void SaveToJson(List<ToDoItem> inventory)
-        {
-            File.WriteAllText(@"Inventory.json", JsonConvert.SerializeObject(inventory));
-        }
-
-
-
-        #region Add new item
-        public static void AddNew(string title, string description, DateTime begineDateTime, DateTime endDateTime, DateTime createdDateTime, List<ToDoItem> inventory)
+        #region AddNew
+        public void AddNew(string title, string description, DateTime begineDateTime, DateTime endDateTime, DateTime createdDateTime, List<ToDoItem> inventory)
         {
             int id = inventory.Count;
 
@@ -109,7 +110,7 @@ namespace ProjectSC
             SaveToJson(inventory);
         }//Add new item with advance reminder
 
-        public static void AddNew(string title, string description, DateTime endDateTime, DateTime createdDateTime, List<ToDoItem> inventory)
+        public void AddNew(string title, string description, DateTime endDateTime, DateTime createdDateTime, List<ToDoItem> inventory)
         {
             int id = inventory.Count;
 
@@ -127,7 +128,7 @@ namespace ProjectSC
             SaveToJson(inventory);
         }//Add new item with bacis reminder
 
-        public static void AddNew(string title, string description, DateTime createdDateTime, List<ToDoItem> inventory)
+        public void AddNew(string title, string description, DateTime createdDateTime, List<ToDoItem> inventory)
         {
             int id = inventory.Count;
 
@@ -147,7 +148,7 @@ namespace ProjectSC
 
 
         #region Update
-        public static void Update(int id, string title, string description, DateTime endDateTime, List<ToDoItem> inventory)
+        public void Update(int id, string title, string description, DateTime endDateTime, List<ToDoItem> inventory)
         {
             int index = inventory.FindIndex(x => x.Id == id);
 
@@ -163,7 +164,7 @@ namespace ProjectSC
             SaveToJson(inventory);
         }//update with basic reminder
 
-        public static void Update(int id, string title, string description, DateTime beginDateTime, DateTime endDateTime, List<ToDoItem> inventory)
+        public void Update(int id, string title, string description, DateTime beginDateTime, DateTime endDateTime, List<ToDoItem> inventory)
         {
             int index = inventory.FindIndex(x => x.Id == id);
 
@@ -180,7 +181,7 @@ namespace ProjectSC
             SaveToJson(inventory);
         }//update with advance reminder
 
-        public static void Update(int id, string title, string description, List<ToDoItem> inventory)
+        public void Update(int id, string title, string description, List<ToDoItem> inventory)
         {
             int index = inventory.FindIndex(x => x.Id == id);
 
@@ -192,7 +193,7 @@ namespace ProjectSC
             SaveToJson(inventory);
         }//Only update without reminder
 
-        public static void Update(int id, bool isStarred, List<ToDoItem> inventory)
+        public void Update(int id, bool isStarred, List<ToDoItem> inventory)
         {
             int index = inventory.FindIndex(x => x.Id == id);
 
@@ -201,7 +202,7 @@ namespace ProjectSC
             SaveToJson(inventory);
         }//Update starred
 
-        public static void UpdateCompletion(int id, bool isCompleted, List<ToDoItem> inventory)
+        public void UpdateCompletion(int id, bool isCompleted, List<ToDoItem> inventory)
         {
             int index = inventory.FindIndex(x => x.Id == id);
 
@@ -210,7 +211,7 @@ namespace ProjectSC
             SaveToJson(inventory);
         }//Update completion
 
-        public static void Update(int id, string tagName, List<ToDoItem> inventory)
+        public void Update(int id, string tagName, List<ToDoItem> inventory)
         {
             int index = inventory.FindIndex(x => x.Id == id);
 
@@ -218,34 +219,6 @@ namespace ProjectSC
 
             SaveToJson(inventory);
         }//Update tag
-        #endregion
-
-
-
-        #region Search function
-        public static string FindById(int id, List<ToDoItem> inventory)
-        {
-            if (inventory.Exists(x => x.Id == id))
-            {
-                return inventory.Find(x => x.Id == id).ToString();
-            }
-            else
-            {
-                return $"\t{id} does not exist in the list";
-            }
-        }
-
-        public static string FindByTitle(string title, List<ToDoItem> inventory)
-        {
-            if (inventory.Exists(x => x.Title == title))
-            {
-                return inventory.Find(x => x.Title == title).ToString();
-            }
-            else
-            {
-                return $"\t{title} does not exist in the list";
-            }
-        }
         #endregion
     }
 }

@@ -49,6 +49,9 @@ namespace ProjectSC.UserControls.Custom
         public string TagName { get; set; }
         #endregion
 
+
+        private DataAccess_Json dataAccess = new DataAccess_Json();
+
         ToDoListUSC todo;
         ItemBar itemBar;
 
@@ -60,21 +63,21 @@ namespace ProjectSC.UserControls.Custom
                 {
                     if (IsAdvanceReminderOn)
                     {
-                        DataAccess_Json.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), DateTime.Now, todo.Inventory);
+                        dataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), DateTime.Now, todo.Inventory);
                     }
                     else
                     {
-                        DataAccess_Json.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), DateTime.Now, todo.Inventory);
+                        dataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), DateTime.Now, todo.Inventory);
                     }
                 }
                 else
                 {
-                    DataAccess_Json.AddNew(textBoxTitle.Text, textBoxDescription.Text, DateTime.Now, todo.Inventory);
+                    dataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, DateTime.Now, todo.Inventory);
                 }
 
 
-                DataAccess_Json.RetrieveData(ref todo.Inventory, "inv.json");
-                DataAccess_Json.ResetId(todo.Inventory);
+                dataAccess.RetrieveData(ref todo.Inventory, "inv.json");
+                dataAccess.ResetId(todo.Inventory);
 
                 todo.AddItemBar();
 
@@ -87,14 +90,14 @@ namespace ProjectSC.UserControls.Custom
                 {
                     if (IsAdvanceReminderOn)
                     {
-                        DataAccess_Json.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), todo.Inventory);
+                        dataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), todo.Inventory);
                         
                         itemBar.BeginDateTime = Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text);
                         itemBar.EndDateTime = Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text);
                     }
                     else
                     {
-                        DataAccess_Json.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), todo.Inventory);
+                        dataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), todo.Inventory);
 
                         itemBar.EndDateTime = Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text);
                     }
@@ -102,7 +105,7 @@ namespace ProjectSC.UserControls.Custom
                 }
                 else
                 {
-                    DataAccess_Json.Update(Id, textBoxTitle.Text, textBoxDescription.Text, todo.Inventory);
+                    dataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, todo.Inventory);
                 }
 
                 itemBar.Title = textBoxTitle.Text;
@@ -176,7 +179,7 @@ namespace ProjectSC.UserControls.Custom
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess_Json.RemoveAt(Id, todo.Inventory);
+            dataAccess.RemoveAt(Id, todo.Inventory);
 
             todo.RemoveItemBar(itemBar);
 

@@ -22,7 +22,7 @@ namespace ProjectSC
 
             //refresh id
             Inventory = Inventory.OrderBy(x => x.Id).ToList();
-            DataAccess_Json.ResetId(Inventory);
+            dataAccess.ResetId(Inventory);
 
             //load in itembars into stackpanel
             LoadList();
@@ -31,6 +31,8 @@ namespace ProjectSC
         }
 
         #region Variables
+        private DataAccess_Json dataAccess = new DataAccess_Json();
+
         public List<ToDoItem> Inventory = new List<ToDoItem>();
 
         private string path = "Inventory.json";
@@ -39,7 +41,7 @@ namespace ProjectSC
 
         private void RetrieveData()
         {
-            DataAccess_Json.RetrieveData(ref Inventory, path);
+            dataAccess.RetrieveData(ref Inventory, path);
         }
 
         private void LoadList()
@@ -70,6 +72,7 @@ namespace ProjectSC
         {
             OpenDetailsPanel();
         }
+
         #region Item
         private void AddItem(ToDoItem todoItem)
         {

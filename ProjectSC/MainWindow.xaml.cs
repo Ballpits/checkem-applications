@@ -1,5 +1,4 @@
-﻿using ProjectSC.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Threading;
@@ -20,6 +19,8 @@ namespace ProjectSC
 
 
         #region Variables
+        private DataAccess_Json dataAccess = new DataAccess_Json();
+
         private ToDoListUSC myDayUSC = new ToDoListUSC();
 
         private string path = "Inventory.json";
@@ -43,7 +44,7 @@ namespace ProjectSC
             TimerOffset = 60 - DateTime.Now.Second;
             timer.Interval = TimeSpan.FromSeconds(TimerOffset);//Fix timer delay time
 
-            DataAccess_Json.RetrieveTimeData(ref timeRecord, path);
+            dataAccess.RetrieveTimeData(ref timeRecord, path);
 
 
             foreach (var item in timeRecord)
