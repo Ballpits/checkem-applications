@@ -9,7 +9,7 @@
         Title="Check'em" Height="540" Width="960" WindowStartupLocation="CenterScreen" MinWidth="960" MinHeight="540" Icon="Icon/Icon-1024.ico" Background="White" WindowState="Maximized" Closed="AppWindow_Closed">
 
     <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.5}">
-        <Grid Loaded="Grid_Loaded" Margin="0">
+        <Grid x:Name="MainGrid" Loaded="Grid_Loaded" Margin="0">
 
             <Grid x:Name="NavigationBar" HorizontalAlignment="Left" Width="70" Margin="0,0,0,0.4" Grid.RowSpan="2">
                 <Grid.Background>

@@ -76,11 +76,12 @@ namespace ProjectSC.UserControls.Custom
 
             checkBox.Content = icon;
 
+            textBlockTitle.Foreground = Brushes.LightGray;
             textBlockTitle.TextDecorations = TextDecorations.Strikethrough;
 
             if (CheckboxLoaded)
             {
-                JsonDataAccess.UpdateCompletion(Id, true, todo.Inventory);
+                DataAccess_Json.UpdateCompletion(Id, true, todo.Inventory);
             }
         }
 
@@ -98,20 +99,21 @@ namespace ProjectSC.UserControls.Custom
                 checkBox.Content = icon;
             }
 
+            textBlockTitle.Foreground = Brushes.Black;
             textBlockTitle.TextDecorations = null;
 
-            JsonDataAccess.UpdateCompletion(Id, false, todo.Inventory);
+            DataAccess_Json.UpdateCompletion(Id, false, todo.Inventory);
         }
 
         private void StarToggle_Click(object sender, RoutedEventArgs e)
         {
             if (StarToggle.IsChecked == true)
             {
-                JsonDataAccess.Update(Id, true, todo.Inventory);
+                DataAccess_Json.Update(Id, true, todo.Inventory);
             }
             else
             {
-                JsonDataAccess.Update(Id, false, todo.Inventory);
+                DataAccess_Json.Update(Id, false, todo.Inventory);
             }
         }
 
@@ -150,9 +152,9 @@ namespace ProjectSC.UserControls.Custom
         {
             if (sender.GetType() == typeof(Border))
             {
-                border.Background = Brushes.LightGray;
-                cBoxGrid.Background = Brushes.LightGray;
-                StarToggle.Background = Brushes.LightGray;
+                border.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFEDF7FF"));
+                cBoxGrid.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFEDF7FF"));
+                StarToggle.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFEDF7FF"));
             }
             if (sender.GetType() == typeof(CheckBox))
             {
@@ -171,8 +173,8 @@ namespace ProjectSC.UserControls.Custom
             if (sender.GetType() == typeof(Grid))
             {
                 BorderEventCanActivate = false;
-                cBoxGrid.Background = Brushes.LightGray;
-                StarToggle.Background = Brushes.LightGray;
+                cBoxGrid.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFEDF7FF"));
+                StarToggle.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFEDF7FF"));
 
                 if (checkBox.IsChecked == false)
                 {
@@ -271,12 +273,10 @@ namespace ProjectSC.UserControls.Custom
 
                 if (Passed(EndDateTime))
                 {
-                    textBlockTitle.Foreground = Brushes.LightGray;
                     ReminderTimeTextBlock.Foreground = Brushes.Red;
                 }
                 else
                 {
-                    textBlockTitle.Foreground = Brushes.LightGray;
                     ReminderTimeTextBlock.Foreground = Brushes.Black;
                 }
             }

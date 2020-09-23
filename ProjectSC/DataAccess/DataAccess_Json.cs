@@ -6,7 +6,7 @@ using System.IO;
 
 namespace ProjectSC
 {
-    static class JsonDataAccess
+    static class DataAccess_Json
     {
 
         #region test data
@@ -39,14 +39,14 @@ namespace ProjectSC
         }
         #endregion
 
-        public static void RetrieveData(ref List<ToDoItem> inventory,string path)
+        public static void RetrieveData(ref List<ToDoItem> inventory, string path)
         {
             string json = File.ReadAllText(path);
             inventory = JsonConvert.DeserializeObject<List<ToDoItem>>(json);
         }//Get all the data from the json file and save it to the list
 
 
-        public static void RetrieveTimeData(ref List<TimeRecord> timeRecords,string path)
+        public static void RetrieveTimeData(ref List<TimeRecord> timeRecords, string path)
         {
             string json = File.ReadAllText(path);
             List<ToDoItem> inventory = JsonConvert.DeserializeObject<List<ToDoItem>>(json);

@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8933759C-B163-4EE9-BCF3-CD93F767FDB7}"
 	ProjectSection(SolutionItems) = preProject
 		ProjectSC\bin\Debug\Inventory.json = ProjectSC\bin\Debug\Inventory.json
+		ProjectSC\bin\Debug\UPref.json = ProjectSC\bin\Debug\UPref.json
 	EndProjectSection
 EndProject
 Global

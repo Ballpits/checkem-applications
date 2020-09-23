@@ -22,7 +22,7 @@ namespace ProjectSC
 
             //refresh id
             Inventory = Inventory.OrderBy(x => x.Id).ToList();
-            JsonDataAccess.ResetId(Inventory);
+            DataAccess_Json.ResetId(Inventory);
 
             //load in itembars into stackpanel
             LoadList();
@@ -39,7 +39,7 @@ namespace ProjectSC
 
         private void RetrieveData()
         {
-            JsonDataAccess.RetrieveData(ref Inventory, path);
+            DataAccess_Json.RetrieveData(ref Inventory, path);
         }
 
         private void LoadList()

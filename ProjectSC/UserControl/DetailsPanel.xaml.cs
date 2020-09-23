@@ -60,21 +60,21 @@ namespace ProjectSC.UserControls.Custom
                 {
                     if (IsAdvanceReminderOn)
                     {
-                        JsonDataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), DateTime.Now, todo.Inventory);
+                        DataAccess_Json.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), DateTime.Now, todo.Inventory);
                     }
                     else
                     {
-                        JsonDataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), DateTime.Now, todo.Inventory);
+                        DataAccess_Json.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), DateTime.Now, todo.Inventory);
                     }
                 }
                 else
                 {
-                    JsonDataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, DateTime.Now, todo.Inventory);
+                    DataAccess_Json.AddNew(textBoxTitle.Text, textBoxDescription.Text, DateTime.Now, todo.Inventory);
                 }
 
 
-                JsonDataAccess.RetrieveData(ref todo.Inventory, "inv.json");
-                JsonDataAccess.ResetId(todo.Inventory);
+                DataAccess_Json.RetrieveData(ref todo.Inventory, "inv.json");
+                DataAccess_Json.ResetId(todo.Inventory);
 
                 todo.AddItemBar();
 
@@ -87,14 +87,14 @@ namespace ProjectSC.UserControls.Custom
                 {
                     if (IsAdvanceReminderOn)
                     {
-                        JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), todo.Inventory);
+                        DataAccess_Json.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), todo.Inventory);
                         
                         itemBar.BeginDateTime = Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text);
                         itemBar.EndDateTime = Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text);
                     }
                     else
                     {
-                        JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), todo.Inventory);
+                        DataAccess_Json.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), todo.Inventory);
 
                         itemBar.EndDateTime = Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text);
                     }
@@ -102,7 +102,7 @@ namespace ProjectSC.UserControls.Custom
                 }
                 else
                 {
-                    JsonDataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, todo.Inventory);
+                    DataAccess_Json.Update(Id, textBoxTitle.Text, textBoxDescription.Text, todo.Inventory);
                 }
 
                 itemBar.Title = textBoxTitle.Text;
@@ -176,7 +176,7 @@ namespace ProjectSC.UserControls.Custom
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            JsonDataAccess.RemoveAt(Id, todo.Inventory);
+            DataAccess_Json.RemoveAt(Id, todo.Inventory);
 
             todo.RemoveItemBar(itemBar);
 

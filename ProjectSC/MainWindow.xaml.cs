@@ -13,18 +13,9 @@ namespace ProjectSC
             InitializeComponent();
         }
 
-        //App application;
-        //bool ClosedBefore = true;
         public MainWindow(App app)
         {
             InitializeComponent();
-
-            //application = app;
-
-            //if (ClosedBefore)
-            //{
-            //    ClosedBefore = false;
-            //}
         }
 
 
@@ -52,7 +43,7 @@ namespace ProjectSC
             TimerOffset = 60 - DateTime.Now.Second;
             timer.Interval = TimeSpan.FromSeconds(TimerOffset);//Fix timer delay time
 
-            JsonDataAccess.RetrieveTimeData(ref timeRecord, path);
+            DataAccess_Json.RetrieveTimeData(ref timeRecord, path);
 
 
             foreach (var item in timeRecord)
@@ -66,7 +57,6 @@ namespace ProjectSC
                     Notifications.Notify(item.Title, Notifications.RandomMessage("end"));
                 }
             }//Check if the begin or end time is matched with the current time
-
         }
 
         #region Mouse over events
@@ -103,8 +93,8 @@ namespace ProjectSC
 
         private void ButtonUserPref_Click(object sender, RoutedEventArgs e)
         {
-            UserPrefenceWindow userPrefenceWindow = new UserPrefenceWindow();
-            GridPrincipal.Children.Add(userPrefenceWindow);
+            UserPrefenceWindow userPrefenceWindow = new UserPrefenceWindow(this);
+            MainGrid.Children.Add(userPrefenceWindow);
         }
 
         private void MoveNavbarCursor(int index)

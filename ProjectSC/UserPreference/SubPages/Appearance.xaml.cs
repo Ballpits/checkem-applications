@@ -10,19 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjectSC
+namespace ProjectSC.UserPreference.SubPages
 {
     /// <summary>
-    /// Interaction logic for UserPrefenceWindow.xaml
+    /// Interaction logic for Appearance.xaml
     /// </summary>
-    public partial class UserPrefenceWindow : UserControl
+    public partial class Appearance : UserControl
     {
-        public UserPrefenceWindow()
+        public Appearance()
         {
             InitializeComponent();
         }
-
     }
 }

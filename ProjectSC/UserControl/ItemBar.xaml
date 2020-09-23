@@ -26,7 +26,7 @@
 
             <ToggleButton x:Name="StarToggle" Style="{StaticResource MaterialDesignActionToggleButton}" ToolTip="Mark As Important" HorizontalAlignment="Right" Margin="0,0,10,0" Background="White" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="StarToggle_Click" Height="40" Width="40" IsTabStop="False">
                 <ToggleButton.Content>
-                    <materialDesign:PackIcon Kind="StarBorder" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" />
+                    <materialDesign:PackIcon Kind="StarBorder" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Foreground="#FF2196F3" />
                 </ToggleButton.Content>
                 <materialDesign:ToggleButtonAssist.OnContent>
                     <materialDesign:PackIcon Kind="Star" />
