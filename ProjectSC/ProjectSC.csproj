@@ -136,6 +136,7 @@
       <DependentUpon>ToDoListUSC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Notification\Notifications.cs" />
+    <Compile Include="UserPreference\Funtions\UserPreferenceJsonDataAccess.cs" />
     <Compile Include="UserPreference\SubPages\Appearance.xaml.cs">
       <DependentUpon>Appearance.xaml</DependentUpon>
     </Compile>
@@ -145,6 +146,7 @@
     <Compile Include="UserPreference\SubPages\NotificationUSC.xaml.cs">
       <DependentUpon>NotificationUSC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserPreference\UPref.cs" />
     <Compile Include="UserPreference\UserPreferenceWindow.xaml.cs">
       <DependentUpon>UserPreferenceWindow.xaml</DependentUpon>
     </Compile>

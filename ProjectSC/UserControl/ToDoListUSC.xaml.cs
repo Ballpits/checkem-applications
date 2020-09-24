@@ -34,14 +34,14 @@ namespace ProjectSC
         private DataAccess_Json dataAccess = new DataAccess_Json();
 
         public List<ToDoItem> Inventory = new List<ToDoItem>();
+        private List<ToDoItem> CurrentToDos = new List<ToDoItem>();
 
-        private string path = "Inventory.json";
         private bool DetailsPanelOpened = false;
         #endregion
 
         private void RetrieveData()
         {
-            dataAccess.RetrieveData(ref Inventory, path);
+            dataAccess.RetrieveData(ref Inventory, dataAccess.path);
         }
 
         private void LoadList()
@@ -72,6 +72,7 @@ namespace ProjectSC
         {
             OpenDetailsPanel();
         }
+
 
         #region Item
         private void AddItem(ToDoItem todoItem)
@@ -114,7 +115,7 @@ namespace ProjectSC
                     }
                 }
 
-                ToDoListTitleTextBlock.Text = "Impotant";
+                ToDoListTitleTextBlock.Text = "Starred";
             }
             else if (filterMode == 1)//Filter:Reminder
             {

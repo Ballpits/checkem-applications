@@ -10,8 +10,19 @@
 
     <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.5}">
         <Grid x:Name="MainGrid" Loaded="Grid_Loaded" Margin="0">
+            <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="15*"/>
+            </Grid.ColumnDefinitions>-->
 
-            <Grid x:Name="NavigationBar" HorizontalAlignment="Left" Width="70" Margin="0,0,0,0.4" Grid.RowSpan="2">
+            <Grid x:Name="NavigationBar" Margin="0" HorizontalAlignment="Left" Width="70">
+                <!--<Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="11*"/>
+                </Grid.RowDefinitions>-->
+
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="4,1" StartPoint="1,0">
                         <LinearGradientBrush.RelativeTransform>
@@ -27,35 +38,43 @@
                     </LinearGradientBrush>
                 </Grid.Background>
 
-                <Grid x:Name="NavbarCursor" Background="#665CB7FF" Height="70" VerticalAlignment="Top"/>
+                <Grid x:Name="NavbarCursor" Background="#665CB7FF" Height="70" Width="70" VerticalAlignment="Top"/>
 
-                <Button x:Name="ButtonAllItems" Background="#002196F3" Grid.Row="3" BorderBrush="{x:Null}" Foreground="White" Height="70" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonToDoList_Click" VerticalAlignment="Top" Padding="0">
-                    <Grid Height="70">
-                        <materialDesign:PackIcon Kind="ClipboardList" Height="40" Width="40" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <TextBlock TextAlignment="Center" FontFamily="Arial" VerticalAlignment="Bottom" Margin="0,0,0,5" HorizontalAlignment="Center">All Items</TextBlock>
+                <Button x:Name="ButtonAllItems" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="70" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonToDoList_Click" Padding="0" Width="70" VerticalAlignment="Top">
+                    <Grid MinWidth="60" MinHeight="60">
+                        <Viewbox VerticalAlignment="Top" Margin="10,10,10,15">
+                            <materialDesign:PackIcon Kind="ClipboardList" Height="Auto" Width="Auto" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </Viewbox>
+
+                        <Viewbox VerticalAlignment="Bottom">
+                            <TextBlock TextAlignment="Center" FontFamily="Arial" Margin="5,0">All Items</TextBlock>
+                        </Viewbox>
                     </Grid>
                 </Button>
 
-                <Button x:Name="ButtonReminder" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="70" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,70,0,0" Grid.Row="2" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonDueDateFilter_Click" VerticalAlignment="Top" Padding="0">
+                <Button x:Name="ButtonReminder" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="70" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,70,0,0" Grid.Row="1" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonDueDateFilter_Click" Padding="0" Width="70" VerticalAlignment="Top">
                     <Grid Height="70">
                         <materialDesign:PackIcon Kind="Bell" Height="40" Width="40" HorizontalAlignment="Center" Padding="0,10,0,0" Margin="0,10,0,0"/>
                         <TextBlock TextAlignment="Center" FontFamily="Arial" VerticalAlignment="Bottom" Margin="0,0,0,5" Text="Reminder" HorizontalAlignment="Center"/>
                     </Grid>
                 </Button>
 
-                <Button x:Name="ButtonStarredFilter" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="70" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,140,0,0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonStarredFilter_Click" VerticalAlignment="Top" Padding="0">
+                <Button x:Name="ButtonStarredFilter" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="70" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,140,0,0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonStarredFilter_Click" Padding="0" Grid.Row="2" Width="70" VerticalAlignment="Top">
                     <Grid Height="70">
                         <materialDesign:PackIcon Kind="Star" Height="40" Width="40" Margin="0,10,0,0" HorizontalAlignment="Center"/>
                         <TextBlock TextAlignment="Center" FontFamily="Arial" VerticalAlignment="Bottom" Margin="0,0,0,5" HorizontalAlignment="Center">Starred</TextBlock>
                     </Grid>
                 </Button>
 
-                <Button x:Name="ButtonUserPref" VerticalAlignment="Bottom" Margin="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="50" ToolTip="Preferces..." Click="ButtonUserPref_Click" IsTabStop="False" Padding="0">
-                    <materialDesign:PackIcon Kind="SettingsApplications" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35" Height="35"/>
+                <Button IsEnabled="False" x:Name="ButtonUserPref" VerticalAlignment="Bottom" Margin="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="70" ToolTip="Preferces..." Click="ButtonUserPref_Click" IsTabStop="False" Padding="0" Grid.Row="3" Width="70">
+                    <materialDesign:PackIcon Kind="SettingsApplications" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
                 </Button>
             </Grid>
 
-            <Grid x:Name="GridPrincipal" Margin="69,0,0,0" Grid.RowSpan="2"/>
+            <Grid x:Name="GridPrincipal" Margin="69,0,0,0" Grid.Column="1" Grid.RowSpan="4"/>
+
+            <!--<TextBlock Text="This is a demo version of Check'em v0.x.x,Made by Umar Turdiev.All copy rights reserved under" Margin="70,0,0,0.4" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Arial" TextAlignment="Center"/>
+            <TextBlock Text="Attribution-NonCommercial-NoDerivs CC BY-NC-ND" Margin="585,0,0,0.4" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Arial" TextAlignment="Center" Foreground="Red"/>-->
         </Grid>
     </materialDesign:TransitioningContent>
 </Window>

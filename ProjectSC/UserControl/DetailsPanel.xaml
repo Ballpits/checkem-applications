@@ -19,7 +19,7 @@
                                 <materialDesign:PackIcon Kind="ArrowBack" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FF2196F3"/>
                             </Button>
 
-                            <materialDesign:PopupBox HorizontalAlignment="Right" Height="45" Width="45" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" Foreground="#FF2196F3" Margin="0,0,10,0">
+                            <materialDesign:PopupBox Visibility="Hidden" HorizontalAlignment="Right" Height="45" Width="45" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" Foreground="#FF2196F3" Margin="0,0,10,0">
                                 <materialDesign:PopupBox.ToggleContent>
                                     <materialDesign:PackIcon x:Name="TagPopupIcon" Kind="TagAdd" Foreground="#FF2196F3" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" />
                                 </materialDesign:PopupBox.ToggleContent>

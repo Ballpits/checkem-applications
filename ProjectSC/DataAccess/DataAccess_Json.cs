@@ -7,6 +7,8 @@ namespace ProjectSC
 {
     public class DataAccess_Json : IDataAccess
     {
+        public string path = "Inventory.json";
+
         private static void SaveToJson(List<ToDoItem> inventory)
         {
             File.WriteAllText(@"Inventory.json", JsonConvert.SerializeObject(inventory));
@@ -23,15 +25,15 @@ namespace ProjectSC
 
             //inventory.Add(new ToDoItem { Id = 0, Title = "Notify Test", Description = "It works !" });
 
-            inventory.Add(new ToDoItem { Id = 1, Title = "Update", Description = "windows 10 update", IsCompleted = true });
-            inventory.Add(new ToDoItem { Id = 2, Title = "Meeting", Description = "", IsStarred = true });
+            inventory.Add(new ToDoItem { Id = 1, Title = "Update", Description = "windows 10 update" });
+            inventory.Add(new ToDoItem { Id = 2, Title = "Meeting", IsStarred = true });
             inventory.Add(new ToDoItem { Id = 3, Title = "Math Homework", Description = "kinda hard" });
-            inventory.Add(new ToDoItem { Id = 4, Title = "Read Pro Angular 6", Description = "", IsCompleted = true });
+            inventory.Add(new ToDoItem { Id = 4, Title = "Read Pro Angular 6", IsCompleted = true });
             inventory.Add(new ToDoItem { Id = 5, Title = "Call someone", Description = "I forgot who it was ;p", IsStarred = true });
             inventory.Add(new ToDoItem { Id = 6, Title = "Review electronic", Description = "prepare for the test", IsStarred = true });
             inventory.Add(new ToDoItem { Id = 7, Title = "Program", Description = "Angular + JS", IsCompleted = true, IsStarred = true });
             inventory.Add(new ToDoItem { Id = 8, Title = "electronic test", Description = "1-1:RC coupler", IsStarred = true });
-            inventory.Add(new ToDoItem { Id = 9, Title = "Math test", Description = "test !? again !?" });
+            inventory.Add(new ToDoItem { Id = 9, Title = "Math test", Description = "test ?! again ?!", IsCompleted = true });
 
             //inventory.Add(new ToDoItem
             //{
@@ -49,6 +51,7 @@ namespace ProjectSC
         public void RetrieveData(ref List<ToDoItem> inventory, string path)
         {
             string json = File.ReadAllText(path);
+
             inventory = JsonConvert.DeserializeObject<List<ToDoItem>>(json);
         }//Get all the data from the json file and save it to the list
 
@@ -57,6 +60,7 @@ namespace ProjectSC
         public void RetrieveTimeData(ref List<TimeRecord> timeRecords, string path)
         {
             string json = File.ReadAllText(path);
+
             List<ToDoItem> inventory = JsonConvert.DeserializeObject<List<ToDoItem>>(json);
 
             for (int i = 0; i < inventory.Count; i++)
