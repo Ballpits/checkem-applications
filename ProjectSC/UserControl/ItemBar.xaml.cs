@@ -1,5 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -154,7 +155,10 @@ namespace ProjectSC.UserControls.Custom
         {
             if (sender.GetType() == typeof(Border))
             {
-                border.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFEDF7FF"));
+                System.Drawing.Color PrimaryColor = Properties.Settings.Default.PrimaryColor;
+                System.Drawing.Color SecondaryColor = Properties.Settings.Default.SecondaryColor;
+
+                border.Background = new SolidColorBrush(Color.FromRgb(PrimaryColor.R, PrimaryColor.G, PrimaryColor.B)); ;
                 cBoxGrid.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFEDF7FF"));
                 StarToggle.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFEDF7FF"));
             }

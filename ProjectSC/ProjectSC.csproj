@@ -120,12 +120,18 @@
     <Compile Include="DataAccess\DataAccess_Json.cs" />
     <Compile Include="Functions\HotKey.cs" />
     <Compile Include="Functions\TesterClass\ListTester\ListViewer.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="QuickView\QuickViewWindow.xaml.cs">
       <DependentUpon>QuickViewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Functions\UserInterfaceFuntion\SnackbarControl.cs" />
     <Compile Include="Functions\UserInterfaceFuntion\MouseoverHighlight.cs" />
     <Compile Include="Core\Notification\TimeRecord.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="UserControl\DetailsPanel.xaml.cs">
       <DependentUpon>DetailsPanel.xaml</DependentUpon>
     </Compile>
@@ -136,7 +142,6 @@
       <DependentUpon>ToDoListUSC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Notification\Notifications.cs" />
-    <Compile Include="UserPreference\Funtions\UserPreferenceJsonDataAccess.cs" />
     <Compile Include="UserPreference\SubPages\Appearance.xaml.cs">
       <DependentUpon>Appearance.xaml</DependentUpon>
     </Compile>
@@ -146,7 +151,6 @@
     <Compile Include="UserPreference\SubPages\NotificationUSC.xaml.cs">
       <DependentUpon>NotificationUSC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserPreference\UPref.cs" />
     <Compile Include="UserPreference\UserPreferenceWindow.xaml.cs">
       <DependentUpon>UserPreferenceWindow.xaml</DependentUpon>
     </Compile>
@@ -208,6 +212,10 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

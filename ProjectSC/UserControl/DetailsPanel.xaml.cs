@@ -55,6 +55,7 @@ namespace ProjectSC.UserControls.Custom
         ToDoListUSC todo;
         ItemBar itemBar;
 
+        #region Save
         private void Save()
         {
             if (IsNew)
@@ -116,8 +117,18 @@ namespace ProjectSC.UserControls.Custom
                 itemBar.Update(itemBar);
 
                 DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Saved"));
+
+                switch (Properties.Settings.Default.DetailsPanelClosingMode)
+                {
+                    case 0:
+                        todo.CloseDetailsPanel();
+                        break;
+                    default:
+                        break;
+                }
             }
         }
+        #endregion
 
         private void DarkGrid_Loaded(object sender, RoutedEventArgs e)
         {
