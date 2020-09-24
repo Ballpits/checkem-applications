@@ -25,18 +25,20 @@ namespace ProjectSC
             dataAccess.ResetId(Inventory);
 
             //load in itembars into stackpanel
-            LoadList();
+            LoadList(Inventory);
 
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
 
         #region Variables
         private DataAccess_Json dataAccess = new DataAccess_Json();
 
         public List<ToDoItem> Inventory = new List<ToDoItem>();
-        private List<ToDoItem> CurrentToDos = new List<ToDoItem>();
+        private List<ToDoItem> FilteredInventory = new List<ToDoItem>();
 
         private bool DetailsPanelOpened = false;
+
+        private int filterMode = 2;
         #endregion
 
         private void RetrieveData()
@@ -44,11 +46,11 @@ namespace ProjectSC
             dataAccess.RetrieveData(ref Inventory, dataAccess.path);
         }
 
-        private void LoadList()
+        private void LoadList(List<ToDoItem> list)
         {
             stpMain.Children.Clear();
 
-            foreach (var item in Inventory)
+            foreach (var item in list)
             {
                 AddItem(item);
             }
@@ -57,7 +59,7 @@ namespace ProjectSC
         public void AddItemBar()
         {
             int id = Inventory.Count - 1;
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
 
             AddItem(Inventory[Inventory.FindIndex(x => x.Id == id)]);
         }
@@ -65,7 +67,7 @@ namespace ProjectSC
         public void RemoveItemBar(ItemBar itembar)
         {
             stpMain.Children.RemoveAt(stpMain.Children.IndexOf(itembar));
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
 
         private void AddItemButton_Click(object sender, RoutedEventArgs e)
@@ -96,44 +98,55 @@ namespace ProjectSC
 
 
         #region Filter
-        public void ListFilter(int filterMode)
+        public void ListFilter(int mode)
         {
+            filterMode = mode;
+
             stpMain.Children.Clear();
 
             Inventory = Inventory.OrderBy(x => x.Id).ToList();
 
             int counter = 0;
 
-            if (filterMode == 0)//Filter:Starred
+            if (mode == 0)//Filter:Starred
             {
+                FilteredInventory.Clear();
+
                 for (int index = 0; index < Inventory.Count; index++)
                 {
                     if (Inventory[index].IsStarred)
                     {
+                        FilteredInventory.Add(Inventory[index]);
                         AddItem(Inventory[index]);
+
                         counter++;
                     }
                 }
 
                 ToDoListTitleTextBlock.Text = "Starred";
             }
-            else if (filterMode == 1)//Filter:Reminder
+            else if (mode == 1)//Filter:Reminder
             {
+                FilteredInventory.Clear();
+
                 for (int index = 0; index < Inventory.Count; index++)
                 {
 
                     if (Inventory[index].IsReminderOn)
                     {
+                        FilteredInventory.Add(Inventory[index]);
                         AddItem(Inventory[index]);
+
                         counter++;
                     }
                 }
-
                 ToDoListTitleTextBlock.Text = "Reminder";
             }
-            else if (filterMode == 2)//Filter:None
+            else if (mode == 2)//Filter:None
             {
-                LoadList();
+                FilteredInventory.Clear();
+
+                LoadList(Inventory);
 
                 ToDoListTitleTextBlock.Text = "All Items";
 
@@ -199,49 +212,96 @@ namespace ProjectSC
         #region Sort
         private void SortButton_Importance_Click(object sender, RoutedEventArgs e)
         {
-            Inventory = Inventory.OrderBy(x => x.IsStarred == false).ToList();
+            if (filterMode == 2)
+            {
+                Inventory = Inventory.OrderBy(x => x.IsStarred == false).ToList();
 
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+                LoadList(Inventory);
+            }
+            else
+            {
+                FilteredInventory = FilteredInventory.OrderBy(x => x.IsStarred == false).ToList();
 
-            LoadList();
+                LoadList(FilteredInventory);
+            }
+
+            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
 
         private void SortButton_DueDate_Click(object sender, RoutedEventArgs e)
         {
-            Inventory = Inventory.OrderBy(x => x.EndDateTime).ToList();
-            Inventory = Inventory.OrderBy(x => x.IsReminderOn == false).ToList();
+            if (filterMode == 2)
+            {
+                Inventory = Inventory.OrderBy(x => x.EndDateTime).ToList();
+                Inventory = Inventory.OrderBy(x => x.IsReminderOn == false).ToList();
 
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+                LoadList(Inventory);
+            }
+            else
+            {
+                FilteredInventory = FilteredInventory.OrderBy(x => x.EndDateTime).ToList();
+                FilteredInventory = FilteredInventory.OrderBy(x => x.IsReminderOn == false).ToList();
 
-            LoadList();
+                LoadList(FilteredInventory);
+            }
+
+            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
 
         private void SortButton_AlphabeticalAscending_Click(object sender, RoutedEventArgs e)
         {
-            Inventory = Inventory.OrderBy(x => x.Title).ToList();
+            if (filterMode == 2)
+            {
+                Inventory = Inventory.OrderBy(x => x.Title).ToList();
 
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+                LoadList(Inventory);
+            }
+            else
+            {
+                FilteredInventory = FilteredInventory.OrderBy(x => x.Title).ToList();
 
-            LoadList();
+                LoadList(FilteredInventory);
+            }
+
+            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
 
         private void SortButton_AlphabeticalDescending_Click(object sender, RoutedEventArgs e)
         {
-            Inventory = Inventory.OrderBy(x => x.Title).ToList();
-            Inventory.Reverse();
+            if (filterMode == 2)
+            {
+                Inventory = Inventory.OrderBy(x => x.Title).ToList();
+                Inventory.Reverse();
 
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+                LoadList(Inventory);
+            }
+            else
+            {
+                FilteredInventory = Inventory.OrderBy(x => x.Title).ToList();
+                FilteredInventory.Reverse();
 
-            LoadList();
+                LoadList(FilteredInventory);
+            }
+
+            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
 
         private void SortButton_CreationDate_Click(object sender, RoutedEventArgs e)
         {
-            Inventory = Inventory.OrderBy(x => x.CreationDateTime).ToList();
+            if (filterMode == 2)
+            {
+                Inventory = Inventory.OrderBy(x => x.CreationDateTime).ToList();
 
-            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+                LoadList(Inventory);
+            }
+            else
+            {
+                FilteredInventory = FilteredInventory.OrderBy(x => x.CreationDateTime).ToList();
 
-            LoadList();
+                LoadList(FilteredInventory);
+            }
+
+            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
         #endregion
 

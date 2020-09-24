@@ -12,12 +12,6 @@ namespace ProjectSC
             InitializeComponent();
         }
 
-        public MainWindow(App app)
-        {
-            InitializeComponent();
-        }
-
-
         #region Variables
         private DataAccess_Json dataAccess = new DataAccess_Json();
 
@@ -105,10 +99,7 @@ namespace ProjectSC
 
         private void AppWindow_Closed(object sender, EventArgs e)
         {
-            //if (!ClosedBefore)
-            //{
-            //    application.IsMainWindowOpen = false;
-            //}
+            //app.IsMainWindowOpen = false;
         }
     }
 }

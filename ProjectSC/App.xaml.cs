@@ -11,7 +11,9 @@ namespace ProjectSC
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            MainWindow = new MainWindow(this);
+
+            MainWindow = new MainWindow();
+            MainWindow.Show();
 
             TrayIcon = new System.Windows.Forms.NotifyIcon();
             TrayIcon.DoubleClick += (s, args) => OpenMainWindow();
@@ -30,32 +32,20 @@ namespace ProjectSC
             TrayIcon.ContextMenuStrip.Items.Add("Exit").Click += (s, e) => ShutdownApplication();
         }
 
-
-        public bool IsMainWindowOpen = false;
         private void OpenMainWindow()
         {
-            if (MainWindow.IsActive)
+            if (MainWindow != null)
             {
                 if (MainWindow.WindowState == WindowState.Minimized)
                 {
-                    MainWindow.WindowState = WindowState.Normal;
+                    MainWindow.WindowState = WindowState.Maximized;
+                    MainWindow.Activate();
                 }
-                MainWindow.Activate();
             }
             else
             {
-                MainWindow window = new MainWindow(this);
-                window.Show();
-
-                IsMainWindowOpen = true;
-            }
-
-            if (!IsMainWindowOpen)
-            {
-                MainWindow window = new MainWindow(this);
-                window.Show();
-
-                IsMainWindowOpen = true;
+                MainWindow = new MainWindow();
+                MainWindow.Show();
             }
         }
 

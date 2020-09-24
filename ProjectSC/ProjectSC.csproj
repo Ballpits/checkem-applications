@@ -58,7 +58,7 @@
     <ApplicationIcon>Icon\Icon-1024.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject />
+    <StartupObject>ProjectSC.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>D6E958B0AA70B4F9D11341434CA6501DE5C5625A</ManifestCertificateThumbprint>
