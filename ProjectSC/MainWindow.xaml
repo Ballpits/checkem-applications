@@ -10,18 +10,18 @@
 
     <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.5}">
         <Grid x:Name="MainGrid" Loaded="Grid_Loaded" Margin="0">
-            <!--<Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="15*"/>
-            </Grid.ColumnDefinitions>-->
+            </Grid.ColumnDefinitions>
 
-            <Grid x:Name="NavigationBar" Margin="0" HorizontalAlignment="Left" Width="70">
-                <!--<Grid.RowDefinitions>
+            <Grid x:Name="NavigationBar" Margin="0">
+                <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="11*"/>
-                </Grid.RowDefinitions>-->
+                </Grid.RowDefinitions>
 
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="4,1" StartPoint="1,0">
@@ -38,40 +38,86 @@
                     </LinearGradientBrush>
                 </Grid.Background>
 
-                <Grid x:Name="NavbarCursor" Background="#665CB7FF" Height="70" Width="70" VerticalAlignment="Top"/>
+                <Grid x:Name="NavbarCursor" Background="#665CB7FF"/>
 
-                <Button x:Name="ButtonAllItems" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="70" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonToDoList_Click" Padding="0" Width="70" VerticalAlignment="Top">
-                    <Grid MinWidth="60" MinHeight="60">
-                        <Viewbox VerticalAlignment="Top" Margin="10,10,10,15">
-                            <materialDesign:PackIcon Kind="ClipboardList" Height="Auto" Width="Auto" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="ButtonAllItems" Style="{StaticResource NavigationbarButton}" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" Click="ButtonToDoList_Click" TabIndex="0">
+                    <Grid Style="{StaticResource NavigationbarButtonGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Viewbox Style="{StaticResource NavigationbarViewBox}" Grid.Row="1" Grid.Column="1">
+                            <materialDesign:PackIcon Kind="ClipboardList" Style="{StaticResource NavigationbarIcon}"/>
                         </Viewbox>
 
-                        <Viewbox VerticalAlignment="Bottom">
-                            <TextBlock TextAlignment="Center" FontFamily="Arial" Margin="5,0">All Items</TextBlock>
+                        <Viewbox Style="{StaticResource NavigationbarViewBox}" Grid.ColumnSpan="3" Grid.Row="3">
+                            <TextBlock Style="{StaticResource NavigationbarTextBlock}">All Items</TextBlock>
                         </Viewbox>
                     </Grid>
                 </Button>
 
-                <Button x:Name="ButtonReminder" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="70" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,70,0,0" Grid.Row="1" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonDueDateFilter_Click" Padding="0" Width="70" VerticalAlignment="Top">
-                    <Grid Height="70">
-                        <materialDesign:PackIcon Kind="Bell" Height="40" Width="40" HorizontalAlignment="Center" Padding="0,10,0,0" Margin="0,10,0,0"/>
-                        <TextBlock TextAlignment="Center" FontFamily="Arial" VerticalAlignment="Bottom" Margin="0,0,0,5" Text="Reminder" HorizontalAlignment="Center"/>
+                <Button x:Name="ButtonReminder" Style="{StaticResource NavigationbarButton}" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" Click="ButtonDueDateFilter_Click" Grid.Row="1" TabIndex="1">
+                    <Grid Style="{StaticResource NavigationbarButtonGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Viewbox Style="{StaticResource NavigationbarViewBox}" Grid.Row="1" Grid.Column="1">
+                            <materialDesign:PackIcon Kind="Bell" Style="{StaticResource NavigationbarIcon}"/>
+                        </Viewbox>
+
+                        <Viewbox Style="{StaticResource NavigationbarViewBox}" Grid.ColumnSpan="3" Grid.Row="3">
+                            <TextBlock Style="{StaticResource NavigationbarTextBlock}">Reminder</TextBlock>
+                        </Viewbox>
                     </Grid>
                 </Button>
 
-                <Button x:Name="ButtonStarredFilter" Background="#002196F3" BorderBrush="{x:Null}" Foreground="White" Height="70" BorderThickness="0,0,1,0" materialDesign:ButtonAssist.CornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,140,0,0" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" IsTabStop="False" Click="ButtonStarredFilter_Click" Padding="0" Grid.Row="2" Width="70" VerticalAlignment="Top">
-                    <Grid Height="70">
-                        <materialDesign:PackIcon Kind="Star" Height="40" Width="40" Margin="0,10,0,0" HorizontalAlignment="Center"/>
-                        <TextBlock TextAlignment="Center" FontFamily="Arial" VerticalAlignment="Bottom" Margin="0,0,0,5" HorizontalAlignment="Center">Starred</TextBlock>
+                <Button x:Name="ButtonStarredFilter" Style="{StaticResource NavigationbarButton}" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" Click="ButtonStarredFilter_Click" Grid.Row="2" TabIndex="2">
+                    <Grid Style="{StaticResource NavigationbarButtonGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Viewbox Style="{StaticResource NavigationbarViewBox}" Grid.Row="1" Grid.Column="1" >
+                            <materialDesign:PackIcon Kind="Star" Style="{StaticResource NavigationbarIcon}"/>
+                        </Viewbox>
+
+                        <Viewbox Style="{StaticResource NavigationbarViewBox}" Grid.ColumnSpan="3" Grid.Row="3">
+                            <TextBlock Style="{StaticResource NavigationbarTextBlock}">Starred</TextBlock>
+                        </Viewbox>
                     </Grid>
                 </Button>
 
-                <Button IsEnabled="False" x:Name="ButtonUserPref" VerticalAlignment="Bottom" Margin="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="70" ToolTip="Preferces..." Click="ButtonUserPref_Click" IsTabStop="False" Padding="0" Grid.Row="3" Width="70">
+                <Button IsEnabled="False" x:Name="ButtonUserPref" VerticalAlignment="Bottom" Margin="0,0,0,10" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" ToolTip="Preferces..." Click="ButtonUserPref_Click" Padding="0" Grid.Row="3" TabIndex="3">
                     <materialDesign:PackIcon Kind="SettingsApplications" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
                 </Button>
             </Grid>
 
-            <Grid x:Name="GridPrincipal" Margin="69,0,0,0" Grid.Column="1" Grid.RowSpan="4"/>
+            <Grid x:Name="GridPrincipal" Margin="0" Grid.Column="1"/>
 
             <!--<TextBlock Text="This is a demo version of Check'em v0.x.x,Made by Umar Turdiev.All copy rights reserved under" Margin="70,0,0,0.4" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Arial" TextAlignment="Center"/>
             <TextBlock Text="Attribution-NonCommercial-NoDerivs CC BY-NC-ND" Margin="585,0,0,0.4" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Arial" TextAlignment="Center" Foreground="Red"/>-->

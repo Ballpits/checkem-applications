@@ -24,7 +24,7 @@
             <!--<TextBlock x:Name="ProgressIndicator" Text="56%" Margin="0,0,55,1.6" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" TextAlignment="Center" FontFamily="Arial"/>
             <ProgressBar x:Name="ProgressBar" Style="{StaticResource MaterialDesignCircularProgressBar}" Height="30" Margin="0,3,55,16.6" Value="70" Foreground="#FF2196F3" BorderBrush="{x:Null}" Background="{x:Null}" Width="30" HorizontalAlignment="Right" VerticalAlignment="Center"/>-->
 
-            <ToggleButton x:Name="StarToggle" Style="{StaticResource MaterialDesignActionToggleButton}" ToolTip="Mark As Important" HorizontalAlignment="Right" Margin="0,0,10,0" Background="White" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="StarToggle_Click" Height="40" Width="40" IsTabStop="False">
+            <ToggleButton x:Name="StarToggle" Style="{StaticResource MaterialDesignActionToggleButton}" ToolTip="Mark As Important" HorizontalAlignment="Right" Margin="0,0,10,0" Background="White" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="StarToggle_Click" Height="40" Width="40">
                 <ToggleButton.Content>
                     <materialDesign:PackIcon x:Name="StarButtonStarBorderIcon" Kind="StarBorder" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Foreground="#FF2196F3" />
                 </ToggleButton.Content>

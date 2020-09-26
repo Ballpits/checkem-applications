@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace ProjectSC
@@ -55,12 +57,12 @@ namespace ProjectSC
         }
 
         #region Mouse over events
-        public void MouseEnterHighLight(object sender, RoutedEventArgs e)
+        private void MouseEnterHighLight(object sender, RoutedEventArgs e)
         {
             MouseoverHighlight.Highlight(sender, "#665CB7FF");
         }
 
-        public void MouseLeaveUnHighLight(object sender, RoutedEventArgs e)
+        private void MouseLeaveUnHighLight(object sender, RoutedEventArgs e)
         {
             MouseoverHighlight.UnHighlight(sender, "#002196F3");
         }
@@ -94,7 +96,7 @@ namespace ProjectSC
 
         private void MoveNavbarCursor(int index)
         {
-            NavbarCursor.Margin = new Thickness(0, (70 * index), 0, 0);
+            Grid.SetRow(NavbarCursor, index);
         }
 
         private void AppWindow_Closed(object sender, EventArgs e)

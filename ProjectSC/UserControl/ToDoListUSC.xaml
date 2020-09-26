@@ -30,7 +30,7 @@
                     </LinearGradientBrush>
                 </Grid.Background>
 
-                <Button HorizontalAlignment="Right" Margin="0,0,10,0" Width="35" Height="35" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#002196F3" BorderBrush="{x:Null}" Padding="0" Click="AddItemButton_Click" ToolTip="Add New" IsTabStop="False">
+                <Button HorizontalAlignment="Right" Margin="0,0,10,0" Width="35" Height="35" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#002196F3" BorderBrush="{x:Null}" Padding="0" Click="AddItemButton_Click" ToolTip="Add New" TabIndex="6">
                     <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
                 </Button>
 
@@ -43,7 +43,7 @@
 
                         <materialDesign:PackIcon Kind="Magnify" ToolTip="Tell me what you wanna find, ignore case." Opacity=".56" Height="30" Width="43" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-                        <TextBox Grid.Column="1" Margin="0,5,30,5" ToolTip="Looking for something ?" materialDesign:HintAssist.Hint="Search" x:Name="SearchBox" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" FontFamily="Arial" FontSize="16" MouseLeave="SearchBox_MouseLeave" TextChanged="SearchBox_TextChanged" />
+                        <TextBox Grid.Column="1" Margin="0,5,30,5" ToolTip="Looking for something ?" materialDesign:HintAssist.Hint="Search" x:Name="SearchBox" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" FontFamily="Arial" FontSize="16" MouseLeave="SearchBox_MouseLeave" TextChanged="SearchBox_TextChanged" TabIndex="5" />
 
                         <Button x:Name="ButtonClearSearchBox" Grid.Column="1" Margin="0,0,7,0" HorizontalAlignment="Right" Width="20" Height="40" Padding="0" Background="White" BorderBrush="{x:Null}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Click="ButtonClearSearchBox_Click" Visibility="Hidden">
                             <materialDesign:PackIcon Kind="Close" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Margin="0" Foreground="#FF424242"/>
@@ -64,7 +64,7 @@
                     <TextBlock x:Name="ToDoListTitleTextBlock" Text="Name" Margin="0,5,0,0" Height="40" FontFamily="Arial" FontSize="36" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF2196F3" TextAlignment="Center"/>
                     <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="0 Items" Margin="0,0,0,5" Height="20" FontFamily="Arial" FontSize="16" Padding="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="#FF2196F3" Width="95" TextAlignment="Center"/>
 
-                    <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0"  Width="40" Height="40" IsTabStop="False" VerticalAlignment="Center">
+                    <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0"  Width="40" Height="40" VerticalAlignment="Center" TabIndex="7" IsTabStop="False">
                         <materialDesign:PopupBox.ToggleContent>
                             <materialDesign:PackIcon Kind="Sort" Foreground="#FF2196F3" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" />
                         </materialDesign:PopupBox.ToggleContent>
