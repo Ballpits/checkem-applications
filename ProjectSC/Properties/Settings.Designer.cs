@@ -49,29 +49,6 @@ namespace ProjectSC.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("255, 255, 128")]
-        public global::System.Drawing.Color PrimaryColor {
-            get {
-                return ((global::System.Drawing.Color)(this["PrimaryColor"]));
-            }
-            set {
-                this["PrimaryColor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color SecondaryColor {
-            get {
-                return ((global::System.Drawing.Color)(this["SecondaryColor"]));
-            }
-            set {
-                this["SecondaryColor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool IsDarkMode {
             get {
@@ -115,6 +92,90 @@ namespace ProjectSC.Properties {
             }
             set {
                 this["IsRemovingWaringOn"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("33, 150, 243")]
+        public global::System.Drawing.Color PrimaryColor {
+            get {
+                return ((global::System.Drawing.Color)(this["PrimaryColor"]));
+            }
+            set {
+                this["PrimaryColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("151, 8, 204")]
+        public global::System.Drawing.Color SecondaryColor {
+            get {
+                return ((global::System.Drawing.Color)(this["SecondaryColor"]));
+            }
+            set {
+                this["SecondaryColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color ItembarColor {
+            get {
+                return ((global::System.Drawing.Color)(this["ItembarColor"]));
+            }
+            set {
+                this["ItembarColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("237, 247, 255")]
+        public global::System.Drawing.Color ItembarHighlightColor {
+            get {
+                return ((global::System.Drawing.Color)(this["ItembarHighlightColor"]));
+            }
+            set {
+                this["ItembarHighlightColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color ItembarTextColor {
+            get {
+                return ((global::System.Drawing.Color)(this["ItembarTextColor"]));
+            }
+            set {
+                this["ItembarTextColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("150, 150, 150")]
+        public global::System.Drawing.Color ItemCompletedTextColor {
+            get {
+                return ((global::System.Drawing.Color)(this["ItemCompletedTextColor"]));
+            }
+            set {
+                this["ItemCompletedTextColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
+        public global::System.Drawing.Color ItemPassedTextColor {
+            get {
+                return ((global::System.Drawing.Color)(this["ItemPassedTextColor"]));
+            }
+            set {
+                this["ItemPassedTextColor"] = value;
             }
         }
     }

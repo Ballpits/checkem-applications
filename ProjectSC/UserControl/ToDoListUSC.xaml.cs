@@ -14,6 +14,8 @@ namespace ProjectSC
         {
             InitializeComponent();
 
+            GetAllColor();
+
             //test data
             //JsonDataAccess.StoreTestData(Inventory);
 
@@ -39,6 +41,12 @@ namespace ProjectSC
         private bool DetailsPanelOpened = false;
 
         private int filterMode = 2;
+
+
+        System.Drawing.Color PrimaryColor_D = Properties.Settings.Default.PrimaryColor;
+        System.Drawing.Color SecondaryColor_D = Properties.Settings.Default.SecondaryColor;
+
+        SolidColorBrush PrimaryColor, SecondaryColor;
         #endregion
 
         private void RetrieveData()
@@ -367,6 +375,19 @@ namespace ProjectSC
         }
         #endregion
 
+
+        #region Color functions
+        private void GetAllColor()
+        {
+            PrimaryColor = ColorConverter(PrimaryColor_D);
+            SecondaryColor = ColorConverter(SecondaryColor_D);
+        }
+
+        private SolidColorBrush ColorConverter(System.Drawing.Color color)
+        {
+            return new SolidColorBrush(Color.FromRgb(color.R, color.G, color.B));
+        }
+        #endregion
 
 
         #region List tester button events

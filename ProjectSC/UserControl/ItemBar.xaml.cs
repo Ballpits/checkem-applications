@@ -13,6 +13,8 @@ namespace ProjectSC.UserControls.Custom
         public ItemBar()
         {
             InitializeComponent();
+
+            SetupColor();
         }
 
         public ItemBar(ToDoListUSC toDo)
@@ -20,11 +22,9 @@ namespace ProjectSC.UserControls.Custom
             InitializeComponent();
 
             todo = toDo;
+
+            SetupColor();
         }
-
-        private DataAccess_Json dataAccess = new DataAccess_Json();
-
-        private ToDoListUSC todo;
 
         #region Properties
         public int Id { get; set; }
@@ -48,12 +48,34 @@ namespace ProjectSC.UserControls.Custom
 
         public bool IsUsingTag { get; set; }
         public string TagName { get; set; }
-        //public Brushes TagColor { get; set; }
         #endregion
+
+        #region
+        private DataAccess_Json dataAccess = new DataAccess_Json();
+
+        private ToDoListUSC todo;
+
 
         const int ChaeckBoxIconSize = 35;
 
         private bool CheckboxLoaded = false;
+
+        private bool BorderEventCanActivate = true;
+
+
+        System.Drawing.Color PrimaryColor_D = Properties.Settings.Default.PrimaryColor;
+        System.Drawing.Color SecondaryColor_D = Properties.Settings.Default.SecondaryColor;
+        System.Drawing.Color ItembarColor_D = Properties.Settings.Default.ItembarColor;
+        System.Drawing.Color ItembarHighlightColor_D = Properties.Settings.Default.ItembarHighlightColor;
+        System.Drawing.Color ItembarTextColor_D = Properties.Settings.Default.ItembarTextColor;
+        System.Drawing.Color ItemCompletedTextColor_D = Properties.Settings.Default.ItemCompletedTextColor;
+        System.Drawing.Color ItemPassedTextColor_D = Properties.Settings.Default.ItemPassedTextColor;
+
+        SolidColorBrush PrimaryColor, SecondaryColor, ItembarColor, ItembarHighlightColor, ItembarTextColor, ItemCompletedTextColor, ItemPassedTextColor;
+
+        PackIcon icon = new PackIcon();
+        #endregion
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             textBlockTitle.Text = Title;
@@ -68,18 +90,15 @@ namespace ProjectSC.UserControls.Custom
         }
 
 
+        #region Checkbox events
         private void ToDoChecked(object sender, RoutedEventArgs e)
         {
-            var icon = new PackIcon { Kind = PackIconKind.Check };
-            icon.Height = ChaeckBoxIconSize;
-            icon.Width = ChaeckBoxIconSize;
-            icon.HorizontalAlignment = HorizontalAlignment.Center;
-            icon.VerticalAlignment = VerticalAlignment.Center;
-            icon.Foreground = Brushes.Black;
+            icon.Kind = PackIconKind.Check;
+            icon.Foreground = ItembarTextColor;
 
             checkBox.Content = icon;
 
-            textBlockTitle.Foreground = Brushes.LightGray;
+            textBlockTitle.Foreground = ItemCompletedTextColor;
             textBlockTitle.TextDecorations = TextDecorations.Strikethrough;
 
             if (CheckboxLoaded)
@@ -92,21 +111,17 @@ namespace ProjectSC.UserControls.Custom
         {
             if (cBoxGrid.IsMouseOver)
             {
-                var icon = new PackIcon { Kind = PackIconKind.Check };
-                icon.Height = 25;
-                icon.Width = 25;
-                icon.HorizontalAlignment = HorizontalAlignment.Center;
-                icon.VerticalAlignment = VerticalAlignment.Center;
-                icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-
-                checkBox.Content = icon;
+                icon.Kind = PackIconKind.Check;
+                icon.Foreground = PrimaryColor;
             }
 
-            textBlockTitle.Foreground = Brushes.Black;
+            textBlockTitle.Foreground = ItembarTextColor;
             textBlockTitle.TextDecorations = null;
 
             dataAccess.UpdateCompletion(Id, false, todo.Inventory);
         }
+        #endregion
+
 
         private void StarToggle_Click(object sender, RoutedEventArgs e)
         {
@@ -122,7 +137,6 @@ namespace ProjectSC.UserControls.Custom
 
 
         #region Mouse down events
-        private bool BorderEventCanActivate = true;
         private void Border_MouseDown(object sender, RoutedEventArgs e)
         {
             if (BorderEventCanActivate)
@@ -155,43 +169,28 @@ namespace ProjectSC.UserControls.Custom
         {
             if (sender.GetType() == typeof(Border))
             {
-                System.Drawing.Color PrimaryColor = Properties.Settings.Default.PrimaryColor;
-                System.Drawing.Color SecondaryColor = Properties.Settings.Default.SecondaryColor;
-
-                border.Background = new SolidColorBrush(Color.FromRgb(PrimaryColor.R, PrimaryColor.G, PrimaryColor.B)); ;
-                cBoxGrid.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFEDF7FF"));
-                StarToggle.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFEDF7FF"));
+                border.Background = ItembarHighlightColor;
+                cBoxGrid.Background = ItembarHighlightColor;
+                StarToggle.Background = ItembarHighlightColor;
             }
             if (sender.GetType() == typeof(CheckBox))
             {
                 if (checkBox.IsChecked == false)
                 {
-                    var icon = new PackIcon { Kind = PackIconKind.Check };
-                    icon.Height = ChaeckBoxIconSize;
-                    icon.Width = ChaeckBoxIconSize;
-                    icon.HorizontalAlignment = HorizontalAlignment.Center;
-                    icon.VerticalAlignment = VerticalAlignment.Center;
-                    icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-
-                    checkBox.Content = icon;
+                    icon.Kind = PackIconKind.Check;
+                    icon.Foreground = PrimaryColor;
                 }
             }
             if (sender.GetType() == typeof(Grid))
             {
                 BorderEventCanActivate = false;
-                cBoxGrid.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFEDF7FF"));
-                StarToggle.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFEDF7FF"));
+                cBoxGrid.Background = ItembarHighlightColor;
+                StarToggle.Background = ItembarHighlightColor;
 
                 if (checkBox.IsChecked == false)
                 {
-                    var icon = new PackIcon { Kind = PackIconKind.Check };
-                    icon.Height = ChaeckBoxIconSize;
-                    icon.Width = ChaeckBoxIconSize;
-                    icon.HorizontalAlignment = HorizontalAlignment.Center;
-                    icon.VerticalAlignment = VerticalAlignment.Center;
-                    icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-
-                    checkBox.Content = icon;
+                    icon.Kind = PackIconKind.Check;
+                    icon.Foreground = PrimaryColor;
                 }
             }
         }
@@ -200,22 +199,16 @@ namespace ProjectSC.UserControls.Custom
         {
             if (sender.GetType() == typeof(Border))
             {
-                border.Background = Brushes.White;
-                cBoxGrid.Background = Brushes.White;
-                StarToggle.Background = Brushes.White;
+                border.Background = ItembarColor;
+                cBoxGrid.Background = ItembarColor;
+                StarToggle.Background = ItembarColor;
             }
             if (sender.GetType() == typeof(CheckBox))
             {
                 if (checkBox.IsChecked == false)
                 {
-                    var icon = new PackIcon { Kind = PackIconKind.Check };
-                    icon.Height = ChaeckBoxIconSize;
-                    icon.Width = ChaeckBoxIconSize;
-                    icon.HorizontalAlignment = HorizontalAlignment.Center;
-                    icon.VerticalAlignment = VerticalAlignment.Center;
-                    icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-
-                    checkBox.Content = icon;
+                    icon.Kind = PackIconKind.Check;
+                    icon.Foreground = PrimaryColor;
                 }
             }
             if (sender.GetType() == typeof(Grid))
@@ -224,25 +217,19 @@ namespace ProjectSC.UserControls.Custom
 
                 if (cBoxGrid.IsMouseOver == false && border.IsMouseOver == false)
                 {
-                    cBoxGrid.Background = Brushes.White;
+                    cBoxGrid.Background = ItembarColor;
                 }
 
                 if (checkBox.IsChecked == false)
                 {
-                    var icon = new PackIcon { Kind = PackIconKind.CheckboxBlankCircleOutline };
-                    icon.Height = ChaeckBoxIconSize;
-                    icon.Width = ChaeckBoxIconSize;
-                    icon.HorizontalAlignment = HorizontalAlignment.Center;
-                    icon.VerticalAlignment = VerticalAlignment.Center;
-                    icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
-
-                    checkBox.Content = icon;
+                    icon.Kind = PackIconKind.CheckboxBlankCircleOutline;
+                    icon.Foreground = PrimaryColor;
                 }
             }
         }
         #endregion
 
-
+        #region Visual updates
         public void Update()
         {
             VisualUpdate();
@@ -279,11 +266,11 @@ namespace ProjectSC.UserControls.Custom
 
                 if (Passed(EndDateTime))
                 {
-                    ReminderTimeTextBlock.Foreground = Brushes.Red;
+                    ReminderTimeTextBlock.Foreground = ItemPassedTextColor;
                 }
                 else
                 {
-                    ReminderTimeTextBlock.Foreground = Brushes.Black;
+                    ReminderTimeTextBlock.Foreground = ItembarTextColor;
                 }
             }
             else
@@ -295,9 +282,10 @@ namespace ProjectSC.UserControls.Custom
                 ReminderTimeTextBlock.Visibility = Visibility.Hidden;
                 ReminderTimeTextBlock.Text = string.Empty;
             }
-
         }
+        #endregion
 
+        #region Reminder mode itembar methods
         private string SimplifiedDate(DateTime dateTime)
         {
             if (dateTime.Year == DateTime.Now.Year && dateTime.Month == DateTime.Now.Month && dateTime.Day == DateTime.Now.Day)
@@ -325,5 +313,49 @@ namespace ProjectSC.UserControls.Custom
                 return false;
             }
         }
+        #endregion
+
+        #region Color functions
+        private void SetupColor()
+        {
+            GetAllColor();
+
+            icon.Kind = PackIconKind.CheckboxBlankCircleOutline;
+            icon.Height = ChaeckBoxIconSize;
+            icon.Width = ChaeckBoxIconSize;
+            icon.HorizontalAlignment = HorizontalAlignment.Center;
+            icon.VerticalAlignment = VerticalAlignment.Center;
+            icon.Foreground = PrimaryColor;
+
+            cBoxGrid.Background = ItembarColor;
+            checkBox.Content = icon;
+
+            border.Background = ItembarColor;
+
+            StarToggle.Background = ItembarColor;
+            StarButtonStarBorderIcon.Foreground = PrimaryColor;
+            StarButtonStarIcon.Foreground = PrimaryColor;
+
+            textBlockTitle.Foreground = ItembarTextColor;
+
+            ReminderTimeTextBlock.Foreground = ItembarTextColor;
+        }
+
+        private void GetAllColor()
+        {
+            PrimaryColor = ColorConverter(PrimaryColor_D);
+            SecondaryColor = ColorConverter(SecondaryColor_D);
+            ItembarColor = ColorConverter(ItembarColor_D);
+            ItembarHighlightColor = ColorConverter(ItembarHighlightColor_D);
+            ItembarTextColor = ColorConverter(ItembarTextColor_D);
+            ItemCompletedTextColor = ColorConverter(ItemCompletedTextColor_D);
+            ItemPassedTextColor = ColorConverter(ItemPassedTextColor_D);
+        }
+
+        private SolidColorBrush ColorConverter(System.Drawing.Color color)
+        {
+            return new SolidColorBrush(Color.FromRgb(color.R, color.G, color.B));
+        }
+        #endregion
     }
 }
