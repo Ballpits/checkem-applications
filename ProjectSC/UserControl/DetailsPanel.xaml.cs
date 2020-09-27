@@ -310,14 +310,14 @@ namespace ProjectSC.UserControls.Custom
         #region Mouse event
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
-            Button button = (Button)sender;
-            MouseoverHighlight.Highlight(sender, "#FFF0F0F0");
+            //Button button = (Button)sender;
+            //MouseoverHighlight.Highlight(sender, "#FFF0F0F0");
         }
 
         private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
-            Button button = (Button)sender;
-            MouseoverHighlight.Highlight(sender, "#FFFFFFFF");
+            //Button button = (Button)sender;
+            //MouseoverHighlight.Highlight(sender, "#FFFFFFFF");
         }
 
         private void DarkGrid_MouseDown(object sender, MouseButtonEventArgs e)

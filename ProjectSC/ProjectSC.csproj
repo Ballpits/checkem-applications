@@ -118,6 +118,7 @@
     </ApplicationDefinition>
     <Compile Include="DataAccess\IDataAccess.cs" />
     <Compile Include="DataAccess\DataAccess_Json.cs" />
+    <Compile Include="Functions\ColorToBrushConverter.cs" />
     <Compile Include="Functions\HotKey.cs" />
     <Compile Include="Functions\TesterClass\ListTester\ListViewer.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -128,8 +129,7 @@
     <Compile Include="QuickView\QuickViewWindow.xaml.cs">
       <DependentUpon>QuickViewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Functions\UserInterfaceFuntion\SnackbarControl.cs" />
-    <Compile Include="Functions\UserInterfaceFuntion\MouseoverHighlight.cs" />
+    <Compile Include="Functions\SnackbarControl.cs" />
     <Compile Include="Core\Notification\TimeRecord.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="UserControl\DetailsPanel.xaml.cs">
@@ -168,6 +168,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="QuickView\QuickViewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SharedDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -237,7 +241,9 @@
     <Resource Include="Icon\Icon-16.ico" />
     <Resource Include="Icon\Icon-512.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Functions\UserInterfaceFuntion\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.1.2\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.2\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

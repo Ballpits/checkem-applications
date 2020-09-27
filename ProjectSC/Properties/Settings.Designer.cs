@@ -178,5 +178,29 @@ namespace ProjectSC.Properties {
                 this["ItemPassedTextColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 33, 150, 243")]
+        public global::System.Drawing.Color NavigationbarButtonColor {
+            get {
+                return ((global::System.Drawing.Color)(this["NavigationbarButtonColor"]));
+            }
+            set {
+                this["NavigationbarButtonColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("102, 92, 183, 255")]
+        public global::System.Drawing.Color NavigationbarButtonHighlightColor {
+            get {
+                return ((global::System.Drawing.Color)(this["NavigationbarButtonHighlightColor"]));
+            }
+            set {
+                this["NavigationbarButtonHighlightColor"] = value;
+            }
+        }
     }
 }

@@ -54,18 +54,6 @@ namespace ProjectSC
             }//Check if the begin or end time is matched with the current time
         }
 
-        #region Mouse over events
-        private void MouseEnterHighLight(object sender, RoutedEventArgs e)
-        {
-            MouseoverHighlight.Highlight(sender, "#665CB7FF");
-        }
-
-        private void MouseLeaveUnHighLight(object sender, RoutedEventArgs e)
-        {
-            MouseoverHighlight.UnHighlight(sender, "#002196F3");
-        }
-        #endregion
-
         private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
         {
             MoveNavbarCursor(0);
@@ -102,6 +90,18 @@ namespace ProjectSC
         private void AppWindow_Closed(object sender, EventArgs e)
         {
             //app.IsMainWindowOpen = false;
+        }
+
+        private void ButtonColorTester1_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.NavigationbarButtonColor = System.Drawing.Color.FromArgb(0, 33, 150, 243);
+            Properties.Settings.Default.Save();
+        }
+
+        private void ButtonColorTester2_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.NavigationbarButtonColor = System.Drawing.Color.Black;
+            Properties.Settings.Default.Save();
         }
     }
 }

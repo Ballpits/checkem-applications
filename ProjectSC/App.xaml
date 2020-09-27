@@ -2,10 +2,13 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ProjectSC"
+             xmlns:local1="clr-namespace:ProjectSC.Functions"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:properties="clr-namespace:ProjectSC.Properties"
              ShutdownMode="OnExplicitShutdown">
 
     <Application.Resources>
+
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary x:Name="ThemeLight" Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
@@ -13,6 +16,8 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml" />
+
+                <ResourceDictionary Source="SharedDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--Scrollbar Thumbs-->
@@ -96,6 +101,7 @@
                 </Setter>
             </Style>
 
+            <!--#region Navigationbar controls-->
             <Style x:Key="NavigationbarButton" TargetType="{x:Type Button}">
                 <Setter Property="Height" Value="Auto"/>
                 <Setter Property="Width" Value="Auto"/>
@@ -108,24 +114,17 @@
                 <Setter Property="materialDesign:ButtonAssist.CornerRadius" Value="0"/>
                 <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth0"/>
 
-                <Setter Property="Background" Value="#002196F3"/>
+                <!--<Setter Property="Background" Value="#002196F3"/>-->
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NavigationbarButtonColor, Converter={StaticResource ColorToBrushConverter}}"/>
                 <Setter Property="BorderBrush" Value="{x:Null}"/>
                 <Setter Property="Foreground" Value="White"/>
 
                 <Setter Property="FocusVisualStyle" Value="{DynamicResource MyFocusVisual}"/>
 
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border Background="{TemplateBinding Background}">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-
                 <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True"/>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NavigationbarButtonHighlightColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                    </Trigger>
                 </Style.Triggers>
             </Style>
 
@@ -163,6 +162,7 @@
                 <Setter Property="MinHeight" Value="50"/>
                 <Setter Property="MinWidth" Value="50"/>
             </Style>
+            <!--#endregion-->
 
             <Style x:Key="MyFocusVisual">
                 <Setter Property="Control.Template">
@@ -173,6 +173,67 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
+            <Style x:Key="TagButton" TargetType="Button">
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="BorderBrush" Value="{x:Null}"/>
+                <Setter Property="Foreground" Value="White"/>
+
+                <Setter Property="Height" Value="Auto"/>
+                <Setter Property="Width" Value="Auto"/>
+
+                <Setter Property="materialDesign:ButtonAssist.CornerRadius" Value="10 10 10 10"/>
+                <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth0"/>
+            </Style>
+            
+            <!--#region -->
+            <Style x:Key="ItembarBorder" TargetType="Border">
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}"/>
+
+                <Setter Property="CornerRadius" Value="10"/>
+
+                <Setter Property="Margin" Value="0"/>
+
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <!--<Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarHighlightColor, Converter={StaticResource ColorToBrushConverter}}"/>-->
+                        <Setter Property="Background" Value="Black"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="CheckboxGrid" TargetType="Grid">
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}"/>
+
+                <Setter Property="Width" Value="50"/>
+
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+
+                <Setter Property="Margin" Value="10,0,0,0"/>
+            </Style>
+
+            <Style x:Key="ItembarCheckbox" TargetType="CheckBox" BasedOn="{StaticResource MaterialDesignFlatPrimaryToggleButton}">
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Width" Value="30"/>
+
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="ItembarCheckboxCircleIcon" TargetType="materialDesign:PackIcon">
+                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToBrushConverter}}"/>
+
+                <Setter Property="Kind" Value="CheckboxBlankCircleOutline"/>
+
+                <Setter Property="Height" Value="35"/>
+                <Setter Property="Width" Value="35"/>
+
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+
+                <Setter Property="IsTabStop" Value="False"/>
+            </Style>
+            <!--#endregion-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

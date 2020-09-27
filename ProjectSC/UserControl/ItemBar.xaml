@@ -8,11 +8,11 @@
              mc:Ignorable="d" 
              d:DesignWidth="800" Height="70" Loaded="UserControl_Loaded" Margin="5">
 
-    <Border x:Name="border" CornerRadius="10" Background="White" MouseDown="Border_MouseDown" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" materialDesign:ShadowAssist.ShadowDepth="Depth5" Margin="0">
+    <Border x:Name="border" Style="{StaticResource ItembarBorder}" MouseDown="Border_MouseDown">
         <Grid>
-            <Grid x:Name="cBoxGrid" HorizontalAlignment="Left" Margin="10,0,0,0" Width="50" Background="White" MouseDown="Grid_MouseDown" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight">
-                <CheckBox x:Name="checkBox" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}" Checked="ToDoChecked" Unchecked="ToDoUnchecked" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight">
-                    <materialDesign:PackIcon Kind="CheckboxBlankCircleOutline" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF2196F3" IsTabStop="False"/>
+            <Grid x:Name="CheckboxGrid" Style="{StaticResource CheckboxGrid}" MouseDown="Grid_MouseDown" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight">
+                <CheckBox x:Name="checkBox" Style="{StaticResource ItembarCheckbox}" Checked="ToDoChecked" Unchecked="ToDoUnchecked" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" Margin="0">
+                    <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}"/>
                 </CheckBox>
             </Grid>
 

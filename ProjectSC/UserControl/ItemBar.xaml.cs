@@ -109,7 +109,7 @@ namespace ProjectSC.UserControls.Custom
 
         private void ToDoUnchecked(object sender, RoutedEventArgs e)
         {
-            if (cBoxGrid.IsMouseOver)
+            if (CheckboxGrid.IsMouseOver)
             {
                 icon.Kind = PackIconKind.Check;
                 icon.Foreground = PrimaryColor;
@@ -170,7 +170,7 @@ namespace ProjectSC.UserControls.Custom
             if (sender.GetType() == typeof(Border))
             {
                 border.Background = ItembarHighlightColor;
-                cBoxGrid.Background = ItembarHighlightColor;
+                CheckboxGrid.Background = ItembarHighlightColor;
                 StarToggle.Background = ItembarHighlightColor;
             }
             if (sender.GetType() == typeof(CheckBox))
@@ -184,7 +184,7 @@ namespace ProjectSC.UserControls.Custom
             if (sender.GetType() == typeof(Grid))
             {
                 BorderEventCanActivate = false;
-                cBoxGrid.Background = ItembarHighlightColor;
+                CheckboxGrid.Background = ItembarHighlightColor;
                 StarToggle.Background = ItembarHighlightColor;
 
                 if (checkBox.IsChecked == false)
@@ -200,7 +200,7 @@ namespace ProjectSC.UserControls.Custom
             if (sender.GetType() == typeof(Border))
             {
                 border.Background = ItembarColor;
-                cBoxGrid.Background = ItembarColor;
+                CheckboxGrid.Background = ItembarColor;
                 StarToggle.Background = ItembarColor;
             }
             if (sender.GetType() == typeof(CheckBox))
@@ -215,9 +215,9 @@ namespace ProjectSC.UserControls.Custom
             {
                 BorderEventCanActivate = true;
 
-                if (cBoxGrid.IsMouseOver == false && border.IsMouseOver == false)
+                if (CheckboxGrid.IsMouseOver == false && border.IsMouseOver == false)
                 {
-                    cBoxGrid.Background = ItembarColor;
+                    CheckboxGrid.Background = ItembarColor;
                 }
 
                 if (checkBox.IsChecked == false)
@@ -327,7 +327,7 @@ namespace ProjectSC.UserControls.Custom
             icon.VerticalAlignment = VerticalAlignment.Center;
             icon.Foreground = PrimaryColor;
 
-            cBoxGrid.Background = ItembarColor;
+            CheckboxGrid.Background = ItembarColor;
             checkBox.Content = icon;
 
             border.Background = ItembarColor;

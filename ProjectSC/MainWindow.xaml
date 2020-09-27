@@ -4,9 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:properties="clr-namespace:ProjectSC.Properties"
         xmlns:local="clr-namespace:ProjectSC"
+        xmlns:local1="clr-namespace:ProjectSC.Functions"
         mc:Ignorable="d"
         Title="Check'em" Height="540" Width="960" WindowStartupLocation="CenterScreen" MinWidth="960" MinHeight="540" Icon="Icon/Icon-1024.ico" Background="White" WindowState="Maximized" Closed="AppWindow_Closed">
+
+    <Window.Resources>
+        <local1:ColorToBrushConverter x:Key="ColorToBrushConverter"/>
+    </Window.Resources>
 
     <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.5}">
         <Grid x:Name="MainGrid" Loaded="Grid_Loaded" Margin="0">
@@ -40,7 +46,7 @@
 
                 <Grid x:Name="NavbarCursor" Background="#665CB7FF"/>
 
-                <Button x:Name="ButtonAllItems" Style="{StaticResource NavigationbarButton}" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" Click="ButtonToDoList_Click" TabIndex="0">
+                <Button x:Name="ButtonAllItems" Style="{StaticResource NavigationbarButton}" Click="ButtonToDoList_Click" TabIndex="0">
                     <Grid Style="{StaticResource NavigationbarButtonGrid}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="0.5*"/>
@@ -64,7 +70,7 @@
                     </Grid>
                 </Button>
 
-                <Button x:Name="ButtonReminder" Style="{StaticResource NavigationbarButton}" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" Click="ButtonDueDateFilter_Click" Grid.Row="1" TabIndex="1">
+                <Button x:Name="ButtonReminder" Style="{StaticResource NavigationbarButton}" Click="ButtonDueDateFilter_Click" Grid.Row="1" TabIndex="1">
                     <Grid Style="{StaticResource NavigationbarButtonGrid}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="0.5*"/>
@@ -88,7 +94,7 @@
                     </Grid>
                 </Button>
 
-                <Button x:Name="ButtonStarredFilter" Style="{StaticResource NavigationbarButton}" MouseEnter="MouseEnterHighLight" MouseLeave="MouseLeaveUnHighLight" Click="ButtonStarredFilter_Click" Grid.Row="2" TabIndex="2">
+                <Button x:Name="ButtonStarredFilter" Style="{StaticResource NavigationbarButton}" Click="ButtonStarredFilter_Click" Grid.Row="2" TabIndex="2">
                     <Grid Style="{StaticResource NavigationbarButtonGrid}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="0.5*"/>
@@ -114,6 +120,14 @@
 
                 <Button IsEnabled="True" x:Name="ButtonUserPref" VerticalAlignment="Bottom" Margin="0,0,0,10" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Click="ButtonUserPref_Click" Padding="0" Grid.Row="3" TabIndex="3">
                     <materialDesign:PackIcon Kind="SettingsApplications" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
+                </Button>
+
+                <Button IsEnabled="True" x:Name="ButtonColorTester1" VerticalAlignment="Bottom" Margin="0,0,0,45.4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Click="ButtonColorTester1_Click" Padding="0" Grid.Row="3" TabIndex="3">
+                    <materialDesign:PackIcon Kind="ColorLens" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" Foreground="#FF2196F3"/>
+                </Button>
+
+                <Button IsEnabled="True" x:Name="ButtonColorTester2" VerticalAlignment="Bottom" Margin="0,0,0,80.4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Click="ButtonColorTester2_Click" Padding="0" Grid.Row="3" TabIndex="3">
+                    <materialDesign:PackIcon Kind="ColorLens" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" Foreground="Black"/>
                 </Button>
             </Grid>
 
