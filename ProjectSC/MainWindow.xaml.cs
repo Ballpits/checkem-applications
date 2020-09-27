@@ -19,8 +19,6 @@ namespace ProjectSC
 
         private ToDoListUSC myDayUSC = new ToDoListUSC();
 
-        private string path = "Inventory.json";
-
         private List<TimeRecord> timeRecord = new List<TimeRecord>();
         private DispatcherTimer timer = new DispatcherTimer();
         private int TimerOffset = 60 - DateTime.Now.Second;
@@ -40,7 +38,7 @@ namespace ProjectSC
             TimerOffset = 60 - DateTime.Now.Second;
             timer.Interval = TimeSpan.FromSeconds(TimerOffset);//Fix timer delay time
 
-            dataAccess.RetrieveTimeData(ref timeRecord, path);
+            dataAccess.RetrieveTimeData(ref timeRecord);
 
 
             foreach (var item in timeRecord)
@@ -92,6 +90,8 @@ namespace ProjectSC
         {
             UserPrefenceWindow userPrefenceWindow = new UserPrefenceWindow(this);
             MainGrid.Children.Add(userPrefenceWindow);
+            Grid.SetColumn(userPrefenceWindow, 0);
+            Grid.SetColumnSpan(userPrefenceWindow, 2);
         }
 
         private void MoveNavbarCursor(int index)

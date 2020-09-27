@@ -6,7 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:ProjectSC.UserControls.Custom"
              mc:Ignorable="d" 
-             d:DesignHeight="1020" d:DesignWidth="885">
+             d:DesignHeight="1080" d:DesignWidth="1920">
 
     <Grid Background="#CC000000" MouseDown="DarkGrid_MouseDown" Loaded="DarkGrid_Loaded">
         <materialDesign:TransitioningContent x:Name="TrainsitionigContent2" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromRight, Duration=0:0:0.3}">
@@ -36,25 +36,23 @@
 
                         <TextBox x:Name="textBoxTitle" Margin="10,10,10,0" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="Title" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial"/>
 
-                        <Grid x:Name="ReminderTitleGrid" Margin="10,30,10,0" Height="40">
+                        <Grid x:Name="ReminderTitleGrid" Margin="10,30" Height="40">
                             <materialDesign:PackIcon Kind="Bell" Foreground="#FFE3F321" Height="Auto" Width="Auto" Margin="5,0,0,5"/>
                             <TextBlock Text="Reminder" FontSize="16" FontFamily="Arial" Margin="45,10,0,0" HorizontalAlignment="Left"/>
 
-                            <StackPanel Orientation="Horizontal" Margin="0" Width="180" HorizontalAlignment="Right">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,1,0" Width="240" HorizontalAlignment="Right">
 
-
-                                <Button x:Name="ReminderBasicButton" Width="60" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="5 0 0 5" Height="Auto" Padding="0" Click="ReminderBasicButton_Click" HorizontalAlignment="Center">
+                                <Button x:Name="ReminderBasicButton" Width="80" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="5 0 0 5" Height="Auto" Padding="0" Click="ReminderBasicButton_Click" BorderThickness="1.5" UseLayoutRounding="True">
                                     <TextBlock Text="Basic" FontFamily="Arial" Margin="0,0,0,1"/>
                                 </Button>
 
-                                <Button x:Name="ReminderNoneButton" Width="60" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="0" Height="Auto" Padding="0" BorderThickness="0,1" Click="ReminderNoneButton_Click">
-                                    <TextBlock Text="None" FontFamily="Arial" Margin="0,0,0,1"/>
-                                </Button>
-
-                                <Button x:Name="ReminderAdvanceButton" Width="60" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="0 5 5 0" Height="Auto" Padding="0" Click="ReminderAdvanceButton_Click" HorizontalAlignment="Center">
+                                <Button x:Name="ReminderAdvanceButton" Width="80" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="0" Height="Auto" Padding="0" Click="ReminderAdvanceButton_Click" BorderThickness="0,1.5" UseLayoutRounding="True">
                                     <TextBlock Text="Advance" FontFamily="Arial" Margin="0,0,0,1"/>
                                 </Button>
 
+                                <Button x:Name="ReminderNoneButton" Width="80" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="0  5 5 0" Height="Auto" Padding="0" BorderThickness="1.5" Click="ReminderNoneButton_Click" UseLayoutRounding="True">
+                                    <TextBlock Text="None" FontFamily="Arial" Margin="0,0,0,1"/>
+                                </Button>
 
                             </StackPanel>
                         </Grid>

@@ -25,9 +25,7 @@ namespace ProjectSC
 
 
         public bool IsUsingTag { get; set; }
-        public string TagName { get; set; }
-        //public Brushes TagColor { get; set; }
-
+        public int TagId { get; set; }
 
         public DateTime CreationDateTime { get; set; }
         #endregion

@@ -11,15 +11,15 @@
         
         <StackPanel Orientation="Horizontal" Margin="10,0,50,0" Height="40" VerticalAlignment="Top">
 
-            <Button x:Name="ButtonGeneral" Width="85" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10 0 0 0" Height="Auto" Padding="0" HorizontalAlignment="Center" Click="ButtonGeneral_Click">
+            <Button x:Name="ButtonGeneral" Width="85" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10 0 0 0" Height="Auto" Padding="0" Click="ButtonGeneral_Click">
                 <TextBlock Text="General" FontFamily="Arial" Margin="0"/>
             </Button>
 
-            <Button x:Name="ButtonNotification" Width="85" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="0" Height="Auto" Padding="0" BorderThickness="0,1" Click="ButtonNotification_Click">
+            <Button x:Name="ButtonNotification" Width="85" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="0" Height="Auto" Padding="0" BorderThickness="1" Click="ButtonNotification_Click">
                 <TextBlock Text="Notification" FontFamily="Arial" Margin="0"/>
             </Button>
 
-            <Button x:Name="ButtonAppearance" Width="85" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="0 10 0 0" Height="Auto" Padding="0" HorizontalAlignment="Center" Margin="0" Click="ButtonAppearance_Click">
+            <Button x:Name="ButtonAppearance" Width="85" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="0 10 0 0" Height="Auto" Padding="0" Margin="0" Click="ButtonAppearance_Click">
                 <TextBlock Text="Appearance" FontFamily="Arial" Margin="0"/>
             </Button>
 

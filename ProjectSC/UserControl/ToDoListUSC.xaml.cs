@@ -51,7 +51,7 @@ namespace ProjectSC
 
         private void RetrieveData()
         {
-            dataAccess.RetrieveData(ref Inventory, dataAccess.path);
+            dataAccess.RetrieveData(ref Inventory);
         }
 
         private void LoadList(List<ToDoItem> list)

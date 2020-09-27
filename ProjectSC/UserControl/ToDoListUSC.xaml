@@ -30,7 +30,7 @@
                     </LinearGradientBrush>
                 </Grid.Background>
 
-                <Button HorizontalAlignment="Right" Margin="0,0,10,0" Width="35" Height="35" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#002196F3" BorderBrush="{x:Null}" Padding="0" Click="AddItemButton_Click" ToolTip="Add New" TabIndex="6">
+                <Button HorizontalAlignment="Right" Margin="0,0,20,0" Width="35" Height="35" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#002196F3" BorderBrush="{x:Null}" Padding="0" Click="AddItemButton_Click" ToolTip="Add New" TabIndex="6">
                     <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
                 </Button>
 
@@ -64,7 +64,7 @@
                     <TextBlock x:Name="ToDoListTitleTextBlock" Text="Name" Margin="0,5,0,0" Height="40" FontFamily="Arial" FontSize="36" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF2196F3" TextAlignment="Center"/>
                     <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="0 Items" Margin="0,0,0,5" Height="20" FontFamily="Arial" FontSize="16" Padding="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="#FF2196F3" Width="95" TextAlignment="Center"/>
 
-                    <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0"  Width="40" Height="40" VerticalAlignment="Center" TabIndex="7" IsTabStop="False">
+                    <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0"  Width="40" Height="40" VerticalAlignment="Center" TabIndex="7">
                         <materialDesign:PopupBox.ToggleContent>
                             <materialDesign:PackIcon Kind="Sort" Foreground="#FF2196F3" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" />
                         </materialDesign:PopupBox.ToggleContent>
@@ -135,7 +135,16 @@
 
                     </materialDesign:PopupBox>
                 </Grid>
-                <ScrollViewer x:Name="scrollBar" BorderThickness="0" Margin="0,75,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto" UseLayoutRounding="True">
+
+                <Grid Margin="10,75,10,0" Height="25" Background="White" VerticalAlignment="Top">
+                    <Button HorizontalAlignment="Left" Height="Auto" Width="70"/>
+
+                    <StackPanel Margin="75,0,0,0">
+
+                    </StackPanel>
+                </Grid>
+
+                <ScrollViewer Visibility="Visible" x:Name="scrollBar" BorderThickness="0" Margin="0,105,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto" UseLayoutRounding="True" VerticalAlignment="Top">
                     <StackPanel Name="stpMain" Margin="0">
                     </StackPanel>
                 </ScrollViewer>

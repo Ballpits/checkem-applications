@@ -9,9 +9,9 @@ namespace ProjectSC
 
 
 
-        public void RetrieveData(ref List<ToDoItem> inventory, string path);
+        public void RetrieveData(ref List<ToDoItem> inventory);
 
-        public void RetrieveTimeData(ref List<TimeRecord> timeRecords, string path);
+        public void RetrieveTimeData(ref List<TimeRecord> timeRecords);
 
 
 

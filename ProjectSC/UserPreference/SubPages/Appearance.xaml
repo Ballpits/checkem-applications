@@ -9,7 +9,21 @@
              d:DesignHeight="940" d:DesignWidth="1770">
     <ScrollViewer>
         <Grid Background="White">
-            <Border Margin="10,10,0,0" CornerRadius="50" Background="White" BorderBrush="#FF2F9CB7" BorderThickness="5" VerticalAlignment="Top" HorizontalAlignment="Left" Height="269" Width="532"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+
+            </Grid>
+
+            <ScrollViewer Grid.Column="1">
+                <Grid Grid.Column="1">
+                    
+                </Grid>
+            </ScrollViewer>
+
         </Grid>
     </ScrollViewer>
 </UserControl>

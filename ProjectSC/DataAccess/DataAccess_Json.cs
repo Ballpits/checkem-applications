@@ -48,7 +48,7 @@ namespace ProjectSC
 
 
 
-        public void RetrieveData(ref List<ToDoItem> inventory, string path)
+        public void RetrieveData(ref List<ToDoItem> inventory)
         {
             string json = File.ReadAllText(path);
 
@@ -57,7 +57,7 @@ namespace ProjectSC
 
 
 
-        public void RetrieveTimeData(ref List<TimeRecord> timeRecords, string path)
+        public void RetrieveTimeData(ref List<TimeRecord> timeRecords)
         {
             string json = File.ReadAllText(path);
 
@@ -217,11 +217,7 @@ namespace ProjectSC
 
         public void Update(int id, string tagName, List<ToDoItem> inventory)
         {
-            int index = inventory.FindIndex(x => x.Id == id);
 
-            inventory[index].TagName = tagName;
-
-            SaveToJson(inventory);
         }//Update tag
         #endregion
     }

@@ -77,7 +77,7 @@ namespace ProjectSC.UserControls.Custom
                 }
 
 
-                dataAccess.RetrieveData(ref todo.Inventory, "inv.json");
+                dataAccess.RetrieveData(ref todo.Inventory);
                 dataAccess.ResetId(todo.Inventory);
 
                 todo.AddItemBar();
@@ -92,7 +92,7 @@ namespace ProjectSC.UserControls.Custom
                     if (IsAdvanceReminderOn)
                     {
                         dataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), todo.Inventory);
-                        
+
                         itemBar.BeginDateTime = Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text);
                         itemBar.EndDateTime = Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text);
                     }
@@ -116,13 +116,17 @@ namespace ProjectSC.UserControls.Custom
 
                 itemBar.Update(itemBar);
 
-                DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Saved"));
 
                 switch (Properties.Settings.Default.DetailsPanelClosingMode)
                 {
                     case 0:
                         todo.CloseDetailsPanel();
                         break;
+
+                    case 1:
+                        DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Saved"));
+                        break;
+
                     default:
                         break;
                 }
