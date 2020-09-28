@@ -202,5 +202,17 @@ namespace ProjectSC.Properties {
                 this["NavigationbarButtonHighlightColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color NavigationbarTextColor {
+            get {
+                return ((global::System.Drawing.Color)(this["NavigationbarTextColor"]));
+            }
+            set {
+                this["NavigationbarTextColor"] = value;
+            }
+        }
     }
 }

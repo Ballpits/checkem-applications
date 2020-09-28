@@ -102,6 +102,20 @@
             </Style>
 
             <!--#region Navigationbar controls-->
+            <Style x:Key="NavigationbarGrid" TargetType="Grid">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush EndPoint="4,1" StartPoint="1,0">
+                            <!--<GradientStop Color="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToBrushConverter}}" Offset="0"/>
+                            <GradientStop Color="{Binding Source={x:Static properties:Settings.Default}, Path=SecondaryColor, Converter={StaticResource ColorToBrushConverter}}" Offset="0.5"/>-->
+
+                            <GradientStop Color="#ffaf7b"/>
+                            <GradientStop Color="#3a1c71" Offset="0.5"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <Style x:Key="NavigationbarButton" TargetType="{x:Type Button}">
                 <Setter Property="Height" Value="Auto"/>
                 <Setter Property="Width" Value="Auto"/>
@@ -120,6 +134,16 @@
                 <Setter Property="Foreground" Value="White"/>
 
                 <Setter Property="FocusVisualStyle" Value="{DynamicResource MyFocusVisual}"/>
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
 
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
@@ -175,17 +199,28 @@
             </Style>
 
             <Style x:Key="TagButton" TargetType="Button">
-                <Setter Property="Background" Value="White"/>
+                <!--<Setter Property="Background" Value="White"/>-->
                 <Setter Property="BorderBrush" Value="{x:Null}"/>
-                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NavigationbarTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="Height" Value="Auto"/>
-                <Setter Property="Width" Value="Auto"/>
+                <Setter Property="Width" Value="70"/>
 
-                <Setter Property="materialDesign:ButtonAssist.CornerRadius" Value="10 10 10 10"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+
                 <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth0"/>
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="12" Background="White">
+                                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
-            
+
             <!--#region -->
             <Style x:Key="ItembarBorder" TargetType="Border">
                 <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}"/>
@@ -196,8 +231,9 @@
 
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <!--<Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarHighlightColor, Converter={StaticResource ColorToBrushConverter}}"/>-->
-                        <Setter Property="Background" Value="Black"/>
+                        <Setter Property="BorderBrush" Value="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                        <Setter Property="BorderThickness" Value="2"/>
+                        <Setter Property="Margin" Value="-2,-2,-2,-2"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>

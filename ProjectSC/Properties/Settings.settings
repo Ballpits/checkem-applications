@@ -47,5 +47,8 @@
     <Setting Name="NavigationbarButtonHighlightColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">102, 92, 183, 255</Value>
     </Setting>
+    <Setting Name="NavigationbarTextColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
