@@ -181,7 +181,7 @@ namespace ProjectSC.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 33, 150, 243")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Transparent")]
         public global::System.Drawing.Color NavigationbarButtonColor {
             get {
                 return ((global::System.Drawing.Color)(this["NavigationbarButtonColor"]));
@@ -193,7 +193,7 @@ namespace ProjectSC.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("102, 92, 183, 255")]
+        [global::System.Configuration.DefaultSettingValueAttribute("76, 255, 255, 255")]
         public global::System.Drawing.Color NavigationbarButtonHighlightColor {
             get {
                 return ((global::System.Drawing.Color)(this["NavigationbarButtonHighlightColor"]));

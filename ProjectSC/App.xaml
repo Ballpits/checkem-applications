@@ -20,6 +20,17 @@
                 <ResourceDictionary Source="SharedDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <!--FocusVisual-->
+            <Style x:Key="MyFocusVisual">
+                <Setter Property="Control.Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Rectangle Margin="0" StrokeThickness="3" Stroke="White" StrokeDashArray="1000"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <!--Scrollbar Thumbs-->
             <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
                 <Setter Property="Template">
@@ -100,6 +111,8 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
+
 
             <!--#region Navigationbar controls-->
             <Style x:Key="NavigationbarGrid" TargetType="Grid">
@@ -185,16 +198,8 @@
             </Style>
             <!--#endregion-->
 
-            <Style x:Key="MyFocusVisual">
-                <Setter Property="Control.Template">
-                    <Setter.Value>
-                        <ControlTemplate>
-                            <Rectangle Margin="0" StrokeThickness="3" Stroke="White" StrokeDashArray="1000"/>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
 
+            <!--#region Tag-->
             <Style x:Key="TagButton" TargetType="Button">
                 <!--<Setter Property="Background" Value="White"/>-->
                 <Setter Property="BorderBrush" Value="{x:Null}"/>
@@ -217,6 +222,8 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <!--#endregion-->
+
 
             <!--#region -->
             <Style x:Key="ItembarBorder" TargetType="Border">
@@ -265,6 +272,43 @@
                 <Setter Property="HorizontalAlignment" Value="Center"/>
 
                 <Setter Property="IsTabStop" Value="False"/>
+            </Style>
+
+            <Style x:Key="ItembarStarToggle" TargetType="ToggleButton" BasedOn="{StaticResource MaterialDesignActionToggleButton}">
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default},Path=ItembarColor,Converter={StaticResource ColorToBrushConverter}}"/>
+
+                <Setter Property="Height" Value="45"/>
+                <Setter Property="Width" Value="45"/>
+
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+
+                <Setter Property="Margin" Value="0,0,10,0"/>
+            </Style>
+
+            <Style x:Key="StarBorderIcon" TargetType="materialDesign:PackIcon">
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default},Path=ItembarColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default},Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}"/>
+
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Width" Value="30"/>
+
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+
+                <Setter Property="Kind" Value="StarBorder"/>
+            </Style>
+          
+            <Style x:Key="StarIcon" TargetType="materialDesign:PackIcon">
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default},Path=ItembarColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default},Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}"/>
+
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="25"/>
+
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+
+                <Setter Property="Kind" Value="Star"/>
             </Style>
             <!--#endregion-->
         </ResourceDictionary>

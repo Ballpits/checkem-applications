@@ -49,7 +49,7 @@ namespace ProjectSC.UserControls.Custom
         public string TagName { get; set; }
         #endregion
 
-        #region
+        #region Variables
         private DataAccess_Json dataAccess = new DataAccess_Json();
 
         private ToDoListUSC todo;
@@ -65,12 +65,11 @@ namespace ProjectSC.UserControls.Custom
         System.Drawing.Color PrimaryColor_D = Properties.Settings.Default.PrimaryColor;
         System.Drawing.Color SecondaryColor_D = Properties.Settings.Default.SecondaryColor;
         System.Drawing.Color ItembarColor_D = Properties.Settings.Default.ItembarColor;
-        System.Drawing.Color ItembarHighlightColor_D = Properties.Settings.Default.ItembarHighlightColor;
         System.Drawing.Color ItembarTextColor_D = Properties.Settings.Default.ItembarTextColor;
         System.Drawing.Color ItemCompletedTextColor_D = Properties.Settings.Default.ItemCompletedTextColor;
         System.Drawing.Color ItemPassedTextColor_D = Properties.Settings.Default.ItemPassedTextColor;
 
-        SolidColorBrush PrimaryColor, SecondaryColor, ItembarColor, ItembarHighlightColor, ItembarTextColor, ItemCompletedTextColor, ItemPassedTextColor;
+        SolidColorBrush PrimaryColor, ItembarColor, ItembarTextColor, ItemCompletedTextColor, ItemPassedTextColor;
 
         PackIcon icon = new PackIcon();
         #endregion
@@ -111,7 +110,6 @@ namespace ProjectSC.UserControls.Custom
             if (CheckboxGrid.IsMouseOver)
             {
                 icon.Kind = PackIconKind.Check;
-                icon.Foreground = PrimaryColor;
             }
 
             textBlockTitle.Foreground = ItembarTextColor;
@@ -168,28 +166,21 @@ namespace ProjectSC.UserControls.Custom
         {
             if (sender.GetType() == typeof(Border))
             {
-                border.Background = ItembarHighlightColor;
-                CheckboxGrid.Background = ItembarHighlightColor;
-                StarToggle.Background = ItembarHighlightColor;
             }
             if (sender.GetType() == typeof(CheckBox))
             {
                 if (checkBox.IsChecked == false)
                 {
                     icon.Kind = PackIconKind.Check;
-                    icon.Foreground = PrimaryColor;
                 }
             }
             if (sender.GetType() == typeof(Grid))
             {
                 BorderEventCanActivate = false;
-                CheckboxGrid.Background = ItembarHighlightColor;
-                StarToggle.Background = ItembarHighlightColor;
 
                 if (checkBox.IsChecked == false)
                 {
                     icon.Kind = PackIconKind.Check;
-                    icon.Foreground = PrimaryColor;
                 }
             }
         }
@@ -207,7 +198,6 @@ namespace ProjectSC.UserControls.Custom
                 if (checkBox.IsChecked == false)
                 {
                     icon.Kind = PackIconKind.Check;
-                    icon.Foreground = PrimaryColor;
                 }
             }
             if (sender.GetType() == typeof(Grid))
@@ -222,7 +212,6 @@ namespace ProjectSC.UserControls.Custom
                 if (checkBox.IsChecked == false)
                 {
                     icon.Kind = PackIconKind.CheckboxBlankCircleOutline;
-                    icon.Foreground = PrimaryColor;
                 }
             }
         }
@@ -324,16 +313,11 @@ namespace ProjectSC.UserControls.Custom
             icon.Width = ChaeckBoxIconSize;
             icon.HorizontalAlignment = HorizontalAlignment.Center;
             icon.VerticalAlignment = VerticalAlignment.Center;
-            icon.Foreground = PrimaryColor;
 
             CheckboxGrid.Background = ItembarColor;
             checkBox.Content = icon;
 
             border.Background = ItembarColor;
-
-            StarToggle.Background = ItembarColor;
-            StarButtonStarBorderIcon.Foreground = PrimaryColor;
-            StarButtonStarIcon.Foreground = PrimaryColor;
 
             textBlockTitle.Foreground = ItembarTextColor;
 
@@ -342,10 +326,7 @@ namespace ProjectSC.UserControls.Custom
 
         private void GetAllColor()
         {
-            PrimaryColor = ColorConverter(PrimaryColor_D);
-            SecondaryColor = ColorConverter(SecondaryColor_D);
             ItembarColor = ColorConverter(ItembarColor_D);
-            ItembarHighlightColor = ColorConverter(ItembarHighlightColor_D);
             ItembarTextColor = ColorConverter(ItembarTextColor_D);
             ItemCompletedTextColor = ColorConverter(ItemCompletedTextColor_D);
             ItemPassedTextColor = ColorConverter(ItemPassedTextColor_D);

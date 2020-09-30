@@ -39,7 +39,7 @@
                     </LinearGradientBrush>
                 </Grid.Background>-->
 
-                <Grid x:Name="NavbarCursor" Background="#665CB7FF"/>
+                <Grid x:Name="NavbarCursor" Background="#4CFFFFFF"/>
 
                 <Button x:Name="ButtonAllItems" Style="{StaticResource NavigationbarButton}" Click="ButtonToDoList_Click" TabIndex="0">
                     <Grid Style="{StaticResource NavigationbarButtonGrid}">

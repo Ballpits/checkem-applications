@@ -99,8 +99,8 @@ namespace ProjectSC
 
         private void ButtonColorTester2_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.PrimaryColor = System.Drawing.Color.FromArgb(255, 117, 58, 136);
-            Properties.Settings.Default.SecondaryColor = System.Drawing.Color.FromArgb(255, 218, 30, 99);
+            Properties.Settings.Default.PrimaryColor = System.Drawing.Color.FromArgb(255, 218, 30, 99);
+            Properties.Settings.Default.SecondaryColor = System.Drawing.Color.FromArgb(255, 117, 58, 136);
 
             Properties.Settings.Default.Save();
         }
