@@ -24,21 +24,6 @@
                     <RowDefinition Height="11*"/>
                 </Grid.RowDefinitions>
 
-                <!--<Grid.Background>
-                    <LinearGradientBrush EndPoint="4,1" StartPoint="1,0">
-                        <LinearGradientBrush.RelativeTransform>
-                            <TransformGroup>
-                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                <RotateTransform CenterY="0.5" CenterX="0.5"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="#FF2196F3"/>
-                        <GradientStop Color="#FF9708CC" Offset="0.5"/>
-                    </LinearGradientBrush>
-                </Grid.Background>-->
-
                 <Grid x:Name="NavbarCursor" Background="#4CFFFFFF"/>
 
                 <Button x:Name="ButtonAllItems" Style="{StaticResource NavigationbarButton}" Click="ButtonToDoList_Click" TabIndex="0">

@@ -10,24 +10,8 @@
 
     <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.5}">
 
-        <Grid Name="DataGrid" Margin="0">
+        <Grid Name="DataGrid" Style="{StaticResource todoUSCTitlebar}">
             <Grid Margin="0" Height="50" VerticalAlignment="Top">
-
-                <Grid.Background>
-                    <LinearGradientBrush EndPoint="0,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
-                        <LinearGradientBrush.RelativeTransform>
-                            <TransformGroup>
-                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="#FF2196F3" Offset="1"/>
-                        <GradientStop Color="#FF9708CC" Offset="0.352"/>
-                        <GradientStop Color="#FF2196F3" Offset="1"/>
-                    </LinearGradientBrush>
-                </Grid.Background>
 
                 <Button FocusVisualStyle="{DynamicResource MyFocusVisual}" HorizontalAlignment="Right" Margin="0,0,20,0" Width="35" Height="35" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#002196F3" BorderBrush="{x:Null}" Padding="0" Click="AddItemButton_Click" ToolTip="Add New" TabIndex="6">
                     <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
@@ -135,7 +119,7 @@
                     </materialDesign:PopupBox>
                 </Grid>
 
-                <Grid Margin="10,75,10,0" Height="25" VerticalAlignment="Top">
+                <Grid Visibility="Hidden" Margin="10,75,10,0" Height="25" VerticalAlignment="Top">
                     <Button Style="{StaticResource TagButton}" Content="Creat Tag" TabIndex="8"/>
 
                     <StackPanel Margin="75,0,0,0">

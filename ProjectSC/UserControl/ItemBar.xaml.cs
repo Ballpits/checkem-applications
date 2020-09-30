@@ -62,14 +62,12 @@ namespace ProjectSC.UserControls.Custom
         private bool BorderEventCanActivate = true;
 
 
-        System.Drawing.Color PrimaryColor_D = Properties.Settings.Default.PrimaryColor;
-        System.Drawing.Color SecondaryColor_D = Properties.Settings.Default.SecondaryColor;
         System.Drawing.Color ItembarColor_D = Properties.Settings.Default.ItembarColor;
         System.Drawing.Color ItembarTextColor_D = Properties.Settings.Default.ItembarTextColor;
         System.Drawing.Color ItemCompletedTextColor_D = Properties.Settings.Default.ItemCompletedTextColor;
         System.Drawing.Color ItemPassedTextColor_D = Properties.Settings.Default.ItemPassedTextColor;
 
-        SolidColorBrush PrimaryColor, ItembarColor, ItembarTextColor, ItemCompletedTextColor, ItemPassedTextColor;
+        SolidColorBrush ItembarColor, ItembarTextColor, ItemCompletedTextColor, ItemPassedTextColor;
 
         PackIcon icon = new PackIcon();
         #endregion
@@ -92,7 +90,6 @@ namespace ProjectSC.UserControls.Custom
         private void ToDoChecked(object sender, RoutedEventArgs e)
         {
             icon.Kind = PackIconKind.Check;
-            icon.Foreground = ItembarTextColor;
 
             checkBox.Content = icon;
 
