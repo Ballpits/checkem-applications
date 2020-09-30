@@ -2,5 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:ProjectSC"
                     xmlns:local1="clr-namespace:ProjectSC.Functions">
+    
     <local1:ColorToBrushConverter x:Key="ColorToBrushConverter"/>
+    <local1:ColorToGradientStopConverter x:Key="ColorToGradientStopConverter"/>
+    
 </ResourceDictionary>

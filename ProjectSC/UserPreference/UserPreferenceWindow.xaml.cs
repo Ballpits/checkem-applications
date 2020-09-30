@@ -31,7 +31,8 @@ namespace ProjectSC
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.MainGrid.Children.RemoveAt(mainWindow.MainGrid.Children.Count - 1);
+            mainWindow.GridPrincipal.Children.RemoveAt(mainWindow.GridPrincipal.Children.Count - 1);
+            mainWindow.GridPrincipal.Children.Add(new ToDoListUSC());
         }
 
         private void CloseButton_MouseEnter(object sender, MouseEventArgs e)

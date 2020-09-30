@@ -106,11 +106,8 @@
                 <Setter Property="Background">
                     <Setter.Value>
                         <LinearGradientBrush EndPoint="4,1" StartPoint="1,0">
-                            <!--<GradientStop Color="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToBrushConverter}}" Offset="0"/>
-                            <GradientStop Color="{Binding Source={x:Static properties:Settings.Default}, Path=SecondaryColor, Converter={StaticResource ColorToBrushConverter}}" Offset="0.5"/>-->
-
-                            <GradientStop Color="#ffaf7b"/>
-                            <GradientStop Color="#3a1c71" Offset="0.5"/>
+                            <GradientStop Color="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToGradientStopConverter}}" Offset="0"/>
+                            <GradientStop Color="{Binding Source={x:Static properties:Settings.Default}, Path=SecondaryColor, Converter={StaticResource ColorToGradientStopConverter}}" Offset="0.5"/>
                         </LinearGradientBrush>
                     </Setter.Value>
                 </Setter>

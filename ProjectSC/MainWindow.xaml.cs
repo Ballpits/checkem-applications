@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace ProjectSC
@@ -17,11 +16,15 @@ namespace ProjectSC
         #region Variables
         private DataAccess_Json dataAccess = new DataAccess_Json();
 
-        private ToDoListUSC myDayUSC = new ToDoListUSC();
+        private ToDoListUSC todoListUSC = new ToDoListUSC();
 
         private List<TimeRecord> timeRecord = new List<TimeRecord>();
         private DispatcherTimer timer = new DispatcherTimer();
         private int TimerOffset = 60 - DateTime.Now.Second;
+        #endregion
+
+        #region Propertes
+        public int FilterMode { get; set; }
         #endregion
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
@@ -29,8 +32,8 @@ namespace ProjectSC
             timer.Tick += new EventHandler(Timer_Tick);
             timer.Start();
 
-            GridPrincipal.Children.Add(myDayUSC);
-            myDayUSC.ListFilter(2);
+            GridPrincipal.Children.Add(todoListUSC);
+            todoListUSC.ListFilter(0);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -56,30 +59,31 @@ namespace ProjectSC
 
         private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
         {
-            MoveNavbarCursor(0);
-            myDayUSC.ListFilter(2);
-            myDayUSC.CloseDetailsPanel();
+            this.FilterMode = 0;
+
+            ChangeFIlter(this.FilterMode);
         }
         private void ButtonDueDateFilter_Click(object sender, RoutedEventArgs e)
         {
-            MoveNavbarCursor(1);
-            myDayUSC.ListFilter(1);
-            myDayUSC.CloseDetailsPanel();
+            this.FilterMode = 1;
+
+            ChangeFIlter(this.FilterMode);
         }
 
         private void ButtonStarredFilter_Click(object sender, RoutedEventArgs e)
         {
-            MoveNavbarCursor(2);
-            myDayUSC.ListFilter(0);
-            myDayUSC.CloseDetailsPanel();
+            this.FilterMode = 2;
+
+            ChangeFIlter(this.FilterMode);
         }
 
         private void ButtonUserPref_Click(object sender, RoutedEventArgs e)
         {
+            GridPrincipal.Children.Clear();
+
             UserPrefenceWindow userPrefenceWindow = new UserPrefenceWindow(this);
-            MainGrid.Children.Add(userPrefenceWindow);
-            Grid.SetColumn(userPrefenceWindow, 0);
-            Grid.SetColumnSpan(userPrefenceWindow, 2);
+
+            GridPrincipal.Children.Add(userPrefenceWindow);
         }
 
         private void MoveNavbarCursor(int index)
@@ -87,25 +91,26 @@ namespace ProjectSC
             Grid.SetRow(NavbarCursor, index);
         }
 
-        private void AppWindow_Closed(object sender, EventArgs e)
-        {
-            //app.IsMainWindowOpen = false;
-        }
-
         private void ButtonColorTester1_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.NavigationbarButtonColor = System.Drawing.Color.FromArgb(0, 33, 150, 243);
             Properties.Settings.Default.Reset();
             Properties.Settings.Default.Save();
         }
 
         private void ButtonColorTester2_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.PrimaryColor = System.Drawing.Color.FromArgb(0, 117, 58, 136);
-            Properties.Settings.Default.SecondaryColor = System.Drawing.Color.FromArgb(0, 218, 30, 99);
+            Properties.Settings.Default.PrimaryColor = System.Drawing.Color.FromArgb(255, 117, 58, 136);
+            Properties.Settings.Default.SecondaryColor = System.Drawing.Color.FromArgb(255, 218, 30, 99);
 
-            Properties.Settings.Default.NavigationbarButtonColor = System.Drawing.Color.Black;
             Properties.Settings.Default.Save();
+        }
+
+        public void ChangeFIlter(int mode)
+        {
+            MoveNavbarCursor(mode);
+            todoListUSC.ListFilter(mode);
+
+            todoListUSC.CloseDetailsPanel();
         }
     }
 }

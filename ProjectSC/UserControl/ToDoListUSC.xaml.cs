@@ -116,49 +116,57 @@ namespace ProjectSC
 
             int counter = 0;
 
-            if (mode == 0)//Filter:Starred
+            switch (mode)
             {
-                FilteredInventory.Clear();
+                case 0://Filter:All items
+                    FilteredInventory.Clear();
 
-                for (int index = 0; index < Inventory.Count; index++)
-                {
-                    if (Inventory[index].IsStarred)
+                    LoadList(Inventory);
+
+                    ToDoListTitleTextBlock.Text = "All Items";
+
+                    counter = Inventory.Count;
+
+                    break;
+
+                case 1://Filter:Reminder
+                    FilteredInventory.Clear();
+
+                    for (int index = 0; index < Inventory.Count; index++)
                     {
-                        FilteredInventory.Add(Inventory[index]);
-                        AddItem(Inventory[index]);
 
-                        counter++;
+                        if (Inventory[index].IsReminderOn)
+                        {
+                            FilteredInventory.Add(Inventory[index]);
+                            AddItem(Inventory[index]);
+
+                            counter++;
+                        }
                     }
-                }
+                    ToDoListTitleTextBlock.Text = "Reminder";
 
-                ToDoListTitleTextBlock.Text = "Starred";
-            }
-            else if (mode == 1)//Filter:Reminder
-            {
-                FilteredInventory.Clear();
+                    break;
 
-                for (int index = 0; index < Inventory.Count; index++)
-                {
+                case 2://Filter:None
+                    FilteredInventory.Clear();
 
-                    if (Inventory[index].IsReminderOn)
+                    for (int index = 0; index < Inventory.Count; index++)
                     {
-                        FilteredInventory.Add(Inventory[index]);
-                        AddItem(Inventory[index]);
+                        if (Inventory[index].IsStarred)
+                        {
+                            FilteredInventory.Add(Inventory[index]);
+                            AddItem(Inventory[index]);
 
-                        counter++;
+                            counter++;
+                        }
                     }
-                }
-                ToDoListTitleTextBlock.Text = "Reminder";
-            }
-            else if (mode == 2)//Filter:None
-            {
-                FilteredInventory.Clear();
 
-                LoadList(Inventory);
+                    ToDoListTitleTextBlock.Text = "Starred";
 
-                ToDoListTitleTextBlock.Text = "All Items";
+                    break;
 
-                counter = Inventory.Count;
+                default:
+                    break;
             }
 
             ToDoListItemCounterTextBlock.Text = $"{counter} Items";
@@ -220,7 +228,7 @@ namespace ProjectSC
         #region Sort
         private void SortButton_Importance_Click(object sender, RoutedEventArgs e)
         {
-            if (filterMode == 2)
+            if (filterMode == 0)
             {
                 Inventory = Inventory.OrderBy(x => x.IsStarred == false).ToList();
 
@@ -238,7 +246,7 @@ namespace ProjectSC
 
         private void SortButton_DueDate_Click(object sender, RoutedEventArgs e)
         {
-            if (filterMode == 2)
+            if (filterMode == 0)
             {
                 Inventory = Inventory.OrderBy(x => x.EndDateTime).ToList();
                 Inventory = Inventory.OrderBy(x => x.IsReminderOn == false).ToList();
@@ -258,7 +266,7 @@ namespace ProjectSC
 
         private void SortButton_AlphabeticalAscending_Click(object sender, RoutedEventArgs e)
         {
-            if (filterMode == 2)
+            if (filterMode == 0)
             {
                 Inventory = Inventory.OrderBy(x => x.Title).ToList();
 
@@ -276,7 +284,7 @@ namespace ProjectSC
 
         private void SortButton_AlphabeticalDescending_Click(object sender, RoutedEventArgs e)
         {
-            if (filterMode == 2)
+            if (filterMode == 0)
             {
                 Inventory = Inventory.OrderBy(x => x.Title).ToList();
                 Inventory.Reverse();
@@ -285,7 +293,7 @@ namespace ProjectSC
             }
             else
             {
-                FilteredInventory = Inventory.OrderBy(x => x.Title).ToList();
+                FilteredInventory = FilteredInventory.OrderBy(x => x.Title).ToList();
                 FilteredInventory.Reverse();
 
                 LoadList(FilteredInventory);
@@ -296,7 +304,7 @@ namespace ProjectSC
 
         private void SortButton_CreationDate_Click(object sender, RoutedEventArgs e)
         {
-            if (filterMode == 2)
+            if (filterMode == 0)
             {
                 Inventory = Inventory.OrderBy(x => x.CreationDateTime).ToList();
 
