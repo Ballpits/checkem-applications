@@ -21,6 +21,8 @@ namespace ProjectSC
         private List<TimeRecord> timeRecord = new List<TimeRecord>();
         private DispatcherTimer timer = new DispatcherTimer();
         private int TimerOffset = 60 - DateTime.Now.Second;
+
+        int NavbarCursorIndex = 0;
         #endregion
 
         #region Propertes
@@ -88,6 +90,7 @@ namespace ProjectSC
 
         private void MoveNavbarCursor(int index)
         {
+            NavbarCursorIndex = index;
             Grid.SetRow(NavbarCursor, index);
         }
 
@@ -101,6 +104,8 @@ namespace ProjectSC
         {
             Properties.Settings.Default.PrimaryColor = System.Drawing.Color.FromArgb(255, 218, 30, 99);
             Properties.Settings.Default.SecondaryColor = System.Drawing.Color.FromArgb(255, 117, 58, 136);
+
+            todoListUSC.ListFilter(NavbarCursorIndex);
 
             Properties.Settings.Default.Save();
         }
