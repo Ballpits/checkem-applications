@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace ProjectSC.Functions
+namespace ProjectSC.ViewModels
 {
     public class ColorToBrushConverter : IValueConverter
     {

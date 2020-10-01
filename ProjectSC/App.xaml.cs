@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectSC.ViewModels;
+using System;
 using System.Windows;
 using System.Windows.Input;
 

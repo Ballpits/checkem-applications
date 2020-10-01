@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ProjectSC.ViewModels;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,9 +8,9 @@ using System.Windows.Media;
 
 namespace ProjectSC.View
 {
-    public partial class ToDoListUSC : UserControl
+    public partial class ToDoList_View : UserControl
     {
-        public ToDoListUSC()
+        public ToDoList_View()
         {
             InitializeComponent();
 
@@ -71,7 +72,7 @@ namespace ProjectSC.View
             AddItem(Inventory[Inventory.FindIndex(x => x.Id == id)]);
         }
 
-        public void RemoveItemBar(ItemBar itembar)
+        public void RemoveItemBar(ItemBar_View itembar)
         {
             stpMain.Children.RemoveAt(stpMain.Children.IndexOf(itembar));
             //ListTesterTB.Text = ListViewer.ShowList(Inventory);
@@ -86,7 +87,7 @@ namespace ProjectSC.View
         #region Item
         private void AddItem(ToDoItem todoItem)
         {
-            ItemBar itemBar = new ItemBar(this)
+            ItemBar_View itemBar = new ItemBar_View(this)
             {
                 Id = todoItem.Id,
                 Title = todoItem.Title,
@@ -324,7 +325,7 @@ namespace ProjectSC.View
         #region Details panel
         public void OpenDetailsPanel()
         {
-            DetailsPanel detailsPanel = new DetailsPanel(this)
+            DetailsPanel_View detailsPanel = new DetailsPanel_View(this)
             {
                 IsNew = true
             };
@@ -334,9 +335,9 @@ namespace ProjectSC.View
             DetailsPanelOpened = true;
         }
 
-        public void OpenDetailsPanel(ItemBar itemBar)
+        public void OpenDetailsPanel(ItemBar_View itemBar)
         {
-            DetailsPanel detailsPanel = new DetailsPanel(this, itemBar)
+            DetailsPanel_View detailsPanel = new DetailsPanel_View(this, itemBar)
             {
                 IsNew = false,
 

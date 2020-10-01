@@ -7,16 +7,16 @@ using System.Windows.Media;
 
 namespace ProjectSC.View
 {
-    public partial class ItemBar : UserControl
+    public partial class ItemBar_View : UserControl
     {
-        public ItemBar()
+        public ItemBar_View()
         {
             InitializeComponent();
 
             SetupColor();
         }
 
-        public ItemBar(ToDoListUSC toDo)
+        public ItemBar_View(ToDoList_View toDo)
         {
             InitializeComponent();
 
@@ -52,7 +52,7 @@ namespace ProjectSC.View
         #region Variables
         private DataAccess_Json dataAccess = new DataAccess_Json();
 
-        private ToDoListUSC todo;
+        private ToDoList_View todo;
 
 
         const int ChaeckBoxIconSize = 35;
@@ -223,7 +223,7 @@ namespace ProjectSC.View
             VisualUpdate();
         }
 
-        public void Update(ItemBar itemBar)
+        public void Update(ItemBar_View itemBar)
         {
             textBlockTitle.Text = itemBar.Title;
             this.IsReminderOn = itemBar.IsReminderOn;

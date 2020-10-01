@@ -18,13 +18,13 @@ namespace ProjectSC
         #region Variables
         private DataAccess_Json dataAccess = new DataAccess_Json();
 
-        private ToDoListUSC todoListUSC = new ToDoListUSC();
+        private ToDoList_View todoList_View = new ToDoList_View();
 
         private List<TimeRecord> timeRecord = new List<TimeRecord>();
-        private DispatcherTimer timer = new DispatcherTimer();
+        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private int TimerOffset = 60 - DateTime.Now.Second;
 
-        int NavbarCursorIndex = 0;
+        private int NavbarCursorIndex = 0;
         #endregion
 
         #region Propertes
@@ -33,17 +33,17 @@ namespace ProjectSC
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            timer.Tick += new EventHandler(Timer_Tick);
-            timer.Start();
+            dispatcherTimer.Tick += new EventHandler(Timer_Tick);
+            dispatcherTimer.Start();
 
-            GridPrincipal.Children.Add(todoListUSC);
-            todoListUSC.ListFilter(0);
+            GridPrincipal.Children.Add(todoList_View);
+            todoList_View.ListFilter(0);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
             TimerOffset = 60 - DateTime.Now.Second;
-            timer.Interval = TimeSpan.FromSeconds(TimerOffset);//Fix timer delay time
+            dispatcherTimer.Interval = TimeSpan.FromSeconds(TimerOffset);//Fix timer delay time
 
             dataAccess.RetrieveTimeData(ref timeRecord);
 
@@ -107,7 +107,7 @@ namespace ProjectSC
             Properties.Settings.Default.PrimaryColor = System.Drawing.Color.FromArgb(255, 218, 30, 99);
             Properties.Settings.Default.SecondaryColor = System.Drawing.Color.FromArgb(255, 117, 58, 136);
 
-            todoListUSC.ListFilter(NavbarCursorIndex);
+            todoList_View.ListFilter(NavbarCursorIndex);
 
             Properties.Settings.Default.Save();
         }
@@ -115,9 +115,9 @@ namespace ProjectSC
         public void ChangeFIlter(int mode)
         {
             MoveNavbarCursor(mode);
-            todoListUSC.ListFilter(mode);
+            todoList_View.ListFilter(mode);
 
-            todoListUSC.CloseDetailsPanel();
+            todoList_View.CloseDetailsPanel();
         }
     }
 }

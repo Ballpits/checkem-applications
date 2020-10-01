@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
 
-namespace ProjectSC
+namespace ProjectSC.ViewModels
 {
     public sealed class HotKey : IDisposable
     {

@@ -1,8 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
-using System.Drawing;
 
-namespace ProjectSC
+namespace ProjectSC.ViewModels
 {
     public static class SnackbarControl
     {
