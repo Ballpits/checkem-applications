@@ -1,13 +1,12 @@
-﻿<UserControl x:Class="ProjectSC.UserControls.Custom.DetailsPanel"
+﻿<UserControl x:Class="ProjectSC.View.DetailsPanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:local="clr-namespace:ProjectSC.UserControls.Custom"
+             xmlns:local="clr-namespace:ProjectSC.View"
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920">
-
     <Grid Background="#CC000000" MouseDown="DarkGrid_MouseDown" Loaded="DarkGrid_Loaded">
         <materialDesign:TransitioningContent x:Name="TrainsitionigContent2" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromRight, Duration=0:0:0.3}">
 

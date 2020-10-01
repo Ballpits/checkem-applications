@@ -133,27 +133,27 @@
     <Compile Include="Functions\SnackbarControl.cs" />
     <Compile Include="Core\Notification\TimeRecord.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="UserControl\DetailsPanel.xaml.cs">
-      <DependentUpon>DetailsPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl\ItemBar.xaml.cs">
-      <DependentUpon>ItemBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl\ToDoListUSC.xaml.cs">
-      <DependentUpon>ToDoListUSC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Core\Notification\Notifications.cs" />
-    <Compile Include="UserPreference\SubPages\Appearance.xaml.cs">
-      <DependentUpon>Appearance.xaml</DependentUpon>
+    <Compile Include="View\Settings\AppearanceSettings_View.xaml.cs">
+      <DependentUpon>AppearanceSettings_View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserPreference\SubPages\GeneralUSC.xaml.cs">
-      <DependentUpon>GeneralUSC.xaml</DependentUpon>
+    <Compile Include="View\Settings\GeneralSettings_View.xaml.cs">
+      <DependentUpon>GeneralSettings_View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserPreference\SubPages\NotificationUSC.xaml.cs">
-      <DependentUpon>NotificationUSC.xaml</DependentUpon>
+    <Compile Include="View\Settings\NotificationSettings_View.xaml.cs">
+      <DependentUpon>NotificationSettings_View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserPreference\UserPreferenceWindow.xaml.cs">
-      <DependentUpon>UserPreferenceWindow.xaml</DependentUpon>
+    <Compile Include="View\Settings\SettingsMenu.xaml.cs">
+      <DependentUpon>SettingsMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DetailsPanel_View.xaml.cs">
+      <DependentUpon>DetailsPanel_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ItemBar_View.xaml.cs">
+      <DependentUpon>ItemBar_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ToDoList_View.xaml.cs">
+      <DependentUpon>ToDoList_View.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -176,31 +176,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControl\DetailsPanel.xaml">
+    <Page Include="View\Settings\AppearanceSettings_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControl\ItemBar.xaml">
+    <Page Include="View\Settings\GeneralSettings_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControl\ToDoListUSC.xaml">
+    <Page Include="View\Settings\NotificationSettings_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserPreference\SubPages\Appearance.xaml">
+    <Page Include="View\Settings\SettingsMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserPreference\SubPages\GeneralUSC.xaml">
+    <Page Include="View\DetailsPanel_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserPreference\SubPages\NotificationUSC.xaml">
+    <Page Include="View\ItemBar_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserPreference\UserPreferenceWindow.xaml">
+    <Page Include="View\ToDoList_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

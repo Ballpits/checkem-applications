@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjectSC.UserPreference.SubPages
+namespace ProjectSC.View.Settings
 {
     /// <summary>
-    /// Interaction logic for GeneralUSC.xaml
+    /// Interaction logic for GeneralSettings_View.xaml
     /// </summary>
-    public partial class GeneralUSC : UserControl
+    public partial class GeneralSettings_View : UserControl
     {
-        public GeneralUSC()
+        public GeneralSettings_View()
         {
             InitializeComponent();
         }

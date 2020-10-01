@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjectSC.UserPreference.SubPages
+namespace ProjectSC.View.Settings
 {
     /// <summary>
-    /// Interaction logic for Appearance.xaml
+    /// Interaction logic for NotificationSettings_View.xaml
     /// </summary>
-    public partial class Appearance : UserControl
+    public partial class NotificationSettings_View : UserControl
     {
-        public Appearance()
+        public NotificationSettings_View()
         {
             InitializeComponent();
         }

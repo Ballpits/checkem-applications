@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectSC.View;
+using ProjectSC.View.Settings;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -83,9 +85,9 @@ namespace ProjectSC
         {
             GridPrincipal.Children.Clear();
 
-            UserPrefenceWindow userPrefenceWindow = new UserPrefenceWindow(this);
+            SettingsMenu settingsMenu = new SettingsMenu(this);
 
-            GridPrincipal.Children.Add(userPrefenceWindow);
+            GridPrincipal.Children.Add(settingsMenu);
         }
 
         private void MoveNavbarCursor(int index)
