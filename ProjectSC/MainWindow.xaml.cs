@@ -1,8 +1,8 @@
-﻿using ProjectSC.Model.DataAccess;
-using ProjectSC.Model.Object.Notification;
-using ProjectSC.View;
-using ProjectSC.View.Settings;
+﻿using ProjectSC.Models.DataAccess;
+using ProjectSC.Models.Object.Notification;
 using ProjectSC.ViewModels.Notification;
+using ProjectSC.Views;
+using ProjectSC.Views.Settings;
 using System;
 using System.Collections.Generic;
 using System.Windows;

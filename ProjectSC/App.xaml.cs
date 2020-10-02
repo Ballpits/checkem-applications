@@ -1,4 +1,5 @@
 ﻿using ProjectSC.ViewModels.GlobleHotek;
+using ProjectSC.Views.QuickView;
 using System;
 using System.Windows;
 using System.Windows.Input;
