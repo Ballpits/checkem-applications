@@ -47,76 +47,87 @@
                     <TextBlock x:Name="ToDoListTitleTextBlock" Text="Name" Margin="0,5,0,0" Height="40" FontFamily="Arial" FontSize="36" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF2196F3" TextAlignment="Center"/>
                     <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="0 Items" Margin="0,0,0,5" Height="20" FontFamily="Arial" FontSize="16" Padding="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="#FF2196F3" Width="95" TextAlignment="Center"/>
 
-                    <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0"  Width="40" Height="40" VerticalAlignment="Center" TabIndex="7" IsTabStop="False">
-                        <materialDesign:PopupBox.ToggleContent>
-                            <materialDesign:PackIcon FocusVisualStyle="{DynamicResource MyFocusVisual}" Kind="Sort" Foreground="#FF2196F3" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" IsTabStop="True" TabIndex="7" />
-                        </materialDesign:PopupBox.ToggleContent>
 
-                        <StackPanel>
-                            <TextBlock Text="Sort by" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" TextAlignment="Center" Margin="0,0,5,10"/>
-
-                            <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortButton_Importance_Click">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="20*" />
-                                        <ColumnDefinition Width="180*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <materialDesign:PackIcon Kind="StarBorder" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
-                                    <TextBlock Text="Starred" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
-                                </Grid>
+                    <Grid Margin="0,0,20,0" HorizontalAlignment="Right" Width="223">
+                        <Grid Margin="0,0,40,0.2">
+                            <Button Margin="0,18,0,17.2" Height="Auto" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" HorizontalAlignment="Left" Width="34">
+                                <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
                             </Button>
 
-                            <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortButton_DueDate_Click">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="20*" />
-                                        <ColumnDefinition Width="180*" />
-                                    </Grid.ColumnDefinitions>
+                            <TextBlock Margin="0,18,-0.8,17" VerticalAlignment="Center" Height="40" HorizontalAlignment="Right" Width="150" Text="AlphabeticalAscending" FontFamily="Arial" TextAlignment="Center" FontSize="14" Padding="0,11,0,0"/>
+                        </Grid>
 
-                                    <materialDesign:PackIcon Kind="CalendarClock" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
-                                    <TextBlock Text="Due date" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
-                                </Grid>
-                            </Button>
+                        <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0"  Width="40" Height="40" TabIndex="7" IsTabStop="False" VerticalAlignment="Center">
+                            <materialDesign:PopupBox.ToggleContent>
+                                <materialDesign:PackIcon FocusVisualStyle="{DynamicResource MyFocusVisual}" Kind="Sort" Foreground="#FF2196F3" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" IsTabStop="True" TabIndex="7" />
+                            </materialDesign:PopupBox.ToggleContent>
 
-                            <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortButton_AlphabeticalAscending_Click">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="20*" />
-                                        <ColumnDefinition Width="180*" />
-                                    </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="Sort by" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" TextAlignment="Center" Margin="0,0,5,10"/>
 
-                                    <materialDesign:PackIcon Kind="SortAlphabeticalAscending" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
-                                    <TextBlock Text="Alphabetical Ascending" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
-                                </Grid>
-                            </Button>
+                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortButton_Importance_Click">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20*" />
+                                            <ColumnDefinition Width="180*" />
+                                        </Grid.ColumnDefinitions>
 
-                            <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortButton_AlphabeticalDescending_Click">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="20*" />
-                                        <ColumnDefinition Width="180*" />
-                                    </Grid.ColumnDefinitions>
+                                        <materialDesign:PackIcon Kind="StarBorder" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
+                                        <TextBlock Text="Starred" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                    </Grid>
+                                </Button>
 
-                                    <materialDesign:PackIcon Kind="SortAlphabeticalDescending" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
-                                    <TextBlock Text="Alphabetical Descending" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
-                                </Grid>
-                            </Button>
+                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortButton_DueDate_Click">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20*" />
+                                            <ColumnDefinition Width="180*" />
+                                        </Grid.ColumnDefinitions>
 
-                            <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortButton_CreationDate_Click">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="20*" />
-                                        <ColumnDefinition Width="180*" />
-                                    </Grid.ColumnDefinitions>
+                                        <materialDesign:PackIcon Kind="CalendarClock" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
+                                        <TextBlock Text="Due date" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                    </Grid>
+                                </Button>
 
-                                    <materialDesign:PackIcon Kind="CalendarAdd" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
-                                    <TextBlock Text="Creation date" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
-                                </Grid>
-                            </Button>
-                        </StackPanel>
+                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortButton_AlphabeticalAscending_Click">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20*" />
+                                            <ColumnDefinition Width="180*" />
+                                        </Grid.ColumnDefinitions>
 
-                    </materialDesign:PopupBox>
+                                        <materialDesign:PackIcon Kind="SortAlphabeticalAscending" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
+                                        <TextBlock Text="Alphabetical Ascending" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                    </Grid>
+                                </Button>
+
+                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortButton_AlphabeticalDescending_Click">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20*" />
+                                            <ColumnDefinition Width="180*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <materialDesign:PackIcon Kind="SortAlphabeticalDescending" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
+                                        <TextBlock Text="Alphabetical Descending" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                    </Grid>
+                                </Button>
+
+                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortButton_CreationDate_Click">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20*" />
+                                            <ColumnDefinition Width="180*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <materialDesign:PackIcon Kind="CalendarAdd" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
+                                        <TextBlock Text="Creation date" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+
+                        </materialDesign:PopupBox>
+                    </Grid>
                 </Grid>
 
                 <Grid x:Name="GridTagList" Visibility="Visible" Margin="10,75,10,0" Height="25" VerticalAlignment="Top">
