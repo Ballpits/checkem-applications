@@ -1,9 +1,9 @@
 ﻿using Notifications.Wpf;
 using System;
 
-namespace ProjectSC
+namespace ProjectSC.ViewModels.Notification
 {
-    public static class Notifications
+    public static class NotificationController
     {
         public static void Notify(string title, string messege)
         {

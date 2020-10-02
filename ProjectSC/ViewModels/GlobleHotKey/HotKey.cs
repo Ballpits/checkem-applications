@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
 
-namespace ProjectSC.ViewModels
+namespace ProjectSC.ViewModels.GlobleHotek
 {
     public sealed class HotKey : IDisposable
     {

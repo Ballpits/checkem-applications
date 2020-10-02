@@ -1,4 +1,4 @@
-﻿using ProjectSC.ViewModels;
+﻿using ProjectSC.ViewModels.GlobleHotek;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -8,6 +8,9 @@ namespace ProjectSC
     public partial class App : Application
     {
         private System.Windows.Forms.NotifyIcon TrayIcon;
+
+        private HotKey hotKey;
+
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -69,7 +72,6 @@ namespace ProjectSC
             Application.Current.Shutdown();
         }
 
-        private HotKey hotKey;
 
         protected override void OnActivated(EventArgs e)
         {

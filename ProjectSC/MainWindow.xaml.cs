@@ -1,5 +1,8 @@
-﻿using ProjectSC.View;
+﻿using ProjectSC.Model.DataAccess;
+using ProjectSC.Model.Object.Notification;
+using ProjectSC.View;
 using ProjectSC.View.Settings;
+using ProjectSC.ViewModels.Notification;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -52,11 +55,11 @@ namespace ProjectSC
             {
                 if (DateTime.Now.Year == item.BeginDateTime.Year && DateTime.Now.Month == item.BeginDateTime.Month && DateTime.Now.Hour == item.BeginDateTime.Hour && DateTime.Now.Minute == item.BeginDateTime.Minute)
                 {
-                    Notifications.Notify(item.Title, Notifications.RandomMessage("begin"));
+                    NotificationController.Notify(item.Title, NotificationController.RandomMessage("begin"));
                 }
                 if (DateTime.Now.Year == item.EndDateTime.Year && DateTime.Now.Month == item.EndDateTime.Month && DateTime.Now.Hour == item.EndDateTime.Hour && DateTime.Now.Minute == item.EndDateTime.Minute)
                 {
-                    Notifications.Notify(item.Title, Notifications.RandomMessage("end"));
+                    NotificationController.Notify(item.Title, NotificationController.RandomMessage("end"));
                 }
             }//Check if the begin or end time is matched with the current time
         }

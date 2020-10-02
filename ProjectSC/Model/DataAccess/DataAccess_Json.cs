@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
+using ProjectSC.Model.Interface;
+using ProjectSC.Model.Object.Notification;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace ProjectSC
+namespace ProjectSC.Model.DataAccess
 {
     public class DataAccess_Json : IDataAccess
     {

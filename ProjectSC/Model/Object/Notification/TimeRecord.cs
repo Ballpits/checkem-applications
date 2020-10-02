@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProjectSC
+namespace ProjectSC.Model.Object.Notification
 {
     public class TimeRecord
     {

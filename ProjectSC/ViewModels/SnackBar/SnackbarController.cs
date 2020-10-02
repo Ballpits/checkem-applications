@@ -1,9 +1,9 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
 
-namespace ProjectSC.ViewModels
+namespace ProjectSC.ViewModels.SnackBar
 {
-    public static class SnackbarControl
+    public static class SnackbarController
     {
         public static Snackbar OpenSnackBar(string content)
         {

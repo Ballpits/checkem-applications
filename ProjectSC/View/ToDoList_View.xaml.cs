@@ -1,4 +1,5 @@
-﻿using ProjectSC.ViewModels;
+﻿using ProjectSC.Model.DataAccess;
+using ProjectSC.ViewModels.SnackBar;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -379,7 +380,7 @@ namespace ProjectSC.View
         public void CloseDetailsPanel(string msg)
         {
             CloseDetailsPanel();
-            DataGrid.Children.Add(SnackbarControl.OpenSnackBar(msg));
+            DataGrid.Children.Add(SnackbarController.OpenSnackBar(msg));
         }
         #endregion
 

@@ -7,7 +7,7 @@
         xmlns:properties="clr-namespace:ProjectSC.Properties"
         xmlns:local="clr-namespace:ProjectSC"
         mc:Ignorable="d"
-        Title="Check'em" Height="540" Width="960" WindowStartupLocation="CenterScreen" MinWidth="960" MinHeight="540" Icon="Assets/Icon-1024.ico" Background="White" WindowState="Maximized">
+        Title="Check'em" Height="540" Width="960" WindowStartupLocation="CenterScreen" MinWidth="960" MinHeight="540" Icon="Assets/Icon/Icon-1024.ico" Background="White" WindowState="Maximized">
 
     <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.5}">
         <Grid x:Name="MainGrid" Loaded="Grid_Loaded" Margin="0">

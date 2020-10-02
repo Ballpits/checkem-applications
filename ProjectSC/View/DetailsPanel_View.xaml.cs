@@ -1,5 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
-using ProjectSC.ViewModels;
+using ProjectSC.Model.DataAccess;
+using ProjectSC.ViewModels.SnackBar;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -125,7 +126,7 @@ namespace ProjectSC.View
                         break;
 
                     case 1:
-                        DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Saved"));
+                        DetailsGrid.Children.Add(SnackbarController.OpenSnackBar("Saved"));
                         break;
 
                     default:

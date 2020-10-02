@@ -1,7 +1,8 @@
-﻿using System;
+﻿using ProjectSC.Model.Object.Notification;
+using System;
 using System.Collections.Generic;
 
-namespace ProjectSC
+namespace ProjectSC.Model.Interface
 {
     interface IDataAccess
     {
