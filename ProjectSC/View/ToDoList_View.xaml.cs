@@ -1,4 +1,5 @@
 ﻿using ProjectSC.Model.DataAccess;
+using ProjectSC.View.TagPanel;
 using ProjectSC.ViewModels.SnackBar;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +16,6 @@ namespace ProjectSC.View
         {
             InitializeComponent();
 
-            GetAllColor();
-
             //test data
             //JsonDataAccess.StoreTestData(Inventory);
 
@@ -30,6 +29,8 @@ namespace ProjectSC.View
             //load in itembars into stackpanel
             LoadList(Inventory);
 
+            GridTagList.Children.Add(new TagList_View(this));
+
             //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
 
@@ -39,15 +40,10 @@ namespace ProjectSC.View
         public List<ToDoItem> Inventory = new List<ToDoItem>();
         private List<ToDoItem> FilteredInventory = new List<ToDoItem>();
 
-        private bool DetailsPanelOpened = false;
+        private bool IsDetailsPanelOpened = false;
+        private bool IsTagCreationPanelOpened = false;
 
-        private int filterMode = 2;
-
-
-        System.Drawing.Color PrimaryColor_D = Properties.Settings.Default.PrimaryColor;
-        System.Drawing.Color SecondaryColor_D = Properties.Settings.Default.SecondaryColor;
-
-        SolidColorBrush PrimaryColor, SecondaryColor;
+        private int filterMode = 0;
         #endregion
 
         private void RetrieveData()
@@ -333,7 +329,7 @@ namespace ProjectSC.View
 
             DataGrid.Children.Add(detailsPanel);
 
-            DetailsPanelOpened = true;
+            IsDetailsPanelOpened = true;
         }
 
         public void OpenDetailsPanel(ItemBar_View itemBar)
@@ -365,15 +361,15 @@ namespace ProjectSC.View
             DataGrid.Children.Add(detailsPanel);
 
 
-            DetailsPanelOpened = true;
+            IsDetailsPanelOpened = true;
         }
 
         public void CloseDetailsPanel()
         {
-            if (DetailsPanelOpened)
+            if (IsDetailsPanelOpened)
             {
                 DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
-                DetailsPanelOpened = false;
+                IsDetailsPanelOpened = false;
             }
         }
 
@@ -381,20 +377,28 @@ namespace ProjectSC.View
         {
             CloseDetailsPanel();
             DataGrid.Children.Add(SnackbarController.OpenSnackBar(msg));
+            IsDetailsPanelOpened = false;
         }
         #endregion
 
 
-        #region Color functions
-        private void GetAllColor()
+        #region Tag creation panel
+        public void OpenTagCreationPanel()
         {
-            PrimaryColor = ColorConverter(PrimaryColor_D);
-            SecondaryColor = ColorConverter(SecondaryColor_D);
+            TagCreationPanel_View tagCreationPanel = new TagCreationPanel_View(this);
+
+            DataGrid.Children.Add(tagCreationPanel);
+
+            IsTagCreationPanelOpened = true;
         }
 
-        private SolidColorBrush ColorConverter(System.Drawing.Color color)
+        public void CloseTagCreationPanel()
         {
-            return new SolidColorBrush(Color.FromRgb(color.R, color.G, color.B));
+            if (IsTagCreationPanelOpened)
+            {
+                DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
+                IsTagCreationPanelOpened = false;
+            }
         }
         #endregion
 

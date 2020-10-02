@@ -152,6 +152,12 @@
     <Compile Include="View\ItemBar_View.xaml.cs">
       <DependentUpon>ItemBar_View.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\TagList_View.xaml.cs">
+      <DependentUpon>TagList_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TagPanel\TagCreationPanel_View.xaml.cs">
+      <DependentUpon>TagCreationPanel_View.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ToDoList_View.xaml.cs">
       <DependentUpon>ToDoList_View.xaml</DependentUpon>
     </Compile>
@@ -197,6 +203,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ItemBar_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TagList_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TagPanel\TagCreationPanel_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

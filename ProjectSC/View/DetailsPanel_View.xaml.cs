@@ -15,14 +15,14 @@ namespace ProjectSC.View
         {
             InitializeComponent();
 
-            todo = todolist;
+            ToDoList = todolist;
         }
 
         public DetailsPanel_View(ToDoList_View todolist, ItemBar_View itembar)
         {
             InitializeComponent();
 
-            todo = todolist;
+            ToDoList = todolist;
             itemBar = itembar;
         }
 
@@ -54,7 +54,7 @@ namespace ProjectSC.View
 
         private DataAccess_Json dataAccess = new DataAccess_Json();
 
-        ToDoList_View todo;
+        ToDoList_View ToDoList;
         ItemBar_View itemBar;
 
         #region Save
@@ -66,26 +66,26 @@ namespace ProjectSC.View
                 {
                     if (IsAdvanceReminderOn)
                     {
-                        dataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), DateTime.Now, todo.Inventory);
+                        dataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), DateTime.Now, ToDoList.Inventory);
                     }
                     else
                     {
-                        dataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), DateTime.Now, todo.Inventory);
+                        dataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), DateTime.Now, ToDoList.Inventory);
                     }
                 }
                 else
                 {
-                    dataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, DateTime.Now, todo.Inventory);
+                    dataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, DateTime.Now, ToDoList.Inventory);
                 }
 
 
-                dataAccess.RetrieveData(ref todo.Inventory);
-                dataAccess.ResetId(todo.Inventory);
+                dataAccess.RetrieveData(ref ToDoList.Inventory);
+                dataAccess.ResetId(ToDoList.Inventory);
 
-                todo.AddItemBar();
+                ToDoList.AddItemBar();
 
                 //DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Incorrect format !"));
-                todo.CloseDetailsPanel("Added");
+                ToDoList.CloseDetailsPanel("Added");
             }
             else
             {
@@ -93,14 +93,14 @@ namespace ProjectSC.View
                 {
                     if (IsAdvanceReminderOn)
                     {
-                        dataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), todo.Inventory);
+                        dataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), ToDoList.Inventory);
 
                         itemBar.BeginDateTime = Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text);
                         itemBar.EndDateTime = Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text);
                     }
                     else
                     {
-                        dataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), todo.Inventory);
+                        dataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), ToDoList.Inventory);
 
                         itemBar.EndDateTime = Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text);
                     }
@@ -108,7 +108,7 @@ namespace ProjectSC.View
                 }
                 else
                 {
-                    dataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, todo.Inventory);
+                    dataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, ToDoList.Inventory);
                 }
 
                 itemBar.Title = textBoxTitle.Text;
@@ -122,7 +122,7 @@ namespace ProjectSC.View
                 switch (Properties.Settings.Default.DetailsPanelClosingMode)
                 {
                     case 0:
-                        todo.CloseDetailsPanel();
+                        ToDoList.CloseDetailsPanel();
                         break;
 
                     case 1:
@@ -186,7 +186,7 @@ namespace ProjectSC.View
         #region Button click event
         private void RetunButton_Click(object sender, RoutedEventArgs e)
         {
-            todo.CloseDetailsPanel();
+            ToDoList.CloseDetailsPanel();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -196,11 +196,11 @@ namespace ProjectSC.View
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            dataAccess.RemoveAt(Id, todo.Inventory);
+            dataAccess.RemoveAt(Id, ToDoList.Inventory);
 
-            todo.RemoveItemBar(itemBar);
+            ToDoList.RemoveItemBar(itemBar);
 
-            todo.CloseDetailsPanel("Removed");
+            ToDoList.CloseDetailsPanel("Removed");
         }
         #endregion
 
@@ -326,7 +326,7 @@ namespace ProjectSC.View
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed || Mouse.XButton1 == MouseButtonState.Pressed)
             {
-                todo.CloseDetailsPanel();
+                ToDoList.CloseDetailsPanel();
             }
         }
         #endregion        

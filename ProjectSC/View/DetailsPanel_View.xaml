@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:ProjectSC.View"
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920">
+    
     <Grid Background="#CC000000" MouseDown="DarkGrid_MouseDown" Loaded="DarkGrid_Loaded">
         <materialDesign:TransitioningContent x:Name="TrainsitionigContent2" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromRight, Duration=0:0:0.3}">
 

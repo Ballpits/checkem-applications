@@ -215,7 +215,7 @@
             <Style x:Key="TagButton" TargetType="Button">
                 <!--<Setter Property="Background" Value="White"/>-->
                 <Setter Property="BorderBrush" Value="{x:Null}"/>
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NavigationbarTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="Height" Value="Auto"/>
                 <Setter Property="Width" Value="70"/>

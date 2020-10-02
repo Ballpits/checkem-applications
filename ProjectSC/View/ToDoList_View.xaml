@@ -118,12 +118,7 @@
                     </materialDesign:PopupBox>
                 </Grid>
 
-                <Grid Visibility="Hidden" Margin="10,75,10,0" Height="25" VerticalAlignment="Top">
-                    <Button Style="{StaticResource TagButton}" Content="Creat Tag" TabIndex="8"/>
-
-                    <StackPanel Margin="75,0,0,0">
-
-                    </StackPanel>
+                <Grid x:Name="GridTagList" Visibility="Visible" Margin="10,75,10,0" Height="25" VerticalAlignment="Top">
                 </Grid>
 
                 <ScrollViewer Visibility="Visible" x:Name="scrollBar" BorderThickness="0" Margin="0,120,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto" UseLayoutRounding="True" VerticalAlignment="Top">
