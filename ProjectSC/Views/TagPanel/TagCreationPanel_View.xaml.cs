@@ -6,14 +6,17 @@ namespace ProjectSC.Views.TagPanel
 {
     public partial class TagCreationPanel_View : UserControl
     {
-        public TagCreationPanel_View(ToDoList_View toDo)
+        public TagCreationPanel_View(ToDoList_View toDo,TagList_View tagList_View)
         {
             InitializeComponent();
 
             ToDoList = toDo;
+            TagList = tagList_View;
         }
 
         ToDoList_View ToDoList;
+        TagList_View TagList;
+
 
         private void DarkGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -25,7 +28,9 @@ namespace ProjectSC.Views.TagPanel
 
         private void ButtonCreate_Click(object sender, RoutedEventArgs e)
         {
-            //Add tag to StpTagList
+            Style style = this.FindResource("TagButton") as Style;
+            TagList.StpTagList.Children.Add(new Button() { Style=style,Content = TextboxTagName.Text});
+            ToDoList.CloseTagCreationPanel();
         }
     }
 }

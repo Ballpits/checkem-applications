@@ -6,13 +6,16 @@
              xmlns:local="clr-namespace:ProjectSC.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="25" d:DesignWidth="940">
+             d:DesignHeight="45" d:DesignWidth="940" Height="Auto">
 
     <Grid Visibility="Visible">
-        <Button Style="{StaticResource TagButton}" Content="Creat Tag" TabIndex="8" FontFamily="Arial" Click="ButtonCreateTag_Click"/>
+        <Button Style="{StaticResource TagButton}" Content="Creat Tag" Click="ButtonCreateTag_Click" Width="Auto" Margin="0"/>
 
-        <StackPanel x:Name="StpTagList" Margin="75,0,0,0">
-
-        </StackPanel>
+        <ScrollViewer Margin="72,0,0,-0.2" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+            <StackPanel x:Name="StpTagList" Margin="0" Orientation="Horizontal">
+                <Button Style="{StaticResource TagButton}" Content="Work" Click="ButtonCreateTag_Click"/>
+                <Button Style="{StaticResource TagButton}" Content="Company" Click="ButtonCreateTag_Click"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>

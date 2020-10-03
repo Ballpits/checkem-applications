@@ -29,7 +29,7 @@
     <Setting Name="ItembarColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">White</Value>
     </Setting>
-    <Setting Name="ItembarHighlightColor" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="TransparentHighlightColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">237, 247, 255</Value>
     </Setting>
     <Setting Name="ItembarTextColor" Type="System.Drawing.Color" Scope="User">

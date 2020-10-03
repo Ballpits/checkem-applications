@@ -287,7 +287,7 @@ namespace ProjectSC.Views
             }
             else
             {
-                return dateTime.ToString("dd/M/yyyy, hh:mm tt");
+                return dateTime.ToString("yyyy/MM/dd, hh:mm tt");
             }
         }
 

@@ -13,6 +13,7 @@ namespace ProjectSC.Models.ToDo
 
 
         public bool IsCompleted { get; set; }
+
         public bool IsStarred { get; set; }
 
 

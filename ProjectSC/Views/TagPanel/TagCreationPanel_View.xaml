@@ -35,7 +35,7 @@
                 </Grid.RowDefinitions>
 
                 <Viewbox Grid.Column="1" Margin="0.2,0.4,0,0.8" Grid.Row="1">
-                    <TextBox materialDesign:HintAssist.Hint="Enter tag name here" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial" FontSize="36" Margin="0" Width="450" Height="100"/>
+                    <TextBox x:Name="TextboxTagName" materialDesign:HintAssist.Hint="Enter tag name here" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial" FontSize="36" Margin="0" Width="450" Height="100"/>
                 </Viewbox>
 
                 <Viewbox Grid.Row="1" Grid.Column="2">

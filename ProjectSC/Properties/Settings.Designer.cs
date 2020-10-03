@@ -134,12 +134,12 @@ namespace ProjectSC.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("237, 247, 255")]
-        public global::System.Drawing.Color ItembarHighlightColor {
+        public global::System.Drawing.Color TransparentHighlightColor {
             get {
-                return ((global::System.Drawing.Color)(this["ItembarHighlightColor"]));
+                return ((global::System.Drawing.Color)(this["TransparentHighlightColor"]));
             }
             set {
-                this["ItembarHighlightColor"] = value;
+                this["TransparentHighlightColor"] = value;
             }
         }
         

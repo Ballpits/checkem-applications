@@ -30,7 +30,8 @@ namespace ProjectSC.Views
             //load in itembars into stackpanel
             LoadList(Inventory);
 
-            GridTagList.Children.Add(new TagList_View(this));
+            TagList = new TagList_View(this);
+            GridTagList.Children.Add(TagList);
 
             //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
@@ -40,6 +41,8 @@ namespace ProjectSC.Views
 
         public List<ToDoItem> Inventory = new List<ToDoItem>();
         private List<ToDoItem> FilteredInventory = new List<ToDoItem>();
+
+        private TagList_View TagList;
 
         private bool IsDetailsPanelOpened = false;
         private bool IsTagCreationPanelOpened = false;
@@ -386,7 +389,7 @@ namespace ProjectSC.Views
         #region Tag creation panel
         public void OpenTagCreationPanel()
         {
-            TagCreationPanel_View tagCreationPanel = new TagCreationPanel_View(this);
+            TagCreationPanel_View tagCreationPanel = new TagCreationPanel_View(this, TagList);
 
             DataGrid.Children.Add(tagCreationPanel);
 

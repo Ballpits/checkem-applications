@@ -130,7 +130,10 @@
                     </Grid>
                 </Grid>
 
-                <Grid x:Name="GridTagList" Visibility="Visible" Margin="10,75,10,0" Height="25" VerticalAlignment="Top">
+                <Grid x:Name="GridTagList" Visibility="Visible" Margin="10,80,10,0" Height="45" VerticalAlignment="Top">
+                    <!--<RadioButton Margin="0,0,893,0"/>
+                    <RadioButton Margin="47,0,846,0"/>
+                    <RadioButton Margin="94,0,799,0"/>-->
                 </Grid>
 
                 <ScrollViewer Visibility="Visible" x:Name="scrollBar" BorderThickness="0" Margin="0,120,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto" UseLayoutRounding="True" VerticalAlignment="Top">
