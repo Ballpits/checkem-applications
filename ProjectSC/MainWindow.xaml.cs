@@ -84,13 +84,13 @@ namespace ProjectSC
             ChangeFIlter(this.FilterMode);
         }
 
-        private void ButtonUserPref_Click(object sender, RoutedEventArgs e)
+        private void ButtonSettings_Click(object sender, RoutedEventArgs e)
         {
-            GridPrincipal.Children.Clear();
-
             SettingsMenu settingsMenu = new SettingsMenu(this);
 
-            GridPrincipal.Children.Add(settingsMenu);
+            Grid.SetColumnSpan(settingsMenu, 2);
+
+            MainGrid.Children.Add(settingsMenu);
         }
 
         private void MoveNavbarCursor(int index)

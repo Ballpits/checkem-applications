@@ -37,9 +37,9 @@
                         <ControlTemplate TargetType="{x:Type Thumb}">
                             <Grid x:Name="Grid">
                                 <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
-                                <Border x:Name="Rectangle1" CornerRadius="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto"  Background="{TemplateBinding Background}" />
+                                <Border x:Name="Rectangle1" CornerRadius="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="11" Height="Auto"  Background="{TemplateBinding Background}" />
                             </Grid>
-                            
+
                             <ControlTemplate.Triggers>
                                 <Trigger Property="Tag" Value="Horizontal">
                                     <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
@@ -54,16 +54,16 @@
             <!--ScrollBars-->
             <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
                 <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
-                
+
                 <Setter Property="Foreground" Value="LightGray" />
                 <Setter Property="Background" Value="Transparent"/>
-                
+
                 <Setter Property="Width" Value="10" />
-                
+
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ScrollBar}">
-                            <Grid x:Name="GridRoot" Width="19" Background="{TemplateBinding Background}">
+                            <Grid x:Name="GridRoot" Width="20" Background="{TemplateBinding Background}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="0.00001*" />
                                 </Grid.RowDefinitions>
@@ -216,7 +216,7 @@
                 <!--<Setter Property="Background" Value="White"/>-->
                 <Setter Property="BorderBrush" Value="{x:Null}"/>
 
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
                 <Setter Property="FontFamily" Value="Arial"/>
 
                 <Setter Property="Height" Value="25"/>
@@ -235,7 +235,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="12" Background="{Binding Source={x:Static properties:Settings.Default}, Path=NavigationbarTextColor,Converter={StaticResource ColorToBrushConverter}}">
+                            <Border CornerRadius="12" Background="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor,Converter={StaticResource ColorToBrushConverter}}">
                                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </Border>
                         </ControlTemplate>
@@ -349,7 +349,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </LinearGradientBrush.RelativeTransform>
-                            
+
                             <GradientStop Color="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToGradientStopConverter}}" Offset="1"/>
                             <GradientStop Color="{Binding Source={x:Static properties:Settings.Default}, Path=SecondaryColor, Converter={StaticResource ColorToGradientStopConverter}}" Offset="0.352"/>
                             <GradientStop Color="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToGradientStopConverter}}" Offset="1"/>
@@ -360,14 +360,48 @@
                 <Setter Property="Margin" Value="0"/>
             </Style>
             <!--#endregion-->
-            
-            <!--#region Color Picker-->
-            <Style x:Key="ColorPickerButton" TargetType="Button">
-                <Setter Property="Height" Value="Auto"/>
+
+            <!--#region AppearanceButton-->
+            <Style x:Key="ColorPickerButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                    <RotateTransform CenterY="0.5" CenterX="0.5" Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+
+                <Setter Property="BorderBrush" Value="{x:Null}"/>
+
+                <Setter Property="Height" Value="80"/>
                 <Setter Property="Width" Value="Auto"/>
 
-                <Setter Property="Margin" Value="0"/>
-                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Margin" Value="10,10,10,0"/>
+                <Setter Property="Padding" Value="0"/>
+
+                <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth0"/>
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                    </Trigger>
+                </Style.Triggers>
             </Style>
             <!--#endregion-->
         </ResourceDictionary>

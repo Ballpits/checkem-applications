@@ -118,6 +118,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\Interface\IDataAccess.cs" />
     <Compile Include="Models\DataAccess\DataAccess_Json.cs" />
+    <Compile Include="ViewModels\AppearanceSettings\AppearanceSettingHelper.cs" />
     <Compile Include="ViewModels\ColorConvert\ColorToBrushConverter.cs" />
     <Compile Include="ViewModels\ColorConvert\ColorToGradientStopConverter.cs" />
     <Compile Include="ViewModels\GlobleHotKey\HotKey.cs" />
@@ -153,6 +154,9 @@
     </Compile>
     <Compile Include="Views\TagPanel\TagCreationPanel_View.xaml.cs">
       <DependentUpon>TagCreationPanel_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ThemePicker\ThemePicker_View.xaml.cs">
+      <DependentUpon>ThemePicker_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ToDoList_View.xaml.cs">
       <DependentUpon>ToDoList_View.xaml</DependentUpon>
@@ -211,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TagPanel\TagCreationPanel_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ThemePicker\ThemePicker_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

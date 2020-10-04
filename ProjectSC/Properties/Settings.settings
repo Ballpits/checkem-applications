@@ -26,13 +26,13 @@
     <Setting Name="SecondaryColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">151, 8, 204</Value>
     </Setting>
-    <Setting Name="ItembarColor" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="LightMainColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">White</Value>
     </Setting>
     <Setting Name="TransparentHighlightColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">237, 247, 255</Value>
     </Setting>
-    <Setting Name="ItembarTextColor" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="DarkMainColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Black</Value>
     </Setting>
     <Setting Name="ItemCompletedTextColor" Type="System.Drawing.Color" Scope="User">
@@ -46,9 +46,6 @@
     </Setting>
     <Setting Name="NavigationbarButtonHighlightColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">76, 255, 255, 255</Value>
-    </Setting>
-    <Setting Name="NavigationbarTextColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">White</Value>
     </Setting>
   </Settings>
 </SettingsFile>

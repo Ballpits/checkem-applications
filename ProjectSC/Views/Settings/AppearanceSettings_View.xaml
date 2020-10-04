@@ -5,26 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:ProjectSC.Views.Settings"
-             mc:Ignorable="d" 
-             d:DesignHeight="940" d:DesignWidth="1770">
+             xmlns:properties="clr-namespace:ProjectSC.Properties"
+             mc:Ignorable="d" d:DesignWidth="1770" d:DesignHeight="940" Loaded="UserControl_Loaded">
 
-    <ScrollViewer>
-        <Grid Background="White">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.3*"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+    <UserControl.Resources>
+        <ResourceDictionary Source="../../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml"/>
+    </UserControl.Resources>
 
-            <Grid>
+    <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor, Converter={StaticResource ColorToBrushConverter}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-            </Grid>
+        <ScrollViewer x:Name="ThemePickerScrollbar" VerticalScrollBarVisibility="Auto">
+        </ScrollViewer>
 
-            <ScrollViewer Grid.Column="1">
-                <Grid Grid.Column="1">
-
-                </Grid>
-            </ScrollViewer>
+        <Grid Grid.Column="1">
 
         </Grid>
-    </ScrollViewer>
+    </Grid>
 </UserControl>

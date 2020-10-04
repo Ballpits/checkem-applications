@@ -122,12 +122,12 @@ namespace ProjectSC.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("White")]
-        public global::System.Drawing.Color ItembarColor {
+        public global::System.Drawing.Color LightMainColor {
             get {
-                return ((global::System.Drawing.Color)(this["ItembarColor"]));
+                return ((global::System.Drawing.Color)(this["LightMainColor"]));
             }
             set {
-                this["ItembarColor"] = value;
+                this["LightMainColor"] = value;
             }
         }
         
@@ -146,12 +146,12 @@ namespace ProjectSC.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Black")]
-        public global::System.Drawing.Color ItembarTextColor {
+        public global::System.Drawing.Color DarkMainColor {
             get {
-                return ((global::System.Drawing.Color)(this["ItembarTextColor"]));
+                return ((global::System.Drawing.Color)(this["DarkMainColor"]));
             }
             set {
-                this["ItembarTextColor"] = value;
+                this["DarkMainColor"] = value;
             }
         }
         
@@ -200,18 +200,6 @@ namespace ProjectSC.Properties {
             }
             set {
                 this["NavigationbarButtonHighlightColor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("White")]
-        public global::System.Drawing.Color NavigationbarTextColor {
-            get {
-                return ((global::System.Drawing.Color)(this["NavigationbarTextColor"]));
-            }
-            set {
-                this["NavigationbarTextColor"] = value;
             }
         }
     }

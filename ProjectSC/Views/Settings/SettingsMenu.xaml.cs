@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace ProjectSC.Views.Settings
 {
@@ -17,36 +18,35 @@ namespace ProjectSC.Views.Settings
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.GridPrincipal.Children.RemoveAt(mainWindow.GridPrincipal.Children.Count - 1);
-            mainWindow.GridPrincipal.Children.Add(new ToDoList_View());
+            mainWindow.MainGrid.Children.RemoveAt(mainWindow.MainGrid.Children.Count - 1);
         }
 
         private void CloseButton_MouseEnter(object sender, MouseEventArgs e)
         {
-            //CloseButton.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
+            CloseButton.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF2196F3"));
         }
 
         private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
         {
-            //CloseButton.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#00000000"));
+            CloseButton.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#00000000"));
         }
 
         private void ButtonGeneral_Click(object sender, RoutedEventArgs e)
         {
-            //GridPrinciple.Children.Clear();
-            //GridPrinciple.Children.Add(new GeneralUSC());
+            GridPrinciple.Children.Clear();
+            GridPrinciple.Children.Add(new GeneralSettings_View());
         }
 
         private void ButtonNotification_Click(object sender, RoutedEventArgs e)
         {
-            //GridPrincipal.Children.Clear();
-            //GridPrincipal.Children.Add(new NotificationUSC());
+            GridPrinciple.Children.Clear();
+            GridPrinciple.Children.Add(new NotificationSettings_View());
         }
 
         private void ButtonAppearance_Click(object sender, RoutedEventArgs e)
         {
-            //GridPrinciple.Children.Clear();
-            //GridPrinciple.Children.Add(new Appearance());
+            GridPrinciple.Children.Clear();
+            GridPrinciple.Children.Add(new AppearanceSettings_View());
         }
     }
 }

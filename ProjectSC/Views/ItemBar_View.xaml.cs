@@ -63,12 +63,12 @@ namespace ProjectSC.Views
         private bool BorderEventCanActivate = true;
 
         System.Drawing.Color PrimaryColor_D = Properties.Settings.Default.PrimaryColor;
-        System.Drawing.Color ItembarColor_D = Properties.Settings.Default.ItembarColor;
-        System.Drawing.Color ItembarTextColor_D = Properties.Settings.Default.ItembarTextColor;
+        System.Drawing.Color ItembarColor_D = Properties.Settings.Default.LightMainColor;
+        System.Drawing.Color DarkMainColor_D = Properties.Settings.Default.DarkMainColor;
         System.Drawing.Color ItemCompletedTextColor_D = Properties.Settings.Default.ItemCompletedTextColor;
         System.Drawing.Color ItemPassedTextColor_D = Properties.Settings.Default.ItemPassedTextColor;
 
-        SolidColorBrush PrimaryColor, ItembarColor, ItembarTextColor, ItemCompletedTextColor, ItemPassedTextColor;
+        SolidColorBrush PrimaryColor, ItembarColor, DarkMainColor, ItemCompletedTextColor, ItemPassedTextColor;
 
         PackIcon icon = new PackIcon();
         #endregion
@@ -90,7 +90,7 @@ namespace ProjectSC.Views
         #region Checkbox events
         private void ToDoChecked(object sender, RoutedEventArgs e)
         {
-            icon.Foreground = ItembarTextColor;
+            icon.Foreground = DarkMainColor;
 
             icon.Kind = PackIconKind.Check;
 
@@ -113,7 +113,7 @@ namespace ProjectSC.Views
             }
 
 
-            textBlockTitle.Foreground = ItembarTextColor;
+            textBlockTitle.Foreground = DarkMainColor;
             textBlockTitle.TextDecorations = null;
 
             dataAccess.UpdateCompletion(Id, false, todo.Inventory);
@@ -259,7 +259,7 @@ namespace ProjectSC.Views
                 }
                 else
                 {
-                    ReminderTimeTextBlock.Foreground = ItembarTextColor;
+                    ReminderTimeTextBlock.Foreground = DarkMainColor;
                 }
             }
             else
@@ -320,16 +320,16 @@ namespace ProjectSC.Views
 
             border.Background = ItembarColor;
 
-            textBlockTitle.Foreground = ItembarTextColor;
+            textBlockTitle.Foreground = DarkMainColor;
 
-            ReminderTimeTextBlock.Foreground = ItembarTextColor;
+            ReminderTimeTextBlock.Foreground = DarkMainColor;
         }
 
         private void GetAllColor()
         {
             PrimaryColor = ColorConverter(PrimaryColor_D);
             ItembarColor = ColorConverter(ItembarColor_D);
-            ItembarTextColor = ColorConverter(ItembarTextColor_D);
+            DarkMainColor = ColorConverter(DarkMainColor_D);
             ItemCompletedTextColor = ColorConverter(ItemCompletedTextColor_D);
             ItemPassedTextColor = ColorConverter(ItemPassedTextColor_D);
         }

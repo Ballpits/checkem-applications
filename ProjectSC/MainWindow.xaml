@@ -98,7 +98,7 @@
                     </Grid>
                 </Button>
 
-                <Button FocusVisualStyle="{DynamicResource MyFocusVisual}" IsEnabled="True" x:Name="ButtonUserPref" VerticalAlignment="Bottom" Margin="0,0,0,10" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Click="ButtonUserPref_Click" Padding="0" Grid.Row="3" TabIndex="3">
+                <Button FocusVisualStyle="{DynamicResource MyFocusVisual}" IsEnabled="True" x:Name="ButtonUserPref" VerticalAlignment="Bottom" Margin="0,0,0,10" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Click="ButtonSettings_Click" Padding="0" Grid.Row="3" TabIndex="3">
                     <materialDesign:PackIcon Kind="SettingsApplications" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
                 </Button>
 
