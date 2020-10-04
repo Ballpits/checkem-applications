@@ -360,6 +360,16 @@
                 <Setter Property="Margin" Value="0"/>
             </Style>
             <!--#endregion-->
+            
+            <!--#region Color Picker-->
+            <Style x:Key="ColorPickerButton" TargetType="Button">
+                <Setter Property="Height" Value="Auto"/>
+                <Setter Property="Width" Value="Auto"/>
+
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Margin" Value="0"/>
+            </Style>
+            <!--#endregion-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

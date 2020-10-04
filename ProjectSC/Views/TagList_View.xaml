@@ -12,10 +12,7 @@
         <Button Style="{StaticResource TagButton}" Content="Creat Tag" Click="ButtonCreateTag_Click" Width="Auto" Margin="0"/>
 
         <ScrollViewer Margin="72,0,0,-0.2" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
-            <StackPanel x:Name="StpTagList" Margin="0" Orientation="Horizontal">
-                <Button Style="{StaticResource TagButton}" Content="Work" Click="ButtonCreateTag_Click"/>
-                <Button Style="{StaticResource TagButton}" Content="Company" Click="ButtonCreateTag_Click"/>
-            </StackPanel>
+            <StackPanel x:Name="StpTagList" Margin="0" Orientation="Horizontal"/>
         </ScrollViewer>
     </Grid>
 </UserControl>
