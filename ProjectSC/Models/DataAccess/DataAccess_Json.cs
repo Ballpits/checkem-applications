@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using ProjectSC.Models.Interface;
-using ProjectSC.Models.Object.Notification;
 using ProjectSC.Models.ToDo;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ namespace ProjectSC.Models.DataAccess
 {
     public class DataAccess_Json : IDataAccess
     {
-        public string path = "Inventory.json";
+        private string path = "Inventory.json";
 
         private static void SaveToJson(List<ToDoItem> inventory)
         {
@@ -60,7 +59,7 @@ namespace ProjectSC.Models.DataAccess
 
 
 
-        public void RetrieveTimeData(ref List<TimeRecord> timeRecords)
+        public void RetrieveTimeData(ref List<Object.Notification.Notifications> timeRecords)
         {
             string json = File.ReadAllText(path);
 
@@ -70,7 +69,7 @@ namespace ProjectSC.Models.DataAccess
             {
                 if (inventory[i].IsReminderOn)
                 {
-                    timeRecords.Add(new TimeRecord { Title = inventory[i].Title, BeginDateTime = inventory[i].BeginDateTime, EndDateTime = inventory[i].EndDateTime });
+                    timeRecords.Add(new Object.Notification.Notifications { Title = inventory[i].Title, BeginDateTime = inventory[i].BeginDateTime, EndDateTime = inventory[i].EndDateTime });
                 }
             }
         }//Get the time data and save it to the list

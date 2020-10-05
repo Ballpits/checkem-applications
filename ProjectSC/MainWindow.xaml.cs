@@ -23,7 +23,7 @@ namespace ProjectSC
 
         private ToDoList_View todoList_View = new ToDoList_View();
 
-        private List<TimeRecord> timeRecord = new List<TimeRecord>();
+        private List<Models.Object.Notification.Notifications> timeRecord = new List<Models.Object.Notification.Notifications>();
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private int TimerOffset = 60 - DateTime.Now.Second;
 

@@ -13,7 +13,7 @@ namespace ProjectSC.Models.Interface
 
         public void RetrieveData(ref List<ToDoItem> inventory);
 
-        public void RetrieveTimeData(ref List<TimeRecord> timeRecords);
+        public void RetrieveTimeData(ref List<Object.Notification.Notifications> timeRecords);
 
 
 

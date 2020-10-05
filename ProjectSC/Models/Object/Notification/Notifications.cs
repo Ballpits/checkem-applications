@@ -2,7 +2,7 @@
 
 namespace ProjectSC.Models.Object.Notification
 {
-    public class TimeRecord
+    public class Notifications
     {
         public string Title { get; set; }
 
