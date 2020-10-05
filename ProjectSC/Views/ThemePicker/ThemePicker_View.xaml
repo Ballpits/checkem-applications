@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProjectSC.Views.ThemePicker"
              mc:Ignorable="d" 
-             d:DesignWidth="1000">
-    <StackPanel>
+             d:DesignWidth="1000" Loaded="ThemePicker_Loaded">
+    
+    <StackPanel x:Name="StpColorPicker">
         <Button Style="{StaticResource ColorPickerButton}">
             <Button.Background>
                 <LinearGradientBrush>

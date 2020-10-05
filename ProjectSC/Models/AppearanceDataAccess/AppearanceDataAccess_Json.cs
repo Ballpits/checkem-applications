@@ -3,6 +3,7 @@ using ProjectSC.Models.Interface;
 using ProjectSC.Models.Object.Appearance;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Media;
 
 namespace ProjectSC.Models.AppearanceDataAccess
 {

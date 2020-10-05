@@ -19,7 +19,7 @@ namespace ProjectSC.Views.Settings
 
         private void AppearanceButton_Click(object sender, RoutedEventArgs e)
         {
-            AppearanceSettingHelper.ApplyColor("#FFFFAFBD", "#FFFFC3A0");
+
         }
     }
 }

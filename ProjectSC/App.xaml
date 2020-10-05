@@ -274,7 +274,7 @@
 
             <Style x:Key="ItembarCheckbox" TargetType="CheckBox" BasedOn="{StaticResource MaterialDesignFlatPrimaryToggleButton}">
                 <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default},Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}"/>
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor, Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="Height" Value="30"/>
                 <Setter Property="Width" Value="30"/>
@@ -284,7 +284,7 @@
             </Style>
 
             <Style x:Key="ItembarCheckboxCircleIcon" TargetType="materialDesign:PackIcon">
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor, Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="Kind" Value="CheckboxBlankCircleOutline"/>
 

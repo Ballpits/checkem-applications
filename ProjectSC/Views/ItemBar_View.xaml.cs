@@ -105,8 +105,6 @@ namespace ProjectSC.Views
 
         private void ToDoUnchecked(object sender, RoutedEventArgs e)
         {
-            icon.Foreground = PrimaryColor;
-
             if (CheckboxGrid.IsMouseOver)
             {
                 icon.Kind = PackIconKind.Check;
