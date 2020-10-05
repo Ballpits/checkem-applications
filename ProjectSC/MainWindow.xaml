@@ -101,14 +101,6 @@
                 <Button FocusVisualStyle="{DynamicResource MyFocusVisual}" IsEnabled="True" x:Name="ButtonUserPref" VerticalAlignment="Bottom" Margin="0,0,0,10" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Click="ButtonSettings_Click" Padding="0" Grid.Row="3" TabIndex="3">
                     <materialDesign:PackIcon Kind="SettingsApplications" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
                 </Button>
-
-                <Button IsEnabled="True" x:Name="ButtonColorTester1" VerticalAlignment="Bottom" Margin="0,0,0,45.4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Click="ButtonColorTester1_Click" Padding="0" Grid.Row="3" TabIndex="3" IsTabStop="False">
-                    <materialDesign:PackIcon Kind="ColorLens" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" Foreground="#FF2196F3"/>
-                </Button>
-
-                <Button IsEnabled="True" x:Name="ButtonColorTester2" VerticalAlignment="Bottom" Margin="0,0,0,80.4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Click="ButtonColorTester2_Click" Padding="0" Grid.Row="3" TabIndex="3" IsTabStop="False" Foreground="#FFEB368B">
-                    <materialDesign:PackIcon Kind="ColorLens" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" Foreground="#FFDD2ACB"/>
-                </Button>
             </Grid>
 
             <Grid x:Name="GridPrincipal" Margin="0" Grid.Column="1"/>

@@ -99,22 +99,6 @@ namespace ProjectSC
             Grid.SetRow(NavbarCursor, index);
         }
 
-        private void ButtonColorTester1_Click(object sender, RoutedEventArgs e)
-        {
-            Properties.Settings.Default.Reset();
-            Properties.Settings.Default.Save();
-        }
-
-        private void ButtonColorTester2_Click(object sender, RoutedEventArgs e)
-        {
-            Properties.Settings.Default.PrimaryColor = System.Drawing.Color.FromArgb(255, 218, 30, 99);
-            Properties.Settings.Default.SecondaryColor = System.Drawing.Color.FromArgb(255, 117, 58, 136);
-
-            todoList_View.ListFilter(NavbarCursorIndex);
-
-            Properties.Settings.Default.Save();
-        }
-
         public void ChangeFIlter(int mode)
         {
             MoveNavbarCursor(mode);

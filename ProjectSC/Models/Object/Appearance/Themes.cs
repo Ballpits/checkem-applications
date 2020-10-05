@@ -6,7 +6,7 @@ namespace ProjectSC.Models.Object.Appearance
     {
         public string ThemeName { get; set; }
 
-        public GradientStop PrimaryColor { get; set; }
-        public GradientStop SecondaryColor { get; set; }
+        public string PrimaryColor { get; set; }
+        public string SecondaryColor { get; set; }
     }
 }
