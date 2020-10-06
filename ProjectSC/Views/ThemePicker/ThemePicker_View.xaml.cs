@@ -75,7 +75,7 @@ namespace ProjectSC.Views.ThemePicker
 
             Themes themes = ThemesList.Find(x => x.ThemeName == button.Name);
 
-            AppearanceSettingHelper.ApplyColor(themes.PrimaryColor, themes.SecondaryColor);
+            AppearanceSettingHelper.ApplyColor(themes);
         }
     }
 }

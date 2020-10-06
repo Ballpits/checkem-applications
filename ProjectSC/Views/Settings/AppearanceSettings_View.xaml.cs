@@ -1,5 +1,6 @@
 ﻿using ProjectSC.ViewModels.AppearanceSettings;
 using ProjectSC.Views.ThemePicker;
+using ProjectSC.Views.ThemePreview;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -15,11 +16,7 @@ namespace ProjectSC.Views.Settings
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             ThemePickerScrollbar.Content = new ThemePicker_View();
-        }
-
-        private void AppearanceButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            GridPreviewWindow.Children.Add(new ThemePreview_View());
         }
     }
 }

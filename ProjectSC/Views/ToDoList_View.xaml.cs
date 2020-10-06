@@ -18,7 +18,7 @@ namespace ProjectSC.Views
             InitializeComponent();
 
             //test data
-            //JsonDataAccess.StoreTestData(Inventory);
+            dataAccess.StoreTestData(Inventory);
 
             //retrieve data from database
             RetrieveData();

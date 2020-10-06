@@ -247,7 +247,7 @@
 
             <!--#region Itembar-->
             <Style x:Key="ItembarBorder" TargetType="Border">
-                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor, Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="CornerRadius" Value="10"/>
 

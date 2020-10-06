@@ -5,8 +5,8 @@
     <Setting Name="IsNotificationOn" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="StyleCode" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+    <Setting Name="ThemeName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Check'em</Value>
     </Setting>
     <Setting Name="IsDarkMode" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

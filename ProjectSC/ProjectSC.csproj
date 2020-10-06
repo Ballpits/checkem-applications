@@ -42,7 +42,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>7</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -161,6 +161,9 @@
     <Compile Include="Views\ThemePicker\ThemePicker_View.xaml.cs">
       <DependentUpon>ThemePicker_View.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ThemePreview\ThemePreview_View.xaml.cs">
+      <DependentUpon>ThemePreview_View.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ToDoList_View.xaml.cs">
       <DependentUpon>ToDoList_View.xaml</DependentUpon>
     </Compile>
@@ -222,6 +225,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ThemePicker\ThemePicker_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ThemePreview\ThemePreview_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
