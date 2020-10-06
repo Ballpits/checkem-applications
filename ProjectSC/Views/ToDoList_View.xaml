@@ -50,7 +50,7 @@
 
                     <Grid Margin="0,0,20,0" HorizontalAlignment="Right" Width="223">
                         <Grid Margin="0,0,40,0.2">
-                            <Button Margin="0,18,0,17.2" Height="Auto" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" HorizontalAlignment="Left" Width="34">
+                            <Button Margin="0,18,0,17.2" Height="Auto" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" HorizontalAlignment="Left" Width="34" Click="Button_Click_2">
                                 <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
                             </Button>
 

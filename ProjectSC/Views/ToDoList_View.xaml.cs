@@ -48,6 +48,7 @@ namespace ProjectSC.Views
         private bool IsTagCreationPanelOpened = false;
 
         private int filterMode = 0;
+        private int counter = 0;
         #endregion
 
         private void RetrieveData()
@@ -76,12 +77,19 @@ namespace ProjectSC.Views
         public void RemoveItemBar(ItemBar_View itembar)
         {
             stpMain.Children.RemoveAt(stpMain.Children.IndexOf(itembar));
+
+            counter--;
+            ToDoListItemCounterTextBlock.Text = $"{counter} Items";
+
             //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
 
         private void AddItemButton_Click(object sender, RoutedEventArgs e)
         {
             OpenDetailsPanel();
+
+            counter++;
+            ToDoListItemCounterTextBlock.Text = $"{counter} Items";
         }
 
 
@@ -115,7 +123,7 @@ namespace ProjectSC.Views
 
             Inventory = Inventory.OrderBy(x => x.Id).ToList();
 
-            int counter = 0;
+            counter = 0;
 
             switch (mode)
             {
@@ -434,5 +442,10 @@ namespace ProjectSC.Views
             ListTesterTB.Foreground = Brushes.White;
         }
         #endregion
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
