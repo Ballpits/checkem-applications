@@ -250,6 +250,8 @@ namespace ProjectSC.Views
                 LoadList(FilteredInventory);
             }
 
+            ChengeSortingIndicatorText("Importance");
+
             //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
 
@@ -270,6 +272,8 @@ namespace ProjectSC.Views
                 LoadList(FilteredInventory);
             }
 
+            ChengeSortingIndicatorText("Due Date");
+
             //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
 
@@ -287,6 +291,8 @@ namespace ProjectSC.Views
 
                 LoadList(FilteredInventory);
             }
+
+            ChengeSortingIndicatorText("Alphabetical Ascending");
 
             //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
@@ -308,6 +314,8 @@ namespace ProjectSC.Views
                 LoadList(FilteredInventory);
             }
 
+            ChengeSortingIndicatorText("Alphabetical Descending");
+
             //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
 
@@ -325,6 +333,8 @@ namespace ProjectSC.Views
 
                 LoadList(FilteredInventory);
             }
+
+            ChengeSortingIndicatorText("Creation Date");
 
             //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
@@ -443,9 +453,32 @@ namespace ProjectSC.Views
         }
         #endregion
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void ButtonClearSort_Click(object sender, RoutedEventArgs e)
         {
+            if (filterMode == 0)
+            {
+                Inventory = Inventory.OrderBy(x => x.Id).ToList();
 
+                LoadList(Inventory);
+            }
+            else
+            {
+                FilteredInventory = FilteredInventory.OrderBy(x => x.Id).ToList();
+
+                LoadList(FilteredInventory);
+            }
+
+            SortingModeIndicator.Visibility = Visibility.Hidden;
+        }
+
+        private void ChengeSortingIndicatorText(string text)
+        {
+            if (!SortingModeIndicator.IsVisible)
+            {
+                SortingModeIndicator.Visibility = Visibility.Visible;
+            }
+
+            SortIndicatorTextBlock.Text = text;
         }
     }
 }

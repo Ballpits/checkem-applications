@@ -49,12 +49,12 @@
 
 
                     <Grid Margin="0,0,20,0" HorizontalAlignment="Right" Width="223">
-                        <Grid Margin="0,0,40,0.2">
-                            <Button Margin="0,18,0,17.2" Height="Auto" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" HorizontalAlignment="Left" Width="34" Click="Button_Click_2">
+                        <Grid x:Name="SortingModeIndicator" Visibility="Hidden" Margin="0,0,40,0.2">
+                            <Button x:Name="ButtonClearSort" Margin="0,18,0,17.2" Height="Auto" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" HorizontalAlignment="Left" Width="34" Click="ButtonClearSort_Click">
                                 <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
                             </Button>
 
-                            <TextBlock Margin="0,18,-0.8,17" VerticalAlignment="Center" Height="40" HorizontalAlignment="Right" Width="150" Text="AlphabeticalAscending" FontFamily="Arial" TextAlignment="Center" FontSize="14" Padding="0,11,0,0"/>
+                            <TextBlock x:Name="SortIndicatorTextBlock" Margin="0,18,-0.8,17" VerticalAlignment="Center" Height="40" HorizontalAlignment="Right" Width="150" Text="AlphabeticalAscending" FontFamily="Arial" TextAlignment="Center" FontSize="14" Padding="0,11,0,0"/>
                         </Grid>
 
                         <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0"  Width="40" Height="40" TabIndex="7" IsTabStop="False" VerticalAlignment="Center">
