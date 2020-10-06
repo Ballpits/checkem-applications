@@ -4,9 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:properties="clr-namespace:ProjectSC.Properties"
              xmlns:local="clr-namespace:ProjectSC.Views"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960" MouseDown="UserControl_MouseDown">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />
+    </UserControl.Resources>
 
     <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.5}">
 
@@ -44,22 +49,23 @@
             <Grid Background="#FFF0F0F0" Margin="0,50,0,0">
                 <Grid Height="75" VerticalAlignment="Top">
 
-                    <TextBlock x:Name="ToDoListTitleTextBlock" Text="Name" Margin="0,5,0,0" Height="40" FontFamily="Arial" FontSize="36" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF2196F3" TextAlignment="Center"/>
-                    <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="0 Items" Margin="0,0,0,5" Height="20" FontFamily="Arial" FontSize="16" Padding="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="#FF2196F3" Width="95" TextAlignment="Center"/>
+                    <TextBlock x:Name="ToDoListTitleTextBlock" Text="Name" Margin="0,5,0,0" Height="40" FontFamily="Arial" FontSize="36" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}" TextAlignment="Center"/>
+                    <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="0 Items" Margin="0,0,0,5" Height="20" FontFamily="Arial" FontSize="16" Padding="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}" Width="95" TextAlignment="Center"/>
 
 
-                    <Grid Margin="0,0,20,0" HorizontalAlignment="Right" Width="223">
-                        <Grid x:Name="SortingModeIndicator" Visibility="Hidden" Margin="0,0,40,0.2">
-                            <Button x:Name="ButtonClearSort" Margin="0,18,0,17.2" Height="Auto" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" HorizontalAlignment="Left" Width="34" Click="ButtonClearSort_Click">
-                                <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
+                    <Grid Margin="0,0,20,0" HorizontalAlignment="Right">
+                        <Grid x:Name="SortingModeIndicator" Visibility="Visible" Margin="0,0,45,0" HorizontalAlignment="Right">
+                            <Button x:Name="ButtonClearSort" Margin="0,18,0,17.2" Height="Auto" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="ButtonClearSort_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Close" Width="25" Height="20" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+                                    <TextBlock x:Name="SortIndicatorTextBlock" Margin="0" HorizontalAlignment="Right" Text="AlphabeticalAscending" FontFamily="Arial" TextAlignment="Center" FontSize="14" Padding="0,2,0,0"/>
+                                </StackPanel>
                             </Button>
-
-                            <TextBlock x:Name="SortIndicatorTextBlock" Margin="0,18,-0.8,17" VerticalAlignment="Center" Height="40" HorizontalAlignment="Right" Width="150" Text="AlphabeticalAscending" FontFamily="Arial" TextAlignment="Center" FontSize="14" Padding="0,11,0,0"/>
                         </Grid>
 
                         <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0"  Width="40" Height="40" TabIndex="7" IsTabStop="False" VerticalAlignment="Center">
                             <materialDesign:PopupBox.ToggleContent>
-                                <materialDesign:PackIcon FocusVisualStyle="{DynamicResource MyFocusVisual}" Kind="Sort" Foreground="#FF2196F3" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" IsTabStop="True" TabIndex="7" />
+                                <materialDesign:PackIcon FocusVisualStyle="{DynamicResource MyFocusVisual}" Kind="Sort" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" IsTabStop="True" TabIndex="7" />
                             </materialDesign:PopupBox.ToggleContent>
 
                             <StackPanel>

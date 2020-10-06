@@ -125,6 +125,8 @@ namespace ProjectSC.Views
 
             counter = 0;
 
+            SortingModeIndicator.Visibility = Visibility.Hidden;
+
             switch (mode)
             {
                 case 0://Filter:All items
