@@ -12,7 +12,9 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary x:Name="ThemeLight" Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <!--<ResourceDictionary x:Name="ThemeDark" Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />-->
+                
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml" />
 
@@ -247,7 +249,7 @@
 
             <!--#region Itembar-->
             <Style x:Key="ItembarBorder" TargetType="Border">
-                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="CornerRadius" Value="10"/>
 

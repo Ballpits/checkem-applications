@@ -12,7 +12,7 @@
     <UserControl.Resources>
         <ResourceDictionary Source="../../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="39*"/>
@@ -123,11 +123,11 @@
         </Grid>
 
         <StackPanel Grid.Column="1" Margin="0,50,0,0" Background="#FFF0F0F0" Loaded="StackPanel_Loaded">
-            <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="70" Margin="10,10,10,0">
+            <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="70" Margin="10,10,10,0">
                 <Grid>
                     <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}" HorizontalAlignment="Left" Margin="15,0,0,0"/>
 
-                    <TextBlock VerticalAlignment="Top" Margin="70,14,55,0" FontSize="20" FontFamily="Arial" Height="24"><Run Text="Preview some themes"/><Run Text="..."/></TextBlock>
+                    <TextBlock VerticalAlignment="Top" Margin="70,14,55,0" FontSize="20" FontFamily="Arial" Height="24" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor, Converter={StaticResource ColorToBrushConverter}}"><Run Text="Preview some themes"/><Run Text="..."/></TextBlock>
 
                     <materialDesign:PackIcon Kind="Bell" Margin="70,0,0,7.5" Width="20" Height="20" Foreground="#FFE3F321" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
                     <TextBlock VerticalAlignment="Bottom" Margin="95,0,55,5.4" FontSize="14" FontFamily="Arial" Height="20" Text="Due date..."/>
@@ -135,20 +135,20 @@
                     <materialDesign:PackIcon Style="{StaticResource StarBorderIcon}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
                 </Grid>
             </Border>
-            <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="50" Margin="10,10,10,0">
+            <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="50" Margin="10,10,10,0">
                 <Grid>
                     <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}" HorizontalAlignment="Left" Margin="15,0,0,0"/>
 
-                    <TextBlock VerticalAlignment="Center" Margin="70,0,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="This one has no reminder"/>
+                    <TextBlock VerticalAlignment="Center" Margin="70,0,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="This one has no reminder" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor, Converter={StaticResource ColorToBrushConverter}}"/>
 
                     <materialDesign:PackIcon Style="{StaticResource StarBorderIcon}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
                 </Grid>
             </Border>
-            <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="70" Margin="10,10,10,0">
+            <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="70" Margin="10,10,10,0">
                 <Grid>
                     <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}" HorizontalAlignment="Left" Margin="15,0,0,0"/>
 
-                    <TextBlock VerticalAlignment="Top" Margin="70,14,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="Too late"/>
+                    <TextBlock VerticalAlignment="Top" Margin="70,14,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="Too late" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor, Converter={StaticResource ColorToBrushConverter}}"/>
 
                     <materialDesign:PackIcon Kind="Bell" Margin="70,0,0,7.5" Width="20" Height="20" Foreground="#FFE3F321" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
                     <TextBlock Foreground="{Binding ItemPassedTextColor, Converter={StaticResource ColorToBrushConverter}, Source={x:Static properties:Settings.Default}}" VerticalAlignment="Bottom" Margin="95,0,55,5.4" FontSize="14" FontFamily="Arial" Height="20"><Run Text="Oops... it's passed already..."/><LineBreak/><Run Text=""/></TextBlock>
@@ -156,19 +156,19 @@
                     <materialDesign:PackIcon Style="{StaticResource StarIcon}" HorizontalAlignment="Right" Margin="0,0,10,0" Width="30" Height="30"/>
                 </Grid>
             </Border>
-            <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="70" Margin="10,10,10,0">
+            <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="70" Margin="10,10,10,0">
                 <Grid>
                     <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}" HorizontalAlignment="Left" Margin="15,0,0,0"/>
 
-                    <TextBlock VerticalAlignment="Top" Margin="70,14,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="No rush... We can wait"/>
+                    <TextBlock VerticalAlignment="Top" Margin="70,14,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="No rush... We can wait" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor, Converter={StaticResource ColorToBrushConverter}}"/>
 
-                    <materialDesign:PackIcon Kind="Bell" Margin="70,0,0,7.5" Width="20" Height="20" Foreground="#FFE3F321" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <materialDesign:PackIcon Kind="Bell" Margin="70,0,0,7.5" Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#FFF4FF00"/>
                     <TextBlock Foreground="{Binding DarkMainColor, Converter={StaticResource ColorToBrushConverter}, Source={x:Static properties:Settings.Default}}" VerticalAlignment="Bottom" Margin="95,0,55,5.4" FontSize="14" FontFamily="Arial" Height="20" Text="Tomorrow"/>
 
                     <materialDesign:PackIcon Style="{StaticResource StarBorderIcon}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
                 </Grid>
             </Border>
-            <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="50" Margin="10,10,10,0">
+            <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="50" Margin="10,10,10,0">
                 <Grid>
                     <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}" HorizontalAlignment="Left" Margin="15,0,0,0"/>
 
@@ -177,7 +177,7 @@
                     <materialDesign:PackIcon Style="{StaticResource StarIcon}" HorizontalAlignment="Right" Margin="0,0,10,0" Width="30" Height="30"/>
                 </Grid>
             </Border>
-            <Border BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToBrushConverter}}" Background="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="50" Margin="10,10,10,0" BorderThickness="2">
+            <Border BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToBrushConverter}}" Background="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="50" Margin="10,10,10,0" BorderThickness="2">
                 <Grid>
                     <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}" HorizontalAlignment="Left" Margin="15,0,0,0"/>
 

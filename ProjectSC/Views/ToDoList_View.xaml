@@ -46,7 +46,24 @@
                 </Button>-->
             </Grid>
 
-            <Grid Background="#FFF0F0F0" Margin="0,50,0,0">
+            <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=GrayMainColor,Converter={StaticResource ColorToBrushConverter}}" Margin="0,50,0,0">
+
+                <Grid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Sort" Icon="{materialDesign:PackIcon Kind=Sort, Size=18}">
+                            <MenuItem Header="Starred" Icon="{materialDesign:PackIcon Kind=StarBorder, Size=18}"/>
+                            <MenuItem Header="Due date" Icon="{materialDesign:PackIcon Kind=CalendarClock, Size=18}"/>
+                            <MenuItem Header="Alphabetical ascending" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalAscending, Size=18}"/>
+                            <MenuItem Header="Alphabetical descending" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalDescending, Size=18}"/>
+                            <MenuItem Header="Creation date" Icon="{materialDesign:PackIcon Kind=CalendarAdd, Size=18}"/>
+                        </MenuItem>
+
+                        <Separator/>
+
+                        <MenuItem Header="Add new task" Icon="{materialDesign:PackIcon Kind=Add, Size=18}" />
+                    </ContextMenu>
+                </Grid.ContextMenu>
+                
                 <Grid Height="75" VerticalAlignment="Top">
 
                     <TextBlock x:Name="ToDoListTitleTextBlock" Text="Name" Margin="0,5,0,0" Height="40" FontFamily="Arial" FontSize="36" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}" TextAlignment="Center"/>
@@ -103,7 +120,7 @@
                                         </Grid.ColumnDefinitions>
 
                                         <materialDesign:PackIcon Kind="SortAlphabeticalAscending" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
-                                        <TextBlock Text="Alphabetical Ascending" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                        <TextBlock Text="Alphabetical ascending" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
                                     </Grid>
                                 </Button>
 
@@ -115,7 +132,7 @@
                                         </Grid.ColumnDefinitions>
 
                                         <materialDesign:PackIcon Kind="SortAlphabeticalDescending" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
-                                        <TextBlock Text="Alphabetical Descending" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                        <TextBlock Text="Alphabetical descending" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
                                     </Grid>
                                 </Button>
 

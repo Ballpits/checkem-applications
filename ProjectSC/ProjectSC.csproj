@@ -122,6 +122,7 @@
     <Compile Include="Models\DataAccess\DataAccess_Json.cs" />
     <Compile Include="Models\Object\Appearance\Themes.cs" />
     <Compile Include="ViewModels\AppearanceSettings\AppearanceSettingHelper.cs" />
+    <Compile Include="ViewModels\AppearanceSettings\DarkModeHelper.cs" />
     <Compile Include="ViewModels\ColorConvert\ColorToBrushConverter.cs" />
     <Compile Include="ViewModels\ColorConvert\ColorToGradientStopConverter.cs" />
     <Compile Include="ViewModels\GlobleHotKey\HotKey.cs" />

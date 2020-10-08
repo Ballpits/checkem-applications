@@ -8,7 +8,7 @@
     <Setting Name="ThemeName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Check'em</Value>
     </Setting>
-    <Setting Name="IsDarkMode" Type="System.Boolean" Scope="User">
+    <Setting Name="IsDarkModeApplied" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="IsSavingSortingModeOn" Type="System.Boolean" Scope="User">
@@ -46,6 +46,12 @@
     </Setting>
     <Setting Name="NavigationbarButtonHighlightColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">76, 255, 255, 255</Value>
+    </Setting>
+    <Setting Name="GrayMainColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="ItembarColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
     </Setting>
   </Settings>
 </SettingsFile>

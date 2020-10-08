@@ -62,13 +62,10 @@ namespace ProjectSC.Views
 
         private bool BorderEventCanActivate = true;
 
-        System.Drawing.Color PrimaryColor_D = Properties.Settings.Default.PrimaryColor;
-        System.Drawing.Color ItembarColor_D = Properties.Settings.Default.LightMainColor;
-        System.Drawing.Color DarkMainColor_D = Properties.Settings.Default.DarkMainColor;
         System.Drawing.Color ItemCompletedTextColor_D = Properties.Settings.Default.ItemCompletedTextColor;
         System.Drawing.Color ItemPassedTextColor_D = Properties.Settings.Default.ItemPassedTextColor;
 
-        SolidColorBrush PrimaryColor, ItembarColor, DarkMainColor, ItemCompletedTextColor, ItemPassedTextColor;
+        SolidColorBrush  ItemCompletedTextColor, ItemPassedTextColor;
 
         PackIcon icon = new PackIcon();
         #endregion
@@ -90,8 +87,6 @@ namespace ProjectSC.Views
         #region Checkbox events
         private void ToDoChecked(object sender, RoutedEventArgs e)
         {
-            icon.Foreground = DarkMainColor;
-
             icon.Kind = PackIconKind.Check;
 
             textBlockTitle.Foreground = ItemCompletedTextColor;
@@ -110,8 +105,6 @@ namespace ProjectSC.Views
                 icon.Kind = PackIconKind.Check;
             }
 
-
-            textBlockTitle.Foreground = DarkMainColor;
             textBlockTitle.TextDecorations = null;
 
             dataAccess.UpdateCompletion(Id, false, todo.Inventory);
@@ -186,12 +179,6 @@ namespace ProjectSC.Views
 
         public void MouseLeaveUnHighLight(object sender, RoutedEventArgs e)
         {
-            if (sender.GetType() == typeof(Border))
-            {
-                border.Background = ItembarColor;
-                CheckboxGrid.Background = ItembarColor;
-                StarToggle.Background = ItembarColor;
-            }
             if (sender.GetType() == typeof(CheckBox))
             {
                 if (checkBox.IsChecked == false)
@@ -202,11 +189,6 @@ namespace ProjectSC.Views
             if (sender.GetType() == typeof(Grid))
             {
                 BorderEventCanActivate = true;
-
-                if (CheckboxGrid.IsMouseOver == false && border.IsMouseOver == false)
-                {
-                    CheckboxGrid.Background = ItembarColor;
-                }
 
                 if (checkBox.IsChecked == false)
                 {
@@ -254,10 +236,6 @@ namespace ProjectSC.Views
                 if (Passed(EndDateTime))
                 {
                     ReminderTimeTextBlock.Foreground = ItemPassedTextColor;
-                }
-                else
-                {
-                    ReminderTimeTextBlock.Foreground = DarkMainColor;
                 }
             }
             else
@@ -313,21 +291,11 @@ namespace ProjectSC.Views
             icon.HorizontalAlignment = HorizontalAlignment.Center;
             icon.VerticalAlignment = VerticalAlignment.Center;
 
-            CheckboxGrid.Background = ItembarColor;
             checkBox.Content = icon;
-
-            border.Background = ItembarColor;
-
-            textBlockTitle.Foreground = DarkMainColor;
-
-            ReminderTimeTextBlock.Foreground = DarkMainColor;
         }
 
         private void GetAllColor()
         {
-            PrimaryColor = ColorConverter(PrimaryColor_D);
-            ItembarColor = ColorConverter(ItembarColor_D);
-            DarkMainColor = ColorConverter(DarkMainColor_D);
             ItemCompletedTextColor = ColorConverter(ItemCompletedTextColor_D);
             ItemPassedTextColor = ColorConverter(ItemPassedTextColor_D);
         }
