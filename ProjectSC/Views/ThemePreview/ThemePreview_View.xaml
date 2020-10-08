@@ -139,7 +139,7 @@
                 <Grid>
                     <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}" HorizontalAlignment="Left" Margin="15,0,0,0"/>
 
-                    <TextBlock VerticalAlignment="Top" Margin="70,14,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="This one has no reminder"/>
+                    <TextBlock VerticalAlignment="Center" Margin="70,0,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="This one has no reminder"/>
 
                     <materialDesign:PackIcon Style="{StaticResource StarBorderIcon}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
                 </Grid>
@@ -181,7 +181,7 @@
                 <Grid>
                     <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}" HorizontalAlignment="Left" Margin="15,0,0,0"/>
 
-                    <TextBlock Foreground="{Binding DarkMainColor, Converter={StaticResource ColorToBrushConverter}, Source={x:Static properties:Settings.Default}}" VerticalAlignment="Top" Margin="70,14,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="Highlight"/>
+                    <TextBlock Foreground="{Binding DarkMainColor, Converter={StaticResource ColorToBrushConverter}, Source={x:Static properties:Settings.Default}}" VerticalAlignment="Center" Margin="70,0,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="Highlight"/>
 
                     <materialDesign:PackIcon Style="{StaticResource StarBorderIcon}" HorizontalAlignment="Right" Margin="0,0,10,0" Width="30" Height="30"/>
                 </Grid>
