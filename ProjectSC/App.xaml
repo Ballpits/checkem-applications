@@ -257,7 +257,7 @@
                     <Trigger Property="IsMouseOver" Value="True">
                         <Setter Property="BorderBrush" Value="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToBrushConverter}}"/>
                         <Setter Property="BorderThickness" Value="2"/>
-                        <Setter Property="Margin" Value="-2,-2,-2,-2"/>
+                        <Setter Property="Margin" Value="0,-2"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>

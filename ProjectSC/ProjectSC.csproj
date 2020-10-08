@@ -131,6 +131,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Views\Calendar\Caledar_View.xaml.cs">
+      <DependentUpon>Caledar_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Calendar\CalendarDay_View.xaml.cs">
+      <DependentUpon>CalendarDay_View.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DetailsPanel_View.xaml.cs">
       <DependentUpon>DetailsPanel_View.xaml</DependentUpon>
     </Compile>
@@ -188,6 +194,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Calendar\Caledar_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Calendar\CalendarDay_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DetailsPanel_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

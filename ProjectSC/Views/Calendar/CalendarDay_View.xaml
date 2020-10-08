@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ProjectSC.Views.Calendar.CalendarDay_View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectSC.Views.Calendar"
+             mc:Ignorable="d" 
+             d:DesignHeight="216" d:DesignWidth="274">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+
+        <Viewbox Grid.Column="1">
+            <TextBlock TextAlignment="Center" FontFamily="Arial" Text="11"/>
+        </Viewbox>
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="3" Orientation="Vertical">
+            <Border Height="40" Margin="5" Background="#FF2FA0C1" CornerRadius="10" Padding="10,0,0,0">
+                <TextBlock Text="Event 1" FontFamily="Arial" FontSize="20" Margin="0,8.5,0,0"/>
+            </Border>
+        </StackPanel>
+    </Grid>
+</UserControl>
