@@ -26,6 +26,7 @@
 
                 <Grid x:Name="NavbarCursor" Background="#4CFFFFFF"/>
 
+                <!--#region Navbar button-->
                 <Button x:Name="ButtonAllItems" Style="{StaticResource NavigationbarButton}" Click="ButtonToDoList_Click" TabIndex="0">
                     <Grid Style="{StaticResource NavigationbarButtonGrid}">
                         <Grid.RowDefinitions>
@@ -50,7 +51,7 @@
                     </Grid>
                 </Button>
 
-                <Button x:Name="ButtonReminder" Style="{StaticResource NavigationbarButton}" Click="ButtonDueDateFilter_Click" Grid.Row="1" TabIndex="1">
+                <Button x:Name="ButtonReminder" Style="{StaticResource NavigationbarButton}" Click="ButtonDueDateFilter_Click" Grid.Row="1" TabIndex="0">
                     <Grid Style="{StaticResource NavigationbarButtonGrid}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="0.5*"/>
@@ -74,7 +75,7 @@
                     </Grid>
                 </Button>
 
-                <Button x:Name="ButtonStarredFilter" Style="{StaticResource NavigationbarButton}" Click="ButtonStarredFilter_Click" Grid.Row="2" TabIndex="2">
+                <Button x:Name="ButtonStarredFilter" Style="{StaticResource NavigationbarButton}" Click="ButtonStarredFilter_Click" Grid.Row="2" TabIndex="0">
                     <Grid Style="{StaticResource NavigationbarButtonGrid}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="0.5*"/>
@@ -97,9 +98,18 @@
                         </Viewbox>
                     </Grid>
                 </Button>
+                <!--#endregion-->
 
-                <Button FocusVisualStyle="{DynamicResource MyFocusVisual}" IsEnabled="True" x:Name="ButtonUserPref" VerticalAlignment="Bottom" Margin="0,0,0,10" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Click="ButtonSettings_Click" Padding="0" Grid.Row="3" TabIndex="3">
-                    <materialDesign:PackIcon Kind="SettingsApplications" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
+                <ScrollViewer Grid.Row="3" Margin="0,0,0,75.4">
+                    
+                </ScrollViewer>
+
+                <Button FocusVisualStyle="{DynamicResource MyFocusVisual}" IsEnabled="True" x:Name="ButtonAddNewList" VerticalAlignment="Bottom" Margin="0,0,0,45.4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="30" Click="ButtonAddNewList_Click" Padding="0" Grid.Row="3" TabIndex="0">
+                    <materialDesign:PackIcon Kind="Add" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
+                </Button>
+
+                <Button FocusVisualStyle="{DynamicResource MyFocusVisual}" IsEnabled="True" x:Name="ButtonUserPref" VerticalAlignment="Bottom" Margin="0,0,0,10" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="30" Click="ButtonSettings_Click" Padding="0" Grid.Row="3" TabIndex="0">
+                    <materialDesign:PackIcon Kind="Settings" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
                 </Button>
             </Grid>
 

@@ -115,5 +115,10 @@ namespace ProjectSC
 
             todoList_View.CloseDetailsPanel();
         }
+
+        private void ButtonAddNewList_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

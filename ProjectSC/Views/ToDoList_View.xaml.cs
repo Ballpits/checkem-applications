@@ -125,7 +125,7 @@ namespace ProjectSC.Views
 
             counter = 0;
 
-            SortingModeIndicator.Visibility = Visibility.Hidden;
+            ButtonClearSort.Visibility = Visibility.Hidden;
 
             switch (mode)
             {
@@ -497,14 +497,14 @@ namespace ProjectSC.Views
                 LoadList(FilteredInventory);
             }
 
-            SortingModeIndicator.Visibility = Visibility.Hidden;
+            ButtonClearSort.Visibility = Visibility.Hidden;
         }
 
         private void ChengeSortingIndicatorText(string text)
         {
-            if (!SortingModeIndicator.IsVisible)
+            if (!ButtonClearSort.IsVisible)
             {
-                SortingModeIndicator.Visibility = Visibility.Visible;
+                ButtonClearSort.Visibility = Visibility.Visible;
             }
 
             SortIndicatorTextBlock.Text = text;
