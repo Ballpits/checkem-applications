@@ -16,8 +16,8 @@
     <Border x:Name="border" Style="{StaticResource ItembarBorder}" MouseDown="Border_MouseDown">
         <Border.ContextMenu>
             <ContextMenu>
-                <MenuItem Header="Mark as completed" Icon="{materialDesign:PackIcon Kind=Check, Size=18}" />
-                <MenuItem Header="Mark as starred" Icon="{materialDesign:PackIcon Kind=StarOutline, Size=18}"/>
+                <MenuItem Header="Mark as completed" Icon="{materialDesign:PackIcon Kind=Check, Size=18}" Click="ToDoChecked"/>
+                <MenuItem Header="Mark as starred" Icon="{materialDesign:PackIcon Kind=StarOutline, Size=18}" Click="StarToggle_Click"/>
 
                 <Separator />
 

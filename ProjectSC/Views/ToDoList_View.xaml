@@ -51,16 +51,16 @@
                 <Grid.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Sort" Icon="{materialDesign:PackIcon Kind=Sort, Size=18}">
-                            <MenuItem Header="Starred" Icon="{materialDesign:PackIcon Kind=StarBorder, Size=18}"/>
-                            <MenuItem Header="Due date" Icon="{materialDesign:PackIcon Kind=CalendarClock, Size=18}"/>
-                            <MenuItem Header="Alphabetical ascending" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalAscending, Size=18}"/>
-                            <MenuItem Header="Alphabetical descending" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalDescending, Size=18}"/>
-                            <MenuItem Header="Creation date" Icon="{materialDesign:PackIcon Kind=CalendarAdd, Size=18}"/>
+                            <MenuItem Header="Starred" Icon="{materialDesign:PackIcon Kind=StarBorder, Size=18}" Click="SortButton_Importance_Click"/>
+                            <MenuItem Header="Due date" Icon="{materialDesign:PackIcon Kind=CalendarClock, Size=18}" Click="SortButton_DueDate_Click"/>
+                            <MenuItem Header="Alphabetical ascending" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalAscending, Size=18}" Click="SortButton_AlphabeticalAscending_Click"/>
+                            <MenuItem Header="Alphabetical descending" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalDescending, Size=18}" Click="SortButton_AlphabeticalDescending_Click"/>
+                            <MenuItem Header="Creation date" Icon="{materialDesign:PackIcon Kind=CalendarAdd, Size=18}" Click="SortButton_CreationDate_Click"/>
                         </MenuItem>
 
                         <Separator/>
 
-                        <MenuItem Header="Add new task" Icon="{materialDesign:PackIcon Kind=Add, Size=18}" />
+                        <MenuItem Header="Add new task" Icon="{materialDesign:PackIcon Kind=Add, Size=18}" Click="AddItemButton_Click"/>
                     </ContextMenu>
                 </Grid.ContextMenu>
 
@@ -71,7 +71,7 @@
 
 
                     <Grid Margin="0,0,20,0" HorizontalAlignment="Right">
-                        <Button x:Name="ButtonClearSort" Margin="0,18,0,17.2" Height="Auto" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="ButtonClearSort_Click" ToolTip="Clear sort">
+                        <Button x:Name="ButtonClearSort" Margin="0,0,45,0" Height="40" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="ButtonClearSort_Click" ToolTip="Clear sort" VerticalAlignment="Center">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Close" Width="25" Height="20" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
                                 <TextBlock x:Name="SortIndicatorTextBlock" Margin="0" HorizontalAlignment="Right" Text="AlphabeticalAscending" FontFamily="Arial" TextAlignment="Center" FontSize="14" Padding="0,2,0,0"/>
