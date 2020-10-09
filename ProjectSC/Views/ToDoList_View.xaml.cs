@@ -180,7 +180,18 @@ namespace ProjectSC.Views
                     break;
             }
 
-            ToDoListItemCounterTextBlock.Text = $"{counter} Items";
+            switch (counter)
+            {
+                case 0:
+                    ToDoListItemCounterTextBlock.Text = "";
+                    break;
+                case 1:
+                    ToDoListItemCounterTextBlock.Text = "1 Task";
+                    break;
+                default:
+                    ToDoListItemCounterTextBlock.Text = $"{counter} Tasks";
+                    break;
+            }
         }
         #endregion
 
@@ -189,6 +200,8 @@ namespace ProjectSC.Views
         public void SearchItems(string searchString)
         {
             stpMain.Children.Clear();
+
+            counter = 0;
 
             Inventory = Inventory.OrderBy(x => x.Id).ToList();
 
@@ -199,10 +212,22 @@ namespace ProjectSC.Views
             foreach (var item in result)
             {
                 AddItem(item);
+
+                counter++;
             }
 
-
-            ToDoListItemCounterTextBlock.Text = string.Empty;
+            switch (counter)
+            {
+                case 0:
+                    ToDoListItemCounterTextBlock.Text = "Nope... couldn't find anything";
+                    break;
+                case 1:
+                    ToDoListItemCounterTextBlock.Text = "1 Item found";
+                    break;
+                default:
+                    ToDoListItemCounterTextBlock.Text = counter + "Items found";
+                    break;
+            }
         }
 
         private void SearchBox_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
@@ -232,6 +257,8 @@ namespace ProjectSC.Views
         private void ButtonClearSearchBox_Click(object sender, RoutedEventArgs e)
         {
             SearchBox.Clear();
+
+            ListFilter(filterMode);
         }
         #endregion
 

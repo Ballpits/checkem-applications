@@ -12,7 +12,7 @@
         <ResourceDictionary Source="../../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml"/>
     </UserControl.Resources>
 
-    <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor, Converter={StaticResource ColorToBrushConverter}}">
+    <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=GrayMainColor, Converter={StaticResource ColorToBrushConverter}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="87*"/>

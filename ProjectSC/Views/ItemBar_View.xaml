@@ -12,7 +12,7 @@
     <UserControl.Resources>
         <ResourceDictionary Source="../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />
     </UserControl.Resources>
-    
+
     <Border x:Name="border" Style="{StaticResource ItembarBorder}" MouseDown="Border_MouseDown">
         <Border.ContextMenu>
             <ContextMenu>
@@ -39,7 +39,7 @@
                     <Grid/>
                 </MenuItem>
 
-                <Separator />
+                <Separator/>
 
                 <MenuItem Header="Remove" Icon="{materialDesign:PackIcon Kind=TrashOutline, Size=18}" Foreground="Red"/>
             </ContextMenu>

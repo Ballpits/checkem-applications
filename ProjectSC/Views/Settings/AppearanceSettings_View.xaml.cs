@@ -1,7 +1,6 @@
 ﻿using ProjectSC.ViewModels.AppearanceSettings;
 using ProjectSC.Views.ThemePicker;
 using ProjectSC.Views.ThemePreview;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -18,6 +17,8 @@ namespace ProjectSC.Views.Settings
         {
             ThemePickerScrollbar.Content = new ThemePicker_View();
             GridPreviewWindow.Children.Add(new ThemePreview_View());
+
+            DarkModeToggle.IsChecked = Properties.Settings.Default.IsDarkModeApplied;
         }
 
         private void ToggleButton_Click(object sender, RoutedEventArgs e)

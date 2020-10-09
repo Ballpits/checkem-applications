@@ -1,5 +1,5 @@
 ﻿using ProjectSC.Models.DataAccess;
-using ProjectSC.Models.Object.Notification;
+using ProjectSC.ViewModels.AppearanceSettings;
 using ProjectSC.ViewModels.Notification;
 using ProjectSC.Views;
 using ProjectSC.Views.Settings;
@@ -16,6 +16,15 @@ namespace ProjectSC
         public MainWindow()
         {
             InitializeComponent();
+
+            if (Properties.Settings.Default.IsDarkModeApplied)
+            {
+                DarkModeHelper.ApplyDarkMode();
+            }
+            else
+            {
+                DarkModeHelper.ApplyLightMode();
+            }
         }
 
         #region Variables

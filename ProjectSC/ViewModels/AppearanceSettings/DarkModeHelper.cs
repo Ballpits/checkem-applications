@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Windows;
 
 namespace ProjectSC.ViewModels.AppearanceSettings
@@ -42,9 +41,9 @@ namespace ProjectSC.ViewModels.AppearanceSettings
             Properties.Settings.Default.IsDarkModeApplied = true;
             Properties.Settings.Default.LightMainColor = Color.Black;
             Properties.Settings.Default.DarkMainColor = Color.White;
-            Properties.Settings.Default.GrayMainColor = Color.Black;
-            Properties.Settings.Default.ItembarColor = Color.DimGray;
-         
+            Properties.Settings.Default.GrayMainColor = Color.FromArgb(30, 30, 30);
+            Properties.Settings.Default.ItembarColor = Color.Black;
+
             Properties.Settings.Default.Save();
         }
     }
