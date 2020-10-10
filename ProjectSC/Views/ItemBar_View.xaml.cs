@@ -1,8 +1,11 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using MaterialDesignColors;
+using MaterialDesignThemes.Wpf;
 using ProjectSC.Models.DataAccess;
+using ProjectSC.ViewModels.ColorConvert;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -65,7 +68,21 @@ namespace ProjectSC.Views
         System.Drawing.Color ItemCompletedTextColor_D = Properties.Settings.Default.ItemCompletedTextColor;
         System.Drawing.Color ItemPassedTextColor_D = Properties.Settings.Default.ItemPassedTextColor;
 
-        SolidColorBrush  ItemCompletedTextColor, ItemPassedTextColor;
+        SolidColorBrush ItemCompletedTextColor, ItemPassedTextColor;
+
+        Binding ItemCompletedTextColorBindings = new Binding()
+        {
+            Source = Properties.Settings.Default,
+            Path = new PropertyPath("ItemCompletedTextColor", Properties.Settings.Default),
+            Converter = new ColorToBrushConverter()
+        };
+
+        Binding DarkMainColorBindings = new Binding()
+        {
+            Source = Properties.Settings.Default,
+            Path = new PropertyPath("DarkMainColor", Properties.Settings.Default),
+            Converter = new ColorToBrushConverter()
+        };
 
         PackIcon icon = new PackIcon();
         #endregion
@@ -89,7 +106,7 @@ namespace ProjectSC.Views
         {
             icon.Kind = PackIconKind.Check;
 
-            textBlockTitle.Foreground = ItemCompletedTextColor;
+            textBlockTitle.SetBinding(TextBlock.ForegroundProperty, ItemCompletedTextColorBindings);
             textBlockTitle.TextDecorations = TextDecorations.Strikethrough;
 
             if (CheckboxLoaded)
@@ -105,6 +122,7 @@ namespace ProjectSC.Views
                 icon.Kind = PackIconKind.Check;
             }
 
+            textBlockTitle.SetBinding(TextBlock.ForegroundProperty, DarkMainColorBindings);
             textBlockTitle.TextDecorations = null;
 
             dataAccess.UpdateCompletion(Id, false, todo.Inventory);
