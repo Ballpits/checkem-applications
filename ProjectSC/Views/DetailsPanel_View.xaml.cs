@@ -144,6 +144,7 @@ namespace ProjectSC.Views
             {
                 RemoveButton.IsEnabled = false;
                 RemoveButton.Visibility = Visibility.Hidden;
+                textBoxTitle.Focus();
 
                 SetReminderState(0);
             }

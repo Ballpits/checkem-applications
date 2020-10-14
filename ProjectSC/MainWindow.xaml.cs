@@ -17,14 +17,7 @@ namespace ProjectSC
         {
             InitializeComponent();
 
-            if (Properties.Settings.Default.IsDarkModeApplied)
-            {
-                DarkModeHelper.ApplyDarkMode();
-            }
-            else
-            {
-                DarkModeHelper.ApplyLightMode();
-            }
+            AppearanceSettingHelper.DarkModeSetup();
         }
 
         #region Variables

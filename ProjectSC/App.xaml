@@ -11,18 +11,21 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary x:Name="ThemeLight" Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
-                <!--<ResourceDictionary x:Name="ThemeDark" Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />-->
-                
+                <ResourceDictionary x:Name="ThemeDark" Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
+
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                
+
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml" />
 
                 <ResourceDictionary Source="Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <!--FocusVisual-->
-            <Style x:Key="MyFocusVisual">
+
+            <!--#region Checkem custom styles-->
+
+            <!--Checkem Scroll Bar Focus Visual-->
+            <Style x:Key="CheckemScrollBarFocusVisual">
                 <Setter Property="Control.Template">
                     <Setter.Value>
                         <ControlTemplate>
@@ -32,8 +35,8 @@
                 </Setter>
             </Style>
 
-            <!--Scrollbar Thumbs-->
-            <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+            <!--Checkem Scroll Thumbs-->
+            <Style x:Key="CheckemScrollThumbs" TargetType="{x:Type Thumb}">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Thumb}">
@@ -53,7 +56,7 @@
                 </Setter>
             </Style>
 
-            <!--ScrollBars-->
+            <!--Checkem Scroll Bars-->
             <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
                 <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
 
@@ -117,7 +120,32 @@
                 </Setter>
             </Style>
 
+            <!--Checkem Flat Button-->
+            <Style x:Key="CheckemFlatButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="BorderBrush" Value="{x:Null}"/>
 
+                <Setter Property="Padding" Value="0"/>
+
+                <!--<Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NavigationbarButtonHighlightColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                    </Trigger>
+                </Style.Triggers>-->
+            </Style>
+
+            <!--#endregion Checkem custom styles-->
 
             <!--#region Navigationbar controls-->
             <Style x:Key="NavigationbarGrid" TargetType="Grid">
@@ -152,7 +180,6 @@
                 <Setter Property="materialDesign:ButtonAssist.CornerRadius" Value="0"/>
                 <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth0"/>
 
-                <!--<Setter Property="Background" Value="#002196F3"/>-->
                 <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NavigationbarButtonColor, Converter={StaticResource ColorToBrushConverter}}"/>
                 <Setter Property="BorderBrush" Value="{x:Null}"/>
                 <Setter Property="Foreground" Value="White"/>
@@ -363,6 +390,7 @@
             </Style>
             <!--#endregion-->
 
+
             <!--#region AppearanceButton-->
             <Style x:Key="ColorPickerButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
                 <Setter Property="Background">
@@ -404,6 +432,17 @@
                     <Trigger Property="IsMouseOver" Value="True">
                     </Trigger>
                 </Style.Triggers>
+            </Style>
+            <!--#endregion-->
+
+            <!--#region Details panel-->
+            <Style x:Key="DetailsPanelButton" TargetType="Button" BasedOn="{StaticResource CheckemFlatButton}">
+                <Setter Property="Height" Value="45"/>
+                <Setter Property="Width" Value="45"/>
+            </Style>
+
+            <Style x:Key="DetailsPanelTextBox" TargetType="TextBox">
+                
             </Style>
             <!--#endregion-->
         </ResourceDictionary>

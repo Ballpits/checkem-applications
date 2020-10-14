@@ -100,6 +100,12 @@ namespace ProjectSC.Views
             Update();
         }
 
+        #region ContextMenu
+        private void contextMnuCheckbox()
+        {
+
+        }
+        #endregion
 
         #region Checkbox events
         private void ToDoChecked(object sender, RoutedEventArgs e)
@@ -316,6 +322,18 @@ namespace ProjectSC.Views
         {
             ItemCompletedTextColor = ColorConverter(ItemCompletedTextColor_D);
             ItemPassedTextColor = ColorConverter(ItemPassedTextColor_D);
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (checkBox.IsChecked == true)
+            {
+                checkBox.IsChecked = false;
+            }
+            else
+            {
+                checkBox.IsChecked = true;
+            }
         }
 
         private SolidColorBrush ColorConverter(System.Drawing.Color color)

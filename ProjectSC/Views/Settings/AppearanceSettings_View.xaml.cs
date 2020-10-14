@@ -25,11 +25,11 @@ namespace ProjectSC.Views.Settings
         {
             if (DarkModeToggle.IsChecked == true)
             {
-                DarkModeHelper.ApplyDarkMode();
+                AppearanceSettingHelper.ApplyDarkMode();
             }
             else
             {
-                DarkModeHelper.ApplyLightMode();
+                AppearanceSettingHelper.ApplyLightMode();
             }
         }
     }
