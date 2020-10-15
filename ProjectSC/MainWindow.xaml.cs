@@ -33,7 +33,7 @@ namespace ProjectSC
         #endregion
 
         #region Propertes
-        public int FilterMode { get; set; }
+
         #endregion
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
@@ -42,7 +42,7 @@ namespace ProjectSC
             dispatcherTimer.Start();
 
             GridPrincipal.Children.Add(todoList_View);
-            todoList_View.ListFilter(0);
+            todoList_View.Filter(0);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -66,24 +66,28 @@ namespace ProjectSC
             }//Check if the begin or end time is matched with the current time
         }
 
+        private void ButtonExpand_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonMyDay_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
         {
-            this.FilterMode = 0;
-
-            ChangeFIlter(this.FilterMode);
+            ChangeFilter(0);
         }
         private void ButtonDueDateFilter_Click(object sender, RoutedEventArgs e)
         {
-            this.FilterMode = 1;
-
-            ChangeFIlter(this.FilterMode);
+            ChangeFilter(1);
         }
 
         private void ButtonStarredFilter_Click(object sender, RoutedEventArgs e)
         {
-            this.FilterMode = 2;
-
-            ChangeFIlter(this.FilterMode);
+            ChangeFilter(2);
         }
 
         private void ButtonSettings_Click(object sender, RoutedEventArgs e)
@@ -95,23 +99,23 @@ namespace ProjectSC
             MainGrid.Children.Add(settingsMenu);
         }
 
+        private void ChangeFilter(int mode)
+        {
+            MoveNavbarCursor(mode);
+
+            todoList_View.Filter(mode);
+        }
+
         private void MoveNavbarCursor(int index)
         {
             NavbarCursorIndex = index;
-            Grid.SetRow(NavbarCursor, index);
-        }
-
-        public void ChangeFIlter(int mode)
-        {
-            MoveNavbarCursor(mode);
-            todoList_View.ListFilter(mode);
-
-            todoList_View.CloseDetailsPanel();
+            Grid.SetRow(NavbarCursor, index + 2);
         }
 
         private void ButtonAddNewList_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
     }
 }

@@ -168,11 +168,9 @@
                 </Setter>
             </Style>
 
-            <Style x:Key="NavigationbarButton" TargetType="{x:Type Button}">
-                <Setter Property="Height" Value="Auto"/>
+            <Style x:Key="NavigationbarButton" TargetType="{x:Type Button}" BasedOn="{StaticResource CheckemFlatButton}">
+                <Setter Property="Height" Value="80"/>
                 <Setter Property="Width" Value="Auto"/>
-                <Setter Property="MinHeight" Value="50"/>
-                <Setter Property="MinWidth" Value="50"/>
 
                 <Setter Property="Margin" Value="0"/>
                 <Setter Property="Padding" Value="0"/>
@@ -184,7 +182,7 @@
                 <Setter Property="BorderBrush" Value="{x:Null}"/>
                 <Setter Property="Foreground" Value="White"/>
 
-                <Setter Property="FocusVisualStyle" Value="{DynamicResource MyFocusVisual}"/>
+                <Setter Property="FocusVisualStyle" Value="{DynamicResource CheckemScrollBarFocusVisual}"/>
 
                 <Setter Property="Template">
                     <Setter.Value>
@@ -208,8 +206,6 @@
 
                 <Setter Property="Height" Value="Auto"/>
                 <Setter Property="Width" Value="Auto"/>
-                <Setter Property="MinHeight" Value="50"/>
-                <Setter Property="MinWidth" Value="50"/>
 
                 <Setter Property="Margin" Value="0"/>
 
@@ -234,8 +230,6 @@
             <Style x:Key="NavigationbarButtonGrid" TargetType="Grid">
                 <Setter Property="Height" Value="Auto"/>
                 <Setter Property="Width" Value="Auto"/>
-                <Setter Property="MinHeight" Value="50"/>
-                <Setter Property="MinWidth" Value="50"/>
             </Style>
             <!--#endregion-->
 

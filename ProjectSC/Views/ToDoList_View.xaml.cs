@@ -115,7 +115,7 @@ namespace ProjectSC.Views
 
 
         #region Filter
-        public void ListFilter(int mode)
+        private void ListFilter(int mode)
         {
             filterMode = mode;
 
@@ -192,6 +192,13 @@ namespace ProjectSC.Views
                     ToDoListItemCounterTextBlock.Text = $"{counter} Tasks";
                     break;
             }
+        }
+
+        public void Filter(int mode)
+        {
+            ListFilter(mode);
+
+            CloseDetailsPanel();
         }
         #endregion
 

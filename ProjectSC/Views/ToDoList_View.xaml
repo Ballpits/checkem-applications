@@ -18,7 +18,7 @@
         <Grid Name="DataGrid" Style="{StaticResource todoUSCTitlebar}">
             <Grid Margin="0" Height="50" VerticalAlignment="Top">
 
-                <Button FocusVisualStyle="{DynamicResource MyFocusVisual}" HorizontalAlignment="Right" Margin="0,0,20,0" Width="35" Height="35" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#002196F3" BorderBrush="{x:Null}" Padding="0" Click="AddItemButton_Click" ToolTip="Add new task" TabIndex="6">
+                <Button FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" HorizontalAlignment="Right" Margin="0,0,20,0" Width="35" Height="35" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#002196F3" BorderBrush="{x:Null}" Padding="0" Click="AddItemButton_Click" ToolTip="Add new task" TabIndex="6">
                     <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
                 </Button>
 
@@ -80,7 +80,7 @@
 
                         <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0"  Width="40" Height="40" TabIndex="7" IsTabStop="False" VerticalAlignment="Center" ToolTip="Sort">
                             <materialDesign:PopupBox.ToggleContent>
-                                <materialDesign:PackIcon FocusVisualStyle="{DynamicResource MyFocusVisual}" Kind="Sort" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" IsTabStop="True" TabIndex="7" />
+                                <materialDesign:PackIcon FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" Kind="Sort" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" IsTabStop="True" TabIndex="7" />
                             </materialDesign:PopupBox.ToggleContent>
 
                             <StackPanel>

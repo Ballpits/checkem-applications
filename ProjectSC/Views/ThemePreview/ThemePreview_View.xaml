@@ -104,7 +104,7 @@
                 </Grid>
             </Button>
 
-            <Button FocusVisualStyle="{DynamicResource MyFocusVisual}" VerticalAlignment="Bottom" Margin="0,0,0,10" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Padding="0" Grid.Row="3">
+            <Button FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" VerticalAlignment="Bottom" Margin="0,0,0,10" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Padding="0" Grid.Row="3">
                 <materialDesign:PackIcon Kind="SettingsApplications" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
             </Button>
         </Grid>

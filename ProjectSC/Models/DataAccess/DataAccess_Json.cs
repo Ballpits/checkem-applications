@@ -64,12 +64,10 @@ namespace ProjectSC.Models.DataAccess
             string json = File.ReadAllText(path);
 
             List<ToDoItem> inventory = JsonConvert.DeserializeObject<List<ToDoItem>>(json);
-            DateTime dateTime;
 
             for (int i = 0; i < inventory.Count; i++)
             {
-                dateTime = DateTime.Now;
-                if (inventory[i].IsReminderOn)
+                if (inventory[i].IsReminderOn && inventory[i].EndDateTime.DayOfYear == DateTime.Now.DayOfYear)
                 {
                     timeRecords.Add(new Object.Notification.Notifications { Title = inventory[i].Title, BeginDateTime = inventory[i].BeginDateTime, EndDateTime = inventory[i].EndDateTime });
                 }
