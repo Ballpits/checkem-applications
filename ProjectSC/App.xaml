@@ -169,7 +169,7 @@
             </Style>
 
             <Style x:Key="NavigationbarButton" TargetType="{x:Type Button}" BasedOn="{StaticResource CheckemFlatButton}">
-                <Setter Property="Height" Value="80"/>
+                <Setter Property="Height" Value="Auto"/>
                 <Setter Property="Width" Value="Auto"/>
 
                 <Setter Property="Margin" Value="0"/>
@@ -182,8 +182,10 @@
                 <Setter Property="BorderBrush" Value="{x:Null}"/>
                 <Setter Property="Foreground" Value="White"/>
 
-                <Setter Property="FocusVisualStyle" Value="{DynamicResource CheckemScrollBarFocusVisual}"/>
+                <Setter Property="TabIndex" Value="0"/>
 
+                <Setter Property="FocusVisualStyle" Value="{DynamicResource CheckemScrollBarFocusVisual}"/>
+                
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
@@ -204,13 +206,14 @@
             <Style x:Key="NavigationbarIcon" TargetType="materialDesign:PackIcon">
                 <Setter Property="Foreground" Value="White"/>
 
-                <Setter Property="Height" Value="Auto"/>
-                <Setter Property="Width" Value="Auto"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Width" Value="30"/>
 
-                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Margin" Value="5,0,0,0"/>
 
                 <Setter Property="HorizontalAlignment" Value="Center"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
+                
                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
             </Style>
@@ -219,17 +222,16 @@
                 <Setter Property="TextAlignment" Value="Center"/>
 
                 <Setter Property="FontFamily" Value="Arail"/>
-
-                <Setter Property="Margin" Value="5,0"/>
+                <Setter Property="FontSize" Value="18"/>
+                
+                <Setter Property="Margin" Value="5,0,0,0"/>
+                <Setter Property="Padding" Value="0,5,0,0"/>
             </Style>
 
-            <Style x:Key="NavigationbarViewBox" TargetType="Viewbox">
-                <Setter Property="Margin" Value="0"/>
-            </Style>
-
-            <Style x:Key="NavigationbarButtonGrid" TargetType="Grid">
-                <Setter Property="Height" Value="Auto"/>
-                <Setter Property="Width" Value="Auto"/>
+            <Style x:Key="NavigationbarButtonStackPanel" TargetType="StackPanel">
+                <Setter Property="Width" Value="280"/>
+                
+                <Setter Property="Orientation" Value="Horizontal"/>
             </Style>
             <!--#endregion-->
 

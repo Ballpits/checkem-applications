@@ -68,7 +68,14 @@ namespace ProjectSC
 
         private void ButtonExpand_Click(object sender, RoutedEventArgs e)
         {
+            ButtonCollaps.Visibility = Visibility.Visible;
+            ButtonExpand.Visibility = Visibility.Collapsed;
+        }
 
+        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonCollaps.Visibility = Visibility.Collapsed;
+            ButtonExpand.Visibility = Visibility.Visible;
         }
 
         private void ButtonMyDay_Click(object sender, RoutedEventArgs e)

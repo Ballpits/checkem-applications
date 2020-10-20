@@ -7,7 +7,33 @@
         xmlns:properties="clr-namespace:ProjectSC.Properties"
         xmlns:local="clr-namespace:ProjectSC"
         mc:Ignorable="d"
-        Title="Check'em" Height="1080" Width="1920" WindowStartupLocation="CenterScreen" MinWidth="960" MinHeight="540" Icon="Assets/Icon/Icon-1024.ico" Background="White" WindowState="Maximized">
+        Title="Check'em" Height="540" Width="960" WindowStartupLocation="CenterScreen" MinWidth="960" MinHeight="540" Icon="Assets/Icon/Icon-1024.ico" Background="White" WindowState="Maximized">
+
+    <Window.Resources>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
+                <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="280"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
+                <EasingDoubleKeyFrame KeyTime="0" Value="280"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="40"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonExpand">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCollaps">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+    </Window.Triggers>
 
     <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.5}">
         <Grid x:Name="MainGrid" Loaded="Grid_Loaded" Margin="0">
@@ -16,106 +42,66 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" HorizontalAlignment="Left" Width="70">
+            <Grid x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" HorizontalAlignment="Left" Width="40">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
-                    <RowDefinition Height="80"/>
-                    <RowDefinition Height="80"/>
-                    <RowDefinition Height="80"/>
-                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
                     <RowDefinition/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
 
-                <Grid x:Name="NavbarCursor" Background="#4CFFFFFF" Margin="0" Grid.Row="2"/>
+                <Grid x:Name="NavbarCursor" Background="#4CFFFFFF" Margin="0" Grid.Row="1"/>
 
                 <!--#region Navbar button-->
-                <Button x:Name="ButtonExpand" Style="{StaticResource NavigationbarButton}" Click="ButtonExpand_Click" TabIndex="0" Margin="0,0,15,0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Height="40" VerticalAlignment="Top">
-                    <materialDesign:PackIcon Kind="ArrowBack" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0"/>
+                <Button x:Name="ButtonExpand" Style="{StaticResource NavigationbarButton}" Click="ButtonExpand_Click" TabIndex="0" Margin="5,5,0,0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <materialDesign:PackIcon Kind="Menu" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
                 </Button>
+                
+                <Button x:Name="ButtonCollaps" Visibility="Collapsed" Style="{StaticResource NavigationbarButton}" Click="ButtonCloseMenu_Click" TabIndex="0" Margin="5,5,0,0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <materialDesign:PackIcon Kind="MenuLeftOutline" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
+                </Button> 
 
-                <Button x:Name="ButtonMyDay" Style="{StaticResource NavigationbarButton}" Click="ButtonMyDay_Click" TabIndex="0" Margin="0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" Grid.Row="1">
-                    <Grid Style="{StaticResource NavigationbarButtonGrid}">
-                        <Viewbox Style="{StaticResource NavigationbarViewBox}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5">
-                            <materialDesign:PackIcon Kind="WbSunny" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0"/>
-                        </Viewbox>
-
-                        <Viewbox Style="{StaticResource NavigationbarViewBox}" HorizontalAlignment="Right" Margin="70,5,5,5">
-                            <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="My Day"/>
-                        </Viewbox>
-                    </Grid>
+                <Button x:Name="ButtonMyDay" Style="{StaticResource NavigationbarButton}" Click="ButtonMyDay_Click" Grid.Row="1">
+                    <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
+                        <materialDesign:PackIcon Kind="WbSunny" Style="{StaticResource NavigationbarIcon}"/>
+                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="My Day"/>
+                    </StackPanel>
                 </Button>
 
                 <Button x:Name="ButtonAllItems" Style="{StaticResource NavigationbarButton}" Click="ButtonToDoList_Click" TabIndex="0" Margin="0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" Grid.Row="2">
-                    <Grid Style="{StaticResource NavigationbarButtonGrid}">
-                        <Viewbox Style="{StaticResource NavigationbarViewBox}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5">
-                            <materialDesign:PackIcon Kind="ClipboardList" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0"/>
-                        </Viewbox>
-
-                        <Viewbox Style="{StaticResource NavigationbarViewBox}" HorizontalAlignment="Right" Margin="70,5,5,5">
-                            <TextBlock Style="{StaticResource NavigationbarTextBlock}">All Items</TextBlock>
-                        </Viewbox>
-                    </Grid>
+                    <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
+                        <materialDesign:PackIcon Kind="ClipboardList" Style="{StaticResource NavigationbarIcon}"/>
+                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="All Tasks"/>
+                    </StackPanel>
                 </Button>
 
                 <Button x:Name="ButtonReminder" Style="{StaticResource NavigationbarButton}" Click="ButtonDueDateFilter_Click" Grid.Row="3" TabIndex="0" Margin="0">
-                    <Grid Style="{StaticResource NavigationbarButtonGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.5*"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="0.5*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Viewbox Style="{StaticResource NavigationbarViewBox}" Grid.Row="1" Grid.Column="1">
-                            <materialDesign:PackIcon Kind="Bell" Style="{StaticResource NavigationbarIcon}"/>
-                        </Viewbox>
-
-                        <Viewbox Style="{StaticResource NavigationbarViewBox}" Grid.ColumnSpan="3" Grid.Row="3">
-                            <TextBlock Style="{StaticResource NavigationbarTextBlock}">Reminder</TextBlock>
-                        </Viewbox>
-                    </Grid>
+                    <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
+                        <materialDesign:PackIcon Kind="Bell" Style="{StaticResource NavigationbarIcon}"/>
+                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="Reminder"/>
+                    </StackPanel>
                 </Button>
 
                 <Button x:Name="ButtonStarredFilter" Style="{StaticResource NavigationbarButton}" Click="ButtonStarredFilter_Click" Grid.Row="4" TabIndex="0" Margin="0">
-                    <Grid Style="{StaticResource NavigationbarButtonGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.5*"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="0.5*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Viewbox Style="{StaticResource NavigationbarViewBox}" Grid.Row="1" Grid.Column="1" >
-                            <materialDesign:PackIcon Kind="Star" Style="{StaticResource NavigationbarIcon}"/>
-                        </Viewbox>
-
-                        <Viewbox Style="{StaticResource NavigationbarViewBox}" Grid.ColumnSpan="3" Grid.Row="3">
-                            <TextBlock Style="{StaticResource NavigationbarTextBlock}">Starred</TextBlock>
-                        </Viewbox>
-                    </Grid>
+                    <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
+                        <materialDesign:PackIcon Kind="Star" Style="{StaticResource NavigationbarIcon}"/>
+                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="Starred"/>
+                    </StackPanel>
                 </Button>
                 <!--#endregion-->
 
                 <ScrollViewer Margin="0" Grid.RowSpan="3" Grid.Row="6"/>
 
-                <Button FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" IsEnabled="True" x:Name="ButtonAddNewList" VerticalAlignment="Bottom" Margin="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Click="ButtonAddNewList_Click" Padding="0" Grid.Row="6" TabIndex="0">
+                <Button FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" IsEnabled="True" x:Name="ButtonAddNewList" Margin="5,0,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Click="ButtonAddNewList_Click" Padding="0" Grid.Row="6" TabIndex="0" HorizontalAlignment="Left">
                     <materialDesign:PackIcon Kind="Add" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
                 </Button>
 
-                <Button FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" IsEnabled="True" x:Name="ButtonUserPref" VerticalAlignment="Bottom" Margin="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Click="ButtonSettings_Click" Padding="0" Grid.Row="7" TabIndex="0">
-                    <materialDesign:PackIcon Kind="Settings" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
+                <Button FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" IsEnabled="True" x:Name="ButtonUserPref" Margin="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Click="ButtonSettings_Click" Padding="0" Grid.Row="7" TabIndex="0" HorizontalAlignment="Left">
+                    <materialDesign:PackIcon Kind="Settings" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto" Margin="5,0,0,0"/>
                 </Button>
             </Grid>
 
