@@ -54,7 +54,7 @@
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
 
-                <Grid x:Name="NavbarCursor" Background="#4CFFFFFF" Margin="0" Grid.Row="1"/>
+                <Grid x:Name="NavbarCursor" Background="#4CFFFFFF" Margin="0" Grid.Row="2"/>
 
                 <!--#region Navbar button-->
                 <Button x:Name="ButtonExpand" Style="{StaticResource NavigationbarButton}" Click="ButtonExpand_Click" TabIndex="0" Margin="5,5,0,0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top">
