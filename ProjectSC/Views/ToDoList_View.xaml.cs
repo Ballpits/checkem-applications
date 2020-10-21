@@ -129,7 +129,11 @@ namespace ProjectSC.Views
 
             switch (mode)
             {
-                case 0://Filter:All items
+                case 0://Filter:My day
+
+                    break;
+
+                case 1://Filter:All items
                     FilteredInventory.Clear();
 
                     LoadList(Inventory);
@@ -140,7 +144,7 @@ namespace ProjectSC.Views
 
                     break;
 
-                case 1://Filter:Reminder
+                case 2://Filter:Reminder
                     FilteredInventory.Clear();
 
                     for (int index = 0; index < Inventory.Count; index++)
@@ -158,7 +162,7 @@ namespace ProjectSC.Views
 
                     break;
 
-                case 2://Filter:None
+                case 3://Filter:Starred
                     FilteredInventory.Clear();
 
                     for (int index = 0; index < Inventory.Count; index++)

@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="LanguageName">en-us</system:String>
+
+    <system:String x:Key="MyDay">我的一天</system:String>
+    <system:String x:Key="AllItems">所有事項</system:String>
+    <system:String x:Key="Reminder">提醒</system:String>
+    <system:String x:Key="Starred">星號</system:String>
+</ResourceDictionary>

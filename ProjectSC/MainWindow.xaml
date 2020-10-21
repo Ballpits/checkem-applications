@@ -10,19 +10,21 @@
         Title="Check'em" Height="540" Width="960" WindowStartupLocation="CenterScreen" MinWidth="960" MinHeight="540" Icon="Assets/Icon/Icon-1024.ico" Background="White" WindowState="Maximized">
 
     <Window.Resources>
-        <Storyboard x:Key="OpenMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
-                <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="280"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-        
-        <Storyboard x:Key="CloseMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
-                <EasingDoubleKeyFrame KeyTime="0" Value="280"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="40"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
+        <ResourceDictionary>
+            <Storyboard x:Key="OpenMenu">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="280"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
+            <Storyboard x:Key="CloseMenu">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="280"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="40"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ResourceDictionary>
     </Window.Resources>
 
     <Window.Triggers>
@@ -42,7 +44,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" HorizontalAlignment="Left" Width="40">
+            <Grid x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" HorizontalAlignment="Left" Width="280">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="40"/>
@@ -60,36 +62,36 @@
                 <Button x:Name="ButtonExpand" Style="{StaticResource NavigationbarButton}" Click="ButtonExpand_Click" TabIndex="0" Margin="5,5,0,0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <materialDesign:PackIcon Kind="Menu" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
                 </Button>
-                
+
                 <Button x:Name="ButtonCollaps" Visibility="Collapsed" Style="{StaticResource NavigationbarButton}" Click="ButtonCloseMenu_Click" TabIndex="0" Margin="5,5,0,0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <materialDesign:PackIcon Kind="MenuLeftOutline" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
-                </Button> 
+                </Button>
 
                 <Button x:Name="ButtonMyDay" Style="{StaticResource NavigationbarButton}" Click="ButtonMyDay_Click" Grid.Row="1">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="WbSunny" Style="{StaticResource NavigationbarIcon}"/>
-                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="My Day"/>
+                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=MyDay}"/>
                     </StackPanel>
                 </Button>
 
                 <Button x:Name="ButtonAllItems" Style="{StaticResource NavigationbarButton}" Click="ButtonToDoList_Click" TabIndex="0" Margin="0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" Grid.Row="2">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="ClipboardList" Style="{StaticResource NavigationbarIcon}"/>
-                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="All Tasks"/>
+                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=AllItems}"/>
                     </StackPanel>
                 </Button>
 
                 <Button x:Name="ButtonReminder" Style="{StaticResource NavigationbarButton}" Click="ButtonDueDateFilter_Click" Grid.Row="3" TabIndex="0" Margin="0">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="Bell" Style="{StaticResource NavigationbarIcon}"/>
-                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="Reminder"/>
+                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Reminder}"/>
                     </StackPanel>
                 </Button>
 
                 <Button x:Name="ButtonStarredFilter" Style="{StaticResource NavigationbarButton}" Click="ButtonStarredFilter_Click" Grid.Row="4" TabIndex="0" Margin="0">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="Star" Style="{StaticResource NavigationbarIcon}"/>
-                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="Starred"/>
+                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Starred}"/>
                     </StackPanel>
                 </Button>
                 <!--#endregion-->

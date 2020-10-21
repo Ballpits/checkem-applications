@@ -15,14 +15,13 @@ using System.Windows.Shapes;
 
 namespace ProjectSC.Views.Calendar
 {
-    /// <summary>
-    /// CalendarDay_View.xaml 的互動邏輯
-    /// </summary>
     public partial class CalendarDay_View : UserControl
     {
         public CalendarDay_View()
         {
             InitializeComponent();
         }
+
+        public int Date { get; set; }
     }
 }

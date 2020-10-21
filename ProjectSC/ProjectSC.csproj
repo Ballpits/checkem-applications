@@ -221,6 +221,14 @@
     <Compile Include="Models\Object\Notification\Notifications.cs" />
     <Compile Include="Properties\Settings.cs" />
     <Compile Include="ViewModels\Notification\NotificationController.cs" />
+    <Page Include="Assets\LanguageResourceDictionary\Language-ch-tr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Language-en-us.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Assets\StyleResourceDictionary\ColorConverterDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -24,5 +24,33 @@ namespace ProjectSC.Views.Settings
         {
             InitializeComponent();
         }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ChangeLng.IsChecked == true)
+            {
+                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
+                {
+                    Source = new Uri("Assets/LanguageResourceDictionary/Language-en-us.xaml", UriKind.RelativeOrAbsolute)
+                });
+
+                Application.Current.Resources.MergedDictionaries.Remove(new ResourceDictionary()
+                {
+                    Source = new Uri("Assets/LanguageResourceDictionary/Language-ch-tr.xaml", UriKind.RelativeOrAbsolute)
+                });
+            }
+            else
+            {
+                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
+                {
+                    Source = new Uri("Assets/LanguageResourceDictionary/Language-ch-tr.xaml", UriKind.RelativeOrAbsolute)
+                });
+
+                Application.Current.Resources.MergedDictionaries.Remove(new ResourceDictionary()
+                {
+                    Source = new Uri("Assets/LanguageResourceDictionary/Language-en-us.xaml", UriKind.RelativeOrAbsolute)
+                });
+            }
+        }
     }
 }

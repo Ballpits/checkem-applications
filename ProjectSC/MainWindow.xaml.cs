@@ -80,21 +80,21 @@ namespace ProjectSC
 
         private void ButtonMyDay_Click(object sender, RoutedEventArgs e)
         {
-
+            ChangeFilter(0);
         }
 
         private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
         {
-            ChangeFilter(0);
+            ChangeFilter(1);
         }
         private void ButtonDueDateFilter_Click(object sender, RoutedEventArgs e)
         {
-            ChangeFilter(1);
+            ChangeFilter(2);
         }
 
         private void ButtonStarredFilter_Click(object sender, RoutedEventArgs e)
         {
-            ChangeFilter(2);
+            ChangeFilter(3);
         }
 
         private void ButtonSettings_Click(object sender, RoutedEventArgs e)
@@ -116,7 +116,7 @@ namespace ProjectSC
         private void MoveNavbarCursor(int index)
         {
             NavbarCursorIndex = index;
-            Grid.SetRow(NavbarCursor, index + 2);
+            Grid.SetRow(NavbarCursor, index + 1);
         }
 
         private void ButtonAddNewList_Click(object sender, RoutedEventArgs e)

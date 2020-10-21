@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:ProjectSC.Views.Calendar"
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920">
+    
     <Grid x:Name="DateGrid" Loaded="DateGrid_Loaded">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -24,5 +25,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+        
+        
     </Grid>
 </UserControl>
