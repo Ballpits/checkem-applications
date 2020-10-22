@@ -44,7 +44,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" HorizontalAlignment="Left" Width="280">
+            <Grid x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" HorizontalAlignment="Left" Width="40">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="40"/>
@@ -56,7 +56,7 @@
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
 
-                <Grid x:Name="NavbarCursor" Background="#4CFFFFFF" Margin="0" Grid.Row="2"/>
+                <Grid x:Name="NavbarCursor" Background="#4CFFFFFF" Margin="0" Grid.Row="1"/>
 
                 <!--#region Navbar button-->
                 <Button x:Name="ButtonExpand" Style="{StaticResource NavigationbarButton}" Click="ButtonExpand_Click" TabIndex="0" Margin="5,5,0,0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -70,28 +70,28 @@
                 <Button x:Name="ButtonMyDay" Style="{StaticResource NavigationbarButton}" Click="ButtonMyDay_Click" Grid.Row="1">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="WbSunny" Style="{StaticResource NavigationbarIcon}"/>
-                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=MyDay}"/>
+                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Nav_MyDay}"/>
                     </StackPanel>
                 </Button>
 
                 <Button x:Name="ButtonAllItems" Style="{StaticResource NavigationbarButton}" Click="ButtonToDoList_Click" TabIndex="0" Margin="0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" Grid.Row="2">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="ClipboardList" Style="{StaticResource NavigationbarIcon}"/>
-                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=AllItems}"/>
+                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Nav_AllItems}"/>
                     </StackPanel>
                 </Button>
 
                 <Button x:Name="ButtonReminder" Style="{StaticResource NavigationbarButton}" Click="ButtonDueDateFilter_Click" Grid.Row="3" TabIndex="0" Margin="0">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="Bell" Style="{StaticResource NavigationbarIcon}"/>
-                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Reminder}"/>
+                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Nav_Reminder}"/>
                     </StackPanel>
                 </Button>
 
                 <Button x:Name="ButtonStarredFilter" Style="{StaticResource NavigationbarButton}" Click="ButtonStarredFilter_Click" Grid.Row="4" TabIndex="0" Margin="0">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="Star" Style="{StaticResource NavigationbarIcon}"/>
-                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Starred}"/>
+                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Nav_Starred}"/>
                     </StackPanel>
                 </Button>
                 <!--#endregion-->

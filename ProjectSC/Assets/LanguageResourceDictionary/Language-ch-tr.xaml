@@ -4,8 +4,39 @@
 
     <system:String x:Key="LanguageName">en-us</system:String>
 
-    <system:String x:Key="MyDay">我的一天</system:String>
-    <system:String x:Key="AllItems">所有事項</system:String>
-    <system:String x:Key="Reminder">提醒</system:String>
-    <system:String x:Key="Starred">星號</system:String>
+    <!--Mainwindow-->
+    <system:String x:Key="Nav_MyDay">我的一天</system:String>
+    <system:String x:Key="Nav_AllItems">所有事項</system:String>
+    <system:String x:Key="Nav_Reminder">已開提醒</system:String>
+    <system:String x:Key="Nav_Starred">已標星號</system:String>
+
+    <system:String x:Key="Task">個事項</system:String>
+    <system:String x:Key="Tasks">個事項</system:String>
+
+    <!--Tag-->
+    <system:String x:Key="CreateTag">創造新標籤</system:String>
+
+    <!--Sort-->
+    <system:String x:Key="Sort">排序</system:String>
+    <system:String x:Key="SortBy">排序方法</system:String>
+    <system:String x:Key="Sort_Starred">星號優先</system:String>
+    <system:String x:Key="Sort_DueDate">截止日期</system:String>
+    <system:String x:Key="Sort_AlphabeticalAscending">字母升冪</system:String>
+    <system:String x:Key="Sort_AlphabeticalDescending">字母降冪</system:String>
+    <system:String x:Key="Sort_CreationDate">創建日期</system:String>
+
+    <!--Details panel-->
+    <system:String x:Key="Dp_Title">標題</system:String>
+    <system:String x:Key="Dp_Reminder">提醒</system:String>
+    <system:String x:Key="Dp_Basic">基本</system:String>
+    <system:String x:Key="Dp_Advance">進階</system:String>
+    <system:String x:Key="Dp_None">無</system:String>
+    <system:String x:Key="Dp_DueDate">截止日期</system:String>
+    <system:String x:Key="Dp_DueTime">截止時間</system:String>
+    <system:String x:Key="Dp_BeginDate">開始日期</system:String>
+    <system:String x:Key="Dp_BeginTime">開始時間</system:String>
+    <system:String x:Key="Dp_EndDate">結束日期</system:String>
+    <system:String x:Key="Dp_EndTime">結束時間</system:String>
+    <system:String x:Key="Dp_Description">細節描述</system:String>
+
 </ResourceDictionary>

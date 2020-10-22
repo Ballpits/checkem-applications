@@ -9,7 +9,7 @@
              d:DesignHeight="45" d:DesignWidth="940" Height="Auto">
 
     <Grid Visibility="Visible">
-        <Button Style="{StaticResource TagButton}" Content="Creat Tag" Click="ButtonCreateTag_Click" Width="Auto" Margin="0"/>
+        <Button Style="{StaticResource TagButton}" Content="{DynamicResource ResourceKey=CreateTag}" Click="ButtonCreateTag_Click" Width="Auto" Margin="0"/>
 
         <ScrollViewer Margin="72,0,0,-0.2" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
             <StackPanel x:Name="StpTagList" Margin="0" Orientation="Horizontal"/>

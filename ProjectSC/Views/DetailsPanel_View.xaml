@@ -39,24 +39,24 @@
                             </materialDesign:PopupBox>
                         </Grid>
 
-                        <TextBox x:Name="textBoxTitle" Margin="10,10,10,0" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="Title" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}" FontFamily="Arial" Background="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}" SelectionBrush="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}" CaretBrush="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                        <TextBox x:Name="textBoxTitle" Margin="10,10,10,0" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dp_Title}" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}" FontFamily="Arial" Background="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}" SelectionBrush="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}" CaretBrush="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
 
                         <Grid x:Name="ReminderTitleGrid" Margin="10,30" Height="40">
                             <materialDesign:PackIcon Kind="Bell" Foreground="#FFE3F321" Height="Auto" Width="Auto" Margin="5,0,0,5"/>
-                            <TextBlock Text="Reminder" FontSize="16" FontFamily="Arial" Margin="45,10,0,0" HorizontalAlignment="Left"/>
+                            <TextBlock Text="{DynamicResource ResourceKey=Dp_Reminder}" FontSize="16" FontFamily="Arial" Margin="45,10,0,0" HorizontalAlignment="Left"/>
 
                             <StackPanel Orientation="Horizontal" Margin="0,0,1,0" Width="240" HorizontalAlignment="Right">
 
                                 <Button x:Name="ReminderBasicButton" Width="80" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="5 0 0 5" Height="Auto" Padding="0" Click="ReminderBasicButton_Click" BorderThickness="1.5" UseLayoutRounding="True">
-                                    <TextBlock Text="Basic" FontFamily="Arial" Margin="0,0,0,1"/>
+                                    <TextBlock Text="{DynamicResource ResourceKey=Dp_Basic}" FontFamily="Arial" Margin="0,0,0,1"/>
                                 </Button>
 
                                 <Button x:Name="ReminderAdvanceButton" Width="80" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="0" Height="Auto" Padding="0" Click="ReminderAdvanceButton_Click" BorderThickness="0,1.5" UseLayoutRounding="True">
-                                    <TextBlock Text="Advance" FontFamily="Arial" Margin="0,0,0,1"/>
+                                    <TextBlock Text="{DynamicResource ResourceKey=Dp_Advance}" FontFamily="Arial" Margin="0,0,0,1"/>
                                 </Button>
 
                                 <Button x:Name="ReminderNoneButton" Width="80" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="0  5 5 0" Height="Auto" Padding="0" BorderThickness="1.5" Click="ReminderNoneButton_Click" UseLayoutRounding="True">
-                                    <TextBlock Text="None" FontFamily="Arial" Margin="0,0,0,1"/>
+                                    <TextBlock Text="{DynamicResource ResourceKey=Dp_None}" FontFamily="Arial" Margin="0,0,0,1"/>
                                 </Button>
 
                             </StackPanel>
@@ -65,28 +65,28 @@
                         <StackPanel x:Name="StpReminder">
                             <Border x:Name="BasicReminderField" Background="#FFF0F0F0" Margin="10,15,10,0" UseLayoutRounding="True" CornerRadius="5">
                                 <Grid UseLayoutRounding="True">
-                                    <DatePicker x:Name="EndDatePicker_Basic" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Due Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,2" Width="120" FontSize="20" FontFamily="Arial" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
-                                    <materialDesign:TimePicker x:Name="EndTimePicker_Basic" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="Due Time" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                                    <DatePicker x:Name="EndDatePicker_Basic" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dp_DueDate}" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,2" Width="120" FontSize="20" FontFamily="Arial" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                                    <materialDesign:TimePicker x:Name="EndTimePicker_Basic" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dp_DueTime}" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
                                 </Grid>
                             </Border>
 
                             <StackPanel x:Name="AdvanceRemidnerField" UseLayoutRounding="True">
                                 <Border Background="#FFF0F0F0" Margin="10,5,10,0" UseLayoutRounding="True" CornerRadius="5 5 0 0">
                                     <Grid>
-                                        <DatePicker x:Name="BeginDatePicker_Advance" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Begin Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="True" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
-                                        <materialDesign:TimePicker x:Name="BeginTimePicker_Advance" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="Begin Time" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                                        <DatePicker x:Name="BeginDatePicker_Advance" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dp_BeginDate}" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="True" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                                        <materialDesign:TimePicker x:Name="BeginTimePicker_Advance" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dp_BeginTime}" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
                                     </Grid>
                                 </Border>
                                 <Border Background="#FFF0F0F0" Margin="10,0" UseLayoutRounding="True" CornerRadius="0 0 5 5">
                                     <Grid>
-                                        <DatePicker x:Name="EndDatePicker_Advance" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="End Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="False" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
-                                        <materialDesign:TimePicker x:Name="EndTimePicker_Advance" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="End Time" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                                        <DatePicker x:Name="EndDatePicker_Advance" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dp_EndDate}" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="False" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                                        <materialDesign:TimePicker x:Name="EndTimePicker_Advance" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dp_EndTime}" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
                                     </Grid>
                                 </Border>
                             </StackPanel>
                         </StackPanel>
 
-                        <TextBox x:Name="textBoxDescription" Margin="10,30,10,0" TextWrapping="Wrap" MaxLength="500" FontSize="20" materialDesign:HintAssist.Hint="Description" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial" AcceptsReturn="True" AcceptsTab="True" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                        <TextBox x:Name="textBoxDescription" Margin="10,30,10,0" TextWrapping="Wrap" MaxLength="500" FontSize="20" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dp_Description}" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" FontFamily="Arial" AcceptsReturn="True" AcceptsTab="True" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
                     </StackPanel>
                 </ScrollViewer>
 

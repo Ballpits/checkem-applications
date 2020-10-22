@@ -138,7 +138,7 @@ namespace ProjectSC.Views
 
                     LoadList(Inventory);
 
-                    ToDoListTitleTextBlock.Text = "All Items";
+                    ToDoListTitleTextBlock.Text = this.FindResource("Nav_AllItems") as string;
 
                     counter = Inventory.Count;
 
@@ -158,7 +158,7 @@ namespace ProjectSC.Views
                             counter++;
                         }
                     }
-                    ToDoListTitleTextBlock.Text = "Reminder";
+                    ToDoListTitleTextBlock.Text = this.FindResource("Nav_Reminder") as string;
 
                     break;
 
@@ -176,7 +176,7 @@ namespace ProjectSC.Views
                         }
                     }
 
-                    ToDoListTitleTextBlock.Text = "Starred";
+                    ToDoListTitleTextBlock.Text = this.FindResource("Nav_Starred") as string;
 
                     break;
 
@@ -190,10 +190,10 @@ namespace ProjectSC.Views
                     ToDoListItemCounterTextBlock.Text = "";
                     break;
                 case 1:
-                    ToDoListItemCounterTextBlock.Text = "1 Task";
+                    ToDoListItemCounterTextBlock.Text = $"1 {this.FindResource("Task")}";
                     break;
                 default:
-                    ToDoListItemCounterTextBlock.Text = $"{counter} Tasks";
+                    ToDoListItemCounterTextBlock.Text = $"{counter} {this.FindResource("Tasks")}";
                     break;
             }
         }
@@ -290,7 +290,7 @@ namespace ProjectSC.Views
                 LoadList(FilteredInventory);
             }
 
-            ChengeSortingIndicatorText("Importance");
+            ChengeSortingIndicatorText(this.FindResource("Sort_Starred") as string);
 
             //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
@@ -312,7 +312,7 @@ namespace ProjectSC.Views
                 LoadList(FilteredInventory);
             }
 
-            ChengeSortingIndicatorText("Due Date");
+            ChengeSortingIndicatorText(this.FindResource("Sort_DueDate") as string);
 
             //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
@@ -332,7 +332,7 @@ namespace ProjectSC.Views
                 LoadList(FilteredInventory);
             }
 
-            ChengeSortingIndicatorText("Alphabetical Ascending");
+            ChengeSortingIndicatorText(this.FindResource("Sort_AlphabeticalAscending") as string);
 
             //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
@@ -354,7 +354,7 @@ namespace ProjectSC.Views
                 LoadList(FilteredInventory);
             }
 
-            ChengeSortingIndicatorText("Alphabetical Descending");
+            ChengeSortingIndicatorText(this.FindResource("Sort_AlphabeticalDescending") as string);
 
             //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }
@@ -374,7 +374,7 @@ namespace ProjectSC.Views
                 LoadList(FilteredInventory);
             }
 
-            ChengeSortingIndicatorText("Creation Date");
+            ChengeSortingIndicatorText(this.FindResource("Sort_CreationDate") as string);
 
             //ListTesterTB.Text = ListViewer.ShowList(Inventory);
         }

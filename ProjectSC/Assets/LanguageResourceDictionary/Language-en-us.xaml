@@ -2,10 +2,40 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="LanguageName">en-us</system:String>
+    <system:String x:Key="LanguageName">English-US</system:String>
 
-    <system:String x:Key="MyDay">My Day</system:String>
-    <system:String x:Key="AllItems">All Tasks</system:String>
-    <system:String x:Key="Reminder">Reminder</system:String>
-    <system:String x:Key="Starred">Starred</system:String>
+    <!--Mainwindow-->
+    <system:String x:Key="Nav_MyDay">My Day</system:String>
+    <system:String x:Key="Nav_AllItems">All Tasks</system:String>
+    <system:String x:Key="Nav_Reminder">Reminder</system:String>
+    <system:String x:Key="Nav_Starred">Starred</system:String>
+
+    <system:String x:Key="Task">Task</system:String>
+    <system:String x:Key="Tasks">Tasks</system:String>
+
+    <!--Tag-->
+    <system:String x:Key="CreateTag">CreateTag</system:String>
+    
+    <!--Sort-->
+    <system:String x:Key="Sort">Sort</system:String>
+    <system:String x:Key="SortBy">Sort by</system:String>
+    <system:String x:Key="Sort_Starred">Starred</system:String>
+    <system:String x:Key="Sort_DueDate">Due date</system:String>
+    <system:String x:Key="Sort_AlphabeticalAscending">Alphabetical ascending</system:String>
+    <system:String x:Key="Sort_AlphabeticalDescending">Alphabetical descending</system:String>
+    <system:String x:Key="Sort_CreationDate">Creation date</system:String>
+    
+    <!--Details panel-->
+    <system:String x:Key="Dp_Title">Title</system:String>
+    <system:String x:Key="Dp_Reminder">Reminder</system:String>
+    <system:String x:Key="Dp_Basic">Basic</system:String>
+    <system:String x:Key="Dp_Advance">Advance</system:String>
+    <system:String x:Key="Dp_None">None</system:String>
+    <system:String x:Key="Dp_DueDate">Due date</system:String>
+    <system:String x:Key="Dp_DueTime">Due time</system:String>
+    <system:String x:Key="Dp_BeginDate">Begin date</system:String>
+    <system:String x:Key="Dp_BeginTime">Begin time</system:String>
+    <system:String x:Key="Dp_EndDate">End date</system:String>
+    <system:String x:Key="Dp_EndTime">End time</system:String>
+    <system:String x:Key="Dp_Description">Description</system:String>
 </ResourceDictionary>

@@ -24,7 +24,6 @@
                 <ResourceDictionary Source="Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-
             <!--#region Checkem custom styles-->
 
             <!--Checkem Scroll Bar Focus Visual-->
