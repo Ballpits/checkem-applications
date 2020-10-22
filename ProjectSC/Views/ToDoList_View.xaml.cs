@@ -17,8 +17,10 @@ namespace ProjectSC.Views
         {
             InitializeComponent();
 
+#if DEBUG
             //test data
-            //dataAccess.StoreTestData(Inventory);
+            dataAccess.StoreTestData(Inventory);
+#endif
 
             //retrieve data from database
             RetrieveData();
@@ -33,10 +35,16 @@ namespace ProjectSC.Views
             TagList = new TagList_View(this);
             GridTagList.Children.Add(TagList);
 
-            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
+
+#if DEBUG
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+
+            ButtonToolbox.Visibility = Visibility.Visible;
+            ListViewerGrid.Visibility = Visibility.Visible;
+#endif
         }
 
-        #region Variables
+#region Variables
         private DataAccess_Json dataAccess = new DataAccess_Json();
 
         public List<ToDoItem> Inventory = new List<ToDoItem>();
@@ -49,7 +57,7 @@ namespace ProjectSC.Views
 
         private int filterMode = 0;
         private int counter = 0;
-        #endregion
+#endregion
 
         private void RetrieveData()
         {
@@ -69,8 +77,10 @@ namespace ProjectSC.Views
         public void AddItemBar()
         {
             int id = Inventory.Count - 1;
-            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
 
+#if DEBUG
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+#endif
             AddItem(Inventory[Inventory.FindIndex(x => x.Id == id)]);
         }
 
@@ -81,7 +91,9 @@ namespace ProjectSC.Views
             counter--;
             ToDoListItemCounterTextBlock.Text = $"{counter} Items";
 
-            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
+#if DEBUG
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+#endif
         }
 
         private void AddItemButton_Click(object sender, RoutedEventArgs e)
@@ -93,7 +105,7 @@ namespace ProjectSC.Views
         }
 
 
-        #region Item
+#region Item
         private void AddItem(ToDoItem todoItem)
         {
             ItemBar_View itemBar = new ItemBar_View(this)
@@ -111,10 +123,10 @@ namespace ProjectSC.Views
 
             stpMain.Children.Add(itemBar);
         }
-        #endregion
+#endregion
 
 
-        #region Filter
+#region Filter
         private void ListFilter(int mode)
         {
             filterMode = mode;
@@ -204,10 +216,10 @@ namespace ProjectSC.Views
 
             CloseDetailsPanel();
         }
-        #endregion
+#endregion
 
 
-        #region Search
+#region Search
         public void SearchItems(string searchString)
         {
             stpMain.Children.Clear();
@@ -271,10 +283,10 @@ namespace ProjectSC.Views
 
             ListFilter(filterMode);
         }
-        #endregion
+#endregion
 
 
-        #region Sort
+#region Sort
         private void SortButton_Importance_Click(object sender, RoutedEventArgs e)
         {
             if (filterMode == 0)
@@ -292,7 +304,9 @@ namespace ProjectSC.Views
 
             ChengeSortingIndicatorText(this.FindResource("Sort_Starred") as string);
 
-            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
+#if DEBUG
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+#endif
         }
 
         private void SortButton_DueDate_Click(object sender, RoutedEventArgs e)
@@ -314,7 +328,9 @@ namespace ProjectSC.Views
 
             ChengeSortingIndicatorText(this.FindResource("Sort_DueDate") as string);
 
-            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
+#if DEBUG
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+#endif
         }
 
         private void SortButton_AlphabeticalAscending_Click(object sender, RoutedEventArgs e)
@@ -334,7 +350,9 @@ namespace ProjectSC.Views
 
             ChengeSortingIndicatorText(this.FindResource("Sort_AlphabeticalAscending") as string);
 
-            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
+#if DEBUG
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+#endif
         }
 
         private void SortButton_AlphabeticalDescending_Click(object sender, RoutedEventArgs e)
@@ -356,7 +374,9 @@ namespace ProjectSC.Views
 
             ChengeSortingIndicatorText(this.FindResource("Sort_AlphabeticalDescending") as string);
 
-            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
+#if DEBUG
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+#endif
         }
 
         private void SortButton_CreationDate_Click(object sender, RoutedEventArgs e)
@@ -376,12 +396,14 @@ namespace ProjectSC.Views
 
             ChengeSortingIndicatorText(this.FindResource("Sort_CreationDate") as string);
 
-            //ListTesterTB.Text = ListViewer.ShowList(Inventory);
+#if DEBUG
+            ListTesterTB.Text = ListViewer.ShowList(Inventory);
+#endif
         }
-        #endregion
+#endregion
 
 
-        #region Details panel
+#region Details panel
         public void OpenDetailsPanel()
         {
             DetailsPanel_View detailsPanel = new DetailsPanel_View(this)
@@ -441,10 +463,10 @@ namespace ProjectSC.Views
             DataGrid.Children.Add(SnackbarController.OpenSnackBar(msg));
             IsDetailsPanelOpened = false;
         }
-        #endregion
+#endregion
 
 
-        #region Tag creation panel
+#region Tag creation panel
         public void OpenTagCreationPanel()
         {
             TagCreationPanel_View tagCreationPanel = new TagCreationPanel_View(this, TagList);
@@ -462,10 +484,10 @@ namespace ProjectSC.Views
                 IsTagCreationPanelOpened = false;
             }
         }
-        #endregion
+#endregion
 
 
-        #region List tester button events
+#region List tester button events
         private void ListViewerButton_Click(object sender, RoutedEventArgs e)
         {
             if (ListViewerGrid.Visibility == Visibility.Collapsed)
@@ -491,7 +513,7 @@ namespace ProjectSC.Views
             ListTesterTB.Background = Brushes.Black;
             ListTesterTB.Foreground = Brushes.White;
         }
-        #endregion
+#endregion
 
         private void ButtonClearSort_Click(object sender, RoutedEventArgs e)
         {

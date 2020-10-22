@@ -52,5 +52,12 @@ namespace ProjectSC.Views.Settings
                 });
             }
         }
+
+        private void Language_Selected(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+
+            string language = button.Name;
+        }
     }
 }

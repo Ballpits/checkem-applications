@@ -38,4 +38,27 @@
     <system:String x:Key="Dp_EndDate">End date</system:String>
     <system:String x:Key="Dp_EndTime">End time</system:String>
     <system:String x:Key="Dp_Description">Description</system:String>
+    
+    <!--#region Languages-->
+    <system:String x:Key="Danish">Danish</system:String>
+    <system:String x:Key="German">German</system:String>
+    <system:String x:Key="English-US">English (US)</system:String>
+    <system:String x:Key="English-UK">English (UK)</system:String>
+    <system:String x:Key="Spanish">Spanish</system:String>
+    <system:String x:Key="French">French</system:String>
+    <system:String x:Key="Italian">Italian</system:String>
+    <system:String x:Key="Dutch">Dutch</system:String>
+    <system:String x:Key="Norwegain-Bokmal">Norwegain Bokmål</system:String>
+    <system:String x:Key="Polish">Polish</system:String>
+    <system:String x:Key="Portuguese">Portuguese</system:String>
+    <system:String x:Key="Finnish">Finnish</system:String>
+    <system:String x:Key="Swedish">Swedish</system:String>
+    <system:String x:Key="Turkish">Turkish</system:String>
+    <system:String x:Key="Czech">Czech</system:String>
+    <system:String x:Key="Russian">Russian</system:String>
+    <system:String x:Key="Chinese-Traditional">Chinese (Traditional)</system:String>
+    <system:String x:Key="Chinese-Simplified">Chinese (Simplified)</system:String>
+    <system:String x:Key="Japanese">Japanese</system:String>
+    <system:String x:Key="Korean">Korean</system:String>
+    <!--#endregion-->
 </ResourceDictionary>

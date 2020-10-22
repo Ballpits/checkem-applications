@@ -41,9 +41,9 @@
 
 
 
-                <!--<Button Visibility="Visible" Margin="169,10,741,10" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="{x:Null}" Click="ListViewerButton_Click" Padding="15,5" Grid.IsSharedSizeScope="True">
+                <Button x:Name="ButtonToolbox" Visibility="Hidden" Margin="169,10,741,10" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="{x:Null}" Click="ListViewerButton_Click" Padding="15,5" Grid.IsSharedSizeScope="True">
                     <materialDesign:PackIcon Kind="Toolbox" Height="20" Width="20"/>
-                </Button>-->
+                </Button>
             </Grid>
 
             <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=GrayMainColor,Converter={StaticResource ColorToBrushConverter}}" Margin="0,50,0,0">

@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="LanguageName">en-us</system:String>
+    <system:String x:Key="LanguageName">中文 (繁體中文)</system:String>
 
     <!--Mainwindow-->
     <system:String x:Key="Nav_MyDay">我的一天</system:String>
@@ -39,4 +39,26 @@
     <system:String x:Key="Dp_EndTime">結束時間</system:String>
     <system:String x:Key="Dp_Description">細節描述</system:String>
 
+    <!--#region Languages-->
+    <system:String x:Key="Danish">丹麥文</system:String>
+    <system:String x:Key="German">德文</system:String>
+    <system:String x:Key="English-US">英文 (美式英文)</system:String>
+    <system:String x:Key="English-UK">英文 (英式英文)</system:String>
+    <system:String x:Key="Spanish">西班牙文</system:String>
+    <system:String x:Key="French">法文</system:String>
+    <system:String x:Key="Italian">義大利文</system:String>
+    <system:String x:Key="Dutch">尼德蘭文</system:String>
+    <system:String x:Key="Norwegain-Bokmal">巴克摩挪威文</system:String>
+    <system:String x:Key="Polish">波蘭文</system:String>
+    <system:String x:Key="Portuguese">葡萄牙文</system:String>
+    <system:String x:Key="Finnish">芬蘭文</system:String>
+    <system:String x:Key="Swedish">瑞典文</system:String>
+    <system:String x:Key="Turkish">土耳其文</system:String>
+    <system:String x:Key="Czech">捷克文</system:String>
+    <system:String x:Key="Russian">俄文</system:String>
+    <system:String x:Key="Chinese-Traditional">中文 (繁體中文)</system:String>
+    <system:String x:Key="Chinese-Simplified">中文 (簡體中文)</system:String>
+    <system:String x:Key="Japanese">日文</system:String>
+    <system:String x:Key="Korean">韓文</system:String>
+    <!--#endregion-->
 </ResourceDictionary>
