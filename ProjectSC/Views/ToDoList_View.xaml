@@ -164,7 +164,7 @@
             </Grid>
 
 
-            <Grid x:Name="ListViewerGrid" Visibility="Collapsed" Margin="0" VerticalAlignment="Bottom">
+            <Grid x:Name="ListViewerGrid" Visibility="Visible" Margin="0" VerticalAlignment="Bottom">
 
                 <ScrollViewer Visibility="Visible" Margin="0,0,0,45" Height="150">
                     <TextBlock x:Name="ListTesterTB" Background="Black" Foreground="White"/>
@@ -190,6 +190,8 @@
                             </RadialGradientBrush>
                         </Button.Background>
                     </Button>
+
+                    <Button Content="Emergency Reset" Style="{StaticResource CheckemFlatButton}" Background="Red" Foreground="White" Margin="50,0,0,0" Click="EmergencyResetButton_Click"/>
                 </StackPanel>
             </Grid>
 

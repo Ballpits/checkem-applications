@@ -205,7 +205,7 @@ namespace ProjectSC.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        [global::System.Configuration.DefaultSettingValueAttribute("WhiteSmoke")]
         public global::System.Drawing.Color GrayMainColor {
             get {
                 return ((global::System.Drawing.Color)(this["GrayMainColor"]));
@@ -224,6 +224,30 @@ namespace ProjectSC.Properties {
             }
             set {
                 this["ItembarColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Lng_English_US")]
+        public string CurrentLanguage {
+            get {
+                return ((string)(this["CurrentLanguage"]));
+            }
+            set {
+                this["CurrentLanguage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Lng_Chinese_Traditional")]
+        public string PreviousLanguage {
+            get {
+                return ((string)(this["PreviousLanguage"]));
+            }
+            set {
+                this["PreviousLanguage"] = value;
             }
         }
     }

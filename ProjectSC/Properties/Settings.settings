@@ -48,10 +48,16 @@
       <Value Profile="(Default)">76, 255, 255, 255</Value>
     </Setting>
     <Setting Name="GrayMainColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">White</Value>
+      <Value Profile="(Default)">WhiteSmoke</Value>
     </Setting>
     <Setting Name="ItembarColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="CurrentLanguage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Lng_English_US</Value>
+    </Setting>
+    <Setting Name="PreviousLanguage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Lng_Chinese_Traditional</Value>
     </Setting>
   </Settings>
 </SettingsFile>

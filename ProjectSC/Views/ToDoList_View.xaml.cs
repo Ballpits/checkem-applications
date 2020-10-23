@@ -542,5 +542,10 @@ namespace ProjectSC.Views
 
             SortIndicatorTextBlock.Text = text;
         }
+
+        private void EmergencyResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.Reset();
+        }
     }
 }

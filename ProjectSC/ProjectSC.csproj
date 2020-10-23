@@ -222,13 +222,85 @@
     <Compile Include="Models\Object\Notification\Notifications.cs" />
     <Compile Include="Properties\Settings.cs" />
     <Compile Include="ViewModels\Notification\NotificationController.cs" />
-    <Page Include="Assets\LanguageResourceDictionary\Language-ch-tr.xaml">
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Chinese_Traditional.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Assets\LanguageResourceDictionary\Language-en-us.xaml">
+    <Page Include="Assets\LanguageResourceDictionary\Lng_English_US.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_English_UK.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Danish.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_German.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Spanish.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_French.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Italian.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Dutch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Norwegain.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Polish.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Portuguese.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Finnish.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Swedish.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Turkish.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Czech.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Russian.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Japanese.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Chinese_Simplified.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\LanguageResourceDictionary\Lng_Korean.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Assets\LanguageResourceDictionary\LanguageDictionaryRef.xaml">
       <SubType>Designer</SubType>

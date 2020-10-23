@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectSC.ViewModels.Language;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -55,9 +56,7 @@ namespace ProjectSC.Views.Settings
 
         private void Language_Selected(object sender, RoutedEventArgs e)
         {
-            Button button = (Button)sender;
-
-            string language = button.Name;
+            LanguageApplyHelper.ApplyLanguage(sender);
         }
     }
 }
