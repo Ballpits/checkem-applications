@@ -7,11 +7,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace ProjectSC.Views.ThemePicker
+namespace ProjectSC.Views.Theme
 {
-    public partial class ThemePicker_View : UserControl
+    public partial class ThemePicker : UserControl
     {
-        public ThemePicker_View()
+        public ThemePicker()
         {
             InitializeComponent();
         }

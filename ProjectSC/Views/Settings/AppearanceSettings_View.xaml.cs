@@ -1,6 +1,5 @@
 ﻿using ProjectSC.ViewModels.AppearanceSettings;
-using ProjectSC.Views.ThemePicker;
-using ProjectSC.Views.ThemePreview;
+using ProjectSC.Views.Theme;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -15,8 +14,8 @@ namespace ProjectSC.Views.Settings
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            ThemePickerScrollbar.Content = new ThemePicker_View();
-            GridPreviewWindow.Children.Add(new ThemePreview_View());
+            ThemePickerScrollbar.Content = new Theme.ThemePicker();
+            GridPreviewWindow.Children.Add(new ThemePreviewWindow());
 
             DarkModeToggle.IsChecked = Properties.Settings.Default.IsDarkModeApplied;
         }

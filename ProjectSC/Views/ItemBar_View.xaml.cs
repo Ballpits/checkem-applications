@@ -1,5 +1,4 @@
-﻿using MaterialDesignColors;
-using MaterialDesignThemes.Wpf;
+﻿using MaterialDesignThemes.Wpf;
 using ProjectSC.Models.DataAccess;
 using ProjectSC.ViewModels.ColorConvert;
 using System;

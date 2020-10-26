@@ -5,32 +5,32 @@
     <system:String x:Key="LanguageName"></system:String>
 
     <!--Mainwindow-->
-    <system:String x:Key="Nav_MyDay"></system:String>
-    <system:String x:Key="Nav_AllItems"></system:String>
-    <system:String x:Key="Nav_Reminder"></system:String>
-    <system:String x:Key="Nav_Starred"></system:String>
+    <system:String x:Key="Nav_MyDay">Min dag</system:String>
+    <system:String x:Key="Nav_AllItems">Alle opgaver</system:String>
+    <system:String x:Key="Nav_Reminder">Påmindelse</system:String>
+    <system:String x:Key="Nav_Starred">Stjerne</system:String>
 
-    <system:String x:Key="Task"></system:String>
-    <system:String x:Key="Tasks"></system:String>
+    <system:String x:Key="Task">Opgave</system:String>
+    <system:String x:Key="Tasks">Opgaver</system:String>
 
     <!--Tag-->
-    <system:String x:Key="CreateTag"></system:String>
+    <system:String x:Key="CreateTag">Skabe etiket</system:String>
 
     <!--Sort-->
-    <system:String x:Key="Sort"></system:String>
-    <system:String x:Key="SortBy"></system:String>
-    <system:String x:Key="Sort_Starred"></system:String>
-    <system:String x:Key="Sort_DueDate"></system:String>
-    <system:String x:Key="Sort_AlphabeticalAscending"></system:String>
-    <system:String x:Key="Sort_AlphabeticalDescending"></system:String>
-    <system:String x:Key="Sort_CreationDate"></system:String>
+    <system:String x:Key="Sort">Sortere</system:String>
+    <system:String x:Key="SortBy">Sortere ved</system:String>
+    <system:String x:Key="Sort_Starred">Stjerne</system:String>
+    <system:String x:Key="Sort_DueDate">Udløbsdato</system:String>
+    <system:String x:Key="Sort_AlphabeticalAscending">Alfabetisk stigende</system:String>
+    <system:String x:Key="Sort_AlphabeticalDescending">Alfabetisk aftagende</system:String>
+    <system:String x:Key="Sort_CreationDate">Skabelse dato</system:String>
 
     <!--Details panel-->
-    <system:String x:Key="Dp_Title"></system:String>
-    <system:String x:Key="Dp_Reminder"></system:String>
-    <system:String x:Key="Dp_Basic"></system:String>
-    <system:String x:Key="Dp_Advance"></system:String>
-    <system:String x:Key="Dp_None"></system:String>
+    <system:String x:Key="Dp_Title">Titel</system:String>
+    <system:String x:Key="Dp_Reminder">Påmindelse</system:String>
+    <system:String x:Key="Dp_Basic">Grundlæggende</system:String>
+    <system:String x:Key="Dp_Advance">Fremskreden</system:String>
+    <system:String x:Key="Dp_None">Ingen</system:String>
     <system:String x:Key="Dp_DueDate"></system:String>
     <system:String x:Key="Dp_DueTime"></system:String>
     <system:String x:Key="Dp_BeginDate"></system:String>

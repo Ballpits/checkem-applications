@@ -16,8 +16,10 @@
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
         <ToggleButton x:Name="ChangeLng" Click="ToggleButton_Click"/>
 
-        <ListBox x:Name="LanguageListBox" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor, Converter={StaticResource ColorToBrushConverter}}">
-            <ListBoxItem x:Name="Lng_Danish" Selected="Language_Selected">
+        <TextBlock x:Name="TextBlock" Text="Selected language: language.xaml" FontFamily="Arial" FontSize="18" VerticalAlignment="Top"/>
+
+        <ListBox x:Name="LanguageListBox" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor, Converter={StaticResource ColorToBrushConverter}}" Margin="0,26,0,0">
+            <ListBoxItem x:Name="Lng_Danish" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/dk.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -27,7 +29,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_German" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_German" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/de.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -57,7 +59,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_Spanish" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_Spanish" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/es.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -67,7 +69,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_French" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_French" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/fr.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -77,7 +79,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_Italian" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_Italian" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/it.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -87,7 +89,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_Dutch" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_Dutch" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/nl.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -97,7 +99,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_Norwegain" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_Norwegain" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/no.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -107,7 +109,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_Polish" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_Polish" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/pl.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -117,7 +119,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_Portuguese" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_Portuguese" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/pt.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -127,7 +129,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_Finnish" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_Finnish" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/fi.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -137,7 +139,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_Swedish" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_Swedish" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/se.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -147,7 +149,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_Turkish" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_Turkish" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/tr.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -157,7 +159,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_Czech" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_Czech" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/cz.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -167,7 +169,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_Russian" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_Russian" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/ru.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -187,7 +189,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_Japanese" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_Japanese" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/jp.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -197,7 +199,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_Korean" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_Korean" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/kr.png" Style="{StaticResource LanguageBoxImages}"/>
 
@@ -207,7 +209,7 @@
                     </StackPanel>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="Lng_Chinese_Simplified" Selected="Language_Selected">
+            <ListBoxItem x:Name="Lng_Chinese_Simplified" Selected="Language_Selected" IsEnabled="False">
                 <StackPanel Style="{StaticResource LanguageBoxStackPanel}">
                     <Image Source="../../Assets/Icon/Flags/cn.png" Style="{StaticResource LanguageBoxImages}"/>
 

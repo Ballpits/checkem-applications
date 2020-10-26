@@ -5,60 +5,60 @@
     <system:String x:Key="LanguageName"></system:String>
 
     <!--Mainwindow-->
-    <system:String x:Key="Nav_MyDay"></system:String>
-    <system:String x:Key="Nav_AllItems"></system:String>
-    <system:String x:Key="Nav_Reminder"></system:String>
-    <system:String x:Key="Nav_Starred"></system:String>
+    <system:String x:Key="Nav_MyDay">My Day</system:String>
+    <system:String x:Key="Nav_AllItems">All Tasks</system:String>
+    <system:String x:Key="Nav_Reminder">Reminder</system:String>
+    <system:String x:Key="Nav_Starred">Starred</system:String>
 
-    <system:String x:Key="Task"></system:String>
-    <system:String x:Key="Tasks"></system:String>
+    <system:String x:Key="Task">Task</system:String>
+    <system:String x:Key="Tasks">Tasks</system:String>
 
     <!--Tag-->
-    <system:String x:Key="CreateTag"></system:String>
+    <system:String x:Key="CreateTag">CreateTag</system:String>
 
     <!--Sort-->
-    <system:String x:Key="Sort"></system:String>
-    <system:String x:Key="SortBy"></system:String>
-    <system:String x:Key="Sort_Starred"></system:String>
-    <system:String x:Key="Sort_DueDate"></system:String>
-    <system:String x:Key="Sort_AlphabeticalAscending"></system:String>
-    <system:String x:Key="Sort_AlphabeticalDescending"></system:String>
-    <system:String x:Key="Sort_CreationDate"></system:String>
+    <system:String x:Key="Sort">Sort</system:String>
+    <system:String x:Key="SortBy">Sort by</system:String>
+    <system:String x:Key="Sort_Starred">Starred</system:String>
+    <system:String x:Key="Sort_DueDate">Due date</system:String>
+    <system:String x:Key="Sort_AlphabeticalAscending">Alphabetical ascending</system:String>
+    <system:String x:Key="Sort_AlphabeticalDescending">Alphabetical descending</system:String>
+    <system:String x:Key="Sort_CreationDate">Creation date</system:String>
 
     <!--Details panel-->
-    <system:String x:Key="Dp_Title"></system:String>
-    <system:String x:Key="Dp_Reminder"></system:String>
-    <system:String x:Key="Dp_Basic"></system:String>
-    <system:String x:Key="Dp_Advance"></system:String>
-    <system:String x:Key="Dp_None"></system:String>
-    <system:String x:Key="Dp_DueDate"></system:String>
-    <system:String x:Key="Dp_DueTime"></system:String>
-    <system:String x:Key="Dp_BeginDate"></system:String>
-    <system:String x:Key="Dp_BeginTime"></system:String>
-    <system:String x:Key="Dp_EndDate"></system:String>
-    <system:String x:Key="Dp_EndTime"></system:String>
-    <system:String x:Key="Dp_Description"></system:String>
+    <system:String x:Key="Dp_Title">Title</system:String>
+    <system:String x:Key="Dp_Reminder">Reminder</system:String>
+    <system:String x:Key="Dp_Basic">Basic</system:String>
+    <system:String x:Key="Dp_Advance">Advance</system:String>
+    <system:String x:Key="Dp_None">None</system:String>
+    <system:String x:Key="Dp_DueDate">Due date</system:String>
+    <system:String x:Key="Dp_DueTime">Due time</system:String>
+    <system:String x:Key="Dp_BeginDate">Begin date</system:String>
+    <system:String x:Key="Dp_BeginTime">Begin time</system:String>
+    <system:String x:Key="Dp_EndDate">End date</system:String>
+    <system:String x:Key="Dp_EndTime">End time</system:String>
+    <system:String x:Key="Dp_Description">Description</system:String>
 
     <!--#region Languages-->
-    <system:String x:Key="Danish"></system:String>
-    <system:String x:Key="German"></system:String>
-    <system:String x:Key="English-US"></system:String>
-    <system:String x:Key="English-UK"></system:String>
-    <system:String x:Key="Spanish"></system:String>
-    <system:String x:Key="French"></system:String>
-    <system:String x:Key="Italian"></system:String>
-    <system:String x:Key="Dutch"></system:String>
-    <system:String x:Key="Norwegain-Bokmal"></system:String>
-    <system:String x:Key="Polish"></system:String>
-    <system:String x:Key="Portuguese"></system:String>
-    <system:String x:Key="Finnish"></system:String>
-    <system:String x:Key="Swedish"></system:String>
-    <system:String x:Key="Turkish"></system:String>
-    <system:String x:Key="Czech"></system:String>
-    <system:String x:Key="Russian"></system:String>
-    <system:String x:Key="Chinese-Simplified"></system:String>
-    <system:String x:Key="Chinese-Traditional"></system:String>
-    <system:String x:Key="Japanese"></system:String>
-    <system:String x:Key="Korean"></system:String>
+    <system:String x:Key="Danish">Danish</system:String>
+    <system:String x:Key="German">German</system:String>
+    <system:String x:Key="English-US">English (US)</system:String>
+    <system:String x:Key="English-UK">English (UK)</system:String>
+    <system:String x:Key="Spanish">Spanish</system:String>
+    <system:String x:Key="French">French</system:String>
+    <system:String x:Key="Italian">Italian</system:String>
+    <system:String x:Key="Dutch">Dutch</system:String>
+    <system:String x:Key="Norwegain-Bokmal">Norwegain Bokmål</system:String>
+    <system:String x:Key="Polish">Polish</system:String>
+    <system:String x:Key="Portuguese">Portuguese</system:String>
+    <system:String x:Key="Finnish">Finnish</system:String>
+    <system:String x:Key="Swedish">Swedish</system:String>
+    <system:String x:Key="Turkish">Turkish</system:String>
+    <system:String x:Key="Czech">Czech</system:String>
+    <system:String x:Key="Russian">Russian</system:String>
+    <system:String x:Key="Chinese-Traditional">Chinese (Traditional)</system:String>
+    <system:String x:Key="Chinese-Simplified">Chinese (Simplified)</system:String>
+    <system:String x:Key="Japanese">Japanese</system:String>
+    <system:String x:Key="Korean">Korean</system:String>
     <!--#endregion-->
 </ResourceDictionary>

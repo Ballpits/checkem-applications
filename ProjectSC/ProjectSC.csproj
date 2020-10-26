@@ -209,10 +209,10 @@
     <Compile Include="Views\TagPanel\TagCreationPanel_View.xaml.cs">
       <DependentUpon>TagCreationPanel_View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ThemePicker\ThemePicker_View.xaml.cs">
+    <Compile Include="Views\Theme\ThemePicker_View.xaml.cs">
       <DependentUpon>ThemePicker_View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ThemePreview\ThemePreview_View.xaml.cs">
+    <Compile Include="Views\Theme\ThemePreview_View.xaml.cs">
       <DependentUpon>ThemePreview_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ToDoList_View.xaml.cs">
@@ -367,11 +367,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ThemePicker\ThemePicker_View.xaml">
+    <Page Include="Views\Theme\ThemePicker_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ThemePreview\ThemePreview_View.xaml">
+    <Page Include="Views\Theme\ThemePreview_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -667,6 +667,7 @@
     <Resource Include="Assets\Icon\Flags\zm.png" />
     <Resource Include="Assets\Icon\Flags\zw.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.1.2\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.2\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

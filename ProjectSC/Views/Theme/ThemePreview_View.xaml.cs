@@ -13,11 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjectSC.Views.ThemePreview
+namespace ProjectSC.Views.Theme
 {
-    public partial class ThemePreview_View : UserControl
+    public partial class ThemePreviewWindow : UserControl
     {
-        public ThemePreview_View()
+        public ThemePreviewWindow()
         {
             InitializeComponent();
         }
