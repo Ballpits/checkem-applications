@@ -489,14 +489,14 @@ namespace ProjectSC.Views
         #region List tester button events
         private void ListViewerButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ListViewerGrid.Visibility == Visibility.Collapsed)
+            if (ListViewerGrid.Visibility == Visibility.Hidden)
             {
                 ListViewerGrid.Visibility = Visibility.Visible;
                 scrollBar.Margin = new Thickness(0, 75, 0, 200);
             }
             else
             {
-                ListViewerGrid.Visibility = Visibility.Collapsed;
+                ListViewerGrid.Visibility = Visibility.Hidden;
                 scrollBar.Margin = new Thickness(0, 75, 0, 0);
             }
         }

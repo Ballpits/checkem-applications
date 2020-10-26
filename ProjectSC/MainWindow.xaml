@@ -7,7 +7,16 @@
         xmlns:properties="clr-namespace:ProjectSC.Properties"
         xmlns:local="clr-namespace:ProjectSC"
         mc:Ignorable="d"
-        Title="Check'em" Height="540" Width="960" WindowStartupLocation="CenterScreen" MinWidth="960" MinHeight="540" Icon="Assets/Icon/Icon-1024.ico" Background="White" WindowState="Maximized">
+        Title="Check'em"
+        Icon="Assets/Icon/Icon-1024.ico"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Width="960"
+        Height="540"
+        MinWidth="960"
+        MinHeight="540"
+        StateChanged="AppWindow_StateChanged"
+        >
 
     <Window.Resources>
         <ResourceDictionary>
@@ -37,7 +46,11 @@
         </EventTrigger>
     </Window.Triggers>
 
-    <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.5}">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="50"/>
+    </WindowChrome.WindowChrome>
+
+    <materialDesign:TransitioningContent x:Name="TrainsitioningContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.5}" Margin="8">
         <Grid x:Name="MainGrid" Loaded="Grid_Loaded" Margin="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -59,11 +72,11 @@
                 <Grid x:Name="NavbarCursor" Background="#4CFFFFFF" Margin="0" Grid.Row="1"/>
 
                 <!--#region Navbar button-->
-                <Button x:Name="ButtonExpand" Style="{StaticResource NavigationbarButton}" Click="ButtonExpand_Click" TabIndex="0" Margin="5,5,0,0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Button x:Name="ButtonExpand" WindowChrome.IsHitTestVisibleInChrome="True" Style="{StaticResource NavigationbarButton}" Click="ButtonExpand_Click" TabIndex="0" Margin="5,5,0,0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <materialDesign:PackIcon Kind="Menu" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
                 </Button>
 
-                <Button x:Name="ButtonCollaps" Visibility="Collapsed" Style="{StaticResource NavigationbarButton}" Click="ButtonCloseMenu_Click" TabIndex="0" Margin="5,5,0,0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Button x:Name="ButtonCollaps" WindowChrome.IsHitTestVisibleInChrome="True" Visibility="Collapsed" Style="{StaticResource NavigationbarButton}" Click="ButtonCloseMenu_Click" TabIndex="0" Margin="5,5,0,0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <materialDesign:PackIcon Kind="MenuLeftOutline" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
                 </Button>
 

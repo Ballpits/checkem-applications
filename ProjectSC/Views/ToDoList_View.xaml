@@ -18,11 +18,11 @@
         <Grid Name="DataGrid" Style="{StaticResource todoUSCTitlebar}">
             <Grid Margin="0" Height="50" VerticalAlignment="Top">
 
-                <Button FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" HorizontalAlignment="Right" Margin="0,0,20,0" Width="35" Height="35" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#002196F3" BorderBrush="{x:Null}" Padding="0" Click="AddItemButton_Click" ToolTip="Add new task" TabIndex="6">
+                <Button WindowChrome.IsHitTestVisibleInChrome="True" FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" HorizontalAlignment="Right" Margin="0,0,20,0" Width="35" Height="35" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#002196F3" BorderBrush="{x:Null}" Padding="0" Click="AddItemButton_Click" ToolTip="Add new task" TabIndex="6">
                     <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
                 </Button>
 
-                <Border Background="White" CornerRadius="5" HorizontalAlignment="Center" Height="40" Width="400" Margin="200,0" Padding="0" VerticalAlignment="Center">
+                <Border WindowChrome.IsHitTestVisibleInChrome="True" Background="White" CornerRadius="5" HorizontalAlignment="Center" Height="40" Width="400" Margin="200,0" Padding="0" VerticalAlignment="Center">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="20*" />
@@ -41,7 +41,7 @@
 
 
 
-                <Button x:Name="ButtonToolbox" Visibility="Hidden" Margin="169,10,741,10" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="{x:Null}" Click="ListViewerButton_Click" Padding="15,5" Grid.IsSharedSizeScope="True">
+                <Button WindowChrome.IsHitTestVisibleInChrome="True" x:Name="ButtonToolbox" Visibility="Visible" Margin="150,0,0,0" Height="Auto" HorizontalAlignment="Left" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="{x:Null}" Click="ListViewerButton_Click" Padding="15,5" Grid.IsSharedSizeScope="True">
                     <materialDesign:PackIcon Kind="Toolbox" Height="20" Width="20"/>
                 </Button>
             </Grid>

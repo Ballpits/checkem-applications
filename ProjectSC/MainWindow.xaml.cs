@@ -1,4 +1,5 @@
-﻿using ProjectSC.Models.DataAccess;
+﻿using MaterialDesignThemes.Wpf.Transitions;
+using ProjectSC.Models.DataAccess;
 using ProjectSC.ViewModels.AppearanceSettings;
 using ProjectSC.ViewModels.Notification;
 using ProjectSC.Views;
@@ -43,6 +44,18 @@ namespace ProjectSC
 
             GridPrincipal.Children.Add(todoList_View);
             todoList_View.Filter(0);
+        }
+
+        private void AppWindow_StateChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                TrainsitioningContent.Margin = new Thickness(8);
+            }
+            else
+            {
+                TrainsitioningContent.Margin = new Thickness(0);
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -123,6 +136,5 @@ namespace ProjectSC
         {
 
         }
-
     }
 }
