@@ -11,19 +11,21 @@ namespace ProjectSC.Views
 {
     public partial class DetailsPanel_View : UserControl
     {
-        public DetailsPanel_View(ToDoList_View todolist)
+        public DetailsPanel_View(ToDoList_View todolist, TagList_View taglist)
         {
             InitializeComponent();
 
+            tagList = taglist;
             ToDoList = todolist;
         }
 
-        public DetailsPanel_View(ToDoList_View todolist, ItemBar_View itembar)
+        public DetailsPanel_View(ToDoList_View todolist, ItemBar_View itembar, TagList_View taglist)
         {
             InitializeComponent();
 
             ToDoList = todolist;
             itemBar = itembar;
+            tagList = taglist;
         }
 
         #region Properties
@@ -48,14 +50,15 @@ namespace ProjectSC.Views
         public DateTime EndDateTime { get; set; }
 
         public bool IsUsingTag { get; set; }
-        public string TagName { get; set; }
+        public string TagText { get; set; }
+        public int TagId { get; set; }
         #endregion
 
 
         private DataAccess_Json dataAccess = new DataAccess_Json();
-
-        ToDoList_View ToDoList;
-        ItemBar_View itemBar;
+        private ToDoList_View ToDoList;
+        private ItemBar_View itemBar;
+        private TagList_View tagList;
 
         #region Save
         private void Save()
@@ -180,8 +183,56 @@ namespace ProjectSC.Views
                     SetReminderState(0);
                 }
             }
+
+            LoadTagChoice();
+            LoadUsingTag();
         }
 
+        protected void ViewTag_Click(object sender, RoutedEventArgs e)
+        {
+            Button viewTagbtn = sender as Button;
+            dataAccess.Update(Id, tagList.tagInventory[tagList.tagInventory.FindIndex(x => x.Text == (string)viewTagbtn.Content)], ToDoList.Inventory);
+            dataAccess.RetrieveData(ref ToDoList.Inventory);
+            StpSelectTag.Children.Add(new Button()
+            {
+                Style = FindResource("TagButton") as Style,
+                Name = "Tag_" + ToDoList.Inventory[Id].TagText,
+                Content = ToDoList.Inventory[Id].TagText,
+                FontFamily = new System.Windows.Media.FontFamily("Arial"),
+                FontSize = 16
+            });
+        }
+        //Load All The Tag Into PopBox
+        private void LoadTagChoice()
+        {
+            foreach (var tagitem in tagList.tagInventory)
+            {
+                Button tagviewbtn = new Button()
+                {
+                    Content = tagitem.Text,
+                    FontFamily = new System.Windows.Media.FontFamily("Arial"),
+                    FontSize = 16,
+                    Name = "Tag_" + tagitem.Text
+                };
+                tagviewbtn.Click += new RoutedEventHandler(ViewTag_Click);
+                StpTagPopup.Children.Add(tagviewbtn);
+            }
+        }
+        //Load the Tag that use on this ItemBar
+        private void LoadUsingTag()
+        {
+            if (ToDoList.Inventory[Id].IsUsingTag || IsUsingTag)
+            {
+                StpSelectTag.Children.Add(new Button()
+                {
+                    Style = FindResource("TagButton") as Style,
+                    Name = "Tag_" + ToDoList.Inventory[Id].TagText,
+                    Content = ToDoList.Inventory[Id].TagText,
+                    FontFamily = new System.Windows.Media.FontFamily("Arial"),
+                    FontSize = 16
+                });
+            }
+        }
 
 
         #region Button click event

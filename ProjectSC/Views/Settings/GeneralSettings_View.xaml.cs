@@ -26,32 +26,12 @@ namespace ProjectSC.Views.Settings
             InitializeComponent();
         }
 
-        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        private void FilterChanger(object sender, TextChangedEventArgs e)
         {
-            if (ChangeLng.IsChecked == true)
-            {
-                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
-                {
-                    Source = new Uri("Assets/LanguageResourceDictionary/Language-en-us.xaml", UriKind.RelativeOrAbsolute)
-                });
-
-                Application.Current.Resources.MergedDictionaries.Remove(new ResourceDictionary()
-                {
-                    Source = new Uri("Assets/LanguageResourceDictionary/Language-ch-tr.xaml", UriKind.RelativeOrAbsolute)
-                });
-            }
-            else
-            {
-                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
-                {
-                    Source = new Uri("Assets/LanguageResourceDictionary/Language-ch-tr.xaml", UriKind.RelativeOrAbsolute)
-                });
-
-                Application.Current.Resources.MergedDictionaries.Remove(new ResourceDictionary()
-                {
-                    Source = new Uri("Assets/LanguageResourceDictionary/Language-en-us.xaml", UriKind.RelativeOrAbsolute)
-                });
-            }
+            if (int.Parse(TagFilterMethod.Text) > 1)
+                TagFilterMethod.Text = "1";
+            if (int.Parse(TagFilterMethod.Text) < 0)
+                TagFilterMethod.Text = "0";
         }
 
         private void Language_Selected(object sender, RoutedEventArgs e)

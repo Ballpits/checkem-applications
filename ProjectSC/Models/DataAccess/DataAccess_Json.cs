@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ProjectSC.Models.Interface;
+using ProjectSC.Models.Object.Tag;
 using ProjectSC.Models.ToDo;
 using System;
 using System.Collections.Generic;
@@ -217,9 +218,12 @@ namespace ProjectSC.Models.DataAccess
             SaveToJson(inventory);
         }//Update completion
 
-        public void Update(int id, string tagName, List<ToDoItem> inventory)
+        public void Update(int id, TagItem tagItem, List<ToDoItem> inventory)
         {
-
+            inventory[id].TagId = tagItem.Id;
+            inventory[id].TagText = tagItem.Text;
+            inventory[id].IsUsingTag = true;
+            SaveToJson(inventory);
         }//Update tag
         #endregion
     }

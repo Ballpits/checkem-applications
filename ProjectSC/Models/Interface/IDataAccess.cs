@@ -1,4 +1,4 @@
-﻿using ProjectSC.Models.Object.Notification;
+﻿using ProjectSC.Models.Object.Tag;
 using ProjectSC.Models.ToDo;
 using System;
 using System.Collections.Generic;
@@ -49,7 +49,7 @@ namespace ProjectSC.Models.Interface
 
         void UpdateCompletion(int id, bool isCompleted, List<ToDoItem> inventory);
 
-        void Update(int id, string tagName, List<ToDoItem> inventory);
+        void Update(int id, TagItem tagItem, List<ToDoItem> inventory);
         #endregion
     }
 }

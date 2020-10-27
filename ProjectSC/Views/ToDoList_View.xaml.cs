@@ -19,7 +19,7 @@ namespace ProjectSC.Views
 
 #if DEBUG
             //test data
-            dataAccess.StoreTestData(Inventory);
+            //dataAccess.StoreTestData(Inventory);
 #endif
 
             //retrieve data from database
@@ -208,6 +208,42 @@ namespace ProjectSC.Views
                     ToDoListItemCounterTextBlock.Text = $"{counter} {this.FindResource("Tasks")}";
                     break;
             }
+        }
+
+        //private List<ToDoItem> backUp = new List<ToDoItem>(); 
+        private int clickCounter = 0;
+        public string lastFilterStorer;
+        public void TagFilter(string FilterText)
+        {
+            int counter = 0;
+            if (lastFilterStorer != null && lastFilterStorer == FilterText)
+                clickCounter++;
+
+            stpMain.Children.Clear();
+
+            if (clickCounter == 0)
+            {
+                lastFilterStorer = FilterText;
+                foreach (ToDoItem tag in FilteredInventory)
+                    if (tag.TagText == FilterText)
+                    {
+                        //FilteredInventory.Add(tag);
+                        AddItem(tag);
+                        counter++;
+                    }
+            }
+            else
+            {
+                foreach (ToDoItem tag in FilteredInventory)
+                {
+                    //FilteredInventory.Add(tag);
+                    AddItem(tag);
+                    counter++;
+                }
+                clickCounter = 0;
+                lastFilterStorer = null;
+            }
+            ToDoListItemCounterTextBlock.Text = $"{counter} Items";
         }
 
         public void Filter(int mode)
@@ -406,7 +442,7 @@ namespace ProjectSC.Views
         #region Details panel
         public void OpenDetailsPanel()
         {
-            DetailsPanel_View detailsPanel = new DetailsPanel_View(this)
+            DetailsPanel_View detailsPanel = new DetailsPanel_View(this, TagList)
             {
                 IsNew = true
             };
@@ -418,7 +454,7 @@ namespace ProjectSC.Views
 
         public void OpenDetailsPanel(ItemBar_View itemBar)
         {
-            DetailsPanel_View detailsPanel = new DetailsPanel_View(this, itemBar)
+            DetailsPanel_View detailsPanel = new DetailsPanel_View(this, itemBar, TagList)
             {
                 IsNew = false,
 
@@ -439,7 +475,7 @@ namespace ProjectSC.Views
 
 
                 IsUsingTag = itemBar.IsUsingTag,
-                TagName = itemBar.TagName
+                TagText = itemBar.TagName
             };
 
             DataGrid.Children.Add(detailsPanel);

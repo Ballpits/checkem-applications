@@ -26,6 +26,8 @@ namespace ProjectSC.Models.ToDo
 
 
         public bool IsUsingTag { get; set; }
+        public string TagText { get; set; }
+
         public int TagId { get; set; }
 
         public DateTime CreationDateTime { get; set; }

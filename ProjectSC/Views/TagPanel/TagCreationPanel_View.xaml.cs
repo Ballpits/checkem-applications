@@ -1,9 +1,8 @@
-﻿using System.Drawing;
+﻿using ProjectSC.Models.DataAccess;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
+
 
 namespace ProjectSC.Views.TagPanel
 {
@@ -17,10 +16,11 @@ namespace ProjectSC.Views.TagPanel
             TagList = tagList_View;
         }
 
-
+        private TagDataAccess_Json tagDataAccess = new TagDataAccess_Json();
         private ToDoList_View ToDoList;
         private TagList_View TagList;
 
+        private System.Windows.Media.Brush color;
 
         private void DarkGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -37,16 +37,23 @@ namespace ProjectSC.Views.TagPanel
 
         private void ButtonCreate_Click(object sender, RoutedEventArgs e)
         {
+            //Store The Tag Data to TagRecord.json------
+            tagDataAccess.AddNewTag(TagList.tagInventory, TextboxTagName.Text, color);
+
+            tagDataAccess.RetrieveTag(ref TagList.tagInventory);
+            tagDataAccess.ResetId(TagList.tagInventory);
+            //------------------------------------------
+
             #region Create new tag button and add to the view
             Style style = this.FindResource("TagButton") as Style;
 
-            Button TagButton = new Button() { Style = style, Content = TextboxTagName.Text };
+            Button TagButton = new Button() { Style = style, Content = TextboxTagName.Text, Name = "Tag_" + TextboxTagName.Text };
             TagButton.Click += new RoutedEventHandler(this.Tag_Click);
 
             TagList.StpTagList.Children.Add(TagButton);
             #endregion
 
-            
+
 
             //close everything after the work is completed
             ToDoList.CloseTagCreationPanel();
@@ -54,7 +61,8 @@ namespace ProjectSC.Views.TagPanel
 
         private void Tag_Click(object sender, RoutedEventArgs e)
         {
-
+            Button tagbtn = sender as Button;
+            ToDoList.TagFilter(tagbtn.Content.ToString());
         }
 
     }

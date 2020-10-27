@@ -161,10 +161,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\AppearanceDataAccess\AppearanceDataAccess_Json.cs" />
+    <Compile Include="Models\DataAccess\TagDataAccess_Json.cs" />
     <Compile Include="Models\Interface\IAppearanceDataAccess.cs" />
     <Compile Include="Models\Interface\IDataAccess.cs" />
     <Compile Include="Models\DataAccess\DataAccess_Json.cs" />
+    <Compile Include="Models\Interface\ITagDataAccess.cs" />
     <Compile Include="Models\Object\Appearance\Themes.cs" />
+    <Compile Include="Models\Object\Tag\TagItem.cs" />
     <Compile Include="ViewModels\AppearanceSettings\AppearanceSettingHelper.cs" />
     <Compile Include="ViewModels\ColorConvert\ColorToBrushConverter.cs" />
     <Compile Include="ViewModels\ColorConvert\ColorToGradientStopConverter.cs" />
@@ -181,9 +184,6 @@
     </Compile>
     <Compile Include="Views\Calendar\CalendarDay_View.xaml.cs">
       <DependentUpon>CalendarDay_View.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Chrome\CheckemChrome.xaml.cs">
-      <DependentUpon>CheckemChrome.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DetailsPanel_View.xaml.cs">
       <DependentUpon>DetailsPanel_View.xaml</DependentUpon>
@@ -331,10 +331,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Calendar\CalendarDay_View.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Chrome\CheckemChrome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
