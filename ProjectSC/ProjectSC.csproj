@@ -52,7 +52,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>7</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Assets\Icon\Icon-1024.ico</ApplicationIcon>
@@ -181,6 +181,9 @@
     </Compile>
     <Compile Include="Views\Calendar\CalendarDay_View.xaml.cs">
       <DependentUpon>CalendarDay_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Chrome\CheckemChrome.xaml.cs">
+      <DependentUpon>CheckemChrome.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DetailsPanel_View.xaml.cs">
       <DependentUpon>DetailsPanel_View.xaml</DependentUpon>
@@ -328,6 +331,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Calendar\CalendarDay_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Chrome\CheckemChrome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

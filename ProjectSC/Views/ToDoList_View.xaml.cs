@@ -141,58 +141,59 @@ namespace ProjectSC.Views
             switch (mode)
             {
                 case 0://Filter:My day
-
+                    ToDoListTitleTextBlock.Text = this.FindResource("Nav_MyDay") as string;
                     break;
 
                 case 1://Filter:All items
-                    FilteredInventory.Clear();
+                    {
+                        FilteredInventory.Clear();
 
-                    LoadList(Inventory);
+                        LoadList(Inventory);
 
-                    ToDoListTitleTextBlock.Text = this.FindResource("Nav_AllItems") as string;
+                        ToDoListTitleTextBlock.Text = this.FindResource("Nav_AllItems") as string;
 
-                    counter = Inventory.Count;
+                        counter = Inventory.Count;
 
-                    break;
-
+                        break;
+                    }
                 case 2://Filter:Reminder
-                    FilteredInventory.Clear();
-
-                    for (int index = 0; index < Inventory.Count; index++)
                     {
+                        FilteredInventory.Clear();
 
-                        if (Inventory[index].IsReminderOn)
+                        for (int index = 0; index < Inventory.Count; index++)
                         {
-                            FilteredInventory.Add(Inventory[index]);
-                            AddItem(Inventory[index]);
 
-                            counter++;
+                            if (Inventory[index].IsReminderOn)
+                            {
+                                FilteredInventory.Add(Inventory[index]);
+                                AddItem(Inventory[index]);
+
+                                counter++;
+                            }
                         }
+                        ToDoListTitleTextBlock.Text = this.FindResource("Nav_Reminder") as string;
+
+                        break;
                     }
-                    ToDoListTitleTextBlock.Text = this.FindResource("Nav_Reminder") as string;
-
-                    break;
-
                 case 3://Filter:Starred
-                    FilteredInventory.Clear();
-
-                    for (int index = 0; index < Inventory.Count; index++)
                     {
-                        if (Inventory[index].IsStarred)
+                        FilteredInventory.Clear();
+
+                        for (int index = 0; index < Inventory.Count; index++)
                         {
-                            FilteredInventory.Add(Inventory[index]);
-                            AddItem(Inventory[index]);
+                            if (Inventory[index].IsStarred)
+                            {
+                                FilteredInventory.Add(Inventory[index]);
+                                AddItem(Inventory[index]);
 
-                            counter++;
+                                counter++;
+                            }
                         }
+
+                        ToDoListTitleTextBlock.Text = this.FindResource("Nav_Starred") as string;
+
+                        break;
                     }
-
-                    ToDoListTitleTextBlock.Text = this.FindResource("Nav_Starred") as string;
-
-                    break;
-
-                default:
-                    break;
             }
 
             switch (counter)
@@ -247,7 +248,7 @@ namespace ProjectSC.Views
                     ToDoListItemCounterTextBlock.Text = "1 Item found";
                     break;
                 default:
-                    ToDoListItemCounterTextBlock.Text = counter + "Items found";
+                    ToDoListItemCounterTextBlock.Text = counter + " Items found";
                     break;
             }
         }
@@ -288,7 +289,7 @@ namespace ProjectSC.Views
         #region Sort
         private void SortButton_Importance_Click(object sender, RoutedEventArgs e)
         {
-            if (filterMode == 0)
+            if (filterMode == 1)
             {
                 Inventory = Inventory.OrderBy(x => x.IsStarred == false).ToList();
 
@@ -310,7 +311,7 @@ namespace ProjectSC.Views
 
         private void SortButton_DueDate_Click(object sender, RoutedEventArgs e)
         {
-            if (filterMode == 0)
+            if (filterMode == 1)
             {
                 Inventory = Inventory.OrderBy(x => x.EndDateTime).ToList();
                 Inventory = Inventory.OrderBy(x => x.IsReminderOn == false).ToList();
@@ -334,7 +335,7 @@ namespace ProjectSC.Views
 
         private void SortButton_AlphabeticalAscending_Click(object sender, RoutedEventArgs e)
         {
-            if (filterMode == 0)
+            if (filterMode == 1)
             {
                 Inventory = Inventory.OrderBy(x => x.Title).ToList();
 
@@ -356,7 +357,7 @@ namespace ProjectSC.Views
 
         private void SortButton_AlphabeticalDescending_Click(object sender, RoutedEventArgs e)
         {
-            if (filterMode == 0)
+            if (filterMode == 1)
             {
                 Inventory = Inventory.OrderBy(x => x.Title).ToList();
                 Inventory.Reverse();
@@ -380,7 +381,7 @@ namespace ProjectSC.Views
 
         private void SortButton_CreationDate_Click(object sender, RoutedEventArgs e)
         {
-            if (filterMode == 0)
+            if (filterMode == 1)
             {
                 Inventory = Inventory.OrderBy(x => x.CreationDateTime).ToList();
 
@@ -516,7 +517,7 @@ namespace ProjectSC.Views
 
         private void ButtonClearSort_Click(object sender, RoutedEventArgs e)
         {
-            if (filterMode == 0)
+            if (filterMode == 1)
             {
                 Inventory = Inventory.OrderBy(x => x.Id).ToList();
 

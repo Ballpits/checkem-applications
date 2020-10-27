@@ -12,13 +12,21 @@ namespace ProjectSC.Views.Settings
             InitializeComponent();
 
             mainWindow = main;
+
+            GridPrinciple.Children.Clear();
+            GridPrinciple.Children.Add(new GeneralSettings_View());
         }
 
         MainWindow mainWindow;
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            mainWindow.ChangeFilter(mainWindow.filterMode);
+
             mainWindow.MainGrid.Children.RemoveAt(mainWindow.MainGrid.Children.Count - 1);
+
+            mainWindow.SearchBoxBorder.Visibility = Visibility.Visible;
+            mainWindow.NavExpanderButtonGrid.Visibility = Visibility.Visible;
         }
 
         private void CloseButton_MouseEnter(object sender, MouseEventArgs e)

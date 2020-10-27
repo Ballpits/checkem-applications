@@ -9,6 +9,7 @@
     <system:String x:Key="Nav_AllItems">所有事項</system:String>
     <system:String x:Key="Nav_Reminder">已開提醒</system:String>
     <system:String x:Key="Nav_Starred">已標星號</system:String>
+    <system:String x:Key="Nav_NewList">新增清單</system:String>
 
     <system:String x:Key="Task">個事項</system:String>
     <system:String x:Key="Tasks">個事項</system:String>

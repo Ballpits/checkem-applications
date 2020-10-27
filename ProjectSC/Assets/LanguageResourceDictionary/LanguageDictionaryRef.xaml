@@ -9,6 +9,7 @@
     <system:String x:Key="Nav_AllItems"></system:String>
     <system:String x:Key="Nav_Reminder"></system:String>
     <system:String x:Key="Nav_Starred"></system:String>
+    <system:String x:Key="Nav_NewList"></system:String>
 
     <system:String x:Key="Task"></system:String>
     <system:String x:Key="Tasks"></system:String>

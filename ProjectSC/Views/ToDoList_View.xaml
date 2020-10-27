@@ -6,6 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:properties="clr-namespace:ProjectSC.Properties"
              xmlns:local="clr-namespace:ProjectSC.Views"
+             xmlns:tag="clr-namespace:ProjectSC"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960" MouseDown="UserControl_MouseDown">
 
@@ -17,11 +18,6 @@
 
         <Grid Name="DataGrid" Style="{StaticResource todoUSCTitlebar}">
             <Grid Margin="0" Height="50" VerticalAlignment="Top">
-
-                <Button WindowChrome.IsHitTestVisibleInChrome="True" FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" HorizontalAlignment="Right" Margin="0,0,20,0" Width="35" Height="35" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="#002196F3" BorderBrush="{x:Null}" Padding="0" Click="AddItemButton_Click" ToolTip="Add new task" TabIndex="6">
-                    <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
-                </Button>
-
                 <Border WindowChrome.IsHitTestVisibleInChrome="True" Background="White" CornerRadius="5" HorizontalAlignment="Center" Height="40" Width="400" Margin="200,0" Padding="0" VerticalAlignment="Center">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -38,15 +34,9 @@
                         </Button>
                     </Grid>
                 </Border>
-
-
-
-                <Button WindowChrome.IsHitTestVisibleInChrome="True" x:Name="ButtonToolbox" Visibility="Visible" Margin="150,0,0,0" Height="Auto" HorizontalAlignment="Left" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="{x:Null}" Click="ListViewerButton_Click" Padding="15,5" Grid.IsSharedSizeScope="True">
-                    <materialDesign:PackIcon Kind="Toolbox" Height="20" Width="20"/>
-                </Button>
             </Grid>
 
-            <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=GrayMainColor,Converter={StaticResource ColorToBrushConverter}}" Margin="0,50,0,0">
+            <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=GrayMainColor,Converter={StaticResource ColorToBrushConverter}}" Margin="0">
 
                 <Grid.ContextMenu>
                     <ContextMenu>
@@ -149,6 +139,9 @@
 
                         </materialDesign:PopupBox>
                     </Grid>
+                    <Button WindowChrome.IsHitTestVisibleInChrome="True" x:Name="ButtonToolbox" Visibility="Hidden" Margin="0,0,237,0" Height="Auto" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="{x:Null}" Click="ListViewerButton_Click" Padding="15,5" Grid.IsSharedSizeScope="True" HorizontalAlignment="Right">
+                        <materialDesign:PackIcon Kind="Toolbox" Height="20" Width="20"/>
+                    </Button>
                 </Grid>
 
                 <Grid x:Name="GridTagList" Visibility="Visible" Margin="10,80,10,0" Height="45" VerticalAlignment="Top">
@@ -158,6 +151,10 @@
                     <StackPanel Name="stpMain" Margin="0">
                     </StackPanel>
                 </ScrollViewer>
+
+                <Button materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth5" Background="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}" FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="50" Height="50" BorderBrush="{x:Null}" Padding="0" Click="AddItemButton_Click" TabIndex="6" VerticalAlignment="Bottom">
+                    <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </Button>
             </Grid>
 
 

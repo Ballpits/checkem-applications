@@ -19,6 +19,8 @@ namespace ProjectSC
             InitializeComponent();
 
             AppearanceSettingHelper.DarkModeSetup();
+
+            this.WindowState = WindowState.Maximized;
         }
 
         #region Variables
@@ -34,7 +36,7 @@ namespace ProjectSC
         #endregion
 
         #region Propertes
-
+        public int filterMode { get; set; }
         #endregion
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
@@ -55,6 +57,25 @@ namespace ProjectSC
             else
             {
                 TrainsitioningContent.Margin = new Thickness(0);
+            }
+
+            CheckWidth();
+        }
+
+        private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            CheckWidth();
+        }
+
+        private void CheckWidth()
+        {
+            if (this.Width <= 1500)
+            {
+                SearchBoxBorder.HorizontalAlignment = HorizontalAlignment.Left;
+            }
+            else
+            {
+                SearchBoxBorder.HorizontalAlignment = HorizontalAlignment.Center;
             }
         }
 
@@ -96,7 +117,7 @@ namespace ProjectSC
             ChangeFilter(0);
         }
 
-        private void ButtonToDoList_Click(object sender, RoutedEventArgs e)
+        private void ButtonAllTasks_Click(object sender, RoutedEventArgs e)
         {
             ChangeFilter(1);
         }
@@ -115,24 +136,38 @@ namespace ProjectSC
             SettingsMenu settingsMenu = new SettingsMenu(this);
 
             Grid.SetColumnSpan(settingsMenu, 2);
+            Grid.SetRow(settingsMenu, 1);
 
             MainGrid.Children.Add(settingsMenu);
+
+            SearchBoxBorder.Visibility = Visibility.Hidden;
+            NavExpanderButtonGrid.Visibility = Visibility.Hidden;
         }
 
-        private void ChangeFilter(int mode)
+        public void ChangeFilter(int mode)
         {
             MoveNavbarCursor(mode);
-
+            filterMode = mode;
             todoList_View.Filter(mode);
         }
 
         private void MoveNavbarCursor(int index)
         {
             NavbarCursorIndex = index;
-            Grid.SetRow(NavbarCursor, index + 1);
+            Grid.SetRow(NavbarCursor, index);
         }
 
         private void ButtonAddNewList_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void ButtonClearSearchBox_Click(object sender, RoutedEventArgs e)
         {
 
         }

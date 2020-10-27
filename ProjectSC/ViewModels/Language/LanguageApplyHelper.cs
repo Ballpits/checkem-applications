@@ -14,8 +14,6 @@ namespace ProjectSC.ViewModels.Language
             string language = ListBoxItem.Name;//get the name from the button
 
             //set the current language to previous language and replace it with new selected language
-            Properties.Settings.Default.PreviousLanguage = Properties.Settings.Default.CurrentLanguage;
-            Properties.Settings.Default.CurrentLanguage = language;
 
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
             {
@@ -24,8 +22,10 @@ namespace ProjectSC.ViewModels.Language
 
             Application.Current.Resources.MergedDictionaries.Remove(new ResourceDictionary()
             {
-                Source = new Uri($"{path}{Properties.Settings.Default.PreviousLanguage}.xaml", UriKind.RelativeOrAbsolute)
+                Source = new Uri($"{path}{Properties.Settings.Default.CurrentLanguage}.xaml", UriKind.RelativeOrAbsolute)
             });
+
+            Properties.Settings.Default.CurrentLanguage = language;
         }
     }
 }
