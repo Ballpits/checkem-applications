@@ -61,20 +61,20 @@
 
 
                     <Grid Margin="0,0,20,0" HorizontalAlignment="Right">
-                        <Button x:Name="ButtonClearSort" Margin="0,0,45,0" Height="40" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="ButtonClearSort_Click" ToolTip="Clear sort" VerticalAlignment="Center">
+                        <Button x:Name="ButtonClearSort" Margin="0,0,45,0" Height="40" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="ButtonClearDict_Click" ToolTip="Clear sort" VerticalAlignment="Center">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Close" Width="25" Height="20" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
                                 <TextBlock x:Name="SortIndicatorTextBlock" Margin="0" HorizontalAlignment="Right" Text="AlphabeticalAscending" FontFamily="Arial" TextAlignment="Center" FontSize="14" Padding="0,2,0,0"/>
                             </StackPanel>
                         </Button>
 
-                        <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0"  Width="40" Height="40" TabIndex="7" IsTabStop="False" VerticalAlignment="Center" ToolTip="{DynamicResource ResourceKey=Sort}">
+                        <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0"  Width="40" Height="40" TabIndex="7" IsTabStop="False" VerticalAlignment="Center" ToolTip="{DynamicResource ResourceKey=Dict_Sort}">
                             <materialDesign:PopupBox.ToggleContent>
-                                <materialDesign:PackIcon FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" Kind="Sort" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" IsTabStop="True" TabIndex="7" />
+                                <materialDesign:PackIcon FocusVisualStyle="{DynamicResource ScrollBarFocusVisual}" Kind="Sort" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" IsTabStop="True" TabIndex="7" />
                             </materialDesign:PopupBox.ToggleContent>
 
                             <StackPanel>
-                                <TextBlock Text="{DynamicResource ResourceKey=SortBy}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" TextAlignment="Center" Margin="0,0,5,10"/>
+                                <TextBlock Text="{DynamicResource ResourceKey=Dict_SortBy}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" TextAlignment="Center" Margin="0,0,5,10"/>
 
                                 <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortButton_Importance_Click">
                                     <Grid>
@@ -84,7 +84,7 @@
                                         </Grid.ColumnDefinitions>
 
                                         <materialDesign:PackIcon Kind="StarBorder" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
-                                        <TextBlock Text="{DynamicResource ResourceKey=Sort_Starred}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                        <TextBlock Text="{DynamicResource ResourceKey=Dict_Sort_Starred}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
                                     </Grid>
                                 </Button>
 
@@ -96,7 +96,7 @@
                                         </Grid.ColumnDefinitions>
 
                                         <materialDesign:PackIcon Kind="CalendarClock" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
-                                        <TextBlock Text="{DynamicResource ResourceKey=Sort_DueDate}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                        <TextBlock Text="{DynamicResource ResourceKey=Dict_Sort_DueDate}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
                                     </Grid>
                                 </Button>
 
@@ -108,7 +108,7 @@
                                         </Grid.ColumnDefinitions>
 
                                         <materialDesign:PackIcon Kind="SortAlphabeticalAscending" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
-                                        <TextBlock Text="{DynamicResource ResourceKey=Sort_AlphabeticalAscending}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                        <TextBlock Text="{DynamicResource ResourceKey=Dict_Sort_AlphabeticalAscending}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
                                     </Grid>
                                 </Button>
 
@@ -120,7 +120,7 @@
                                         </Grid.ColumnDefinitions>
 
                                         <materialDesign:PackIcon Kind="SortAlphabeticalDescending" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
-                                        <TextBlock Text="{DynamicResource ResourceKey=Sort_AlphabeticalDescending}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                        <TextBlock Text="{DynamicResource ResourceKey=Dict_Sort_AlphabeticalDescending}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
                                     </Grid>
                                 </Button>
 
@@ -132,7 +132,7 @@
                                         </Grid.ColumnDefinitions>
 
                                         <materialDesign:PackIcon Kind="CalendarAdd" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
-                                        <TextBlock Text="{DynamicResource ResourceKey=Sort_DueDate}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                        <TextBlock Text="{DynamicResource ResourceKey=Dict_Sort_DueDate}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
                                     </Grid>
                                 </Button>
                             </StackPanel>
@@ -144,10 +144,9 @@
                     </Button>
                 </Grid>
 
-                <Grid x:Name="GridTagList" Visibility="Visible" Margin="10,80,10,0" Height="45" VerticalAlignment="Top">
-                </Grid>
+                <Grid x:Name="GridTagList" Visibility="Visible" Margin="10,80,10,0" Height="45" VerticalAlignment="Top"/>
 
-                <ScrollViewer Visibility="Visible" x:Name="scrollBar" BorderThickness="0" Margin="0,120,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto" UseLayoutRounding="True" VerticalAlignment="Top">
+                <ScrollViewer Style="{DynamicResource MaterialDesignScrollViewer}" Visibility="Visible" x:Name="scrollBar" BorderThickness="0" Margin="0,130,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto" UseLayoutRounding="True" VerticalAlignment="Top">
                     <StackPanel Name="stpMain" Margin="0">
                     </StackPanel>
                 </ScrollViewer>

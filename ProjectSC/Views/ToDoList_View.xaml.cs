@@ -35,7 +35,12 @@ namespace ProjectSC.Views
             TagList = new TagList_View(this);
             GridTagList.Children.Add(TagList);
 
-
+            MyDay_String = this.FindResource("Dict_MyDay") as string;
+            AllItems_String = this.FindResource("Dict_AllItems") as string;
+            Reminder_String = this.FindResource("Dict_Reminder") as string;
+            Starred_String = this.FindResource("Dict_Starred") as string;
+            Task_String = this.FindResource("Dict_Task") as string;
+            Tasks_String = this.FindResource("Dict_Tasks") as string;
 #if DEBUG
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
 
@@ -56,6 +61,8 @@ namespace ProjectSC.Views
 
         private int filterMode = 0;
         private int counter = 0;
+
+        private string MyDay_String, AllItems_String, Reminder_String, Starred_String, Task_String, Tasks_String;
         #endregion
 
         private void RetrieveData()
@@ -122,10 +129,34 @@ namespace ProjectSC.Views
 
             stpMain.Children.Add(itemBar);
         }
+
+        private void UpdateItemCounter()
+        {
+            switch (counter)
+            {
+                case 0:
+                    ToDoListItemCounterTextBlock.Text = "";
+                    break;
+                case 1:
+                    ToDoListItemCounterTextBlock.Text = $"1 {Task_String}";
+                    break;
+                default:
+                    ToDoListItemCounterTextBlock.Text = $"{counter} {Tasks_String}";
+                    break;
+            }
+        }
         #endregion
 
 
         #region Filter
+        public void Filter(int mode)
+        {
+            ListFilter(mode);
+
+            CloseDetailsPanel();
+        }
+
+
         private void ListFilter(int mode)
         {
             filterMode = mode;
@@ -141,7 +172,7 @@ namespace ProjectSC.Views
             switch (mode)
             {
                 case 0://Filter:My day
-                    ToDoListTitleTextBlock.Text = this.FindResource("Nav_MyDay") as string;
+                    ToDoListTitleTextBlock.Text = MyDay_String;
                     break;
 
                 case 1://Filter:All items
@@ -150,7 +181,7 @@ namespace ProjectSC.Views
 
                         LoadList(Inventory);
 
-                        ToDoListTitleTextBlock.Text = this.FindResource("Nav_AllItems") as string;
+                        ToDoListTitleTextBlock.Text = AllItems_String;
 
                         counter = Inventory.Count;
 
@@ -171,7 +202,7 @@ namespace ProjectSC.Views
                                 counter++;
                             }
                         }
-                        ToDoListTitleTextBlock.Text = this.FindResource("Nav_Reminder") as string;
+                        ToDoListTitleTextBlock.Text = Reminder_String;
 
                         break;
                     }
@@ -190,27 +221,39 @@ namespace ProjectSC.Views
                             }
                         }
 
-                        ToDoListTitleTextBlock.Text = this.FindResource("Nav_Starred") as string;
+                        ToDoListTitleTextBlock.Text = Starred_String;
 
                         break;
                     }
             }
 
-            switch (counter)
-            {
-                case 0:
-                    ToDoListItemCounterTextBlock.Text = "";
-                    break;
-                case 1:
-                    ToDoListItemCounterTextBlock.Text = $"1 {this.FindResource("Task")}";
-                    break;
-                default:
-                    ToDoListItemCounterTextBlock.Text = $"{counter} {this.FindResource("Tasks")}";
-                    break;
-            }
+            UpdateItemCounter();
+        }
+        #endregion
+
+
+        #region Tag creation panel
+        public void OpenTagCreationPanel()
+        {
+            TagCreationPanel_View tagCreationPanel = new TagCreationPanel_View(this, TagList);
+
+            DataGrid.Children.Add(tagCreationPanel);
+
+            IsTagCreationPanelOpened = true;
         }
 
-        //private List<ToDoItem> backUp = new List<ToDoItem>(); 
+        public void CloseTagCreationPanel()
+        {
+            if (IsTagCreationPanelOpened)
+            {
+                DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
+                IsTagCreationPanelOpened = false;
+            }
+        }
+        #endregion
+
+
+        #region Tag
         private int clickCounter = 0;
         public string lastFilterStorer;
         public void TagFilter(string FilterText)
@@ -243,14 +286,8 @@ namespace ProjectSC.Views
                 clickCounter = 0;
                 lastFilterStorer = null;
             }
+
             ToDoListItemCounterTextBlock.Text = $"{counter} Items";
-        }
-
-        public void Filter(int mode)
-        {
-            ListFilter(mode);
-
-            CloseDetailsPanel();
         }
         #endregion
 
@@ -338,7 +375,7 @@ namespace ProjectSC.Views
                 LoadList(FilteredInventory);
             }
 
-            ChengeSortingIndicatorText(this.FindResource("Sort_Starred") as string);
+            ChengeSortingIndicatorText(this.FindResource("Dict_Starred") as string);
 
 #if DEBUG
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
@@ -362,7 +399,7 @@ namespace ProjectSC.Views
                 LoadList(FilteredInventory);
             }
 
-            ChengeSortingIndicatorText(this.FindResource("Sort_DueDate") as string);
+            ChengeSortingIndicatorText(this.FindResource("Dict_DueDate") as string);
 
 #if DEBUG
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
@@ -384,7 +421,7 @@ namespace ProjectSC.Views
                 LoadList(FilteredInventory);
             }
 
-            ChengeSortingIndicatorText(this.FindResource("Sort_AlphabeticalAscending") as string);
+            ChengeSortingIndicatorText(this.FindResource("Dict_Sort_AlphabeticalAscending") as string);
 
 #if DEBUG
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
@@ -408,7 +445,7 @@ namespace ProjectSC.Views
                 LoadList(FilteredInventory);
             }
 
-            ChengeSortingIndicatorText(this.FindResource("Sort_AlphabeticalDescending") as string);
+            ChengeSortingIndicatorText(this.FindResource("Dict_Sort_AlphabeticalDescending") as string);
 
 #if DEBUG
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
@@ -430,7 +467,7 @@ namespace ProjectSC.Views
                 LoadList(FilteredInventory);
             }
 
-            ChengeSortingIndicatorText(this.FindResource("Sort_CreationDate") as string);
+            ChengeSortingIndicatorText(this.FindResource("Dict_Sort_CreationDate") as string);
 
 #if DEBUG
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
@@ -502,27 +539,6 @@ namespace ProjectSC.Views
         #endregion
 
 
-        #region Tag creation panel
-        public void OpenTagCreationPanel()
-        {
-            TagCreationPanel_View tagCreationPanel = new TagCreationPanel_View(this, TagList);
-
-            DataGrid.Children.Add(tagCreationPanel);
-
-            IsTagCreationPanelOpened = true;
-        }
-
-        public void CloseTagCreationPanel()
-        {
-            if (IsTagCreationPanelOpened)
-            {
-                DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
-                IsTagCreationPanelOpened = false;
-            }
-        }
-        #endregion
-
-
         #region List tester button events
         private void ListViewerButton_Click(object sender, RoutedEventArgs e)
         {
@@ -551,7 +567,7 @@ namespace ProjectSC.Views
         }
         #endregion
 
-        private void ButtonClearSort_Click(object sender, RoutedEventArgs e)
+        private void ButtonClearDict_Click(object sender, RoutedEventArgs e)
         {
             if (filterMode == 1)
             {

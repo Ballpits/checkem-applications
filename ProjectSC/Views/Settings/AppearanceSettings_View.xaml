@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ProjectSC.Views.Settings.AppearanceSettings_View"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,13 +6,14 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:ProjectSC.Views.Settings"
              xmlns:properties="clr-namespace:ProjectSC.Properties"
+             xmlns:Theme="clr-namespace:ProjectSC.Views.Theme" x:Class="ProjectSC.Views.Settings.AppearanceSettings_View"
              mc:Ignorable="d" d:DesignWidth="1770" d:DesignHeight="940" Loaded="UserControl_Loaded">
 
     <UserControl.Resources>
         <ResourceDictionary Source="../../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml"/>
     </UserControl.Resources>
 
-    <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=GrayMainColor, Converter={StaticResource ColorToBrushConverter}}">
+    <Grid Background="{Binding GrayMainColor, Converter={StaticResource ColorToBrushConverter}, Source={x:Static properties:Settings.Default}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="87*"/>
@@ -23,14 +24,13 @@
         </Grid.ColumnDefinitions>
 
         <Viewbox Margin="0,10,0,0" Grid.Column="1">
-            <TextBlock Text="{Binding Source={x:Static properties:Settings.Default}, Path=ThemeName}" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor, Converter={StaticResource ColorToBrushConverter}}" FontFamily="Arial"/>
+            <TextBlock Text="{Binding ThemeName, Source={x:Static properties:Settings.Default}}" Foreground="{Binding DarkMainColor, Converter={StaticResource ColorToBrushConverter}, Source={x:Static properties:Settings.Default}}" FontFamily="Arial"/>
         </Viewbox>
 
-        <ToggleButton x:Name="DarkModeToggle" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=IsDarkModeApplied}" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Click="ToggleButton_Click"/>
+        <ToggleButton x:Name="DarkModeToggle" IsChecked="{Binding IsDarkModeApplied, Source={x:Static properties:Settings.Default}}" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Click="ToggleButton_Click"/>
 
         <ScrollViewer x:Name="ThemePickerScrollbar" VerticalScrollBarVisibility="Auto" Grid.Column="1" Margin="0.4,70,-0.4,80" Grid.RowSpan="2"/>
 
-
-        <Grid x:Name="GridPreviewWindow" Grid.RowSpan="2" Margin="0"/>
+        <Theme:ThemePreviewWindow Margin="80" Grid.Row="1"/>
     </Grid>
 </UserControl>

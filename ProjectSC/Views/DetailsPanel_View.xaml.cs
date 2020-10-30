@@ -202,6 +202,7 @@ namespace ProjectSC.Views
                 FontSize = 16
             });
         }
+
         //Load All The Tag Into PopBox
         private void LoadTagChoice()
         {
@@ -218,6 +219,7 @@ namespace ProjectSC.Views
                 StpTagPopup.Children.Add(tagviewbtn);
             }
         }
+
         //Load the Tag that use on this ItemBar
         private void LoadUsingTag()
         {

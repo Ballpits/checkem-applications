@@ -23,7 +23,7 @@ namespace ProjectSC.Views
         {
             InitializeComponent();
 
-            todo = toDo;
+            ToDoList = toDo;
 
             SetupColor();
         }
@@ -55,7 +55,7 @@ namespace ProjectSC.Views
         #region Variables
         private DataAccess_Json dataAccess = new DataAccess_Json();
 
-        private ToDoList_View todo;
+        private ToDoList_View ToDoList;
 
 
         const int ChaeckBoxIconSize = 35;
@@ -82,6 +82,13 @@ namespace ProjectSC.Views
             Path = new PropertyPath("DarkMainColor", Properties.Settings.Default),
             Converter = new ColorToBrushConverter()
         };
+
+        //Binding ItembarHighlightColorBindings = new Binding()
+        //{
+        //    Source = Properties.Settings.Default,
+        //    Path = new PropertyPath("DarkMainColor", Properties.Settings.Default),
+        //    Converter = new ColorToBrushConverter()
+        //};
 
         PackIcon icon = new PackIcon();
         #endregion
@@ -116,7 +123,7 @@ namespace ProjectSC.Views
 
             if (CheckboxLoaded)
             {
-                dataAccess.UpdateCompletion(Id, true, todo.Inventory);
+                dataAccess.UpdateCompletion(Id, true, ToDoList.Inventory);
             }
         }
 
@@ -130,7 +137,7 @@ namespace ProjectSC.Views
             textBlockTitle.SetBinding(TextBlock.ForegroundProperty, DarkMainColorBindings);
             textBlockTitle.TextDecorations = null;
 
-            dataAccess.UpdateCompletion(Id, false, todo.Inventory);
+            dataAccess.UpdateCompletion(Id, false, ToDoList.Inventory);
         }
         #endregion
 
@@ -139,11 +146,11 @@ namespace ProjectSC.Views
         {
             if (StarToggle.IsChecked == true)
             {
-                dataAccess.Update(Id, true, todo.Inventory);
+                dataAccess.Update(Id, true, ToDoList.Inventory);
             }
             else
             {
-                dataAccess.Update(Id, false, todo.Inventory);
+                dataAccess.Update(Id, false, ToDoList.Inventory);
             }
         }
 
@@ -155,7 +162,7 @@ namespace ProjectSC.Views
             {
                 if (Mouse.LeftButton == MouseButtonState.Pressed)
                 {
-                    todo.OpenDetailsPanel(this);
+                    ToDoList.OpenDetailsPanel(this);
                 }
             }
         }
@@ -179,9 +186,6 @@ namespace ProjectSC.Views
         #region Mouse over events
         public void MouseEnterHighLight(object sender, RoutedEventArgs e)
         {
-            if (sender.GetType() == typeof(Border))
-            {
-            }
             if (sender.GetType() == typeof(CheckBox))
             {
                 if (checkBox.IsChecked == false)
@@ -340,5 +344,14 @@ namespace ProjectSC.Views
             return new SolidColorBrush(Color.FromRgb(color.R, color.G, color.B));
         }
         #endregion
+
+        private void MenuItemRemove_Click(object sender, RoutedEventArgs e)
+        {
+            dataAccess.RemoveAt(Id, ToDoList.Inventory);
+
+            ToDoList.RemoveItemBar(this);
+
+            ToDoList.CloseDetailsPanel("Removed");
+        }
     }
 }

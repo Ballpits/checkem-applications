@@ -7,156 +7,35 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:ProjectSC.Views.Theme"
              mc:Ignorable="d" 
-             d:DesignHeight="940" d:DesignWidth="1362">
+             d:DesignHeight="500" d:DesignWidth="1000">
 
     <UserControl.Resources>
         <ResourceDictionary Source="../../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />
     </UserControl.Resources>
 
-    <Border CornerRadius="100">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+    <Border CornerRadius="50" Background="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor,Converter={StaticResource ColorToBrushConverter}}" BorderThickness="5" BorderBrush="Black">
+        <Grid materialDesign:ShadowAssist.ShadowDepth="Depth5">
+            <Border CornerRadius="46,46,0,0" Height="100" VerticalAlignment="Top">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" MappingMode="RelativeToBoundingBox">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
 
-            <Grid x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" HorizontalAlignment="Left" Width="280">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
+                        <GradientStop Color="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToGradientStopConverter}}" Offset="1"/>
+                        <GradientStop Color="{Binding Source={x:Static properties:Settings.Default}, Path=SecondaryColor, Converter={StaticResource ColorToGradientStopConverter}}" Offset="0.352"/>
+                    </LinearGradientBrush>
+                </Border.Background>
 
-                <Grid x:Name="NavbarCursor" Background="#4CFFFFFF" Margin="0" Grid.Row="2"/>
-
-                <!--#region Navbar button-->
-                <Button x:Name="ButtonCollaps" Style="{StaticResource NavigationbarButton}" TabIndex="0" Margin="5,5,0,0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <materialDesign:PackIcon Kind="MenuLeftOutline" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
-                </Button>
-
-                <Button Style="{StaticResource NavigationbarButton}" Grid.Row="1">
-                    <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
-                        <materialDesign:PackIcon Kind="WbSunny" Style="{StaticResource NavigationbarIcon}"/>
-                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="My Day"/>
-                    </StackPanel>
-                </Button>
-
-                <Button Style="{StaticResource NavigationbarButton}" TabIndex="0" Margin="0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" Grid.Row="2">
-                    <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
-                        <materialDesign:PackIcon Kind="ClipboardList" Style="{StaticResource NavigationbarIcon}"/>
-                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="All Tasks"/>
-                    </StackPanel>
-                </Button>
-
-                <Button Style="{StaticResource NavigationbarButton}" Grid.Row="3" TabIndex="0" Margin="0">
-                    <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
-                        <materialDesign:PackIcon Kind="Bell" Style="{StaticResource NavigationbarIcon}"/>
-                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="Reminder"/>
-                    </StackPanel>
-                </Button>
-
-                <Button Style="{StaticResource NavigationbarButton}" Grid.Row="4" TabIndex="0" Margin="0">
-                    <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
-                        <materialDesign:PackIcon Kind="Star" Style="{StaticResource NavigationbarIcon}"/>
-                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="Starred"/>
-                    </StackPanel>
-                </Button>
-                <!--#endregion-->
-
-                <ScrollViewer Margin="0" Grid.RowSpan="3" Grid.Row="6"/>
-
-                <Button FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" IsEnabled="True"  Margin="5,0,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Padding="0" Grid.Row="6" TabIndex="0" HorizontalAlignment="Left">
-                    <materialDesign:PackIcon Kind="Add" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
-                </Button>
-
-                <Button FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" IsEnabled="True" Margin="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Padding="0" Grid.Row="7" TabIndex="0" HorizontalAlignment="Left">
-                    <materialDesign:PackIcon Kind="Settings" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto" Margin="5,0,0,0"/>
-                </Button>
-            </Grid>
-
-
-            <Grid Grid.Column="1" Style="{StaticResource todoUSCTitlebar}" Margin="0" VerticalAlignment="Top" Height="50">
-                <Border Background="White" CornerRadius="5" HorizontalAlignment="Center" Height="40" Width="400" Margin="0" Padding="0" VerticalAlignment="Center">
-                    <Grid>
-                        <materialDesign:PackIcon Kind="Magnify" Opacity=".56" Height="30" Width="30" Margin="5,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
-
-                        <TextBlock Margin="40,5,30,5" Text="Search" MinWidth="200" VerticalAlignment="Center" Height="30" FontFamily="Arial" FontSize="16" Padding="0,5,0,0" Foreground="#FF939393"/>
-                    </Grid>
-                </Border>
-
-                <materialDesign:PackIcon  Kind="Plus" HorizontalAlignment="Right" VerticalAlignment="Center" Width="35" Height="35" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="0,0,20,0" Foreground="White"/>
-            </Grid>
-
-            <StackPanel Grid.Column="1" Margin="0,50,0,0" Background="{Binding Source={x:Static properties:Settings.Default}, Path=GrayMainColor, Converter={StaticResource ColorToBrushConverter}}" Loaded="StackPanel_Loaded">
-                <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="70" Margin="10,10,10,0">
-                    <Grid>
-                        <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}" HorizontalAlignment="Left" Margin="15,0,0,0"/>
-
-                        <TextBlock VerticalAlignment="Top" Margin="70,14,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="Preview some themes" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor, Converter={StaticResource ColorToBrushConverter}}"/>
-
-                        <materialDesign:PackIcon Kind="Bell" Margin="70,0,0,7.5" Width="20" Height="20" Foreground="#FFE3F321" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                        <TextBlock VerticalAlignment="Bottom" Margin="95,0,55,5.4" FontSize="14" FontFamily="Arial" Height="20" Text="Due date..." Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor, Converter={StaticResource ColorToBrushConverter}}"/>
-
-                        <materialDesign:PackIcon Style="{StaticResource StarBorderIcon}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
-                    </Grid>
-                </Border>
-                <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="50" Margin="10,10,10,0">
-                    <Grid>
-                        <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}" HorizontalAlignment="Left" Margin="15,0,0,0"/>
-
-                        <TextBlock VerticalAlignment="Center" Margin="70,0,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="This one has no reminder" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor, Converter={StaticResource ColorToBrushConverter}}"/>
-
-                        <materialDesign:PackIcon Style="{StaticResource StarBorderIcon}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
-                    </Grid>
-                </Border>
-                <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="70" Margin="10,10,10,0">
-                    <Grid>
-                        <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}" HorizontalAlignment="Left" Margin="15,0,0,0"/>
-
-                        <TextBlock VerticalAlignment="Top" Margin="70,14,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="Too late" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor, Converter={StaticResource ColorToBrushConverter}}"/>
-
-                        <materialDesign:PackIcon Kind="Bell" Margin="70,0,0,7.5" Width="20" Height="20" Foreground="#FFE3F321" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                        <TextBlock Foreground="{Binding ItemPassedTextColor, Converter={StaticResource ColorToBrushConverter}, Source={x:Static properties:Settings.Default}}" VerticalAlignment="Bottom" Margin="95,0,55,5.4" FontSize="14" FontFamily="Arial" Height="20"><Run Text="Oops... it's passed already..."/><LineBreak/><Run Text=""/></TextBlock>
-
-                        <materialDesign:PackIcon Style="{StaticResource StarIcon}" HorizontalAlignment="Right" Margin="0,0,10,0" Width="30" Height="30"/>
-                    </Grid>
-                </Border>
-                <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="70" Margin="10,10,10,0">
-                    <Grid>
-                        <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}" HorizontalAlignment="Left" Margin="15,0,0,0"/>
-
-                        <TextBlock VerticalAlignment="Top" Margin="70,14,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="No rush... We can wait" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor, Converter={StaticResource ColorToBrushConverter}}"/>
-
-                        <materialDesign:PackIcon Kind="Bell" Margin="70,0,0,7.5" Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#FFF4FF00"/>
-                        <TextBlock Foreground="{Binding DarkMainColor, Converter={StaticResource ColorToBrushConverter}, Source={x:Static properties:Settings.Default}}" VerticalAlignment="Bottom" Margin="95,0,55,5.4" FontSize="14" FontFamily="Arial" Height="20" Text="Tomorrow"/>
-
-                        <materialDesign:PackIcon Style="{StaticResource StarBorderIcon}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
-                    </Grid>
-                </Border>
-                <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="50" Margin="10,10,10,0">
-                    <Grid>
-                        <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}" HorizontalAlignment="Left" Margin="15,0,0,0"/>
-
-                        <TextBlock TextDecorations="Strikethrough" Foreground="{Binding ItemCompletedTextColor, Converter={StaticResource ColorToBrushConverter}, Source={x:Static properties:Settings.Default}}" VerticalAlignment="Top" Margin="70,14,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="Always do your homework !"/>
-
-                        <materialDesign:PackIcon Style="{StaticResource StarIcon}" HorizontalAlignment="Right" Margin="0,0,10,0" Width="30" Height="30"/>
-                    </Grid>
-                </Border>
-                <Border BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToBrushConverter}}" Background="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10" Height="50" Margin="10,10,10,0" BorderThickness="2">
-                    <Grid>
-                        <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}" HorizontalAlignment="Left" Margin="15,0,0,0"/>
-
-                        <TextBlock Foreground="{Binding DarkMainColor, Converter={StaticResource ColorToBrushConverter}, Source={x:Static properties:Settings.Default}}" VerticalAlignment="Center" Margin="70,0,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="Highlight"/>
-
-                        <materialDesign:PackIcon Style="{StaticResource StarBorderIcon}" HorizontalAlignment="Right" Margin="0,0,10,0" Width="30" Height="30"/>
-                    </Grid>
-                </Border>
-            </StackPanel>
+                <Viewbox HorizontalAlignment="Left" Margin="50,30,0,30">
+                    <TextBlock Text="Check_em" FontFamily="Arial" Foreground="White"/>
+                </Viewbox>
+            </Border>
         </Grid>
     </Border>
 </UserControl>

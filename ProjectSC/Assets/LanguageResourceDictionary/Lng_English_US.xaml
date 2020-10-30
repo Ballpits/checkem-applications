@@ -5,40 +5,40 @@
     <system:String x:Key="LanguageName">English-US</system:String>
 
     <!--Mainwindow-->
-    <system:String x:Key="Nav_MyDay">My Day</system:String>
-    <system:String x:Key="Nav_AllItems">All Tasks</system:String>
-    <system:String x:Key="Nav_Reminder">Reminder</system:String>
-    <system:String x:Key="Nav_Starred">Starred</system:String>
-    <system:String x:Key="Nav_NewList">Create new list</system:String>
+    <system:String x:Key="Dict_MyDay">My Day</system:String>
+    <system:String x:Key="Dict_AllItems">All Tasks</system:String>
+    <system:String x:Key="Dict_Reminder">Reminder</system:String>
+    <system:String x:Key="Dict_Starred">Starred</system:String>
+    <system:String x:Key="Dict_NewList">Create new list</system:String>
 
-    <system:String x:Key="Task">Task</system:String>
-    <system:String x:Key="Tasks">Tasks</system:String>
+    <system:String x:Key="Dict_Task">Task</system:String>
+    <system:String x:Key="Dict_Tasks">Tasks</system:String>
 
     <!--Tag-->
-    <system:String x:Key="CreateTag">CreateTag</system:String>
+    <system:String x:Key="Dict_CreateTag">CreateTag</system:String>
     
     <!--Sort-->
-    <system:String x:Key="Sort">Sort</system:String>
-    <system:String x:Key="SortBy">Sort by</system:String>
-    <system:String x:Key="Sort_Starred">Starred</system:String>
-    <system:String x:Key="Sort_DueDate">Due date</system:String>
-    <system:String x:Key="Sort_AlphabeticalAscending">Alphabetical ascending</system:String>
-    <system:String x:Key="Sort_AlphabeticalDescending">Alphabetical descending</system:String>
-    <system:String x:Key="Sort_CreationDate">Creation date</system:String>
+    <system:String x:Key="Dict_Sort">Sort</system:String>
+    <system:String x:Key="Dict_SortBy">Sort by</system:String>
+    <system:String x:Key="Dict_Sort_Starred">Starred</system:String>
+    <system:String x:Key="Dict_Sort_DueDate">DueDate</system:String>
+    <system:String x:Key="Dict_Sort_AlphabeticalAscending">Alphabetical ascending</system:String>
+    <system:String x:Key="Dict_Sort_AlphabeticalDescending">Alphabetical descending</system:String>
+    <system:String x:Key="Dict_Sort_CreationDate">Creation date</system:String>
     
     <!--Details panel-->
-    <system:String x:Key="Dp_Title">Title</system:String>
-    <system:String x:Key="Dp_Reminder">Reminder</system:String>
-    <system:String x:Key="Dp_Basic">Basic</system:String>
-    <system:String x:Key="Dp_Advance">Advance</system:String>
-    <system:String x:Key="Dp_None">None</system:String>
-    <system:String x:Key="Dp_DueDate">Due date</system:String>
-    <system:String x:Key="Dp_DueTime">Due time</system:String>
-    <system:String x:Key="Dp_BeginDate">Begin date</system:String>
-    <system:String x:Key="Dp_BeginTime">Begin time</system:String>
-    <system:String x:Key="Dp_EndDate">End date</system:String>
-    <system:String x:Key="Dp_EndTime">End time</system:String>
-    <system:String x:Key="Dp_Description">Description</system:String>
+    <system:String x:Key="Dict_Task_Title">Title</system:String>
+    <system:String x:Key="Dict_Task_Reminder">Reminder</system:String>
+    <system:String x:Key="Dict_Task_Basic">Basic</system:String>
+    <system:String x:Key="Dict_Task_Advance">Advance</system:String>
+    <system:String x:Key="Dict_Task_None">None</system:String>
+    <system:String x:Key="Dict_Task_DueDate">Due date</system:String>
+    <system:String x:Key="Dict_Task_DueTime">Due time</system:String>
+    <system:String x:Key="Dict_Task_BeginDate">Begin date</system:String>
+    <system:String x:Key="Dict_Task_BeginTime">Begin time</system:String>
+    <system:String x:Key="Dict_Task_EndDate">End date</system:String>
+    <system:String x:Key="Dict_Task_EndTime">End time</system:String>
+    <system:String x:Key="Dict_Task_Description">Description</system:String>
     
     <!--#region Languages-->
     <system:String x:Key="Danish">Danish</system:String>

@@ -41,7 +41,7 @@
 
                 <Separator/>
 
-                <MenuItem Header="Remove" Icon="{materialDesign:PackIcon Kind=TrashOutline, Size=18}" Foreground="Red"/>
+                <MenuItem Header="Remove" Icon="{materialDesign:PackIcon Kind=TrashOutline, Size=18}" Foreground="Red" Click="MenuItemRemove_Click"/>
             </ContextMenu>
         </Border.ContextMenu>
 
@@ -60,7 +60,7 @@
             <!--<TextBlock x:Name="ProgressIndicator" Text="56%" Margin="0,0,55,1.6" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" TextAlignment="Center" FontFamily="Arial"/>
             <ProgressBar x:Name="ProgressBar" Style="{StaticResource MaterialDesignCircularProgressBar}" Height="30" Margin="0,3,55,16.6" Value="70" Foreground="#FF2196F3" BorderBrush="{x:Null}" Background="{x:Null}" Width="30" HorizontalAlignment="Right" VerticalAlignment="Center"/>-->
 
-            <ToggleButton x:Name="StarToggle" Style="{StaticResource ItembarStarToggle}" ToolTip="Mark As Important" Click="StarToggle_Click" Width="45" Height="45">
+            <ToggleButton x:Name="StarToggle" Style="{StaticResource ItembarStarToggle}" ToolTip="Mark As Important" Click="StarToggle_Click" Width="45" Height="45" Background="{x:Null}">
                 <ToggleButton.Content>
                     <materialDesign:PackIcon x:Name="StarButtonStarBorderIcon" Style="{StaticResource StarBorderIcon}"/>
                 </ToggleButton.Content>

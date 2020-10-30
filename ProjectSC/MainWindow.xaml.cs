@@ -1,5 +1,4 @@
-﻿using MaterialDesignThemes.Wpf.Transitions;
-using ProjectSC.Models.DataAccess;
+﻿using ProjectSC.Models.DataAccess;
 using ProjectSC.ViewModels.AppearanceSettings;
 using ProjectSC.ViewModels.Notification;
 using ProjectSC.Views;
@@ -8,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace ProjectSC
@@ -52,7 +52,7 @@ namespace ProjectSC
         {
             if (this.WindowState == WindowState.Maximized)
             {
-                TrainsitioningContent.Margin = new Thickness(8);
+                TrainsitioningContent.Margin = new Thickness(7);
             }
             else
             {
@@ -69,13 +69,13 @@ namespace ProjectSC
 
         private void CheckWidth()
         {
-            if (this.Width <= 1500)
+            if (this.WindowState == WindowState.Maximized || this.Width >= 1400)
             {
-                SearchBoxBorder.HorizontalAlignment = HorizontalAlignment.Left;
+                SearchBoxBorder.HorizontalAlignment = HorizontalAlignment.Center;
             }
             else
             {
-                SearchBoxBorder.HorizontalAlignment = HorizontalAlignment.Center;
+                SearchBoxBorder.HorizontalAlignment = HorizontalAlignment.Left;
             }
         }
 
@@ -170,6 +170,40 @@ namespace ProjectSC
         private void ButtonClearSearchBox_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        bool IsLCtrlPressed = false;
+        bool IsFPressed = false;
+
+        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.LeftCtrl)
+            {
+                IsLCtrlPressed = true;
+            }
+
+            if (e.Key == Key.F)
+            {
+                IsFPressed = true;
+            }
+
+            if (IsLCtrlPressed && IsFPressed)
+            {
+                SearchBox.Focus();
+            }
+        }
+
+        private void MainWindow_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.LeftCtrl)
+            {
+                IsLCtrlPressed = false;
+            }
+
+            if (e.Key == Key.F)
+            {
+                IsFPressed = false;
+            }
         }
     }
 }
