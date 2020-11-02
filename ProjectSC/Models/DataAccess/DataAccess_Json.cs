@@ -68,9 +68,9 @@ namespace ProjectSC.Models.DataAccess
 
             for (int i = 0; i < inventory.Count; i++)
             {
-                if (inventory[i].IsReminderOn && inventory[i].EndDateTime.DayOfYear == DateTime.Now.DayOfYear)
+                if (inventory[i].IsReminderOn)
                 {
-                    timeRecords.Add(new Object.Notification.Notifications { Title = inventory[i].Title, BeginDateTime = inventory[i].BeginDateTime, EndDateTime = inventory[i].EndDateTime });
+                    timeRecords.Add(new Object.Notification.Notifications { Title = inventory[i].Title, BeginDateTime = (DateTime)inventory[i].BeginDateTime, EndDateTime = (DateTime)inventory[i].EndDateTime });
                 }
             }
         }//Get the time data and save it to the list
@@ -87,144 +87,33 @@ namespace ProjectSC.Models.DataAccess
             SaveToJson(inventory);
         }//Reset the id to align with stackpanel index
 
-
-
-        public void RemoveAt(int id, List<ToDoItem> inventory)
+        public void Remove(ToDoItem toDoItem, List<ToDoItem> inventory)
         {
-            inventory.RemoveAt(inventory.FindIndex(x => x.Id == id));
+            inventory.Remove(toDoItem);
             SaveToJson(inventory);
         }//Remove the to-do item from the json file
 
 
-
         #region AddNew
-        public void AddNew(string title, string description, DateTime begineDateTime, DateTime endDateTime, DateTime createdDateTime, List<ToDoItem> inventory)
+        public void AddNew(ToDoItem toDoItem, List<ToDoItem> inventory)
         {
-            int id = inventory.Count;
-
-            inventory.Add(new ToDoItem
-            {
-                Id = id,
-                Title = title,
-                Description = description,
-                IsReminderOn = true,
-                IsAdvanceReminderOn = true,
-                BeginDateTime = begineDateTime,
-                EndDateTime = endDateTime,
-                CreationDateTime = createdDateTime
-            });
+            inventory.Add(toDoItem);
 
             SaveToJson(inventory);
-        }//Add new item with advance reminder
-
-        public void AddNew(string title, string description, DateTime endDateTime, DateTime createdDateTime, List<ToDoItem> inventory)
-        {
-            int id = inventory.Count;
-
-            inventory.Add(new ToDoItem
-            {
-                Id = id,
-                Title = title,
-                Description = description,
-                IsReminderOn = true,
-                IsAdvanceReminderOn = false,
-                EndDateTime = endDateTime,
-                CreationDateTime = createdDateTime
-            });
-
-            SaveToJson(inventory);
-        }//Add new item with bacis reminder
-
-        public void AddNew(string title, string description, DateTime createdDateTime, List<ToDoItem> inventory)
-        {
-            int id = inventory.Count;
-
-            inventory.Add(new ToDoItem
-            {
-                Id = id,
-                Title = title,
-                Description = description,
-                IsReminderOn = false,
-                CreationDateTime = createdDateTime
-            });
-
-            SaveToJson(inventory);
-        }//Add new item without reminder
+        }//Add new item
         #endregion
 
 
 
         #region Update
-        public void Update(int id, string title, string description, DateTime endDateTime, List<ToDoItem> inventory)
+        public void Update(ToDoItem toDoItem, List<ToDoItem> inventory)
         {
-            int index = inventory.FindIndex(x => x.Id == id);
+            int index = inventory.FindIndex(x => x.Id == toDoItem.Id);
 
-            inventory[index].Title = title;
-            inventory[index].Description = description;
-
-
-            inventory[index].IsReminderOn = true;
-            inventory[index].IsAdvanceReminderOn = false;
-
-            inventory[index].EndDateTime = endDateTime;
+            inventory[index] = toDoItem;
 
             SaveToJson(inventory);
-        }//update with basic reminder
-
-        public void Update(int id, string title, string description, DateTime beginDateTime, DateTime endDateTime, List<ToDoItem> inventory)
-        {
-            int index = inventory.FindIndex(x => x.Id == id);
-
-            inventory[index].Title = title;
-            inventory[index].Description = description;
-
-
-            inventory[index].IsReminderOn = true;
-            inventory[index].IsAdvanceReminderOn = true;
-
-            inventory[index].BeginDateTime = beginDateTime;
-            inventory[index].EndDateTime = endDateTime;
-
-            SaveToJson(inventory);
-        }//update with advance reminder
-
-        public void Update(int id, string title, string description, List<ToDoItem> inventory)
-        {
-            int index = inventory.FindIndex(x => x.Id == id);
-
-            inventory[index].Title = title;
-            inventory[index].Description = description;
-
-            inventory[index].IsReminderOn = false;
-
-            SaveToJson(inventory);
-        }//Only update without reminder
-
-        public void Update(int id, bool isStarred, List<ToDoItem> inventory)
-        {
-            int index = inventory.FindIndex(x => x.Id == id);
-
-            inventory[index].IsStarred = isStarred;
-
-            SaveToJson(inventory);
-        }//Update starred
-
-        public void UpdateCompletion(int id, bool isCompleted, List<ToDoItem> inventory)
-        {
-            int index = inventory.FindIndex(x => x.Id == id);
-
-            inventory[index].IsCompleted = isCompleted;
-
-            SaveToJson(inventory);
-        }//Update completion
-
-        public void Update(int id, TagItem tagItem, List<ToDoItem> inventory)
-        {
-            inventory[id].TagId = tagItem.Id;
-            inventory[id].TagText = tagItem.Text;
-            inventory[id].IsUsingTag = true;
-            SaveToJson(inventory);
-        }//Update tag
+        }//Update
         #endregion
     }
 }

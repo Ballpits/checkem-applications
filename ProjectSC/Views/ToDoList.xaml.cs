@@ -11,9 +11,9 @@ using System.Windows.Media;
 
 namespace ProjectSC.Views
 {
-    public partial class ToDoList_View : UserControl
+    public partial class ToDoList : UserControl
     {
-        public ToDoList_View()
+        public ToDoList()
         {
             InitializeComponent();
 
@@ -32,7 +32,7 @@ namespace ProjectSC.Views
             //load in itembars into stackpanel
             LoadList(Inventory);
 
-            TagList = new TagList_View(this);
+            TagList = new TagList(this);
             GridTagList.Children.Add(TagList);
 
             MyDay_String = this.FindResource("Dict_MyDay") as string;
@@ -54,7 +54,7 @@ namespace ProjectSC.Views
         public List<ToDoItem> Inventory = new List<ToDoItem>();
         private List<ToDoItem> FilteredInventory = new List<ToDoItem>();
 
-        private TagList_View TagList;
+        private TagList TagList;
 
         private bool IsDetailsPanelOpened = false;
         private bool IsTagCreationPanelOpened = false;
@@ -90,7 +90,7 @@ namespace ProjectSC.Views
             AddItem(Inventory[Inventory.FindIndex(x => x.Id == id)]);
         }
 
-        public void RemoveItemBar(ItemBar_View itembar)
+        public void RemoveItemBar(ItemBar itembar)
         {
             stpMain.Children.RemoveAt(stpMain.Children.IndexOf(itembar));
 
@@ -114,17 +114,9 @@ namespace ProjectSC.Views
         #region Item
         private void AddItem(ToDoItem todoItem)
         {
-            ItemBar_View itemBar = new ItemBar_View(this)
+            ItemBar itemBar = new ItemBar(this)
             {
-                Id = todoItem.Id,
-                Title = todoItem.Title,
-                Description = todoItem.Description,
-                IsCompleted = todoItem.IsCompleted,
-                IsStarred = todoItem.IsStarred,
-                IsReminderOn = todoItem.IsReminderOn,
-                IsAdvanceReminderOn = todoItem.IsAdvanceReminderOn,
-                BeginDateTime = todoItem.BeginDateTime,
-                EndDateTime = todoItem.EndDateTime
+                itemProperties = todoItem
             };
 
             stpMain.Children.Add(itemBar);
@@ -333,7 +325,7 @@ namespace ProjectSC.Views
 
         private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Keyboard.ClearFocus();
+
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -479,9 +471,10 @@ namespace ProjectSC.Views
         #region Details panel
         public void OpenDetailsPanel()
         {
-            DetailsPanel_View detailsPanel = new DetailsPanel_View(this, TagList)
+            DetailsPanel detailsPanel = new DetailsPanel(this, TagList)
             {
-                IsNew = true
+                IsNew = true,
+                itemProperties = new ToDoItem()
             };
 
             DataGrid.Children.Add(detailsPanel);
@@ -489,30 +482,11 @@ namespace ProjectSC.Views
             IsDetailsPanelOpened = true;
         }
 
-        public void OpenDetailsPanel(ItemBar_View itemBar)
+        public void OpenDetailsPanel(ItemBar itemBar)
         {
-            DetailsPanel_View detailsPanel = new DetailsPanel_View(this, itemBar, TagList)
+            DetailsPanel detailsPanel = new DetailsPanel(this, itemBar, TagList)
             {
-                IsNew = false,
-
-                Id = itemBar.Id,
-
-
-                //Title = Inventory[Inventory.IndexOf(Inventory.Find(x => x.Id == id))].Title,
-                Title = itemBar.Title,
-
-                Description = itemBar.Description,
-
-
-                IsReminderOn = itemBar.IsReminderOn,
-                IsAdvanceReminderOn = itemBar.IsAdvanceReminderOn,
-
-                BeginDateTime = itemBar.BeginDateTime,
-                EndDateTime = itemBar.EndDateTime,
-
-
-                IsUsingTag = itemBar.IsUsingTag,
-                TagText = itemBar.TagName
+                itemProperties = itemBar.itemProperties
             };
 
             DataGrid.Children.Add(detailsPanel);

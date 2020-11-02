@@ -1,5 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
 using ProjectSC.Models.DataAccess;
+using ProjectSC.Models.ToDo;
 using ProjectSC.ViewModels.ColorConvert;
 using System;
 using System.Windows;
@@ -10,16 +11,16 @@ using System.Windows.Media;
 
 namespace ProjectSC.Views
 {
-    public partial class ItemBar_View : UserControl
+    public partial class ItemBar : UserControl
     {
-        public ItemBar_View()
+        public ItemBar()
         {
             InitializeComponent();
 
             SetupColor();
         }
 
-        public ItemBar_View(ToDoList_View toDo)
+        public ItemBar(ToDoList toDo)
         {
             InitializeComponent();
 
@@ -29,33 +30,13 @@ namespace ProjectSC.Views
         }
 
         #region Properties
-        public int Id { get; set; }
-
-
-        public string Title { get; set; }
-        public string Description { get; set; }
-
-
-        public bool IsCompleted { get; set; }
-        public bool IsStarred { get; set; }
-
-
-        public bool IsReminderOn { get; set; }
-        public bool IsAdvanceReminderOn { get; set; }
-
-
-        public DateTime BeginDateTime { get; set; }
-        public DateTime EndDateTime { get; set; }
-
-
-        public bool IsUsingTag { get; set; }
-        public string TagName { get; set; }
+        public ToDoItem itemProperties { get; set; }
         #endregion
 
         #region Variables
         private DataAccess_Json dataAccess = new DataAccess_Json();
 
-        private ToDoList_View ToDoList;
+        private ToDoList ToDoList;
 
 
         const int ChaeckBoxIconSize = 35;
@@ -95,13 +76,13 @@ namespace ProjectSC.Views
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            textBlockTitle.Text = Title;
+            textBlockTitle.Text = this.itemProperties.Title;
             //textBlock.Text = Id.ToString();
 
-            checkBox.IsChecked = IsCompleted;
+            checkBox.IsChecked = this.itemProperties.IsCompleted;
             CheckboxLoaded = true;
 
-            StarToggle.IsChecked = IsStarred;
+            StarToggle.IsChecked = this.itemProperties.IsStarred;
 
             Update();
         }
@@ -123,7 +104,8 @@ namespace ProjectSC.Views
 
             if (CheckboxLoaded)
             {
-                dataAccess.UpdateCompletion(Id, true, ToDoList.Inventory);
+                this.itemProperties.IsCompleted = true;
+                dataAccess.Update(this.itemProperties, ToDoList.Inventory);
             }
         }
 
@@ -137,21 +119,16 @@ namespace ProjectSC.Views
             textBlockTitle.SetBinding(TextBlock.ForegroundProperty, DarkMainColorBindings);
             textBlockTitle.TextDecorations = null;
 
-            dataAccess.UpdateCompletion(Id, false, ToDoList.Inventory);
+            this.itemProperties.IsCompleted = false;
+            dataAccess.Update(this.itemProperties, ToDoList.Inventory);
         }
         #endregion
 
 
         private void StarToggle_Click(object sender, RoutedEventArgs e)
         {
-            if (StarToggle.IsChecked == true)
-            {
-                dataAccess.Update(Id, true, ToDoList.Inventory);
-            }
-            else
-            {
-                dataAccess.Update(Id, false, ToDoList.Inventory);
-            }
+            this.itemProperties.IsStarred = (bool)StarToggle.IsChecked;
+            dataAccess.Update(this.itemProperties, ToDoList.Inventory);
         }
 
 
@@ -231,17 +208,17 @@ namespace ProjectSC.Views
             VisualUpdate();
         }
 
-        public void Update(ItemBar_View itemBar)
+        public void Update(ItemBar itemBar)
         {
-            textBlockTitle.Text = itemBar.Title;
-            this.IsReminderOn = itemBar.IsReminderOn;
+            textBlockTitle.Text = itemBar.itemProperties.Title;
+            this.itemProperties.IsReminderOn = itemBar.itemProperties.IsReminderOn;
 
             VisualUpdate();
         }
 
         private void VisualUpdate()
         {
-            if (IsReminderOn == true)
+            if (this.itemProperties.IsReminderOn == true)
             {
                 this.Height = 70;
                 border.Height = 70;
@@ -250,17 +227,17 @@ namespace ProjectSC.Views
                 ReminderTimeTextBlock.Visibility = Visibility.Visible;
 
 
-                if (IsAdvanceReminderOn)
+                if (this.itemProperties.IsAdvanceReminderOn)
                 {
-                    ReminderTimeTextBlock.Text = "Start on: " + SimplifiedDate(BeginDateTime) + "\tEnd on: " + SimplifiedDate(EndDateTime);
+                    ReminderTimeTextBlock.Text = "Start on: " + SimplifiedDate(this.itemProperties.BeginDateTime) + "\tEnd on: " + SimplifiedDate(this.itemProperties.EndDateTime);
                 }
                 else
                 {
-                    ReminderTimeTextBlock.Text = SimplifiedDate(EndDateTime);
+                    ReminderTimeTextBlock.Text = SimplifiedDate(this.itemProperties.EndDateTime);
                 }
 
 
-                if (Passed(EndDateTime))
+                if (Passed(this.itemProperties.EndDateTime))
                 {
                     ReminderTimeTextBlock.Foreground = ItemPassedTextColor;
                 }
@@ -278,23 +255,23 @@ namespace ProjectSC.Views
         #endregion
 
         #region Reminder mode itembar methods
-        private string SimplifiedDate(DateTime dateTime)
+        private string SimplifiedDate(DateTime? dateTime)
         {
-            if (dateTime.Year == DateTime.Now.Year && dateTime.Month == DateTime.Now.Month && dateTime.Day == DateTime.Now.Day)
+            if (dateTime.Value.Year == DateTime.Now.Year && dateTime.Value.Month == DateTime.Now.Month && dateTime.Value.Day == DateTime.Now.Day)
             {
-                return "Today, " + dateTime.ToString("hh:mm tt");
+                return "Today, " + dateTime.Value.ToString("hh:mm tt");
             }
-            else if (dateTime.Year == DateTime.Now.Year && dateTime.Month == DateTime.Now.Month && dateTime.Day == DateTime.Now.Day + 1)
+            else if (dateTime.Value.Year == DateTime.Now.Year && dateTime.Value.Month == DateTime.Now.Month && dateTime.Value.Day == DateTime.Now.Day + 1)
             {
-                return "Tomorrow, " + dateTime.ToString("hh:mm tt");
+                return "Tomorrow, " + dateTime.Value.ToString("hh:mm tt");
             }
             else
             {
-                return dateTime.ToString("yyyy/MM/dd, hh:mm tt");
+                return dateTime.Value.ToString("yyyy/MM/dd, hh:mm tt");
             }
         }
 
-        private bool Passed(DateTime dateTime)
+        private bool Passed(DateTime? dateTime)
         {
             if (dateTime < DateTime.Now)
             {
@@ -347,7 +324,7 @@ namespace ProjectSC.Views
 
         private void MenuItemRemove_Click(object sender, RoutedEventArgs e)
         {
-            dataAccess.RemoveAt(Id, ToDoList.Inventory);
+            dataAccess.Remove(this.itemProperties, ToDoList.Inventory);
 
             ToDoList.RemoveItemBar(this);
 

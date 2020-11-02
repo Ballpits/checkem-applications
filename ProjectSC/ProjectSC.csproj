@@ -185,11 +185,11 @@
     <Compile Include="Views\Calendar\CalendarDay_View.xaml.cs">
       <DependentUpon>CalendarDay_View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DetailsPanel_View.xaml.cs">
-      <DependentUpon>DetailsPanel_View.xaml</DependentUpon>
+    <Compile Include="Views\DetailsPanel.xaml.cs">
+      <DependentUpon>DetailsPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ItemBar_View.xaml.cs">
-      <DependentUpon>ItemBar_View.xaml</DependentUpon>
+    <Compile Include="Views\ItemBar.xaml.cs">
+      <DependentUpon>ItemBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\QuickView\QuickViewWindow.xaml.cs">
       <DependentUpon>QuickViewWindow.xaml</DependentUpon>
@@ -206,8 +206,8 @@
     <Compile Include="Views\Settings\SettingsMenu.xaml.cs">
       <DependentUpon>SettingsMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TagList_View.xaml.cs">
-      <DependentUpon>TagList_View.xaml</DependentUpon>
+    <Compile Include="Views\TagList.xaml.cs">
+      <DependentUpon>TagList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TagPanel\TagCreationPanel_View.xaml.cs">
       <DependentUpon>TagCreationPanel_View.xaml</DependentUpon>
@@ -218,8 +218,8 @@
     <Compile Include="Views\Theme\ThemePreview_View.xaml.cs">
       <DependentUpon>ThemePreview_View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ToDoList_View.xaml.cs">
-      <DependentUpon>ToDoList_View.xaml</DependentUpon>
+    <Compile Include="Views\ToDoList.xaml.cs">
+      <DependentUpon>ToDoList.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\SnackBar\SnackbarController.cs" />
     <Compile Include="Models\Object\Notification\Notifications.cs" />
@@ -262,11 +262,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DetailsPanel_View.xaml">
+    <Page Include="Views\DetailsPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ItemBar_View.xaml">
+    <Page Include="Views\ItemBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -290,7 +290,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TagList_View.xaml">
+    <Page Include="Views\TagList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -306,7 +306,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ToDoList_View.xaml">
+    <Page Include="Views\ToDoList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -17,39 +17,18 @@ namespace ProjectSC.Models.Interface
 
 
 
-
         void ResetId(List<ToDoItem> inventory);
 
 
 
-
-        void RemoveAt(int id, List<ToDoItem> inventory);
-
+        void Remove(ToDoItem toDoItem, List<ToDoItem> inventory);
 
 
 
-        #region AddNew
-        void AddNew(string title, string description, DateTime begineDateTime, DateTime endDateTime, DateTime createdDateTime, List<ToDoItem> inventory);
-
-        void AddNew(string title, string description, DateTime endDateTime, DateTime createdDateTime, List<ToDoItem> inventory);
-
-        void AddNew(string title, string description, DateTime createdDateTime, List<ToDoItem> inventory);
-
-        void Update(int id, string title, string description, DateTime endDateTime, List<ToDoItem> inventory);
-
-        void Update(int id, string title, string description, DateTime beginDateTime, DateTime endDateTime, List<ToDoItem> inventory);
-        #endregion
+        void AddNew(ToDoItem toDoItem, List<ToDoItem> inventory);
 
 
 
-        #region Update
-        void Update(int id, string title, string description, List<ToDoItem> inventory);
-
-        void Update(int id, bool isStarred, List<ToDoItem> inventory);
-
-        void UpdateCompletion(int id, bool isCompleted, List<ToDoItem> inventory);
-
-        void Update(int id, TagItem tagItem, List<ToDoItem> inventory);
-        #endregion
+        void Update(ToDoItem toDoItem, List<ToDoItem> inventory);
     }
 }

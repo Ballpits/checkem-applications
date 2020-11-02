@@ -1,5 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
 using ProjectSC.Models.DataAccess;
+using ProjectSC.Models.ToDo;
 using ProjectSC.ViewModels.SnackBar;
 using System;
 using System.Windows;
@@ -9,9 +10,9 @@ using System.Windows.Media;
 
 namespace ProjectSC.Views
 {
-    public partial class DetailsPanel_View : UserControl
+    public partial class DetailsPanel : UserControl
     {
-        public DetailsPanel_View(ToDoList_View todolist, TagList_View taglist)
+        public DetailsPanel(ToDoList todolist, TagList taglist)
         {
             InitializeComponent();
 
@@ -19,7 +20,7 @@ namespace ProjectSC.Views
             ToDoList = todolist;
         }
 
-        public DetailsPanel_View(ToDoList_View todolist, ItemBar_View itembar, TagList_View taglist)
+        public DetailsPanel(ToDoList todolist, ItemBar itembar, TagList taglist)
         {
             InitializeComponent();
 
@@ -29,95 +30,59 @@ namespace ProjectSC.Views
         }
 
         #region Properties
-        public bool IsNew { get; set; }
+        public bool IsNew { get; set; } = false;
 
-        public int Id { get; set; }
-
-
-        public string Title { get; set; }
-        public string Description { get; set; }
-
-
-        public bool IsCompleted { get; set; }
-        public bool IsImportant { get; set; }
-
-
-        public bool IsReminderOn { get; set; }
-        public bool IsAdvanceReminderOn { get; set; }
-
-
-        public DateTime BeginDateTime { get; set; }
-        public DateTime EndDateTime { get; set; }
-
-        public bool IsUsingTag { get; set; }
-        public string TagText { get; set; }
-        public int TagId { get; set; }
+        public ToDoItem itemProperties { get; set; }
         #endregion
 
 
         private DataAccess_Json dataAccess = new DataAccess_Json();
-        private ToDoList_View ToDoList;
-        private ItemBar_View itemBar;
-        private TagList_View tagList;
+        private ToDoList ToDoList;
+        private ItemBar itemBar;
+        private TagList tagList;
 
         #region Save
         private void Save()
         {
             if (IsNew)
             {
-                if (IsReminderOn)
+                ToDoItem toDoItem = new ToDoItem()
                 {
-                    if (IsAdvanceReminderOn)
-                    {
-                        dataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), DateTime.Now, ToDoList.Inventory);
-                    }
-                    else
-                    {
-                        dataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), DateTime.Now, ToDoList.Inventory);
-                    }
-                }
-                else
-                {
-                    dataAccess.AddNew(textBoxTitle.Text, textBoxDescription.Text, DateTime.Now, ToDoList.Inventory);
-                }
+                    Id = ToDoList.Inventory.Count,
+                    Title = textBoxTitle.Text,
+                    Description = textBoxDescription.Text,
+                };
 
-
-                dataAccess.RetrieveData(ref ToDoList.Inventory);
-                dataAccess.ResetId(ToDoList.Inventory);
+                dataAccess.AddNew(toDoItem, ToDoList.Inventory);
 
                 ToDoList.AddItemBar();
-
-                //DetailsGrid.Children.Add(SnackbarControl.OpenSnackBar("Incorrect format !"));
-                ToDoList.CloseDetailsPanel("Added");
             }
             else
             {
-                if (IsReminderOn)
-                {
-                    if (IsAdvanceReminderOn)
-                    {
-                        dataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text), Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text), ToDoList.Inventory);
+                this.itemProperties.Title = textBoxTitle.Text;
+                this.itemProperties.Description = textBoxDescription.Text;
 
-                        itemBar.BeginDateTime = Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text);
-                        itemBar.EndDateTime = Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text);
+                if (this.itemProperties.IsReminderOn)
+                {
+                    itemBar.itemProperties.IsReminderOn = true;
+
+                    if (this.itemProperties.IsAdvanceReminderOn)
+                    {
+                        itemBar.itemProperties.IsAdvanceReminderOn = true;
+
+                        this.itemProperties.BeginDateTime = Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text);
+                        this.itemProperties.EndDateTime = Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text);
                     }
                     else
                     {
-                        dataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text), ToDoList.Inventory);
-
-                        itemBar.EndDateTime = Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text);
+                        this.itemProperties.EndDateTime = Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text);
                     }
-
-                }
-                else
-                {
-                    dataAccess.Update(Id, textBoxTitle.Text, textBoxDescription.Text, ToDoList.Inventory);
                 }
 
-                itemBar.Title = textBoxTitle.Text;
-                itemBar.Description = textBoxDescription.Text;
-                itemBar.IsReminderOn = IsReminderOn;
-                itemBar.IsAdvanceReminderOn = IsAdvanceReminderOn;
+                dataAccess.Update(this.itemProperties, ToDoList.Inventory);
+
+                itemBar.itemProperties.Title = textBoxTitle.Text;
+                itemBar.itemProperties.Description = textBoxDescription.Text;
 
                 itemBar.Update(itemBar);
 
@@ -153,29 +118,29 @@ namespace ProjectSC.Views
             }
             else
             {
-                textBoxTitle.Text = Title;
-                textBoxDescription.Text = Description;
+                textBoxTitle.Text = this.itemProperties.Title;
+                textBoxDescription.Text = this.itemProperties.Description;
 
-                if (IsReminderOn)
+                if (this.itemProperties.IsReminderOn)
                 {
-                    if (IsAdvanceReminderOn)
+                    if (this.itemProperties.IsAdvanceReminderOn)
                     {
                         SetReminderState(2);
 
 
-                        BeginDatePicker_Advance.Text = $"{BeginDateTime.Month}/{BeginDateTime.Day}/{BeginDateTime.Year}";
-                        BeginTimePicker_Advance.Text = $"{string.Format("{0:h:mm tt}", BeginDateTime)}";
+                        BeginDatePicker_Advance.Text = $"{this.itemProperties.BeginDateTime.Value.Month}/{this.itemProperties.BeginDateTime.Value.Day}/{this.itemProperties.BeginDateTime.Value.Year}";
+                        BeginTimePicker_Advance.Text = $"{string.Format("{0:h:mm tt}", this.itemProperties.BeginDateTime)}";
 
-                        EndDatePicker_Advance.Text = $"{EndDateTime.Month}/{EndDateTime.Day}/{EndDateTime.Year}";
-                        EndTimePicker_Advance.Text = $"{string.Format("{0:h:mm tt}", EndDateTime)}";
+                        EndDatePicker_Advance.Text = $"{this.itemProperties.EndDateTime.Value.Month}/{this.itemProperties.EndDateTime.Value.Day}/{this.itemProperties.EndDateTime.Value.Year}";
+                        EndTimePicker_Advance.Text = $"{string.Format("{0:h:mm tt}", this.itemProperties.EndDateTime)}";
                     }
                     else
                     {
                         SetReminderState(1);
 
 
-                        EndDatePicker_Basic.Text = $"{EndDateTime.Month}/{EndDateTime.Day}/{EndDateTime.Year}";
-                        EndTimePicker_Basic.Text = $"{string.Format("{0:h:mm tt}", EndDateTime)}";
+                        EndDatePicker_Basic.Text = $"{this.itemProperties.EndDateTime.Value.Month}/{this.itemProperties.EndDateTime.Value.Day}/{this.itemProperties.EndDateTime.Value.Year}";
+                        EndTimePicker_Basic.Text = $"{string.Format("{0:h:mm tt}", this.itemProperties.EndDateTime)}";
                     }
                 }
                 else
@@ -184,57 +149,57 @@ namespace ProjectSC.Views
                 }
             }
 
-            LoadTagChoice();
-            LoadUsingTag();
+            //LoadTagChoice();
+            //LoadUsingTag();
         }
 
-        protected void ViewTag_Click(object sender, RoutedEventArgs e)
-        {
-            Button viewTagbtn = sender as Button;
-            dataAccess.Update(Id, tagList.tagInventory[tagList.tagInventory.FindIndex(x => x.Text == (string)viewTagbtn.Content)], ToDoList.Inventory);
-            dataAccess.RetrieveData(ref ToDoList.Inventory);
-            StpSelectTag.Children.Add(new Button()
-            {
-                Style = FindResource("TagButton") as Style,
-                Name = "Tag_" + ToDoList.Inventory[Id].TagText,
-                Content = ToDoList.Inventory[Id].TagText,
-                FontFamily = new System.Windows.Media.FontFamily("Arial"),
-                FontSize = 16
-            });
-        }
+        //private void ViewTag_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Button viewTagbtn = sender as Button;
+        //    dataAccess.Update(Id, tagList.tagInventory[tagList.tagInventory.FindIndex(x => x.Text == (string)viewTagbtn.Content)], ToDoList.Inventory);
+        //    dataAccess.RetrieveData(ref ToDoList.Inventory);
+        //    StpSelectTag.Children.Add(new Button()
+        //    {
+        //        Style = FindResource("TagButton") as Style,
+        //        Name = "Tag_" + ToDoList.Inventory[Id].TagText,
+        //        Content = ToDoList.Inventory[Id].TagText,
+        //        FontFamily = new System.Windows.Media.FontFamily("Arial"),
+        //        FontSize = 16
+        //    });
+        //}
 
-        //Load All The Tag Into PopBox
-        private void LoadTagChoice()
-        {
-            foreach (var tagitem in tagList.tagInventory)
-            {
-                Button tagviewbtn = new Button()
-                {
-                    Content = tagitem.Text,
-                    FontFamily = new System.Windows.Media.FontFamily("Arial"),
-                    FontSize = 16,
-                    Name = "Tag_" + tagitem.Text
-                };
-                tagviewbtn.Click += new RoutedEventHandler(ViewTag_Click);
-                StpTagPopup.Children.Add(tagviewbtn);
-            }
-        }
+        ////Load All The Tag Into PopBox
+        //private void LoadTagChoice()
+        //{
+        //    foreach (var tagitem in tagList.tagInventory)
+        //    {
+        //        Button tagviewbtn = new Button()
+        //        {
+        //            Content = tagitem.Text,
+        //            FontFamily = new System.Windows.Media.FontFamily("Arial"),
+        //            FontSize = 16,
+        //            Name = "Tag_" + tagitem.Text
+        //        };
+        //        tagviewbtn.Click += new RoutedEventHandler(ViewTag_Click);
+        //        StpTagPopup.Children.Add(tagviewbtn);
+        //    }
+        //}
 
-        //Load the Tag that use on this ItemBar
-        private void LoadUsingTag()
-        {
-            if (ToDoList.Inventory[Id].IsUsingTag || IsUsingTag)
-            {
-                StpSelectTag.Children.Add(new Button()
-                {
-                    Style = FindResource("TagButton") as Style,
-                    Name = "Tag_" + ToDoList.Inventory[Id].TagText,
-                    Content = ToDoList.Inventory[Id].TagText,
-                    FontFamily = new System.Windows.Media.FontFamily("Arial"),
-                    FontSize = 16
-                });
-            }
-        }
+        ////Load the Tag that use on this ItemBar
+        //private void LoadUsingTag()
+        //{
+        //    if (this.IsUsingTag)
+        //    {
+        //        StpSelectTag.Children.Add(new Button()
+        //        {
+        //            Style = FindResource("TagButton") as Style,
+        //            Name = "Tag_" + this.TagText,
+        //            Content = this.TagText,
+        //            FontFamily = new System.Windows.Media.FontFamily("Arial"),
+        //            FontSize = 16
+        //        });
+        //    }
+        //}
 
 
         #region Button click event
@@ -250,7 +215,7 @@ namespace ProjectSC.Views
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            dataAccess.RemoveAt(Id, ToDoList.Inventory);
+            dataAccess.Remove(this.itemProperties, ToDoList.Inventory);
 
             ToDoList.RemoveItemBar(itemBar);
 
@@ -304,8 +269,8 @@ namespace ProjectSC.Views
 
                     StpReminder.Visibility = Visibility.Collapsed;
 
-                    IsReminderOn = false;
-                    IsAdvanceReminderOn = false;
+                    this.itemProperties.IsReminderOn = false;
+                    this.itemProperties.IsAdvanceReminderOn = false;
                     break;
 
                 case 1://basic reminder
@@ -328,8 +293,8 @@ namespace ProjectSC.Views
                     EndDatePicker_Basic.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day + 1}/{DateTime.Now.Year}";
                     EndTimePicker_Basic.Text = "12:00 AM";
 
-                    IsReminderOn = true;
-                    IsAdvanceReminderOn = false;
+                    this.itemProperties.IsReminderOn = true;
+                    this.itemProperties.IsAdvanceReminderOn = false;
                     break;
 
                 case 2://advance reminder
@@ -353,8 +318,8 @@ namespace ProjectSC.Views
                     EndDatePicker_Advance.Text = $"{DateTime.Now.Month}/{DateTime.Now.Day + 1}/{DateTime.Now.Year}";
                     EndTimePicker_Advance.Text = "12:00 AM";
 
-                    IsReminderOn = true;
-                    IsAdvanceReminderOn = true;
+                    this.itemProperties.IsReminderOn = true;
+                    this.itemProperties.IsAdvanceReminderOn = true;
                     break;
 
                 default:

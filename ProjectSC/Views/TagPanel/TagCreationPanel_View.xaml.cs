@@ -8,7 +8,7 @@ namespace ProjectSC.Views.TagPanel
 {
     public partial class TagCreationPanel_View : UserControl
     {
-        public TagCreationPanel_View(ToDoList_View toDo, TagList_View tagList_View)
+        public TagCreationPanel_View(ToDoList toDo, TagList tagList_View)
         {
             InitializeComponent();
 
@@ -17,8 +17,8 @@ namespace ProjectSC.Views.TagPanel
         }
 
         private TagDataAccess_Json tagDataAccess = new TagDataAccess_Json();
-        private ToDoList_View ToDoList;
-        private TagList_View TagList;
+        private ToDoList ToDoList;
+        private TagList TagList;
 
         private System.Windows.Media.Brush color;
 

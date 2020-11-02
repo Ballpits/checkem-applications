@@ -6,14 +6,14 @@ using System.Windows.Controls;
 
 namespace ProjectSC.Views
 {
-    public partial class TagList_View : UserControl
+    public partial class TagList : UserControl
     {
-        public TagList_View()
+        public TagList()
         {
             InitializeComponent();
         }
 
-        public TagList_View(ToDoList_View toDo)
+        public TagList(ToDoList toDo)
         {
             InitializeComponent();
 
@@ -21,7 +21,7 @@ namespace ProjectSC.Views
         }
 
         #region Variables
-        private ToDoList_View ToDoList;
+        private ToDoList ToDoList;
         private TagDataAccess_Json tagdataAccess = new TagDataAccess_Json();
         #endregion
 

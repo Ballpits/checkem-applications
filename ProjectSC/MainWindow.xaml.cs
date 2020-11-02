@@ -26,7 +26,7 @@ namespace ProjectSC
         #region Variables
         private DataAccess_Json dataAccess = new DataAccess_Json();
 
-        private ToDoList_View todoList_View = new ToDoList_View();
+        private ToDoList todoList_View = new ToDoList();
 
         private List<Models.Object.Notification.Notifications> timeRecord = new List<Models.Object.Notification.Notifications>();
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
@@ -133,15 +133,18 @@ namespace ProjectSC
 
         private void ButtonSettings_Click(object sender, RoutedEventArgs e)
         {
-            SettingsMenu settingsMenu = new SettingsMenu(this);
+            if (MainGrid.Children.Count < 4)
+            {
+                SettingsMenu settingsMenu = new SettingsMenu(this);
 
-            Grid.SetColumnSpan(settingsMenu, 2);
-            Grid.SetRow(settingsMenu, 1);
+                Grid.SetColumnSpan(settingsMenu, 2);
+                Grid.SetRow(settingsMenu, 1);
 
-            MainGrid.Children.Add(settingsMenu);
+                MainGrid.Children.Add(settingsMenu);
 
-            SearchBoxBorder.Visibility = Visibility.Hidden;
-            NavExpanderButtonGrid.Visibility = Visibility.Hidden;
+                SearchBoxBorder.Visibility = Visibility.Hidden;
+                NavExpanderButtonGrid.Visibility = Visibility.Hidden;
+            }
         }
 
         public void ChangeFilter(int mode)
@@ -191,6 +194,21 @@ namespace ProjectSC
             {
                 SearchBox.Focus();
             }
+
+            if (e.Key == Key.F11)
+            {
+                if (this.WindowStyle == WindowStyle.None)
+                {
+                    this.WindowStyle = WindowStyle.SingleBorderWindow;
+                    this.WindowState = WindowState.Maximized;
+                }
+                else
+                {
+                    this.WindowStyle = WindowStyle.None;
+                    this.WindowState = WindowState.Minimized;
+                    this.WindowState = WindowState.Maximized;
+                }
+            }
         }
 
         private void MainWindow_KeyUp(object sender, KeyEventArgs e)
@@ -204,6 +222,28 @@ namespace ProjectSC
             {
                 IsFPressed = false;
             }
+        }
+
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void RestoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

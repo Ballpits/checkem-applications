@@ -150,6 +150,9 @@
             <Style x:Key="CheckemChromeButton" TargetType="Button" BasedOn="{StaticResource CheckemFlatButton}">
                 <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=GrayMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
 
+                <Setter Property="Width" Value="50"/>
+                <Setter Property="Height" Value="Auto"/>
+
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
                         <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor, Converter={StaticResource ColorToBrushConverter}}"/>

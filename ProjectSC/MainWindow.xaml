@@ -17,7 +17,9 @@
         Height="540"
         MinWidth="960"
         MinHeight="540"
-        StateChanged="AppWindow_StateChanged" KeyUp="MainWindow_KeyUp" KeyDown="MainWindow_KeyDown"
+        StateChanged="AppWindow_StateChanged"
+        KeyUp="MainWindow_KeyUp"
+        KeyDown="MainWindow_KeyDown"
         >
 
     <Window.Resources>
@@ -49,7 +51,7 @@
     </Window.Triggers>
 
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="50"/>
+        <WindowChrome CaptionHeight="50" ResizeBorderThickness="10"/>
     </WindowChrome.WindowChrome>
 
     <materialDesign:TransitioningContent x:Name="TrainsitioningContent" OpeningEffect="{materialDesign:TransitionEffect Duration=0:0:0.5, Kind=FadeIn}" Margin="7">
@@ -136,16 +138,16 @@
                 <Path Data="M578.19198,-0.066659417 L706.86698,23.4 814.70389,24.400132 840.23715,40.400214 939.63685,40.489548 939.5698,0.0080855492" Fill="{Binding Source={x:Static properties:Settings.Default}, Path=GrayMainColor, Converter={StaticResource ColorToBrushConverter}}" HorizontalAlignment="Right" Height="40.556" Margin="0" Stretch="Fill" VerticalAlignment="Top" Width="361.446"/>
 
                 <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Top" Height="20">
-                    <Button Style="{StaticResource CheckemChromeButton}" Height="Auto" Width="50" Click="ButtonSettings_Click">
+                    <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Settings" Click="ButtonSettings_Click">
                         <materialDesign:PackIcon Kind="SettingsOutline" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
                     </Button>
-                    <Button Style="{StaticResource CheckemChromeButton}" Height="Auto" Width="50">
+                    <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Minimize" Click="MinimizeButton_Click">
                         <materialDesign:PackIcon Kind="WindowMinimize" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
                     </Button>
-                    <Button Style="{StaticResource CheckemChromeButton}" Height="Auto" Width="50">
+                    <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Restore Down" Click="RestoreButton_Click">
                         <materialDesign:PackIcon Kind="WindowRestore" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
                     </Button>
-                    <Button Style="{StaticResource CheckemChromeXButton}" Height="Auto" Width="50">
+                    <Button Style="{StaticResource CheckemChromeXButton}" ToolTip="Close" Click="CloseButton_Click">
                         <materialDesign:PackIcon Kind="Close" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
                     </Button>
                 </StackPanel>
