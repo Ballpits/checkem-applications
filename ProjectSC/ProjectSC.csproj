@@ -163,8 +163,8 @@
     <Compile Include="Models\AppearanceDataAccess\AppearanceDataAccess_Json.cs" />
     <Compile Include="Models\DataAccess\TagDataAccess_Json.cs" />
     <Compile Include="Models\Interface\IAppearanceDataAccess.cs" />
-    <Compile Include="Models\Interface\IDataAccess.cs" />
     <Compile Include="Models\DataAccess\DataAccess_Json.cs" />
+    <Compile Include="Models\Interface\IDataAccess.cs" />
     <Compile Include="Models\Interface\ITagDataAccess.cs" />
     <Compile Include="Models\Object\Appearance\Themes.cs" />
     <Compile Include="Models\Object\Tag\TagItem.cs" />
