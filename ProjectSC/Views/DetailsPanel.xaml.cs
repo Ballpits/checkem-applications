@@ -53,7 +53,28 @@ namespace ProjectSC.Views
                     Description = textBoxDescription.Text,
                 };
 
+                if (this.itemProperties.IsReminderOn)
+                {
+                    toDoItem.IsReminderOn = true;
+
+                    if (this.itemProperties.IsAdvanceReminderOn)
+                    {
+                        toDoItem.IsAdvanceReminderOn = true;
+
+                        toDoItem.BeginDateTime = Convert.ToDateTime(BeginDatePicker_Advance.Text + " " + BeginTimePicker_Advance.Text);
+                        toDoItem.EndDateTime = Convert.ToDateTime(EndDatePicker_Advance.Text + " " + EndTimePicker_Advance.Text);
+                    }
+                    else
+                    {
+                        toDoItem.EndDateTime = Convert.ToDateTime(EndDatePicker_Basic.Text + " " + EndTimePicker_Basic.Text);
+                    }
+                }
+
+                toDoItem.CreationDateTime = DateTime.Now;
+
                 dataAccess.AddNew(toDoItem, ToDoList.Inventory);
+
+                ToDoList.CloseDetailsPanel();
 
                 ToDoList.AddItemBar();
             }
@@ -80,9 +101,6 @@ namespace ProjectSC.Views
                 }
 
                 dataAccess.Update(this.itemProperties, ToDoList.Inventory);
-
-                itemBar.itemProperties.Title = textBoxTitle.Text;
-                itemBar.itemProperties.Description = textBoxDescription.Text;
 
                 itemBar.Update(itemBar);
 

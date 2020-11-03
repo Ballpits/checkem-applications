@@ -35,12 +35,6 @@ namespace ProjectSC.Views
             TagList = new TagList(this);
             GridTagList.Children.Add(TagList);
 
-            MyDay_String = this.FindResource("Dict_MyDay") as string;
-            AllItems_String = this.FindResource("Dict_AllItems") as string;
-            Reminder_String = this.FindResource("Dict_Reminder") as string;
-            Starred_String = this.FindResource("Dict_Starred") as string;
-            Task_String = this.FindResource("Dict_Task") as string;
-            Tasks_String = this.FindResource("Dict_Tasks") as string;
 #if DEBUG
             ListTesterTB.Text = ListViewer.ShowList(Inventory);
 
@@ -61,8 +55,6 @@ namespace ProjectSC.Views
 
         private int filterMode = 0;
         private int counter = 0;
-
-        private string MyDay_String, AllItems_String, Reminder_String, Starred_String, Task_String, Tasks_String;
         #endregion
 
         private void RetrieveData()
@@ -130,10 +122,10 @@ namespace ProjectSC.Views
                     ToDoListItemCounterTextBlock.Text = "";
                     break;
                 case 1:
-                    ToDoListItemCounterTextBlock.Text = $"1 {Task_String}";
+                    ToDoListItemCounterTextBlock.Text = $"1 {this.FindResource("Dict_Task") as string}";
                     break;
                 default:
-                    ToDoListItemCounterTextBlock.Text = $"{counter} {Tasks_String}";
+                    ToDoListItemCounterTextBlock.Text = $"{counter} {this.FindResource("Dict_Tasks") as string}";
                     break;
             }
         }
@@ -164,7 +156,7 @@ namespace ProjectSC.Views
             switch (mode)
             {
                 case 0://Filter:My day
-                    ToDoListTitleTextBlock.Text = MyDay_String;
+                    ToDoListTitleTextBlock.Text = this.FindResource("Dict_MyDay") as string;
                     break;
 
                 case 1://Filter:All items
@@ -173,7 +165,7 @@ namespace ProjectSC.Views
 
                         LoadList(Inventory);
 
-                        ToDoListTitleTextBlock.Text = AllItems_String;
+                        ToDoListTitleTextBlock.Text = this.FindResource("Dict_AllItems") as string;
 
                         counter = Inventory.Count;
 
@@ -194,7 +186,7 @@ namespace ProjectSC.Views
                                 counter++;
                             }
                         }
-                        ToDoListTitleTextBlock.Text = Reminder_String;
+                        ToDoListTitleTextBlock.Text = this.FindResource("Dict_Reminder") as string;
 
                         break;
                     }
@@ -213,7 +205,7 @@ namespace ProjectSC.Views
                             }
                         }
 
-                        ToDoListTitleTextBlock.Text = Starred_String;
+                        ToDoListTitleTextBlock.Text = this.FindResource("Dict_Starred") as string;
 
                         break;
                     }

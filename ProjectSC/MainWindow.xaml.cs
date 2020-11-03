@@ -1,5 +1,6 @@
 ﻿using ProjectSC.Models.DataAccess;
 using ProjectSC.ViewModels.AppearanceSettings;
+using ProjectSC.ViewModels.Language;
 using ProjectSC.ViewModels.Notification;
 using ProjectSC.Views;
 using ProjectSC.Views.Settings;
@@ -19,6 +20,7 @@ namespace ProjectSC
             InitializeComponent();
 
             AppearanceSettingHelper.DarkModeSetup();
+            LanguageApplyHelper.LanguageSetup();
 
             this.WindowState = WindowState.Maximized;
         }
@@ -201,19 +203,21 @@ namespace ProjectSC
                 {
                     this.WindowStyle = WindowStyle.SingleBorderWindow;
                     this.WindowState = WindowState.Maximized;
+                    TrainsitioningContent.Margin = new Thickness(7);
                 }
                 else
                 {
                     this.WindowStyle = WindowStyle.None;
                     this.WindowState = WindowState.Minimized;
                     this.WindowState = WindowState.Maximized;
+                    TrainsitioningContent.Margin = new Thickness(6);
                 }
             }
         }
 
         private void MainWindow_KeyUp(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.LeftCtrl)
+            if (e.Key == Key.LeftCtrl)
             {
                 IsLCtrlPressed = false;
             }

@@ -6,6 +6,14 @@ namespace ProjectSC.ViewModels.Language
 {
     static class LanguageApplyHelper
     {
+        public static void LanguageSetup()
+        {
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
+            {
+                Source = new Uri($"Assets/LanguageResourceDictionary/{Properties.Settings.Default.CurrentLanguage}.xaml", UriKind.RelativeOrAbsolute)
+            });
+        }
+
         public static void ApplyLanguage(object sender)
         {
             string path = "Assets/LanguageResourceDictionary/";//Path for the directory of the dictionary
@@ -26,6 +34,8 @@ namespace ProjectSC.ViewModels.Language
             });
 
             Properties.Settings.Default.CurrentLanguage = language;
+
+            Properties.Settings.Default.Save();
         }
     }
 }

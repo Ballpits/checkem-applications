@@ -51,7 +51,7 @@
     </Window.Triggers>
 
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="50" ResizeBorderThickness="10"/>
+        <WindowChrome CaptionHeight="50" ResizeBorderThickness="5"/>
     </WindowChrome.WindowChrome>
 
     <materialDesign:TransitioningContent x:Name="TrainsitioningContent" OpeningEffect="{materialDesign:TransitionEffect Duration=0:0:0.5, Kind=FadeIn}" Margin="7">
