@@ -3,10 +3,174 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:properties="clr-namespace:Checkem.Properties"
              xmlns:local="clr-namespace:Checkem.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="540"
+             d:DesignWidth="960"
+             >
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />
+    </UserControl.Resources>
+
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.5}">
+
+        <Grid Name="DataGrid" Style="{StaticResource todoUSCTitlebar}">
+            <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=GrayMainColor,Converter={StaticResource ColorToBrushConverter}}" Margin="0">
+
+                <!--<Grid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Sort" Icon="{materialDesign:PackIcon Kind=Sort, Size=18}">
+                            <MenuItem Header="Starred" Icon="{materialDesign:PackIcon Kind=StarBorder, Size=18}" Click="SortButton_Importance_Click"/>
+                            <MenuItem Header="Due date" Icon="{materialDesign:PackIcon Kind=CalendarClock, Size=18}" Click="SortButton_DueDate_Click"/>
+                            <MenuItem Header="Alphabetical ascending" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalAscending, Size=18}" Click="SortButton_AlphabeticalAscending_Click"/>
+                            <MenuItem Header="Alphabetical descending" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalDescending, Size=18}" Click="SortButton_AlphabeticalDescending_Click"/>
+                            <MenuItem Header="Creation date" Icon="{materialDesign:PackIcon Kind=CalendarAdd, Size=18}" Click="SortButton_CreationDate_Click"/>
+                        </MenuItem>
+
+                        <Separator/>
+
+                        <MenuItem Header="Add new task" Icon="{materialDesign:PackIcon Kind=Add, Size=18}" Click="AddItemButton_Click"/>
+                    </ContextMenu>
+                </Grid.ContextMenu>-->
+
+                <Grid Height="75" VerticalAlignment="Top">
+
+                    <TextBlock x:Name="ToDoListTitleTextBlock" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}" Text="Name" Margin="0,5,0,0" Height="40" FontFamily="Arial" FontSize="36" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"/>
+                    <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="0 Items" Margin="0,0,0,5" Height="20" FontFamily="Arial" FontSize="16" Padding="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}" TextAlignment="Center"/>
+
+
+                    <Grid Margin="0,0,20,0" HorizontalAlignment="Right">
+                        <Button x:Name="ButtonClearSort" Margin="0,0,45,0" Height="40" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" ToolTip="Clear sort" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Close" Width="25" Height="20" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                                <TextBlock x:Name="SortIndicatorTextBlock" Margin="0" HorizontalAlignment="Right" Text="AlphabeticalAscending" FontFamily="Arial" TextAlignment="Center" FontSize="14" Padding="0,2,0,0" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                            </StackPanel>
+                        </Button>
+
+                        <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0"  Width="40" Height="40" TabIndex="7" IsTabStop="False" VerticalAlignment="Center" ToolTip="{DynamicResource ResourceKey=Dict_Sort}">
+                            <materialDesign:PopupBox.ToggleContent>
+                                <materialDesign:PackIcon FocusVisualStyle="{DynamicResource ScrollBarFocusVisual}" Kind="Sort" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" IsTabStop="True" TabIndex="7" TextBlock.Foreground="Black" />
+                            </materialDesign:PopupBox.ToggleContent>
+
+                            <StackPanel>
+                                <TextBlock Text="{DynamicResource ResourceKey=Dict_SortBy}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" TextAlignment="Center" Margin="0,0,5,10"/>
+
+                                <Button VerticalContentAlignment="Center" Padding="10,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20*" />
+                                            <ColumnDefinition Width="180*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <materialDesign:PackIcon Kind="StarBorder" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
+                                        <TextBlock Text="{DynamicResource ResourceKey=Dict_Sort_Starred}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                    </Grid>
+                                </Button>
+
+                                <Button VerticalContentAlignment="Center" Padding="10,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20*" />
+                                            <ColumnDefinition Width="180*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <materialDesign:PackIcon Kind="CalendarClock" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
+                                        <TextBlock Text="{DynamicResource ResourceKey=Dict_Sort_DueDate}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                    </Grid>
+                                </Button>
+
+                                <Button VerticalContentAlignment="Center" Padding="10,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20*" />
+                                            <ColumnDefinition Width="180*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <materialDesign:PackIcon Kind="SortAlphabeticalAscending" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
+                                        <TextBlock Text="{DynamicResource ResourceKey=Dict_Sort_AlphabeticalAscending}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                    </Grid>
+                                </Button>
+
+                                <Button VerticalContentAlignment="Center" Padding="10,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20*" />
+                                            <ColumnDefinition Width="180*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <materialDesign:PackIcon Kind="SortAlphabeticalDescending" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
+                                        <TextBlock Text="{DynamicResource ResourceKey=Dict_Sort_AlphabeticalDescending}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                    </Grid>
+                                </Button>
+
+                                <Button VerticalContentAlignment="Center" Padding="10,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20*" />
+                                            <ColumnDefinition Width="180*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <materialDesign:PackIcon Kind="CalendarAdd" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
+                                        <TextBlock Text="{DynamicResource ResourceKey=Dict_Sort_DueDate}" Grid.Column="1" FontFamily="Arial" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+
+                        </materialDesign:PopupBox>
+                    </Grid>
+
+                    <Button WindowChrome.IsHitTestVisibleInChrome="True" x:Name="ButtonToolbox" Visibility="Hidden" Margin="0,0,237,0" Height="Auto" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="{x:Null}" Padding="15,5" Grid.IsSharedSizeScope="True" HorizontalAlignment="Right">
+                        <materialDesign:PackIcon Kind="Toolbox" Height="20" Width="20"/>
+                    </Button>
+                </Grid>
+
+                <Grid x:Name="GridTagList" Visibility="Visible" Margin="10,80,10,0" Height="45" VerticalAlignment="Top"/>
+
+                <ScrollViewer Style="{DynamicResource MaterialDesignScrollViewer}" Visibility="Visible" x:Name="scrollBar" BorderThickness="0" Margin="0,130,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto" UseLayoutRounding="True" VerticalAlignment="Top">
+                    <StackPanel Name="stpMain" Margin="0">
+                    </StackPanel>
+                </ScrollViewer>
+
+                <Button materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth5" Background="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}" FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="50" Height="50" BorderBrush="{x:Null}" Padding="0" TabIndex="6" VerticalAlignment="Bottom">
+                    <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </Button>
+            </Grid>
+
+
+            <Grid x:Name="ListViewerGrid" Visibility="Hidden" Margin="0" VerticalAlignment="Bottom">
+
+                <ScrollViewer Visibility="Visible" Margin="0,0,0,45" Height="150">
+                    <TextBlock x:Name="ListTesterTB" Background="Black" Foreground="White"/>
+                </ScrollViewer>
+
+                <StackPanel Orientation="Horizontal" Margin="0,150,0,0.2" Background="#FFE5E5E5">
+                    <Button Margin="10,0,0,0" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="Black" Height="35" Width="35">
+                        <Button.Background>
+                            <RadialGradientBrush>
+                                <GradientStop Color="Black"/>
+                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="Black" Offset="0.4"/>
+                            </RadialGradientBrush>
+                        </Button.Background>
+                    </Button>
+
+                    <Button Margin="10,0,0,0" materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="Black" Height="35" Width="35">
+                        <Button.Background>
+                            <RadialGradientBrush>
+                                <GradientStop Color="Black" Offset="1"/>
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="Black" Offset="0.6"/>
+                            </RadialGradientBrush>
+                        </Button.Background>
+                    </Button>
+
+                    <Button Content="Emergency Reset" Style="{StaticResource CheckemFlatButton}" Background="Red" Foreground="White" Margin="50,0,0,0"/>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+    </materialDesign:TransitioningContent>
 </UserControl>

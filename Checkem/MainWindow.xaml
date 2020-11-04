@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:properties="clr-namespace:Checkem.Properties"
+        xmlns:Views="clr-namespace:Checkem.Views"
         xmlns:local="clr-namespace:Checkem"
         mc:Ignorable="d"
         Icon="Assets/Icon/Icon-1024.ico"
@@ -161,7 +162,9 @@
                 </Grid>
             </Grid>
 
-            <Grid x:Name="GridPrincipal" Grid.Column="1" Grid.Row="1"/>
+            <Grid x:Name="GridPrincipal" Grid.Column="1" Grid.Row="1">
+                <Views:TodoList/>
+            </Grid>
 
             <!--<TextBlock Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Arial" TextAlignment="Center" Grid.Column="1" Height="19"><Run Text="This is a demo version of Check'em v0."/><Run Text="4"/><Run Text="."/><Run Text="5"/><Run Text=",Made by Umar Turdiev.All copy rights reserved under"/></TextBlock>
             <TextBlock Text="Attribution-NonCommercial-NoDerivs CC BY-NC-ND" Margin="525,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Arial" TextAlignment="Center" Foreground="Red" Grid.Column="1" Height="19"/>-->
