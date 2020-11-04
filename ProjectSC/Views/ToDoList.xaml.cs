@@ -423,8 +423,7 @@ namespace ProjectSC.Views
             }
             else
             {
-                FilteredInventory = FilteredInventory.OrderBy(x => x.Title).ToList();
-                FilteredInventory.Reverse();
+                FilteredInventory = FilteredInventory.OrderBy(x => x.Title).Reverse().ToList();
 
                 LoadList(FilteredInventory);
             }

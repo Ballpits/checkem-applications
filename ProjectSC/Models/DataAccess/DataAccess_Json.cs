@@ -90,6 +90,7 @@ namespace ProjectSC.Models.DataAccess
         public void Remove(ToDoItem toDoItem, List<ToDoItem> inventory)
         {
             inventory.Remove(toDoItem);
+
             SaveToJson(inventory);
         }//Remove the to-do item from the json file
 

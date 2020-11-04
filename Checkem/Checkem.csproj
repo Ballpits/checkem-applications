@@ -267,6 +267,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Cyclops\Cyclops.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Assets\Icon\Flags\ad.png" />
     <Resource Include="Assets\Icon\Flags\ae.png" />
     <Resource Include="Assets\Icon\Flags\af.png" />
