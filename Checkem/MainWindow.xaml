@@ -15,6 +15,9 @@
         d:Width="960"
         MinHeight="540"
         MinWidth="960"
+        StateChanged="AppWindow_StateChanged"
+        KeyUp="MainWindow_KeyUp"
+        KeyDown="MainWindow_KeyDown"
         >
 
     <Window.Resources>
@@ -142,7 +145,7 @@
                     <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Restore Down" Click="RestoreButton_Click">
                         <materialDesign:PackIcon Kind="WindowRestore" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
                     </Button>
-                    <Button Style="{StaticResource CheckemChromeXButton}" ToolTip="Close" Click="CloseButton_Click">
+                    <Button Style="{StaticResource CheckemChromeXButton}" ToolTip="Close" Click="CloseButton_Click" HorizontalAlignment="Stretch">
                         <materialDesign:PackIcon Kind="Close" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
                     </Button>
                 </StackPanel>
