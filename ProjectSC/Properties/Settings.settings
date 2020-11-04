@@ -56,5 +56,8 @@
     <Setting Name="CurrentLanguage" Type="System.String" Scope="User">
       <Value Profile="(Default)">Lng_English_US</Value>
     </Setting>
+    <Setting Name="Setting" Type="System.String" Scope="User">
+      <Value Profile="(Default)">a</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
