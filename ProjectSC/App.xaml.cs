@@ -22,7 +22,7 @@ namespace ProjectSC
 
             TrayIcon = new System.Windows.Forms.NotifyIcon();
             TrayIcon.DoubleClick += (s, args) => OpenMainWindow();
-            TrayIcon.Icon = ProjectSC.Properties.Resources.Icon_16;
+            TrayIcon.Icon = ProjectSC.Properties.Resources.CheckemIcon;
             TrayIcon.Visible = true;
 
             ShowContextMenu();
