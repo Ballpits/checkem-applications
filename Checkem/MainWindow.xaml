@@ -22,21 +22,118 @@
         >
 
     <Window.Resources>
-        <ResourceDictionary>
-            <Storyboard x:Key="OpenMenu">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="280"/>
-                </DoubleAnimationUsingKeyFrames>
-            </Storyboard>
+        <Storyboard x:Key="MainWindowLoaded">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LoadingScreen" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.1000000" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:03.3000000" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:04.3000000" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                <EasingThicknessKeyFrame KeyTime="00:00:00.1000000" Value="0,0,400,0"/>
+                <EasingThicknessKeyFrame KeyTime="00:00:01.7000000" Value="0,0,-400,0"/>
+                <EasingThicknessKeyFrame KeyTime="00:00:03.3000000" Value="0,0,399.99995,0"/>
+                <EasingThicknessKeyFrame KeyTime="00:00:03.5000000" Value="0,0,399.99995,0"/>
+                <EasingThicknessKeyFrame KeyTime="00:00:03.9000000" Value="0,0,399.99995,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.7000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.3000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.5000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.9000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.7000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.3000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.5000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.9000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02.9000000" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.3000000" Value="-359.999955"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.6000000" Value="-359.999955"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.9000000" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02.5000000" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02.9000000" Value="-360"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.3000000" Value="-360"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.7000000" Value="-360"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.9000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.3000000" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02.1000000" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02.5000000" Value="-360"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.3000000" Value="-360"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.8000000" Value="-360"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01.3000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.7000000" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02.1000000" Value="-360"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.3000000" Value="-360"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.9000000" Value="-360"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Height)">
+                <EasingDoubleKeyFrame KeyTime="00:00:03.5000000" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.9000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="00:00:03.5000000" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.9000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse1" Storyboard.TargetProperty="(FrameworkElement.Height)">
+                <EasingDoubleKeyFrame KeyTime="00:00:03.6000000" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse1" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="00:00:03.6000000" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse2" Storyboard.TargetProperty="(FrameworkElement.Height)">
+                <EasingDoubleKeyFrame KeyTime="00:00:03.7000000" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04.1000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse2" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="00:00:03.7000000" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04.1000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse3" Storyboard.TargetProperty="(FrameworkElement.Height)">
+                <EasingDoubleKeyFrame KeyTime="00:00:03.8000000" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04.2000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse3" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="00:00:03.8000000" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04.2000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse4" Storyboard.TargetProperty="(FrameworkElement.Height)">
+                <EasingDoubleKeyFrame KeyTime="00:00:03.9000000" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04.3000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse4" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="00:00:03.9000000" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04.3000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
 
-            <Storyboard x:Key="CloseMenu">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="280"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="40"/>
-                </DoubleAnimationUsingKeyFrames>
-            </Storyboard>
-        </ResourceDictionary>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
+                <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="280"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
+                <EasingDoubleKeyFrame KeyTime="0" Value="280"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="40"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
 
     <Window.Triggers>
@@ -47,6 +144,10 @@
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCollaps">
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
+
+        <EventTrigger RoutedEvent="Grid.Loaded" SourceName="MainGrid">
+            <BeginStoryboard Storyboard="{StaticResource MainWindowLoaded}"/>
+        </EventTrigger>
     </Window.Triggers>
 
     <WindowChrome.WindowChrome>
@@ -54,7 +155,7 @@
     </WindowChrome.WindowChrome>
 
     <materialDesign:TransitioningContent x:Name="TrainsitioningContent" OpeningEffect="{materialDesign:TransitionEffect Duration=0:0:0.5, Kind=FadeIn}" Margin="7">
-        <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded" Margin="0">
+        <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded" Margin="0" Visibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition/>
@@ -64,7 +165,130 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="40" Grid.Row="2">
+            <Grid x:Name="LoadingScreen" Grid.RowSpan="2" Grid.ColumnSpan="2" Background="Black" Visibility="Hidden" Panel.ZIndex="1">
+                <Ellipse x:Name="ellipse" Width="70" Height="70" VerticalAlignment="Center" Margin="0,0,405,0" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                    <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <Ellipse x:Name="ellipse1" Width="70" Height="70" Margin="0,0,200,0" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="-0.5,0.5">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                    <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <Ellipse x:Name="ellipse2" Width="70" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="-0.5,0.5">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                    <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <Ellipse x:Name="ellipse3" Width="70" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="200,0,0,0" RenderTransformOrigin="-0.5,0.5">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                    <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <Ellipse x:Name="ellipse4" Width="70" Height="70" Margin="400,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="-0.5,0.5">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                    <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+            </Grid>
+
+            <Grid x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="40" Grid.Row="2" Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
@@ -116,7 +340,7 @@
                 </Button>
             </Grid>
 
-            <Grid Style="{StaticResource todoUSCTitlebar}" Grid.ColumnSpan="2" SizeChanged="Grid_SizeChanged">
+            <Grid x:Name="grid" Style="{StaticResource todoUSCTitlebar}" Grid.ColumnSpan="2" SizeChanged="Grid_SizeChanged" Visibility="Visible">
                 <Border x:Name="SearchBoxBorder" WindowChrome.IsHitTestVisibleInChrome="True" Background="White" CornerRadius="5" HorizontalAlignment="Left" Height="40" Width="400" Margin="75,0,0,0" Padding="0" VerticalAlignment="Center">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -162,7 +386,7 @@
                 </Grid>
             </Grid>
 
-            <Grid x:Name="GridPrincipal" Grid.Column="1" Grid.Row="1">
+            <Grid x:Name="GridPrincipal" Grid.Column="1" Grid.Row="1" Visibility="Visible">
                 <Views:TodoList/>
             </Grid>
 

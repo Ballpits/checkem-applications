@@ -6,9 +6,11 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:properties="clr-namespace:Checkem.Properties"
              xmlns:local="clr-namespace:Checkem.Views"
+             x:Name="TodoListUserControl"
              mc:Ignorable="d" 
              d:DesignHeight="540"
              d:DesignWidth="960"
+             Loaded="TodoListUserControl_Loaded"
              >
 
     <UserControl.Resources>
@@ -130,7 +132,7 @@
                 <Grid x:Name="GridTagList" Visibility="Visible" Margin="10,80,10,0" Height="45" VerticalAlignment="Top"/>
 
                 <ScrollViewer Style="{DynamicResource MaterialDesignScrollViewer}" Visibility="Visible" x:Name="scrollBar" BorderThickness="0" Margin="0,130,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto" UseLayoutRounding="True" VerticalAlignment="Top">
-                    <StackPanel Name="stpMain" Margin="0">
+                    <StackPanel Name="TodoItemsStackPanel" Margin="0">
                     </StackPanel>
                 </ScrollViewer>
 

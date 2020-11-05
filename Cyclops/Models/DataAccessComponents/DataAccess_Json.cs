@@ -8,13 +8,13 @@ using System.IO;
 
 namespace Cyclops.Models.DataAccessComponents
 {
-    public abstract class DataAccess_Json : IDataAccess
+    public class DataAccess_Json : IDataAccess
     {
         //Inventory to save to do items
-        protected List<ToDoItem> Inventory = new List<ToDoItem>();
+        public List<ToDoItem> Inventory = new List<ToDoItem>();
 
         //File path for inventory json file
-        private string JsonFilePath = "Inventory.json";
+        private string JsonFilePath = @"./Inventory.json";
 
 
         //Save everthing from inventory list to Inventory.json file

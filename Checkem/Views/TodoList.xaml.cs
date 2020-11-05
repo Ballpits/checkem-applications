@@ -1,24 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Cyclops.Models.DataAccessComponents;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Cyclops.Models.DataAccessComponents;
 
 namespace Checkem.Views
 {
     public partial class TodoList : UserControl
     {
+        DataAccess dataAccess = new DataAccess();
+
+
         public TodoList()
         {
             InitializeComponent();
+        }
+
+        private void TodoListUserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadTodoList();
+        }
+
+        private void LoadTodoList()
+        {
+            foreach (var item in dataAccess.GetInventory())
+            {
+                TodoItemsStackPanel.Children.Add(new Itembar() { itemProperties = item});
+            }
         }
     }
 }

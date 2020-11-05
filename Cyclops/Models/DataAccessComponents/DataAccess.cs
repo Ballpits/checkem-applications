@@ -7,6 +7,12 @@ namespace Cyclops.Models.DataAccessComponents
 {
     public class DataAccess : DataAccess_Json
     {
+        public List<ToDoItem> GetInventory()
+        {
+            Retrieve();
+            return Inventory;
+        }
+
         //Find all to do items
         public List<ToDoItem> Find(string searchString)
         {

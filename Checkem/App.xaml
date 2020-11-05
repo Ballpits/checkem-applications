@@ -294,7 +294,7 @@
 
 
             <!--#region Itembar-->
-            <Style x:Key="ItembarBorder" TargetType="Border">
+            <Style x:Key="ItembarBorderStyle" TargetType="Border">
                 <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="CornerRadius" Value="10"/>
@@ -308,6 +308,8 @@
                         <Setter Property="Margin" Value="0,-2"/>
                     </Trigger>
                 </Style.Triggers>
+                
+                
             </Style>
 
             <Style x:Key="CheckboxGrid" TargetType="Grid">
