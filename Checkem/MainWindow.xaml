@@ -23,105 +23,6 @@
         >
 
     <Window.Resources>
-        <Storyboard x:Key="MainWindowLoaded">
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LoadingScreen" Storyboard.TargetProperty="(UIElement.Visibility)">
-                <DiscreteObjectKeyFrame KeyTime="00:00:00.1000000" Value="{x:Static Visibility.Visible}"/>
-                <DiscreteObjectKeyFrame KeyTime="00:00:03.3000000" Value="{x:Static Visibility.Visible}"/>
-                <DiscreteObjectKeyFrame KeyTime="00:00:04.3000000" Value="{x:Static Visibility.Hidden}"/>
-            </ObjectAnimationUsingKeyFrames>
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                <EasingThicknessKeyFrame KeyTime="00:00:00.1000000" Value="0,0,400,0"/>
-                <EasingThicknessKeyFrame KeyTime="00:00:01.7000000" Value="0,0,-400,0"/>
-                <EasingThicknessKeyFrame KeyTime="00:00:03.3000000" Value="0,0,399.99995,0"/>
-                <EasingThicknessKeyFrame KeyTime="00:00:03.5000000" Value="0,0,399.99995,0"/>
-                <EasingThicknessKeyFrame KeyTime="00:00:03.9000000" Value="0,0,399.99995,0"/>
-            </ThicknessAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:01.7000000" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.3000000" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.5000000" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.9000000" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:01.7000000" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.3000000" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.5000000" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.9000000" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="-180"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:02.9000000" Value="-180"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.3000000" Value="-359.999955"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.6000000" Value="-359.999955"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.9000000" Value="-180"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:02.5000000" Value="-180"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:02.9000000" Value="-360"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.3000000" Value="-360"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.7000000" Value="-360"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.9000000" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:01.3000000" Value="-180"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:02.1000000" Value="-180"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:02.5000000" Value="-360"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.3000000" Value="-360"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.8000000" Value="-360"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:01.3000000" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:01.7000000" Value="-180"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:02.1000000" Value="-360"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.3000000" Value="-360"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.9000000" Value="-360"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Height)">
-                <EasingDoubleKeyFrame KeyTime="00:00:03.5000000" Value="70"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.9000000" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                <EasingDoubleKeyFrame KeyTime="00:00:03.5000000" Value="70"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:03.9000000" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse1" Storyboard.TargetProperty="(FrameworkElement.Height)">
-                <EasingDoubleKeyFrame KeyTime="00:00:03.6000000" Value="70"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse1" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                <EasingDoubleKeyFrame KeyTime="00:00:03.6000000" Value="70"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse2" Storyboard.TargetProperty="(FrameworkElement.Height)">
-                <EasingDoubleKeyFrame KeyTime="00:00:03.7000000" Value="70"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:04.1000000" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse2" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                <EasingDoubleKeyFrame KeyTime="00:00:03.7000000" Value="70"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:04.1000000" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse3" Storyboard.TargetProperty="(FrameworkElement.Height)">
-                <EasingDoubleKeyFrame KeyTime="00:00:03.8000000" Value="70"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:04.2000000" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse3" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                <EasingDoubleKeyFrame KeyTime="00:00:03.8000000" Value="70"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:04.2000000" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse4" Storyboard.TargetProperty="(FrameworkElement.Height)">
-                <EasingDoubleKeyFrame KeyTime="00:00:03.9000000" Value="70"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:04.3000000" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse4" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                <EasingDoubleKeyFrame KeyTime="00:00:03.9000000" Value="70"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:04.3000000" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
                 <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
@@ -144,10 +45,6 @@
 
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCollaps">
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
-        </EventTrigger>
-
-        <EventTrigger RoutedEvent="Grid.Loaded" SourceName="MainGrid">
-            <BeginStoryboard Storyboard="{StaticResource MainWindowLoaded}"/>
         </EventTrigger>
     </Window.Triggers>
 

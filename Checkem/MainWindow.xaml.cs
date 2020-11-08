@@ -20,10 +20,10 @@ namespace Checkem
         {
             Properties.Settings.Default.PrimaryColor = System.Drawing.Color.Black;
             Properties.Settings.Default.SecondaryColor = System.Drawing.Color.Black;
-            Properties.Settings.Default.LightMainColor = System.Drawing.Color.Black;
-            Properties.Settings.Default.DarkMainColor = System.Drawing.Color.White;
-            Properties.Settings.Default.GrayMainColor = System.Drawing.Color.Black;
-            Properties.Settings.Default.ItembarColor = System.Drawing.Color.Black;
+            Properties.Settings.Default.LightColor = System.Drawing.Color.Black;
+            Properties.Settings.Default.DarkColor = System.Drawing.Color.White;
+            Properties.Settings.Default.SmokeGrayColor = System.Drawing.Color.Black;
+            Properties.Settings.Default.ControlColor = System.Drawing.Color.Black;
 
             Properties.Settings.Default.Save();
         }

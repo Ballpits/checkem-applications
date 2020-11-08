@@ -25,78 +25,6 @@ namespace Checkem.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsNotificationOn {
-            get {
-                return ((bool)(this["IsNotificationOn"]));
-            }
-            set {
-                this["IsNotificationOn"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Check\'em")]
-        public string ThemeName {
-            get {
-                return ((string)(this["ThemeName"]));
-            }
-            set {
-                this["ThemeName"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool IsDarkModeApplied {
-            get {
-                return ((bool)(this["IsDarkModeApplied"]));
-            }
-            set {
-                this["IsDarkModeApplied"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool IsSavingSortingModeOn {
-            get {
-                return ((bool)(this["IsSavingSortingModeOn"]));
-            }
-            set {
-                this["IsSavingSortingModeOn"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int DetailsPanelClosingMode {
-            get {
-                return ((int)(this["DetailsPanelClosingMode"]));
-            }
-            set {
-                this["DetailsPanelClosingMode"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsRemovingWaringOn {
-            get {
-                return ((bool)(this["IsRemovingWaringOn"]));
-            }
-            set {
-                this["IsRemovingWaringOn"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("33, 150, 243")]
         public global::System.Drawing.Color PrimaryColor {
             get {
@@ -122,12 +50,12 @@ namespace Checkem.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("White")]
-        public global::System.Drawing.Color LightMainColor {
+        public global::System.Drawing.Color LightColor {
             get {
-                return ((global::System.Drawing.Color)(this["LightMainColor"]));
+                return ((global::System.Drawing.Color)(this["LightColor"]));
             }
             set {
-                this["LightMainColor"] = value;
+                this["LightColor"] = value;
             }
         }
         
@@ -146,36 +74,36 @@ namespace Checkem.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Black")]
-        public global::System.Drawing.Color DarkMainColor {
+        public global::System.Drawing.Color DarkColor {
             get {
-                return ((global::System.Drawing.Color)(this["DarkMainColor"]));
+                return ((global::System.Drawing.Color)(this["DarkColor"]));
             }
             set {
-                this["DarkMainColor"] = value;
+                this["DarkColor"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("150, 150, 150")]
-        public global::System.Drawing.Color ItemCompletedTextColor {
+        public global::System.Drawing.Color StrikedOutColor {
             get {
-                return ((global::System.Drawing.Color)(this["ItemCompletedTextColor"]));
+                return ((global::System.Drawing.Color)(this["StrikedOutColor"]));
             }
             set {
-                this["ItemCompletedTextColor"] = value;
+                this["StrikedOutColor"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Red")]
-        public global::System.Drawing.Color ItemPassedTextColor {
+        public global::System.Drawing.Color OverDueColor {
             get {
-                return ((global::System.Drawing.Color)(this["ItemPassedTextColor"]));
+                return ((global::System.Drawing.Color)(this["OverDueColor"]));
             }
             set {
-                this["ItemPassedTextColor"] = value;
+                this["OverDueColor"] = value;
             }
         }
         
@@ -206,36 +134,35 @@ namespace Checkem.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("WhiteSmoke")]
-        public global::System.Drawing.Color GrayMainColor {
+        public global::System.Drawing.Color SmokeGrayColor {
             get {
-                return ((global::System.Drawing.Color)(this["GrayMainColor"]));
+                return ((global::System.Drawing.Color)(this["SmokeGrayColor"]));
             }
             set {
-                this["GrayMainColor"] = value;
+                this["SmokeGrayColor"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("White")]
-        public global::System.Drawing.Color ItembarColor {
+        public global::System.Drawing.Color ControlColor {
             get {
-                return ((global::System.Drawing.Color)(this["ItembarColor"]));
+                return ((global::System.Drawing.Color)(this["ControlColor"]));
             }
             set {
-                this["ItembarColor"] = value;
+                this["ControlColor"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Lng_English_US")]
-        public string CurrentLanguage {
+        public global::System.Drawing.Color GrayColor {
             get {
-                return ((string)(this["CurrentLanguage"]));
+                return ((global::System.Drawing.Color)(this["GrayColor"]));
             }
             set {
-                this["CurrentLanguage"] = value;
+                this["GrayColor"] = value;
             }
         }
     }

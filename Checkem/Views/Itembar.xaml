@@ -7,43 +7,98 @@
              xmlns:properties="clr-namespace:Checkem.Properties"
              xmlns:local="clr-namespace:Checkem.Views"
              mc:Ignorable="d" 
-             d:DesignWidth="800" Margin="0,0,0,0" Height="70" RenderTransformOrigin="0.5,0.5"
+             d:DesignWidth="800"
+             Height="70"
+             Margin="5"
              >
 
     <UserControl.Resources>
-        <!--<ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>-->
-        <!--<ResourceDictionary Source="../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />-->
-
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
             <Storyboard x:Key="ItembarMouseEnter">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="userControl" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                    <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1"/>
-                    <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="-1"/>
-                    <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
-                </DoubleAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItembarBorder" Storyboard.TargetProperty="(Border.CornerRadius)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>0,0,0,0</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.0170000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>2,2,2,2</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.0330000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>4,4,4,4</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.0500000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>6,6,6,6</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.0670000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>8,8,8,8</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.0830000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>10,10,10,10</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="ItembarMouseLeave">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItembarBorder" Storyboard.TargetProperty="(Border.CornerRadius)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>10,10,10,10</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.0170000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>8,8,8,8</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.0330000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>6,6,6,6</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.0500000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>4,4,4,4</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.0670000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>2,2,2,2</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.0830000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>0,0,0,0</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                </ObjectAnimationUsingKeyFrames>
             </Storyboard>
         </ResourceDictionary>
-        <!--</ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>-->
     </UserControl.Resources>
-    <UserControl.RenderTransform>
-        <TransformGroup>
-            <ScaleTransform/>
-            <SkewTransform/>
-            <RotateTransform/>
-            <TranslateTransform/>
-        </TransformGroup>
-    </UserControl.RenderTransform>
 
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="Border.MouseEnter" SourceName="ItembarBorder">
             <BeginStoryboard Storyboard="{StaticResource ItembarMouseEnter}"/>
         </EventTrigger>
+        <EventTrigger RoutedEvent="Border.MouseLeave" SourceName="ItembarBorder">
+            <BeginStoryboard Storyboard="{StaticResource ItembarMouseLeave}"/>
+        </EventTrigger>
     </UserControl.Triggers>
 
-    <Border x:Name="ItembarBorder" Style="{StaticResource ItembarBorderStyle}" MouseDown="Border_MouseDown" Margin="0,0,0,0">
+    <Border x:Name="ItembarBorder" Style="{StaticResource ItembarBorderStyle}" MouseDown="Border_MouseDown">
         <Border.ContextMenu>
             <ContextMenu>
                 <MenuItem Header="Mark as completed" Icon="{materialDesign:PackIcon Kind=Check, Size=18}" Click="MenuItem_Click"/>

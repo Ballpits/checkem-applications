@@ -10,98 +10,104 @@
              >
 
     <UserControl.Resources>
-        <Storyboard x:Key="ToggleState1">
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                <EasingThicknessKeyFrame KeyTime="00:00:00" Value="-21,0,0,0"/>
-                <EasingThicknessKeyFrame KeyTime="00:00:00.2170000" Value="21,0,0,0"/>
-                <EasingThicknessKeyFrame KeyTime="00:00:00.2500000" Value="26,0,0,0"/>
-            </ThicknessAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="29"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.2170000" Value="29"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.2500000" Value="24"/>
-            </DoubleAnimationUsingKeyFrames>
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                <EasingThicknessKeyFrame KeyTime="00:00:00" Value="1.8,1.8,1.8,1.8"/>
-                <EasingThicknessKeyFrame KeyTime="00:00:00.2500000" Value="25,11.9999949,25,12"/>
-            </ThicknessAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetName="rectangleGreen" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
-                <EasingColorKeyFrame KeyTime="00:00:00" Value="#FFCACACA"/>
-                <EasingColorKeyFrame KeyTime="00:00:00.2500000" Value="sc#1, 0.223227963, 0.8307699, 0.08437621"/>
-            </ColorAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="ToggleState0">
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="21,0,0,0"/>
-                <SplineThicknessKeyFrame KeyTime="00:00:00.2170000" Value="-21,0,0,0"/>
-                <SplineThicknessKeyFrame KeyTime="00:00:00.2500000" Value="-26,0,0,0"/>
-            </ThicknessAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="29"/>
-                <SplineDoubleKeyFrame KeyTime="00:00:00.2170000" Value="29"/>
-                <SplineDoubleKeyFrame KeyTime="00:00:00.2500000" Value="24"/>
-            </DoubleAnimationUsingKeyFrames>
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="25,11.9999949,25,12"/>
-                <SplineThicknessKeyFrame KeyTime="00:00:00.2500000" Value="1.8,1.8,1.8,1.8"/>
-            </ThicknessAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetName="rectangleGreen" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
-                <SplineColorKeyFrame KeyTime="00:00:00" Value="sc#1, 0.223227963, 0.8307699, 0.08437621"/>
-                <SplineColorKeyFrame KeyTime="00:00:00.2500000" Value="#FFCACACA"/>
-            </ColorAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="ToggleDown0">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="24"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="29"/>
-            </DoubleAnimationUsingKeyFrames>
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                <EasingThicknessKeyFrame KeyTime="00:00:00" Value="-26,0,0,0"/>
-                <EasingThicknessKeyFrame KeyTime="00:00:00.1000000" Value="-21,0,0,0"/>
-            </ThicknessAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="ToggleLeave0">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="29"/>
-                <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="24"/>
-            </DoubleAnimationUsingKeyFrames>
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="-21,0,0,0"/>
-                <SplineThicknessKeyFrame KeyTime="00:00:00.1000000" Value="-26,0,0,0"/>
-            </ThicknessAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="ToggleDown1">
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="26,0,0,0"/>
-                <EasingThicknessKeyFrame KeyTime="00:00:00.1000000" Value="21,0,0,0"/>
-            </ThicknessAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="24"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="29"/>
-            </DoubleAnimationUsingKeyFrames>
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="25,11.9999949,25,12"/>
-            </ThicknessAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetName="rectangleGreen" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
-                <SplineColorKeyFrame KeyTime="00:00:00" Value="sc#1, 0.223227963, 0.8307699, 0.08437621"/>
-            </ColorAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="ToggleLeave1">
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="21,0,0,0"/>
-                <SplineThicknessKeyFrame KeyTime="00:00:00.1000000" Value="26,0,0,0"/>
-            </ThicknessAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="29"/>
-                <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="24"/>
-            </DoubleAnimationUsingKeyFrames>
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="25,11.9999949,25,12"/>
-            </ThicknessAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetName="rectangleGreen" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
-                <SplineColorKeyFrame KeyTime="00:00:00" Value="sc#1, 0.223227963, 0.8307699, 0.08437621"/>
-            </ColorAnimationUsingKeyFrames>
-        </Storyboard>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Storyboard x:Key="ToggleState1">
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                    <EasingThicknessKeyFrame KeyTime="00:00:00" Value="-21,0,0,0"/>
+                    <EasingThicknessKeyFrame KeyTime="00:00:00.2170000" Value="21,0,0,0"/>
+                    <EasingThicknessKeyFrame KeyTime="00:00:00.2500000" Value="26,0,0,0"/>
+                </ThicknessAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00" Value="29"/>
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.2170000" Value="29"/>
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.2500000" Value="24"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                    <EasingThicknessKeyFrame KeyTime="00:00:00" Value="1.8,1.8,1.8,1.8"/>
+                    <EasingThicknessKeyFrame KeyTime="00:00:00.2500000" Value="25,11.9999949,25,12"/>
+                </ThicknessAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetName="rectangleGreen" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                    <EasingColorKeyFrame KeyTime="00:00:00" Value="#FFCACACA"/>
+                    <EasingColorKeyFrame KeyTime="00:00:00.2500000" Value="sc#1, 0.223227963, 0.8307699, 0.08437621"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="ToggleState0">
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                    <SplineThicknessKeyFrame KeyTime="00:00:00" Value="21,0,0,0"/>
+                    <SplineThicknessKeyFrame KeyTime="00:00:00.2170000" Value="-21,0,0,0"/>
+                    <SplineThicknessKeyFrame KeyTime="00:00:00.2500000" Value="-26,0,0,0"/>
+                </ThicknessAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="29"/>
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.2170000" Value="29"/>
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.2500000" Value="24"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                    <SplineThicknessKeyFrame KeyTime="00:00:00" Value="25,11.9999949,25,12"/>
+                    <SplineThicknessKeyFrame KeyTime="00:00:00.2500000" Value="1.8,1.8,1.8,1.8"/>
+                </ThicknessAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetName="rectangleGreen" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                    <SplineColorKeyFrame KeyTime="00:00:00" Value="sc#1, 0.223227963, 0.8307699, 0.08437621"/>
+                    <SplineColorKeyFrame KeyTime="00:00:00.2500000" Value="#FFCACACA"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="ToggleDown0">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00" Value="24"/>
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="29"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                    <EasingThicknessKeyFrame KeyTime="00:00:00" Value="-26,0,0,0"/>
+                    <EasingThicknessKeyFrame KeyTime="00:00:00.1000000" Value="-21,0,0,0"/>
+                </ThicknessAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="ToggleLeave0">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="29"/>
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="24"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                    <SplineThicknessKeyFrame KeyTime="00:00:00" Value="-21,0,0,0"/>
+                    <SplineThicknessKeyFrame KeyTime="00:00:00.1000000" Value="-26,0,0,0"/>
+                </ThicknessAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="ToggleDown1">
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                    <SplineThicknessKeyFrame KeyTime="00:00:00" Value="26,0,0,0"/>
+                    <EasingThicknessKeyFrame KeyTime="00:00:00.1000000" Value="21,0,0,0"/>
+                </ThicknessAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="24"/>
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="29"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                    <SplineThicknessKeyFrame KeyTime="00:00:00" Value="25,11.9999949,25,12"/>
+                </ThicknessAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetName="rectangleGreen" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                    <SplineColorKeyFrame KeyTime="00:00:00" Value="sc#1, 0.223227963, 0.8307699, 0.08437621"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="ToggleLeave1">
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                    <SplineThicknessKeyFrame KeyTime="00:00:00" Value="21,0,0,0"/>
+                    <SplineThicknessKeyFrame KeyTime="00:00:00.1000000" Value="26,0,0,0"/>
+                </ThicknessAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="29"/>
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="24"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                    <SplineThicknessKeyFrame KeyTime="00:00:00" Value="25,11.9999949,25,12"/>
+                </ThicknessAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetName="rectangleGreen" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+                    <SplineColorKeyFrame KeyTime="00:00:00" Value="sc#1, 0.223227963, 0.8307699, 0.08437621"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+        </ResourceDictionary>
     </UserControl.Resources>
 
     <UserControl.Triggers>

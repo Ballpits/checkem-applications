@@ -52,8 +52,8 @@ namespace Checkem.Views
 
         private bool BorderEventCanActivate = true;
 
-        System.Drawing.Color ItemCompletedTextColor_D = Properties.Settings.Default.ItemCompletedTextColor;
-        System.Drawing.Color ItemPassedTextColor_D = Properties.Settings.Default.ItemPassedTextColor;
+        System.Drawing.Color ItemCompletedTextColor_D = Properties.Settings.Default.StrikedOutColor;
+        System.Drawing.Color ItemPassedTextColor_D = Properties.Settings.Default.OverDueColor;
 
         SolidColorBrush ItemCompletedTextColor, ItemPassedTextColor;
 
