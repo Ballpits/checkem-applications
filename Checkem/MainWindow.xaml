@@ -6,6 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:properties="clr-namespace:Checkem.Properties"
         xmlns:Views="clr-namespace:Checkem.Views"
+        xmlns:CustomUserControls="clr-namespace:Checkem.CheckemUserControls"
         xmlns:local="clr-namespace:Checkem"
         mc:Ignorable="d"
         Icon="Assets/Icon/Icon-1024.ico"
@@ -287,6 +288,8 @@
                     </Ellipse.RenderTransform>
                 </Ellipse>
             </Grid>
+
+            <CustomUserControls:ToggleSwitch Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1"/>
 
             <Grid x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="40" Grid.Row="2" Visibility="Visible">
                 <Grid.RowDefinitions>

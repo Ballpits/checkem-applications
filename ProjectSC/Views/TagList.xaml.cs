@@ -37,21 +37,21 @@ namespace ProjectSC.Views
         //Load All The Tag Created At Last Time
         private void TagList_Loaded(object sender, RoutedEventArgs e)
         {
-            tagdataAccess.RetrieveTag(ref tagInventory);
+            //tagdataAccess.RetrieveTag(ref tagInventory);
 
-            if (tagInventory != null)
-            {
-                Style style = this.FindResource("TagButton") as Style;
+            //if (tagInventory != null)
+            //{
+            //    Style style = this.FindResource("TagButton") as Style;
 
-                foreach (var tagItem in tagInventory)
-                {
-                    Button TagButton = new Button() { Style = style, Content = tagItem.Text, Name = "Tag_" + tagItem.Text };
-                    TagButton.Click += new RoutedEventHandler(this.Tag_Click);
+            //    foreach (var tagItem in tagInventory)
+            //    {
+            //        Button TagButton = new Button() { Style = style, Content = tagItem.Text, Name = "Tag_" + tagItem.Text };
+            //        TagButton.Click += new RoutedEventHandler(this.Tag_Click);
 
-                    StpTagList.Children.Add(TagButton);
-                }
+            //        StpTagList.Children.Add(TagButton);
+            //    }
 
-            }
+            //}
         }
         private void Tag_Click(object sender, RoutedEventArgs e)
         {

@@ -12,7 +12,8 @@ namespace Checkem
         {
             InitializeComponent();
 
-            BlackTheme();
+            reset();
+            //BlackTheme();
         }
 
         private void BlackTheme()
@@ -27,6 +28,10 @@ namespace Checkem
             Properties.Settings.Default.Save();
         }
 
+        private void reset()
+        {
+            Properties.Settings.Default.Reset();
+        }
 
         private void MainGrid_Loaded(object sender, RoutedEventArgs e)
         {
