@@ -35,8 +35,8 @@
     <Setting Name="ControlColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">White</Value>
     </Setting>
-    <Setting Name="GrayColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="ControlOutlineColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">202, 202, 202</Value>
     </Setting>
   </Settings>
 </SettingsFile>

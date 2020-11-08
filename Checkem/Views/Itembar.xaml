@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              d:DesignWidth="800"
              Height="70"
-             Margin="5"
+             Margin="10,5"
              >
 
     <UserControl.Resources>
@@ -22,32 +22,32 @@
                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItembarBorder" Storyboard.TargetProperty="(Border.CornerRadius)">
                     <DiscreteObjectKeyFrame KeyTime="00:00:00">
                         <DiscreteObjectKeyFrame.Value>
-                            <CornerRadius>0,0,0,0</CornerRadius>
+                            <CornerRadius>5</CornerRadius>
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                     <DiscreteObjectKeyFrame KeyTime="00:00:00.0170000">
                         <DiscreteObjectKeyFrame.Value>
-                            <CornerRadius>2,2,2,2</CornerRadius>
+                            <CornerRadius>7</CornerRadius>
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                     <DiscreteObjectKeyFrame KeyTime="00:00:00.0330000">
                         <DiscreteObjectKeyFrame.Value>
-                            <CornerRadius>4,4,4,4</CornerRadius>
+                            <CornerRadius>9</CornerRadius>
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                     <DiscreteObjectKeyFrame KeyTime="00:00:00.0500000">
                         <DiscreteObjectKeyFrame.Value>
-                            <CornerRadius>6,6,6,6</CornerRadius>
+                            <CornerRadius>11</CornerRadius>
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                     <DiscreteObjectKeyFrame KeyTime="00:00:00.0670000">
                         <DiscreteObjectKeyFrame.Value>
-                            <CornerRadius>8,8,8,8</CornerRadius>
+                            <CornerRadius>13</CornerRadius>
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                     <DiscreteObjectKeyFrame KeyTime="00:00:00.0830000">
                         <DiscreteObjectKeyFrame.Value>
-                            <CornerRadius>10,10,10,10</CornerRadius>
+                            <CornerRadius>15</CornerRadius>
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                 </ObjectAnimationUsingKeyFrames>
@@ -56,32 +56,32 @@
                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItembarBorder" Storyboard.TargetProperty="(Border.CornerRadius)">
                     <DiscreteObjectKeyFrame KeyTime="00:00:00">
                         <DiscreteObjectKeyFrame.Value>
-                            <CornerRadius>10,10,10,10</CornerRadius>
+                            <CornerRadius>15</CornerRadius>
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                     <DiscreteObjectKeyFrame KeyTime="00:00:00.0170000">
                         <DiscreteObjectKeyFrame.Value>
-                            <CornerRadius>8,8,8,8</CornerRadius>
+                            <CornerRadius>13</CornerRadius>
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                     <DiscreteObjectKeyFrame KeyTime="00:00:00.0330000">
                         <DiscreteObjectKeyFrame.Value>
-                            <CornerRadius>6,6,6,6</CornerRadius>
+                            <CornerRadius>11</CornerRadius>
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                     <DiscreteObjectKeyFrame KeyTime="00:00:00.0500000">
                         <DiscreteObjectKeyFrame.Value>
-                            <CornerRadius>4,4,4,4</CornerRadius>
+                            <CornerRadius>9</CornerRadius>
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                     <DiscreteObjectKeyFrame KeyTime="00:00:00.0670000">
                         <DiscreteObjectKeyFrame.Value>
-                            <CornerRadius>2,2,2,2</CornerRadius>
+                            <CornerRadius>7</CornerRadius>
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                     <DiscreteObjectKeyFrame KeyTime="00:00:00.0830000">
                         <DiscreteObjectKeyFrame.Value>
-                            <CornerRadius>0,0,0,0</CornerRadius>
+                            <CornerRadius>5</CornerRadius>
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                 </ObjectAnimationUsingKeyFrames>

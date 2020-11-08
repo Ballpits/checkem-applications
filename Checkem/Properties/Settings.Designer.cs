@@ -157,12 +157,13 @@ namespace Checkem.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color GrayColor {
+        [global::System.Configuration.DefaultSettingValueAttribute("202, 202, 202")]
+        public global::System.Drawing.Color ControlOutlineColor {
             get {
-                return ((global::System.Drawing.Color)(this["GrayColor"]));
+                return ((global::System.Drawing.Color)(this["ControlOutlineColor"]));
             }
             set {
-                this["GrayColor"] = value;
+                this["ControlOutlineColor"] = value;
             }
         }
     }

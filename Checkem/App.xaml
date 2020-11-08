@@ -31,7 +31,7 @@
                 <Setter Property="Control.Template">
                     <Setter.Value>
                         <ControlTemplate>
-                            <Rectangle Margin="0" StrokeThickness="3" Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor,Converter={StaticResource ColorToBrushConverter}}" StrokeDashArray="1000"/>
+                            <Rectangle Margin="0" StrokeThickness="3" Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=LightColor,Converter={StaticResource ColorToBrushConverter}}" StrokeDashArray="1000"/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -124,8 +124,8 @@
 
             <!--Checkem Flat Button-->
             <Style x:Key="CheckemFlatButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
-                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=LightColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=DarkColor,Converter={StaticResource ColorToBrushConverter}}"/>
                 <Setter Property="BorderBrush" Value="{x:Null}"/>
 
                 <Setter Property="Padding" Value="0"/>
@@ -149,14 +149,14 @@
             </Style>
 
             <Style x:Key="CheckemChromeButton" TargetType="Button" BasedOn="{StaticResource CheckemFlatButton}">
-                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=GrayMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=SmokeGrayColor,Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="Width" Value="50"/>
                 <Setter Property="Height" Value="Auto"/>
 
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                        <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=LightColor, Converter={StaticResource ColorToBrushConverter}}"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>
@@ -264,7 +264,7 @@
                 <Setter Property="BorderBrush" Value="{x:Null}"/>
 
                 <Setter Property="FontSize" Value="16"/>
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=DarkColor,Converter={StaticResource ColorToBrushConverter}}"/>
                 <Setter Property="FontFamily" Value="Arial"/>
 
                 <Setter Property="Height" Value="35"/>
@@ -283,7 +283,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="17" Background="{Binding Source={x:Static properties:Settings.Default}, Path=LightMainColor,Converter={StaticResource ColorToBrushConverter}}">
+                            <Border CornerRadius="17" Background="{Binding Source={x:Static properties:Settings.Default}, Path=LightColor,Converter={StaticResource ColorToBrushConverter}}">
                                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </Border>
                         </ControlTemplate>
@@ -295,13 +295,18 @@
 
             <!--#region Itembar-->
             <Style x:Key="ItembarBorderStyle" TargetType="Border">
-                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ControlColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="BorderBrush" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ControlOutlineColor, Converter={StaticResource ColorToBrushConverter}}"/>
+
+                <Setter Property="CornerRadius" Value="5"/>
+
+                <Setter Property="BorderThickness" Value="0"/>
 
                 <Setter Property="Margin" Value="0"/>
             </Style>
 
             <Style x:Key="CheckboxGrid" TargetType="Grid">
-                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ItembarColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ControlColor, Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="Width" Value="50"/>
 
@@ -312,7 +317,7 @@
 
             <Style x:Key="ItembarCheckbox" TargetType="CheckBox" BasedOn="{StaticResource MaterialDesignFlatPrimaryToggleButton}">
                 <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default},Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}"/>
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=DarkColor, Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="Height" Value="30"/>
                 <Setter Property="Width" Value="30"/>
@@ -322,7 +327,7 @@
             </Style>
 
             <Style x:Key="ItembarCheckboxCircleIcon" TargetType="materialDesign:PackIcon">
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=DarkColor, Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="Kind" Value="CheckboxBlankCircleOutline"/>
 
@@ -336,7 +341,7 @@
             </Style>
 
             <Style x:Key="ItembarStarToggle" TargetType="ToggleButton" BasedOn="{StaticResource MaterialDesignActionToggleButton}">
-                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default},Path=ItembarColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default},Path=ControlColor,Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="Height" Value="45"/>
                 <Setter Property="Width" Value="45"/>
@@ -347,7 +352,7 @@
             </Style>
 
             <Style x:Key="StarBorderIcon" TargetType="materialDesign:PackIcon">
-                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default},Path=ItembarColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default},Path=ControlColor,Converter={StaticResource ColorToBrushConverter}}"/>
                 <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default},Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="Height" Value="30"/>
@@ -360,7 +365,7 @@
             </Style>
 
             <Style x:Key="StarIcon" TargetType="materialDesign:PackIcon">
-                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default},Path=ItembarColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default},Path=ControlColor,Converter={StaticResource ColorToBrushConverter}}"/>
                 <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default},Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="Height" Value="25"/>
@@ -469,7 +474,7 @@
             </Style>
 
             <Style x:Key="LanguageBoxText-Big" TargetType="TextBlock">
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=DarkMainColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=DarkColor,Converter={StaticResource ColorToBrushConverter}}"/>
                 <Setter Property="FontFamily" Value="Arial"/>
                 <Setter Property="FontSize" Value="20"/>
             </Style>

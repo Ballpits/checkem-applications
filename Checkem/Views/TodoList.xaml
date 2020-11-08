@@ -20,7 +20,7 @@
     <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.5}">
 
         <Grid Name="DataGrid" Style="{StaticResource todoUSCTitlebar}">
-            <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=GrayMainColor,Converter={StaticResource ColorToBrushConverter}}" Margin="0">
+            <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=SmokeGrayColor,Converter={StaticResource ColorToBrushConverter}}" Margin="0">
 
                 <!--<Grid.ContextMenu>
                     <ContextMenu>

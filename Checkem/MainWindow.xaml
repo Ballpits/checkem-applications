@@ -258,7 +258,7 @@
                     </Grid>
                 </Border>
 
-                <Path Data="M578.19198,-0.066659417 L706.86698,23.4 814.70389,24.400132 840.23715,40.400214 939.63685,40.489548 939.5698,0.0080855492" Fill="{Binding Source={x:Static properties:Settings.Default}, Path=GrayMainColor, Converter={StaticResource ColorToBrushConverter}}" HorizontalAlignment="Right" Height="40.556" Margin="0" Stretch="Fill" VerticalAlignment="Top" Width="361.446"/>
+                <Path Data="M578.19198,-0.066659417 L706.86698,23.4 814.70389,24.400132 840.23715,40.400214 939.63685,40.489548 939.5698,0.0080855492" Fill="{Binding Source={x:Static properties:Settings.Default}, Path=SmokeGrayColor, Converter={StaticResource ColorToBrushConverter}}" HorizontalAlignment="Right" Height="40.556" Margin="0" Stretch="Fill" VerticalAlignment="Top" Width="361.446"/>
 
                 <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Top" Height="20">
                     <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Settings" Click="ButtonSettings_Click">
