@@ -21,7 +21,7 @@ namespace Checkem.Views
 
         private void LoadTodoList()
         {
-            foreach (var item in dataAccess.GetInventory())
+            foreach (var item in dataAccess.Inventory())
             {
                 TodoItemsStackPanel.Children.Add(new Itembar() { itemProperties = item});
             }

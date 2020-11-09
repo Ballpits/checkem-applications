@@ -18,6 +18,7 @@ namespace Checkem.Views
         public Itembar()
         {
             InitializeComponent();
+
             SetupColor();
         }
 
@@ -75,7 +76,7 @@ namespace Checkem.Views
         PackIcon icon = new PackIcon();
         #endregion
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private void Itembar_Loaded(object sender, RoutedEventArgs e)
         {
             textBlockTitle.Text = this.itemProperties.Title;
             //textBlock.Text = Id.ToString();

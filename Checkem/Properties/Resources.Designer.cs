@@ -61,12 +61,12 @@ namespace Checkem.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static byte[] CheckemIcon {
+        internal static System.Drawing.Icon CheckemIcon {
             get {
                 object obj = ResourceManager.GetObject("CheckemIcon", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Cyclops.Models.Objects;
+using System.Collections.Generic;
 
 namespace Cyclops.Models.Interface
 {
@@ -10,10 +11,10 @@ namespace Cyclops.Models.Interface
         void ResetId();
 
 
-        public void Create(ToDoItem toDoItem);
+        void Add(ToDoItem toDoItem);
 
 
-        void Retrieve();
+        List<ToDoItem> Retrieve();
 
 
         //void RetrieveReminderDate();

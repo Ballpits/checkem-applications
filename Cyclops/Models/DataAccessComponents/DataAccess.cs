@@ -7,17 +7,16 @@ namespace Cyclops.Models.DataAccessComponents
 {
     public class DataAccess : DataAccess_Json
     {
-        public List<ToDoItem> GetInventory()
+        public List<ToDoItem> Inventory()
         {
-            Retrieve();
-            return Inventory;
+            return inventory;
         }
 
         //Find all to do items
         public List<ToDoItem> Find(string searchString)
         {
             //Ignore casing
-            return Inventory.FindAll(x => x.Title.ToLower().Contains(searchString.ToLower()));
+            return inventory.FindAll(x => x.Title.ToLower().Contains(searchString.ToLower()));
         }
 
 
@@ -35,14 +34,14 @@ namespace Cyclops.Models.DataAccessComponents
             {
                 case 0:
                     {
-                        return Inventory;
+                        return inventory;
                     }
 
                 case 1:
                     {
                         List<ToDoItem> list = new List<ToDoItem>();
 
-                        foreach (var item in Inventory)
+                        foreach (var item in inventory)
                         {
                             if (item.IsReminderOn)
                             {
@@ -57,7 +56,7 @@ namespace Cyclops.Models.DataAccessComponents
                     {
                         List<ToDoItem> list = new List<ToDoItem>();
 
-                        foreach (var item in Inventory)
+                        foreach (var item in inventory)
                         {
                             if (item.IsStarred)
                             {
@@ -72,7 +71,7 @@ namespace Cyclops.Models.DataAccessComponents
                     {
                         List<ToDoItem> list = new List<ToDoItem>();
 
-                        foreach (var item in Inventory)
+                        foreach (var item in inventory)
                         {
                             if (item.IsCompleted)
                             {
@@ -110,42 +109,42 @@ namespace Cyclops.Models.DataAccessComponents
             {
                 case 0:
                     {
-                        return Inventory.OrderBy(x => x.ID).ToList();
+                        return inventory.OrderBy(x => x.ID).ToList();
                     }
 
                 case 1:
                     {
-                        return Inventory.OrderBy(x => x.ID).Reverse().ToList();
+                        return inventory.OrderBy(x => x.ID).Reverse().ToList();
                     }
 
                 case 2:
                     {
-                        return Inventory.OrderBy(x => x.IsStarred).Reverse().ToList();
+                        return inventory.OrderBy(x => x.IsStarred).Reverse().ToList();
                     }
 
                 case 3:
                     {
-                        return Inventory.OrderBy(x => x.Title).ToList();
+                        return inventory.OrderBy(x => x.Title).ToList();
                     }
 
                 case 4:
                     {
-                        return Inventory.OrderBy(x => x.Title).Reverse().ToList();
+                        return inventory.OrderBy(x => x.Title).Reverse().ToList();
                     }
 
                 case 5:
                     {
-                        return Inventory.OrderBy(x => x.BeginDateTime).ToList();
+                        return inventory.OrderBy(x => x.BeginDateTime).ToList();
                     }
 
                 case 6:
                     {
-                        return Inventory.OrderBy(x => x.EndDateTime).ToList();
+                        return inventory.OrderBy(x => x.EndDateTime).ToList();
                     }
 
                 case 7:
                     {
-                        return Inventory.OrderBy(x => x.CreationDateTime).ToList();
+                        return inventory.OrderBy(x => x.CreationDateTime).ToList();
                     }
 
                 default:

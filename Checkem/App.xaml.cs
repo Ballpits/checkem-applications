@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Checkem
 {
@@ -16,8 +15,7 @@ namespace Checkem
 
             TrayIcon = new System.Windows.Forms.NotifyIcon();
             TrayIcon.DoubleClick += (s, args) => OpenMainWindow();
-            MemoryStream ms = new MemoryStream(Checkem.Properties.Resources.CheckemIcon);
-            TrayIcon.Icon = new System.Drawing.Icon(ms);
+            TrayIcon.Icon = Checkem.Properties.Resources.CheckemIcon;
             TrayIcon.Visible = true;
 
             ShowContextMenu();

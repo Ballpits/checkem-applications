@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets\Icon\CheckemIcon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -255,9 +256,6 @@
     <None Remove="Assets\Icon\Flags\za.png" />
     <None Remove="Assets\Icon\Flags\zm.png" />
     <None Remove="Assets\Icon\Flags\zw.png" />
-    <None Remove="Assets\Icon\Icon-1024.ico" />
-    <None Remove="Assets\Icon\Icon-16.ico" />
-    <None Remove="Assets\Icon\Icon-512.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -520,9 +518,6 @@
     <Resource Include="Assets\Icon\Flags\za.png" />
     <Resource Include="Assets\Icon\Flags\zm.png" />
     <Resource Include="Assets\Icon\Flags\zw.png" />
-    <Resource Include="Assets\Icon\Icon-1024.ico" />
-    <Resource Include="Assets\Icon\Icon-16.ico" />
-    <Resource Include="Assets\Icon\Icon-512.ico" />
   </ItemGroup>
 
   <ItemGroup>
