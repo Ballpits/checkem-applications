@@ -50,12 +50,12 @@ namespace Checkem.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("White")]
-        public global::System.Drawing.Color LightColor {
+        public global::System.Drawing.Color InvertTextColor {
             get {
-                return ((global::System.Drawing.Color)(this["LightColor"]));
+                return ((global::System.Drawing.Color)(this["InvertTextColor"]));
             }
             set {
-                this["LightColor"] = value;
+                this["InvertTextColor"] = value;
             }
         }
         
@@ -74,36 +74,36 @@ namespace Checkem.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Black")]
-        public global::System.Drawing.Color DarkColor {
+        public global::System.Drawing.Color NormalTextColor {
             get {
-                return ((global::System.Drawing.Color)(this["DarkColor"]));
+                return ((global::System.Drawing.Color)(this["NormalTextColor"]));
             }
             set {
-                this["DarkColor"] = value;
+                this["NormalTextColor"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("150, 150, 150")]
-        public global::System.Drawing.Color StrikedOutColor {
+        public global::System.Drawing.Color StrikedOutTextColor {
             get {
-                return ((global::System.Drawing.Color)(this["StrikedOutColor"]));
+                return ((global::System.Drawing.Color)(this["StrikedOutTextColor"]));
             }
             set {
-                this["StrikedOutColor"] = value;
+                this["StrikedOutTextColor"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Red")]
-        public global::System.Drawing.Color OverDueColor {
+        public global::System.Drawing.Color OverDueTextColor {
             get {
-                return ((global::System.Drawing.Color)(this["OverDueColor"]));
+                return ((global::System.Drawing.Color)(this["OverDueTextColor"]));
             }
             set {
-                this["OverDueColor"] = value;
+                this["OverDueTextColor"] = value;
             }
         }
         
@@ -134,12 +134,12 @@ namespace Checkem.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("WhiteSmoke")]
-        public global::System.Drawing.Color SmokeGrayColor {
+        public global::System.Drawing.Color PageBackgroundColor {
             get {
-                return ((global::System.Drawing.Color)(this["SmokeGrayColor"]));
+                return ((global::System.Drawing.Color)(this["PageBackgroundColor"]));
             }
             set {
-                this["SmokeGrayColor"] = value;
+                this["PageBackgroundColor"] = value;
             }
         }
         

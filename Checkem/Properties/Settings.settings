@@ -8,19 +8,19 @@
     <Setting Name="SecondaryColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">151, 8, 204</Value>
     </Setting>
-    <Setting Name="LightColor" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="InvertTextColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">White</Value>
     </Setting>
     <Setting Name="TransparentHighlightColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">237, 247, 255</Value>
     </Setting>
-    <Setting Name="DarkColor" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="NormalTextColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Black</Value>
     </Setting>
-    <Setting Name="StrikedOutColor" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="StrikedOutTextColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">150, 150, 150</Value>
     </Setting>
-    <Setting Name="OverDueColor" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="OverDueTextColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Red</Value>
     </Setting>
     <Setting Name="NavigationbarButtonColor" Type="System.Drawing.Color" Scope="User">
@@ -29,7 +29,7 @@
     <Setting Name="NavigationbarButtonHighlightColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">76, 255, 255, 255</Value>
     </Setting>
-    <Setting Name="SmokeGrayColor" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="PageBackgroundColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">WhiteSmoke</Value>
     </Setting>
     <Setting Name="ControlColor" Type="System.Drawing.Color" Scope="User">

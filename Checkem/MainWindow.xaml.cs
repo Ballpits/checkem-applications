@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,17 +12,18 @@ namespace Checkem
             InitializeComponent();
 
             reset();
-            //BlackTheme();
+            BlackTheme();
         }
 
         private void BlackTheme()
         {
             Properties.Settings.Default.PrimaryColor = System.Drawing.Color.Black;
             Properties.Settings.Default.SecondaryColor = System.Drawing.Color.Black;
-            Properties.Settings.Default.LightColor = System.Drawing.Color.Black;
-            Properties.Settings.Default.DarkColor = System.Drawing.Color.White;
-            Properties.Settings.Default.SmokeGrayColor = System.Drawing.Color.Black;
+            Properties.Settings.Default.InvertTextColor = System.Drawing.Color.White;
+            Properties.Settings.Default.NormalTextColor = System.Drawing.Color.White;
+            Properties.Settings.Default.PageBackgroundColor = System.Drawing.Color.Black;
             Properties.Settings.Default.ControlColor = System.Drawing.Color.Black;
+            Properties.Settings.Default.ControlOutlineColor = System.Drawing.Color.FromArgb(151, 8, 204);
 
             Properties.Settings.Default.Save();
         }

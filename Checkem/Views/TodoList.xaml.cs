@@ -1,6 +1,7 @@
 ﻿using Cyclops.Models.DataAccessComponents;
 using System.Windows;
 using System.Windows.Controls;
+using Checkem.CheckemUserControls;
 
 namespace Checkem.Views
 {
@@ -23,7 +24,7 @@ namespace Checkem.Views
         {
             foreach (var item in dataAccess.Inventory())
             {
-                TodoItemsStackPanel.Children.Add(new Itembar() { itemProperties = item});
+                TodoItemsStackPanel.Children.Add(new Itembar(item));
             }
         }
     }
