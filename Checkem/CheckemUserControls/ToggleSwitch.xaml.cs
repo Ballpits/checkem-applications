@@ -13,9 +13,10 @@ namespace Checkem.CheckemUserControls
             InitializeComponent();
         }
 
-        public bool IsChecked { get; set; } = false;
+        public event EventHandler Checked;
+        public event EventHandler Unchecked;
 
-        DispatcherTimer dp = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(1) };
+        public bool IsChecked { get; set; } = false;
 
         private void ToggleGrid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -38,6 +39,9 @@ namespace Checkem.CheckemUserControls
 
         private void ToggleGrid_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            Checked?.Invoke(this, EventArgs.Empty);
+            Unchecked?.Invoke(this, EventArgs.Empty);
+
             if (checkbox.IsChecked == true)
             {
                 checkbox.IsChecked = false;

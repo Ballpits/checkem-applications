@@ -267,6 +267,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cyclops\Cyclops.csproj" />
+    <ProjectReference Include="..\Visual\Visual.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -545,6 +546,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>

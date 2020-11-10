@@ -23,7 +23,7 @@
         </Viewbox>
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="3" Orientation="Vertical">
-            <Border Height="40" Margin="5" Background="#FF2FA0C1" CornerRadius="10" Padding="10,0,0,0">
+            <Border Height="40" Margin="5" Background="#FF2FA0C1" CornerRadius="15" Padding="10,0,0,0">
                 <TextBlock Text="Event 1" FontFamily="Arial" FontSize="20" Margin="0,8.5,0,0"/>
             </Border>
         </StackPanel>

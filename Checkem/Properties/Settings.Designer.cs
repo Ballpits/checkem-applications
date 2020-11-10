@@ -166,5 +166,17 @@ namespace Checkem.Properties {
                 this["ControlOutlineColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("76, 240, 201, 255")]
+        public global::System.Drawing.Color ItembarHighlightColor {
+            get {
+                return ((global::System.Drawing.Color)(this["ItembarHighlightColor"]));
+            }
+            set {
+                this["ItembarHighlightColor"] = value;
+            }
+        }
     }
 }

@@ -38,5 +38,8 @@
     <Setting Name="ControlOutlineColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">202, 202, 202</Value>
     </Setting>
+    <Setting Name="ItembarHighlightColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">76, 240, 201, 255</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

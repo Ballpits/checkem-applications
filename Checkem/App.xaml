@@ -21,7 +21,7 @@
 
                 <ResourceDictionary Source="Assets/LanguageResourceDictionary/Lng_English_US.xaml"/>
 
-                <ResourceDictionary Source="Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />
+                <ResourceDictionary Source="Assets/StyleResourceDictionary/ColorConverterDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <!--#region Checkem custom styles-->

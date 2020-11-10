@@ -89,15 +89,15 @@
             <Storyboard x:Key="ItembarRemove">
                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.Visibility)">
                     <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00.3000000" Value="{x:Static Visibility.Visible}"/>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.4000000" Value="{x:Static Visibility.Visible}"/>
                 </ObjectAnimationUsingKeyFrames>
                 <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ItembarBorder" Storyboard.TargetProperty="(FrameworkElement.Margin)">
                     <EasingThicknessKeyFrame KeyTime="00:00:00" Value="0,0,0,0"/>
-                    <EasingThicknessKeyFrame KeyTime="00:00:00.3000000" Value="0,50,0,50"/>
+                    <EasingThicknessKeyFrame KeyTime="00:00:00.4000000" Value="0,50,0,50"/>
                 </ThicknessAnimationUsingKeyFrames>
                 <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="border" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                    <EasingThicknessKeyFrame KeyTime="00:00:00.3000000" Value="0,0,0,0"/>
-                    <EasingThicknessKeyFrame KeyTime="00:00:00.6000000" Value="0,50,0,50"/>
+                    <EasingThicknessKeyFrame KeyTime="00:00:00.4000000" Value="0,0,0,0"/>
+                    <EasingThicknessKeyFrame KeyTime="00:00:00.7000000" Value="0,40,0,40"/>
                 </ThicknessAnimationUsingKeyFrames>
             </Storyboard>
         </ResourceDictionary>
@@ -117,7 +117,7 @@
             <materialDesign:PackIcon Kind="TrashCanOutline" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35" Height="35"/>
         </Border>
 
-        <Border x:Name="ItembarBorder" Style="{StaticResource ItembarBorderStyle}" BorderThickness="3" BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=ControlOutlineColor, Converter={StaticResource ColorToBrushConverter}}" Panel.ZIndex="1" Visibility="Visible" Margin="0,0,0,0">
+        <Border x:Name="ItembarBorder" Style="{StaticResource ItembarBorderStyle}" BorderThickness="3" BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=ControlOutlineColor, Converter={StaticResource ColorToBrushConverter}}" Panel.ZIndex="1" Visibility="Visible" Margin="0,0,0,0" MouseEnter="ItembarBorder_MouseEnter" MouseLeave="ItembarBorder_MouseLeave">
             <Border.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Mark as completed" Icon="{materialDesign:PackIcon Kind=Check, Size=18}"/>
@@ -156,7 +156,7 @@
                     </CheckBox>
                 </Grid>
 
-                <TextBlock x:Name="TitleTextBlock" VerticalAlignment="Top" Margin="70,14,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="Some text" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor, Converter={StaticResource ColorToBrushConverter}}" RenderTransformOrigin="0.5,0.5">
+                <TextBlock x:Name="TitleTextBlock" VerticalAlignment="Top" Margin="70,10,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="Some text" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor, Converter={StaticResource ColorToBrushConverter}}" RenderTransformOrigin="0.5,0.5">
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
