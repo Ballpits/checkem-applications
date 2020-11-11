@@ -1,11 +1,12 @@
 ﻿<Window
-        x:Class="ProjectSC.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:properties="clr-namespace:ProjectSC.Properties"
+        xmlns:Calendar="clr-namespace:ProjectSC.Views.Calendar"
+        x:Class="ProjectSC.MainWindow"
         x:Name="AppWindow"
         mc:Ignorable="d"
         Title="Check'em"
@@ -135,7 +136,7 @@
                     </Grid>
                 </Border>
 
-                <Path Data="M578.19198,-0.066659417 L706.86698,23.4 814.70389,24.400132 840.23715,40.400214 939.63685,40.489548 939.5698,0.0080855492" Fill="{Binding Source={x:Static properties:Settings.Default}, Path=GrayMainColor, Converter={StaticResource ColorToBrushConverter}}" HorizontalAlignment="Right" Height="40.556" Margin="0" Stretch="Fill" VerticalAlignment="Top" Width="361.446"/>
+                <Path Data="M578.19198,-0.066659417 L706.86698,23.4 814.70389,24.400132 840.23715,40.400214 939.63685,40.489548 939.5698,0.0080855492" Fill="{Binding GrayMainColor, Converter={StaticResource ColorToBrushConverter}, Source={x:Static properties:Settings.Default}}" HorizontalAlignment="Right" Height="40.556" Margin="0" Stretch="Fill" VerticalAlignment="Top" Width="361.446"/>
 
                 <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Top" Height="20">
                     <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Settings" Click="ButtonSettings_Click">
@@ -163,7 +164,11 @@
                 </Grid>
             </Grid>
 
-            <Grid x:Name="GridPrincipal" Grid.Column="1" Grid.Row="1"/>
+            <Grid x:Name="GridPrincipal" Grid.Column="1" Grid.Row="1">
+
+                <Calendar:Caledar_View Margin="0"/>
+
+            </Grid>
 
             <!--<TextBlock Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Arial" TextAlignment="Center" Grid.Column="1" Height="19"><Run Text="This is a demo version of Check'em v0."/><Run Text="4"/><Run Text="."/><Run Text="5"/><Run Text=",Made by Umar Turdiev.All copy rights reserved under"/></TextBlock>
             <TextBlock Text="Attribution-NonCommercial-NoDerivs CC BY-NC-ND" Margin="525,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Arial" TextAlignment="Center" Foreground="Red" Grid.Column="1" Height="19"/>-->

@@ -46,8 +46,8 @@ namespace ProjectSC
             dispatcherTimer.Tick += new EventHandler(Timer_Tick);
             dispatcherTimer.Start();
 
-            GridPrincipal.Children.Add(todoList_View);
-            todoList_View.Filter(0);
+            //GridPrincipal.Children.Add(todoList_View);
+            //todoList_View.Filter(0);
         }
 
         private void AppWindow_StateChanged(object sender, EventArgs e)

@@ -185,6 +185,7 @@
     <Compile Include="Views\Calendar\CalendarDay_View.xaml.cs">
       <DependentUpon>CalendarDay_View.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Calendar\TaskCrossingType.cs" />
     <Compile Include="Views\DetailsPanel.xaml.cs">
       <DependentUpon>DetailsPanel.xaml</DependentUpon>
     </Compile>

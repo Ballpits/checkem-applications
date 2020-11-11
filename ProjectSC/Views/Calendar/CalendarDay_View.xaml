@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <Viewbox Grid.Column="1">
-            <TextBlock TextAlignment="Center" FontFamily="Arial" Text="{}"/>
+            <TextBlock x:Name="DateTextBlock" TextAlignment="Center" FontFamily="Arial"/>
         </Viewbox>
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="3" Orientation="Vertical">

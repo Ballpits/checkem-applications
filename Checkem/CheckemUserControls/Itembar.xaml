@@ -108,7 +108,7 @@
             <BeginStoryboard Storyboard="{StaticResource ItembarMouseEnter}"/>
         </EventTrigger>
         <EventTrigger RoutedEvent="Border.MouseLeave" SourceName="ItembarBorder">
-            <BeginStoryboard Storyboard="{StaticResource ItembarRemove}"/>
+            <BeginStoryboard Storyboard="{StaticResource ItembarMouseLeave}"/>
         </EventTrigger>
     </UserControl.Triggers>
 
@@ -156,7 +156,7 @@
                     </CheckBox>
                 </Grid>
 
-                <TextBlock x:Name="TitleTextBlock" VerticalAlignment="Top" Margin="70,10,55,0" FontSize="20" FontFamily="Arial" Height="24" Text="Some text" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor, Converter={StaticResource ColorToBrushConverter}}" RenderTransformOrigin="0.5,0.5">
+                <TextBlock x:Name="TitleTextBlock" VerticalAlignment="Top" Margin="70,10,55,0" FontSize="20" FontFamily="Quicksand" Height="24" Text="Some text" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor, Converter={StaticResource ColorToBrushConverter}}" RenderTransformOrigin="0.5,0.5">
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -168,9 +168,9 @@
                 </TextBlock>
 
                 <materialDesign:PackIcon x:Name="ReminderIcon" Kind="Bell" Margin="70,0,0,7.5" Width="20" Height="20" Foreground="#FFE3F321" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                <TextBlock Name="ReminderDetailTextBlock" VerticalAlignment="Bottom" Margin="95,0,55,5.4" FontSize="14" FontFamily="Arial" Height="20" Text="Due date..." Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                <TextBlock Name="ReminderDetailTextBlock" VerticalAlignment="Bottom" Margin="95,0,55,5.4" FontSize="14" FontFamily="Quicksand" Height="20" Text="Due date..." Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor, Converter={StaticResource ColorToBrushConverter}}"/>
 
-                <!--<TextBlock x:Name="ProgressIndicator" Text="56%" Margin="0,0,55,1.6" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" TextAlignment="Center" FontFamily="Arial"/>
+                <!--<TextBlock x:Name="ProgressIndicator" Text="56%" Margin="0,0,55,1.6" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" TextAlignment="Center" FontFamily="Quicksand"/>
             <ProgressBar x:Name="ProgressBar" Style="{StaticResource MaterialDesignCircularProgressBar}" Height="30" Margin="0,3,55,16.6" Value="70" Foreground="#FF2196F3" BorderBrush="{x:Null}" Background="{x:Null}" Width="30" HorizontalAlignment="Right" VerticalAlignment="Center"/>-->
 
                 <ToggleButton x:Name="StarToggle" Style="{StaticResource ItembarStarToggle}" ToolTip="Mark As Important" Width="45" Height="45" Background="{x:Null}">

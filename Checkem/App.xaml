@@ -159,7 +159,7 @@
             <Style x:Key="CheckemBaseTextBlock" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
                 <Setter Property="TextAlignment" Value="Center"/>
 
-                <Setter Property="FontFamily" Value="Arail"/>
+                <Setter Property="FontFamily" Value="Quicksand"/>
             </Style>
             <!--#endregion-->
 
@@ -278,7 +278,7 @@
 
                 <Setter Property="FontSize" Value="16"/>
                 <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
-                <Setter Property="FontFamily" Value="Arial"/>
+                <Setter Property="FontFamily" Value="Quicksand"/>
 
                 <Setter Property="Height" Value="35"/>
                 <Setter Property="Width" Value="Auto"/>
@@ -486,15 +486,13 @@
                 <Setter Property="Height" Value="22"/>
             </Style>
 
-            <Style x:Key="LanguageBoxText-Big" TargetType="TextBlock">
+            <Style x:Key="LanguageBoxText-Big" TargetType="TextBlock" BasedOn="{StaticResource CheckemBaseTextBlock}">
                 <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
-                <Setter Property="FontFamily" Value="Arial"/>
                 <Setter Property="FontSize" Value="20"/>
             </Style>
 
-            <Style x:Key="LanguageBoxText-Small" TargetType="TextBlock">
+            <Style x:Key="LanguageBoxText-Small" TargetType="TextBlock" BasedOn="{StaticResource CheckemBaseTextBlock}">
                 <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ItemCompletedTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
-                <Setter Property="FontFamily" Value="Arial"/>
                 <Setter Property="FontSize" Value="14"/>
             </Style>
             <!--#endregion-->

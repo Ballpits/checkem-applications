@@ -20,8 +20,10 @@ namespace ProjectSC.Views.Calendar
         public CalendarDay_View()
         {
             InitializeComponent();
+
+            DateTextBlock.Text = Day.ToString();
         }
 
-        public int Date { get; set; }
+        public int Day { get; set; }
     }
 }
