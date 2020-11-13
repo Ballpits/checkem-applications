@@ -1,0 +1,39 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Checkem.CustomComponents"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             x:Class="Checkem.CustomComponents.Tag"
+             x:Name="Parent"
+             mc:Ignorable="d" 
+             Height="35"
+             >
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="CheckBox.Checked" SourceName="checkbox">
+            <!--<BeginStoryboard Storyboard="{StaticResource ToggleState1}"/>-->
+        </EventTrigger>
+
+        <EventTrigger RoutedEvent="CheckBox.Unchecked" SourceName="checkbox">
+            <!--<BeginStoryboard Storyboard="{StaticResource ToggleState0}"/>-->
+        </EventTrigger>
+    </UserControl.Triggers>
+
+    <Grid x:Name="TagGrid" MouseUp="TagGrid_MouseUp">
+        <CheckBox x:Name="checkbox" Visibility="Hidden" Panel.ZIndex="-1" Checked="checkbox_Checked" Unchecked="checkbox_Unchecked"/>
+        <Rectangle Fill="White" RadiusX="18" RadiusY="18" Stroke="#FFCACACA" StrokeThickness="3"/>
+        <Ellipse Fill="#FFF97474" Width="10" Height="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Panel.ZIndex="1"/>
+        <TextBlock Panel.ZIndex="1" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl, AncestorLevel=1}, Path=Text}" d:Text="Tag content" Style="{StaticResource CheckemBaseTextBlock}" FontSize="18" Padding="0,5,5,0" Margin="15,0,0,0"/>
+    </Grid>
+</UserControl>

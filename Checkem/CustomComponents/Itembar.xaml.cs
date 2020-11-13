@@ -7,7 +7,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using Visual;
 
-namespace Checkem.CheckemUserControls
+namespace Checkem.CustomComponents
 {
     public partial class Itembar : UserControl
     {

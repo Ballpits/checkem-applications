@@ -1,7 +1,7 @@
 ﻿using Cyclops.Models.DataAccessComponents;
 using System.Windows;
 using System.Windows.Controls;
-using Checkem.CheckemUserControls;
+using Checkem.CustomComponents;
 
 namespace Checkem.Views
 {

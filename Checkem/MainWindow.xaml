@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:properties="clr-namespace:Checkem.Properties"
         xmlns:Views="clr-namespace:Checkem.Views"
-        xmlns:CustomUserControls="clr-namespace:Checkem.CheckemUserControls"
+        xmlns:CustomUserControls="clr-namespace:Checkem.CustomComponents"
         xmlns:local="clr-namespace:Checkem"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
@@ -62,130 +62,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="LoadingScreen" Grid.RowSpan="2" Grid.ColumnSpan="2" Background="Black" Visibility="Hidden" Panel.ZIndex="1">
-                <Ellipse x:Name="ellipse" Width="70" Height="70" VerticalAlignment="Center" Margin="0,0,405,0" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
-                    <Ellipse.Fill>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <LinearGradientBrush.RelativeTransform>
-                                <TransformGroup>
-                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                    <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </LinearGradientBrush.RelativeTransform>
-                            <GradientStop Color="Black"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Ellipse.Fill>
-                    <Ellipse.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Ellipse.RenderTransform>
-                </Ellipse>
-                <Ellipse x:Name="ellipse1" Width="70" Height="70" Margin="0,0,200,0" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="-0.5,0.5">
-                    <Ellipse.Fill>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <LinearGradientBrush.RelativeTransform>
-                                <TransformGroup>
-                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                    <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </LinearGradientBrush.RelativeTransform>
-                            <GradientStop Color="Black"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Ellipse.Fill>
-                    <Ellipse.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Ellipse.RenderTransform>
-                </Ellipse>
-                <Ellipse x:Name="ellipse2" Width="70" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="-0.5,0.5">
-                    <Ellipse.Fill>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <LinearGradientBrush.RelativeTransform>
-                                <TransformGroup>
-                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                    <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </LinearGradientBrush.RelativeTransform>
-                            <GradientStop Color="Black"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Ellipse.Fill>
-                    <Ellipse.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Ellipse.RenderTransform>
-                </Ellipse>
-                <Ellipse x:Name="ellipse3" Width="70" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="200,0,0,0" RenderTransformOrigin="-0.5,0.5">
-                    <Ellipse.Fill>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <LinearGradientBrush.RelativeTransform>
-                                <TransformGroup>
-                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                    <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </LinearGradientBrush.RelativeTransform>
-                            <GradientStop Color="Black"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Ellipse.Fill>
-                    <Ellipse.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Ellipse.RenderTransform>
-                </Ellipse>
-                <Ellipse x:Name="ellipse4" Width="70" Height="70" Margin="400,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="-0.5,0.5">
-                    <Ellipse.Fill>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <LinearGradientBrush.RelativeTransform>
-                                <TransformGroup>
-                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                    <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </LinearGradientBrush.RelativeTransform>
-                            <GradientStop Color="Black"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Ellipse.Fill>
-                    <Ellipse.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Ellipse.RenderTransform>
-                </Ellipse>
-            </Grid>
-
             <CustomUserControls:ToggleSwitch Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1"/>
+            <CustomUserControls:Tag Grid.Row="1" Text="test... test..." Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1" Margin="0,30,0,0"/>
 
             <Grid x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="40" Grid.Row="2" Visibility="Visible">
                 <Grid.RowDefinitions>
