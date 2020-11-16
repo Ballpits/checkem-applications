@@ -24,16 +24,18 @@ namespace Checkem.CustomComponents
 
         public bool IsChecked { get; set; }
 
+        public SolidColorBrush Color { get; set; }
+
         public string Text { get; set; }
 
         private void checkbox_Checked(object sender, RoutedEventArgs e)
         {
-
+            IsChecked = true;
         }
 
         private void checkbox_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            IsChecked = false;
         }
 
         private void TagGrid_MouseUp(object sender, MouseButtonEventArgs e)
