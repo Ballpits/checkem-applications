@@ -1,40 +1,50 @@
 ﻿using Checkem.Assets.ColorConverters;
 using Cyclops.Models.Objects;
 using MaterialDesignThemes.Wpf;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Media;
 using Visual;
 
 namespace Checkem.CustomComponents
 {
-    public partial class Itembar : UserControl
+    public partial class Itembar : UserControl, INotifyPropertyChanged
     {
         public Itembar(ToDoItem item)
         {
+            DataContext = this;
+
+            ItemProperties = item;
+
             InitializeComponent();
-
-            itemProperties = item;
-
-            //SetupColor();
         }
 
         #region Properties
-        public ToDoItem itemProperties { get; set; }
+
+        private ToDoItem ItemProperties;
+
+        public string Title
+        {
+            get
+            {
+                return ItemProperties.Title;
+            }
+            set
+            {
+                if (ItemProperties.Title != value)
+                {
+                    ItemProperties.Title = value;
+
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         #endregion
 
         #region Variables
-        //private DataAccess_Json dataAccess = new DataAccess_Json();
-
-        //private ToDoList ToDoList;
-
-
-        const int ChaeckBoxIconSize = 35;
-
-        private bool CheckboxLoaded = false;
-
-        private bool BorderEventCanActivate = true;
 
         Binding ItemCompletedTextColorBindings = new Binding()
         {
@@ -72,34 +82,39 @@ namespace Checkem.CustomComponents
         };
 
         PackIcon icon = new PackIcon();
+
+        public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
         private void Itembar_Loaded(object sender, RoutedEventArgs e)
         {
-            TitleTextBlock.Text = itemProperties.Title;
-
             VisualUpdate();
+        }
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
         private void VisualUpdate()
         {
-            if (itemProperties.IsReminderOn)
+            if (ItemProperties.IsReminderOn)
             {
                 this.Height = 70;
 
                 ReminderIcon.Visibility = Visibility.Visible;
                 ReminderDetailTextBlock.Visibility = Visibility.Visible;
 
-                if (this.itemProperties.IsAdvanceReminderOn)
+                if (this.ItemProperties.IsAdvanceReminderOn)
                 {
-                    ReminderDetailTextBlock.Text = "Start on: " + DateTimeManipulator.SimplifiedDate(this.itemProperties.BeginDateTime.Value) + "\tEnd on: " + DateTimeManipulator.SimplifiedDate(this.itemProperties.EndDateTime.Value);
+                    ReminderDetailTextBlock.Text = "Start on: " + DateTimeManipulator.SimplifiedDate(this.ItemProperties.BeginDateTime.Value) + "\tEnd on: " + DateTimeManipulator.SimplifiedDate(this.ItemProperties.EndDateTime.Value);
                 }
                 else
                 {
-                    ReminderDetailTextBlock.Text = DateTimeManipulator.SimplifiedDate(this.itemProperties.EndDateTime.Value);
+                    ReminderDetailTextBlock.Text = DateTimeManipulator.SimplifiedDate(this.ItemProperties.EndDateTime.Value);
                 }
 
-                if (DateTimeManipulator.IsPassed(this.itemProperties.EndDateTime.Value))
+                if (DateTimeManipulator.IsPassed(this.ItemProperties.EndDateTime.Value))
                 {
                     ReminderDetailTextBlock.SetBinding(TextBlock.ForegroundProperty, OverDueTextColorBindings);
                 }
@@ -125,6 +140,11 @@ namespace Checkem.CustomComponents
         private void ItembarBorder_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
             ItembarBorder.SetBinding(Border.BackgroundProperty, ControlColorBindings);
+        }
+
+        private void checkBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Title = "binding works!!";
         }
     }
 }
