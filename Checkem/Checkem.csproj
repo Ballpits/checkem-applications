@@ -522,7 +522,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Resource Include=".\Resources\Quicksand.ttf"/>
+		<Resource Include=".\Resources\Quicksand.ttf" />
 	</ItemGroup>
 	
 	<ItemGroup>

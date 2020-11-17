@@ -9,7 +9,9 @@
              mc:Ignorable="d" 
              d:DesignWidth="800"
              Height="70"
-             Margin="10,5" Loaded="Itembar_Loaded"
+             Margin="10,5" 
+             Loaded="Itembar_Loaded"
+             MouseDown="Itembar_MouseDown"
              >
 
     <UserControl.Resources>

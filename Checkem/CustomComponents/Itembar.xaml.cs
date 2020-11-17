@@ -1,11 +1,13 @@
 ﻿using Checkem.Assets.ColorConverters;
 using Cyclops.Models.Objects;
 using MaterialDesignThemes.Wpf;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
 using Visual;
 
 namespace Checkem.CustomComponents
@@ -21,6 +23,7 @@ namespace Checkem.CustomComponents
             InitializeComponent();
         }
 
+        
         #region Properties
 
         private ToDoItem ItemProperties;
@@ -43,6 +46,7 @@ namespace Checkem.CustomComponents
         }
 
         #endregion
+
 
         #region Variables
 
@@ -85,6 +89,10 @@ namespace Checkem.CustomComponents
 
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
+
+
+        public event EventHandler Click;
+
 
         private void Itembar_Loaded(object sender, RoutedEventArgs e)
         {
@@ -132,12 +140,12 @@ namespace Checkem.CustomComponents
             }
         }
 
-        private void ItembarBorder_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        private void ItembarBorder_MouseEnter(object sender, MouseEventArgs e)
         {
             ItembarBorder.SetBinding(Border.BackgroundProperty, ItembarHighlightColorBindings);
         }
 
-        private void ItembarBorder_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        private void ItembarBorder_MouseLeave(object sender, MouseEventArgs e)
         {
             ItembarBorder.SetBinding(Border.BackgroundProperty, ControlColorBindings);
         }
@@ -145,6 +153,14 @@ namespace Checkem.CustomComponents
         private void checkBox_Checked(object sender, RoutedEventArgs e)
         {
             Title = "binding works!!";
+        }
+
+        private void Itembar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+            {
+                Click?.Invoke(this, EventArgs.Empty);
+            }
         }
     }
 }

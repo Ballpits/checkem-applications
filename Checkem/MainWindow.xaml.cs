@@ -12,7 +12,7 @@ namespace Checkem
             InitializeComponent();
 
             reset();
-            BlackTheme();
+            //BlackTheme();
         }
 
         private void BlackTheme()
