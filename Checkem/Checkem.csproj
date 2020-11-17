@@ -267,6 +267,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Cyclops\Cyclops.csproj" />
+		<ProjectReference Include="..\Monitor\Monitor.csproj" />
 		<ProjectReference Include="..\Visual\Visual.csproj" />
 	</ItemGroup>
 

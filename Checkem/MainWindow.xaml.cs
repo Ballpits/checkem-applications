@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Monitor;
 
 namespace Checkem
 {
@@ -35,7 +36,7 @@ namespace Checkem
 
         private void MainGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            //timer goes here
+            //System.Windows.Forms.MessageBox.Show(ScreenResolution.Vertical.ToString());
         }
 
 
