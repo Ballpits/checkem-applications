@@ -9,6 +9,7 @@
         xmlns:CustomUserControls="clr-namespace:Checkem.CustomComponents"
         xmlns:local="clr-namespace:Checkem"
         mc:Ignorable="d"
+        Title="Checkem"
         WindowStartupLocation="CenterScreen"
         WindowStyle="SingleBorderWindow"
         WindowState="Maximized"
@@ -24,7 +25,7 @@
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
-                <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="280"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
@@ -32,7 +33,7 @@
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
                 <EasingDoubleKeyFrame KeyTime="0" Value="280"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="40"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="60"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
@@ -65,41 +66,41 @@
             <CustomUserControls:ToggleSwitch Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1"/>
             <CustomUserControls:Tag Grid.Row="1" Text="test... test..." Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1" Margin="0,30,0,0"/>
 
-            <Grid x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="40" Grid.Row="2" Visibility="Visible">
+            <Grid d:Width="280" x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="60" Grid.Row="2" Visibility="Visible">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
                     <RowDefinition/>
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
 
-                <Grid x:Name="NavbarCursor" Background="#4CFFFFFF" Margin="0"/>
+                <Border x:Name="NavbarCursor" Background="#4CFFFFFF" Margin="10,0,10,0" CornerRadius="5" Height="40"/>
 
                 <!--#region Navbar button-->
                 <Button x:Name="ButtonMyDay" Style="{StaticResource NavigationbarButton}" Click="ButtonMyDay_Click">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="WbSunny" Style="{StaticResource NavigationbarIcon}"/>
-                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Dict_MyDay}"/>
+                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Dict_AllItems}" FontWeight="Normal" FontStyle="Normal"/>
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="ButtonAllItems" Style="{StaticResource NavigationbarButton}" Click="ButtonAllTasks_Click" TabIndex="0" Margin="0" MinWidth="0" MinHeight="0" HorizontalContentAlignment="Center" Grid.Row="1">
+                <Button x:Name="ButtonAllItems" Style="{StaticResource NavigationbarButton}" Click="ButtonAllTasks_Click" TabIndex="0" Grid.Row="1">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="ClipboardList" Style="{StaticResource NavigationbarIcon}"/>
                         <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Dict_AllItems}"/>
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="ButtonReminder" Style="{StaticResource NavigationbarButton}" Click="ButtonDueDateFilter_Click" Grid.Row="2" TabIndex="0" Margin="0">
+                <Button x:Name="ButtonReminder" Style="{StaticResource NavigationbarButton}" Click="ButtonDueDateFilter_Click" TabIndex="0" Grid.Row="2">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="Bell" Style="{StaticResource NavigationbarIcon}"/>
                         <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Dict_Reminder}"/>
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="ButtonStarredFilter" Style="{StaticResource NavigationbarButton}" Click="ButtonStarredFilter_Click" Grid.Row="3" TabIndex="0" Margin="0">
+                <Button x:Name="ButtonStarredFilter" Style="{StaticResource NavigationbarButton}" Click="ButtonStarredFilter_Click" TabIndex="0" Grid.Row="3">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="Star" Style="{StaticResource NavigationbarIcon}"/>
                         <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Dict_Starred}"/>
@@ -109,7 +110,7 @@
 
                 <ScrollViewer Margin="0" Grid.RowSpan="3" Grid.Row="6"/>
 
-                <Button FocusVisualStyle="{DynamicResource ScrollBarFocusVisual}" IsEnabled="True" x:Name="ButtonAddNewList" Margin="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Click="ButtonAddNewList_Click" Padding="0" Grid.Row="6" TabIndex="0" HorizontalAlignment="Left">
+                <Button FocusVisualStyle="{DynamicResource ScrollBarFocusVisual}" IsEnabled="True" x:Name="ButtonAddNewList" Margin="10,0,10,0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonAddNewList_Click" Padding="0" Grid.Row="6" TabIndex="0" HorizontalAlignment="Stretch" Height="40">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="Add" Style="{StaticResource NavigationbarIcon}"/>
                         <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Dict_NewList}"/>

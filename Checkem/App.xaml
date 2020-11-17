@@ -22,12 +22,16 @@
                 <ResourceDictionary Source="Assets/LanguageResourceDictionary/Lng_English_US.xaml"/>
 
                 <ResourceDictionary Source="Assets/StyleResourceDictionary/ColorConverterDictionary.xaml"/>
+
+                <ResourceDictionary>
+                    <FontFamily x:Key="Quicksand">./resources/#Quicksand</FontFamily>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
             <!--#region Checkem custom styles-->
 
             <!--#region Scrollbar-->
-            
+
             <!--Checkem Scroll Bar Focus Visual-->
             <Style x:Key="ScrollBarFocusVisual">
                 <Setter Property="Control.Template">
@@ -125,11 +129,11 @@
             </Style>
 
             <!--#endregion-->
-            
-            
-            
+
+
+
             <!--#region Base style-->
-            
+
             <!--Checkem Flat Button-->
             <Style x:Key="CheckemFlatButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
                 <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=InvertTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
@@ -159,7 +163,7 @@
             <Style x:Key="CheckemBaseTextBlock" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
                 <Setter Property="TextAlignment" Value="Center"/>
 
-                <Setter Property="FontFamily" Value="Quicksand"/>
+                <Setter Property="FontFamily" Value="{StaticResource ResourceKey=Quicksand}"/>
             </Style>
             <!--#endregion-->
 
@@ -206,10 +210,10 @@
             </Style>
 
             <Style x:Key="NavigationbarButton" TargetType="{x:Type Button}" BasedOn="{StaticResource CheckemFlatButton}">
-                <Setter Property="Height" Value="Auto"/>
+                <Setter Property="Height" Value="40"/>
                 <Setter Property="Width" Value="Auto"/>
 
-                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Margin" Value="10,0,10,0"/>
                 <Setter Property="Padding" Value="0"/>
 
                 <Setter Property="materialDesign:ButtonAssist.CornerRadius" Value="0"/>

@@ -22,33 +22,33 @@
         <Grid Name="DataGrid" Style="{StaticResource todoUSCTitlebar}">
             <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=PageBackgroundColor,Converter={StaticResource ColorToBrushConverter}}" Margin="0">
 
-                <!--<Grid.ContextMenu>
-                    <ContextMenu>
+                <Grid.ContextMenu>
+                    <ContextMenu FontFamily="{StaticResource ResourceKey=Quicksand}">
                         <MenuItem Header="Sort" Icon="{materialDesign:PackIcon Kind=Sort, Size=18}">
-                            <MenuItem Header="Starred" Icon="{materialDesign:PackIcon Kind=StarBorder, Size=18}" Click="SortButton_Importance_Click"/>
-                            <MenuItem Header="Due date" Icon="{materialDesign:PackIcon Kind=CalendarClock, Size=18}" Click="SortButton_DueDate_Click"/>
-                            <MenuItem Header="Alphabetical ascending" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalAscending, Size=18}" Click="SortButton_AlphabeticalAscending_Click"/>
-                            <MenuItem Header="Alphabetical descending" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalDescending, Size=18}" Click="SortButton_AlphabeticalDescending_Click"/>
-                            <MenuItem Header="Creation date" Icon="{materialDesign:PackIcon Kind=CalendarAdd, Size=18}" Click="SortButton_CreationDate_Click"/>
+                            <MenuItem Header="Starred" Icon="{materialDesign:PackIcon Kind=StarBorder, Size=18}"/>
+                            <MenuItem Header="Due date" Icon="{materialDesign:PackIcon Kind=CalendarClock, Size=18}"/>
+                            <MenuItem Header="Alphabetical ascending" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalAscending, Size=18}"/>
+                            <MenuItem Header="Alphabetical descending" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalDescending, Size=18}"/>
+                            <MenuItem Header="Creation date" Icon="{materialDesign:PackIcon Kind=CalendarAdd, Size=18}"/>
                         </MenuItem>
 
                         <Separator/>
 
-                        <MenuItem Header="Add new task" Icon="{materialDesign:PackIcon Kind=Add, Size=18}" Click="AddItemButton_Click"/>
+                        <MenuItem Header="Add new task" Icon="{materialDesign:PackIcon Kind=Add, Size=18}"/>
                     </ContextMenu>
-                </Grid.ContextMenu>-->
+                </Grid.ContextMenu>
 
                 <Grid Height="75" VerticalAlignment="Top">
 
-                    <TextBlock x:Name="ToDoListTitleTextBlock" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}" Text="Name" Margin="0,5,0,0" Height="40" FontFamily="Quicksand" FontSize="36" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"/>
-                    <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="0 Items" Margin="0,0,0,5" Height="20" FontFamily="Quicksand" FontSize="16" Padding="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}" TextAlignment="Center"/>
+                    <TextBlock x:Name="ToDoListTitleTextBlock" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}" Text="Name" Margin="0,5,0,0" Height="40" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="36" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"/>
+                    <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="0 Items" Margin="0,0,0,5" Height="20" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="16" Padding="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}" TextAlignment="Center"/>
 
 
                     <Grid Margin="0,0,20,0" HorizontalAlignment="Right">
                         <Button x:Name="ButtonClearSort" Margin="0,0,45,0" Height="40" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" ToolTip="Clear sort" VerticalAlignment="Center">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Close" Width="25" Height="20" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
-                                <TextBlock x:Name="SortIndicatorTextBlock" Margin="0" HorizontalAlignment="Right" Text="AlphabeticalAscending" FontFamily="Quicksand" TextAlignment="Center" FontSize="14" Padding="0,2,0,0" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                                <TextBlock x:Name="SortIndicatorTextBlock" Margin="0" HorizontalAlignment="Right" Text="AlphabeticalAscending" FontFamily="{StaticResource ResourceKey=Quicksand}" TextAlignment="Center" FontSize="14" Padding="0,1,0,0" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
                             </StackPanel>
                         </Button>
 

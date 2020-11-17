@@ -69,5 +69,15 @@ namespace Checkem.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Quicksand {
+            get {
+                object obj = ResourceManager.GetObject("Quicksand", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
