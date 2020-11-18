@@ -66,7 +66,7 @@
             <CustomUserControls:ToggleSwitch Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1"/>
             <CustomUserControls:Tag Grid.Row="1" Text="test... test..." Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1" Margin="0,30,0,0"/>
 
-            <Grid d:Width="280" x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="60" Grid.Row="2" Visibility="Visible">
+            <Grid d:Width="60" x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="60" Grid.Row="2" Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
@@ -79,7 +79,7 @@
                 <Border x:Name="NavbarCursor" Background="#4CFFFFFF" Margin="10,0,10,0" CornerRadius="5" Height="40"/>
 
                 <!--#region Navbar button-->
-                <Button x:Name="ButtonMyDay" Style="{StaticResource NavigationbarButton}" Click="ButtonMyDay_Click">
+                <Button materialDesign:ButtonAssist.CornerRadius="100" x:Name="ButtonMyDay" Style="{StaticResource NavigationbarButton}" Click="ButtonMyDay_Click">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="WbSunny" Style="{StaticResource NavigationbarIcon}"/>
                         <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Dict_AllItems}" FontWeight="Normal" FontStyle="Normal"/>
@@ -110,7 +110,7 @@
 
                 <ScrollViewer Margin="0" Grid.RowSpan="3" Grid.Row="6"/>
 
-                <Button FocusVisualStyle="{DynamicResource ScrollBarFocusVisual}" IsEnabled="True" x:Name="ButtonAddNewList" Margin="10,0,10,0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonAddNewList_Click" Padding="0" Grid.Row="6" TabIndex="0" HorizontalAlignment="Stretch" Height="40">
+                <Button FocusVisualStyle="{DynamicResource CheckemFocusVisual}" IsEnabled="True" x:Name="ButtonAddNewList" Margin="10,0,10,0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonAddNewList_Click" Padding="0" Grid.Row="6" TabIndex="0" HorizontalAlignment="Stretch" Height="40">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="Add" Style="{StaticResource NavigationbarIcon}"/>
                         <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Dict_NewList}"/>
@@ -145,7 +145,7 @@
                     <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Minimize" Click="MinimizeButton_Click">
                         <materialDesign:PackIcon Kind="WindowMinimize" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
                     </Button>
-                    <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Restore Down" Click="RestoreButton_Click">
+                    <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Restore Down" Click="RestoreButton_Click" Height="16">
                         <materialDesign:PackIcon Kind="WindowRestore" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
                     </Button>
                     <Button Style="{StaticResource CheckemChromeXButton}" ToolTip="Close" Click="CloseButton_Click" HorizontalAlignment="Stretch">
@@ -154,11 +154,11 @@
                 </StackPanel>
 
                 <Grid x:Name="NavExpanderButtonGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0">
-                    <Button x:Name="ButtonExpand" WindowChrome.IsHitTestVisibleInChrome="True" Style="{StaticResource NavigationbarButton}" Click="ButtonExpand_Click" TabIndex="0" MinWidth="0" MinHeight="0">
+                    <Button x:Name="ButtonExpand" WindowChrome.IsHitTestVisibleInChrome="True" Style="{StaticResource NavigationbarButton}" Click="ButtonExpand_Click" TabIndex="0" MinWidth="0" MinHeight="0" Width="40" Margin="5,0,10,0">
                         <materialDesign:PackIcon Kind="MenuRightOutline" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
                     </Button>
 
-                    <Button x:Name="ButtonCollaps" WindowChrome.IsHitTestVisibleInChrome="True" Visibility="Collapsed" Style="{StaticResource NavigationbarButton}" Click="ButtonCloseMenu_Click" TabIndex="0" MinWidth="0" MinHeight="0">
+                    <Button x:Name="ButtonCollaps" WindowChrome.IsHitTestVisibleInChrome="True" Visibility="Collapsed" Style="{StaticResource NavigationbarButton}" Click="ButtonCloseMenu_Click" TabIndex="0" MinWidth="0" MinHeight="0" Width="40" Height="40" Margin="5,0,10,0">
                         <materialDesign:PackIcon Kind="MenuLeftOutline" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
                     </Button>
                 </Grid>

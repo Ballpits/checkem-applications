@@ -54,7 +54,7 @@
 
                         <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0"  Width="40" Height="40" TabIndex="7" IsTabStop="False" VerticalAlignment="Center" ToolTip="{DynamicResource ResourceKey=Dict_Sort}">
                             <materialDesign:PopupBox.ToggleContent>
-                                <materialDesign:PackIcon FocusVisualStyle="{DynamicResource ScrollBarFocusVisual}" Kind="Sort" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" IsTabStop="True" TabIndex="7" TextBlock.Foreground="Black" />
+                                <materialDesign:PackIcon FocusVisualStyle="{DynamicResource CheckemFocusVisual}" Kind="Sort" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" IsTabStop="True" TabIndex="7" TextBlock.Foreground="Black" />
                             </materialDesign:PopupBox.ToggleContent>
 
                             <StackPanel>
@@ -136,7 +136,7 @@
                     </StackPanel>
                 </ScrollViewer>
 
-                <Button materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth5" Background="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}" FocusVisualStyle="{DynamicResource CheckemScrollBarFocusVisual}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="50" Height="50" BorderBrush="{x:Null}" Padding="0" TabIndex="6" VerticalAlignment="Bottom">
+                <Button materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth5" Background="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}" FocusVisualStyle="{DynamicResource CheckemCheckemFocusVisual}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="50" Height="50" BorderBrush="{x:Null}" Padding="0" TabIndex="6" VerticalAlignment="Bottom">
                     <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 </Button>
             </Grid>

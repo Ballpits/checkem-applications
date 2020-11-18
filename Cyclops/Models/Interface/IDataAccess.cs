@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Cyclops.Models.Interface
 {
-    interface IDataAccess
+    internal interface IDataAccess
     {
         void StoreTestData();
 

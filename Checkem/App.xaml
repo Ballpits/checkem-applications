@@ -32,17 +32,6 @@
 
             <!--#region Scrollbar-->
 
-            <!--Checkem Scroll Bar Focus Visual-->
-            <Style x:Key="ScrollBarFocusVisual">
-                <Setter Property="Control.Template">
-                    <Setter.Value>
-                        <ControlTemplate>
-                            <Rectangle Margin="0" StrokeThickness="3" Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=InvertTextColor,Converter={StaticResource ColorToBrushConverter}}" StrokeDashArray="1000"/>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-
             <!--Checkem Scroll Thumbs-->
             <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
                 <Setter Property="Template">
@@ -134,6 +123,17 @@
 
             <!--#region Base style-->
 
+            <!--Checkem Focus Visual-->
+            <Style x:Key="CheckemFocusVisual">
+                <Setter Property="Control.Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Rectangle Margin="0" StrokeThickness="3" Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=InvertTextColor,Converter={StaticResource ColorToBrushConverter}}" StrokeDashArray="1000"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <!--Checkem Flat Button-->
             <Style x:Key="CheckemFlatButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
                 <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=InvertTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
@@ -163,6 +163,8 @@
             <Style x:Key="CheckemBaseTextBlock" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
                 <Setter Property="TextAlignment" Value="Center"/>
 
+                <Setter Property="Padding" Value="0,3,0,0"/>
+
                 <Setter Property="FontFamily" Value="{StaticResource ResourceKey=Quicksand}"/>
             </Style>
             <!--#endregion-->
@@ -171,7 +173,7 @@
                 <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=PageBackgroundColor,Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="Width" Value="50"/>
-                <Setter Property="Height" Value="Auto"/>
+                <Setter Property="Height" Value="20"/>
 
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
@@ -225,12 +227,12 @@
 
                 <Setter Property="TabIndex" Value="0"/>
 
-                <Setter Property="FocusVisualStyle" Value="{DynamicResource CheckemScrollBarFocusVisual}"/>
+                <Setter Property="FocusVisualStyle" Value="{DynamicResource CheckemCheckemFocusVisual}"/>
 
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <Border Background="{TemplateBinding Background}">
+                            <Border CornerRadius="5" Background="{TemplateBinding Background}">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
@@ -264,7 +266,7 @@
                 <Setter Property="FontSize" Value="18"/>
 
                 <Setter Property="Margin" Value="5,0,0,0"/>
-                <Setter Property="Padding" Value="0,5,0,0"/>
+                <Setter Property="Padding" Value="0,3,0,0"/>
             </Style>
 
             <Style x:Key="NavigationbarButtonStackPanel" TargetType="StackPanel">
