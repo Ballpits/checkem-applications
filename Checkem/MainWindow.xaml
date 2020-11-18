@@ -65,6 +65,7 @@
 
             <CustomUserControls:ToggleSwitch Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1"/>
             <CustomUserControls:Tag Grid.Row="1" Text="test... test..." Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1" Margin="0,30,0,0"/>
+            <CustomUserControls:ModeSelectionButtons2 Grid.Row="1" MyProperty="hi" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,65,0,0" Panel.ZIndex="1"/>
 
             <Grid d:Width="60" x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="60" Grid.Row="2" Visibility="Visible">
                 <Grid.RowDefinitions>

@@ -93,15 +93,15 @@ namespace Checkem.CustomComponents
 
         public event EventHandler Click;
 
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
 
         private void Itembar_Loaded(object sender, RoutedEventArgs e)
         {
             VisualUpdate();
-        }
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
         private void VisualUpdate()
