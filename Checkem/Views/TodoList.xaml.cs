@@ -34,7 +34,9 @@ namespace Checkem.Views
         {
             Itembar itembar = sender as Itembar;
 
-            System.Windows.Forms.MessageBox.Show(itembar.Title);
+            DetailsPanel detailsPanel = new DetailsPanel();
+            
+            DataGrid.Children.Add(detailsPanel);
         }
     }
 }

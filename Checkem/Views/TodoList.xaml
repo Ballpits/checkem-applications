@@ -48,7 +48,7 @@
                         <Button x:Name="ButtonClearSort" Margin="0,0,45,0" Height="40" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" ToolTip="Clear sort" VerticalAlignment="Center">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Close" Width="25" Height="20" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
-                                <TextBlock x:Name="SortIndicatorTextBlock" Margin="0" HorizontalAlignment="Right" Text="AlphabeticalAscending" FontFamily="{StaticResource ResourceKey=Quicksand}" TextAlignment="Center" FontSize="14" Padding="0,1,0,0" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                                <TextBlock x:Name="SortIndicatorTextBlock" Margin="0" HorizontalAlignment="Right" Text="Sorting_Method" FontFamily="{StaticResource ResourceKey=Quicksand}" TextAlignment="Center" FontSize="14" Padding="0,1,0,0" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
                             </StackPanel>
                         </Button>
 
@@ -132,8 +132,7 @@
                 <Grid x:Name="GridTagList" Visibility="Visible" Margin="10,80,10,0" Height="45" VerticalAlignment="Top"/>
 
                 <ScrollViewer Style="{DynamicResource MaterialDesignScrollViewer}" Visibility="Visible" x:Name="scrollBar" BorderThickness="0" Margin="0,130,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto" UseLayoutRounding="True" VerticalAlignment="Top">
-                    <StackPanel Name="TodoItemsStackPanel" Margin="0">
-                    </StackPanel>
+                    <StackPanel Name="TodoItemsStackPanel" Margin="0"/>
                 </ScrollViewer>
 
                 <Button materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth5" Background="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}" FocusVisualStyle="{DynamicResource CheckemCheckemFocusVisual}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="50" Height="50" BorderBrush="{x:Null}" Padding="0" TabIndex="6" VerticalAlignment="Bottom">

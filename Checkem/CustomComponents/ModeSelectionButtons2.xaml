@@ -6,12 +6,11 @@
              xmlns:local="clr-namespace:Checkem.CustomComponents"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignWidth="160"
              Height="40"
              >
     
     <StackPanel Orientation="Horizontal">
-        <Button Padding="10,0,10,0" Content="{Binding MyProperty}" d:Content="Basic" Height="40"/>
-        <Button />
+        <Button Padding="10,0,10,0" Content="{Binding Option1Content}" Height="40"/>
+        <Button Padding="10,0,10,0" Content="{Binding Option2Content}" Height="40"/>
     </StackPanel>
 </UserControl>

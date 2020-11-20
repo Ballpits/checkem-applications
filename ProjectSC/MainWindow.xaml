@@ -166,7 +166,7 @@
 
             <Grid x:Name="GridPrincipal" Grid.Column="1" Grid.Row="1">
 
-                <Calendar:Caledar_View Margin="0"/>
+                <!--<Calendar:Caledar_View Margin="0"/>-->
 
             </Grid>
 

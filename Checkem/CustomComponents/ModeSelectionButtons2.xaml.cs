@@ -30,19 +30,36 @@ namespace Checkem.CustomComponents
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private string packIcon;
-
-        public string MyProperty
+        private string _Option1Content;
+        public string Option1Content
         {
             get
             {
-                return packIcon;
+                return _Option1Content;
             }
             set
             {
-                if (packIcon != value)
+                if (_Option1Content != value)
                 {
-                    packIcon = value;
+                    _Option1Content = value;
+
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        private string _Option2Content;
+        public string Option2Content
+        {
+            get
+            {
+                return _Option2Content;
+            }
+            set
+            {
+                if (_Option2Content != value)
+                {
+                    _Option2Content = value;
 
                     OnPropertyChanged();
                 }

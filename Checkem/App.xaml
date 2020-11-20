@@ -23,6 +23,8 @@
 
                 <ResourceDictionary Source="Assets/StyleResourceDictionary/ColorConverterDictionary.xaml"/>
 
+                <ResourceDictionary Source="Assets/NativeResolutionScalingDitionary/NRS100.xaml"/>
+
                 <ResourceDictionary>
                     <FontFamily x:Key="Quicksand">./resources/#Quicksand</FontFamily>
                 </ResourceDictionary>
@@ -163,7 +165,7 @@
             <Style x:Key="CheckemBaseTextBlock" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
                 <Setter Property="TextAlignment" Value="Center"/>
 
-                <Setter Property="Padding" Value="0,3,0,0"/>
+                <Setter Property="Padding" Value="0,0,0,0"/>
 
                 <Setter Property="FontFamily" Value="{StaticResource ResourceKey=Quicksand}"/>
             </Style>

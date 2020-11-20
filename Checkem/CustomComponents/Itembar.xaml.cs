@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 using Visual;
 
 namespace Checkem.CustomComponents
@@ -23,7 +24,7 @@ namespace Checkem.CustomComponents
             InitializeComponent();
         }
 
-        
+
         #region Properties
 
         private ToDoItem ItemProperties;
@@ -140,6 +141,11 @@ namespace Checkem.CustomComponents
             }
         }
 
+        private void checkBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Title = "binding works!!";
+        }
+
         private void ItembarBorder_MouseEnter(object sender, MouseEventArgs e)
         {
             ItembarBorder.SetBinding(Border.BackgroundProperty, ItembarHighlightColorBindings);
@@ -150,15 +156,14 @@ namespace Checkem.CustomComponents
             ItembarBorder.SetBinding(Border.BackgroundProperty, ControlColorBindings);
         }
 
-        private void checkBox_Checked(object sender, RoutedEventArgs e)
-        {
-            Title = "binding works!!";
-        }
-
         private void Itembar_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
+                Storyboard sb = this.FindResource("ItembarClick") as Storyboard;
+
+                sb.Begin();
+
                 Click?.Invoke(this, EventArgs.Empty);
             }
         }
