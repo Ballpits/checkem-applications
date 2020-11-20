@@ -1,28 +1,79 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using Cyclops.Models.Objects;
+using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Checkem.Views
 {
-    /// <summary>
-    /// Interaction logic for DetailsPanel.xaml
-    /// </summary>
-    public partial class DetailsPanel : UserControl
+    public partial class DetailsPanel : UserControl, INotifyPropertyChanged
     {
         public DetailsPanel()
         {
             InitializeComponent();
+        }
+
+        public DetailsPanel(ToDoItem toDoItem)
+        {
+            ItemProperties = toDoItem;
+
+            InitializeComponent();
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler CloceAnimationComplete;
+
+
+        public ToDoItem ItemProperties;
+
+        public string Title
+        {
+            get
+            {
+                return ItemProperties.Title;
+            }
+            set
+            {
+                if (ItemProperties.Title != value)
+                {
+                    ItemProperties.Title = value;
+
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return ItemProperties.Description;
+            }
+            set
+            {
+                if (ItemProperties.Description != value)
+                {
+                    ItemProperties.Description = value;
+
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        private void userControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        private void StoryBoard_Completed(object sender, EventArgs e)
+        {
+            CloceAnimationComplete?.Invoke(this, EventArgs.Empty);
         }
     }
 }

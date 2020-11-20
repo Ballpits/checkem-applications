@@ -7,7 +7,8 @@
              xmlns:properties="clr-namespace:Checkem.Properties"         
              mc:Ignorable="d" 
              d:DesignWidth="1920"
-             d:DesignHeight="1080" Foreground="Black"
+             d:DesignHeight="1080"
+             Loaded="userControl_Loaded"
              >
 
     <UserControl.Resources>
@@ -25,7 +26,7 @@
                     <EasingColorKeyFrame KeyTime="00:00:00.1000000" Value="#CC000000"/>
                 </ColorAnimationUsingKeyFrames>
             </Storyboard>
-            <Storyboard x:Key="DetailsPanelClose">
+            <Storyboard x:Key="DetailsPanelClose" Completed="StoryBoard_Completed">
                 <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="DetailPanelBorder" Storyboard.TargetProperty="(FrameworkElement.Margin)">
                     <SplineThicknessKeyFrame KeyTime="00:00:00" Value="0,0,0,0"/>
                     <SplineThicknessKeyFrame KeyTime="00:00:00.1000000" Value="0,0,-400,0"/>

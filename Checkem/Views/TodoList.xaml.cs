@@ -15,6 +15,7 @@ namespace Checkem.Views
             InitializeComponent();
         }
 
+
         private void TodoListUserControl_Loaded(object sender, RoutedEventArgs e)
         {
             LoadTodoList();
@@ -34,9 +35,15 @@ namespace Checkem.Views
         {
             Itembar itembar = sender as Itembar;
 
-            DetailsPanel detailsPanel = new DetailsPanel();
-            
+            DetailsPanel detailsPanel = new DetailsPanel(itembar.ItemProperties);
+            detailsPanel.CloceAnimationComplete += new EventHandler(this.DetailsPanel_Click);
+
             DataGrid.Children.Add(detailsPanel);
+        }
+
+        private void DetailsPanel_Click(object sender, EventArgs e)
+        {
+            DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
         }
     }
 }

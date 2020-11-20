@@ -15,6 +15,11 @@ namespace Checkem.CustomComponents
 {
     public partial class Itembar : UserControl, INotifyPropertyChanged
     {
+        public Itembar()
+        {
+            InitializeComponent();
+        }
+
         public Itembar(ToDoItem item)
         {
             DataContext = this;
@@ -24,10 +29,13 @@ namespace Checkem.CustomComponents
             InitializeComponent();
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler Click;
+
 
         #region Properties
 
-        private ToDoItem ItemProperties;
+        public ToDoItem ItemProperties;
 
         public string Title
         {
@@ -87,12 +95,9 @@ namespace Checkem.CustomComponents
         };
 
         PackIcon icon = new PackIcon();
-
-        public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
 
-        public event EventHandler Click;
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
