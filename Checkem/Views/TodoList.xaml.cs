@@ -35,7 +35,7 @@ namespace Checkem.Views
         {
             Itembar itembar = sender as Itembar;
 
-            DetailsPanel detailsPanel = new DetailsPanel(itembar.ItemProperties);
+            DetailsPanel detailsPanel = new DetailsPanel(itembar);
             detailsPanel.CloceAnimationComplete += new EventHandler(this.DetailsPanel_Click);
 
             DataGrid.Children.Add(detailsPanel);

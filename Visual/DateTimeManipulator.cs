@@ -26,17 +26,17 @@ namespace Visual
         }
 
 
-        /*Check if the date time is passed
-         * return true if it's passed
-         * return false if it's not passed*/
+        //Check if the date time is passed
         public static bool IsPassed(DateTime dateTime)
         {
             if (dateTime < DateTime.Now)
             {
+                //return true if it's passed
                 return true;
             }
             else
             {
+                //return false if it's not passed
                 return false;
             }
         }

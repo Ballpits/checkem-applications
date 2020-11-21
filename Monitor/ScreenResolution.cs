@@ -6,21 +6,44 @@ namespace Monitor
 {
     public class ScreenResolution
     {
-        public static int Vertical { get { return VerticalRes(Screen.PrimaryScreen); } }
-        public static int Horizontal { get { return HorizontalRes(Screen.PrimaryScreen); } }
+        //Vertical resolution
+        public static int Vertical
+        {
+            get
+            {
+                return VerticalRes(Screen.PrimaryScreen);
+            }
+        }
 
+        //Horizontal resolution
+        public static int Horizontal
+        {
+            get
+            {
+                return HorizontalRes(Screen.PrimaryScreen);
+            }
+        }
+        
+
+        //Get vertical resolution
         private static int VerticalRes(Screen screen)
         {
             var hdc = NativeMethods.CreateDC(screen.DeviceName, "", "", IntPtr.Zero);
+
             return NativeMethods.GetDeviceCaps(hdc, (int)DeviceCap.DESKTOPVERTRES);
         }
 
+
+        //Get horizontal resolution
         private static int HorizontalRes(Screen screen)
         {
             var hdc = NativeMethods.CreateDC(screen.DeviceName, "", "", IntPtr.Zero);
+
             return NativeMethods.GetDeviceCaps(hdc, (int)DeviceCap.DESKTOPHORZRES);
         }
     }
+
+
 
     internal static class NativeMethods
     {
@@ -32,6 +55,8 @@ namespace Monitor
         [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
         public static extern int GetDeviceCaps(IntPtr hDC, int nIndex);
     }
+
+
 
     internal enum DeviceCap
     {

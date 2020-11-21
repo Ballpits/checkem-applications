@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Checkem.Views"
-             xmlns:properties="clr-namespace:Checkem.Properties"         
+             xmlns:properties="clr-namespace:Checkem.Properties"     
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignWidth="1920"
              d:DesignHeight="1080"
@@ -21,20 +22,12 @@
                     <EasingThicknessKeyFrame KeyTime="00:00:00" Value="0,0,-400,0"/>
                     <EasingThicknessKeyFrame KeyTime="00:00:00.1000000" Value="0,0,0,0"/>
                 </ThicknessAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetName="DimBackground" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                    <EasingColorKeyFrame KeyTime="00:00:00" Value="#00000000"/>
-                    <EasingColorKeyFrame KeyTime="00:00:00.1000000" Value="#CC000000"/>
-                </ColorAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Key="DetailsPanelClose" Completed="StoryBoard_Completed">
                 <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="DetailPanelBorder" Storyboard.TargetProperty="(FrameworkElement.Margin)">
                     <SplineThicknessKeyFrame KeyTime="00:00:00" Value="0,0,0,0"/>
                     <SplineThicknessKeyFrame KeyTime="00:00:00.1000000" Value="0,0,-400,0"/>
                 </ThicknessAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetName="DimBackground" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                    <EasingColorKeyFrame KeyTime="00:00:00" Value="#CC000000"/>
-                    <EasingColorKeyFrame KeyTime="00:00:00.1000000" Value="#00000000"/>
-                </ColorAnimationUsingKeyFrames>
                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="userControl" Storyboard.TargetProperty="(UIElement.Visibility)">
                     <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
                     <DiscreteObjectKeyFrame KeyTime="00:00:00.1000000" Value="{x:Static Visibility.Collapsed}"/>
@@ -53,11 +46,29 @@
         </EventTrigger>
     </UserControl.Triggers>
 
-    <Grid x:Name="DimBackground" Background="#CC000000">
+    <Grid x:Name="DimBackground" Background="#7F000000">
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalAlignment="Right">
-            <Border x:Name="DetailPanelBorder" HorizontalAlignment="Stretch" Width="400" CornerRadius="10,0,0,10" Background="{Binding Source={x:Static properties:Settings.Default}, Path=ControlColor, Converter={StaticResource ColorToBrushConverter}}" Margin="0,0,0,0">
+            <Border x:Name="DetailPanelBorder" HorizontalAlignment="Stretch" Width="400" CornerRadius="15,0,0,15" Background="{Binding Source={x:Static properties:Settings.Default}, Path=ControlColor, Converter={StaticResource ColorToBrushConverter}}" Margin="0,0,0,0">
                 <StackPanel>
 
+                    <Grid Height="40" Margin="0,15,0,0">
+                        <Button Background="{Binding Source={x:Static properties:Settings.Default}, Path=ControlOutlineColor,Converter={StaticResource ColorToBrushConverter}}" Style="{StaticResource CheckemCircleFlatButton}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="30" Height="30" Padding="0,0,0,0">
+                            <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
+                        </Button>
+
+                        <ToggleButton x:Name="StarToggle" Style="{StaticResource ItembarStarToggle}" ToolTip="Mark As Important" Width="30" Height="30" VerticalAlignment="Center" Margin="0,2,15,0">
+                            <ToggleButton.Content>
+                                <materialDesign:PackIcon x:Name="StarButtonStarBorderIcon" Style="{StaticResource StarBorderIcon}"/>
+                            </ToggleButton.Content>
+
+                            <materialDesign:ToggleButtonAssist.OnContent>
+                                <materialDesign:PackIcon x:Name="StarButtonStarIcon" Style="{StaticResource StarIcon}"/>
+                            </materialDesign:ToggleButtonAssist.OnContent>
+                        </ToggleButton>
+                    </Grid>
+
+
+                    <TextBox Text="{Binding Title,Mode=TwoWay}" Margin="15,15,15,0"/>
                 </StackPanel>
             </Border>
         </ScrollViewer>

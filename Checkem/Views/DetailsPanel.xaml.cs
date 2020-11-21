@@ -1,8 +1,10 @@
-﻿using Cyclops.Models.Objects;
+﻿using Checkem.CustomComponents;
+using Cyclops.Models.Objects;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace Checkem.Views
 {
@@ -10,16 +12,19 @@ namespace Checkem.Views
     {
         public DetailsPanel()
         {
+            DataContext = this;
+
             InitializeComponent();
         }
 
-        public DetailsPanel(ToDoItem toDoItem)
+        public DetailsPanel(Itembar itemar)
         {
-            ItemProperties = toDoItem;
+            DataContext = this;
+
+            ItemProperties = itemar.ItemProperties;
 
             InitializeComponent();
         }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler CloceAnimationComplete;

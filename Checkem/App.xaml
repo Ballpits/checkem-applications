@@ -162,6 +162,18 @@
                 </Style.Triggers>
             </Style>
 
+            <Style x:Key="CheckemCircleFlatButton" TargetType="Button" BasedOn="{StaticResource CheckemFlatButton}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border CornerRadius="100" Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
             <Style x:Key="CheckemBaseTextBlock" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
                 <Setter Property="TextAlignment" Value="Center"/>
 
