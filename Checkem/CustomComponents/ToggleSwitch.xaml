@@ -11,10 +11,6 @@
 
     <UserControl.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-
             <Storyboard x:Key="ToggleState1">
                 <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Margin)">
                     <EasingThicknessKeyFrame KeyTime="00:00:00" Value="-21,0,0,0"/>

@@ -11,7 +11,7 @@
     <Setting Name="InvertTextColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">White</Value>
     </Setting>
-    <Setting Name="TransparentHighlightColor" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="NormalHighlightColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">237, 247, 255</Value>
     </Setting>
     <Setting Name="NormalTextColor" Type="System.Drawing.Color" Scope="User">
@@ -27,12 +27,12 @@
       <Value Profile="(Default)">Transparent</Value>
     </Setting>
     <Setting Name="NavigationbarButtonHighlightColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">76, 255, 255, 255</Value>
+      <Value Profile="(Default)">75, 255, 255, 255</Value>
     </Setting>
     <Setting Name="PageBackgroundColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">WhiteSmoke</Value>
     </Setting>
-    <Setting Name="ControlColor" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="ControlColor_White" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">White</Value>
     </Setting>
     <Setting Name="ControlOutlineColor" Type="System.Drawing.Color" Scope="User">
@@ -40,6 +40,9 @@
     </Setting>
     <Setting Name="ItembarHighlightColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">76, 240, 201, 255</Value>
+    </Setting>
+    <Setting Name="ControlColor_LightGray" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">230, 230, 230</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -21,9 +21,13 @@
 
                 <ResourceDictionary Source="Assets/LanguageResourceDictionary/Lng_English_US.xaml"/>
 
-                <ResourceDictionary Source="Assets/StyleResourceDictionary/ColorConverterDictionary.xaml"/>
+                <ResourceDictionary Source="Assets/Converters/ColorConverterDictionary.xaml"/>
 
-                <ResourceDictionary Source="Assets/NativeResolutionScalingDitionary/NRS100.xaml"/>
+                <!--<ResourceDictionary Source="Assets/NativeResolutionScalingDitionary/NRS100.xaml"/>-->
+
+                <ResourceDictionary Source="Assets/ThemeResourceDictionary/Base/BaseTheme.xaml"/>
+
+                <ResourceDictionary Source="Assets/ThemeResourceDictionary/CheckemDefault.xaml"/>
 
                 <ResourceDictionary>
                     <FontFamily x:Key="Quicksand">./resources/#Quicksand</FontFamily>
@@ -328,7 +332,7 @@
 
             <!--#region Itembar-->
             <Style x:Key="ItembarBorderStyle" TargetType="Border">
-                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ControlColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ControlColor_White, Converter={StaticResource ColorToBrushConverter}}"/>
                 <Setter Property="BorderBrush" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ControlOutlineColor, Converter={StaticResource ColorToBrushConverter}}"/>
 
                 <Setter Property="CornerRadius" Value="5"/>
@@ -483,10 +487,6 @@
             <Style x:Key="DetailsPanelButton" TargetType="Button" BasedOn="{StaticResource CheckemFlatButton}">
                 <Setter Property="Height" Value="45"/>
                 <Setter Property="Width" Value="45"/>
-            </Style>
-
-            <Style x:Key="DetailsPanelTextBox" TargetType="TextBox">
-
             </Style>
             <!--#endregion-->
 

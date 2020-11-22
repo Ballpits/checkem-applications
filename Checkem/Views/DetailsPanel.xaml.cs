@@ -4,7 +4,6 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
-using System.Windows.Data;
 
 namespace Checkem.Views
 {
@@ -60,20 +59,20 @@ namespace Checkem.Views
                 if (ItemProperties.Description != value)
                 {
                     ItemProperties.Description = value;
-
+                    
                     OnPropertyChanged();
                 }
             }
         }
 
-        private void userControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-
-        }
-
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        private void userControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+
         }
 
         private void StoryBoard_Completed(object sender, EventArgs e)

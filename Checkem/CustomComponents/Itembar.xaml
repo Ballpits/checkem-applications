@@ -16,10 +16,6 @@
 
     <UserControl.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-
             <Storyboard x:Key="ItembarMouseEnter">
                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItembarBorder" Storyboard.TargetProperty="(Border.CornerRadius)">
                     <DiscreteObjectKeyFrame KeyTime="00:00:00">

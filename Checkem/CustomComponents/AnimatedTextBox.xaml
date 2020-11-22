@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Checkem.CustomComponents.AnimatedTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Checkem.CustomComponents"
+             xmlns:properties="clr-namespace:Checkem.Properties"
+             mc:Ignorable="d" 
+             d:DesignWidth="300"
+             d:DesignHeight="75"
+             MinWidth="100"
+             MinHeight="75"
+             FontFamily="{StaticResource Quicksand}"
+             >
+
+    <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=ControlColor_LightGray, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10">
+        <TextBox Background="{x:Null}" CaretBrush="{StaticResource PrimaryColor}" Margin="10,0,10,0" FontSize="{Binding TextboxFontSize}" Padding="{Binding TextboxPadding}" BorderBrush="{x:Null}" d:Text="Text"/>
+    </Border>
+</UserControl>

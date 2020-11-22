@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Checkem.Assets.ThemeResourceDictionary.Base">
+
+
+    <SolidColorBrush x:Key="OverDueColor" Color="#FFEC5433"/>
+    <SolidColorBrush x:Key="CompletedColor" Color="#FF969696"/>
+
+    <SolidColorBrush x:Key="TransparentHighlightColor" Color="#4BFFFFFF"/>
+    <SolidColorBrush x:Key="HighlightColor" Color="#FFFFFFFF"/>
+</ResourceDictionary>

@@ -13,10 +13,6 @@
              Loaded="TodoListUserControl_Loaded"
              >
 
-    <UserControl.Resources>
-        <ResourceDictionary Source="../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />
-    </UserControl.Resources>
-
     <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.5}">
 
         <Grid Name="DataGrid" Style="{StaticResource todoUSCTitlebar}">

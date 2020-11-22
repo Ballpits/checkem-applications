@@ -12,7 +12,7 @@ namespace Checkem.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -62,12 +62,12 @@ namespace Checkem.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("237, 247, 255")]
-        public global::System.Drawing.Color TransparentHighlightColor {
+        public global::System.Drawing.Color NormalHighlightColor {
             get {
-                return ((global::System.Drawing.Color)(this["TransparentHighlightColor"]));
+                return ((global::System.Drawing.Color)(this["NormalHighlightColor"]));
             }
             set {
-                this["TransparentHighlightColor"] = value;
+                this["NormalHighlightColor"] = value;
             }
         }
         
@@ -121,7 +121,7 @@ namespace Checkem.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("76, 255, 255, 255")]
+        [global::System.Configuration.DefaultSettingValueAttribute("75, 255, 255, 255")]
         public global::System.Drawing.Color NavigationbarButtonHighlightColor {
             get {
                 return ((global::System.Drawing.Color)(this["NavigationbarButtonHighlightColor"]));
@@ -146,12 +146,12 @@ namespace Checkem.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("White")]
-        public global::System.Drawing.Color ControlColor {
+        public global::System.Drawing.Color ControlColor_White {
             get {
-                return ((global::System.Drawing.Color)(this["ControlColor"]));
+                return ((global::System.Drawing.Color)(this["ControlColor_White"]));
             }
             set {
-                this["ControlColor"] = value;
+                this["ControlColor_White"] = value;
             }
         }
         
@@ -176,6 +176,18 @@ namespace Checkem.Properties {
             }
             set {
                 this["ItembarHighlightColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("230, 230, 230")]
+        public global::System.Drawing.Color ControlColor_LightGray {
+            get {
+                return ((global::System.Drawing.Color)(this["ControlColor_LightGray"]));
+            }
+            set {
+                this["ControlColor_LightGray"] = value;
             }
         }
     }

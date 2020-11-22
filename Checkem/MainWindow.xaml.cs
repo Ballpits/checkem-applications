@@ -22,7 +22,7 @@ namespace Checkem
             Properties.Settings.Default.InvertTextColor = System.Drawing.Color.White;
             Properties.Settings.Default.NormalTextColor = System.Drawing.Color.White;
             Properties.Settings.Default.PageBackgroundColor = System.Drawing.Color.Black;
-            Properties.Settings.Default.ControlColor = System.Drawing.Color.Black;
+            Properties.Settings.Default.ControlColor_White = System.Drawing.Color.Black;
             Properties.Settings.Default.ControlOutlineColor = System.Drawing.Color.FromArgb(151, 8, 204);
 
             Properties.Settings.Default.Save();

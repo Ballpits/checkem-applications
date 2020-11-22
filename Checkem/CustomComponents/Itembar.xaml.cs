@@ -90,7 +90,7 @@ namespace Checkem.CustomComponents
         Binding ControlColorBindings = new Binding()
         {
             Source = Properties.Settings.Default,
-            Path = new PropertyPath("ControlColor", Properties.Settings.Default),
+            Path = new PropertyPath("ControlColor_White", Properties.Settings.Default),
             Converter = new ColorToBrushConverter()
         };
 

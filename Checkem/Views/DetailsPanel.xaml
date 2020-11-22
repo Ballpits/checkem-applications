@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Checkem.Views"
-             xmlns:properties="clr-namespace:Checkem.Properties"     
+             xmlns:properties="clr-namespace:Checkem.Properties"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:customComponents="clr-namespace:Checkem.CustomComponents"
              mc:Ignorable="d" 
              d:DesignWidth="1920"
              d:DesignHeight="1080"
@@ -14,9 +15,6 @@
 
     <UserControl.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Assets/StyleResourceDictionary/ColorConverterDictionary.xaml" />
-            </ResourceDictionary.MergedDictionaries>
             <Storyboard x:Key="DetailsPanelOpen">
                 <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="DetailPanelBorder" Storyboard.TargetProperty="(FrameworkElement.Margin)">
                     <EasingThicknessKeyFrame KeyTime="00:00:00" Value="0,0,-400,0"/>
@@ -48,7 +46,7 @@
 
     <Grid x:Name="DimBackground" Background="#7F000000">
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalAlignment="Right">
-            <Border x:Name="DetailPanelBorder" HorizontalAlignment="Stretch" Width="400" CornerRadius="15,0,0,15" Background="{Binding Source={x:Static properties:Settings.Default}, Path=ControlColor, Converter={StaticResource ColorToBrushConverter}}" Margin="0,0,0,0">
+            <Border x:Name="DetailPanelBorder" HorizontalAlignment="Stretch" Width="400" CornerRadius="15,0,0,15" Background="{Binding Source={x:Static properties:Settings.Default}, Path=ControlColor_White, Converter={StaticResource ColorToBrushConverter}}" Margin="0,0,0,0">
                 <StackPanel>
 
                     <Grid Height="40" Margin="0,15,0,0">
@@ -69,6 +67,8 @@
 
 
                     <TextBox Text="{Binding Title,Mode=TwoWay}" Margin="15,15,15,0"/>
+
+                    <customComponents:AnimatedTextBox Margin="10,0,10,0" Foreground="#FFFFC000" TextboxFontSize="40" TextboxPadding="5,5,0,0"/>
                 </StackPanel>
             </Border>
         </ScrollViewer>
