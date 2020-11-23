@@ -5,8 +5,9 @@
     <SolidColorBrush x:Key="HighlightColor" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="TransparentHighlightColor" Color="#4BFFFFFF"/>
 
+    <Color x:Key="WhiteColor">#FFFFFFFF</Color>
 
-    <SolidColorBrush x:Key="Color.White" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="Color.White" Color="{DynamicResource WhiteColor}"/>
     <SolidColorBrush x:Key="Color.WhiteSmoke" Color="WhiteSmoke"/>
 
     <SolidColorBrush x:Key="Color.LightGray" Color="#FFE6E6E6"/>

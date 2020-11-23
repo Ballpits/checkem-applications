@@ -20,7 +20,7 @@
                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItembarBorder" Storyboard.TargetProperty="(Border.CornerRadius)">
                     <DiscreteObjectKeyFrame KeyTime="00:00:00">
                         <DiscreteObjectKeyFrame.Value>
-                            <CornerRadius>5,5,5,5</CornerRadius>
+                            <CornerRadius>5</CornerRadius>
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                     <DiscreteObjectKeyFrame KeyTime="00:00:00.0170000">
@@ -45,10 +45,14 @@
                     </DiscreteObjectKeyFrame>
                     <DiscreteObjectKeyFrame KeyTime="00:00:00.0830000">
                         <DiscreteObjectKeyFrame.Value>
-                            <CornerRadius>13,13,13,13</CornerRadius>
+                            <CornerRadius>15</CornerRadius>
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                 </ObjectAnimationUsingKeyFrames>
+                <!--<ColorAnimationUsingKeyFrames Storyboard.TargetName="ItembarBorder" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
+                    <EasingColorKeyFrame KeyTime="00:00:00" Value="{StaticResource ResourceKey=WhiteColor}"/>
+                    <EasingColorKeyFrame KeyTime="00:00:00.0830000" Value="{StaticResource ResourceKey=PrimaryHighlightColor}"/>
+                </ColorAnimationUsingKeyFrames>-->
             </Storyboard>
             <Storyboard x:Key="ItembarMouseLeave">
                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItembarBorder" Storyboard.TargetProperty="(Border.CornerRadius)">
@@ -83,6 +87,10 @@
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                 </ObjectAnimationUsingKeyFrames>
+                <!--<ColorAnimationUsingKeyFrames Storyboard.TargetName="ItembarBorder" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
+                    <EasingColorKeyFrame KeyTime="00:00:00" Value="{StaticResource ResourceKey=PrimaryHighlightColor}"/>
+                    <EasingColorKeyFrame KeyTime="00:00:00.0830000" Value="{StaticResource ResourceKey=WhiteColor}"/>
+                </ColorAnimationUsingKeyFrames>-->
             </Storyboard>
             <Storyboard x:Key="ItembarRemove">
                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.Visibility)">
@@ -122,7 +130,7 @@
             <materialDesign:PackIcon Kind="TrashCanOutline" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35" Height="35"/>
         </Border>
 
-        <Border x:Name="ItembarBorder" Style="{StaticResource ItembarBorderStyle}" BorderThickness="3" BorderBrush="{DynamicResource Color.Gray}" Panel.ZIndex="1" Visibility="Visible" Margin="0,0,0,0" MouseEnter="ItembarBorder_MouseEnter" MouseLeave="ItembarBorder_MouseLeave">
+        <Border x:Name="ItembarBorder" Style="{StaticResource ItembarBorderStyle}" BorderThickness="3" BorderBrush="{DynamicResource Color.Gray}" Panel.ZIndex="1" Visibility="Visible" Margin="0,0,0,0" MouseEnter="ItembarBorder_MouseEnter" MouseLeave="ItembarBorder_MouseLeave" Background="{DynamicResource Color.White}">
             <Border.ContextMenu>
                 <ContextMenu FontFamily="{StaticResource ResourceKey=Quicksand}">
                     <MenuItem Header="Mark as completed" Icon="{materialDesign:PackIcon Kind=Check, Size=18}"/>
