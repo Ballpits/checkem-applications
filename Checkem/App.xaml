@@ -11,289 +11,51 @@
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary x:Name="ThemeDark" Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
-                <!--<ResourceDictionary x:Name="ThemeLight" Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />-->
 
+
+                <!--#region Material design-->
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <!--<ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />-->
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml" />
+                <!--#endregion-->
 
+
+                <!--#region Language-->
                 <ResourceDictionary Source="Assets/LanguageResourceDictionary/Lng_English_US.xaml"/>
+                <!--#endregion-->
 
-                <ResourceDictionary Source="Assets/Converters/ColorConverterDictionary.xaml"/>
 
-                <!--<ResourceDictionary Source="Assets/NativeResolutionScalingDitionary/NRS100.xaml"/>-->
+                <!--#region Checkem styles-->
+                <ResourceDictionary Source="Assets/StyleResourceDictionary/Base/StyleBase.xaml"/>
 
-                <ResourceDictionary Source="Assets/ThemeResourceDictionary/Base/BaseTheme.xaml"/>
+                <ResourceDictionary Source="Assets/StyleResourceDictionary/NavigationBar.xaml"/>
+                <!--#endregion-->
 
-                <ResourceDictionary Source="Assets/ThemeResourceDictionary/CheckemDefault.xaml"/>
 
-                <ResourceDictionary>
-                    <FontFamily x:Key="Quicksand">./resources/#Quicksand</FontFamily>
-                </ResourceDictionary>
+                <!--#region Checkem themes-->
+                <ResourceDictionary Source="Assets/ThemeResourceDictionary/Base/ThemeBase.xaml"/>
+
+                <ResourceDictionary Source="Assets/ThemeResourceDictionary/Theme/Light.xaml"/>
+
+                <ResourceDictionary Source="Assets/ThemeResourceDictionary/Color/CheckemDefault.xaml"/>
+                <!--#endregion-->
+
+
+                <!--#region Native resolution scaling-->
+                <ResourceDictionary Source="Assets/NativeResolutionScalingDitionary/NRS100.xaml"/>
+                <!--#endregion-->
+
+
+                <!--#region Converter-->
+                <ResourceDictionary Source="Assets/ConverterResourceDictionary/ColorConverterDictionary.xaml"/>
+                <!--#endregion-->
+
+
             </ResourceDictionary.MergedDictionaries>
-
-            <!--#region Checkem custom styles-->
-
-            <!--#region Scrollbar-->
-
-            <!--Checkem Scroll Thumbs-->
-            <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Thumb}">
-                            <Grid x:Name="Grid">
-                                <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
-                                <Border x:Name="Rectangle1" CornerRadius="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="11" Height="Auto"  Background="{TemplateBinding Background}" />
-                            </Grid>
-
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="Tag" Value="Horizontal">
-                                    <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
-                                    <Setter TargetName="Rectangle1" Property="Height" Value="7" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-
-            <!--Checkem Scroll Bars-->
-            <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
-                <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
-
-                <Setter Property="Foreground" Value="LightGray" />
-                <Setter Property="Background" Value="Transparent"/>
-
-                <Setter Property="Width" Value="10" />
-
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type ScrollBar}">
-                            <Grid x:Name="GridRoot" Width="20" Background="{TemplateBinding Background}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="0.00001*" />
-                                </Grid.RowDefinitions>
-
-                                <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="false">
-                                    <Track.Thumb>
-                                        <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
-                                    </Track.Thumb>
-                                    <Track.IncreaseRepeatButton>
-                                        <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="false" />
-                                    </Track.IncreaseRepeatButton>
-                                    <Track.DecreaseRepeatButton>
-                                        <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="false" />
-                                    </Track.DecreaseRepeatButton>
-                                </Track>
-                            </Grid>
-
-                            <ControlTemplate.Triggers>
-                                <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
-                                    <Setter Value="{DynamicResource ButtonSelectBrush}" TargetName="Thumb" Property="Background" />
-                                </Trigger>
-                                <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
-                                    <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background" />
-                                </Trigger>
-
-                                <Trigger Property="IsEnabled" Value="false">
-                                    <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
-                                </Trigger>
-                                <Trigger Property="Orientation" Value="Horizontal">
-                                    <Setter TargetName="GridRoot" Property="LayoutTransform">
-                                        <Setter.Value>
-                                            <RotateTransform Angle="-90" />
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Setter TargetName="PART_Track" Property="LayoutTransform">
-                                        <Setter.Value>
-                                            <RotateTransform Angle="-90" />
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Setter Property="Width" Value="Auto" />
-                                    <Setter Property="Height" Value="12" />
-                                    <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
-                                    <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
-                                    <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-
-            <!--#endregion-->
-
-
-
-            <!--#region Base style-->
-
-            <!--Checkem Focus Visual-->
-            <Style x:Key="CheckemFocusVisual">
-                <Setter Property="Control.Template">
-                    <Setter.Value>
-                        <ControlTemplate>
-                            <Rectangle Margin="0" StrokeThickness="3" Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=InvertTextColor,Converter={StaticResource ColorToBrushConverter}}" StrokeDashArray="1000"/>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-
-            <!--Checkem Flat Button-->
-            <Style x:Key="CheckemFlatButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
-                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=InvertTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
-                <Setter Property="BorderBrush" Value="{x:Null}"/>
-
-                <Setter Property="Padding" Value="0"/>
-
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border Background="{TemplateBinding Background}">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <!--<Setter Property="Background" Value="Red"/>-->
-                        <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NavigationbarButtonHighlightColor, Converter={StaticResource ColorToBrushConverter}}"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-
-            <Style x:Key="CheckemCircleFlatButton" TargetType="Button" BasedOn="{StaticResource CheckemFlatButton}">
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border CornerRadius="100" Background="{TemplateBinding Background}">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            
-            <Style x:Key="CheckemBaseTextBlock" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
-                <Setter Property="TextAlignment" Value="Center"/>
-
-                <Setter Property="Padding" Value="0,0,0,0"/>
-
-                <Setter Property="FontFamily" Value="{StaticResource ResourceKey=Quicksand}"/>
-            </Style>
-            <!--#endregion-->
-
-            <Style x:Key="CheckemChromeButton" TargetType="Button" BasedOn="{StaticResource CheckemFlatButton}">
-                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=PageBackgroundColor,Converter={StaticResource ColorToBrushConverter}}"/>
-
-                <Setter Property="Width" Value="50"/>
-                <Setter Property="Height" Value="20"/>
-
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=InvertTextColor, Converter={StaticResource ColorToBrushConverter}}"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-
-            <Style x:Key="CheckemChromeXButton" TargetType="Button" BasedOn="{StaticResource CheckemChromeButton}">
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="Red"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-
-            <!--#region Navigationbar controls-->
-            <Style x:Key="NavigationbarGrid" TargetType="Grid">
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <LinearGradientBrush StartPoint="1,0" EndPoint="4,1">
-                            <LinearGradientBrush.RelativeTransform>
-                                <TransformGroup>
-                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                    <RotateTransform CenterY="0.5" CenterX="0.5"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </LinearGradientBrush.RelativeTransform>
-
-                            <GradientStop Color="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToGradientStopConverter}}" Offset="0"/>
-                            <GradientStop Color="{Binding Source={x:Static properties:Settings.Default}, Path=SecondaryColor, Converter={StaticResource ColorToGradientStopConverter}}" Offset="0.5"/>
-                        </LinearGradientBrush>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-
-            <Style x:Key="NavigationbarButton" TargetType="{x:Type Button}" BasedOn="{StaticResource CheckemFlatButton}">
-                <Setter Property="Height" Value="40"/>
-                <Setter Property="Width" Value="Auto"/>
-
-                <Setter Property="Margin" Value="10,0,10,0"/>
-                <Setter Property="Padding" Value="0"/>
-
-                <Setter Property="materialDesign:ButtonAssist.CornerRadius" Value="0"/>
-                <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth0"/>
-
-                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NavigationbarButtonColor, Converter={StaticResource ColorToBrushConverter}}"/>
-                <Setter Property="BorderBrush" Value="{x:Null}"/>
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=InvertTextColor, Converter={StaticResource ColorToBrushConverter}}"/>
-
-                <Setter Property="TabIndex" Value="0"/>
-
-                <Setter Property="FocusVisualStyle" Value="{DynamicResource CheckemCheckemFocusVisual}"/>
-
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border CornerRadius="5" Background="{TemplateBinding Background}">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NavigationbarButtonHighlightColor, Converter={StaticResource ColorToBrushConverter}}"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-
-            <Style x:Key="NavigationbarIcon" TargetType="materialDesign:PackIcon">
-                <Setter Property="Foreground" Value="White"/>
-
-                <Setter Property="Height" Value="30"/>
-                <Setter Property="Width" Value="30"/>
-
-                <Setter Property="Margin" Value="5,0,0,0"/>
-
-                <Setter Property="HorizontalAlignment" Value="Center"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-            </Style>
-
-            <Style x:Key="NavigationbarTextBlock" TargetType="TextBlock" BasedOn="{StaticResource CheckemBaseTextBlock}">
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=InvertTextColor, Converter={StaticResource ColorToBrushConverter}}"/>
-                <Setter Property="FontSize" Value="18"/>
-
-                <Setter Property="Margin" Value="5,0,0,0"/>
-                <Setter Property="Padding" Value="0,3,0,0"/>
-            </Style>
-
-            <Style x:Key="NavigationbarButtonStackPanel" TargetType="StackPanel">
-                <Setter Property="Width" Value="280"/>
-
-                <Setter Property="Orientation" Value="Horizontal"/>
-            </Style>
-            <!--#endregion-->
-
 
             <!--#region Tag-->
             <Style x:Key="TagButton" TargetType="Button">
@@ -301,7 +63,7 @@
                 <Setter Property="BorderBrush" Value="{x:Null}"/>
 
                 <Setter Property="FontSize" Value="16"/>
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Color.Black}"/>
                 <Setter Property="FontFamily" Value="Quicksand"/>
 
                 <Setter Property="Height" Value="35"/>
@@ -320,7 +82,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="17" Background="{Binding Source={x:Static properties:Settings.Default}, Path=InvertTextColor,Converter={StaticResource ColorToBrushConverter}}">
+                            <Border CornerRadius="17" Background="{DynamicResource Color.White}">
                                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </Border>
                         </ControlTemplate>
@@ -332,8 +94,8 @@
 
             <!--#region Itembar-->
             <Style x:Key="ItembarBorderStyle" TargetType="Border">
-                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ControlColor_White, Converter={StaticResource ColorToBrushConverter}}"/>
-                <Setter Property="BorderBrush" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ControlOutlineColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Background" Value="{DynamicResource Color.White}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Color.Gray}"/>
 
                 <Setter Property="CornerRadius" Value="5"/>
 
@@ -353,8 +115,8 @@
             </Style>
 
             <Style x:Key="ItembarCheckbox" TargetType="CheckBox" BasedOn="{StaticResource MaterialDesignFlatPrimaryToggleButton}">
-                <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default},Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}"/>
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Background" Value="{DynamicResource Color.Primary}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Color.Black}"/>
 
                 <Setter Property="Height" Value="30"/>
                 <Setter Property="Width" Value="30"/>
@@ -364,7 +126,7 @@
             </Style>
 
             <Style x:Key="ItembarCheckboxCircleIcon" TargetType="materialDesign:PackIcon">
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Color.Black}"/>
 
                 <Setter Property="Kind" Value="CheckboxBlankCircleOutline"/>
 
@@ -389,7 +151,7 @@
             </Style>
 
             <Style x:Key="StarBorderIcon" TargetType="materialDesign:PackIcon">
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default},Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Color.Primary}"/>
 
                 <Setter Property="Height" Value="30"/>
                 <Setter Property="Width" Value="30"/>
@@ -401,7 +163,7 @@
             </Style>
 
             <Style x:Key="StarIcon" TargetType="materialDesign:PackIcon">
-                <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default},Path=PrimaryColor,Converter={StaticResource ColorToBrushConverter}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Color.Primary}"/>
 
                 <Setter Property="Height" Value="25"/>
                 <Setter Property="Width" Value="25"/>
@@ -428,8 +190,8 @@
                                 </TransformGroup>
                             </LinearGradientBrush.RelativeTransform>
 
-                            <GradientStop Color="{Binding Source={x:Static properties:Settings.Default}, Path=PrimaryColor, Converter={StaticResource ColorToGradientStopConverter}}" Offset="1"/>
-                            <GradientStop Color="{Binding Source={x:Static properties:Settings.Default}, Path=SecondaryColor, Converter={StaticResource ColorToGradientStopConverter}}" Offset="0.352"/>
+                            <GradientStop Color="{DynamicResource PrimaryColor}" Offset="1"/>
+                            <GradientStop Color="{DynamicResource SecondaryColor}" Offset="0.352"/>
                         </LinearGradientBrush>
                     </Setter.Value>
                 </Setter>
@@ -484,7 +246,7 @@
             <!--#endregion-->
 
             <!--#region Details panel-->
-            <Style x:Key="DetailsPanelButton" TargetType="Button" BasedOn="{StaticResource CheckemFlatButton}">
+            <Style x:Key="DetailsPanelButton" TargetType="Button" BasedOn="{StaticResource CheckemFlatButton.Square}">
                 <Setter Property="Height" Value="45"/>
                 <Setter Property="Width" Value="45"/>
             </Style>
@@ -504,19 +266,16 @@
                 <Setter Property="Height" Value="22"/>
             </Style>
 
-            <Style x:Key="LanguageBoxText-Big" TargetType="TextBlock" BasedOn="{StaticResource CheckemBaseTextBlock}">
+            <Style x:Key="LanguageBoxText-Big" TargetType="TextBlock" BasedOn="{StaticResource CheckemTextBlock.Base}">
                 <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
                 <Setter Property="FontSize" Value="20"/>
             </Style>
 
-            <Style x:Key="LanguageBoxText-Small" TargetType="TextBlock" BasedOn="{StaticResource CheckemBaseTextBlock}">
+            <Style x:Key="LanguageBoxText-Small" TargetType="TextBlock" BasedOn="{StaticResource CheckemTextBlock.Base}">
                 <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ItemCompletedTextColor,Converter={StaticResource ColorToBrushConverter}}"/>
                 <Setter Property="FontSize" Value="14"/>
             </Style>
             <!--#endregion-->
-
-            <!--#endregion Checkem custom styles-->
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

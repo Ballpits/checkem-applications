@@ -15,8 +15,8 @@ namespace Checkem.CustomComponents
         }
 
 
-        private int _textboxFontSize;
-        public int TextboxFontSize
+        private double _textboxFontSize;
+        public double TextboxFontSize
         {
             get
             {

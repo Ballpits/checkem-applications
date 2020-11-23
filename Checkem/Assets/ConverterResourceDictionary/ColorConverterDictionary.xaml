@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Checkem.Assets.ColorConverters"
+                    >
+
+    <local:ColorToBrushConverter x:Key="ColorToBrushConverter"/>
+    <local:ColorToGradientStopConverter x:Key="ColorToGradientStopConverter"/>
+
+</ResourceDictionary>

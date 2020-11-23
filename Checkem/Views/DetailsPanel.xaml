@@ -46,11 +46,11 @@
 
     <Grid x:Name="DimBackground" Background="#7F000000">
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalAlignment="Right">
-            <Border x:Name="DetailPanelBorder" HorizontalAlignment="Stretch" Width="400" CornerRadius="15,0,0,15" Background="{Binding Source={x:Static properties:Settings.Default}, Path=ControlColor_White, Converter={StaticResource ColorToBrushConverter}}" Margin="0,0,0,0">
+            <Border x:Name="DetailPanelBorder" HorizontalAlignment="Stretch" Width="400" CornerRadius="15,0,0,15" Background="{DynamicResource Color.White}" Margin="0,0,0,0">
                 <StackPanel>
 
                     <Grid Height="40" Margin="0,15,0,0">
-                        <Button Background="{Binding Source={x:Static properties:Settings.Default}, Path=ControlOutlineColor,Converter={StaticResource ColorToBrushConverter}}" Style="{StaticResource CheckemCircleFlatButton}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="30" Height="30" Padding="0,0,0,0">
+                        <Button Background="{StaticResource Color.Gray}" Style="{StaticResource CheckemFlatButton.Circle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="30" Height="30" Padding="0,0,0,0">
                             <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
                         </Button>
 

@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Visual;
 
@@ -58,42 +59,6 @@ namespace Checkem.CustomComponents
 
 
         #region Variables
-
-        Binding ItemCompletedTextColorBindings = new Binding()
-        {
-            Source = Properties.Settings.Default,
-            Path = new PropertyPath("ItemCompletedTextColor", Properties.Settings.Default),
-            Converter = new ColorToBrushConverter()
-        };
-
-        Binding NormalTextColorBindings = new Binding()
-        {
-            Source = Properties.Settings.Default,
-            Path = new PropertyPath("NormalTextColor", Properties.Settings.Default),
-            Converter = new ColorToBrushConverter()
-        };
-
-        Binding OverDueTextColorBindings = new Binding()
-        {
-            Source = Properties.Settings.Default,
-            Path = new PropertyPath("OverDueTextColor", Properties.Settings.Default),
-            Converter = new ColorToBrushConverter()
-        };
-
-        Binding ItembarHighlightColorBindings = new Binding()
-        {
-            Source = Properties.Settings.Default,
-            Path = new PropertyPath("ItembarHighlightColor", Properties.Settings.Default),
-            Converter = new ColorToBrushConverter()
-        };
-
-        Binding ControlColorBindings = new Binding()
-        {
-            Source = Properties.Settings.Default,
-            Path = new PropertyPath("ControlColor_White", Properties.Settings.Default),
-            Converter = new ColorToBrushConverter()
-        };
-
         PackIcon icon = new PackIcon();
         #endregion
 
@@ -130,11 +95,11 @@ namespace Checkem.CustomComponents
 
                 if (DateTimeManipulator.IsPassed(this.ItemProperties.EndDateTime.Value))
                 {
-                    ReminderDetailTextBlock.SetBinding(TextBlock.ForegroundProperty, OverDueTextColorBindings);
+                    //ReminderDetailTextBlock.SetBinding(TextBlock.ForegroundProperty, OverDueTextColorBindings);
                 }
                 else
                 {
-                    ReminderDetailTextBlock.SetBinding(TextBlock.ForegroundProperty, NormalTextColorBindings);
+                    //ReminderDetailTextBlock.SetBinding(TextBlock.ForegroundProperty, NormalTextColorBindings);
                 }
             }
             else
@@ -153,12 +118,14 @@ namespace Checkem.CustomComponents
 
         private void ItembarBorder_MouseEnter(object sender, MouseEventArgs e)
         {
-            ItembarBorder.SetBinding(Border.BackgroundProperty, ItembarHighlightColorBindings);
+            ItembarBorder.Background = this.FindResource("HighlightColor.Primary") as Brush;
+            ItembarBorder.BorderBrush = this.FindResource("HighlightColor.Secondary") as Brush;
         }
 
         private void ItembarBorder_MouseLeave(object sender, MouseEventArgs e)
         {
-            ItembarBorder.SetBinding(Border.BackgroundProperty, ControlColorBindings);
+            ItembarBorder.Background = this.FindResource("Color.White") as Brush;
+            ItembarBorder.BorderBrush = this.FindResource("Color.Gray") as Brush;
         }
 
         private void Itembar_MouseDown(object sender, MouseButtonEventArgs e)

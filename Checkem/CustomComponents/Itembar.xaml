@@ -122,7 +122,7 @@
             <materialDesign:PackIcon Kind="TrashCanOutline" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35" Height="35"/>
         </Border>
 
-        <Border x:Name="ItembarBorder" Style="{StaticResource ItembarBorderStyle}" BorderThickness="3" BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=ControlOutlineColor, Converter={StaticResource ColorToBrushConverter}}" Panel.ZIndex="1" Visibility="Visible" Margin="0,0,0,0" MouseEnter="ItembarBorder_MouseEnter" MouseLeave="ItembarBorder_MouseLeave">
+        <Border x:Name="ItembarBorder" Style="{StaticResource ItembarBorderStyle}" BorderThickness="3" BorderBrush="{DynamicResource Color.Gray}" Panel.ZIndex="1" Visibility="Visible" Margin="0,0,0,0" MouseEnter="ItembarBorder_MouseEnter" MouseLeave="ItembarBorder_MouseLeave">
             <Border.ContextMenu>
                 <ContextMenu FontFamily="{StaticResource ResourceKey=Quicksand}">
                     <MenuItem Header="Mark as completed" Icon="{materialDesign:PackIcon Kind=Check, Size=18}"/>
@@ -155,27 +155,27 @@
             </Border.ContextMenu>
 
             <Grid>
-                <Grid x:Name="CheckboxGrid" Style="{StaticResource CheckboxGrid}">
-                    <CheckBox x:Name="checkBox" Style="{StaticResource ItembarCheckbox}" Checked="checkBox_Checked">
-                        <materialDesign:PackIcon Style="{StaticResource ItembarCheckboxCircleIcon}"/>
+                <Grid x:Name="CheckboxGrid" Style="{DynamicResource CheckboxGrid}">
+                    <CheckBox x:Name="checkBox" Style="{DynamicResource ItembarCheckbox}" Checked="checkBox_Checked">
+                        <materialDesign:PackIcon Style="{DynamicResource ItembarCheckboxCircleIcon}"/>
                     </CheckBox>
                 </Grid>
 
-                <TextBlock x:Name="TitleTextBlock" Style="{StaticResource CheckemBaseTextBlock}" VerticalAlignment="Center" Margin="70,0,55,0" FontSize="20" Text="{Binding Path=Title,Mode=TwoWay}" Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor, Converter={StaticResource ColorToBrushConverter}}" TextAlignment="Left"/>
+                <TextBlock x:Name="TitleTextBlock" Style="{DynamicResource CheckemTextBlock.Base}" VerticalAlignment="Center" Margin="70,0,55,0" FontSize="20" Text="{Binding Path=Title,Mode=TwoWay}" Foreground="{DynamicResource Color.Black}" TextAlignment="Left"/>
 
                 <materialDesign:PackIcon x:Name="ReminderIcon" Kind="Bell" Margin="70,0,0,7.5" Width="20" Height="20" Foreground="#FFE3F321" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                <TextBlock Name="ReminderDetailTextBlock" Style="{StaticResource CheckemBaseTextBlock}" VerticalAlignment="Bottom" Margin="95,0,55,6" FontSize="14" Height="20" Text="Due date..." Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=NormalTextColor, Converter={StaticResource ColorToBrushConverter}}" TextAlignment="Left"/>
+                <TextBlock Name="ReminderDetailTextBlock" Style="{DynamicResource CheckemTextBlock.Base}" VerticalAlignment="Bottom" Margin="95,0,55,6" FontSize="14" Height="20" Text="Due date..." Foreground="{DynamicResource Color.Black}" TextAlignment="Left"/>
 
                 <!--<TextBlock x:Name="ProgressIndicator" Text="56%" Margin="0,0,55,1.6" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" TextAlignment="Center" FontFamily="Quicksand"/>
             <ProgressBar x:Name="ProgressBar" Style="{StaticResource MaterialDesignCircularProgressBar}" Height="30" Margin="0,3,55,16.6" Value="70" Foreground="#FF2196F3" BorderBrush="{x:Null}" Background="{x:Null}" Width="30" HorizontalAlignment="Right" VerticalAlignment="Center"/>-->
 
-                <ToggleButton x:Name="StarToggle" Style="{StaticResource ItembarStarToggle}" ToolTip="Mark As Important" Width="45" Height="45" VerticalAlignment="Center">
+                <ToggleButton x:Name="StarToggle" Style="{DynamicResource ItembarStarToggle}" ToolTip="Mark As Important" Width="45" Height="45" VerticalAlignment="Center">
                     <ToggleButton.Content>
-                        <materialDesign:PackIcon x:Name="StarButtonStarBorderIcon" Style="{StaticResource StarBorderIcon}"/>
+                        <materialDesign:PackIcon x:Name="StarButtonStarBorderIcon" Style="{DynamicResource StarBorderIcon}"/>
                     </ToggleButton.Content>
 
                     <materialDesign:ToggleButtonAssist.OnContent>
-                        <materialDesign:PackIcon x:Name="StarButtonStarIcon" Style="{StaticResource StarIcon}"/>
+                        <materialDesign:PackIcon x:Name="StarButtonStarIcon" Style="{DynamicResource StarIcon}"/>
                     </materialDesign:ToggleButtonAssist.OnContent>
                 </ToggleButton>
             </Grid>

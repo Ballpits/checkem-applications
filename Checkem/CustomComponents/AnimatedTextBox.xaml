@@ -13,7 +13,7 @@
              FontFamily="{StaticResource Quicksand}"
              >
 
-    <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=ControlColor_LightGray, Converter={StaticResource ColorToBrushConverter}}" CornerRadius="10">
-        <TextBox Background="{x:Null}" CaretBrush="{StaticResource PrimaryColor}" Margin="10,0,10,0" FontSize="{Binding TextboxFontSize}" Padding="{Binding TextboxPadding}" BorderBrush="{x:Null}" d:Text="Text"/>
+    <Border Background="{DynamicResource Color.LightGray}" CornerRadius="10">
+        <TextBox Background="{x:Null}" CaretBrush="{StaticResource Color.Primary}" Margin="10,0,10,0" FontSize="{Binding TextboxFontSize}" Padding="{Binding TextboxPadding}" BorderBrush="{x:Null}" d:Text="Text"/>
     </Border>
 </UserControl>

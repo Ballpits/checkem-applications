@@ -12,20 +12,6 @@ namespace Checkem
             InitializeComponent();
 
             reset();
-            //BlackTheme();
-        }
-
-        private void BlackTheme()
-        {
-            Properties.Settings.Default.PrimaryColor = System.Drawing.Color.Black;
-            Properties.Settings.Default.SecondaryColor = System.Drawing.Color.Black;
-            Properties.Settings.Default.InvertTextColor = System.Drawing.Color.White;
-            Properties.Settings.Default.NormalTextColor = System.Drawing.Color.White;
-            Properties.Settings.Default.PageBackgroundColor = System.Drawing.Color.Black;
-            Properties.Settings.Default.ControlColor_White = System.Drawing.Color.Black;
-            Properties.Settings.Default.ControlOutlineColor = System.Drawing.Color.FromArgb(151, 8, 204);
-
-            Properties.Settings.Default.Save();
         }
 
         private void reset()

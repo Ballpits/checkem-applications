@@ -34,7 +34,7 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
                 <EasingDoubleKeyFrame KeyTime="0" Value="280"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="60"/>
-            </DoubleAnimationUsingKeyFrames>
+            </DoubleAnimationUsingKeyFrames> 
         </Storyboard>
     </Window.Resources>
 
@@ -111,7 +111,7 @@
 
                 <ScrollViewer Margin="0" Grid.RowSpan="3" Grid.Row="6"/>
 
-                <Button FocusVisualStyle="{DynamicResource CheckemFocusVisual}" IsEnabled="True" x:Name="ButtonAddNewList" Margin="10,0,10,0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonAddNewList_Click" Padding="0" Grid.Row="6" TabIndex="0" HorizontalAlignment="Stretch" Height="40">
+                <Button FocusVisualStyle="{DynamicResource CheckemFocusVisual.White}" IsEnabled="True" x:Name="ButtonAddNewList" Margin="10,0,10,0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonAddNewList_Click" Padding="0" Grid.Row="6" TabIndex="0" HorizontalAlignment="Stretch" Height="40">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="Add" Style="{StaticResource NavigationbarIcon}"/>
                         <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Dict_NewList}"/>
@@ -137,7 +137,7 @@
                     </Grid>
                 </Border>
 
-                <Path Data="M578.19198,-0.066659417 L706.86698,23.4 814.70389,24.400132 840.23715,40.400214 939.63685,40.489548 939.5698,0.0080855492" Fill="{Binding Source={x:Static properties:Settings.Default}, Path=PageBackgroundColor, Converter={StaticResource ColorToBrushConverter}}" HorizontalAlignment="Right" Height="40.556" Margin="0" Stretch="Fill" VerticalAlignment="Top" Width="361.446"/>
+                <Path Data="M578.19198,-0.066659417 L706.86698,23.4 814.70389,24.400132 840.23715,40.400214 939.63685,40.489548 939.5698,0.0080855492" Fill="{DynamicResource Color.WhiteSmoke}" HorizontalAlignment="Right" Height="40.556" Margin="0" Stretch="Fill" VerticalAlignment="Top" Width="361.446"/>
 
                 <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Top" Height="20">
                     <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Settings" Click="ButtonSettings_Click">
@@ -146,7 +146,7 @@
                     <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Minimize" Click="MinimizeButton_Click">
                         <materialDesign:PackIcon Kind="WindowMinimize" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
                     </Button>
-                    <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Restore Down" Click="RestoreButton_Click" Height="16">
+                    <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Restore Down" Click="RestoreButton_Click">
                         <materialDesign:PackIcon Kind="WindowRestore" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
                     </Button>
                     <Button Style="{StaticResource CheckemChromeXButton}" ToolTip="Close" Click="CloseButton_Click" HorizontalAlignment="Stretch">

@@ -32,7 +32,7 @@
             <Ellipse HorizontalAlignment="Center" Fill="#FFFF4949" VerticalAlignment="Center" Height="15" Width="15"/>
         </Grid>
 
-        <TextBlock Panel.ZIndex="2" Text="Tag content" d:Text="Tag name" Style="{StaticResource CheckemBaseTextBlock}" Padding="5,0,0,3" Margin="25,0,5,0" VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Panel.ZIndex="2" Text="Tag content" d:Text="Tag name" Style="{StaticResource CheckemTextBlock.Base}" Padding="5,0,0,3" Margin="25,0,5,0" VerticalAlignment="Center" FontSize="20"/>
         <CheckBox x:Name="checkbox" Visibility="Hidden" Panel.ZIndex="-1" Checked="checkbox_Checked" Unchecked="checkbox_Unchecked"/>
     </Grid>
 </UserControl>

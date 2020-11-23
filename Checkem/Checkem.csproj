@@ -562,7 +562,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Page Update="Assets\ThemeResourceDictionary\Base\BaseTheme.xaml">
+	  <Page Update="Assets\ThemeResourceDictionary\Base\ThemeBase.xaml">
 	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
 	    <SubType>Designer</SubType>
 	  </Page>
