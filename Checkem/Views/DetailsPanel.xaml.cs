@@ -59,7 +59,7 @@ namespace Checkem.Views
                 if (ItemProperties.Description != value)
                 {
                     ItemProperties.Description = value;
-                    
+
                     OnPropertyChanged();
                 }
             }

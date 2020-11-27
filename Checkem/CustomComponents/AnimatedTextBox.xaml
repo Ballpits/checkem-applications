@@ -14,6 +14,6 @@
              >
 
     <Border Background="{DynamicResource Color.LightGray}" CornerRadius="10">
-        <TextBox Background="{x:Null}" CaretBrush="{StaticResource Color.Primary}" Margin="10,0,10,0" FontSize="{Binding TextboxFontSize}" Padding="{Binding TextboxPadding}" BorderBrush="{x:Null}" d:Text="Text"/>
+        <TextBox Background="{x:Null}" CaretBrush="{StaticResource Color.Primary}" Margin="10,0,10,0" FontSize="{Binding TextboxFontSize}" Padding="{Binding TextboxPadding}" BorderBrush="{x:Null}" Text="{Binding TextBoxText}"/>
     </Border>
 </UserControl>

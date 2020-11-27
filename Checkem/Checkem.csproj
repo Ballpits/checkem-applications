@@ -8,257 +8,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="Assets\Icon\Flags\ad.png" />
-		<None Remove="Assets\Icon\Flags\ae.png" />
-		<None Remove="Assets\Icon\Flags\af.png" />
-		<None Remove="Assets\Icon\Flags\ag.png" />
-		<None Remove="Assets\Icon\Flags\ai.png" />
-		<None Remove="Assets\Icon\Flags\al.png" />
-		<None Remove="Assets\Icon\Flags\am.png" />
-		<None Remove="Assets\Icon\Flags\an.png" />
-		<None Remove="Assets\Icon\Flags\ao.png" />
-		<None Remove="Assets\Icon\Flags\ar.png" />
-		<None Remove="Assets\Icon\Flags\as.png" />
-		<None Remove="Assets\Icon\Flags\at.png" />
-		<None Remove="Assets\Icon\Flags\au.png" />
-		<None Remove="Assets\Icon\Flags\aw.png" />
-		<None Remove="Assets\Icon\Flags\ax.png" />
-		<None Remove="Assets\Icon\Flags\az.png" />
-		<None Remove="Assets\Icon\Flags\ba.png" />
-		<None Remove="Assets\Icon\Flags\bb.png" />
-		<None Remove="Assets\Icon\Flags\bd.png" />
-		<None Remove="Assets\Icon\Flags\be.png" />
-		<None Remove="Assets\Icon\Flags\bf.png" />
-		<None Remove="Assets\Icon\Flags\bg.png" />
-		<None Remove="Assets\Icon\Flags\bh.png" />
-		<None Remove="Assets\Icon\Flags\bi.png" />
-		<None Remove="Assets\Icon\Flags\bj.png" />
-		<None Remove="Assets\Icon\Flags\bm.png" />
-		<None Remove="Assets\Icon\Flags\bn.png" />
-		<None Remove="Assets\Icon\Flags\bo.png" />
-		<None Remove="Assets\Icon\Flags\br.png" />
-		<None Remove="Assets\Icon\Flags\bs.png" />
-		<None Remove="Assets\Icon\Flags\bt.png" />
-		<None Remove="Assets\Icon\Flags\bv.png" />
-		<None Remove="Assets\Icon\Flags\bw.png" />
-		<None Remove="Assets\Icon\Flags\by.png" />
-		<None Remove="Assets\Icon\Flags\bz.png" />
-		<None Remove="Assets\Icon\Flags\ca.png" />
-		<None Remove="Assets\Icon\Flags\catalonia.png" />
-		<None Remove="Assets\Icon\Flags\cc.png" />
-		<None Remove="Assets\Icon\Flags\cd.png" />
-		<None Remove="Assets\Icon\Flags\cf.png" />
-		<None Remove="Assets\Icon\Flags\cg.png" />
-		<None Remove="Assets\Icon\Flags\ch.png" />
-		<None Remove="Assets\Icon\Flags\ci.png" />
-		<None Remove="Assets\Icon\Flags\ck.png" />
-		<None Remove="Assets\Icon\Flags\cl.png" />
-		<None Remove="Assets\Icon\Flags\cm.png" />
-		<None Remove="Assets\Icon\Flags\cn.png" />
-		<None Remove="Assets\Icon\Flags\co.png" />
-		<None Remove="Assets\Icon\Flags\cr.png" />
-		<None Remove="Assets\Icon\Flags\cs.png" />
-		<None Remove="Assets\Icon\Flags\cu.png" />
-		<None Remove="Assets\Icon\Flags\cv.png" />
-		<None Remove="Assets\Icon\Flags\cw.png" />
-		<None Remove="Assets\Icon\Flags\cx.png" />
-		<None Remove="Assets\Icon\Flags\cy.png" />
-		<None Remove="Assets\Icon\Flags\cz.png" />
-		<None Remove="Assets\Icon\Flags\de.png" />
-		<None Remove="Assets\Icon\Flags\dj.png" />
-		<None Remove="Assets\Icon\Flags\dk.png" />
-		<None Remove="Assets\Icon\Flags\dm.png" />
-		<None Remove="Assets\Icon\Flags\do.png" />
-		<None Remove="Assets\Icon\Flags\dz.png" />
-		<None Remove="Assets\Icon\Flags\ec.png" />
-		<None Remove="Assets\Icon\Flags\ee.png" />
-		<None Remove="Assets\Icon\Flags\eg.png" />
-		<None Remove="Assets\Icon\Flags\eh.png" />
-		<None Remove="Assets\Icon\Flags\en.png" />
-		<None Remove="Assets\Icon\Flags\er.png" />
-		<None Remove="Assets\Icon\Flags\es.png" />
-		<None Remove="Assets\Icon\Flags\et.png" />
-		<None Remove="Assets\Icon\Flags\eu.png" />
-		<None Remove="Assets\Icon\Flags\fi.png" />
-		<None Remove="Assets\Icon\Flags\fj.png" />
-		<None Remove="Assets\Icon\Flags\fk.png" />
-		<None Remove="Assets\Icon\Flags\fm.png" />
-		<None Remove="Assets\Icon\Flags\fo.png" />
-		<None Remove="Assets\Icon\Flags\fr.png" />
-		<None Remove="Assets\Icon\Flags\ga.png" />
-		<None Remove="Assets\Icon\Flags\gb.png" />
-		<None Remove="Assets\Icon\Flags\gd.png" />
-		<None Remove="Assets\Icon\Flags\ge.png" />
-		<None Remove="Assets\Icon\Flags\gf.png" />
-		<None Remove="Assets\Icon\Flags\gg.png" />
-		<None Remove="Assets\Icon\Flags\gh.png" />
-		<None Remove="Assets\Icon\Flags\gi.png" />
-		<None Remove="Assets\Icon\Flags\gl.png" />
-		<None Remove="Assets\Icon\Flags\gm.png" />
-		<None Remove="Assets\Icon\Flags\gn.png" />
-		<None Remove="Assets\Icon\Flags\gp.png" />
-		<None Remove="Assets\Icon\Flags\gq.png" />
-		<None Remove="Assets\Icon\Flags\gr.png" />
-		<None Remove="Assets\Icon\Flags\gs.png" />
-		<None Remove="Assets\Icon\Flags\gt.png" />
-		<None Remove="Assets\Icon\Flags\gu.png" />
-		<None Remove="Assets\Icon\Flags\gw.png" />
-		<None Remove="Assets\Icon\Flags\gy.png" />
-		<None Remove="Assets\Icon\Flags\hk.png" />
-		<None Remove="Assets\Icon\Flags\hm.png" />
-		<None Remove="Assets\Icon\Flags\hn.png" />
-		<None Remove="Assets\Icon\Flags\hr.png" />
-		<None Remove="Assets\Icon\Flags\ht.png" />
-		<None Remove="Assets\Icon\Flags\hu.png" />
-		<None Remove="Assets\Icon\Flags\id.png" />
-		<None Remove="Assets\Icon\Flags\ie.png" />
-		<None Remove="Assets\Icon\Flags\il.png" />
-		<None Remove="Assets\Icon\Flags\in.png" />
-		<None Remove="Assets\Icon\Flags\io.png" />
-		<None Remove="Assets\Icon\Flags\iq.png" />
-		<None Remove="Assets\Icon\Flags\ir.png" />
-		<None Remove="Assets\Icon\Flags\is.png" />
-		<None Remove="Assets\Icon\Flags\it.png" />
-		<None Remove="Assets\Icon\Flags\jm.png" />
-		<None Remove="Assets\Icon\Flags\jo.png" />
-		<None Remove="Assets\Icon\Flags\jp.png" />
-		<None Remove="Assets\Icon\Flags\ke.png" />
-		<None Remove="Assets\Icon\Flags\kg.png" />
-		<None Remove="Assets\Icon\Flags\kh.png" />
-		<None Remove="Assets\Icon\Flags\ki.png" />
-		<None Remove="Assets\Icon\Flags\km.png" />
-		<None Remove="Assets\Icon\Flags\kn.png" />
-		<None Remove="Assets\Icon\Flags\kp.png" />
-		<None Remove="Assets\Icon\Flags\kr.png" />
-		<None Remove="Assets\Icon\Flags\kw.png" />
-		<None Remove="Assets\Icon\Flags\ky.png" />
-		<None Remove="Assets\Icon\Flags\kz.png" />
-		<None Remove="Assets\Icon\Flags\la.png" />
-		<None Remove="Assets\Icon\Flags\lb.png" />
-		<None Remove="Assets\Icon\Flags\lc.png" />
-		<None Remove="Assets\Icon\Flags\li.png" />
-		<None Remove="Assets\Icon\Flags\lk.png" />
-		<None Remove="Assets\Icon\Flags\lr.png" />
-		<None Remove="Assets\Icon\Flags\ls.png" />
-		<None Remove="Assets\Icon\Flags\lt.png" />
-		<None Remove="Assets\Icon\Flags\lu.png" />
-		<None Remove="Assets\Icon\Flags\lv.png" />
-		<None Remove="Assets\Icon\Flags\ly.png" />
-		<None Remove="Assets\Icon\Flags\ma.png" />
-		<None Remove="Assets\Icon\Flags\mc.png" />
-		<None Remove="Assets\Icon\Flags\md.png" />
-		<None Remove="Assets\Icon\Flags\me.png" />
-		<None Remove="Assets\Icon\Flags\mg.png" />
-		<None Remove="Assets\Icon\Flags\mh.png" />
-		<None Remove="Assets\Icon\Flags\mk.png" />
-		<None Remove="Assets\Icon\Flags\ml.png" />
-		<None Remove="Assets\Icon\Flags\mm.png" />
-		<None Remove="Assets\Icon\Flags\mn.png" />
-		<None Remove="Assets\Icon\Flags\mo.png" />
-		<None Remove="Assets\Icon\Flags\mp.png" />
-		<None Remove="Assets\Icon\Flags\mq.png" />
-		<None Remove="Assets\Icon\Flags\mr.png" />
-		<None Remove="Assets\Icon\Flags\ms.png" />
-		<None Remove="Assets\Icon\Flags\mt.png" />
-		<None Remove="Assets\Icon\Flags\mu.png" />
-		<None Remove="Assets\Icon\Flags\mv.png" />
-		<None Remove="Assets\Icon\Flags\mw.png" />
-		<None Remove="Assets\Icon\Flags\mx.png" />
-		<None Remove="Assets\Icon\Flags\my.png" />
-		<None Remove="Assets\Icon\Flags\mz.png" />
-		<None Remove="Assets\Icon\Flags\na.png" />
-		<None Remove="Assets\Icon\Flags\nc.png" />
-		<None Remove="Assets\Icon\Flags\ne.png" />
-		<None Remove="Assets\Icon\Flags\nf.png" />
-		<None Remove="Assets\Icon\Flags\ng.png" />
-		<None Remove="Assets\Icon\Flags\ni.png" />
-		<None Remove="Assets\Icon\Flags\nl.png" />
-		<None Remove="Assets\Icon\Flags\no.png" />
-		<None Remove="Assets\Icon\Flags\np.png" />
-		<None Remove="Assets\Icon\Flags\nr.png" />
-		<None Remove="Assets\Icon\Flags\nu.png" />
-		<None Remove="Assets\Icon\Flags\nz.png" />
-		<None Remove="Assets\Icon\Flags\om.png" />
-		<None Remove="Assets\Icon\Flags\pa.png" />
-		<None Remove="Assets\Icon\Flags\pe.png" />
-		<None Remove="Assets\Icon\Flags\pf.png" />
-		<None Remove="Assets\Icon\Flags\pg.png" />
-		<None Remove="Assets\Icon\Flags\ph.png" />
-		<None Remove="Assets\Icon\Flags\pk.png" />
-		<None Remove="Assets\Icon\Flags\pl.png" />
-		<None Remove="Assets\Icon\Flags\pm.png" />
-		<None Remove="Assets\Icon\Flags\pn.png" />
-		<None Remove="Assets\Icon\Flags\pr.png" />
-		<None Remove="Assets\Icon\Flags\ps.png" />
-		<None Remove="Assets\Icon\Flags\pt.png" />
-		<None Remove="Assets\Icon\Flags\pw.png" />
-		<None Remove="Assets\Icon\Flags\py.png" />
-		<None Remove="Assets\Icon\Flags\qa.png" />
-		<None Remove="Assets\Icon\Flags\re.png" />
-		<None Remove="Assets\Icon\Flags\ro.png" />
-		<None Remove="Assets\Icon\Flags\rs.png" />
-		<None Remove="Assets\Icon\Flags\ru.png" />
-		<None Remove="Assets\Icon\Flags\rw.png" />
-		<None Remove="Assets\Icon\Flags\sa.png" />
-		<None Remove="Assets\Icon\Flags\sb.png" />
-		<None Remove="Assets\Icon\Flags\sc.png" />
-		<None Remove="Assets\Icon\Flags\scotland.png" />
-		<None Remove="Assets\Icon\Flags\sd.png" />
-		<None Remove="Assets\Icon\Flags\se.png" />
-		<None Remove="Assets\Icon\Flags\sg.png" />
-		<None Remove="Assets\Icon\Flags\sh.png" />
-		<None Remove="Assets\Icon\Flags\si.png" />
-		<None Remove="Assets\Icon\Flags\sj.png" />
-		<None Remove="Assets\Icon\Flags\sk.png" />
-		<None Remove="Assets\Icon\Flags\sl.png" />
-		<None Remove="Assets\Icon\Flags\sm.png" />
-		<None Remove="Assets\Icon\Flags\sn.png" />
-		<None Remove="Assets\Icon\Flags\so.png" />
-		<None Remove="Assets\Icon\Flags\sr.png" />
-		<None Remove="Assets\Icon\Flags\st.png" />
-		<None Remove="Assets\Icon\Flags\sv.png" />
-		<None Remove="Assets\Icon\Flags\sy.png" />
-		<None Remove="Assets\Icon\Flags\sz.png" />
-		<None Remove="Assets\Icon\Flags\tc.png" />
-		<None Remove="Assets\Icon\Flags\td.png" />
-		<None Remove="Assets\Icon\Flags\tf.png" />
-		<None Remove="Assets\Icon\Flags\tg.png" />
-		<None Remove="Assets\Icon\Flags\th.png" />
-		<None Remove="Assets\Icon\Flags\tj.png" />
-		<None Remove="Assets\Icon\Flags\tk.png" />
-		<None Remove="Assets\Icon\Flags\tl.png" />
-		<None Remove="Assets\Icon\Flags\tm.png" />
-		<None Remove="Assets\Icon\Flags\tn.png" />
-		<None Remove="Assets\Icon\Flags\to.png" />
-		<None Remove="Assets\Icon\Flags\tr.png" />
-		<None Remove="Assets\Icon\Flags\tt.png" />
-		<None Remove="Assets\Icon\Flags\tv.png" />
-		<None Remove="Assets\Icon\Flags\tw.png" />
-		<None Remove="Assets\Icon\Flags\tz.png" />
-		<None Remove="Assets\Icon\Flags\ua.png" />
-		<None Remove="Assets\Icon\Flags\ug.png" />
-		<None Remove="Assets\Icon\Flags\um.png" />
-		<None Remove="Assets\Icon\Flags\us.png" />
-		<None Remove="Assets\Icon\Flags\uy.png" />
-		<None Remove="Assets\Icon\Flags\uz.png" />
-		<None Remove="Assets\Icon\Flags\va.png" />
-		<None Remove="Assets\Icon\Flags\vc.png" />
-		<None Remove="Assets\Icon\Flags\ve.png" />
-		<None Remove="Assets\Icon\Flags\vg.png" />
-		<None Remove="Assets\Icon\Flags\vi.png" />
-		<None Remove="Assets\Icon\Flags\vn.png" />
-		<None Remove="Assets\Icon\Flags\vu.png" />
-		<None Remove="Assets\Icon\Flags\wales.png" />
-		<None Remove="Assets\Icon\Flags\wf.png" />
-		<None Remove="Assets\Icon\Flags\ws.png" />
-		<None Remove="Assets\Icon\Flags\ye.png" />
-		<None Remove="Assets\Icon\Flags\yt.png" />
-		<None Remove="Assets\Icon\Flags\za.png" />
-		<None Remove="Assets\Icon\Flags\zm.png" />
-		<None Remove="Assets\Icon\Flags\zw.png" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Hardcodet.NotifyIcon.Wpf.NetCore" Version="1.0.14" />
 		<PackageReference Include="MaterialDesignColors" Version="1.2.7" />
 		<PackageReference Include="MaterialDesignThemes" Version="3.2.0" />
@@ -266,7 +15,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Page Include="App.xaml" />
+		<Page Include="App.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -529,7 +278,7 @@
 	<ItemGroup>
 		<Resource Include=".\Resources\Quicksand.ttf" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
 		<Compile Update="Properties\Resources.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -558,14 +307,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="ViewModels\" />
+		<Folder Include="ViewModels\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Page Update="Assets\ThemeResourceDictionary\Base\ThemeBase.xaml">
-	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-	    <SubType>Designer</SubType>
-	  </Page>
+		<Page Update="Assets\ThemeResourceDictionary\Base\ThemeBase.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+			<SubType>Designer</SubType>
+		</Page>
 	</ItemGroup>
 
 </Project>

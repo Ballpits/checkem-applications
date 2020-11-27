@@ -68,7 +68,7 @@
 
                     <TextBox Text="{Binding Title,Mode=TwoWay}" Margin="15,15,15,0"/>
 
-                    <customComponents:AnimatedTextBox Margin="10,0,10,0" Foreground="#FFFFC000" TextboxFontSize="40" TextboxPadding="5,5,0,0"/>
+                    <customComponents:AnimatedTextBox Margin="10,0,10,0" TextboxFontSize="40" TextboxPadding="5,5,0,0" TextboxText="Hello"/>
                 </StackPanel>
             </Border>
         </ScrollViewer>

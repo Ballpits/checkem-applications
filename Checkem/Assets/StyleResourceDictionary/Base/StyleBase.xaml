@@ -213,12 +213,54 @@
     </Style>
     <!--#endregion-->
     <!--#endregion-->
+
+    <!--#region Gradient button-->
+    <Style x:Key="ColorPickerButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform CenterY="0.5" CenterX="0.5" Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+
+        <Setter Property="Height" Value="80"/>
+        <Setter Property="Width" Value="Auto"/>
+
+        <Setter Property="Margin" Value="10,10,10,0"/>
+        <Setter Property="Padding" Value="0"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
     <!--#endregion-->
 
 
     <!--#region Textblock style-->
     <!--#region Base style-->
-    <Style x:Key="CheckemTextBlock.Base" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Style x:Key="CheckemTextBlock.Base" TargetType="TextBlock">
         <Setter Property="TextAlignment" Value="Center"/>
 
         <Setter Property="Padding" Value="0,0,0,0"/>
@@ -226,5 +268,30 @@
         <Setter Property="FontFamily" Value="{StaticResource ResourceKey=Quicksand}"/>
     </Style>
     <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region LanguageBox-->
+    <Style x:Key="LanguageBoxStackPanel" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+    </Style>
+
+    <Style x:Key="LanguageBoxStackPanelText" TargetType="StackPanel">
+        <Setter Property="Margin" Value="10,0,0,0"/>
+    </Style>
+
+    <Style x:Key="LanguageBoxImages" TargetType="Image">
+        <Setter Property="Width" Value="32"/>
+        <Setter Property="Height" Value="22"/>
+    </Style>
+
+    <Style x:Key="LanguageBoxText-Big" TargetType="TextBlock" BasedOn="{StaticResource CheckemTextBlock.Base}">
+        <Setter Property="Foreground" Value="{DynamicResource Color.Black}"/>
+        <Setter Property="FontSize" Value="20"/>
+    </Style>
+
+    <Style x:Key="LanguageBoxText-Small" TargetType="TextBlock" BasedOn="{StaticResource CheckemTextBlock.Base}">
+        <Setter Property="Foreground" Value="{DynamicResource Color.LightGray}"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
     <!--#endregion-->
 </ResourceDictionary>

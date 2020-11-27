@@ -53,6 +53,25 @@ namespace Checkem.CustomComponents
             }
         }
 
+        private string _textboxText;
+        public string TextboxText
+        {
+            get
+            {
+                return _textboxText;
+            }
+
+            set
+            {
+                if (_textboxText != value)
+                {
+                    _textboxText = value;
+
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)

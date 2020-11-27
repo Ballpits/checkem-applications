@@ -26,7 +26,7 @@
 
     <Grid x:Name="TagGrid" MouseUp="TagGrid_MouseUp">
         <Rectangle Fill="{Binding }" RadiusX="18" RadiusY="18"/>
-        <Rectangle x:Name="rectangle" Fill="{Binding Source={x:Static properties:Settings.Default}, Path=ControlColor_White,Converter={StaticResource ColorToBrushConverter}}" RadiusX="18" RadiusY="18" Panel.ZIndex="1"/>
+        <Rectangle x:Name="rectangle" Fill="{DynamicResource Color.White}" RadiusX="18" RadiusY="18" Panel.ZIndex="1"/>
 
         <Grid Panel.ZIndex="1" HorizontalAlignment="Left" Margin="5,0,0,0" Width="20">
             <Ellipse HorizontalAlignment="Center" Fill="#FFFF4949" VerticalAlignment="Center" Height="15" Width="15"/>
