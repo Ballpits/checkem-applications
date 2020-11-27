@@ -1,32 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using Checkem.CustomComponents;
+using Cyclops.Models.Objects;
+using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Input;
 
 namespace Checkem.CustomComponents
 {
-    public partial class Tag : UserControl
+    public partial class Tag : UserControl, INotifyPropertyChanged
     {
         public Tag()
         {
+            DataContext = this;
+
             InitializeComponent();
         }
 
         public bool IsChecked { get; set; }
 
-        public SolidColorBrush Color { get; set; }
+        public event EventHandler StateChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private Brush _color = Brushes.Red;
+
+        public Brush Color
+        {
+            get
+            {
+                return _color;
+            }
+            set
+            {
+                if (_color != value)
+                {
+                    _color = value;
+
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public string Text { get; set; }
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
 
         private void checkbox_Checked(object sender, RoutedEventArgs e)
         {
@@ -40,6 +62,8 @@ namespace Checkem.CustomComponents
 
         private void TagGrid_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            StateChanged?.Invoke(this, EventArgs.Empty);
+
             if (checkbox.IsChecked == true)
             {
                 checkbox.IsChecked = false;

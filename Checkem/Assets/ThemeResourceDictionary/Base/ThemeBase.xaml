@@ -6,6 +6,4 @@
     <SolidColorBrush x:Key="CompletedColor" Color="#FF969696"/>
 
     <SolidColorBrush x:Key="TransparentColor" Color="Transparent"/>
-
-    <FontFamily x:Key="Quicksand">./resources/#Quicksand</FontFamily>
 </ResourceDictionary>

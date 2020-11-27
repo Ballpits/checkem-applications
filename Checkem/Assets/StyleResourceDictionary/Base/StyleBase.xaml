@@ -265,7 +265,7 @@
 
         <Setter Property="Padding" Value="0,0,0,0"/>
 
-        <Setter Property="FontFamily" Value="{StaticResource ResourceKey=Quicksand}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource ResourceKey=Quicksand}"/>
     </Style>
     <!--#endregion-->
     <!--#endregion-->

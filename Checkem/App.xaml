@@ -48,9 +48,121 @@
 
 
                 <!--#region Converter-->
-                <ResourceDictionary Source="Assets/ConverterResourceDictionary/ColorConverterDictionary.xaml"/>
+                <ResourceDictionary Source="Assets/ConverterResourceDictionary/ValueConverterDictionary.xaml"/>
                 <!--#endregion-->
+                
+                <ResourceDictionary>
+                    <FontFamily x:Key="Quicksand">./resources/#Quicksand</FontFamily>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+
+            <!--#region Itembar-->
+            <Style x:Key="ItembarBorderStyle" TargetType="Border">
+                <Setter Property="Background" Value="{DynamicResource Color.White}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Color.Gray}"/>
+
+                <Setter Property="CornerRadius" Value="5"/>
+
+                <Setter Property="BorderThickness" Value="0"/>
+
+                <Setter Property="Margin" Value="0"/>
+            </Style>
+
+            <Style x:Key="CheckboxGrid" TargetType="Grid">
+                <Setter Property="Background" Value="#02FFFFFF"/>
+
+                <Setter Property="Width" Value="50"/>
+
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+
+                <Setter Property="Margin" Value="10,0,0,0"/>
+            </Style>
+
+            <Style x:Key="ItembarCheckbox" TargetType="CheckBox" BasedOn="{StaticResource MaterialDesignFlatPrimaryToggleButton}">
+                <Setter Property="Background" Value="{DynamicResource Color.Primary}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Color.Black}"/>
+
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Width" Value="30"/>
+
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="ItembarCheckboxCircleIcon" TargetType="materialDesign:PackIcon">
+                <Setter Property="Foreground" Value="{DynamicResource Color.Black}"/>
+
+                <Setter Property="Kind" Value="CheckboxBlankCircleOutline"/>
+
+                <Setter Property="Height" Value="35"/>
+                <Setter Property="Width" Value="35"/>
+
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+
+                <Setter Property="IsTabStop" Value="False"/>
+            </Style>
+
+            <Style x:Key="ItembarStarToggle" TargetType="ToggleButton" BasedOn="{StaticResource MaterialDesignActionToggleButton}">
+                <Setter Property="Background" Value="#02FFFFFF"/>
+
+                <Setter Property="Height" Value="45"/>
+                <Setter Property="Width" Value="45"/>
+
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+
+                <Setter Property="Margin" Value="0,0,10,0"/>
+            </Style>
+
+            <Style x:Key="StarBorderIcon" TargetType="materialDesign:PackIcon">
+                <Setter Property="Foreground" Value="{DynamicResource Color.Primary}"/>
+
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Width" Value="30"/>
+
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+
+                <Setter Property="Kind" Value="StarBorder"/>
+            </Style>
+
+            <Style x:Key="StarIcon" TargetType="materialDesign:PackIcon">
+                <Setter Property="Foreground" Value="{DynamicResource Color.Primary}"/>
+
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="25"/>
+
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+
+                <Setter Property="Kind" Value="Star"/>
+            </Style>
+            <!--#endregion-->
+
+
+            <!--#region WindowChrome-->
+            <Style x:Key="todoUSCTitlebar" TargetType="Grid">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" MappingMode="RelativeToBoundingBox">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                    <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+
+                            <GradientStop Color="{DynamicResource PrimaryColor}" Offset="1"/>
+                            <GradientStop Color="{DynamicResource SecondaryColor}" Offset="0.352"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+
+                <Setter Property="Margin" Value="0"/>
+            </Style>
+            <!--#endregion-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

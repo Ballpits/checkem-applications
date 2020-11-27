@@ -14,26 +14,6 @@ namespace Checkem.CustomComponents
             InitializeComponent();
         }
 
-
-        private double _textboxFontSize;
-        public double TextboxFontSize
-        {
-            get
-            {
-                return _textboxFontSize;
-            }
-
-            set
-            {
-                if (_textboxFontSize != value)
-                {
-                    _textboxFontSize = value;
-
-                    OnPropertyChanged();
-                }
-            }
-        }
-
         private Thickness _textboxPadding;
         public Thickness TextboxPadding
         {
@@ -53,19 +33,19 @@ namespace Checkem.CustomComponents
             }
         }
 
-        private string _textboxText;
-        public string TextboxText
+        private string _text;
+        public string Text
         {
             get
             {
-                return _textboxText;
+                return _text;
             }
 
             set
             {
-                if (_textboxText != value)
+                if (_text != value)
                 {
-                    _textboxText = value;
+                    _text = value;
 
                     OnPropertyChanged();
                 }

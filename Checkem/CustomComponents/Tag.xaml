@@ -11,16 +11,36 @@
 
     <UserControl.Resources>
         <ResourceDictionary>
+            <Storyboard x:Key="TagSelected">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00" Value="10"/>
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="5"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Height)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00" Value="10"/>
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="5"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="TagDeselected">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="5"/>
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="10"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(FrameworkElement.Height)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="5"/>
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="10"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
         </ResourceDictionary>
     </UserControl.Resources>
 
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="CheckBox.Checked" SourceName="checkbox">
-            <!--<BeginStoryboard Storyboard="{StaticResource ToggleState1}"/>-->
+            <BeginStoryboard Storyboard="{StaticResource TagSelected}"/>
         </EventTrigger>
 
         <EventTrigger RoutedEvent="CheckBox.Unchecked" SourceName="checkbox">
-            <!--<BeginStoryboard Storyboard="{StaticResource ToggleState0}"/>-->
+            <BeginStoryboard Storyboard="{StaticResource TagDeselected}"/>
         </EventTrigger>
     </UserControl.Triggers>
 
@@ -29,7 +49,8 @@
         <Rectangle x:Name="rectangle" Fill="{DynamicResource Color.White}" RadiusX="18" RadiusY="18" Panel.ZIndex="1"/>
 
         <Grid Panel.ZIndex="1" HorizontalAlignment="Left" Margin="5,0,0,0" Width="20">
-            <Ellipse HorizontalAlignment="Center" Fill="#FFFF4949" VerticalAlignment="Center" Height="15" Width="15"/>
+            <Ellipse HorizontalAlignment="Center" Fill="#FFFF4B4B" VerticalAlignment="Center" Height="15" Width="15"/>
+            <Ellipse x:Name="ellipse" HorizontalAlignment="Center" Fill="{DynamicResource Color.White}" VerticalAlignment="Center" Height="10" Width="10" Panel.ZIndex="1"/>
         </Grid>
 
         <TextBlock Panel.ZIndex="2" Text="Tag content" d:Text="Tag name" Style="{StaticResource CheckemTextBlock.Base}" Padding="5,0,0,3" Margin="25,0,5,0" VerticalAlignment="Center" FontSize="20"/>
