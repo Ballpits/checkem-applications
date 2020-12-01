@@ -43,7 +43,7 @@
 
 
                 <!--#region Native resolution scaling-->
-                <ResourceDictionary Source="Assets/NativeResolutionScalingDitionary/NRS100.xaml"/>
+                <!--<ResourceDictionary Source="Assets/NativeResolutionScalingDitionary/NRS100.xaml"/>-->
                 <!--#endregion-->
 
 

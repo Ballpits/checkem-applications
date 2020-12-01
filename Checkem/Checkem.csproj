@@ -8,6 +8,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Assets\NativeResolutionScalingDitionary\**" />
+	  <EmbeddedResource Remove="Assets\NativeResolutionScalingDitionary\**" />
+	  <None Remove="Assets\NativeResolutionScalingDitionary\**" />
+	  <Page Remove="Assets\NativeResolutionScalingDitionary\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Hardcodet.NotifyIcon.Wpf.NetCore" Version="1.0.14" />
 		<PackageReference Include="MaterialDesignColors" Version="1.2.7" />
 		<PackageReference Include="MaterialDesignThemes" Version="3.2.0" />

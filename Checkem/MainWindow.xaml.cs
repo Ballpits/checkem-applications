@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Checkem.CustomComponents;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -231,5 +232,12 @@ namespace Checkem
         }
 
         #endregion
+
+        private void Tag_StateChanged(object sender, EventArgs e)
+        {
+            Tag tag = sender as Tag;
+
+            System.Windows.Forms.MessageBox.Show($"Tag.IsSelected = {tag.IsSelected}");
+        }
     }
 }

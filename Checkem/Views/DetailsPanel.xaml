@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Checkem.Views.DetailsPanel"
+﻿<UserControl x:Name="userControl" x:Class="Checkem.Views.DetailsPanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -31,8 +31,6 @@
                     <DiscreteObjectKeyFrame KeyTime="00:00:00.1000000" Value="{x:Static Visibility.Collapsed}"/>
                 </ObjectAnimationUsingKeyFrames>
             </Storyboard>
-
-            <Binding x:Key="Tl" Source="Title"/>
         </ResourceDictionary>
     </UserControl.Resources>
 

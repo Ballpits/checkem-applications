@@ -166,7 +166,7 @@
             </Grid>
 
             <Grid x:Name="GridPrincipal" Grid.Column="1" Grid.Row="1" Visibility="Visible">
-                <CustomUserControls:Tag HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <CustomUserControls:Tag x:Name="WorkTag" Text="Work" Color="SeaGreen" HorizontalAlignment="Left" VerticalAlignment="Top" StateChanged="Tag_StateChanged"/>
                 <Views:TodoList Panel.ZIndex="-1"/>
             </Grid>
 
