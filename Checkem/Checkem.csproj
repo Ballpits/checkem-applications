@@ -9,9 +9,13 @@
 
 	<ItemGroup>
 	  <Compile Remove="Assets\NativeResolutionScalingDitionary\**" />
+	  <Compile Remove="ViewModels\**" />
 	  <EmbeddedResource Remove="Assets\NativeResolutionScalingDitionary\**" />
+	  <EmbeddedResource Remove="ViewModels\**" />
 	  <None Remove="Assets\NativeResolutionScalingDitionary\**" />
+	  <None Remove="ViewModels\**" />
 	  <Page Remove="Assets\NativeResolutionScalingDitionary\**" />
+	  <Page Remove="ViewModels\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -311,10 +315,6 @@
 			<Generator>SettingsSingleFileGenerator</Generator>
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
 		</None>
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="ViewModels\" />
 	</ItemGroup>
 
 	<ItemGroup>
