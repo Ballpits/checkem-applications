@@ -1,9 +1,9 @@
-﻿using Data.Models.DataAccessComponents;
+﻿using Checkem.CustomComponents;
+using Checkem.Models;
+using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using Checkem.CustomComponents;
-using System;
-using Checkem.Models;
 
 namespace Checkem.Views
 {
@@ -15,17 +15,21 @@ namespace Checkem.Views
         }
 
 
-        private void TodoListUserControl_Loaded(object sender, RoutedEventArgs e)
+        List<ToDoItem> currentInventory = TodoManager.Filter(FilterMethods.Starred);
+
+
+        private void TodoList_Loaded(object sender, RoutedEventArgs e)
         {
             LoadTodoList();
         }
 
         private void LoadTodoList()
         {
-            foreach (var item in TodoManager.Inventory)
+            foreach (var item in currentInventory)
             {
                 Itembar itembar = new Itembar(item);
                 itembar.Click += new EventHandler(this.Itembar_Click);
+
                 TodoItemsStackPanel.Children.Add(itembar);
             }
         }

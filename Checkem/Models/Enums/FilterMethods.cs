@@ -1,4 +1,4 @@
-﻿namespace Sphere.Data.Components
+﻿namespace Checkem.Models
 {
     public enum FilterMethods
     {

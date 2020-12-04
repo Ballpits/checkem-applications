@@ -19,9 +19,9 @@ namespace Data.Components
 
 
         //Save everthing from inventory list to Inventory.json file
-        public void Save(List<T> Inventory)
+        public void Save(List<T> inventory)
         {
-            File.WriteAllText(@"Inventory.json", JsonConvert.SerializeObject(Inventory));
+            File.WriteAllText(@"Inventory.json", JsonConvert.SerializeObject(inventory));
         }
 
 

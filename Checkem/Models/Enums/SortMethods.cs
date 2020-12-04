@@ -1,6 +1,6 @@
-﻿namespace Data.Models.DataAccessComponents
+﻿namespace Checkem.Models
 {
-    public enum SortingMethods
+    public enum SortMethods
     {
         ID = 0,
         IDReversed = 1,

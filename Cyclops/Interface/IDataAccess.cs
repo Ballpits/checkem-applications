@@ -4,7 +4,7 @@ namespace Data
 {
     internal interface IDataAccess<T>
     {
-        void Save(List<T> Inventory);
+        void Save(List<T> inventory);
 
         List<T> Retrieve();
     }

@@ -8,7 +8,7 @@ namespace Checkem.Models
     {
         private static DataManipulation<ToDoItem> dataManipulation = new DataManipulation<ToDoItem>();
 
-        public static List<ToDoItem> Inventory
+        private static List<ToDoItem> Inventory
         {
             get
             {
@@ -19,23 +19,18 @@ namespace Checkem.Models
 
         //Filter do to items
         #region Filter
-        public static List<ToDoItem> Filter(int mode)
+        public static List<ToDoItem> Filter(FilterMethods method)
         {
-            /*Modes:
-             * 0: return all items in Inventory list
-             * 1: return planned item in Inventory list
-             * 2: return starred item in Inventory list
-             * 3: return completed item in Inventory list
-             */
-
-            switch (mode)
+            switch (method)
             {
-                case 0:
+                //return all items in Inventory list
+                case FilterMethods.None:
                     {
                         return Inventory;
                     }
 
-                case 1:
+                //return planned item in Inventory list
+                case FilterMethods.Planned:
                     {
                         List<ToDoItem> list = new List<ToDoItem>();
 
@@ -50,7 +45,8 @@ namespace Checkem.Models
                         return list;
                     }
 
-                case 2:
+                //return starred item in Inventory list
+                case FilterMethods.Starred:
                     {
                         List<ToDoItem> list = new List<ToDoItem>();
 
@@ -65,7 +61,8 @@ namespace Checkem.Models
                         return list;
                     }
 
-                case 3:
+                //return completed item in Inventory list
+                case FilterMethods.Completed:
                     {
                         List<ToDoItem> list = new List<ToDoItem>();
 
@@ -92,59 +89,56 @@ namespace Checkem.Models
 
         //Sort and return Inventory list
         #region Sort
-        public static List<ToDoItem> Sort(int Mode)
+        public static List<ToDoItem> Sort(SortMethods method, List<ToDoItem> list)
         {
-            /*Modes:
-             * 0: return Inventory ordered by ID
-             * 1: return Inventory ordered by ID reversed
-             * 2: return Inventory ordered by Importance(starred first)
-             * 3: return Inventory ordered by alphabetical ascending
-             * 4: return Inventory ordered by alphabetical descending
-             * 5: return Inventory ordered by begin time
-             * 6: return Inventory ordered by end time
-             * 7: return Inventory ordered by creation date
-             */
-
-            switch (Mode)
+            switch (method)
             {
-                case 0:
+                //return Inventory ordered by ID
+                case SortMethods.ID:
                     {
-                        return Inventory.OrderBy(x => x.ID).ToList();
+                        return list.OrderBy(x => x.ID).ToList();
                     }
 
-                case 1:
+                //return Inventory ordered by ID reversed
+                case SortMethods.IDReversed:
                     {
-                        return Inventory.OrderBy(x => x.ID).Reverse().ToList();
+                        return list.OrderBy(x => x.ID).Reverse().ToList();
                     }
 
-                case 2:
+                //return Inventory ordered by Importance(starred first)
+                case SortMethods.StarredFirst:
                     {
-                        return Inventory.OrderBy(x => x.IsStarred).Reverse().ToList();
+                        return list.OrderBy(x => x.IsStarred).Reverse().ToList();
                     }
 
-                case 3:
+                //return Inventory ordered by alphabetical ascending
+                case SortMethods.AlphabeticalAscending:
                     {
-                        return Inventory.OrderBy(x => x.Title).ToList();
+                        return list.OrderBy(x => x.Title).ToList();
                     }
 
-                case 4:
+                //return Inventory ordered by alphabetical descending
+                case SortMethods.AlphabeticalDescending:
                     {
-                        return Inventory.OrderBy(x => x.Title).Reverse().ToList();
+                        return list.OrderBy(x => x.Title).Reverse().ToList();
                     }
 
-                case 5:
+                //return Inventory ordered by begin time
+                case SortMethods.BeginTime:
                     {
-                        return Inventory.OrderBy(x => x.BeginDateTime).ToList();
+                        return list.OrderBy(x => x.BeginDateTime).ToList();
                     }
 
-                case 6:
+                //return Inventory ordered by end time
+                case SortMethods.EndTime:
                     {
-                        return Inventory.OrderBy(x => x.EndDateTime).ToList();
+                        return list.OrderBy(x => x.EndDateTime).ToList();
                     }
 
-                case 7:
+                //return Inventory ordered by creation date
+                case SortMethods.CreationDate:
                     {
-                        return Inventory.OrderBy(x => x.CreationDateTime).ToList();
+                        return list.OrderBy(x => x.CreationDateTime).ToList();
                     }
 
                 default:
