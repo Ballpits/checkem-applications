@@ -37,7 +37,11 @@
                 <Grid Height="75" VerticalAlignment="Top">
 
                     <TextBlock x:Name="ToDoListTitleTextBlock" Foreground="{DynamicResource Color.Primary}" Text="Name" Margin="0,5,0,0" Height="40" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="36" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"/>
-                    <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="0 Items" Margin="0,0,0,5" Height="20" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="16" Padding="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{DynamicResource Color.Primary}" TextAlignment="Center"/>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                        <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="{Binding ItemCount}" d:Text="0" Height="20" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Stretch" Foreground="{DynamicResource Color.Primary}" TextAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock x:Name="ToDoListItemCounterStringTextBlock" Text="{Binding ItemCounterString}" d:Text="Item" Height="20" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Stretch" Foreground="{DynamicResource Color.Primary}" TextAlignment="Center"/>
+                    </StackPanel>
 
 
                     <Grid Margin="0,0,20,0" HorizontalAlignment="Right">
