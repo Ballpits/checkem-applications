@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cyclops.Models.Objects
+namespace Checkem.Models
 {
     public class ToDoItem
     {

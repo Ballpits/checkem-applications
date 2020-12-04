@@ -1,4 +1,4 @@
-﻿namespace Cyclops.Models.DataAccessComponents
+﻿namespace Sphere.Data.Components
 {
     public enum FilterMethods
     {

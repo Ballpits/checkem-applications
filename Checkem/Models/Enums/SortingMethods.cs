@@ -1,4 +1,4 @@
-﻿namespace Cyclops.Models.DataAccessComponents
+﻿namespace Data.Models.DataAccessComponents
 {
     public enum SortingMethods
     {

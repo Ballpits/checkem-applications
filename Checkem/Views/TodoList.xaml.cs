@@ -1,15 +1,14 @@
-﻿using Cyclops.Models.DataAccessComponents;
+﻿using Data.Models.DataAccessComponents;
 using System.Windows;
 using System.Windows.Controls;
 using Checkem.CustomComponents;
 using System;
+using Checkem.Models;
 
 namespace Checkem.Views
 {
     public partial class TodoList : UserControl
     {
-        DataAccess dataAccess = new DataAccess();
-
         public TodoList()
         {
             InitializeComponent();
@@ -23,7 +22,7 @@ namespace Checkem.Views
 
         private void LoadTodoList()
         {
-            foreach (var item in dataAccess.Inventory())
+            foreach (var item in TodoManager.Inventory)
             {
                 Itembar itembar = new Itembar(item);
                 itembar.Click += new EventHandler(this.Itembar_Click);

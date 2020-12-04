@@ -1,16 +1,14 @@
-﻿using Checkem.Assets.ValueConverter;
-using Cyclops.Models.Objects;
+﻿using Checkem.Models;
 using MaterialDesignThemes.Wpf;
+using Sphere.Readable;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using Visual;
 
 namespace Checkem.CustomComponents
 {

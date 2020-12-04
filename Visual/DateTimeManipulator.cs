@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Visual
+namespace Sphere.Readable
 {
     public static class DateTimeManipulator
     {
