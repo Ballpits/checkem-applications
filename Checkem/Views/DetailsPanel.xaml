@@ -10,7 +10,6 @@
              mc:Ignorable="d" 
              d:DesignWidth="1920"
              d:DesignHeight="1080"
-             Loaded="userControl_Loaded"
              >
 
     <UserControl.Resources>
@@ -42,6 +41,10 @@
         <EventTrigger RoutedEvent="Grid.MouseDown" SourceName="DimBackground">
             <BeginStoryboard Storyboard="{StaticResource DetailsPanelClose}"/>
         </EventTrigger>
+
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="CloseButton">
+            <BeginStoryboard Storyboard="{StaticResource DetailsPanelClose}"/>
+        </EventTrigger>
     </UserControl.Triggers>
 
     <Grid x:Name="DimBackground" Background="#7F000000">
@@ -50,7 +53,7 @@
                 <StackPanel>
 
                     <Grid Height="40" Margin="0,15,0,0">
-                        <Button Background="{StaticResource Color.Gray}" Style="{StaticResource CheckemFlatButton.Circle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="30" Height="30" Padding="0,0,0,0">
+                        <Button x:Name="CloseButton" Background="{StaticResource Color.LightGray}" Style="{StaticResource CheckemFlatButton.Circle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="30" Height="30" Padding="0,0,0,0">
                             <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
                         </Button>
 
@@ -65,7 +68,7 @@
                         </ToggleButton>
                     </Grid>
 
-                    <TextBox Text="{Binding Title,Mode=TwoWay}" Margin="15,15,15,0"/>
+                    <TextBox x:Name="textBoxTitle"  Text="{Binding Title,Mode=TwoWay}" Margin="10,10,10,0" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_Title}" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" Foreground="{DynamicResource Color.Black}" FontFamily="Arial" Background="{DynamicResource Color.LightGray}" CaretBrush="{DynamicResource Color.Primary}"/>
                 </StackPanel>
             </Border>
         </ScrollViewer>

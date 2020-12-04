@@ -25,12 +25,19 @@ namespace Checkem.Views
             InitializeComponent();
         }
 
+
+        #region Event
         public event PropertyChangedEventHandler PropertyChanged;
-        public event EventHandler CloceAnimationComplete;
+        public event EventHandler Close;
+        #endregion
 
 
+        #region Variable
         public ToDoItem ItemProperties;
+        #endregion
 
+
+        #region Property
         public string Title
         {
             get
@@ -64,20 +71,17 @@ namespace Checkem.Views
                 }
             }
         }
+        #endregion
+
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        private void userControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-
-        }
-
         private void StoryBoard_Completed(object sender, EventArgs e)
         {
-            CloceAnimationComplete?.Invoke(this, EventArgs.Empty);
+            Close?.Invoke(this, EventArgs.Empty);
         }
     }
 }

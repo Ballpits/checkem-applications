@@ -102,12 +102,12 @@ namespace Checkem.Views
             Itembar itembar = sender as Itembar;
 
             DetailsPanel detailsPanel = new DetailsPanel(itembar);
-            detailsPanel.CloceAnimationComplete += new EventHandler(this.DetailsPanel_Click);
+            detailsPanel.Close += new EventHandler(this.DetailsPanel_Close);
 
             DataGrid.Children.Add(detailsPanel);
         }
 
-        private void DetailsPanel_Click(object sender, EventArgs e)
+        private void DetailsPanel_Close(object sender, EventArgs e)
         {
             DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
         }
