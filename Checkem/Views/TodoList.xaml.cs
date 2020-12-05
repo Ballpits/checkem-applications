@@ -25,7 +25,7 @@ namespace Checkem.Views
 
 
         #region Variable
-        List<ToDoItem> currentInventory = TodoManager.Filter(FilterMethods.Starred);
+        List<ToDoItem> currentInventory = TodoManager.Filter(FilterMethods.None);
         #endregion
 
 

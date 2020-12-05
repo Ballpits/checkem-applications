@@ -165,7 +165,7 @@
 
             <Grid>
                 <Grid x:Name="CheckboxGrid" Style="{DynamicResource CheckboxGrid}">
-                    <CheckBox x:Name="checkBox" Style="{DynamicResource ItembarCheckbox}" Checked="checkBox_Checked">
+                    <CheckBox x:Name="checkBox" IsChecked="{Binding IsCompleted,Mode=TwoWay}" Style="{DynamicResource ItembarCheckbox}">
                         <materialDesign:PackIcon Style="{DynamicResource ItembarCheckboxCircleIcon}"/>
                     </CheckBox>
                 </Grid>
@@ -180,7 +180,7 @@
                 <!--<TextBlock x:Name="ProgressIndicator" Text="56%" Margin="0,0,55,1.6" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" TextAlignment="Center" FontFamily="Quicksand"/>
             <ProgressBar x:Name="ProgressBar" Style="{StaticResource MaterialDesignCircularProgressBar}" Height="30" Margin="0,3,55,16.6" Value="70" Foreground="#FF2196F3" BorderBrush="{x:Null}" Background="{x:Null}" Width="30" HorizontalAlignment="Right" VerticalAlignment="Center"/>-->
 
-                <ToggleButton x:Name="StarToggle" Style="{DynamicResource ItembarStarToggle}" ToolTip="Mark As Important" Width="45" Height="45" VerticalAlignment="Center">
+                <ToggleButton x:Name="StarToggle" IsChecked="{Binding IsStarred}" Style="{DynamicResource ItembarStarToggle}" ToolTip="Mark As Important" Width="45" Height="45" VerticalAlignment="Center">
                     <ToggleButton.Content>
                         <materialDesign:PackIcon x:Name="StarButtonStarBorderIcon" Style="{DynamicResource StarBorderIcon}"/>
                     </ToggleButton.Content>

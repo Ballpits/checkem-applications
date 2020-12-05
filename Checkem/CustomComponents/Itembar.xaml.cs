@@ -14,11 +14,6 @@ namespace Checkem.CustomComponents
 {
     public partial class Itembar : UserControl, INotifyPropertyChanged
     {
-        public Itembar()
-        {
-            InitializeComponent();
-        }
-
         public Itembar(ToDoItem item)
         {
             DataContext = this;
@@ -26,6 +21,8 @@ namespace Checkem.CustomComponents
             ItemProperties = item;
 
             InitializeComponent();
+
+            OnCompletetionChanged();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -53,6 +50,58 @@ namespace Checkem.CustomComponents
             }
         }
 
+        public bool IsCompleted
+        {
+            get
+            {
+                return ItemProperties.IsCompleted;
+            }
+            set
+            {
+                if (ItemProperties.IsCompleted != value)
+                {
+                    ItemProperties.IsCompleted = value;
+
+                    OnCompletetionChanged();
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public bool IsStarred
+        {
+            get
+            {
+                return ItemProperties.IsStarred;
+            }
+            set
+            {
+                if (ItemProperties.IsStarred != value)
+                {
+                    ItemProperties.IsStarred = value;
+
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public bool IsReminderOn
+        {
+            get
+            {
+                return ItemProperties.IsReminderOn;
+            }
+            set
+            {
+                if (ItemProperties.IsReminderOn != value)
+                {
+                    ItemProperties.IsReminderOn = value;
+
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         #endregion
 
 
@@ -64,6 +113,21 @@ namespace Checkem.CustomComponents
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+
+        private void OnCompletetionChanged()
+        {
+            if (ItemProperties.IsCompleted)
+            {
+                TitleTextBlock.Foreground = this.FindResource("Color.DarkGray") as SolidColorBrush;
+                TitleTextBlock.TextDecorations = TextDecorations.Strikethrough;
+            }
+            else
+            {
+                TitleTextBlock.Foreground = this.FindResource("Color.Black") as SolidColorBrush;
+                TitleTextBlock.TextDecorations = null;
+            }
         }
 
 
@@ -106,11 +170,6 @@ namespace Checkem.CustomComponents
                 ReminderIcon.Visibility = Visibility.Hidden;
                 ReminderDetailTextBlock.Visibility = Visibility.Hidden;
             }
-        }
-
-        private void checkBox_Checked(object sender, RoutedEventArgs e)
-        {
-            Title = "binding works!!";
         }
 
         private void ItembarBorder_MouseEnter(object sender, MouseEventArgs e)
