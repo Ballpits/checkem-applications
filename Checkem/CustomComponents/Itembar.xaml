@@ -9,7 +9,8 @@
              mc:Ignorable="d" 
              d:DesignWidth="800"
              Height="70"
-             Margin="10,5,10,5" 
+             Background="#02000000"
+             Margin="10,5,10,5"
              Loaded="Itembar_Loaded"
              MouseDown="Itembar_MouseDown"
              >
@@ -117,10 +118,10 @@
     </UserControl.Resources>
 
     <UserControl.Triggers>
-        <EventTrigger RoutedEvent="Border.MouseEnter" SourceName="ItembarBorder">
+        <EventTrigger RoutedEvent="UserControl.MouseEnter" SourceName="userControl">
             <BeginStoryboard Storyboard="{StaticResource ItembarMouseEnter}"/>
         </EventTrigger>
-        <EventTrigger RoutedEvent="Border.MouseLeave" SourceName="ItembarBorder">
+        <EventTrigger RoutedEvent="UserControl.MouseLeave" SourceName="userControl">
             <BeginStoryboard Storyboard="{StaticResource ItembarMouseLeave}"/>
         </EventTrigger>
     </UserControl.Triggers>
@@ -171,8 +172,10 @@
 
                 <TextBlock x:Name="TitleTextBlock" Style="{DynamicResource CheckemTextBlock.Base}" VerticalAlignment="Center" Margin="70,0,55,0" FontSize="20" Text="{Binding Path=Title,Mode=TwoWay}" Foreground="{DynamicResource Color.Black}" TextAlignment="Left"/>
 
-                <materialDesign:PackIcon x:Name="ReminderIcon" Kind="Bell" Margin="70,0,0,7.5" Width="20" Height="20" Foreground="#FFE3F321" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                <TextBlock Name="ReminderDetailTextBlock" Style="{DynamicResource CheckemTextBlock.Base}" VerticalAlignment="Bottom" Margin="95,0,55,6" FontSize="14" Height="20" Text="Due date..." Foreground="{DynamicResource Color.Black}" TextAlignment="Left"/>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon x:Name="ReminderIcon" Kind="Bell" Margin="70,0,0,7.5" Width="20" Height="20" Foreground="#FFE3F321" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <TextBlock Name="ReminderDetailTextBlock" Style="{DynamicResource CheckemTextBlock.Base}" VerticalAlignment="Bottom" Margin="95,0,55,6" FontSize="14" Height="20" Text="Due date..." Foreground="{DynamicResource Color.Black}" TextAlignment="Left"/>
+                </StackPanel>
 
                 <!--<TextBlock x:Name="ProgressIndicator" Text="56%" Margin="0,0,55,1.6" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" TextAlignment="Center" FontFamily="Quicksand"/>
             <ProgressBar x:Name="ProgressBar" Style="{StaticResource MaterialDesignCircularProgressBar}" Height="30" Margin="0,3,55,16.6" Value="70" Foreground="#FF2196F3" BorderBrush="{x:Null}" Background="{x:Null}" Width="30" HorizontalAlignment="Right" VerticalAlignment="Center"/>-->

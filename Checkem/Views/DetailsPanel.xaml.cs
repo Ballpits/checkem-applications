@@ -79,6 +79,7 @@ namespace Checkem.Views
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
+
         private void StoryBoard_Completed(object sender, EventArgs e)
         {
             Close?.Invoke(this, EventArgs.Empty);

@@ -9,13 +9,9 @@
 
 	<ItemGroup>
 	  <Compile Remove="Assets\NativeResolutionScalingDitionary\**" />
-	  <Compile Remove="ViewModels\**" />
 	  <EmbeddedResource Remove="Assets\NativeResolutionScalingDitionary\**" />
-	  <EmbeddedResource Remove="ViewModels\**" />
 	  <None Remove="Assets\NativeResolutionScalingDitionary\**" />
-	  <None Remove="ViewModels\**" />
 	  <Page Remove="Assets\NativeResolutionScalingDitionary\**" />
-	  <Page Remove="ViewModels\**" />
 	</ItemGroup>
 
 	<ItemGroup>

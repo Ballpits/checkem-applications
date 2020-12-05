@@ -68,7 +68,17 @@
                         </ToggleButton>
                     </Grid>
 
-                    <TextBox x:Name="textBoxTitle"  Text="{Binding Title,Mode=TwoWay}" Margin="10,10,10,0" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_Title}" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" Foreground="{DynamicResource Color.Black}" FontFamily="Arial" Background="{DynamicResource Color.LightGray}" CaretBrush="{DynamicResource Color.Primary}"/>
+                    <TextBox Text="{Binding Title,Mode=TwoWay}" Margin="10,20,10,0" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_Title}" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" Foreground="{DynamicResource Color.Black}" FontFamily="{DynamicResource Quicksand}" Background="#FFE6E6E6" CaretBrush="{DynamicResource Color.Primary}"/>
+
+                    <!--<ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" FontFamily="{DynamicResource Quicksand}" Margin="10,20,10,0" FontSize="20" Height="70" SelectedIndex="0">
+                        <Button Content="INdex 0"/>
+                        <Button Content="INdex 1"/>
+                        <Button Content="INdex 2"/>
+                        <Button Content="INdex 3"/>
+                        <Button Content="INdex 4"/>
+                    </ComboBox>-->
+
+                    <TextBox Text="{Binding Description,Mode=TwoWay}" Margin="10,20,10,0" TextWrapping="Wrap" MaxLength="1000" FontSize="20" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_Description}" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" Foreground="{DynamicResource Color.Black}" FontFamily="{DynamicResource Quicksand}" Background="{DynamicResource Color.LightGray}" CaretBrush="{DynamicResource Color.Primary}"/>
                 </StackPanel>
             </Border>
         </ScrollViewer>
