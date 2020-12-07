@@ -6,6 +6,7 @@ namespace Data
     {
         void Save(List<T> inventory);
 
+
         List<T> Retrieve();
     }
 }

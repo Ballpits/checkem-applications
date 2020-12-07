@@ -2,10 +2,11 @@
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Monitor
+namespace Checkem.Monitor
 {
     public class ScreenResolution
     {
+        #region Property
         //Vertical resolution
         public static int Vertical
         {
@@ -23,7 +24,8 @@ namespace Monitor
                 return HorizontalRes(Screen.PrimaryScreen);
             }
         }
-        
+        #endregion
+
 
         //Get vertical resolution
         private static int VerticalRes(Screen screen)

@@ -27,7 +27,10 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Cyclops\Sphere.Data.csproj" />
-		<ProjectReference Include="..\Monitor\Monitor.csproj" />
+		<ProjectReference Include="..\Monitor\Sphere.Monitor.csproj" />
+		<ProjectReference Include="..\Sphere.Data\Sphere.Data.csproj" />
+		<ProjectReference Include="..\Sphere.Monitor\Sphere.Monitor.csproj" />
+		<ProjectReference Include="..\Sphere.Readable\Sphere.Readable.csproj" />
 		<ProjectReference Include="..\Visual\Sphere.Readable.csproj" />
 	</ItemGroup>
 

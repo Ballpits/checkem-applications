@@ -1,10 +1,10 @@
 ﻿using Data.Components;
 
-namespace Checkem.Models
+namespace Sphere.Data
 {
     public class DataManipulation<T> : DataAccess_Json<T>
     {
-        //Create new to do item
+        //Create new item in database
         public void Add(T dataType)
         {
             Inventory.Add(dataType);
@@ -13,10 +13,10 @@ namespace Checkem.Models
         }
 
 
-        //Update to do item
+        //Update item in database
         public void Update(T dataType)
         {
-            //Find to do item's index in Inventory list with it's ID
+            //Find to do item's index in Inventory
             int index = Inventory.IndexOf(dataType);
 
             Inventory[index] = dataType;
@@ -25,7 +25,7 @@ namespace Checkem.Models
         }
 
 
-        //Remove to do item
+        //Remove item in database
         public void Remove(T dataType)
         {
             Inventory.Remove(dataType);
