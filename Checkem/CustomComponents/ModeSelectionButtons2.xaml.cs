@@ -16,8 +16,8 @@ namespace Checkem.CustomComponents
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private string _Option1Content;
-        public string Option1Content
+        private object _Option1Content;
+        public object Option1Content
         {
             get
             {
@@ -34,8 +34,8 @@ namespace Checkem.CustomComponents
             }
         }
 
-        private string _Option2Content;
-        public string Option2Content
+        private object _Option2Content;
+        public object Option2Content
         {
             get
             {

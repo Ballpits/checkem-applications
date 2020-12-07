@@ -20,6 +20,8 @@ namespace Checkem.CustomComponents
         public event EventHandler StateChanged;
         public event PropertyChangedEventHandler PropertyChanged;
 
+
+        #region Property
         public bool IsSelected { get; set; } = false;
 
         private SolidColorBrush _color;
@@ -57,6 +59,7 @@ namespace Checkem.CustomComponents
                 }
             }
         }
+        #endregion
 
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)
@@ -74,17 +77,22 @@ namespace Checkem.CustomComponents
             IsSelected = false;
         }
 
+        private bool LeftMousePressed = false;
         private void TagGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed && IsMouseOver == true)
+            if (e.LeftButton == MouseButtonState.Pressed && IsMouseOver)
             {
-
+                LeftMousePressed = true;
+            }
+            else
+            {
+                LeftMousePressed = false;
             }
         }
 
         private void TagGrid_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Released && IsMouseOver == true)
+            if (e.LeftButton == MouseButtonState.Released && IsMouseOver && LeftMousePressed)
             {
                 if (checkbox.IsChecked == true)
                 {
