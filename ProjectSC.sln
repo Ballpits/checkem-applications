@@ -18,6 +18,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sphere.Monitor", "Sphere.Mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sphere.Readable", "Sphere.Readable\Sphere.Readable.csproj", "{9EDDF553-D310-4CC2-AFB2-4AD8DB5C8C47}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common libraries", "Common libraries", "{04EFE030-8EDA-4F7F-9C96-E119D4757C42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkem.Models", "Checkem.Models\Checkem.Models.csproj", "{10745431-8EA1-4246-A502-70E0A593ACB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,9 +92,27 @@ Global
 		{9EDDF553-D310-4CC2-AFB2-4AD8DB5C8C47}.Release|x64.Build.0 = Release|Any CPU
 		{9EDDF553-D310-4CC2-AFB2-4AD8DB5C8C47}.Release|x86.ActiveCfg = Release|Any CPU
 		{9EDDF553-D310-4CC2-AFB2-4AD8DB5C8C47}.Release|x86.Build.0 = Release|Any CPU
+		{10745431-8EA1-4246-A502-70E0A593ACB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10745431-8EA1-4246-A502-70E0A593ACB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10745431-8EA1-4246-A502-70E0A593ACB0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{10745431-8EA1-4246-A502-70E0A593ACB0}.Debug|x64.Build.0 = Debug|Any CPU
+		{10745431-8EA1-4246-A502-70E0A593ACB0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{10745431-8EA1-4246-A502-70E0A593ACB0}.Debug|x86.Build.0 = Debug|Any CPU
+		{10745431-8EA1-4246-A502-70E0A593ACB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10745431-8EA1-4246-A502-70E0A593ACB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10745431-8EA1-4246-A502-70E0A593ACB0}.Release|x64.ActiveCfg = Release|Any CPU
+		{10745431-8EA1-4246-A502-70E0A593ACB0}.Release|x64.Build.0 = Release|Any CPU
+		{10745431-8EA1-4246-A502-70E0A593ACB0}.Release|x86.ActiveCfg = Release|Any CPU
+		{10745431-8EA1-4246-A502-70E0A593ACB0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{54B60FB6-1C9E-46E8-A251-722A1A7569F7} = {04EFE030-8EDA-4F7F-9C96-E119D4757C42}
+		{A3F26C0A-256D-4F95-9CDE-5BBABEBCF833} = {04EFE030-8EDA-4F7F-9C96-E119D4757C42}
+		{9EDDF553-D310-4CC2-AFB2-4AD8DB5C8C47} = {04EFE030-8EDA-4F7F-9C96-E119D4757C42}
+		{10745431-8EA1-4246-A502-70E0A593ACB0} = {04EFE030-8EDA-4F7F-9C96-E119D4757C42}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {11A87A6E-C5E0-443E-B522-0D3625A69047}
