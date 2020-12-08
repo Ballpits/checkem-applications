@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using Sphere.Data;
 
 namespace Checkem.Views
 {
@@ -92,6 +93,7 @@ namespace Checkem.Views
             {
                 Itembar itembar = new Itembar(item);
                 itembar.Click += new EventHandler(this.Itembar_Click);
+                itembar.Remove += new EventHandler(this.Itembar_Remove);
 
                 TodoItemsStackPanel.Children.Add(itembar);
             }
@@ -105,6 +107,14 @@ namespace Checkem.Views
             detailsPanel.Close += new EventHandler(this.DetailsPanel_Close);
 
             DataGrid.Children.Add(detailsPanel);
+        }
+
+        private void Itembar_Remove(object sender, EventArgs e)
+        {
+            Itembar itembar = sender as Itembar;
+
+            TodoItemsStackPanel.Children.Remove(itembar);
+            DataManipulation<ToDoItem> ToDoDataManipulation = new DataManipulation<ToDoItem>();
         }
 
         private void DetailsPanel_Close(object sender, EventArgs e)

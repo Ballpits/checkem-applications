@@ -93,7 +93,7 @@
                     <EasingColorKeyFrame KeyTime="00:00:00.0830000" Value="{StaticResource ResourceKey=WhiteColor}"/>
                 </ColorAnimationUsingKeyFrames>-->
             </Storyboard>
-            <Storyboard x:Key="ItembarRemove">
+            <Storyboard x:Key="ItembarRemove" Completed="Storyboard_ItembarRemove_Completed">
                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.Visibility)">
                     <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
                     <DiscreteObjectKeyFrame KeyTime="00:00:00.4000000" Value="{x:Static Visibility.Visible}"/>
@@ -133,7 +133,7 @@
 
         <Border x:Name="ItembarBorder" Style="{StaticResource ItembarBorderStyle}" BorderThickness="3" BorderBrush="{DynamicResource Color.Gray}" Panel.ZIndex="1" Visibility="Visible" Margin="0,0,0,0" MouseEnter="ItembarBorder_MouseEnter" MouseLeave="ItembarBorder_MouseLeave" Background="{DynamicResource Color.White}">
             <Border.ContextMenu>
-                <ContextMenu FontFamily="{StaticResource ResourceKey=Quicksand}">
+                <ContextMenu Name="aaa" FontFamily="{StaticResource ResourceKey=Quicksand}">
                     <MenuItem Header="Mark as completed" Icon="{materialDesign:PackIcon Kind=Check, Size=18}"/>
                     <MenuItem Header="Mark as starred" Icon="{materialDesign:PackIcon Kind=StarOutline, Size=18}"/>
 
@@ -159,7 +159,7 @@
 
                     <Separator/>
 
-                    <MenuItem Header="Remove" Icon="{materialDesign:PackIcon Kind=TrashOutline, Size=18}" Foreground="Red"/>
+                    <MenuItem Header="Remove" Icon="{materialDesign:PackIcon Kind=TrashOutline, Size=18}" Foreground="{DynamicResource OverDueColor}" Click="MenuItem_Remove_Click"/>
                 </ContextMenu>
             </Border.ContextMenu>
 

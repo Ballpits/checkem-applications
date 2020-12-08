@@ -25,8 +25,12 @@ namespace Checkem.CustomComponents
             OnCompletetionChanged();
         }
 
+
+        #region Event
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler Click;
+        public event EventHandler Remove;
+        #endregion
 
 
         #region Properties
@@ -194,6 +198,17 @@ namespace Checkem.CustomComponents
 
                 Click?.Invoke(this, EventArgs.Empty);
             }
+        }
+
+        private void MenuItem_Remove_Click(object sender, RoutedEventArgs e)
+        {
+            Storyboard storyboard = this.FindResource("ItembarRemove") as Storyboard;
+            storyboard.Begin();
+        }
+
+        private void Storyboard_ItembarRemove_Completed(object sender, EventArgs e)
+        {
+            Remove?.Invoke(this, EventArgs.Empty);
         }
     }
 }

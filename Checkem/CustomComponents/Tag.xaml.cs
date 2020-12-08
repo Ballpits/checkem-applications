@@ -17,8 +17,11 @@ namespace Checkem.CustomComponents
             InitializeComponent();
         }
 
+
+        #region Event
         public event EventHandler StateChanged;
         public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
 
 
         #region Property

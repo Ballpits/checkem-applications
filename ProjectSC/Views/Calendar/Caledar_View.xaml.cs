@@ -26,11 +26,11 @@ namespace ProjectSC.Views.Calendar
 
         private void DateGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            for (int r = 1; r < 6 ; r++)
+            for (int r = 1; r < 6; r++)
             {
                 for (int c = 0; c < 7; c++)
                 {
-                    CalendarDay_View caledar_View = new CalendarDay_View() { Day = c};
+                    CalendarDay_View caledar_View = new CalendarDay_View() { Day = c };
                     Grid.SetColumn(caledar_View, c);
                     Grid.SetRow(caledar_View, r);
                     DateGrid.Children.Add(caledar_View);
