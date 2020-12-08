@@ -23,6 +23,7 @@ namespace Checkem.CustomComponents
             InitializeComponent();
 
             OnCompletetionChanged();
+            OnVisualUpdate();
         }
 
 
@@ -101,6 +102,7 @@ namespace Checkem.CustomComponents
                 {
                     ItemProperties.IsReminderOn = value;
 
+                    OnVisualUpdate();
                     OnPropertyChanged();
                 }
             }
@@ -137,17 +139,14 @@ namespace Checkem.CustomComponents
 
         private void Itembar_Loaded(object sender, RoutedEventArgs e)
         {
-            VisualUpdate();
+            OnVisualUpdate();
         }
 
-        private void VisualUpdate()
+        private void OnVisualUpdate()
         {
             if (ItemProperties.IsReminderOn)
             {
-                this.Height = 70;
-
-                ReminderIcon.Visibility = Visibility.Visible;
-                ReminderDetailTextBlock.Visibility = Visibility.Visible;
+                ReminderDetailStackPanel.Visibility = Visibility.Visible;
 
                 if (this.ItemProperties.IsAdvanceReminderOn)
                 {
@@ -169,10 +168,7 @@ namespace Checkem.CustomComponents
             }
             else
             {
-                this.Height = 50;
-
-                ReminderIcon.Visibility = Visibility.Hidden;
-                ReminderDetailTextBlock.Visibility = Visibility.Hidden;
+                ReminderDetailStackPanel.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -192,9 +188,9 @@ namespace Checkem.CustomComponents
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
-                Storyboard sb = this.FindResource("ItembarClick") as Storyboard;
+                //Storyboard sb = this.FindResource("ItembarClick") as Storyboard;
 
-                sb.Begin();
+                //sb.Begin();
 
                 Click?.Invoke(this, EventArgs.Empty);
             }
