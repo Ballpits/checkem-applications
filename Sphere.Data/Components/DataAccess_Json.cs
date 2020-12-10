@@ -15,7 +15,7 @@ namespace Data.Components
 
 
         //File path for inventory json file
-        private string JsonFilePath = @"./Inventory.json";
+        protected string JsonFilePath;
 
 
         //Save everthing from inventory list to Inventory.json file

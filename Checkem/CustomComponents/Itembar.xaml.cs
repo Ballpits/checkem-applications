@@ -136,7 +136,6 @@ namespace Checkem.CustomComponents
             }
         }
 
-
         private void Itembar_Loaded(object sender, RoutedEventArgs e)
         {
             OnVisualUpdate();

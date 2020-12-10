@@ -7,7 +7,7 @@ namespace Checkem.Models
 {
     public static class TodoManager
     {
-        private static DataManipulation<ToDoItem> dataManipulation = new DataManipulation<ToDoItem>();
+        private static DataManipulation<ToDoItem> dataManipulation = new DataManipulation<ToDoItem>(@"./Inventory.json");
 
         private static List<ToDoItem> Inventory
         {

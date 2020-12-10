@@ -4,6 +4,11 @@ namespace Sphere.Data
 {
     public class DataManipulation<T> : DataAccess_Json<T>
     {
+        public DataManipulation(string path)
+        {
+            JsonFilePath = path;
+        }
+
         //Create new item in database
         public void Add(T dataType)
         {

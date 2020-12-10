@@ -41,6 +41,7 @@ namespace Checkem.Views
                     {
                         ToDoListItemCounterTextBlock.Margin = new Thickness(0, 0, 5, 0);
                     }
+
                     return currentInventory.Count.ToString();
                 }
                 else
@@ -48,6 +49,10 @@ namespace Checkem.Views
                     ToDoListItemCounterTextBlock.Margin = new Thickness(0);
                     return string.Empty;
                 }
+            }
+            set
+            {
+                OnPropertyChanged();
             }
         }
 
@@ -87,6 +92,12 @@ namespace Checkem.Views
         }
 
 
+        private void ItemCountChanged()
+        {
+            ItemCount = currentInventory.Count.ToString();
+        }
+
+
         private void LoadTodoList()
         {
             foreach (var item in currentInventory)
@@ -114,7 +125,12 @@ namespace Checkem.Views
             Itembar itembar = sender as Itembar;
 
             TodoItemsStackPanel.Children.Remove(itembar);
-            DataManipulation<ToDoItem> ToDoDataManipulation = new DataManipulation<ToDoItem>();
+
+            DataManipulation<ToDoItem> ToDoDataManipulation = new DataManipulation<ToDoItem>(@"./Inventory.json");
+            currentInventory.Remove(itembar.ItemProperties);
+            ToDoDataManipulation.Remove(itembar.ItemProperties);
+
+            ItemCountChanged();
         }
 
         private void DetailsPanel_Close(object sender, EventArgs e)
