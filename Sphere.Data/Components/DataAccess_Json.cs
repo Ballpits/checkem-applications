@@ -11,6 +11,7 @@ namespace Data.Components
         public List<T> Inventory
         {
             get => Retrieve();
+            set { }
         }
 
 
