@@ -43,7 +43,6 @@ namespace Checkem.CustomComponents
 
 
         #region Properties
-
         public Todo todo;
 
         public string Title
@@ -120,6 +119,16 @@ namespace Checkem.CustomComponents
 
 
         #region Update property value
+        public void Update_All(Todo item)
+        {
+            if (todo.Title != item.Title)
+            {
+                Title = item.Title;
+            }
+
+            Update?.Invoke(this, EventArgs.Empty);
+        }
+
         private void Update_IsCompleted()
         {
             if (IsCompleted == true)
