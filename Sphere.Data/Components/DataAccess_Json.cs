@@ -7,6 +7,14 @@ namespace Data.Components
 {
     public class DataAccess_Json<T> : IDataAccess<T>
     {
+        //Inventory to save to do items
+        public List<T> Inventory
+        {
+            get => Retrieve();
+            set { }
+        }
+
+
         //File path for inventory json file
         protected string DataBasePath;
 
