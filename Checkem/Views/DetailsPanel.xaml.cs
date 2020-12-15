@@ -20,7 +20,7 @@ namespace Checkem.Views
         {
             DataContext = this;
 
-            ItemProperties = itemar.ItemProperties;
+            ItemProperties = itemar.todo;
 
             InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace Checkem.Views
 
 
         #region Variable
-        public ToDoItem ItemProperties;
+        public Todo ItemProperties;
         #endregion
 
 

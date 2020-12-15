@@ -2,10 +2,9 @@
 
 namespace Checkem.Models
 {
-    public class ToDoItem
+    public class Todo
     {
         #region Properties
-
         public int ID { get; set; }
 
 
@@ -29,7 +28,6 @@ namespace Checkem.Models
 
 
         public int[] Tags { get; set; }
-
         #endregion
     }
 }

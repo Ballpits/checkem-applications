@@ -14,11 +14,11 @@ namespace Checkem.CustomComponents
 {
     public partial class Itembar : UserControl, INotifyPropertyChanged
     {
-        public Itembar(ToDoItem item)
+        public Itembar(Todo item)
         {
             DataContext = this;
 
-            ItemProperties = item;
+            todo = item;
 
             InitializeComponent();
 
@@ -36,19 +36,19 @@ namespace Checkem.CustomComponents
 
         #region Properties
 
-        public ToDoItem ItemProperties;
+        public Todo todo;
 
         public string Title
         {
             get
             {
-                return ItemProperties.Title;
+                return todo.Title;
             }
             set
             {
-                if (ItemProperties.Title != value)
+                if (todo.Title != value)
                 {
-                    ItemProperties.Title = value;
+                    todo.Title = value;
 
                     OnPropertyChanged();
                 }
@@ -59,13 +59,13 @@ namespace Checkem.CustomComponents
         {
             get
             {
-                return ItemProperties.IsCompleted;
+                return todo.IsCompleted;
             }
             set
             {
-                if (ItemProperties.IsCompleted != value)
+                if (todo.IsCompleted != value)
                 {
-                    ItemProperties.IsCompleted = value;
+                    todo.IsCompleted = value;
 
                     OnCompletetionChanged();
                     OnPropertyChanged();
@@ -77,13 +77,13 @@ namespace Checkem.CustomComponents
         {
             get
             {
-                return ItemProperties.IsStarred;
+                return todo.IsStarred;
             }
             set
             {
-                if (ItemProperties.IsStarred != value)
+                if (todo.IsStarred != value)
                 {
-                    ItemProperties.IsStarred = value;
+                    todo.IsStarred = value;
 
                     OnPropertyChanged();
                 }
@@ -94,13 +94,13 @@ namespace Checkem.CustomComponents
         {
             get
             {
-                return ItemProperties.IsReminderOn;
+                return todo.IsReminderOn;
             }
             set
             {
-                if (ItemProperties.IsReminderOn != value)
+                if (todo.IsReminderOn != value)
                 {
-                    ItemProperties.IsReminderOn = value;
+                    todo.IsReminderOn = value;
 
                     OnVisualUpdate();
                     OnPropertyChanged();
@@ -124,7 +124,7 @@ namespace Checkem.CustomComponents
 
         private void OnCompletetionChanged()
         {
-            if (ItemProperties.IsCompleted)
+            if (todo.IsCompleted)
             {
                 TitleTextBlock.Foreground = this.FindResource("Color.DarkGray") as SolidColorBrush;
                 TitleTextBlock.TextDecorations = TextDecorations.Strikethrough;
@@ -143,20 +143,20 @@ namespace Checkem.CustomComponents
 
         private void OnVisualUpdate()
         {
-            if (ItemProperties.IsReminderOn)
+            if (todo.IsReminderOn)
             {
                 ReminderDetailStackPanel.Visibility = Visibility.Visible;
 
-                if (this.ItemProperties.IsAdvanceReminderOn)
+                if (this.todo.IsAdvanceReminderOn)
                 {
-                    ReminderDetailTextBlock.Text = "Start on: " + DateTimeManipulator.SimplifiedDate(this.ItemProperties.BeginDateTime.Value) + "\tEnd on: " + DateTimeManipulator.SimplifiedDate(this.ItemProperties.EndDateTime.Value);
+                    ReminderDetailTextBlock.Text = "Start on: " + DateTimeManipulator.SimplifiedDate(this.todo.BeginDateTime.Value) + "\tEnd on: " + DateTimeManipulator.SimplifiedDate(this.todo.EndDateTime.Value);
                 }
                 else
                 {
-                    ReminderDetailTextBlock.Text = DateTimeManipulator.SimplifiedDate(this.ItemProperties.EndDateTime.Value);
+                    ReminderDetailTextBlock.Text = DateTimeManipulator.SimplifiedDate(this.todo.EndDateTime.Value);
                 }
 
-                if (DateTimeManipulator.IsPassed(this.ItemProperties.EndDateTime.Value))
+                if (DateTimeManipulator.IsPassed(this.todo.EndDateTime.Value))
                 {
                     //ReminderDetailTextBlock.SetBinding(TextBlock.ForegroundProperty, OverDueTextColorBindings);
                 }

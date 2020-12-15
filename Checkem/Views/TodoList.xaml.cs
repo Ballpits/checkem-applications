@@ -1,6 +1,5 @@
 ﻿using Checkem.CustomComponents;
 using Checkem.Models;
-using Sphere.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +13,10 @@ namespace Checkem.Views
     {
         public TodoList()
         {
+            //Manager.StoreTestData();
+
+            currentInventory = Manager.Filter(FilterMethods.None);
+
             DataContext = this;
 
             InitializeComponent();
@@ -26,7 +29,8 @@ namespace Checkem.Views
 
 
         #region Variable
-        List<ToDoItem> currentInventory = TodoManager.Filter(FilterMethods.None);
+        TodoManager Manager = new TodoManager();
+        List<Todo> currentInventory;
         #endregion
 
 
@@ -125,11 +129,10 @@ namespace Checkem.Views
         {
             Itembar itembar = sender as Itembar;
 
-            TodoItemsStackPanel.Children.Remove(itembar);
 
-            DataManipulation<ToDoItem> ToDoDataManipulation = new DataManipulation<ToDoItem>(@"./Inventory.json");
-            currentInventory.Remove(itembar.ItemProperties);
-            ToDoDataManipulation.Remove(itembar.ItemProperties);
+            TodoItemsStackPanel.Children.Remove(itembar);
+            currentInventory.Remove(itembar.todo);
+            Manager.Remove(itembar.todo);
 
             ItemCountChanged();
         }

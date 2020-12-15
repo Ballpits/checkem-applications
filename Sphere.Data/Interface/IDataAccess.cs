@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Data
+namespace Sphere.Data
 {
     internal interface IDataAccess<T>
     {

@@ -3,22 +3,42 @@ using System.Collections.Generic;
 using System.IO;
 
 
-namespace Data.Components
+namespace Sphere.Data
 {
     public class DataAccess_Json<T> : IDataAccess<T>
     {
+        public DataAccess_Json()
+        {
+            inventory = Retrieve();
+        }
+
+
         //File path for inventory json file
-        protected string DataBasePath;
+        public string DataBasePath = @"./Inventory.json";
 
 
         //Inventory to save to do items
-        public List<T> Inventory { get => Retrieve(); }
+        private List<T> inventory;
+        public List<T> Inventory
+        {
+            get
+            {
+                return inventory;
+            }
+            set
+            {
+                if (inventory != value)
+                {
+                    inventory = value;
+                }
+            }
+        }
 
 
         //Save everthing from inventory list to Inventory.json file
         public void Save(List<T> inventory)
         {
-            File.WriteAllText(@"Inventory.json", JsonConvert.SerializeObject(inventory));
+            File.WriteAllText(DataBasePath, JsonConvert.SerializeObject(inventory));
         }
 
 
