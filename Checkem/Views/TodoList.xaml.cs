@@ -110,6 +110,7 @@ namespace Checkem.Views
                 Itembar itembar = new Itembar(item);
                 itembar.Click += new EventHandler(this.Itembar_Click);
                 itembar.Remove += new EventHandler(this.Itembar_Remove);
+                itembar.Update += new EventHandler(this.Itembar_Update);
 
                 TodoItemsStackPanel.Children.Add(itembar);
             }
@@ -129,12 +130,18 @@ namespace Checkem.Views
         {
             Itembar itembar = sender as Itembar;
 
-
             TodoItemsStackPanel.Children.Remove(itembar);
             currentInventory.Remove(itembar.todo);
             Manager.Remove(itembar.todo);
 
             ItemCountChanged();
+        }
+
+        private void Itembar_Update(object sender, EventArgs e)
+        {
+            Itembar itembar = sender as Itembar;
+
+            Manager.Update(itembar.todo);
         }
 
         private void DetailsPanel_Close(object sender, EventArgs e)

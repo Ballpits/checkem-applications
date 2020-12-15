@@ -155,7 +155,7 @@
 
             <Grid>
                 <Grid x:Name="CheckboxGrid" Style="{DynamicResource CheckboxGrid}" Width="60" Margin="0,0,0,0">
-                    <CheckBox x:Name="checkBox" IsChecked="{Binding IsCompleted, Mode=TwoWay}" Style="{DynamicResource ItembarCheckbox}">
+                    <CheckBox x:Name="checkBox" IsChecked="{Binding IsCompleted, Mode=TwoWay}" Style="{DynamicResource ItembarCheckbox}" Checked="checkBox_Checked" Unchecked="checkBox_Unchecked">
                         <materialDesign:PackIcon Style="{DynamicResource ItembarCheckboxCircleIcon}"/>
                     </CheckBox>
                 </Grid>
@@ -175,12 +175,12 @@
                 </StackPanel>
 
 
-                <ToggleButton x:Name="StarToggle" IsChecked="{Binding IsStarred}" Style="{DynamicResource ItembarStarToggle}" ToolTip="Mark As Important" Width="45" Height="45" VerticalAlignment="Center" Margin="0,0,0,0">
+                <ToggleButton x:Name="StarToggle" IsChecked="{Binding IsStarred}" Style="{DynamicResource ItembarStarToggle}" ToolTip="Mark As Important" Checked="StarToggle_Checked" Unchecked="StarToggle_Unchecked">
+                    <materialDesign:PackIcon x:Name="StarButtonStarBorderIcon" Style="{DynamicResource StarBorderIcon}"/>
 
                     <materialDesign:ToggleButtonAssist.OnContent>
                         <materialDesign:PackIcon x:Name="StarButtonStarIcon" Style="{DynamicResource StarIcon}"/>
                     </materialDesign:ToggleButtonAssist.OnContent>
-                    <materialDesign:PackIcon x:Name="StarButtonStarBorderIcon" Style="{DynamicResource StarBorderIcon}"/>
                 </ToggleButton>
             </Grid>
         </Border>

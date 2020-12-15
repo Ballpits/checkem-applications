@@ -16,14 +16,18 @@ namespace Checkem.CustomComponents
     {
         public Itembar(Todo item)
         {
-            DataContext = this;
-
+            //Get todo properties
             todo = item;
+
+            DataContext = this;
 
             InitializeComponent();
 
+            //Update title foregrond
             OnCompletetionChanged();
-            OnVisualUpdate();
+
+            //Update itembar height
+            OnReminderTypeChanged();
         }
 
 
@@ -31,6 +35,7 @@ namespace Checkem.CustomComponents
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler Click;
         public event EventHandler Remove;
+        public event EventHandler Update;
         #endregion
 
 
@@ -102,7 +107,7 @@ namespace Checkem.CustomComponents
                 {
                     todo.IsReminderOn = value;
 
-                    OnVisualUpdate();
+                    OnReminderTypeChanged();
                     OnPropertyChanged();
                 }
             }
@@ -138,10 +143,10 @@ namespace Checkem.CustomComponents
 
         private void Itembar_Loaded(object sender, RoutedEventArgs e)
         {
-            OnVisualUpdate();
+            OnReminderTypeChanged();
         }
 
-        private void OnVisualUpdate()
+        private void OnReminderTypeChanged()
         {
             if (todo.IsReminderOn)
             {
@@ -193,6 +198,30 @@ namespace Checkem.CustomComponents
 
                 Click?.Invoke(this, EventArgs.Empty);
             }
+        }
+
+        private void checkBox_Checked(object sender, RoutedEventArgs e)
+        {
+            IsCompleted = true;
+            Update?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void checkBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            IsCompleted = false;
+            Update?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void StarToggle_Checked(object sender, RoutedEventArgs e)
+        {
+            IsStarred = true;
+            Update?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void StarToggle_Unchecked(object sender, RoutedEventArgs e)
+        {
+            IsStarred = false;
+            Update?.Invoke(this, EventArgs.Empty);
         }
 
         private void MenuItem_Remove_Click(object sender, RoutedEventArgs e)
