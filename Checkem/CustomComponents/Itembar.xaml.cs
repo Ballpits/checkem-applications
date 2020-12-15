@@ -23,8 +23,11 @@ namespace Checkem.CustomComponents
 
             InitializeComponent();
 
-            //Update title foregrond
-            OnCompletetionChanged();
+            //Update title foregrond and check box state
+            OnCompletionChanged();
+
+            //Update star toggle state
+            OnStarChanged();
 
             //Update itembar height
             OnReminderTypeChanged();
@@ -72,7 +75,7 @@ namespace Checkem.CustomComponents
                 {
                     todo.IsCompleted = value;
 
-                    OnCompletetionChanged();
+                    OnCompletionChanged();
                     OnPropertyChanged();
                 }
             }
@@ -90,6 +93,7 @@ namespace Checkem.CustomComponents
                 {
                     todo.IsStarred = value;
 
+                    OnStarChanged();
                     OnPropertyChanged();
                 }
             }
@@ -127,17 +131,33 @@ namespace Checkem.CustomComponents
         }
 
 
-        private void OnCompletetionChanged()
+        private void OnCompletionChanged()
         {
             if (todo.IsCompleted)
             {
                 TitleTextBlock.Foreground = this.FindResource("Color.DarkGray") as SolidColorBrush;
                 TitleTextBlock.TextDecorations = TextDecorations.Strikethrough;
+
+                MenuItemIsCompleted.Header = this.FindResource("Dict_MarkAsNotCompleted") as string;
             }
             else
             {
                 TitleTextBlock.Foreground = this.FindResource("Color.Black") as SolidColorBrush;
                 TitleTextBlock.TextDecorations = null;
+
+                MenuItemIsCompleted.Header = this.FindResource("Dict_MarkAsCompleted") as string;
+            }
+        }
+
+        private void OnStarChanged()
+        {
+            if (todo.IsStarred)
+            {
+                MenuItemIsStarred.Header = this.FindResource("Dict_MarkAsNotStarred") as string;
+            }
+            else
+            {
+                MenuItemIsStarred.Header = this.FindResource("Dict_MarkAsStarred") as string;
             }
         }
 
@@ -224,6 +244,16 @@ namespace Checkem.CustomComponents
             Update?.Invoke(this, EventArgs.Empty);
         }
 
+        private void MenuItemCompletion_Click(object sender, RoutedEventArgs e)
+        {
+            Update_IsCompleted();
+        }
+
+        private void MenuItemIsStarred_Click(object sender, RoutedEventArgs e)
+        {
+            Update_IsStarred();
+        }
+
         private void MenuItem_Remove_Click(object sender, RoutedEventArgs e)
         {
             Storyboard storyboard = this.FindResource("ItembarRemove") as Storyboard;
@@ -233,6 +263,34 @@ namespace Checkem.CustomComponents
         private void Storyboard_ItembarRemove_Completed(object sender, EventArgs e)
         {
             Remove?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void Update_IsCompleted()
+        {
+            if (IsCompleted == true)
+            {
+                IsCompleted = false;
+            }
+            else
+            {
+                IsCompleted = true;
+            }
+
+            Update?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void Update_IsStarred()
+        {
+            if (IsStarred == true)
+            {
+                IsStarred = false;
+            }
+            else
+            {
+                IsStarred = true;
+            }
+
+            Update?.Invoke(this, EventArgs.Empty);
         }
     }
 }

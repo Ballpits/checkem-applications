@@ -14,9 +14,16 @@
     <system:String x:Key="Dict_Task">Task</system:String>
     <system:String x:Key="Dict_Tasks">Tasks</system:String>
 
-    <!--Tag-->
-    <system:String x:Key="Dict_CreateTag">CreateTag</system:String>
+    <!--Context menu-->
+    <system:String x:Key="Dict_MarkAsCompleted">Complete</system:String>
+    <system:String x:Key="Dict_MarkAsNotCompleted">Not complete</system:String>
+    <system:String x:Key="Dict_MarkAsStarred">Mark star</system:String>
+    <system:String x:Key="Dict_MarkAsNotStarred">Unmark star</system:String>
     
+    <!--Tag-->
+    <system:String x:Key="Dict_CreateTag">Create tag</system:String>
+    <system:String x:Key="Dict_RemoveTag">Remove tag</system:String>
+
     <!--Sort-->
     <system:String x:Key="Dict_Sort">Sort</system:String>
     <system:String x:Key="Dict_SortBy">Sort by</system:String>

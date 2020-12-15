@@ -48,7 +48,7 @@
 
         <Grid.ContextMenu>
             <ContextMenu>
-                <MenuItem Header="Remove" Icon="{materialDesign:PackIcon Kind=TrashOutline, Size=18}" Foreground="Red"/>
+                <MenuItem Header="{DynamicResource Dict_RemoveTag}" Icon="{materialDesign:PackIcon Kind=TrashOutline, Size=18}" Foreground="Red"/>
             </ContextMenu>
         </Grid.ContextMenu>
 

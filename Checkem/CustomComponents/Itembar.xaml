@@ -121,11 +121,11 @@
             <materialDesign:PackIcon Kind="Check" Foreground="{DynamicResource Color.White}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35" Height="35"/>
         </Border>-->
 
-        <Border x:Name="ItembarBorder" Style="{StaticResource ItembarBorderStyle}" BorderThickness="3" BorderBrush="{DynamicResource Color.Gray}" Panel.ZIndex="1" Visibility="Visible" Margin="0,0,0,0" MouseEnter="ItembarBorder_MouseEnter" MouseLeave="ItembarBorder_MouseLeave" Background="{DynamicResource Color.White}">
+        <Border x:Name="ItembarBorder" Style="{StaticResource ItembarBorderStyle}" BorderThickness="3" BorderBrush="{DynamicResource Color.Gray}" Panel.ZIndex="1" Visibility="Visible" MouseEnter="ItembarBorder_MouseEnter" MouseLeave="ItembarBorder_MouseLeave" Background="{DynamicResource Color.White}">
             <Border.ContextMenu>
-                <ContextMenu x:Name="aaa" FontFamily="{StaticResource ResourceKey=Quicksand}">
-                    <MenuItem Header="Mark as completed" Icon="{materialDesign:PackIcon Kind=Check, Size=18}"/>
-                    <MenuItem Header="Mark as starred" Icon="{materialDesign:PackIcon Kind=StarOutline, Size=18}"/>
+                <ContextMenu FontFamily="{DynamicResource Quicksand}">
+                    <MenuItem x:Name="MenuItemIsCompleted" Header="Mark as completed" Icon="{materialDesign:PackIcon Kind=Check, Size=18}" Click="MenuItemCompletion_Click"/>
+                    <MenuItem x:Name="MenuItemIsStarred" Header="Mark as starred" Icon="{materialDesign:PackIcon Kind=StarOutline, Size=18}" Click="MenuItemIsStarred_Click"/>
 
                     <Separator />
 
@@ -154,8 +154,8 @@
             </Border.ContextMenu>
 
             <Grid>
-                <Grid x:Name="CheckboxGrid" Style="{DynamicResource CheckboxGrid}" Width="60" Margin="0,0,0,0">
-                    <CheckBox x:Name="checkBox" IsChecked="{Binding IsCompleted, Mode=TwoWay}" Style="{DynamicResource ItembarCheckbox}" Checked="checkBox_Checked" Unchecked="checkBox_Unchecked">
+                <Grid x:Name="CheckboxGrid" Style="{DynamicResource CheckboxGrid}" Width="60">
+                    <CheckBox x:Name="CompletionCheckBox" IsChecked="{Binding IsCompleted, Mode=TwoWay}" Style="{DynamicResource ItembarCheckbox}" Checked="checkBox_Checked" Unchecked="checkBox_Unchecked">
                         <materialDesign:PackIcon Style="{DynamicResource ItembarCheckboxCircleIcon}"/>
                     </CheckBox>
                 </Grid>
