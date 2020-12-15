@@ -116,35 +116,64 @@ namespace Checkem.CustomComponents
                 }
             }
         }
-
         #endregion
 
 
-        #region Variables
-        PackIcon icon = new PackIcon();
+        #region Update property value
+        private void Update_IsCompleted()
+        {
+            if (IsCompleted == true)
+            {
+                IsCompleted = false;
+            }
+            else
+            {
+                IsCompleted = true;
+            }
+
+            Update?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void Update_IsStarred()
+        {
+            if (IsStarred == true)
+            {
+                IsStarred = false;
+            }
+            else
+            {
+                IsStarred = true;
+            }
+
+            Update?.Invoke(this, EventArgs.Empty);
+        }
         #endregion
 
 
+        #region Property Changed event handler
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-
         private void OnCompletionChanged()
         {
             if (todo.IsCompleted)
             {
+                //set foregrond to dark gray and strike out title text
                 TitleTextBlock.Foreground = this.FindResource("Color.DarkGray") as SolidColorBrush;
                 TitleTextBlock.TextDecorations = TextDecorations.Strikethrough;
 
+                //change context menu text
                 MenuItemIsCompleted.Header = this.FindResource("Dict_MarkAsNotCompleted") as string;
             }
             else
             {
+                //set foregrond back to black and clear text decoration
                 TitleTextBlock.Foreground = this.FindResource("Color.Black") as SolidColorBrush;
                 TitleTextBlock.TextDecorations = null;
 
+                //change context menu text
                 MenuItemIsCompleted.Header = this.FindResource("Dict_MarkAsCompleted") as string;
             }
         }
@@ -153,23 +182,21 @@ namespace Checkem.CustomComponents
         {
             if (todo.IsStarred)
             {
+                //change context menu text
                 MenuItemIsStarred.Header = this.FindResource("Dict_MarkAsNotStarred") as string;
             }
             else
             {
+                //change context menu text
                 MenuItemIsStarred.Header = this.FindResource("Dict_MarkAsStarred") as string;
             }
-        }
-
-        private void Itembar_Loaded(object sender, RoutedEventArgs e)
-        {
-            OnReminderTypeChanged();
         }
 
         private void OnReminderTypeChanged()
         {
             if (todo.IsReminderOn)
             {
+                //show reminder details
                 ReminderDetailStackPanel.Visibility = Visibility.Visible;
 
                 if (this.todo.IsAdvanceReminderOn)
@@ -192,18 +219,23 @@ namespace Checkem.CustomComponents
             }
             else
             {
+                //hide reminder details
                 ReminderDetailStackPanel.Visibility = Visibility.Collapsed;
             }
         }
+        #endregion
+
 
         private void ItembarBorder_MouseEnter(object sender, MouseEventArgs e)
         {
+            //item bar highlight
             ItembarBorder.Background = this.FindResource("HighlightColor.Primary") as Brush;
             ItembarBorder.BorderBrush = this.FindResource("HighlightColor.Secondary") as Brush;
         }
 
         private void ItembarBorder_MouseLeave(object sender, MouseEventArgs e)
         {
+            //item bar highlight
             ItembarBorder.Background = this.FindResource("Color.White") as Brush;
             ItembarBorder.BorderBrush = this.FindResource("Color.Gray") as Brush;
         }
@@ -212,10 +244,11 @@ namespace Checkem.CustomComponents
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
+                //play click animation
                 //Storyboard sb = this.FindResource("ItembarClick") as Storyboard;
-
                 //sb.Begin();
 
+                //trigger click event
                 Click?.Invoke(this, EventArgs.Empty);
             }
         }
@@ -244,6 +277,7 @@ namespace Checkem.CustomComponents
             Update?.Invoke(this, EventArgs.Empty);
         }
 
+        #region Menu item click events
         private void MenuItemCompletion_Click(object sender, RoutedEventArgs e)
         {
             Update_IsCompleted();
@@ -256,41 +290,16 @@ namespace Checkem.CustomComponents
 
         private void MenuItem_Remove_Click(object sender, RoutedEventArgs e)
         {
+            //play remove animation
             Storyboard storyboard = this.FindResource("ItembarRemove") as Storyboard;
             storyboard.Begin();
         }
 
         private void Storyboard_ItembarRemove_Completed(object sender, EventArgs e)
         {
+            //trigger remove event after animation
             Remove?.Invoke(this, EventArgs.Empty);
         }
-
-        private void Update_IsCompleted()
-        {
-            if (IsCompleted == true)
-            {
-                IsCompleted = false;
-            }
-            else
-            {
-                IsCompleted = true;
-            }
-
-            Update?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void Update_IsStarred()
-        {
-            if (IsStarred == true)
-            {
-                IsStarred = false;
-            }
-            else
-            {
-                IsStarred = true;
-            }
-
-            Update?.Invoke(this, EventArgs.Empty);
-        }
+        #endregion
     }
 }

@@ -9,7 +9,6 @@
              mc:Ignorable="d"
              d:DesignWidth="800"
              Background="#02000000"
-             Loaded="Itembar_Loaded"
              MouseDown="Itembar_MouseDown" 
              >
 
@@ -160,7 +159,7 @@
                     </CheckBox>
                 </Grid>
 
-                <StackPanel Margin="60,10,50,10" ScrollViewer.VerticalScrollBarVisibility="Disabled" Orientation="Vertical">
+                <StackPanel Margin="70,10,55,10" ScrollViewer.VerticalScrollBarVisibility="Disabled" Orientation="Vertical">
                     <TextBlock x:Name="TitleTextBlock" VerticalAlignment="Stretch" TextAlignment="Left" Text="{Binding Title, Mode=TwoWay}" Style="{DynamicResource CheckemTextBlock.Base}" HorizontalAlignment="Stretch" FontSize="27" Foreground="{DynamicResource Color.Black}"/>
 
                     <StackPanel x:Name="ReminderDetailStackPanel" d:Visibility="Visible" VerticalAlignment="Stretch" Orientation="Horizontal" Margin="0,5,0,0">
