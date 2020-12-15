@@ -6,34 +6,34 @@ namespace Sphere.Data
     {
         public DataManipulation(string path)
         {
-            JsonFilePath = path;
+            DataBasePath = path;
         }
 
         //Create new item in database
-        public void Add(T dataType)
+        public void Add(T data)
         {
-            Inventory.Add(dataType);
+            Inventory.Add(data);
 
             Save(Inventory);
         }
 
 
         //Update item in database
-        public void Update(T dataType)
+        public void Update(T data)
         {
             //Find to do item's index in Inventory
-            int index = Inventory.IndexOf(dataType);
+            int index = Inventory.IndexOf(data);
 
-            Inventory[index] = dataType;
+            Inventory[index] = data;
 
             Save(Inventory);
         }
 
 
         //Remove item in database
-        public void Remove(T dataType)
+        public void Remove(T data)
         {
-            Inventory.Remove(dataType);
+            Inventory.Remove(data);
 
             Save(Inventory);
         }

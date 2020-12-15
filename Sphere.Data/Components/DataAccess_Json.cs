@@ -16,7 +16,7 @@ namespace Data.Components
 
 
         //File path for inventory json file
-        protected string JsonFilePath;
+        protected string DataBasePath;
 
 
         //Save everthing from inventory list to Inventory.json file
@@ -29,7 +29,7 @@ namespace Data.Components
         //Retrive all to do items from Inventory.json file and store them into Inventory list
         public List<T> Retrieve()
         {
-            string json = File.ReadAllText(JsonFilePath);
+            string json = File.ReadAllText(DataBasePath);
 
             return JsonConvert.DeserializeObject<List<T>>(json);
         }
