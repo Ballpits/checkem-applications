@@ -11,10 +11,6 @@ namespace Sphere.Data
         }
 
 
-        //Inventory to save to do items
-        public List<T> Inventory { get => Retrieve(); }
-
-
         //Create new item in database
         public void Add(T data)
         {

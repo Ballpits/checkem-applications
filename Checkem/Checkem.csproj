@@ -27,8 +27,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Checkem.Models\Checkem.Models.csproj" />
-		<ProjectReference Include="..\Sphere.Data\Sphere.Data.csproj" />
-		<ProjectReference Include="..\Sphere.Monitor\Sphere.Monitor.csproj" />
 		<ProjectReference Include="..\Sphere.Readable\Sphere.Readable.csproj" />
 	</ItemGroup>
 

@@ -11,6 +11,10 @@ namespace Data.Components
         protected string DataBasePath;
 
 
+        //Inventory to save to do items
+        public List<T> Inventory { get => Retrieve(); }
+
+
         //Save everthing from inventory list to Inventory.json file
         public void Save(List<T> inventory)
         {
