@@ -1,4 +1,5 @@
 ﻿using Data.Components;
+using System.Collections.Generic;
 
 namespace Sphere.Data
 {
@@ -8,6 +9,11 @@ namespace Sphere.Data
         {
             DataBasePath = path;
         }
+
+
+        //Inventory to save to do items
+        public List<T> Inventory { get => Retrieve(); }
+
 
         //Create new item in database
         public void Add(T data)
