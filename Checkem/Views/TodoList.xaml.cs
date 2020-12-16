@@ -85,7 +85,7 @@ namespace Checkem.Views
 
         private void TodoList_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadTodoList();
+            SetFilter(FilterMethods.None);
 
             OnPropertyChanged();
         }
@@ -103,8 +103,21 @@ namespace Checkem.Views
         }
 
 
+        public void SetFilter(FilterMethods method)
+        {
+            currentInventory = Manager.Filter(method);
+
+            LoadTodoList();
+        }
+
+
         private void LoadTodoList()
         {
+            if (TodoItemsStackPanel.Children.Count != 0)
+            {
+                TodoItemsStackPanel.Children.Clear();
+            }
+
             foreach (var item in currentInventory)
             {
                 Itembar itembar = new Itembar(item);
