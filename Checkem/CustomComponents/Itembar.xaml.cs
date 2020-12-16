@@ -152,6 +152,13 @@ namespace Checkem.CustomComponents
         }
 
 
+        //update title text block's text than save
+        public void Update_Description()
+        {
+            Update?.Invoke(this, EventArgs.Empty);
+        }
+
+
         //check IsCompleted, change check state than save
         private void Set_IsCompleted()
         {

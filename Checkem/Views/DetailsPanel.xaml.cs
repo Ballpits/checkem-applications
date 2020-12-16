@@ -1,6 +1,7 @@
 ﻿using Checkem.CustomComponents;
 using Checkem.Models;
 using System;
+using Sphere.Readable;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
@@ -52,14 +53,18 @@ namespace Checkem.Views
             }
             set
             {
-                if (todo.Title != value)
+                //this will prevent user from saving task without title
+                if (value != string.Empty)
                 {
-                    todo.Title = value;
+                    if (todo.Title != value)
+                    {
+                        todo.Title = value;
 
-                    //update item bar's title text block's text
-                    itembar.Update_Title();
+                        //update item bar's title text block's text
+                        itembar.Update_Title();
 
-                    OnPropertyChanged();
+                        OnPropertyChanged();
+                    }
                 }
             }
         }
@@ -76,6 +81,7 @@ namespace Checkem.Views
                 {
                     todo.Description = value;
 
+                    itembar.Update_Description();
                     OnPropertyChanged();
                 }
             }
@@ -116,6 +122,14 @@ namespace Checkem.Views
                     itembar.Update_IsStarred();
                     OnPropertyChanged();
                 }
+            }
+        }
+
+        public string CreationDateTime
+        {
+            get
+            {
+                return $"Created on {DateTimeManipulator.SimplifiedDate(todo.CreationDateTime)}";
             }
         }
         #endregion

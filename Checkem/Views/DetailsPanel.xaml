@@ -50,38 +50,38 @@
     <Grid x:Name="DimBackground" Background="#7F000000">
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalAlignment="Right">
             <Border x:Name="DetailPanelBorder" HorizontalAlignment="Stretch" Width="400" CornerRadius="15,0,0,15" Background="{DynamicResource Color.White}" Margin="0,0,0,0">
-                <StackPanel>
+                <Grid>
+                    <StackPanel Margin="0,0,0,35">
+                        <Grid Height="40" Margin="0,15,0,0">
+                            <Button x:Name="CloseButton" Background="{StaticResource Color.LightGray}" Style="{StaticResource CheckemFlatButton.Circle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="30" Height="30" Padding="0,0,0,0">
+                                <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
+                            </Button>
 
-                    <Grid Height="40" Margin="0,15,0,0">
-                        <Button x:Name="CloseButton" Background="{StaticResource Color.LightGray}" Style="{StaticResource CheckemFlatButton.Circle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="30" Height="30" Padding="0,0,0,0">
-                            <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
-                        </Button>
+                            <CheckBox x:Name="CompletionCheckBox" IsChecked="{Binding IsCompleted, Mode=TwoWay}" Style="{DynamicResource ItembarCheckbox}">
+                                <materialDesign:PackIcon Style="{DynamicResource ItembarCheckboxCircleIcon}"/>
+                            </CheckBox>
 
-                        <CheckBox x:Name="CompletionCheckBox" IsChecked="{Binding IsCompleted, Mode=TwoWay}" Style="{DynamicResource ItembarCheckbox}">
-                            <materialDesign:PackIcon Style="{DynamicResource ItembarCheckboxCircleIcon}"/>
-                        </CheckBox>
+                            <ToggleButton x:Name="StarToggle" Style="{StaticResource ItembarStarToggle}" IsChecked="{Binding IsStarred,Mode=TwoWay}" ToolTip="Mark As Important" Width="30" Height="30" Margin="0,2,15,0">
+                                <materialDesign:PackIcon x:Name="StarButtonStarBorderIcon" Style="{StaticResource StarBorderIcon}"/>
 
-                        <ToggleButton x:Name="StarToggle" Style="{StaticResource ItembarStarToggle}" IsChecked="{Binding IsStarred,Mode=TwoWay}" ToolTip="Mark As Important" Width="30" Height="30" Margin="0,2,15,0">
-                            <materialDesign:PackIcon x:Name="StarButtonStarBorderIcon" Style="{StaticResource StarBorderIcon}"/>
+                                <materialDesign:ToggleButtonAssist.OnContent>
+                                    <materialDesign:PackIcon x:Name="StarButtonStarIcon" Style="{StaticResource StarIcon}"/>
+                                </materialDesign:ToggleButtonAssist.OnContent>
+                            </ToggleButton>
+                        </Grid>
 
-                            <materialDesign:ToggleButtonAssist.OnContent>
-                                <materialDesign:PackIcon x:Name="StarButtonStarIcon" Style="{StaticResource StarIcon}"/>
-                            </materialDesign:ToggleButtonAssist.OnContent>
-                        </ToggleButton>
-                    </Grid>
+                        <TextBox Text="{Binding Title,Mode=TwoWay}" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_Title}" Style="{StaticResource TextBox.Animated}" MaxLength="100" />
 
-                    <TextBox Text="{Binding Title,Mode=TwoWay}" Margin="10,20,10,0" TextWrapping="Wrap" MaxLength="100" FontSize="20" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_Title}" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" Foreground="{DynamicResource Color.Black}" FontFamily="{DynamicResource Quicksand}" Background="#FFE6E6E6" CaretBrush="{DynamicResource Color.Primary}"/>
+                        <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" FontFamily="{DynamicResource Quicksand}" Margin="10,20,10,0" FontSize="20" Height="70" SelectedIndex="0">
+                            <customComponents:Tag Content="tag 1" Color="Black"/>
+                        </ComboBox>
 
-                    <!--<ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" FontFamily="{DynamicResource Quicksand}" Margin="10,20,10,0" FontSize="20" Height="70" SelectedIndex="0">
-                        <Button Content="INdex 0"/>
-                        <Button Content="INdex 1"/>
-                        <Button Content="INdex 2"/>
-                        <Button Content="INdex 3"/>
-                        <Button Content="INdex 4"/>
-                    </ComboBox>-->
+                        <TextBox Text="{Binding Description,Mode=TwoWay}" AcceptsReturn="True" MaxLength="1000" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_Description}" Style="{StaticResource TextBox.Animated}"/>
 
-                    <TextBox Text="{Binding Description,Mode=TwoWay}" Margin="10,20,10,0" TextWrapping="Wrap" MaxLength="1000" FontSize="20" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_Description}" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" Foreground="{DynamicResource Color.Black}" FontFamily="{DynamicResource Quicksand}" Background="{DynamicResource Color.LightGray}" CaretBrush="{DynamicResource Color.Primary}"/>
-                </StackPanel>
+                    </StackPanel>
+
+                    <TextBlock d:Text="Create on yyyy/mm/dd" Text="{Binding CreationDateTime}" Style="{StaticResource CheckemTextBlock.Base}" VerticalAlignment="Bottom" FontSize="16" Margin="0,0,0,10"/>
+                </Grid>
             </Border>
         </ScrollViewer>
     </Grid>
