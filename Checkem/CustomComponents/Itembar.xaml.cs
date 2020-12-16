@@ -125,7 +125,7 @@ namespace Checkem.CustomComponents
 
 
         #region Update property value
-        //update view's completion check box state than save
+        //update completion check box's state than save
         public void Update_IsCompleted()
         {
             CompletionCheckBox.SetBinding(CheckBox.IsCheckedProperty, "IsCompleted");
@@ -134,7 +134,7 @@ namespace Checkem.CustomComponents
         }
 
 
-        //update view's star toggle state than save
+        //update star toggle's check state than save
         public void Update_IsStarred()
         {
             StarToggle.SetBinding(CheckBox.IsCheckedProperty, "IsStarred");
@@ -143,7 +143,7 @@ namespace Checkem.CustomComponents
         }
 
 
-        //update view's title textblock's text than save
+        //update title text block's text than save
         public void Update_Title()
         {
             TitleTextBlock.SetBinding(TextBlock.TextProperty, "Title");
@@ -152,7 +152,7 @@ namespace Checkem.CustomComponents
         }
 
 
-        //check IsCompleted, change state than save
+        //check IsCompleted, change check state than save
         private void Set_IsCompleted()
         {
             if (IsCompleted == true)
@@ -168,7 +168,7 @@ namespace Checkem.CustomComponents
         }
 
 
-        //check IsStarred value, change state than save
+        //check IsStarred value, change check state than save
         private void Set_IsStarred()
         {
             if (IsStarred == true)
@@ -235,9 +235,9 @@ namespace Checkem.CustomComponents
                 ReminderDetailStackPanel.Visibility = Visibility.Visible;
 
 
-                if (this.todo.IsAdvanceReminderOn)
+                if (todo.IsAdvanceReminderOn)
                 {
-                    ReminderDetailTextBlock.Text = "Start on: " + DateTimeManipulator.SimplifiedDate(this.todo.BeginDateTime.Value) + "\tEnd on: " + DateTimeManipulator.SimplifiedDate(this.todo.EndDateTime.Value);
+                    ReminderDetailTextBlock.Text = $"Start on: {DateTimeManipulator.SimplifiedDate(this.todo.BeginDateTime.Value)}\tEnd on: {DateTimeManipulator.SimplifiedDate(this.todo.EndDateTime.Value)} ";
                 }
                 else
                 {
@@ -245,7 +245,7 @@ namespace Checkem.CustomComponents
                 }
 
 
-                if (DateTimeManipulator.IsPassed(this.todo.EndDateTime.Value))
+                if (DateTimeManipulator.IsPassed(todo.EndDateTime.Value))
                 {
                     //ReminderDetailTextBlock.SetBinding(TextBlock.ForegroundProperty, OverDueTextColorBindings);
                 }

@@ -56,7 +56,9 @@ namespace Checkem.Views
                 {
                     todo.Title = value;
 
+                    //update item bar's title text block's text
                     itembar.Update_Title();
+
                     OnPropertyChanged();
                 }
             }
@@ -91,6 +93,7 @@ namespace Checkem.Views
                 {
                     todo.IsCompleted = value;
 
+                    //update completion check box's check state in item bar
                     itembar.Update_IsCompleted();
                     OnPropertyChanged();
                 }
@@ -109,6 +112,7 @@ namespace Checkem.Views
                 {
                     todo.IsStarred = value;
 
+                    //update star toggle's check state in item bar
                     itembar.Update_IsStarred();
                     OnPropertyChanged();
                 }
