@@ -34,7 +34,7 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
                 <EasingDoubleKeyFrame KeyTime="0" Value="280"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="60"/>
-            </DoubleAnimationUsingKeyFrames> 
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
 
@@ -67,7 +67,7 @@
             <CustomUserControls:Tag Grid.Row="1" Text="test... test..." Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1" Margin="0,30,0,0"/>
             <CustomUserControls:ModeSelectionButtons2 Grid.Row="1" Option1Content="Basic" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,65,0,0" Panel.ZIndex="1" Option2Content="Advance"/>-->
 
-            <Grid d:Width="60" x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="60" Grid.Row="2" Visibility="Visible">
+            <Grid d:Width="280" x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="60" Grid.Row="2" Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
@@ -77,13 +77,13 @@
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
 
-                <Border x:Name="NavbarCursor" Background="#4CFFFFFF" Margin="10,0,10,0" CornerRadius="5" Height="40"/>
+                <Border x:Name="NavbarCursor" Background="#4CFFFFFF" Margin="10,0,10,0" CornerRadius="5" Height="40" Grid.Row="1"/>
 
                 <!--#region Navbar button-->
                 <Button materialDesign:ButtonAssist.CornerRadius="100" x:Name="ButtonMyDay" Style="{StaticResource NavigationbarButton}" Click="ButtonMyDay_Click">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="WbSunny" Style="{StaticResource NavigationbarIcon}"/>
-                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Dict_AllItems}" FontWeight="Normal" FontStyle="Normal"/>
+                        <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Dict_MyDay}" FontWeight="Normal" FontStyle="Normal"/>
                     </StackPanel>
                 </Button>
 
@@ -167,7 +167,17 @@
 
             <Grid x:Name="GridPrincipal" Grid.Column="1" Grid.Row="1" Visibility="Visible">
                 <CustomUserControls:Tag x:Name="WorkTag" Text="Work" Color="SeaGreen" HorizontalAlignment="Left" VerticalAlignment="Top" StateChanged="Tag_StateChanged"/>
-                <Views:TodoList Panel.ZIndex="-1"/>
+
+                <CustomUserControls:ModeSelectionButtons2 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,40,0,0">
+                    <CustomUserControls:ModeSelectionButtons2.Option1Content>
+                        <materialDesign:PackIcon Kind="WbSunny"/>
+                    </CustomUserControls:ModeSelectionButtons2.Option1Content>
+                    <CustomUserControls:ModeSelectionButtons2.Option2Content>
+                        <materialDesign:PackIcon Kind="MoonLastQuarter"/>
+                    </CustomUserControls:ModeSelectionButtons2.Option2Content>
+                </CustomUserControls:ModeSelectionButtons2>
+
+                <Views:TodoList x:Name="todoList" Panel.ZIndex="-1"/>
             </Grid>
 
             <!--<TextBlock Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Quicksand" TextAlignment="Center" Grid.Column="1" Height="19"><Run Text="This is a demo version of Check'em v0."/><Run Text="4"/><Run Text="."/><Run Text="5"/><Run Text=",Made by Umar Turdiev.All copy rights reserved under"/></TextBlock>

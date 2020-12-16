@@ -10,7 +10,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="540"
              d:DesignWidth="960"
-             Loaded="TodoListUserControl_Loaded"
+             Loaded="TodoList_Loaded"
              >
 
     <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.5}">
@@ -36,21 +36,25 @@
 
                 <Grid Height="75" VerticalAlignment="Top">
 
-                    <TextBlock x:Name="ToDoListTitleTextBlock" Foreground="{DynamicResource Color.Primary}" Text="Name" Margin="0,5,0,0" Height="40" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="36" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"/>
-                    <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="0 Items" Margin="0,0,0,5" Height="20" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="16" Padding="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{DynamicResource Color.Primary}" TextAlignment="Center"/>
+                    <TextBlock x:Name="ToDoListTitleTextBlock" Foreground="{DynamicResource Color.Primary}" Text="Name" Margin="0,5,0,0" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" FontWeight="Normal"/>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                        <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="{Binding ItemCount}" d:Text="1" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Stretch" Foreground="{DynamicResource Color.Primary}" TextAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock x:Name="ToDoListItemCounterStringTextBlock" Text="{Binding ItemCounterString}" d:Text="Item" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Stretch" Foreground="{DynamicResource Color.Primary}" TextAlignment="Center"/>
+                    </StackPanel>
 
 
                     <Grid Margin="0,0,20,0" HorizontalAlignment="Right">
                         <Button x:Name="ButtonClearSort" Margin="0,0,45,0" Height="40" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" ToolTip="Clear sort" VerticalAlignment="Center">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Close" Width="25" Height="20" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="{DynamicResource Color.Black}"/>
-                                <TextBlock x:Name="SortIndicatorTextBlock" Margin="0" HorizontalAlignment="Right" Text="Sorting_Method" FontFamily="{StaticResource ResourceKey=Quicksand}" TextAlignment="Center" FontSize="14" Padding="0,1,0,0" Foreground="{DynamicResource Color.Black}"/>
+                                <materialDesign:PackIcon Kind="Close" Width="25" Height="25" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="{DynamicResource OverDueColor}" Margin="0,1,5,0"/>
+                                <TextBlock x:Name="SortIndicatorTextBlock" Margin="0" HorizontalAlignment="Right" Text="Sorting_Method" FontFamily="{StaticResource ResourceKey=Quicksand}" TextAlignment="Center" FontSize="20" Foreground="{DynamicResource Color.Black}"/>
                             </StackPanel>
                         </Button>
 
-                        <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0"  Width="40" Height="40" TabIndex="7" IsTabStop="False" VerticalAlignment="Center" ToolTip="{DynamicResource ResourceKey=Dict_Sort}">
+                        <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0" TabIndex="7" IsTabStop="False" VerticalAlignment="Center" ToolTip="{DynamicResource ResourceKey=Dict_Sort}" Foreground="{DynamicResource Color.Primary}">
                             <materialDesign:PopupBox.ToggleContent>
-                                <materialDesign:PackIcon FocusVisualStyle="{DynamicResource CheckemFocusVisual.White}" Kind="Sort" Foreground="{DynamicResource Color.Primary}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" ToolTip="Sort" IsTabStop="True" TabIndex="7" TextBlock.Foreground="Black" />
+                                <materialDesign:PackIcon FocusVisualStyle="{DynamicResource CheckemFocusVisual.White}" Kind="Sort" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" ToolTip="Sort" IsTabStop="True" TabIndex="7" Foreground="{DynamicResource Color.Primary}" Width="35" Height="35" />
                             </materialDesign:PopupBox.ToggleContent>
 
                             <StackPanel>

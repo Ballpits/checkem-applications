@@ -1,29 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ProjectSC.Views.Calendar
 {
-    public partial class CalendarDay_View : UserControl
+    public partial class CalendarDay_View : UserControl, INotifyPropertyChanged
     {
-        public CalendarDay_View()
+        public CalendarDay_View(int data)
         {
-            InitializeComponent();
+            _Date = data;
 
-            DateTextBlock.Text = Day.ToString();
+            DataContext = this;
+
+            InitializeComponent();
         }
 
-        public int Day { get; set; }
+
+        #region Event
+        public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
+
+
+        #region Property
+        private int _Date;
+        public int Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                if (_Date != value)
+                {
+                    _Date = value;
+
+                    OnPropertyChanged();
+                }
+            }
+        }
+        #endregion
+
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
     }
 }

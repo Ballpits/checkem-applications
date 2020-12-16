@@ -11,14 +11,8 @@ namespace Checkem
         public MainWindow()
         {
             InitializeComponent();
-
-            reset();
         }
 
-        private void reset()
-        {
-            Properties.Settings.Default.Reset();
-        }
 
         private void MainGrid_Loaded(object sender, RoutedEventArgs e)
         {
@@ -118,25 +112,29 @@ namespace Checkem
 
         private void ButtonMyDay_Click(object sender, RoutedEventArgs e)
         {
-
+            Grid.SetRow(NavbarCursor, 0);
+            todoList.SetFilter(Models.FilterMethods.None);
         }
 
 
         private void ButtonAllTasks_Click(object sender, RoutedEventArgs e)
         {
-
+            Grid.SetRow(NavbarCursor, 1);
+            todoList.SetFilter(Models.FilterMethods.None);
         }
 
 
         private void ButtonDueDateFilter_Click(object sender, RoutedEventArgs e)
         {
-
+            Grid.SetRow(NavbarCursor, 2);
+            todoList.SetFilter(Models.FilterMethods.Planned);
         }
 
 
         private void ButtonStarredFilter_Click(object sender, RoutedEventArgs e)
         {
-
+            Grid.SetRow(NavbarCursor, 3);
+            todoList.SetFilter(Models.FilterMethods.Starred);
         }
 
 
@@ -232,6 +230,8 @@ namespace Checkem
         }
 
         #endregion
+
+
 
         private void Tag_StateChanged(object sender, EventArgs e)
         {

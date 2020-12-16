@@ -270,6 +270,20 @@
     <!--#endregion-->
     <!--#endregion-->
 
+    
+    <!--#region TextBox style-->
+    <Style x:Key="TextBox.Animated" TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFilledTextFieldTextBox}">
+        <Setter Property="CaretBrush" Value="{DynamicResource Color.Primary}"/>
+
+        <Setter Property="Foreground" Value="{DynamicResource Color.Black}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource Quicksand}"/>
+        <Setter Property="FontSize" Value="20"/>
+
+        <Setter Property="Margin" Value="10,20,10,0"/>
+    </Style>
+    <!--#endregion-->
+    
+    
     <!--#region LanguageBox-->
     <Style x:Key="LanguageBoxStackPanel" TargetType="StackPanel">
         <Setter Property="Orientation" Value="Horizontal"/>

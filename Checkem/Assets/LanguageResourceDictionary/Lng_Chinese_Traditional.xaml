@@ -14,8 +14,15 @@
     <system:String x:Key="Dict_Task">個事項</system:String>
     <system:String x:Key="Dict_Tasks">個事項</system:String>
 
+    <!--Context menu-->
+    <system:String x:Key="Dict_MarkAsCompleted">完成</system:String>
+    <system:String x:Key="Dict_MarkAsNotCompleted">未完成</system:String>
+    <system:String x:Key="Dict_MarkAsStarred">標記星號</system:String>
+    <system:String x:Key="Dict_MarkAsNotStarred">取消標記星號</system:String>
+
     <!--Tag-->
     <system:String x:Key="Dict_CreateTag">創造新標籤</system:String>
+    <system:String x:Key="Dict_RemoveTag">移除標籤</system:String>
 
     <!--Sort-->
     <system:String x:Key="Dict_Sort">排序</system:String>

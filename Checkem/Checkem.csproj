@@ -26,9 +26,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Cyclops\Cyclops.csproj" />
-		<ProjectReference Include="..\Monitor\Monitor.csproj" />
-		<ProjectReference Include="..\Visual\Visual.csproj" />
+		<ProjectReference Include="..\Checkem.Models\Checkem.Models.csproj" />
+		<ProjectReference Include="..\Sphere.Readable\Sphere.Readable.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -311,10 +310,6 @@
 			<Generator>SettingsSingleFileGenerator</Generator>
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
 		</None>
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="ViewModels\" />
 	</ItemGroup>
 
 	<ItemGroup>
