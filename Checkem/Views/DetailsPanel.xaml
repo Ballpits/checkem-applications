@@ -57,10 +57,12 @@
                             <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
                         </Button>
 
-                        <ToggleButton x:Name="StarToggle" Style="{StaticResource ItembarStarToggle}" ToolTip="Mark As Important" Width="30" Height="30" VerticalAlignment="Center" Margin="0,2,15,0">
-                            <ToggleButton.Content>
-                                <materialDesign:PackIcon x:Name="StarButtonStarBorderIcon" Style="{StaticResource StarBorderIcon}"/>
-                            </ToggleButton.Content>
+                        <CheckBox x:Name="CompletionCheckBox" IsChecked="{Binding IsCompleted, Mode=TwoWay}" Style="{DynamicResource ItembarCheckbox}">
+                            <materialDesign:PackIcon Style="{DynamicResource ItembarCheckboxCircleIcon}"/>
+                        </CheckBox>
+
+                        <ToggleButton x:Name="StarToggle" Style="{StaticResource ItembarStarToggle}" IsChecked="{Binding IsStarred,Mode=TwoWay}" ToolTip="Mark As Important" Width="30" Height="30" Margin="0,2,15,0">
+                            <materialDesign:PackIcon x:Name="StarButtonStarBorderIcon" Style="{StaticResource StarBorderIcon}"/>
 
                             <materialDesign:ToggleButtonAssist.OnContent>
                                 <materialDesign:PackIcon x:Name="StarButtonStarIcon" Style="{StaticResource StarIcon}"/>

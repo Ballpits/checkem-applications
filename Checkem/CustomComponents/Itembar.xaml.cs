@@ -16,10 +16,10 @@ namespace Checkem.CustomComponents
     {
         public Itembar(Todo item)
         {
-            //Get todo properties
-            todo = item;
+            this.DataContext = this;
 
-            DataContext = this;
+            //Get todo properties
+            this.todo = item;
 
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace Checkem.CustomComponents
             //Update star toggle state
             OnStarChanged();
 
-            //Update itembar height
+            //Update itembar height for reminder details
             OnReminderTypeChanged();
         }
 
@@ -74,7 +74,9 @@ namespace Checkem.CustomComponents
                 {
                     todo.IsCompleted = value;
 
+                    //Update title foregrond and check box state
                     OnCompletionChanged();
+
                     OnPropertyChanged();
                 }
             }
@@ -92,7 +94,9 @@ namespace Checkem.CustomComponents
                 {
                     todo.IsStarred = value;
 
+                    //Update star toggle state
                     OnStarChanged();
+
                     OnPropertyChanged();
                 }
             }
@@ -110,7 +114,9 @@ namespace Checkem.CustomComponents
                 {
                     todo.IsReminderOn = value;
 
+                    //Update itembar height for reminder details
                     OnReminderTypeChanged();
+
                     OnPropertyChanged();
                 }
             }
@@ -119,17 +125,35 @@ namespace Checkem.CustomComponents
 
 
         #region Update property value
-        public void Update_All(Todo item)
+        //update view's completion check box state than save
+        public void Update_IsCompleted()
         {
-            if (todo.Title != item.Title)
-            {
-                Title = item.Title;
-            }
+            CompletionCheckBox.SetBinding(CheckBox.IsCheckedProperty, "IsCompleted");
 
             Update?.Invoke(this, EventArgs.Empty);
         }
 
-        private void Update_IsCompleted()
+
+        //update view's star toggle state than save
+        public void Update_IsStarred()
+        {
+            StarToggle.SetBinding(CheckBox.IsCheckedProperty, "IsStarred");
+
+            Update?.Invoke(this, EventArgs.Empty);
+        }
+
+
+        //update view's title textblock's text than save
+        public void Update_Title()
+        {
+            TitleTextBlock.SetBinding(TextBlock.TextProperty, "Title");
+
+            Update?.Invoke(this, EventArgs.Empty);
+        }
+
+
+        //check IsCompleted, change state than save
+        private void Set_IsCompleted()
         {
             if (IsCompleted == true)
             {
@@ -143,7 +167,9 @@ namespace Checkem.CustomComponents
             Update?.Invoke(this, EventArgs.Empty);
         }
 
-        private void Update_IsStarred()
+
+        //check IsStarred value, change state than save
+        private void Set_IsStarred()
         {
             if (IsStarred == true)
             {
@@ -208,6 +234,7 @@ namespace Checkem.CustomComponents
                 //show reminder details
                 ReminderDetailStackPanel.Visibility = Visibility.Visible;
 
+
                 if (this.todo.IsAdvanceReminderOn)
                 {
                     ReminderDetailTextBlock.Text = "Start on: " + DateTimeManipulator.SimplifiedDate(this.todo.BeginDateTime.Value) + "\tEnd on: " + DateTimeManipulator.SimplifiedDate(this.todo.EndDateTime.Value);
@@ -216,6 +243,7 @@ namespace Checkem.CustomComponents
                 {
                     ReminderDetailTextBlock.Text = DateTimeManipulator.SimplifiedDate(this.todo.EndDateTime.Value);
                 }
+
 
                 if (DateTimeManipulator.IsPassed(this.todo.EndDateTime.Value))
                 {
@@ -235,6 +263,7 @@ namespace Checkem.CustomComponents
         #endregion
 
 
+        #region Mouse events for item bar border
         private void ItembarBorder_MouseEnter(object sender, MouseEventArgs e)
         {
             //item bar highlight
@@ -261,6 +290,8 @@ namespace Checkem.CustomComponents
                 Click?.Invoke(this, EventArgs.Empty);
             }
         }
+        #endregion
+
 
         private void checkBox_Checked(object sender, RoutedEventArgs e)
         {
@@ -289,12 +320,12 @@ namespace Checkem.CustomComponents
         #region Menu item click events
         private void MenuItemCompletion_Click(object sender, RoutedEventArgs e)
         {
-            Update_IsCompleted();
+            Set_IsCompleted();
         }
 
         private void MenuItemIsStarred_Click(object sender, RoutedEventArgs e)
         {
-            Update_IsStarred();
+            Set_IsStarred();
         }
 
         private void MenuItem_Remove_Click(object sender, RoutedEventArgs e)

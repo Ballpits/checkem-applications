@@ -11,16 +11,20 @@ namespace Checkem.Views
     {
         public DetailsPanel()
         {
-            DataContext = this;
+            this.DataContext = this;
 
             InitializeComponent();
         }
 
-        public DetailsPanel(Itembar itemar)
+        public DetailsPanel(Itembar itembar)
         {
-            DataContext = this;
+            this.DataContext = this;
 
-            ItemProperties = itemar.todo;
+            //copy item bar
+            this.itembar = itembar;
+
+            //get item bar's todo properties
+            this.todo = itembar.todo;
 
             InitializeComponent();
         }
@@ -33,23 +37,26 @@ namespace Checkem.Views
 
 
         #region Variable
-        public Todo ItemProperties;
+        public Itembar itembar;
         #endregion
 
 
         #region Property
+        public Todo todo = new Todo();
+
         public string Title
         {
             get
             {
-                return ItemProperties.Title;
+                return todo.Title;
             }
             set
             {
-                if (ItemProperties.Title != value)
+                if (todo.Title != value)
                 {
-                    ItemProperties.Title = value;
+                    todo.Title = value;
 
+                    itembar.Update_Title();
                     OnPropertyChanged();
                 }
             }
@@ -59,14 +66,50 @@ namespace Checkem.Views
         {
             get
             {
-                return ItemProperties.Description;
+                return todo.Description;
             }
             set
             {
-                if (ItemProperties.Description != value)
+                if (todo.Description != value)
                 {
-                    ItemProperties.Description = value;
+                    todo.Description = value;
 
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public bool IsCompleted
+        {
+            get
+            {
+                return todo.IsCompleted;
+            }
+            set
+            {
+                if (todo.IsCompleted != value)
+                {
+                    todo.IsCompleted = value;
+
+                    itembar.Update_IsCompleted();
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public bool IsStarred
+        {
+            get
+            {
+                return todo.IsStarred;
+            }
+            set
+            {
+                if (todo.IsStarred != value)
+                {
+                    todo.IsStarred = value;
+
+                    itembar.Update_IsStarred();
                     OnPropertyChanged();
                 }
             }
