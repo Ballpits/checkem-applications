@@ -160,9 +160,13 @@
                 </Grid>
 
                 <StackPanel Margin="70,10,55,10" ScrollViewer.VerticalScrollBarVisibility="Disabled" Orientation="Vertical">
-                    <TextBlock x:Name="TitleTextBlock" VerticalAlignment="Stretch" TextAlignment="Left" Text="{Binding Title, Mode=TwoWay}" Style="{DynamicResource CheckemTextBlock.Base}" HorizontalAlignment="Stretch" FontSize="27" Foreground="{DynamicResource Color.Black}"/>
+                    <Grid>
+                        <TextBlock x:Name="TitleTextBlock" Visibility="Visible" VerticalAlignment="Stretch" TextAlignment="Left" Text="{Binding Title, Mode=TwoWay}" Style="{DynamicResource CheckemTextBlock.Base}" HorizontalAlignment="Stretch" FontSize="27" Foreground="{DynamicResource Color.Black}"/>
 
-                    <StackPanel x:Name="ReminderDetailStackPanel" d:Visibility="Visible" Visibility="Collapsed" VerticalAlignment="Stretch" Orientation="Horizontal" Margin="0,5,0,0">
+                        <TextBox x:Name="TitleTextBox" d:Text="Content" d:Visibility="Visible" Visibility="Collapsed" CaretBrush="{DynamicResource Color.Primary}" SelectionBrush="{DynamicResource Color.Primary}" Foreground="{DynamicResource Color.Black}" VerticalAlignment="Stretch" TextAlignment="Left" Text="{Binding Title, Mode=TwoWay}" FontFamily="{DynamicResource Quicksand}" HorizontalAlignment="Stretch" FontSize="27" LostFocus="TitleTextBox_LostFocus" Height="33.75" Padding="0,-2,0,0" VerticalContentAlignment="Stretch" BorderBrush="{DynamicResource Color.Secondary}"/>
+                    </Grid>
+
+                    <StackPanel x:Name="ReminderDetailStackPanel" d:Visibility="Collapsed" Visibility="Collapsed" VerticalAlignment="Stretch" Orientation="Horizontal" Margin="0,5,0,0">
                         <materialDesign:PackIcon Width="25" VerticalAlignment="Stretch" Kind="Bell" Height="25" HorizontalAlignment="Left" Foreground="#FFE3F321"/>
                         <TextBlock x:Name="ReminderDetailTextBlock" VerticalAlignment="Stretch" TextAlignment="Left" Text="Due date..." Style="{DynamicResource CheckemTextBlock.Base}" HorizontalAlignment="Left" FontSize="20" Foreground="{DynamicResource Color.Black}"/>
                     </StackPanel>

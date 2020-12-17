@@ -1,5 +1,4 @@
 ﻿using Checkem.Models;
-using MaterialDesignThemes.Wpf;
 using Sphere.Readable;
 using System;
 using System.ComponentModel;
@@ -19,6 +18,10 @@ namespace Checkem.CustomComponents
             this.DataContext = this;
 
             InitializeComponent();
+
+            TitleTextBlock.Visibility = Visibility.Collapsed;
+            TitleTextBox.Visibility = Visibility.Visible;
+            TitleTextBox.Focus();
         }
 
         public Itembar(Todo item)
@@ -356,5 +359,13 @@ namespace Checkem.CustomComponents
             Remove?.Invoke(this, EventArgs.Empty);
         }
         #endregion
+
+        private void TitleTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TitleTextBlock.Visibility = Visibility.Visible;
+            TitleTextBox.Visibility = Visibility.Collapsed;
+
+            Title = TitleTextBox.Text;
+        }
     }
 }
