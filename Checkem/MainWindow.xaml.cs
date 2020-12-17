@@ -1,8 +1,10 @@
 ﻿using Checkem.CustomComponents;
 using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Checkem.Models;
 
 namespace Checkem
 {
@@ -88,9 +90,10 @@ namespace Checkem
         #endregion
 
 
+        public FilterMethods filterMethod { get; set; } = FilterMethods.None;
+
 
         #region Navigation bar
-
         #region Expander buttons
 
         private void ButtonExpand_Click(object sender, RoutedEventArgs e)
@@ -107,34 +110,34 @@ namespace Checkem
         }
 
         #endregion
-
         #region Buttons
+
 
         private void ButtonMyDay_Click(object sender, RoutedEventArgs e)
         {
-            Grid.SetRow(NavbarCursor, 0);
-            todoList.SetFilter(Models.FilterMethods.None);
+            filterMethod = FilterMethods.None;
+            this.Dispatcher.Invoke(Filter);
         }
 
 
         private void ButtonAllTasks_Click(object sender, RoutedEventArgs e)
         {
-            Grid.SetRow(NavbarCursor, 1);
-            todoList.SetFilter(Models.FilterMethods.None);
+            filterMethod = FilterMethods.None;
+            this.Dispatcher.Invoke(Filter);
         }
 
 
         private void ButtonDueDateFilter_Click(object sender, RoutedEventArgs e)
         {
-            Grid.SetRow(NavbarCursor, 2);
-            todoList.SetFilter(Models.FilterMethods.Planned);
+            filterMethod = FilterMethods.Planned;
+            this.Dispatcher.Invoke(Filter);
         }
 
 
         private void ButtonStarredFilter_Click(object sender, RoutedEventArgs e)
         {
-            Grid.SetRow(NavbarCursor, 3);
-            todoList.SetFilter(Models.FilterMethods.Starred);
+            filterMethod = FilterMethods.Starred;
+            this.Dispatcher.Invoke(Filter);
         }
 
 
@@ -145,15 +148,10 @@ namespace Checkem
 
         #endregion
 
-        private void MoveNavbarCursor(int index)
+        private void Filter()
         {
-
-        }
-
-
-        public void ChangeFilter(int mode)
-        {
-
+            Grid.SetRow(NavbarCursor, (int)filterMethod + 1);
+            todoList.SetFilter(filterMethod);
         }
 
         #endregion
