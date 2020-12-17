@@ -13,7 +13,7 @@ namespace Checkem.Views
     {
         public TodoList()
         {
-            Manager.StoreTestData();
+            //Manager.StoreTestData();
 
             currentInventory = Manager.Filter(FilterMethods.None);
 
@@ -97,7 +97,7 @@ namespace Checkem.Views
         }
 
 
-        private void ItemCountChanged()
+        private void OnItemCountChanged()
         {
             ItemCount = currentInventory.Count.ToString();
         }
@@ -108,6 +108,8 @@ namespace Checkem.Views
             currentInventory = Manager.Filter(method);
 
             LoadTodoList();
+
+            OnItemCountChanged();
         }
 
 
@@ -147,7 +149,7 @@ namespace Checkem.Views
             currentInventory.Remove(itembar.todo);
             Manager.Remove(itembar.todo);
 
-            ItemCountChanged();
+            OnItemCountChanged();
         }
 
         private void Itembar_Update(object sender, EventArgs e)
@@ -164,10 +166,16 @@ namespace Checkem.Views
 
         private void NewTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            DetailsPanel detailsPanel = new DetailsPanel();
-            detailsPanel.Close += new EventHandler(this.DetailsPanel_Close);
+            Itembar itembar = new Itembar();
+            itembar.Click += new EventHandler(this.Itembar_Click);
+            itembar.Remove += new EventHandler(this.Itembar_Remove);
+            itembar.Update += new EventHandler(this.Itembar_Update);
 
-            DataGrid.Children.Add(detailsPanel);
+            TodoItemsStackPanel.Children.Insert(0, itembar);
+            currentInventory.Add(itembar.todo);
+            Manager.Add(itembar.todo);
+
+            OnItemCountChanged();
         }
     }
 }

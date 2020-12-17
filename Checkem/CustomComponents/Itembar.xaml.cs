@@ -14,6 +14,13 @@ namespace Checkem.CustomComponents
 {
     public partial class Itembar : UserControl, INotifyPropertyChanged
     {
+        public Itembar()
+        {
+            this.DataContext = this;
+
+            InitializeComponent();
+        }
+
         public Itembar(Todo item)
         {
             this.DataContext = this;
@@ -43,7 +50,7 @@ namespace Checkem.CustomComponents
 
 
         #region Properties
-        public Todo todo;
+        public Todo todo = new Todo();
 
         public string Title
         {

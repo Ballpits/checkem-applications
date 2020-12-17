@@ -162,7 +162,7 @@
                 <StackPanel Margin="70,10,55,10" ScrollViewer.VerticalScrollBarVisibility="Disabled" Orientation="Vertical">
                     <TextBlock x:Name="TitleTextBlock" VerticalAlignment="Stretch" TextAlignment="Left" Text="{Binding Title, Mode=TwoWay}" Style="{DynamicResource CheckemTextBlock.Base}" HorizontalAlignment="Stretch" FontSize="27" Foreground="{DynamicResource Color.Black}"/>
 
-                    <StackPanel x:Name="ReminderDetailStackPanel" d:Visibility="Visible" VerticalAlignment="Stretch" Orientation="Horizontal" Margin="0,5,0,0">
+                    <StackPanel x:Name="ReminderDetailStackPanel" d:Visibility="Visible" Visibility="Collapsed" VerticalAlignment="Stretch" Orientation="Horizontal" Margin="0,5,0,0">
                         <materialDesign:PackIcon Width="25" VerticalAlignment="Stretch" Kind="Bell" Height="25" HorizontalAlignment="Left" Foreground="#FFE3F321"/>
                         <TextBlock x:Name="ReminderDetailTextBlock" VerticalAlignment="Stretch" TextAlignment="Left" Text="Due date..." Style="{DynamicResource CheckemTextBlock.Base}" HorizontalAlignment="Left" FontSize="20" Foreground="{DynamicResource Color.Black}"/>
                     </StackPanel>
