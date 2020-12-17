@@ -130,6 +130,7 @@ namespace Checkem.CustomComponents
         {
             CompletionCheckBox.SetBinding(CheckBox.IsCheckedProperty, "IsCompleted");
 
+            OnCompletionChanged();
             Update?.Invoke(this, EventArgs.Empty);
         }
 
