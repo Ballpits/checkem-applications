@@ -30,6 +30,10 @@ namespace Checkem.Views
             InitializeComponent();
         }
 
+        ~DetailsPanel()
+        {
+            //deconstruct
+        }
 
         #region Event
         public event PropertyChangedEventHandler PropertyChanged;

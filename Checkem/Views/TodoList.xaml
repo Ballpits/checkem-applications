@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:properties="clr-namespace:Checkem.Properties"
              xmlns:local="clr-namespace:Checkem.Views"
              x:Name="TodoListUserControl"
              mc:Ignorable="d" 
@@ -135,7 +134,7 @@
                     <StackPanel Name="TodoItemsStackPanel" Margin="0"/>
                 </ScrollViewer>
 
-                <Button materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth5" Background="{DynamicResource Color.Primary}" FocusVisualStyle="{DynamicResource CheckemCheckemFocusVisual.White}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="50" Height="50" BorderBrush="{x:Null}" Padding="0" TabIndex="6" VerticalAlignment="Bottom">
+                <Button materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth5" Background="{DynamicResource Color.Primary}" FocusVisualStyle="{DynamicResource CheckemCheckemFocusVisual.White}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="50" Height="50" BorderBrush="{x:Null}" Padding="0" TabIndex="6" VerticalAlignment="Bottom" Click="NewTaskButton_Click">
                     <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 </Button>
             </Grid>

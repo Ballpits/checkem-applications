@@ -161,5 +161,13 @@ namespace Checkem.Views
         {
             DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
         }
+
+        private void NewTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            DetailsPanel detailsPanel = new DetailsPanel();
+            detailsPanel.Close += new EventHandler(this.DetailsPanel_Close);
+
+            DataGrid.Children.Add(detailsPanel);
+        }
     }
 }
