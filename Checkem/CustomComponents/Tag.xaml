@@ -57,10 +57,10 @@
 
         <Grid Panel.ZIndex="1" HorizontalAlignment="Left" Margin="10,0,0,0" Width="20">
             <Ellipse x:Name="ellipse" HorizontalAlignment="Center" Fill="{DynamicResource Color.White}" VerticalAlignment="Center" Height="20" Width="20"/>
-            <Ellipse x:Name="ellipse1" HorizontalAlignment="Center" Fill="{Binding Color}" d:Fill="PaleVioletRed" VerticalAlignment="Center" Height="20" Width="20"/>
+            <Ellipse x:Name="ellipse1" HorizontalAlignment="Center" Fill="{Binding Color}" VerticalAlignment="Center" Height="20" Width="20"/>
         </Grid>
 
-        <TextBlock x:Name="textBlock" Panel.ZIndex="2" Text="{Binding Text}" d:Text="Tag content" Foreground="{DynamicResource Color.Black}" Style="{StaticResource CheckemTextBlock.Base}" Padding="5,0,0,3" Margin="30,0,10,0" VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock x:Name="textBlock" Panel.ZIndex="2" Text="{Binding Text}" Foreground="{DynamicResource Color.Black}" Style="{StaticResource CheckemTextBlock.Base}" Padding="5,0,0,3" Margin="30,0,10,0" VerticalAlignment="Center" FontSize="20"/>
         <CheckBox x:Name="checkbox" Visibility="Hidden" Panel.ZIndex="-1" Checked="checkbox_Checked" Unchecked="checkbox_Unchecked"/>
     </Grid>
 </UserControl>
