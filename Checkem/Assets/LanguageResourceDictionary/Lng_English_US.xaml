@@ -10,10 +10,9 @@
     <system:String x:Key="Dict_Reminder">Reminder</system:String>
     <system:String x:Key="Dict_Starred">Starred</system:String>
     <system:String x:Key="Dict_NewList">Create new list</system:String>
-
     <system:String x:Key="Dict_Task">Task</system:String>
     <system:String x:Key="Dict_Tasks">Tasks</system:String>
-
+    
     <!--Context menu-->
     <system:String x:Key="Dict_MarkAsCompleted">Complete</system:String>
     <system:String x:Key="Dict_MarkAsNotCompleted">Not complete</system:String>

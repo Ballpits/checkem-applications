@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:properties="clr-namespace:Checkem.Properties"
         xmlns:Views="clr-namespace:Checkem.Views"
         xmlns:CustomUserControls="clr-namespace:Checkem.CustomComponents"
         xmlns:local="clr-namespace:Checkem"
@@ -20,18 +19,19 @@
         StateChanged="AppWindow_StateChanged"
         KeyUp="MainWindow_KeyUp"
         KeyDown="MainWindow_KeyDown"
+        FontFamily="{DynamicResource Quicksand}"
         >
 
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBarGrid">
                 <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="280"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
 
         <Storyboard x:Key="CloseMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBar">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="NavigationBarGrid">
                 <EasingDoubleKeyFrame KeyTime="0" Value="280"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="60"/>
             </DoubleAnimationUsingKeyFrames>
@@ -67,7 +67,53 @@
             <CustomUserControls:Tag Grid.Row="1" Text="test... test..." Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1" Margin="0,30,0,0"/>
             <CustomUserControls:ModeSelectionButtons2 Grid.Row="1" Option1Content="Basic" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,65,0,0" Panel.ZIndex="1" Option2Content="Advance"/>-->
 
-            <Grid d:Width="280" x:Name="NavigationBar" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="60" Grid.Row="2" Visibility="Visible">
+            <Grid x:Name="TitleBarGrid" Style="{StaticResource todoUSCTitlebar}" Grid.ColumnSpan="2" SizeChanged="Grid_SizeChanged" Visibility="Visible">
+                <Border x:Name="SearchBoxBorder" WindowChrome.IsHitTestVisibleInChrome="True" Background="White" CornerRadius="5" HorizontalAlignment="Left" Height="40" Width="400" Margin="75,0,0,0" Padding="0" VerticalAlignment="Center">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="180*" />
+                        </Grid.ColumnDefinitions>
+
+                        <materialDesign:PackIcon Kind="Magnify" ToolTip="Tell me what you wanna find, ignore case." Opacity=".56" Height="30" Width="43" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                        <TextBox x:Name="SearchBox" Grid.Column="1" Margin="0,5,30,5" ToolTip="Looking for something ?" materialDesign:HintAssist.Hint="Search" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" FontSize="16" TextChanged="SearchBox_TextChanged" IsTabStop="False"/>
+
+                        <Button x:Name="ButtonClearSearchBox" Grid.Column="1" Margin="0,0,7,0" HorizontalAlignment="Right" Width="20" Height="40" Padding="0" Background="White" BorderBrush="{x:Null}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Click="ButtonClearSearchBox_Click" Visibility="Hidden">
+                            <materialDesign:PackIcon Kind="Close" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Margin="0" Foreground="#FF424242"/>
+                        </Button>
+                    </Grid>
+                </Border>
+
+                <Path Data="M578.19198,-0.066659417 L706.86698,23.4 814.70389,24.400132 840.23715,40.400214 939.63685,40.489548 939.5698,0.0080855492" Fill="{DynamicResource Color.WhiteSmoke}" HorizontalAlignment="Right" Height="40" Margin="0" Stretch="Fill" VerticalAlignment="Top" Width="360"/>
+
+                <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Top" Height="20">
+                    <Button Style="{StaticResource CheckemChromeButton}" Click="ButtonSettings_Click">
+                        <materialDesign:PackIcon Kind="SettingsOutline" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
+                    </Button>
+                    <Button Style="{StaticResource CheckemChromeButton}" Click="MinimizeButton_Click">
+                        <materialDesign:PackIcon Kind="WindowMinimize" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
+                    </Button>
+                    <Button Style="{StaticResource CheckemChromeButton}" Click="RestoreButton_Click">
+                        <materialDesign:PackIcon Kind="WindowRestore" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
+                    </Button>
+                    <Button Style="{StaticResource CheckemChromeXButton}" Click="CloseButton_Click" HorizontalAlignment="Stretch">
+                        <materialDesign:PackIcon Kind="Close" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
+                    </Button>
+                </StackPanel>
+
+                <Grid x:Name="NavExpanderButtonGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0">
+                    <Button x:Name="ButtonExpand" WindowChrome.IsHitTestVisibleInChrome="True" Style="{StaticResource NavigationbarButton}" Click="ButtonExpand_Click" TabIndex="0" MinWidth="0" MinHeight="0" Width="40" Margin="5,0,10,0">
+                        <materialDesign:PackIcon Kind="MenuRightOutline" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
+                    </Button>
+
+                    <Button x:Name="ButtonCollaps" WindowChrome.IsHitTestVisibleInChrome="True" Visibility="Collapsed" Style="{StaticResource NavigationbarButton}" Click="ButtonCloseMenu_Click" TabIndex="0" MinWidth="0" MinHeight="0" Width="40" Height="40" Margin="5,0,10,0">
+                        <materialDesign:PackIcon Kind="MenuLeftOutline" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
+                    </Button>
+                </Grid>
+            </Grid>
+
+            <Grid d:Width="280" x:Name="NavigationBarGrid" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="60" Grid.Row="2" Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
@@ -119,54 +165,9 @@
                 </Button>
             </Grid>
 
-            <Grid x:Name="grid" Style="{StaticResource todoUSCTitlebar}" Grid.ColumnSpan="2" SizeChanged="Grid_SizeChanged" Visibility="Visible">
-                <Border x:Name="SearchBoxBorder" WindowChrome.IsHitTestVisibleInChrome="True" Background="White" CornerRadius="5" HorizontalAlignment="Left" Height="40" Width="400" Margin="75,0,0,0" Padding="0" VerticalAlignment="Center">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*" />
-                            <ColumnDefinition Width="180*" />
-                        </Grid.ColumnDefinitions>
-
-                        <materialDesign:PackIcon Kind="Magnify" ToolTip="Tell me what you wanna find, ignore case." Opacity=".56" Height="30" Width="43" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
-
-                        <TextBox x:Name="SearchBox" Grid.Column="1" Margin="0,5,30,5" ToolTip="Looking for something ?" materialDesign:HintAssist.Hint="Search" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" FontFamily="Quicksand" FontSize="16" TextChanged="SearchBox_TextChanged" IsTabStop="False"/>
-
-                        <Button x:Name="ButtonClearSearchBox" Grid.Column="1" Margin="0,0,7,0" HorizontalAlignment="Right" Width="20" Height="40" Padding="0" Background="White" BorderBrush="{x:Null}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Click="ButtonClearSearchBox_Click" Visibility="Hidden">
-                            <materialDesign:PackIcon Kind="Close" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Margin="0" Foreground="#FF424242"/>
-                        </Button>
-                    </Grid>
-                </Border>
-
-                <Path Data="M578.19198,-0.066659417 L706.86698,23.4 814.70389,24.400132 840.23715,40.400214 939.63685,40.489548 939.5698,0.0080855492" Fill="{DynamicResource Color.WhiteSmoke}" HorizontalAlignment="Right" Height="40.556" Margin="0" Stretch="Fill" VerticalAlignment="Top" Width="361.446"/>
-
-                <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Top" Height="20">
-                    <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Settings" Click="ButtonSettings_Click">
-                        <materialDesign:PackIcon Kind="SettingsOutline" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
-                    </Button>
-                    <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Minimize" Click="MinimizeButton_Click">
-                        <materialDesign:PackIcon Kind="WindowMinimize" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
-                    </Button>
-                    <Button Style="{StaticResource CheckemChromeButton}" ToolTip="Restore Down" Click="RestoreButton_Click">
-                        <materialDesign:PackIcon Kind="WindowRestore" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
-                    </Button>
-                    <Button Style="{StaticResource CheckemChromeXButton}" ToolTip="Close" Click="CloseButton_Click" HorizontalAlignment="Stretch">
-                        <materialDesign:PackIcon Kind="Close" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"/>
-                    </Button>
-                </StackPanel>
-
-                <Grid x:Name="NavExpanderButtonGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0">
-                    <Button x:Name="ButtonExpand" WindowChrome.IsHitTestVisibleInChrome="True" Style="{StaticResource NavigationbarButton}" Click="ButtonExpand_Click" TabIndex="0" MinWidth="0" MinHeight="0" Width="40" Margin="5,0,10,0">
-                        <materialDesign:PackIcon Kind="MenuRightOutline" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
-                    </Button>
-
-                    <Button x:Name="ButtonCollaps" WindowChrome.IsHitTestVisibleInChrome="True" Visibility="Collapsed" Style="{StaticResource NavigationbarButton}" Click="ButtonCloseMenu_Click" TabIndex="0" MinWidth="0" MinHeight="0" Width="40" Height="40" Margin="5,0,10,0">
-                        <materialDesign:PackIcon Kind="MenuLeftOutline" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
-                    </Button>
-                </Grid>
-            </Grid>
-
             <Grid x:Name="GridPrincipal" Grid.Column="1" Grid.Row="1" Visibility="Visible">
-                <CustomUserControls:Tag x:Name="WorkTag" Text="Work" Color="SeaGreen" HorizontalAlignment="Left" VerticalAlignment="Top" StateChanged="Tag_StateChanged"/>
+                <!--<CustomUserControls:Tag x:Name="WorkTag" Text="Work" Color="SeaGreen" HorizontalAlignment="Left" VerticalAlignment="Top" StateChanged="Tag_StateChanged"/>-->
+                <CustomUserControls:ToggleSwitch HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
                 <!--<CustomUserControls:ModeSelectionButtons2 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,40,0,0">
                     <CustomUserControls:ModeSelectionButtons2.Option1Content>

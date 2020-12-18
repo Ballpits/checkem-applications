@@ -1,6 +1,6 @@
 ﻿using Checkem.CustomComponents;
 using System;
-using System.Threading;
+using Checkem.Views;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -27,7 +27,9 @@ namespace Checkem
 
         private void ButtonSettings_Click(object sender, RoutedEventArgs e)
         {
-
+            SettingsWindow settings = new SettingsWindow();
+            settings.Owner = this;
+            settings.Show();
         }
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
