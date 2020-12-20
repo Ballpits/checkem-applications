@@ -10,11 +10,14 @@ namespace Checkem
 {
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(App app)
         {
+            application = app;
+
             InitializeComponent();
         }
 
+        App application;
 
         private void MainGrid_Loaded(object sender, RoutedEventArgs e)
         {
@@ -24,7 +27,6 @@ namespace Checkem
 
 
         #region Window chrome buttons
-
         private void ButtonSettings_Click(object sender, RoutedEventArgs e)
         {
             SettingsWindow settings = new SettingsWindow();
@@ -145,7 +147,8 @@ namespace Checkem
 
         private void ButtonAddNewList_Click(object sender, RoutedEventArgs e)
         {
-
+            application.Nitify("Hello", "greetings from checkem");
+            application.Nitify("lol", "who doesn't love lol cats ?");
         }
 
         #endregion

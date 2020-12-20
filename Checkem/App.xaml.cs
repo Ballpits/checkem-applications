@@ -4,18 +4,24 @@ namespace Checkem
 {
     public partial class App : Application
     {
-        private System.Windows.Forms.NotifyIcon TrayIcon;
+        private System.Windows.Forms.NotifyIcon TrayIcon = new System.Windows.Forms.NotifyIcon();
+
+        public int TimeOut { get; set; } = 3000;
+        public System.Windows.Forms.ToolTipIcon toolTipIcon { get; set; } = System.Windows.Forms.ToolTipIcon.Info;
+
 
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
-            MainWindow = new MainWindow();
+            MainWindow = new MainWindow(this);
             MainWindow.Show();
 
-            TrayIcon = new System.Windows.Forms.NotifyIcon();
-            TrayIcon.DoubleClick += (s, args) => OpenMainWindow();
             TrayIcon.Icon = Checkem.Properties.Resources.CheckemIcon;
+
+            TrayIcon.Click += (s, args) => OpenMainWindow();
+            TrayIcon.DoubleClick += (s, args) => OpenMainWindow();
+
             TrayIcon.Visible = true;
 
             ShowContextMenu();
@@ -42,7 +48,7 @@ namespace Checkem
             }
             else
             {
-                MainWindow = new MainWindow();
+                MainWindow = new MainWindow(this);
                 MainWindow.Show();
             }
         }
@@ -52,6 +58,12 @@ namespace Checkem
             TrayIcon.Icon = null;
             TrayIcon.Visible = false;
             Application.Current.Shutdown();
+        }
+
+        public void Nitify(string title, string message)
+        {
+            //show notification with specified message and title
+            TrayIcon.ShowBalloonTip(TimeOut, title, message, toolTipIcon);
         }
     }
 }
