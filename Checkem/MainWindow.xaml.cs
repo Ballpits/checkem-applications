@@ -147,8 +147,8 @@ namespace Checkem
 
         private void ButtonAddNewList_Click(object sender, RoutedEventArgs e)
         {
-            application.Nitify("Hello", "greetings from checkem");
-            application.Nitify("lol", "who doesn't love lol cats ?");
+            application.Notify("Hello", "greetings from checkem");
+            application.Notify("lol", "who doesn't love lol cats ?");
         }
 
         #endregion

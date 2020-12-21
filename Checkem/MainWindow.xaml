@@ -166,7 +166,7 @@
 
             <Grid x:Name="GridPrincipal" Grid.Column="1" Grid.Row="1" Visibility="Visible">
                 <!--<CustomUserControls:Tag x:Name="WorkTag" Text="Work" Color="SeaGreen" HorizontalAlignment="Left" VerticalAlignment="Top" StateChanged="Tag_StateChanged"/>-->
-                <CustomUserControls:ToggleSwitch HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <CustomUserControls:Tag Color="CadetBlue" Text="Hello tag" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
                 <!--<CustomUserControls:ModeSelectionButtons2 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,40,0,0">
                     <CustomUserControls:ModeSelectionButtons2.Option1Content>
