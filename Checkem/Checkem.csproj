@@ -313,6 +313,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Page Update="Assets\StyleResourceDictionary\ModeSelectionButton.xaml">
+		  <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+		</Page>
 		<Page Update="Assets\ThemeResourceDictionary\Base\ThemeBase.xaml">
 			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
 			<SubType>Designer</SubType>

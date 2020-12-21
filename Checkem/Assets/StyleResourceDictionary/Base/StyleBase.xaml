@@ -119,6 +119,16 @@
 
 
     <!--#region Button style-->
+    <!--#region Button border-->
+    <Style x:Key="BaseButtonBorder" TargetType="Border">
+        <Setter Property="Padding" Value="10,0,10,0"/>
+    </Style>
+
+    <Style x:Key="ModeButtonBorder" TargetType="Border" BasedOn="{StaticResource BaseButtonBorder}">
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Primary}"/>
+    </Style>
+    <!--#endregion-->
+    
     <!--#region Flat button-->
     <!--#region Square flat button-->
     <Style x:Key="CheckemFlatButton.Square" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
@@ -126,12 +136,12 @@
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=Color.Black}"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
 
-        <Setter Property="Padding" Value="0"/>
+        <Setter Property="FontFamily" Value="{DynamicResource Quicksand}"/>
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}">
+                    <Border Background="{TemplateBinding Background}" Style="{StaticResource BaseButtonBorder}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>

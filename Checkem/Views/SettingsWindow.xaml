@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:customComponents="clr-namespace:Checkem.CustomComponents" 
         mc:Ignorable="d"
         d:DesignHeight="450"
         d:DesignWidth="800"
@@ -33,7 +34,9 @@
                 General
             </TabItem>
             <TabItem Header="Appearence">
-                Appearence
+                <Grid>
+                    <customComponents:ModeSelectionButtons2 VerticalAlignment="Top" HorizontalAlignment="Left" Height="45" Margin="10,10,0,0" Option1Content="{materialDesign:PackIcon Kind=WbSunny}" Option2Content="{materialDesign:PackIcon Kind=NightSky}"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Notifications">
                 Notifications

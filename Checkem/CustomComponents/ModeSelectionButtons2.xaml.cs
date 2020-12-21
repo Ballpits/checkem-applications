@@ -16,6 +16,7 @@ namespace Checkem.CustomComponents
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+
         private object _Option1Content;
         public object Option1Content
         {

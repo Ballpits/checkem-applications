@@ -31,6 +31,8 @@
                 <ResourceDictionary Source="Assets/StyleResourceDictionary/Base/StyleBase.xaml"/>
 
                 <ResourceDictionary Source="Assets/StyleResourceDictionary/NavigationBar.xaml"/>
+
+                <ResourceDictionary Source="Assets/StyleResourceDictionary/ModeSelectionButton.xaml"/>
                 <!--#endregion-->
 
 
