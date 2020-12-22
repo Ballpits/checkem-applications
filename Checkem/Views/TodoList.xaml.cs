@@ -133,16 +133,20 @@ namespace Checkem.Views
 
         private void Itembar_Click(object sender, EventArgs e)
         {
+            //get triggered item bar;
             Itembar itembar = sender as Itembar;
 
+            //create details creation panel and set close event handler
             DetailsPanel detailsPanel = new DetailsPanel(itembar);
-            detailsPanel.Close += new EventHandler(this.DetailsPanel_Close);
+            detailsPanel.Close += new EventHandler(this.Panel_Close);
 
+            //show
             DataGrid.Children.Add(detailsPanel);
         }
 
         private void Itembar_Remove(object sender, EventArgs e)
         {
+            //get triggered item bar;
             Itembar itembar = sender as Itembar;
 
             TodoItemsStackPanel.Children.Remove(itembar);
@@ -159,9 +163,26 @@ namespace Checkem.Views
             Manager.Update(itembar.todo);
         }
 
-        private void DetailsPanel_Close(object sender, EventArgs e)
+        private void Panel_Close(object sender, EventArgs e)
         {
+            //remove the last child in DataGrid to remove panel
             DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
+        }
+
+        private void TagBar_OpenPanel(object sender, EventArgs e)
+        {
+            //create tag creation panel and set close event handler
+            TagCreationPanel tagCreationPanel = new TagCreationPanel();
+            tagCreationPanel.Close += new EventHandler(this.Panel_Close);
+            tagCreationPanel.Create += new EventHandler(this.CreateNewTag);
+
+            //show
+            DataGrid.Children.Add(tagCreationPanel);
+        }
+
+        private void CreateNewTag(object sender, EventArgs e)
+        {
+            tagBar.Create();
         }
 
         private void NewTaskButton_Click(object sender, RoutedEventArgs e)

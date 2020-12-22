@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 
 namespace Checkem.CustomComponents
@@ -23,8 +13,11 @@ namespace Checkem.CustomComponents
             InitializeComponent();
         }
 
-        private void ButtonCreateTag_Click(object sender, RoutedEventArgs e)
+        public event EventHandler OpenPanel;
+
+        public void Create()
         {
+            #region create new tag function goes here
             Tag tag = new Tag()
             {
                 Text = "Test",
@@ -34,6 +27,13 @@ namespace Checkem.CustomComponents
             tag.StateChanged += new EventHandler(this.Tag_StateChange);
 
             StpTagList.Children.Add(tag);
+            #endregion
+        }
+
+        private void ButtonCreateTag_Click(object sender, RoutedEventArgs e)
+        {
+            //tell parent control to open panel
+            OpenPanel?.Invoke(this, EventArgs.Empty);
         }
 
         private void Tag_StateChange(object sender, EventArgs e)

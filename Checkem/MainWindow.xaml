@@ -112,7 +112,7 @@
                 </Grid>
             </Grid>
 
-            <Grid d:Width="280" x:Name="NavigationBarGrid" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="60" Grid.Row="2" Visibility="Visible">
+            <Grid d:Width="60" x:Name="NavigationBarGrid" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="60" Grid.Row="2" Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
@@ -165,17 +165,6 @@
             </Grid>
 
             <Grid x:Name="GridPrincipal" Grid.Column="1" Grid.Row="1" Visibility="Visible">
-                <CustomUserControls:Tag x:Name="WorkTag" Text="Work" Color="CadetBlue" HorizontalAlignment="Left" VerticalAlignment="Top" StateChanged="Tag_StateChanged"/>
-
-                <CustomUserControls:ModeSelectionButtons2 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,40,0,0" Height="40">
-                    <CustomUserControls:ModeSelectionButtons2.Option1Content>
-                        <materialDesign:PackIcon Kind="WbSunny"/>
-                    </CustomUserControls:ModeSelectionButtons2.Option1Content>
-                    <CustomUserControls:ModeSelectionButtons2.Option2Content>
-                        <materialDesign:PackIcon Kind="MoonLastQuarter"/>
-                    </CustomUserControls:ModeSelectionButtons2.Option2Content>
-                </CustomUserControls:ModeSelectionButtons2>
-
                 <Views:TodoList x:Name="todoList" Panel.ZIndex="-1"/>
             </Grid>
 

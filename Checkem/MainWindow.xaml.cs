@@ -233,14 +233,5 @@ namespace Checkem
         }
 
         #endregion
-
-
-
-        private void Tag_StateChanged(object sender, EventArgs e)
-        {
-            Tag tag = sender as Tag;
-
-           
-        }
     }
 }

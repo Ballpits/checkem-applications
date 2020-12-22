@@ -44,7 +44,7 @@
         </EventTrigger>
     </UserControl.Triggers>
 
-    <Grid x:Name="TagGrid" MouseDown="TagGrid_MouseDown" MouseUp="TagGrid_MouseUp">
+    <Grid x:Name="TagGrid" MouseDown="TagGrid_MouseDown" MouseUp="TagGrid_MouseUp" Margin="0,0,7.5,0">
 
         <Grid.ContextMenu>
             <ContextMenu>

@@ -15,14 +15,30 @@ using System.Windows.Shapes;
 
 namespace Checkem.Views
 {
-    /// <summary>
-    /// Interaction logic for TagCreationPanel.xaml
-    /// </summary>
     public partial class TagCreationPanel : UserControl
     {
         public TagCreationPanel()
         {
             InitializeComponent();
+        }
+
+        public event EventHandler Create;
+        public event EventHandler Close;
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Close?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        {
+            Create?.Invoke(this, EventArgs.Empty);
+            Close?.Invoke(this, EventArgs.Empty);
         }
     }
 }
