@@ -1,11 +1,10 @@
-﻿using Sphere.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Checkem.Models
 {
-    public class TodoManager : DataAccess_Json<Todo>
+    public class TodoManager : Todo_DataAccess_Json<Todo>
     {
         public TodoManager()
         {

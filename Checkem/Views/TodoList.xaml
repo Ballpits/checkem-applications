@@ -128,7 +128,9 @@
                     </Button>
                 </Grid>
 
-                <Grid x:Name="GridTagList" Visibility="Visible" Margin="10,80,10,0" Height="45" VerticalAlignment="Top"/>
+                <Grid x:Name="GridTagList" Visibility="Visible" Margin="10,80,10,0" Height="45" VerticalAlignment="Top">
+                    
+                </Grid>
 
                 <ScrollViewer Style="{DynamicResource MaterialDesignScrollViewer}" Visibility="Visible" x:Name="scrollBar" BorderThickness="0" Margin="0,130,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto" UseLayoutRounding="True" VerticalAlignment="Top">
                     <StackPanel Name="TodoItemsStackPanel" Margin="0"/>
