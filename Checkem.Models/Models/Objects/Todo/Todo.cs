@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Checkem.Models
 {
@@ -27,7 +28,7 @@ namespace Checkem.Models
         public DateTime CreationDateTime { get; set; }
 
 
-        public int[] Tags { get; set; }
+        public List<TagItem> TagItems { get; set; }
         #endregion
     }
 }

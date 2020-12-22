@@ -1,6 +1,7 @@
 ﻿using Checkem.Models;
 using Sphere.Readable;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -38,6 +39,8 @@ namespace Checkem.CustomComponents
 
             //Update star toggle state
             OnStarChanged();
+
+            LoadTagItems();
 
             //Update itembar height for reminder details
             OnReminderTypeChanged();
@@ -131,6 +134,23 @@ namespace Checkem.CustomComponents
                 }
             }
         }
+
+        public List<TagItem> TagItems
+        {
+            get
+            {
+                return todo.TagItems;
+            }
+            set
+            {
+                if (todo.TagItems != value)
+                {
+                    todo.TagItems = value;
+
+                    OnPropertyChanged();
+                }
+            }
+        }
         #endregion
 
 
@@ -201,6 +221,18 @@ namespace Checkem.CustomComponents
             Update?.Invoke(this, EventArgs.Empty);
         }
         #endregion
+
+
+        private void LoadTagItems()
+        {
+            if (TagItems != null)
+            {
+                foreach (var item in TagItems)
+                {
+                    TagItemPreviewStackPanel.Children.Add(new PreviewTag() { Color = item.TagColor, Text = item.Content });
+                }
+            }
+        }
 
 
         #region Property Changed event handler
