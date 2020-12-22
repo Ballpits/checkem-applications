@@ -240,7 +240,7 @@ namespace Checkem
         {
             Tag tag = sender as Tag;
 
-            System.Windows.Forms.MessageBox.Show($"Tag.IsSelected = {tag.IsSelected}");
+           
         }
     }
 }

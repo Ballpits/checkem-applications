@@ -1,10 +1,11 @@
-﻿<UserControl x:Class="Checkem.Views.TodoList"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:Checkem.Views"
+             xmlns:CustomComponents="clr-namespace:Checkem.CustomComponents" x:Class="Checkem.Views.TodoList"
              x:Name="TodoListUserControl"
              mc:Ignorable="d" 
              d:DesignHeight="540"
@@ -12,9 +13,9 @@
              Loaded="TodoList_Loaded"
              >
 
-    <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.5}">
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContent" OpeningEffect="{materialDesign:TransitionEffect Duration=0:0:0.5, Kind=FadeIn}">
 
-        <Grid Name="DataGrid" Style="{StaticResource todoUSCTitlebar}">
+        <Grid x:Name="DataGrid" Style="{StaticResource todoUSCTitlebar}">
             <Grid Background="{DynamicResource Color.WhiteSmoke}" Margin="0">
 
                 <Grid.ContextMenu>
@@ -129,11 +130,13 @@
                 </Grid>
 
                 <Grid x:Name="GridTagList" Visibility="Visible" Margin="10,80,10,0" Height="45" VerticalAlignment="Top">
-                    
+
+                    <CustomComponents:TagBar HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
                 </Grid>
 
                 <ScrollViewer Style="{DynamicResource MaterialDesignScrollViewer}" Visibility="Visible" x:Name="scrollBar" BorderThickness="0" Margin="0,130,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto" UseLayoutRounding="True" VerticalAlignment="Top">
-                    <StackPanel Name="TodoItemsStackPanel" Margin="0"/>
+                    <StackPanel x:Name="TodoItemsStackPanel" Margin="0"/>
                 </ScrollViewer>
 
                 <Button materialDesign:ButtonAssist.CornerRadius="100" materialDesign:ShadowAssist.ShadowDepth="Depth5" Background="{DynamicResource Color.Primary}" FocusVisualStyle="{DynamicResource CheckemCheckemFocusVisual.White}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="50" Height="50" BorderBrush="{x:Null}" Padding="0" TabIndex="6" VerticalAlignment="Bottom" Click="NewTaskButton_Click">
