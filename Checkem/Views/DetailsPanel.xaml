@@ -76,6 +76,22 @@
                             <customComponents:Tag Content="tag 1" Color="Black"/>
                         </ComboBox>
 
+                        <StackPanel Orientation="Horizontal" Margin="10,20,10,0">
+                            <TextBlock Style="{StaticResource CheckemTextBlock.Base}" Text="Reminder" FontSize="20" Padding="0,4,0,0" Margin="0,0,10,0"/>
+
+                            <ListBox Style="{StaticResource MaterialDesignToolToggleListBox}" Foreground="White" FontFamily="{DynamicResource Quicksand}" SelectedIndex="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="35" FontSize="18" Background="{DynamicResource Color.Primary}">
+                                <ListBoxItem>
+                                    Basic
+                                </ListBoxItem>
+                                <ListBoxItem>
+                                    Advance
+                                </ListBoxItem>
+                                <ListBoxItem>
+                                    None
+                                </ListBoxItem>
+                            </ListBox>
+                        </StackPanel>
+
                         <TextBox Text="{Binding Description,Mode=TwoWay}" AcceptsReturn="True" MaxLength="1000" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_Description}" Style="{StaticResource TextBox.Animated}"/>
 
                     </StackPanel>

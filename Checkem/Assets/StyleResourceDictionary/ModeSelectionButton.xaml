@@ -2,6 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     >
 
+    
+    <Style x:Key="ModeButtonBorder" TargetType="Border" BasedOn="{StaticResource BaseButtonBorder}">
+        <Setter Property="Background" Value="{DynamicResource Color.Primary}"/>
+    </Style>
+
+    <Style x:Key="ModeButtonBorder.On" TargetType="Border" BasedOn="{StaticResource BaseButtonBorder}">
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Primary}"/>
+    </Style>
+
     <Style x:Key="ModeSelectionButton" BasedOn="{StaticResource ResourceKey=CheckemFlatButton.Square}" TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource Color.Primary}"/>
         <Setter Property="Foreground" Value="{DynamicResource Color.White}"/>

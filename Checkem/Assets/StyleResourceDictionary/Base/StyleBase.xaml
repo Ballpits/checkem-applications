@@ -123,10 +123,6 @@
     <Style x:Key="BaseButtonBorder" TargetType="Border">
         <Setter Property="Padding" Value="10,0,10,0"/>
     </Style>
-
-    <Style x:Key="ModeButtonBorder" TargetType="Border" BasedOn="{StaticResource BaseButtonBorder}">
-        <Setter Property="BorderBrush" Value="{DynamicResource Color.Primary}"/>
-    </Style>
     <!--#endregion-->
     
     <!--#region Flat button-->
