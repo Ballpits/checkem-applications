@@ -18,7 +18,7 @@
                         <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
                     </Button>
 
-                    <materialDesign:ColorPicker IsTabStop="False" Margin="10,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="300" Width="300"/>
+                    <materialDesign:ColorPicker  x:Name="colorPicker" IsTabStop="False" Margin="10,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="300" Width="300" Color="Black"/>
 
                     <TextBox x:Name="TextboxTagName" materialDesign:HintAssist.Hint="Tag name" Style="{StaticResource TextBox.Animated}" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Height="80"/>
 

@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8933759C-B163-4EE9-BCF3-CD93F767FDB7}"
 	ProjectSection(SolutionItems) = preProject
 		Checkem\bin\Debug\net5.0-windows\Inventory.json = Checkem\bin\Debug\net5.0-windows\Inventory.json
+		Checkem\bin\Debug\net5.0-windows\Tag.json = Checkem\bin\Debug\net5.0-windows\Tag.json
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkem", "Checkem\Checkem.csproj", "{60039D99-FD89-4BE0-9CC1-E26CECEB5B12}"
@@ -27,7 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{61A18549
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sphere.DateTime", "Sphere.DateTime\Sphere.DateTime.csproj", "{802118DF-B1B4-4D80-B8C3-0C28C27325A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Tests", "Library.Tests\Library.Tests.csproj", "{925F9BBE-EED5-48FB-B28D-EEF97EA53BB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Tests", "Library.Tests\Library.Tests.csproj", "{925F9BBE-EED5-48FB-B28D-EEF97EA53BB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

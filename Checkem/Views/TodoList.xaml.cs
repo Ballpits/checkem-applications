@@ -182,7 +182,9 @@ namespace Checkem.Views
 
         private void CreateNewTag(object sender, EventArgs e)
         {
-            tagBar.Create();
+            TagCreationPanel Test = sender as TagCreationPanel;
+
+            tagBar.Create(Test.TextboxTagName.Text,Test.colorPicker.Color);
         }
 
         private void NewTaskButton_Click(object sender, RoutedEventArgs e)

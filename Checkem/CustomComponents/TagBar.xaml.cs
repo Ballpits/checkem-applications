@@ -15,13 +15,15 @@ namespace Checkem.CustomComponents
 
         public event EventHandler OpenPanel;
 
-        public void Create()
+        public void Create(string text, Color color)
         {
             #region create new tag function goes here
+            
+
             Tag tag = new Tag()
             {
-                Text = "Test",
-                Color = Brushes.Red,
+                Text = text,
+                Color = new SolidColorBrush(color)
             };
 
             tag.StateChanged += new EventHandler(this.Tag_StateChange);
