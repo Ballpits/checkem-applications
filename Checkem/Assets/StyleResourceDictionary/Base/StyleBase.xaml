@@ -277,7 +277,6 @@
     <!--#endregion-->
 
     <!--#region Close button-->
-
     <Style x:Key="CloseButton" TargetType="Button" BasedOn="{StaticResource CheckemFlatButton.Circle}">
         <Setter Property="Background" Value="{DynamicResource Color.LightGray}"/>
 
@@ -285,6 +284,16 @@
         <Setter Property="Height" Value="30"/>
         
         <Setter Property="Content" Value="{materialDesign:PackIcon Kind=Close, Size=20}"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Color.Gray}"/>
+            </Trigger>
+
+            <Trigger Property="IsMouseCaptureWithin" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Color.DarkGray}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <!--#endregion-->
     <!--#endregion-->
