@@ -5,7 +5,7 @@ using System.Windows.Media;
 
 namespace Checkem.Assets.ValueConverter
 {
-    public class ColorToBrushConverter : IValueConverter
+    public class DrawingColorToBrushConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

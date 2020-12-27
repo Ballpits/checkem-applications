@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"            
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:customComponents="clr-namespace:Checkem.CustomComponents"
              xmlns:local="clr-namespace:Checkem.Views"
              mc:Ignorable="d" 
              d:DesignWidth="1920"
@@ -18,9 +19,13 @@
                         <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
                     </Button>
 
-                    <materialDesign:ColorPicker  x:Name="colorPicker" IsTabStop="False" Margin="10,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="300" Width="300" Color="Black"/>
+                    <materialDesign:ColorPicker x:Name="colorPicker" IsTabStop="False" Margin="10,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="300" Width="300" Color="Black"/>
 
                     <TextBox x:Name="TextboxTagName" materialDesign:HintAssist.Hint="Tag name" Style="{StaticResource TextBox.Animated}" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Height="80"/>
+
+                    <!--<customComponents:PreviewTag Color="{Binding ElementName=colorPicker, Path=Color, Converter={StaticResource BindingToStringConverter}}" Margin="315,182,0,182"/>-->
+                    
+                    <Ellipse Fill="{Binding ElementName=colorPicker, Path=Color, Mode=TwoWay, Converter={StaticResource BindingToStringConverter}}" HorizontalAlignment="Right" Height="100" Margin="0,90,200,0" Stroke="Black" VerticalAlignment="Top" Width="100"/>
 
                     <Button Style="{StaticResource CheckemFlatButton.Round5}" Content="Create" Background="{DynamicResource Color.Primary}" Foreground="White" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="50" Width="120" FontSize="22" Click="CreateButton_Click"/>
                 </Grid>
