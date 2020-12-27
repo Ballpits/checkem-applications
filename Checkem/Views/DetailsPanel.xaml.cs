@@ -149,5 +149,10 @@ namespace Checkem.Views
         {
             Close?.Invoke(this, EventArgs.Empty);
         }
+
+        private void ListBoxItem_Selected(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
     }
 }

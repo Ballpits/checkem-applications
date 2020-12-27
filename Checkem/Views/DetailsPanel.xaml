@@ -71,24 +71,18 @@
                         <TextBox Text="{Binding Title,Mode=TwoWay}" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_Title}" Style="{StaticResource TextBox.Animated}" MaxLength="100" />
 
                         <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" FontFamily="{DynamicResource Quicksand}" Margin="10,20,10,0" FontSize="20" Height="70" SelectedIndex="0">
-                            <customComponents:Tag Content="tag 1" Color="Black"/>
+                            <customComponents:PreviewTag Content="tag 1" Color="Red"/>
                         </ComboBox>
 
-                        <StackPanel Orientation="Horizontal" Margin="10,20,10,0">
-                            <TextBlock Style="{StaticResource CheckemTextBlock.Base}" Text="Reminder" FontSize="20" Padding="0,4,0,0" Margin="0,0,10,0"/>
+                        <Grid Margin="10,20,10,0">
+                            <TextBlock Style="{StaticResource CheckemTextBlock.Base}" Text="Reminder" FontSize="20" Padding="0,4,0,0" Margin="0,0,10,0" HorizontalAlignment="Left"/>
 
-                            <ListBox Style="{StaticResource MaterialDesignToolToggleListBox}" Foreground="White" FontFamily="{DynamicResource Quicksand}" SelectedIndex="0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="35" FontSize="18" Background="{DynamicResource Color.Primary}">
-                                <ListBoxItem>
-                                    Basic
-                                </ListBoxItem>
-                                <ListBoxItem>
-                                    Advance
-                                </ListBoxItem>
-                                <ListBoxItem>
-                                    None
-                                </ListBoxItem>
+                            <ListBox Style="{StaticResource MaterialDesignToolToggleListBox}" Foreground="White" FontFamily="{DynamicResource Quicksand}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="35" FontSize="18" Background="{DynamicResource Color.Primary}" SelectionMode="Single" HorizontalAlignment="Right">
+                                <ListBoxItem Content="{DynamicResource Dict_Task_Basic}"/>
+                                <ListBoxItem Content="{DynamicResource Dict_Task_Advance}"/>
+                                <ListBoxItem Content="{DynamicResource Dict_Task_None}"/>
                             </ListBox>
-                        </StackPanel>
+                        </Grid>
 
                         <TextBox Text="{Binding Description,Mode=TwoWay}" AcceptsReturn="True" MaxLength="1000" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_Description}" Style="{StaticResource TextBox.Animated}"/>
 

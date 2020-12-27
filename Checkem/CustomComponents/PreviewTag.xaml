@@ -11,13 +11,6 @@
              >
 
     <Grid x:Name="TagGrid" Margin="0,0,7.5,0">
-
-        <Grid.ContextMenu>
-            <ContextMenu>
-                <MenuItem Header="{DynamicResource Dict_RemoveTag}" Icon="{materialDesign:PackIcon Kind=TrashOutline, Size=18}" Foreground="Red"/>
-            </ContextMenu>
-        </Grid.ContextMenu>
-
         <Rectangle x:Name="rectangle" Fill="{DynamicResource Color.White}" Stroke="{DynamicResource Color.Primary}" RadiusX="18" RadiusY="18" Panel.ZIndex="1" StrokeThickness="1.5"/>
 
         <Grid Panel.ZIndex="1" HorizontalAlignment="Left" Margin="10,0,0,0" Width="20">
