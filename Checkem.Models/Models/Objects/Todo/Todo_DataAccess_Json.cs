@@ -46,12 +46,13 @@ namespace Checkem.Models
         //Retrive all to do items from json file and store them into Inventory list
         public List<T> Retrieve()
         {
-            string json;
-
             try
             {
                 //try to read json file
-                json = File.ReadAllText(JsonFilePath);
+                string json = File.ReadAllText(JsonFilePath);
+
+                //return the list
+                return JsonConvert.DeserializeObject<List<T>>(json);
             }
             catch (FileNotFoundException)
             {
@@ -61,9 +62,6 @@ namespace Checkem.Models
                 //retrive again
                 return Retrieve();
             }
-
-            //return the list
-            return JsonConvert.DeserializeObject<List<T>>(json);
         }
     }
 }
