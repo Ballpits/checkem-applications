@@ -8,7 +8,7 @@ namespace Checkem.Models
     {
         public TagManager()
         {
-            DataBasePath = @"./Tag.json";
+            JsonFilePath = @"./Tag.json";
         }
 
 

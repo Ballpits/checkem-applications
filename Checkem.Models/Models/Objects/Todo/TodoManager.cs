@@ -9,7 +9,7 @@ namespace Checkem.Models
     {
         public TodoManager()
         {
-            DataBasePath = @"./Inventory.json";
+            JsonFilePath = @"./Inventory.json";
         }
 
 
