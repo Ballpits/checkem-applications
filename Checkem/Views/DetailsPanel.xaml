@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Checkem.Views"
              xmlns:properties="clr-namespace:Checkem.Properties"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:customComponents="clr-namespace:Checkem.CustomComponents" 
+             xmlns:customComponents="clr-namespace:Checkem.CustomComponents"
              mc:Ignorable="d" 
              d:DesignWidth="1920"
              d:DesignHeight="1080"
@@ -53,9 +53,7 @@
                 <Grid>
                     <StackPanel Margin="0,0,0,35">
                         <Grid Height="40" Margin="0,15,0,0">
-                            <Button x:Name="CloseButton" Background="{StaticResource Color.LightGray}" Style="{StaticResource CheckemFlatButton.Circle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="30" Height="30" Padding="0,0,0,0">
-                                <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
-                            </Button>
+                            <Button x:Name="CloseButton" Style="{StaticResource CloseButton}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="30" Height="30" Padding="0,0,0,0"/>
 
                             <CheckBox x:Name="CompletionCheckBox" IsChecked="{Binding IsCompleted, Mode=TwoWay}" Style="{DynamicResource ItembarCheckbox}">
                                 <materialDesign:PackIcon Style="{DynamicResource ItembarCheckboxCircleIcon}"/>
