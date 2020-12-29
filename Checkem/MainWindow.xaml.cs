@@ -194,7 +194,7 @@ namespace Checkem
         private void Filter()
         {
             Grid.SetRow(NavbarCursor, (int)filterMethod + 1);
-            todoList.SetFilter(filterMethod);
+            todoList.filterMethod = this.filterMethod;
         }
 
         #endregion

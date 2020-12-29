@@ -21,16 +21,16 @@
                 <Grid.ContextMenu>
                     <ContextMenu FontFamily="{StaticResource ResourceKey=Quicksand}">
                         <MenuItem Header="Sort" Icon="{materialDesign:PackIcon Kind=Sort, Size=18}">
-                            <MenuItem Header="Starred" Icon="{materialDesign:PackIcon Kind=StarBorder, Size=18}"/>
-                            <MenuItem Header="Due date" Icon="{materialDesign:PackIcon Kind=CalendarClock, Size=18}"/>
-                            <MenuItem Header="Alphabetical ascending" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalAscending, Size=18}"/>
-                            <MenuItem Header="Alphabetical descending" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalDescending, Size=18}"/>
-                            <MenuItem Header="Creation date" Icon="{materialDesign:PackIcon Kind=CalendarAdd, Size=18}"/>
+                            <MenuItem Header="{DynamicResource Dict_Sort_Starred}" Icon="{materialDesign:PackIcon Kind=StarBorder, Size=18}" Click="SortByStarButton_Click"/>
+                            <MenuItem Header="{DynamicResource Dict_Sort_DueDate}" Icon="{materialDesign:PackIcon Kind=CalendarClock, Size=18}" Click="SortByDueDateButton_Click"/>
+                            <MenuItem Header="{DynamicResource Dict_Sort_AlphabeticalAscending}" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalAscending, Size=18}" Click="SortByAlphabeticalAscendingButton_Click"/>
+                            <MenuItem Header="{DynamicResource Dict_Sort_AlphabeticalDescending}" Icon="{materialDesign:PackIcon Kind=SortAlphabeticalDescending, Size=18}" Click="SortByAlphabeticalDescendingButton_Click"/>
+                            <MenuItem Header="{DynamicResource Dict_Sort_CreationDate}" Icon="{materialDesign:PackIcon Kind=CalendarAdd, Size=18}" Click="SortByCreationDateButton_Click"/>
                         </MenuItem>
 
                         <Separator/>
 
-                        <MenuItem Header="Add new task" Icon="{materialDesign:PackIcon Kind=Add, Size=18}"/>
+                        <MenuItem Header="Add new task" Icon="{materialDesign:PackIcon Kind=Add, Size=18}" Click="NewTaskButton_Click"/>
                     </ContextMenu>
                 </Grid.ContextMenu>
 
@@ -45,7 +45,7 @@
 
 
                     <Grid Margin="0,0,20,0" HorizontalAlignment="Right">
-                        <Button x:Name="ButtonClearSort" Margin="0,0,45,0" Height="40" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" ToolTip="Clear sort" VerticalAlignment="Center">
+                        <Button x:Name="ButtonClearSort" Visibility="Collapsed" Margin="0,0,45,0" Height="40" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" ToolTip="Clear sort" VerticalAlignment="Center" Click="ClearSortButton_Click">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Close" Width="25" Height="25" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="{DynamicResource OverDueColor}" Margin="0,1,5,0"/>
                                 <TextBlock x:Name="SortIndicatorTextBlock" Margin="0" HorizontalAlignment="Right" Text="Sorting_Method" FontFamily="{StaticResource ResourceKey=Quicksand}" TextAlignment="Center" FontSize="20" Foreground="{DynamicResource Color.Black}"/>
@@ -60,7 +60,7 @@
                             <StackPanel>
                                 <TextBlock Text="{DynamicResource ResourceKey=Dict_SortBy}" Grid.Column="1" FontFamily="Quicksand" FontSize="20" Padding="0,1,0,0" TextAlignment="Center" Margin="0,0,5,10"/>
 
-                                <Button VerticalContentAlignment="Center" Padding="10,0">
+                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortByStarButton_Click">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="20*" />
@@ -72,7 +72,7 @@
                                     </Grid>
                                 </Button>
 
-                                <Button VerticalContentAlignment="Center" Padding="10,0">
+                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortByDueDateButton_Click">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="20*" />
@@ -84,7 +84,7 @@
                                     </Grid>
                                 </Button>
 
-                                <Button VerticalContentAlignment="Center" Padding="10,0">
+                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortByAlphabeticalAscendingButton_Click">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="20*" />
@@ -96,7 +96,7 @@
                                     </Grid>
                                 </Button>
 
-                                <Button VerticalContentAlignment="Center" Padding="10,0">
+                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortByAlphabeticalDescendingButton_Click">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="20*" />
@@ -108,7 +108,7 @@
                                     </Grid>
                                 </Button>
 
-                                <Button VerticalContentAlignment="Center" Padding="10,0">
+                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortByCreationDateButton_Click">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="20*" />
@@ -116,7 +116,7 @@
                                         </Grid.ColumnDefinitions>
 
                                         <materialDesign:PackIcon Kind="CalendarAdd" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25"/>
-                                        <TextBlock Text="{DynamicResource ResourceKey=Dict_Sort_DueDate}" Grid.Column="1" FontFamily="Quicksand" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
+                                        <TextBlock Text="{DynamicResource ResourceKey=Dict_Sort_CreationDate}" Grid.Column="1" FontFamily="Quicksand" FontSize="20" Padding="0,1,0,0" Margin="10,0,0,0"/>
                                     </Grid>
                                 </Button>
                             </StackPanel>

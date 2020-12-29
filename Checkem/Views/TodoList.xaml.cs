@@ -13,9 +13,9 @@ namespace Checkem.Views
     {
         public TodoList()
         {
-            Manager.StoreTestData();
+            todoManager.StoreTestData();
 
-            currentInventory = Manager.Filter(FilterMethods.None);
+            currentInventory = todoManager.Filter(FilterMethods.None);
 
             DataContext = this;
 
@@ -29,7 +29,7 @@ namespace Checkem.Views
 
 
         #region Variable
-        TodoManager Manager = new TodoManager();
+        TodoManager todoManager = new TodoManager();
         List<Todo> currentInventory;
         #endregion
 
@@ -79,6 +79,24 @@ namespace Checkem.Views
                 }
             }
         }
+
+        private FilterMethods _filterMethod = FilterMethods.None;
+        public FilterMethods filterMethod
+        {
+            get
+            {
+                return _filterMethod;
+            }
+            set
+            {
+                if (_filterMethod != value)
+                {
+                    _filterMethod = value;
+
+                    SetFilter(_filterMethod);
+                }
+            }
+        }
         #endregion
 
 
@@ -103,18 +121,19 @@ namespace Checkem.Views
         }
 
 
-        public void SetFilter(FilterMethods method)
+        private void SetFilter(FilterMethods filterMethod)
         {
-            currentInventory = Manager.Filter(method);
-
-            LoadTodoList();
+            LoadTodoList(filterMethod, SortMethods.ID);
 
             OnItemCountChanged();
         }
 
 
-        private void LoadTodoList()
+        private void LoadTodoList(FilterMethods filterMethod, SortMethods sortMethods)
         {
+            currentInventory = todoManager.Filter(filterMethod);
+            currentInventory = todoManager.Sort(sortMethods, currentInventory);
+
             if (TodoItemsStackPanel.Children.Count != 0)
             {
                 TodoItemsStackPanel.Children.Clear();
@@ -151,7 +170,7 @@ namespace Checkem.Views
 
             TodoItemsStackPanel.Children.Remove(itembar);
             currentInventory.Remove(itembar.todo);
-            Manager.Remove(itembar.todo);
+            todoManager.Remove(itembar.todo);
 
             OnItemCountChanged();
         }
@@ -160,7 +179,7 @@ namespace Checkem.Views
         {
             Itembar itembar = sender as Itembar;
 
-            Manager.Update(itembar.todo);
+            todoManager.Update(itembar.todo);
         }
 
         private void Panel_Close(object sender, EventArgs e)
@@ -196,9 +215,61 @@ namespace Checkem.Views
 
             TodoItemsStackPanel.Children.Insert(0, itembar);
             currentInventory.Add(itembar.todo);
-            Manager.Add(itembar.todo);
+            todoManager.Add(itembar.todo);
 
             OnItemCountChanged();
         }
+
+
+        #region Sort button event handlers
+        private void SortByStarButton_Click(object sender, RoutedEventArgs e)
+        {
+            SortIndicatorTextBlock.Text = this.FindResource("Dict_Sort_Starred") as string;
+            ButtonClearSort.Visibility = Visibility.Visible;
+
+            LoadTodoList(this.filterMethod, SortMethods.StarredFirst);
+        }
+
+        private void SortByDueDateButton_Click(object sender, RoutedEventArgs e)
+        {
+            SortIndicatorTextBlock.Text = this.FindResource("Dict_Sort_DueDate") as string;
+            ButtonClearSort.Visibility = Visibility.Visible;
+
+            LoadTodoList(this.filterMethod, SortMethods.EndTime);
+        }
+
+        private void SortByAlphabeticalAscendingButton_Click(object sender, RoutedEventArgs e)
+        {
+            SortIndicatorTextBlock.Text = this.FindResource("Dict_Sort_AlphabeticalAscending") as string;
+            ButtonClearSort.Visibility = Visibility.Visible;
+
+            LoadTodoList(this.filterMethod, SortMethods.AlphabeticalAscending);
+        }
+
+        private void SortByAlphabeticalDescendingButton_Click(object sender, RoutedEventArgs e)
+        {
+            SortIndicatorTextBlock.Text = this.FindResource("Dict_Sort_AlphabeticalDescending") as string;
+            ButtonClearSort.Visibility = Visibility.Visible;
+
+            LoadTodoList(this.filterMethod, SortMethods.AlphabeticalDescending);
+        }
+
+        private void SortByCreationDateButton_Click(object sender, RoutedEventArgs e)
+        {
+            SortIndicatorTextBlock.Text = this.FindResource("Dict_Sort_CreationDate") as string;
+            ButtonClearSort.Visibility = Visibility.Visible;
+
+            LoadTodoList(this.filterMethod, SortMethods.CreationDate);
+        }
+
+
+        //clear sort and hide clear sort button
+        private void ClearSortButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadTodoList(this.filterMethod, SortMethods.ID);
+
+            ButtonClearSort.Visibility = Visibility.Collapsed;
+        }
+        #endregion
     }
 }
