@@ -1,10 +1,10 @@
-﻿using Checkem.CustomComponents;
-using System;
+﻿using System;
 using Checkem.Views;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Checkem.Models;
+using System.Windows.Threading;
 
 namespace Checkem
 {
@@ -18,10 +18,42 @@ namespace Checkem
         }
 
         App application;
+        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        private int TimerOffset = 60 - DateTime.Now.Second;
+        TodoManager todoManager = new TodoManager();
 
         private void MainGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            //System.Windows.Forms.MessageBox.Show(ScreenResolution.Vertical.ToString());
+            dispatcherTimer.Tick += DispatcherTimer_Tick;
+            dispatcherTimer.Start();
+        }
+
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            TimerOffset = 60 - DateTime.Now.Second;
+            dispatcherTimer.Interval = TimeSpan.FromSeconds(TimerOffset);//Fix timer delay time
+
+            foreach (var item in todoManager.Filter(FilterMethods.Planned))
+            {
+                if (!item.IsAdvanceReminderOn)
+                {
+                    if (DateTime.Now.Year == item.EndDateTime.Value.Year && DateTime.Now.Month == item.EndDateTime.Value.Month && DateTime.Now.Hour == item.EndDateTime.Value.Hour && DateTime.Now.Minute == item.EndDateTime.Value.Minute)
+                    {
+                        application.Notify(item.Title, item.Description);
+                    }
+                }
+                else
+                {
+                    if (DateTime.Now.Year == item.BeginDateTime.Value.Year && DateTime.Now.Month == item.BeginDateTime.Value.Month && DateTime.Now.Hour == item.BeginDateTime.Value.Hour && DateTime.Now.Minute == item.BeginDateTime.Value.Minute)
+                    {
+                        application.Notify("Hello", "greetings from checkem");
+                    }
+                    if (DateTime.Now.Year == item.EndDateTime.Value.Year && DateTime.Now.Month == item.EndDateTime.Value.Month && DateTime.Now.Hour == item.EndDateTime.Value.Hour && DateTime.Now.Minute == item.EndDateTime.Value.Minute)
+                    {
+                        application.Notify("Hello", "greetings from checkem");
+                    }
+                }
+            }//Check if the begin or end time is matched with the current time
         }
 
 
@@ -147,8 +179,7 @@ namespace Checkem
 
         private void ButtonAddNewList_Click(object sender, RoutedEventArgs e)
         {
-            application.Notify("Hello", "greetings from checkem");
-            application.Notify("lol", "who doesn't love lol cats ?");
+
         }
 
         #endregion
