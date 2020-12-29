@@ -77,12 +77,30 @@
                         <Grid Margin="10,20,10,0">
                             <TextBlock Style="{StaticResource CheckemTextBlock.Base}" Text="Reminder" FontSize="20" Padding="0,4,0,0" Margin="0,0,10,0" HorizontalAlignment="Left"/>
 
-                            <ListBox Style="{StaticResource MaterialDesignToolToggleListBox}" Foreground="White" FontFamily="{DynamicResource Quicksand}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="35" FontSize="18" Background="{DynamicResource Color.Primary}" SelectionMode="Single" HorizontalAlignment="Right">
-                                <ListBoxItem Content="{DynamicResource Dict_Task_Basic}"/>
-                                <ListBoxItem Content="{DynamicResource Dict_Task_Advance}"/>
-                                <ListBoxItem Content="{DynamicResource Dict_Task_None}"/>
+                            <ListBox x:Name="ReminderSelecter" Style="{StaticResource MaterialDesignToolToggleListBox}" Foreground="White" FontFamily="{DynamicResource Quicksand}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="35" FontSize="18" Background="{DynamicResource Color.Primary}" SelectionMode="Single" HorizontalAlignment="Right">
+                                <ListBoxItem Content="{DynamicResource Dict_Task_Basic}" Selected="ListBoxItem_BasicReminder_Selected"/>
+                                <ListBoxItem Content="{DynamicResource Dict_Task_Advance}" Selected="ListBoxItem_AdvanceReminder_Selected"/>
+                                <ListBoxItem Content="{DynamicResource Dict_Task_None}" Selected="ListBoxItem_NoReminder_Selected"/>
                             </ListBox>
                         </Grid>
+
+                        <Border x:Name="ReminderSelectorBorder" Background="{DynamicResource Color.LightGray}" Margin="10,5,10,0" UseLayoutRounding="True" CornerRadius="5">
+                            <StackPanel UseLayoutRounding="True">
+                                <Border x:Name="BeginDateTimeField">
+                                    <Grid>
+                                        <DatePicker x:Name="BeginDatePicker" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_BeginDate}" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="True" Foreground="{DynamicResource Color.Black}" SelectedDateChanged="BeginDatePicker_SelectedDateChanged"/>
+                                        <materialDesign:TimePicker x:Name="BeginTimePicker" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_BeginTime}" Foreground="{DynamicResource Color.Black}" SelectedTimeChanged="BeginTimePicker_SelectedTimeChanged"/>
+                                    </Grid>
+                                </Border>
+
+                                <Border x:Name="EndDateTimeField">
+                                    <Grid>
+                                        <DatePicker x:Name="EndDatePicker" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_EndDate}" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="False" Foreground="{DynamicResource Color.Black}" SelectedDateChanged="EndDatePicker_SelectedDateChanged"/>
+                                        <materialDesign:TimePicker x:Name="EndTimePicker" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_EndTime}" Foreground="{DynamicResource Color.Black}" SelectedTimeChanged="EndTimePicker_SelectedTimeChanged"/>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                        </Border>
 
                         <TextBox Text="{Binding Description,Mode=TwoWay}" AcceptsReturn="True" MaxLength="1000" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_Description}" Style="{StaticResource TextBox.Animated}"/>
 

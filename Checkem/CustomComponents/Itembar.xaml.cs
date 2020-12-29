@@ -190,6 +190,12 @@ namespace Checkem.CustomComponents
         }
 
 
+        public void Update_Reminder()
+        {
+            Update?.Invoke(this, EventArgs.Empty);
+        }
+
+
         //check IsCompleted, change check state than save
         private void Set_IsCompleted()
         {
@@ -285,13 +291,13 @@ namespace Checkem.CustomComponents
                 ReminderDetailStackPanel.Visibility = Visibility.Visible;
 
 
-                if (todo.IsAdvanceReminderOn)
+                if (!todo.IsAdvanceReminderOn)
                 {
-                    ReminderDetailTextBlock.Text = $"Start on: {DateTimeManipulator.SimplifiedDate(this.todo.BeginDateTime.Value)}\tEnd on: {DateTimeManipulator.SimplifiedDate(this.todo.EndDateTime.Value)} ";
+                    ReminderDetailTextBlock.Text = DateTimeManipulator.SimplifiedDate(this.todo.EndDateTime.Value);
                 }
                 else
                 {
-                    ReminderDetailTextBlock.Text = DateTimeManipulator.SimplifiedDate(this.todo.EndDateTime.Value);
+                    ReminderDetailTextBlock.Text = $"Start on: {DateTimeManipulator.SimplifiedDate(this.todo.BeginDateTime.Value)}\tEnd on: {DateTimeManipulator.SimplifiedDate(this.todo.EndDateTime.Value)} ";
                 }
 
 
