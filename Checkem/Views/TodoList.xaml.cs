@@ -209,6 +209,9 @@ namespace Checkem.Views
         private void NewTaskButton_Click(object sender, RoutedEventArgs e)
         {
             Itembar itembar = new Itembar();
+
+            itembar.todo.CreationDateTime = DateTime.Now;
+
             itembar.Click += new EventHandler(this.Itembar_Click);
             itembar.Remove += new EventHandler(this.Itembar_Remove);
             itembar.Update += new EventHandler(this.Itembar_Update);
