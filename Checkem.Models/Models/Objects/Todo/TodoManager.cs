@@ -182,26 +182,26 @@ namespace Checkem.Models
             //Inventory.Add(new Todo { ID = 1, Title = "Item 1", Description = "Item 1's details !" });
             //Inventory.Add(new Todo { ID = 2, Title = "Item 2", Description = "Item 2's details !" });
 
-            Inventory.Add(new Todo { ID = 0, Title = "Notify Test", Description = "It works !", IsReminderOn = true, EndDateTime = DateTime.Now });
+            //Inventory.Add(new Todo { ID = 0, Title = "Notify Test", Description = "It works !", IsReminderOn = true, EndDateTime = DateTime.Now });
 
-            //List<TagItem> tagItems = new List<TagItem>();
-            //tagItems.Add(new TagItem() { ID = 0, Content = "test tag", TagColor = Brushes.Brown });
-            //tagItems.Add(new TagItem() { ID = 1, Content = "test tag", TagColor = Brushes.PaleVioletRed });
-            //tagItems.Add(new TagItem() { ID = 2, Content = "test tag", TagColor = Brushes.GreenYellow });
-            //tagItems.Add(new TagItem() { ID = 3, Content = "test tag", TagColor = Brushes.BlueViolet });
-            //tagItems.Add(new TagItem() { ID = 4, Content = "test tag", TagColor = Brushes.Orange });
+            List<TagItem> tagItems = new List<TagItem>();
+            tagItems.Add(new TagItem() { ID = 0, Content = "test tag", TagColor = Brushes.Brown });
+            tagItems.Add(new TagItem() { ID = 1, Content = "test tag", TagColor = Brushes.PaleVioletRed });
+            tagItems.Add(new TagItem() { ID = 2, Content = "test tag", TagColor = Brushes.GreenYellow });
+            tagItems.Add(new TagItem() { ID = 3, Content = "test tag", TagColor = Brushes.BlueViolet });
+            tagItems.Add(new TagItem() { ID = 4, Content = "test tag", TagColor = Brushes.Orange });
 
-            //Inventory.Add(new Todo { ID = 0, Title = "Tag Test", Description = "It works !", TagItems = tagItems });
+            Inventory.Add(new Todo { ID = 0, Title = "Tag Test", Description = "It works !", TagItems = tagItems });
 
-            //Inventory.Add(new Todo { ID = 1, Title = "Update", Description = "windows 10 update", IsReminderOn = true, EndDateTime = DateTime.Now.AddDays(5) });
-            //Inventory.Add(new Todo { ID = 2, Title = "Meeting", IsStarred = true });
-            //Inventory.Add(new Todo { ID = 3, Title = "Math Homework", Description = "kinda hard", IsReminderOn = true, EndDateTime = DateTime.Now.AddMinutes(30) });
-            //Inventory.Add(new Todo { ID = 4, Title = "Read Pro Angular 6", IsCompleted = true, IsReminderOn = true, IsAdvanceReminderOn = true, BeginDateTime = DateTime.Now.AddMinutes(1), EndDateTime = DateTime.Now.AddHours(1) });
-            //Inventory.Add(new Todo { ID = 5, Title = "Call someone", Description = "I forgot who it was ;p", IsStarred = true });
-            //Inventory.Add(new Todo { ID = 6, Title = "Review electronic", Description = "prepare for the test", IsStarred = true });
-            //Inventory.Add(new Todo { ID = 7, Title = "Program", Description = "Angular + JS", IsCompleted = true, IsStarred = true });
-            //Inventory.Add(new Todo { ID = 8, Title = "electronic test", Description = "1-1:RC coupler", IsStarred = true });
-            //Inventory.Add(new Todo { ID = 9, Title = "Math test", Description = "test ?! again ?!", IsCompleted = true, IsReminderOn = true, EndDateTime = DateTime.Now.AddDays(1) });
+            Inventory.Add(new Todo { ID = 1, Title = "Update", Description = "windows 10 update", IsReminderOn = true, EndDateTime = DateTime.Now.AddDays(5) });
+            Inventory.Add(new Todo { ID = 2, Title = "Meeting", IsStarred = true });
+            Inventory.Add(new Todo { ID = 3, Title = "Math Homework", Description = "kinda hard", IsReminderOn = true, EndDateTime = DateTime.Now.AddMinutes(30) });
+            Inventory.Add(new Todo { ID = 4, Title = "Read Pro Angular 6", IsCompleted = true, IsReminderOn = true, IsAdvanceReminderOn = true, BeginDateTime = DateTime.Now.AddMinutes(1), EndDateTime = DateTime.Now.AddHours(1) });
+            Inventory.Add(new Todo { ID = 5, Title = "Call someone", Description = "I forgot who it was ;p", IsStarred = true });
+            Inventory.Add(new Todo { ID = 6, Title = "Review electronic", Description = "prepare for the test", IsStarred = true });
+            Inventory.Add(new Todo { ID = 7, Title = "Program", Description = "Angular + JS", IsCompleted = true, IsStarred = true });
+            Inventory.Add(new Todo { ID = 8, Title = "electronic test", Description = "1-1:RC coupler", IsStarred = true });
+            Inventory.Add(new Todo { ID = 9, Title = "Math test", Description = "test ?! again ?!", IsCompleted = true, IsReminderOn = true, EndDateTime = DateTime.Now.AddDays(1) });
 
             //Inventory.Add(new Todo
             //{
