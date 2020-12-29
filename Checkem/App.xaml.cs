@@ -62,6 +62,12 @@ namespace Checkem
 
         public void Notify(string title, string message)
         {
+            //prevent from displaying empty message string
+            if (message == "")
+            {
+                message = " ";
+            }
+
             //show notification with specified message and title
             TrayIcon.ShowBalloonTip(TimeOut, title, message, toolTipIcon);
         }
