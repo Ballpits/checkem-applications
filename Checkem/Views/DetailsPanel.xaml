@@ -86,19 +86,23 @@
 
                         <Border x:Name="ReminderSelectorBorder" Background="{DynamicResource Color.LightGray}" Margin="10,5,10,0" UseLayoutRounding="True" CornerRadius="5">
                             <StackPanel UseLayoutRounding="True">
-                                <Border x:Name="BeginDateTimeField">
+                                <Border x:Name="BeginDateTimeField" d:Visibility="Visible" Visibility="Collapsed">
                                     <Grid>
-                                        <DatePicker x:Name="BeginDatePicker" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_BeginDate}" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="True" Foreground="{DynamicResource Color.Black}" SelectedDateChanged="BeginDatePicker_SelectedDateChanged"/>
+                                        <DatePicker x:Name="BeginDatePicker" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_BeginDate}" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="True" Foreground="{DynamicResource Color.Black}" SelectedDateChanged="BeginDatePicker_SelectedDateChanged" LostFocus="BeginDatePicker_LostFocus"/>
                                         <materialDesign:TimePicker x:Name="BeginTimePicker" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_BeginTime}" Foreground="{DynamicResource Color.Black}" SelectedTimeChanged="BeginTimePicker_SelectedTimeChanged"/>
                                     </Grid>
                                 </Border>
 
-                                <Border x:Name="EndDateTimeField">
+                                <TextBlock x:Name="BeginDateTimeWarning" Visibility="Collapsed" Text="begin date and begin time cannot be empty"/>
+
+                                <Border x:Name="EndDateTimeField" d:Visibility="Visible" Visibility="Collapsed">
                                     <Grid>
                                         <DatePicker x:Name="EndDatePicker" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_EndDate}" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,0,2" Width="120" FontSize="20" FontFamily="Arial" UseLayoutRounding="False" Foreground="{DynamicResource Color.Black}" SelectedDateChanged="EndDatePicker_SelectedDateChanged"/>
                                         <materialDesign:TimePicker x:Name="EndTimePicker" Width="120" FontSize="20" FontFamily="Arial" HorizontalAlignment="Right" Margin="0,15,10,5" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_EndTime}" Foreground="{DynamicResource Color.Black}" SelectedTimeChanged="EndTimePicker_SelectedTimeChanged"/>
                                     </Grid>
                                 </Border>
+
+                                <TextBlock x:Name="EndDateTimeWarning" Visibility="Collapsed" Text="begin date and begin time cannot be empty"/>
                             </StackPanel>
                         </Border>
 

@@ -127,9 +127,6 @@ namespace Checkem.CustomComponents
                 {
                     todo.IsReminderOn = value;
 
-                    //Update itembar height for reminder details
-                    OnReminderTypeChanged();
-
                     OnPropertyChanged();
                 }
             }
@@ -192,6 +189,7 @@ namespace Checkem.CustomComponents
 
         public void Update_Reminder()
         {
+            OnReminderTypeChanged();
             Update?.Invoke(this, EventArgs.Empty);
         }
 

@@ -34,7 +34,9 @@ namespace Checkem.Views
 
 
         #region Variable
-        public Itembar itembar;
+        private Itembar itembar;
+
+        private bool ReminderFirstSetup = true;
         #endregion
 
 
@@ -155,42 +157,6 @@ namespace Checkem.Views
             }
         }
 
-        public DateTime BeginDateTime
-        {
-            get
-            {
-                return todo.BeginDateTime.Value;
-            }
-            set
-            {
-                if (todo.BeginDateTime.Value != value)
-                {
-                    todo.BeginDateTime = value;
-
-                    itembar.Update_Reminder();
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public DateTime EndDateTime
-        {
-            get
-            {
-                return todo.EndDateTime.Value;
-            }
-            set
-            {
-                if (todo.EndDateTime.Value != value)
-                {
-                    todo.EndDateTime = value;
-
-                    itembar.Update_Reminder();
-                    OnPropertyChanged();
-                }
-            }
-        }
-
         public string CreationDateTime
         {
             get
@@ -201,6 +167,20 @@ namespace Checkem.Views
         #endregion
 
 
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+
+        private void StoryBoard_Completed(object sender, EventArgs e)
+        {
+            Close?.Invoke(this, EventArgs.Empty);
+        }
+
+
+
+        #region Check reminder state
         private void CheckReminderState()
         {
             /* check if reminder is on, if it's on, check if advance reminder is on to determine reminder stete
@@ -217,6 +197,10 @@ namespace Checkem.Views
                     //show basic reminder's date time in date time picker
                     EndDatePicker.Text = $"{this.todo.EndDateTime.Value.Month}/{this.todo.EndDateTime.Value.Day}/{this.todo.EndDateTime.Value.Year}";
                     EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", this.todo.EndDateTime)}";
+                    EndTimePicker.SelectedTime = Convert.ToDateTime(EndTimePicker.Text);
+
+                    TrySetEndDateTime();
+                    ReminderFirstSetup = false;
 
                     SetReminder(ReminderState.Basic);
                 }
@@ -225,16 +209,26 @@ namespace Checkem.Views
                     //show advance reminder's date time in date time picker
                     BeginDatePicker.Text = $"{this.todo.BeginDateTime.Value.Month}/{this.todo.BeginDateTime.Value.Day}/{this.todo.BeginDateTime.Value.Year}";
                     BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", this.todo.BeginDateTime)}";
+                    BeginTimePicker.SelectedTime = Convert.ToDateTime(BeginTimePicker.Text);
 
                     EndDatePicker.Text = $"{this.todo.EndDateTime.Value.Month}/{this.todo.EndDateTime.Value.Day}/{this.todo.EndDateTime.Value.Year}";
                     EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", this.todo.EndDateTime)}";
+                    EndTimePicker.SelectedTime = Convert.ToDateTime(EndTimePicker.Text);
+
+                    TrySetBeginDateTime();
+                    TrySetEndDateTime();
+                    ReminderFirstSetup = false;
+
 
                     SetReminder(ReminderState.Advance);
                 }
             }
         }
+        #endregion
 
 
+
+        #region Set reminder picker visibility
         private void SetReminder(ReminderState reminderState)
         {
             //show the corresponding date time picker 
@@ -245,10 +239,15 @@ namespace Checkem.Views
                         IsReminderOn = false;
                         IsAdvanceReminderOn = false;
 
+                        todo.BeginDateTime = null;
+                        todo.EndDateTime = null;
+
                         BeginDateTimeField.Visibility = Visibility.Collapsed;
                         EndDateTimeField.Visibility = Visibility.Collapsed;
 
                         ReminderSelecter.SelectedIndex = 2;
+
+                        itembar.Update_Reminder();
 
                         break;
                     }
@@ -280,19 +279,49 @@ namespace Checkem.Views
                     break;
             }
         }
+        #endregion
 
 
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
+
+        #region Set date time value
+        private void TrySetBeginDateTime()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            try
+            {
+                string dateTimeString = BeginDatePicker.SelectedDate.Value.ToString("yyyy-MM-dd") + "T" + BeginTimePicker.SelectedTime.Value.ToString("hh:mm:ss");
+                todo.BeginDateTime = Convert.ToDateTime(dateTimeString);
+
+                itembar.Update_Reminder();
+
+                BeginDateTimeWarning.Visibility = Visibility.Collapsed;
+            }
+            catch (Exception)
+            {
+                BeginDateTimeWarning.Visibility = Visibility.Visible;
+            }
         }
 
-
-        private void StoryBoard_Completed(object sender, EventArgs e)
+        private void TrySetEndDateTime()
         {
-            Close?.Invoke(this, EventArgs.Empty);
-        }
+            try
+            {
+                string dateTimeString = EndDatePicker.SelectedDate.Value.ToString("yyyy-MM-dd") + "T" + EndTimePicker.SelectedTime.Value.ToString("hh:mm:ss");
+                todo.EndDateTime = Convert.ToDateTime(dateTimeString);
 
+                itembar.Update_Reminder();
+
+                EndDateTimeWarning.Visibility = Visibility.Collapsed;
+            }
+            catch (Exception)
+            {
+                EndDateTimeWarning.Visibility = Visibility.Visible;
+            }
+        }
+        #endregion
+
+
+
+        #region Reminder selector events
         private void ListBoxItem_NoReminder_Selected(object sender, System.Windows.RoutedEventArgs e)
         {
             SetReminder(ReminderState.None);
@@ -307,25 +336,47 @@ namespace Checkem.Views
         {
             SetReminder(ReminderState.Advance);
         }
+        #endregion
 
+
+
+        #region Date time picker value changed event handlers
         private void BeginDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            BeginDateTime = Convert.ToDateTime(BeginDatePicker.Text + " " + BeginDatePicker.Text);
+            if (!ReminderFirstSetup)
+            {
+                TrySetBeginDateTime();
+            }
         }
 
         private void BeginTimePicker_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
         {
-            BeginDateTime = Convert.ToDateTime(BeginDatePicker.Text + " " + BeginDatePicker.Text);
+            if (!ReminderFirstSetup)
+            {
+                TrySetBeginDateTime();
+            }
         }
 
         private void EndDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            EndDateTime = Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text);
+            if (!ReminderFirstSetup)
+            {
+                TrySetEndDateTime();
+            }
         }
 
         private void EndTimePicker_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
         {
-            EndDateTime = Convert.ToDateTime(EndDatePicker.Text + " " + EndTimePicker.Text);
+            if (!ReminderFirstSetup)
+            {
+                TrySetEndDateTime();
+            }
+        }
+        #endregion
+
+        private void BeginDatePicker_LostFocus(object sender, RoutedEventArgs e)
+        {
+            //System.Windows.Forms.MessageBox.Show("Test");
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Checkem.Views
     {
         public TodoList()
         {
-            Manager.StoreTestData();
+            //Manager.StoreTestData();
 
             currentInventory = Manager.Filter(FilterMethods.None);
 
@@ -184,7 +184,7 @@ namespace Checkem.Views
         {
             TagCreationPanel Test = sender as TagCreationPanel;
 
-            tagBar.Create(Test.TextboxTagName.Text,Test.colorPicker.Color);
+            tagBar.Create(Test.TextboxTagName.Text, Test.colorPicker.Color);
         }
 
         private void NewTaskButton_Click(object sender, RoutedEventArgs e)
