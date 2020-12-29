@@ -336,6 +336,14 @@ namespace Checkem.CustomComponents
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
+                if (TitleTextBox.Visibility == Visibility.Visible)
+                {
+                    TitleTextBlock.Visibility = Visibility.Visible;
+                    TitleTextBox.Visibility = Visibility.Collapsed;
+
+                    Title = TitleTextBox.Text;
+                }
+
                 //play click animation
                 //Storyboard sb = this.FindResource("ItembarClick") as Storyboard;
                 //sb.Begin();
@@ -395,13 +403,5 @@ namespace Checkem.CustomComponents
             Remove?.Invoke(this, EventArgs.Empty);
         }
         #endregion
-
-        private void TitleTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            TitleTextBlock.Visibility = Visibility.Visible;
-            TitleTextBox.Visibility = Visibility.Collapsed;
-
-            Title = TitleTextBox.Text;
-        }
     }
 }
