@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Collections.Generic;
+using Checkem.Models;
 
 
 namespace Checkem.CustomComponents
@@ -11,9 +13,14 @@ namespace Checkem.CustomComponents
         public TagBar()
         {
             InitializeComponent();
+
+            currentTagList =tagManager.Inventory;
         }
 
         public event EventHandler OpenPanel;
+
+        List<TagItem> currentTagList;
+        TagManager tagManager = new TagManager();
 
         public void Create(string text, Color color)
         {
@@ -25,9 +32,17 @@ namespace Checkem.CustomComponents
                 Text = text,
                 Color = new SolidColorBrush(color)
             };
+            TagItem tagItem = new TagItem()
+            {
+                TagColor = new SolidColorBrush(color),
+                Content = text,
+                ID = currentTagList.Count
+            };
 
             tag.StateChanged += new EventHandler(this.Tag_StateChange);
 
+            currentTagList.Add(tagItem);
+            tagManager.Add(tagItem);
             StpTagList.Children.Add(tag);
             #endregion
         }
@@ -42,6 +57,17 @@ namespace Checkem.CustomComponents
         {
             Tag tag = sender as Tag;
             System.Windows.Forms.MessageBox.Show($"Tag.IsSelected = {tag.IsSelected}");
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (currentTagList != null)
+            {
+                foreach (TagItem item in currentTagList)
+                {                   
+                    StpTagList.Children.Add(new Tag() { Text = item.Content, Color = item.TagColor });
+                }
+            }
         }
     }
 }

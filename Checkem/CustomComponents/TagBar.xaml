@@ -11,7 +11,7 @@
              HorizontalAlignment="Stretch"
              >
 
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition/>

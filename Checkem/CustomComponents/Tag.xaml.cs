@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using Checkem.Models;
 
 namespace Checkem.CustomComponents
 {
@@ -17,7 +18,12 @@ namespace Checkem.CustomComponents
             InitializeComponent();
         }
 
+        public Tag(TagItem item)
+        {
+            InitializeComponent();
 
+            tagItem = item;
+        }
         #region Event
         public event EventHandler StateChanged;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -25,6 +31,8 @@ namespace Checkem.CustomComponents
 
 
         #region Property
+        TagItem tagItem = new TagItem();
+
         public bool IsSelected { get; set; } = false;
 
         private SolidColorBrush _color;
