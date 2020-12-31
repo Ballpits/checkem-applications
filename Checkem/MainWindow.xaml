@@ -110,6 +110,7 @@
                         <materialDesign:PackIcon Kind="MenuLeftOutline" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
                     </Button>
                 </Grid>
+                <CustomUserControls:ToggleSwitch WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Left" Margin="504,10,0,0" VerticalAlignment="Top"/>
             </Grid>
 
             <Grid d:Width="60" x:Name="NavigationBarGrid" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="60" Grid.Row="2" Visibility="Visible">
