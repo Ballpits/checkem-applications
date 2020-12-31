@@ -163,6 +163,15 @@ namespace Checkem.Views
             DataGrid.Children.Add(detailsPanel);
         }
 
+        private void Itembar_Create(object sender, EventArgs e)
+        {
+            //get triggered item bar;
+            Itembar itembar = sender as Itembar;
+
+            //create new task
+            todoManager.Add(itembar.todo);
+        }
+
         private void Itembar_Remove(object sender, EventArgs e)
         {
             //get triggered item bar;
@@ -213,6 +222,7 @@ namespace Checkem.Views
             itembar.todo.CreationDateTime = DateTime.Now;
 
             itembar.Click += new EventHandler(this.Itembar_Click);
+            itembar.Create += new EventHandler(this.Itembar_Create);
             itembar.Remove += new EventHandler(this.Itembar_Remove);
             itembar.Update += new EventHandler(this.Itembar_Update);
 

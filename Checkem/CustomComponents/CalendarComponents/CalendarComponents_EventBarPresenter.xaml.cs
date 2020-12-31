@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Checkem.CustomComponents
+namespace Checkem.CustomComponents.CalendarComponents
 {
     /// <summary>
     /// Interaction logic for CalendarComponents_EventBarPresenter.xaml

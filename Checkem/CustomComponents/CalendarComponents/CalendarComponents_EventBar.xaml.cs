@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace Checkem.CustomComponents
+namespace Checkem.CustomComponents.CalendarComponents
 {
     public partial class CalendarComponents_EventBar : UserControl
     {

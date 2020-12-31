@@ -20,9 +20,14 @@ namespace Checkem.CustomComponents
 
             InitializeComponent();
 
-            TitleTextBlock.Visibility = Visibility.Collapsed;
             TitleTextBox.Visibility = Visibility.Visible;
+            TitleTextBlock.Visibility = Visibility.Collapsed;
+            CheckboxGrid.IsEnabled = false;
+            StarToggle.IsEnabled = false;
+
             TitleTextBox.Focus();
+
+            Create?.Invoke(this, EventArgs.Empty);
         }
 
         public Itembar(Todo item)
@@ -40,6 +45,7 @@ namespace Checkem.CustomComponents
             //Update star toggle state
             OnStarChanged();
 
+            //Load in the current item's tags
             LoadTagItems();
 
             //Update itembar height for reminder details
@@ -49,7 +55,9 @@ namespace Checkem.CustomComponents
 
         #region Event
         public event PropertyChangedEventHandler PropertyChanged;
+
         public event EventHandler Click;
+        public event EventHandler Create;
         public event EventHandler Remove;
         public event EventHandler Update;
         #endregion
@@ -224,6 +232,31 @@ namespace Checkem.CustomComponents
 
             Update?.Invoke(this, EventArgs.Empty);
         }
+
+
+        //Check if user can enter title, if they can, set new title
+        private void SetNewTitle()
+        {
+            if (TitleTextBox.Visibility == Visibility.Visible)
+            {
+                if (TitleTextBox.Text != string.Empty)
+                {
+                    Title = TitleTextBox.Text;
+                    TitleTextBlock.Visibility = Visibility.Visible;
+
+                    TitleTextBox.Visibility = Visibility.Collapsed;
+
+                    CheckboxGrid.IsEnabled = true;
+                    StarToggle.IsEnabled = true;
+
+                    Create?.Invoke(this, EventArgs.Empty);
+                }
+                else
+                {
+                    Remove?.Invoke(this, EventArgs.Empty);
+                }
+            }
+        }
         #endregion
 
 
@@ -336,20 +369,18 @@ namespace Checkem.CustomComponents
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
-                if (TitleTextBox.Visibility == Visibility.Visible)
-                {
-                    TitleTextBlock.Visibility = Visibility.Visible;
-                    TitleTextBox.Visibility = Visibility.Collapsed;
+                //Set new title
+                SetNewTitle();
 
-                    Title = TitleTextBox.Text;
-                }
-
-                //play click animation
+                //Play click animation
                 //Storyboard sb = this.FindResource("ItembarClick") as Storyboard;
                 //sb.Begin();
 
-                //trigger click event
-                Click?.Invoke(this, EventArgs.Empty);
+                if (TitleTextBlock.Visibility == Visibility.Visible)
+                {
+                    //trigger click event
+                    Click?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
         #endregion
@@ -379,6 +410,7 @@ namespace Checkem.CustomComponents
             Update?.Invoke(this, EventArgs.Empty);
         }
 
+
         #region Menu item click events
         private void MenuItemCompletion_Click(object sender, RoutedEventArgs e)
         {
@@ -403,5 +435,19 @@ namespace Checkem.CustomComponents
             Remove?.Invoke(this, EventArgs.Empty);
         }
         #endregion
+
+
+        private void TitleTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            SetNewTitle();
+        }
+
+        private void TitleTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                SetNewTitle();
+            }
+        }
     }
 }
