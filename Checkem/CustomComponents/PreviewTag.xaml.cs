@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Checkem.Models;
 
 namespace Checkem.CustomComponents
 {
@@ -15,6 +16,16 @@ namespace Checkem.CustomComponents
             InitializeComponent();
         }
 
+        public PreviewTag(TagItem item)
+        {
+            DataContext = this;
+
+            tagItem = item;
+
+            ValueSetting();
+
+            InitializeComponent();
+        }
 
         #region Event
         public event PropertyChangedEventHandler PropertyChanged;
@@ -22,6 +33,8 @@ namespace Checkem.CustomComponents
 
 
         #region Property
+
+        private TagItem tagItem;
         public bool IsSelected { get; set; } = false;
 
 
@@ -90,5 +103,17 @@ namespace Checkem.CustomComponents
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
+        //Get Data from Tag and show it as preview
+        //my English Suck
+        private void ValueSetting()
+        {
+            if (tagItem != null)
+            {
+                Text = tagItem.Content;
+                Color = tagItem.TagColor;
+            }
+        }
+
     }
 }

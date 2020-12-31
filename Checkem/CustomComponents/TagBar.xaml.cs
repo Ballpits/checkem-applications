@@ -14,7 +14,7 @@ namespace Checkem.CustomComponents
         {
             InitializeComponent();
 
-            currentTagList =tagManager.Inventory;
+            currentTagList = tagManager.Inventory;
         }
 
         public event EventHandler OpenPanel;
@@ -25,24 +25,25 @@ namespace Checkem.CustomComponents
         public void Create(string text, Color color)
         {
             #region create new tag function goes here
-            
 
+            //I improved it, I gusee?
             Tag tag = new Tag()
             {
                 Text = text,
-                Color = new SolidColorBrush(color)
+                Color = new SolidColorBrush(color),
+                tagItem = new TagItem()
+                {
+                    TagColor = new SolidColorBrush(color),
+                    Content = text,
+                    ID = currentTagList.Count
+                }
             };
-            TagItem tagItem = new TagItem()
-            {
-                TagColor = new SolidColorBrush(color),
-                Content = text,
-                ID = currentTagList.Count
-            };
+
 
             tag.StateChanged += new EventHandler(this.Tag_StateChange);
 
-            currentTagList.Add(tagItem);
-            tagManager.Add(tagItem);
+            currentTagList.Add(tag.tagItem);
+            tagManager.Add(tag.tagItem);
             StpTagList.Children.Add(tag);
             #endregion
         }
@@ -64,7 +65,7 @@ namespace Checkem.CustomComponents
             if (currentTagList != null)
             {
                 foreach (TagItem item in currentTagList)
-                {                   
+                {
                     StpTagList.Children.Add(new Tag() { Text = item.Content, Color = item.TagColor });
                 }
             }

@@ -23,6 +23,8 @@ namespace Checkem.CustomComponents
             InitializeComponent();
 
             tagItem = item;
+
+            LoadupTag();
         }
         #region Event
         public event EventHandler StateChanged;
@@ -31,7 +33,7 @@ namespace Checkem.CustomComponents
 
 
         #region Property
-        TagItem tagItem = new TagItem();
+        public TagItem tagItem = new TagItem();
 
         public bool IsSelected { get; set; } = false;
 
@@ -115,6 +117,16 @@ namespace Checkem.CustomComponents
                 }
 
                 StateChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+        //It was used get all the tag has been created
+        //It didn't work, but I think I did something wrong so I keep it and want to fix it later
+        private void LoadupTag()
+        {
+            if (tagItem != null)
+            {
+                Color = tagItem.TagColor;
+                Text = tagItem.Content;
             }
         }
     }

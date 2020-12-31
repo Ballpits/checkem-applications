@@ -212,14 +212,14 @@ namespace Checkem.Models
             //Inventory.Add(new Todo { ID = 0, Title = "Notify Test0", Description = "It works !", IsReminderOn = true, EndDateTime = DateTime.Now });
             //Inventory.Add(new Todo { ID = 0, Title = "Notify Test1", Description = "It works !", IsReminderOn = true, EndDateTime = DateTime.Now });
 
-            List<TagItem> tagItems = new List<TagItem>();
-            tagItems.Add(new TagItem() { ID = 0, Content = "test tag", TagColor = Brushes.Brown });
-            tagItems.Add(new TagItem() { ID = 1, Content = "test tag", TagColor = Brushes.PaleVioletRed });
-            tagItems.Add(new TagItem() { ID = 2, Content = "test tag", TagColor = Brushes.GreenYellow });
-            tagItems.Add(new TagItem() { ID = 3, Content = "test tag", TagColor = Brushes.BlueViolet });
-            tagItems.Add(new TagItem() { ID = 4, Content = "test tag", TagColor = Brushes.Orange });
+            //List<TagItem> tagItems = new List<TagItem>();
+            //tagItems.Add(new TagItem() { ID = 0, Content = "test tag", TagColor = Brushes.Brown });
+            //tagItems.Add(new TagItem() { ID = 1, Content = "test tag", TagColor = Brushes.PaleVioletRed });
+            //tagItems.Add(new TagItem() { ID = 2, Content = "test tag", TagColor = Brushes.GreenYellow });
+            //tagItems.Add(new TagItem() { ID = 3, Content = "test tag", TagColor = Brushes.BlueViolet });
+            //tagItems.Add(new TagItem() { ID = 4, Content = "test tag", TagColor = Brushes.Orange });
 
-            Inventory.Add(new Todo { ID = 0, Title = "Tag Test", Description = "It works !", TagItems = tagItems });
+            Inventory.Add(new Todo { ID = 0, Title = "Tag Test", Description = "It works !", /*TagItems = tagItems*/ });
 
             Inventory.Add(new Todo { ID = 1, Title = "Update", Description = "windows 10 update", IsReminderOn = true, EndDateTime = DateTime.Now.AddDays(5) });
             Inventory.Add(new Todo { ID = 2, Title = "Meeting", IsStarred = true });

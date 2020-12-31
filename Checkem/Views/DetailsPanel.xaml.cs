@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 using System.Windows;
+using System.Collections.Generic;
 
 namespace Checkem.Views
 {
@@ -22,6 +23,8 @@ namespace Checkem.Views
             this.todo = itembar.todo;
 
             InitializeComponent();
+
+            TryLoadTagState();
 
             CheckReminderState();
         }
@@ -43,6 +46,10 @@ namespace Checkem.Views
         #region Property
         public Todo todo = new Todo();
 
+        //I was Tring to Update the TodoItem After it have a tag 
+        TodoManager todoManager = new TodoManager();
+        
+        TagManager tagManager = new TagManager();
         public string Title
         {
             get
@@ -226,7 +233,27 @@ namespace Checkem.Views
         }
         #endregion
 
+        #region Set Tag state
+        // I feel I need to improve it,but right now I cannot tell why
+        //Load all choices from Tag.json
+        private void TryLoadTagState()
+        {
+            if (tagManager.Inventory != null)
+            {
+                foreach (TagItem items in tagManager.Inventory)
+                {
+                    TagComBox.Items.Add(new CustomComponents.PreviewTag(items));
+                }
+            }
 
+            //Tried to load tag from Todo 
+            if (itembar.TagItems != null)
+            {
+                TagComBox.SelectedItem = itembar.TagItems[0];
+            }
+        }
+
+        #endregion
 
         #region Set reminder picker visibility
         private void SetReminder(ReminderState reminderState)
@@ -377,6 +404,29 @@ namespace Checkem.Views
         private void BeginDatePicker_LostFocus(object sender, RoutedEventArgs e)
         {
             //System.Windows.Forms.MessageBox.Show("Test");
+        }
+        //Due to itembar.TagItem or Todo.TagItems didn't
+        //get a actual data(get;set;) so it cannot use "Add" or
+        //"itembar.TagItems[x] = TagItem[y]"
+        // I guseed you already knew it but I still want to make a note
+        List<TagItem> Test = new List<TagItem>();
+
+        
+        private void TagComBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //example
+
+            //Dispose the choice (I don't how to say it... so I use a random word
+            if (TagComBox.SelectedIndex == 0 && itembar.TagItems != null)
+                itembar.TagItems.RemoveAt(0);
+            
+            //Tried to save tag choice and 
+            if (itembar.TagItems == null && TagComBox.SelectedIndex != 0)
+            {
+                //itembar.Add(tagManager.Inventory[TagComBox.SelectedIndex-1]);
+                Test.Add(tagManager.Inventory.Find(x => x.ID == TagComBox.SelectedIndex - 1));
+                itembar.TagItems =Test;
+            }
         }
     }
 }

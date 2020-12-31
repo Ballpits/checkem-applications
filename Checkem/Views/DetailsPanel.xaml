@@ -70,8 +70,10 @@
 
                         <TextBox Text="{Binding Title,Mode=TwoWay}" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_Title}" Style="{StaticResource TextBox.Animated}" MaxLength="100" />
 
-                        <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}" FontFamily="{DynamicResource Quicksand}" Margin="10,20,10,0" FontSize="20" Height="70" SelectedIndex="0">
-                            <customComponents:PreviewTag Content="tag 1" Color="Red"/>
+                        <ComboBox x:Name="TagComBox" Style="{StaticResource MaterialDesignFilledComboBox}" FontFamily="{DynamicResource Quicksand}" Margin="10,20,10,0" FontSize="20" Height="70" SelectedIndex="0" SelectionChanged="TagComBox_SelectionChanged">
+                            <ComboBoxItem Content="None" />
+                            <!--<customComponents:PreviewTag Content="tag 1"/>
+                            <customComponents:PreviewTag Text="tag 2" Color="Red"/>-->
                         </ComboBox>
 
                         <Grid Margin="10,20,10,0">
