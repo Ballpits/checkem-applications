@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              d:DesignWidth="1920"
              d:DesignHeight="1080"
+             Margin="0"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch"
              >
 
     <Grid>
@@ -52,8 +55,12 @@
             <TextBlock Text="SAT" FontFamily="Quicksand"/>
         </Viewbox>
         <!--#endregion-->
-        
-        
+
+
         <local:CalendarComponents_Week HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch" Grid.ColumnSpan="7"/>
+        <local:CalendarComponents_Week HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch" Grid.ColumnSpan="7"/>
+        <local:CalendarComponents_Week HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Stretch" Grid.ColumnSpan="7"/>
+        <local:CalendarComponents_Week HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Stretch" Grid.ColumnSpan="7"/>
+        <local:CalendarComponents_Week HorizontalAlignment="Stretch" Grid.Row="5" VerticalAlignment="Stretch" Grid.ColumnSpan="7"/>
     </Grid>
 </UserControl>
