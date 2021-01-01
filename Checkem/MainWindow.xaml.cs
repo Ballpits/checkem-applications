@@ -48,17 +48,35 @@ namespace Checkem
 
             foreach (var item in todoManager.Filter(FilterMethods.TaskToday))
             {
-                if (item.IsAdvanceReminderOn)
+                switch (item.ReminderState)
                 {
-                    if (DateTime.Now.Hour == item.BeginDateTime.Value.Hour && DateTime.Now.Minute == item.BeginDateTime.Value.Minute)
-                    {
-                        application.Notify(item.Title, item.Description);
-                    }
-                }
+                    case ReminderState.Basic:
+                        {
+                            if (DateTime.Now.Year == item.EndDateTime.Value.Year && DateTime.Now.Month == item.EndDateTime.Value.Month && DateTime.Now.Hour == item.EndDateTime.Value.Hour && DateTime.Now.Minute == item.EndDateTime.Value.Minute)
+                            {
+                                application.Notify(item.Title, item.Description);
+                            }
 
-                if (DateTime.Now.Year == item.EndDateTime.Value.Year && DateTime.Now.Month == item.EndDateTime.Value.Month && DateTime.Now.Hour == item.EndDateTime.Value.Hour && DateTime.Now.Minute == item.EndDateTime.Value.Minute)
-                {
-                    application.Notify(item.Title, item.Description);
+                            break;
+                        }
+                    case ReminderState.Advance:
+                        {
+                            if (DateTime.Now.Hour == item.BeginDateTime.Value.Hour && DateTime.Now.Minute == item.BeginDateTime.Value.Minute)
+                            {
+                                application.Notify(item.Title, item.Description);
+                            }
+                            else
+                            {
+                                if (DateTime.Now.Year == item.EndDateTime.Value.Year && DateTime.Now.Month == item.EndDateTime.Value.Month && DateTime.Now.Hour == item.EndDateTime.Value.Hour && DateTime.Now.Minute == item.EndDateTime.Value.Minute)
+                                {
+                                    application.Notify(item.Title, item.Description);
+                                }
+                            }
+
+                            break;
+                        }
+                    default:
+                        break;
                 }
             }//Check if the begin or end time is matched with the current time
         }

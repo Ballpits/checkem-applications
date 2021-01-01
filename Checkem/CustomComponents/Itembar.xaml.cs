@@ -49,7 +49,7 @@ namespace Checkem.CustomComponents
             LoadTagItems();
 
             //Update itembar height for reminder details
-            OnReminderTypeChanged();
+            OnReminderStateChanged();
         }
 
 
@@ -123,19 +123,19 @@ namespace Checkem.CustomComponents
             }
         }
 
-        public bool IsReminderOn
+        public ReminderState ReminderState
         {
             get
             {
-                return todo.IsReminderOn;
+                return todo.ReminderState;
             }
             set
             {
-                if (todo.IsReminderOn != value)
+                if (todo.ReminderState != value)
                 {
-                    todo.IsReminderOn = value;
+                    todo.ReminderState = value;
 
-                    OnPropertyChanged();
+                    OnReminderStateChanged();
                 }
             }
         }
@@ -197,7 +197,8 @@ namespace Checkem.CustomComponents
 
         public void Update_Reminder()
         {
-            OnReminderTypeChanged();
+            OnReminderStateChanged();
+
             Update?.Invoke(this, EventArgs.Empty);
         }
 
@@ -235,7 +236,7 @@ namespace Checkem.CustomComponents
 
 
         //Check if user can enter title, if they can, set new title
-        private void SetNewTitle()
+        private void Set_NewTitle()
         {
             if (TitleTextBox.Visibility == Visibility.Visible)
             {
@@ -314,38 +315,68 @@ namespace Checkem.CustomComponents
             }
         }
 
-        private void OnReminderTypeChanged()
+
+        private void OnReminderStateChanged()
         {
-            if (todo.IsReminderOn)
+            if (todo.ReminderState != ReminderState.None)
             {
-                //show reminder details
                 ReminderDetailStackPanel.Visibility = Visibility.Visible;
 
-
-                if (!todo.IsAdvanceReminderOn)
-                {
-                    ReminderDetailTextBlock.Text = DateTimeManipulator.SimplifiedDate(this.todo.EndDateTime.Value);
-                }
-                else
-                {
-                    ReminderDetailTextBlock.Text = $"Start on: {DateTimeManipulator.SimplifiedDate(this.todo.BeginDateTime.Value)}\tEnd on: {DateTimeManipulator.SimplifiedDate(this.todo.EndDateTime.Value)} ";
-                }
-
-
-                if (DateTimeManipulator.IsPassed(todo.EndDateTime.Value))
-                {
-                    //ReminderDetailTextBlock.SetBinding(TextBlock.ForegroundProperty, OverDueTextColorBindings);
-                }
-                else
-                {
-                    //ReminderDetailTextBlock.SetBinding(TextBlock.ForegroundProperty, NormalTextColorBindings);
-                }
+                ReminderDetailTextBlock.Text = "Waiting for input";
             }
-            else
+            switch (todo.ReminderState)
             {
-                //hide reminder details
-                ReminderDetailStackPanel.Visibility = Visibility.Collapsed;
+                case ReminderState.None:
+                    {
+                        //Hide reminder details
+                        ReminderDetailStackPanel.Visibility = Visibility.Collapsed;
+
+                        break;
+                    }
+                case ReminderState.Basic:
+                    {
+                        //Show reminder details
+                        ReminderDetailStackPanel.Visibility = Visibility.Visible;
+
+                        if (todo.EndDateTime != null)
+                        {
+                            ReminderDetailTextBlock.Text = DateTimeManipulator.SimplifiedDate(this.todo.EndDateTime.Value);
+                        }
+                        else
+                        {
+                            ReminderDetailTextBlock.Text = "Waiting for input";
+                        }
+
+                        break;
+                    }
+                case ReminderState.Advance:
+                    {
+                        //Show reminder details
+                        ReminderDetailStackPanel.Visibility = Visibility.Visible;
+
+                        if (todo.BeginDateTime != null && todo.EndDateTime != null)
+                        {
+                            ReminderDetailTextBlock.Text = $"Start on: {DateTimeManipulator.SimplifiedDate(this.todo.BeginDateTime.Value)}\tEnd on: {DateTimeManipulator.SimplifiedDate(this.todo.EndDateTime.Value)} ";
+                        }
+                        else
+                        {
+                            ReminderDetailTextBlock.Text = "Waiting for input";
+                        }
+
+                        break;
+                    }
+                default:
+                    break;
             }
+
+            //if (DateTimeManipulator.IsPassed(todo.EndDateTime.Value))
+            //{
+            //    //ReminderDetailTextBlock.SetBinding(TextBlock.ForegroundProperty, OverDueTextColorBindings);
+            //}
+            //else
+            //{
+            //    //ReminderDetailTextBlock.SetBinding(TextBlock.ForegroundProperty, NormalTextColorBindings);
+            //}
         }
         #endregion
 
@@ -370,7 +401,7 @@ namespace Checkem.CustomComponents
             if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
                 //Set new title
-                SetNewTitle();
+                Set_NewTitle();
 
                 //Play click animation
                 //Storyboard sb = this.FindResource("ItembarClick") as Storyboard;
@@ -439,14 +470,14 @@ namespace Checkem.CustomComponents
 
         private void TitleTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            SetNewTitle();
+            Set_NewTitle();
         }
 
         private void TitleTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                SetNewTitle();
+                Set_NewTitle();
             }
         }
     }

@@ -13,7 +13,7 @@ namespace Checkem.Views
     {
         public TodoList()
         {
-            todoManager.StoreTestData();
+            //todoManager.StoreTestData();
 
             currentInventory = todoManager.Filter(FilterMethods.None);
 

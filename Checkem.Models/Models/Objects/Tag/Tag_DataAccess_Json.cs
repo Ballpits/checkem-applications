@@ -24,6 +24,8 @@ namespace Checkem.Models
         {
             get
             {
+                inventory = Retrieve();
+
                 return inventory;
             }
             set

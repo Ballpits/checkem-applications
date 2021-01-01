@@ -34,7 +34,7 @@ namespace Checkem.Models
 
                         foreach (var item in Inventory)
                         {
-                            if (item.IsReminderOn)
+                            if (item.ReminderState != ReminderState.None)
                             {
                                 list.Add(item);
                             }
@@ -80,22 +80,30 @@ namespace Checkem.Models
                     {
                         List<Todo> list = new List<Todo>();
 
-                        foreach (var item in Inventory)
+                        foreach (var item in Filter(FilterMethods.Planned))
                         {
-                            if (item.IsReminderOn)
+                            switch (item.ReminderState)
                             {
-                                if (item.IsAdvanceReminderOn)
-                                {
-                                    if (item.BeginDateTime.Value.Date == DateTime.Today)
+                                case ReminderState.Basic:
                                     {
-                                        list.Add(item);
-                                    }
-                                }
+                                        if (item.EndDateTime.Value.Date == DateTime.Today)
+                                        {
+                                            list.Add(item);
+                                        }
 
-                                if (!list.Contains(item) && item.EndDateTime.Value.Date == DateTime.Today)
-                                {
-                                    list.Add(item);
-                                }
+                                        break;
+                                    }
+                                case ReminderState.Advance:
+                                    {
+                                        if (item.BeginDateTime.Value.Date == DateTime.Today || item.EndDateTime.Value.Date == DateTime.Today)
+                                        {
+                                            list.Add(item);
+                                        }
+
+                                        break;
+                                    }
+                                default:
+                                    break;
                             }
                         }
 
@@ -209,8 +217,8 @@ namespace Checkem.Models
             //Inventory.Add(new Todo { ID = 1, Title = "Item 1", Description = "Item 1's details !" });
             //Inventory.Add(new Todo { ID = 2, Title = "Item 2", Description = "Item 2's details !" });
 
-            //Inventory.Add(new Todo { ID = 0, Title = "Notify Test0", Description = "It works !", IsReminderOn = true, EndDateTime = DateTime.Now });
-            //Inventory.Add(new Todo { ID = 0, Title = "Notify Test1", Description = "It works !", IsReminderOn = true, EndDateTime = DateTime.Now });
+            Inventory.Add(new Todo { ID = 0, Title = "Notify Test 0", Description = "It works !", ReminderState = ReminderState.Basic, EndDateTime = DateTime.Now });
+            //Inventory.Add(new Todo { ID = 1, Title = "Notify Test 1", Description = "It works !", ReminderState = ReminderState.Basic, EndDateTime = DateTime.Now });
 
             //List<TagItem> tagItems = new List<TagItem>();
             //tagItems.Add(new TagItem() { ID = 0, Content = "test tag", TagColor = Brushes.Brown });

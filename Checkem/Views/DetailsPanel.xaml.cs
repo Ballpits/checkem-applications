@@ -16,17 +16,26 @@ namespace Checkem.Views
         {
             this.DataContext = this;
 
-            //copy item bar
+            //Copy the item bar
             this.itembar = itembar;
 
-            //get item bar's todo properties
+
+            //Get item bar's todo properties
             this.todo = itembar.todo;
+
 
             InitializeComponent();
 
-            TryLoadTagState();
 
-            CheckReminderState();
+            //Load in available tag choices
+            LoadAvailableTagItemsChoices();
+
+
+            //Load in the current item's tags
+            LoadTagItems();
+
+
+            ShowReminderDetails();
         }
 
 
@@ -44,12 +53,13 @@ namespace Checkem.Views
 
 
         #region Property
-        public Todo todo = new Todo();
-
         //I was Tring to Update the TodoItem After it have a tag 
         TodoManager todoManager = new TodoManager();
-        
         TagManager tagManager = new TagManager();
+
+
+        public Todo todo = new Todo();
+
         public string Title
         {
             get
@@ -130,45 +140,45 @@ namespace Checkem.Views
             }
         }
 
-        public bool IsReminderOn
-        {
-            get
-            {
-                return todo.IsReminderOn;
-            }
-            set
-            {
-                if (todo.IsReminderOn != value)
-                {
-                    todo.IsReminderOn = value;
-
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public bool IsAdvanceReminderOn
-        {
-            get
-            {
-                return todo.IsAdvanceReminderOn;
-            }
-            set
-            {
-                if (todo.IsAdvanceReminderOn != value)
-                {
-                    todo.IsAdvanceReminderOn = value;
-
-                    OnPropertyChanged();
-                }
-            }
-        }
-
         public string CreationDateTime
         {
             get
             {
                 return $"Created on {DateTimeManipulator.SimplifiedDate(todo.CreationDateTime)}";
+            }
+        }
+
+        public ReminderState ReminderState
+        {
+            get
+            {
+                return itembar.ReminderState;
+            }
+            set
+            {
+                if (itembar.ReminderState != value)
+                {
+                    itembar.ReminderState = value;
+
+                    SetReminderDetailsVisualState();
+                }
+            }
+        }
+
+        public List<TagItem> TagItems
+        {
+            get
+            {
+                return todo.TagItems;
+            }
+            set
+            {
+                if (todo.TagItems != value)
+                {
+                    todo.TagItems = value;
+
+                    OnPropertyChanged();
+                }
             }
         }
         #endregion
@@ -186,119 +196,133 @@ namespace Checkem.Views
         }
 
 
+        #region Reminder
 
-        #region Check reminder state
-        private void CheckReminderState()
+        #region Show reminder dateails
+        private void ShowReminderDetails()
         {
-            /* check if reminder is on, if it's on, check if advance reminder is on to determine reminder stete
-             * 
-             * IsReminder is false and IsAdvanceReminderOn is false => no reminder
-             * IsReminder is true and IsAdvanceReminderOn is false  => basic reminder
-             * IsReminder is true and IsAdvanceReminderOn is true   => advance reminder
-             */
-
-            if (IsReminderOn)
-            {
-                if (!IsAdvanceReminderOn)
-                {
-                    //show basic reminder's date time in date time picker
-                    EndDatePicker.Text = $"{this.todo.EndDateTime.Value.Month}/{this.todo.EndDateTime.Value.Day}/{this.todo.EndDateTime.Value.Year}";
-                    EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", this.todo.EndDateTime)}";
-                    EndTimePicker.SelectedTime = Convert.ToDateTime(EndTimePicker.Text);
-
-                    TrySetEndDateTime();
-                    ReminderFirstSetup = false;
-
-                    SetReminder(ReminderState.Basic);
-                }
-                else
-                {
-                    //show advance reminder's date time in date time picker
-                    BeginDatePicker.Text = $"{this.todo.BeginDateTime.Value.Month}/{this.todo.BeginDateTime.Value.Day}/{this.todo.BeginDateTime.Value.Year}";
-                    BeginTimePicker.Text = $"{string.Format("{0:h:mm tt}", this.todo.BeginDateTime)}";
-                    BeginTimePicker.SelectedTime = Convert.ToDateTime(BeginTimePicker.Text);
-
-                    EndDatePicker.Text = $"{this.todo.EndDateTime.Value.Month}/{this.todo.EndDateTime.Value.Day}/{this.todo.EndDateTime.Value.Year}";
-                    EndTimePicker.Text = $"{string.Format("{0:h:mm tt}", this.todo.EndDateTime)}";
-                    EndTimePicker.SelectedTime = Convert.ToDateTime(EndTimePicker.Text);
-
-                    TrySetBeginDateTime();
-                    TrySetEndDateTime();
-                    ReminderFirstSetup = false;
-
-
-                    SetReminder(ReminderState.Advance);
-                }
-            }
-        }
-        #endregion
-
-        #region Set Tag state
-        // I feel I need to improve it,but right now I cannot tell why
-        //Load all choices from Tag.json
-        private void TryLoadTagState()
-        {
-            if (tagManager.Inventory != null)
-            {
-                foreach (TagItem items in tagManager.Inventory)
-                {
-                    TagComBox.Items.Add(new CustomComponents.PreviewTag(items));
-                }
-            }
-
-            //Tried to load tag from Todo 
-            if (itembar.TagItems != null)
-            {
-                TagComBox.SelectedItem = itembar.TagItems[0];
-            }
-        }
-
-        #endregion
-
-        #region Set reminder picker visibility
-        private void SetReminder(ReminderState reminderState)
-        {
-            //show the corresponding date time picker 
-            switch (reminderState)
+            switch (ReminderState)
             {
                 case ReminderState.None:
                     {
-                        IsReminderOn = false;
-                        IsAdvanceReminderOn = false;
-
-                        todo.BeginDateTime = null;
-                        todo.EndDateTime = null;
-
-                        BeginDateTimeField.Visibility = Visibility.Collapsed;
-                        EndDateTimeField.Visibility = Visibility.Collapsed;
-
-                        ReminderSelecter.SelectedIndex = 2;
-
-                        itembar.Update_Reminder();
+                        SetReminderDetailsVisualState();
 
                         break;
                     }
                 case ReminderState.Basic:
                     {
-                        IsReminderOn = true;
-                        IsAdvanceReminderOn = false;
+                        SetReminderDetailsVisualState();
 
-                        BeginDateTimeField.Visibility = Visibility.Collapsed;
-                        EndDateTimeField.Visibility = Visibility.Visible;
+                        //Show basic reminder's date time in date time picker
+                        EndDatePicker.Text = $"{this.todo.EndDateTime.Value.Month}/{this.todo.EndDateTime.Value.Day}/{this.todo.EndDateTime.Value.Year}";
+                        EndTimePicker.SelectedTime = Convert.ToDateTime(string.Format("{0:h:mm tt}", this.todo.EndDateTime));
 
-                        ReminderSelecter.SelectedIndex = 0;
+                        TrySetEndDateTime();
 
                         break;
                     }
                 case ReminderState.Advance:
                     {
-                        IsReminderOn = true;
-                        IsAdvanceReminderOn = true;
+                        SetReminderDetailsVisualState();
+
+                        //Show advance reminder's date time in date time picker
+                        BeginDatePicker.Text = $"{this.todo.BeginDateTime.Value.Month}/{this.todo.BeginDateTime.Value.Day}/{this.todo.BeginDateTime.Value.Year}";
+                        BeginTimePicker.SelectedTime = Convert.ToDateTime(string.Format("{0:h:mm tt}", this.todo.BeginDateTime));
+
+
+                        EndDatePicker.Text = $"{this.todo.EndDateTime.Value.Month}/{this.todo.EndDateTime.Value.Day}/{this.todo.EndDateTime.Value.Year}";
+                        EndTimePicker.SelectedTime = Convert.ToDateTime(string.Format("{0:h:mm tt}", this.todo.EndDateTime));
+
+                        TrySetBeginDateTime();
+                        TrySetEndDateTime();
+
+                        break;
+                    }
+                default:
+                    break;
+            }
+
+            ReminderFirstSetup = false;
+        }
+        #endregion
+
+
+
+        #region Set reminder details visual state
+        private void SetReminderDetailsVisualState()
+        {
+            BeginDateTimeWarningTextBlock.Visibility = Visibility.Collapsed;
+            EndDateTimeWarningTextBlock.Visibility = Visibility.Collapsed;
+
+
+            #region Prevent empty entries
+            if (BeginDatePicker.SelectedDate != null && todo.BeginDateTime.HasValue)
+            {
+                BeginDatePicker.SelectedDate = todo.BeginDateTime.Value;
+            }
+            else
+            {
+                BeginDatePicker.SelectedDate = DateTime.Now.Date;
+            }
+
+
+            if (BeginTimePicker.SelectedTime != null && todo.BeginDateTime.HasValue)
+            {
+                BeginTimePicker.SelectedTime = todo.BeginDateTime.Value;
+            }
+            else
+            {
+                BeginTimePicker.SelectedTime = DateTime.Now.Date;
+            }
+
+
+            if (EndDatePicker.SelectedDate != null && todo.EndDateTime.HasValue)
+            {
+                EndDatePicker.SelectedDate = todo.EndDateTime.Value;
+            }
+            else
+            {
+                EndDatePicker.SelectedDate = DateTime.Now.Date;
+            }
+
+
+            if (EndTimePicker.SelectedTime != null && todo.EndDateTime.HasValue)
+            {
+                EndTimePicker.SelectedTime = todo.EndDateTime.Value;
+            }
+            else
+            {
+                EndTimePicker.SelectedTime = DateTime.Now.Date;
+            }
+            #endregion
+
+
+            switch (ReminderState)
+            {
+                case ReminderState.None:
+                    {
+                        ReminderSelecter.SelectedIndex = 2;
+
+                        BeginDateTimeField.Visibility = Visibility.Collapsed;
+                        EndDateTimeField.Visibility = Visibility.Collapsed;
+
+                        break;
+                    }
+                case ReminderState.Basic:
+                    {
+                        ReminderSelecter.SelectedIndex = 0;
+
+                        BeginDateTimeField.Visibility = Visibility.Collapsed;
+                        EndDateTimeField.Visibility = Visibility.Visible;
+
+                        break;
+                    }
+                case ReminderState.Advance:
+                    {
+                        ReminderSelecter.SelectedIndex = 1;
 
                         BeginDateTimeField.Visibility = Visibility.Visible;
                         EndDateTimeField.Visibility = Visibility.Visible;
-
-                        ReminderSelecter.SelectedIndex = 1;
 
                         break;
                     }
@@ -315,16 +339,16 @@ namespace Checkem.Views
         {
             try
             {
-                string dateTimeString = BeginDatePicker.SelectedDate.Value.ToString("yyyy-MM-dd") + "T" + BeginTimePicker.SelectedTime.Value.ToString("hh:mm:ss");
+                string dateTimeString = BeginDatePicker.SelectedDate.Value.ToString("yyyy-MM-dd") + "T" + BeginTimePicker.SelectedTime.Value.ToString("HH:mm:ss");
                 todo.BeginDateTime = Convert.ToDateTime(dateTimeString);
 
                 itembar.Update_Reminder();
 
-                BeginDateTimeWarning.Visibility = Visibility.Collapsed;
+                BeginDateTimeWarningTextBlock.Visibility = Visibility.Collapsed;
             }
             catch (Exception)
             {
-                BeginDateTimeWarning.Visibility = Visibility.Visible;
+                BeginDateTimeWarningTextBlock.Visibility = Visibility.Visible;
             }
         }
 
@@ -332,16 +356,16 @@ namespace Checkem.Views
         {
             try
             {
-                string dateTimeString = EndDatePicker.SelectedDate.Value.ToString("yyyy-MM-dd") + "T" + EndTimePicker.SelectedTime.Value.ToString("hh:mm:ss");
+                string dateTimeString = EndDatePicker.SelectedDate.Value.ToString("yyyy-MM-dd") + "T" + EndTimePicker.SelectedTime.Value.ToString("HH:mm:ss");
                 todo.EndDateTime = Convert.ToDateTime(dateTimeString);
 
                 itembar.Update_Reminder();
 
-                EndDateTimeWarning.Visibility = Visibility.Collapsed;
+                EndDateTimeWarningTextBlock.Visibility = Visibility.Collapsed;
             }
             catch (Exception)
             {
-                EndDateTimeWarning.Visibility = Visibility.Visible;
+                EndDateTimeWarningTextBlock.Visibility = Visibility.Visible;
             }
         }
         #endregion
@@ -351,17 +375,17 @@ namespace Checkem.Views
         #region Reminder selector events
         private void ListBoxItem_NoReminder_Selected(object sender, System.Windows.RoutedEventArgs e)
         {
-            SetReminder(ReminderState.None);
+            this.ReminderState = ReminderState.None;
         }
 
         private void ListBoxItem_BasicReminder_Selected(object sender, System.Windows.RoutedEventArgs e)
         {
-            SetReminder(ReminderState.Basic);
+            this.ReminderState = ReminderState.Basic;
         }
 
         private void ListBoxItem_AdvanceReminder_Selected(object sender, System.Windows.RoutedEventArgs e)
         {
-            SetReminder(ReminderState.Advance);
+            this.ReminderState = ReminderState.Advance;
         }
         #endregion
 
@@ -394,6 +418,8 @@ namespace Checkem.Views
 
         private void EndTimePicker_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
         {
+            DateTime? dateTime = EndTimePicker.SelectedTime;
+            //DateTime? dateTime2 = EndTimePicker.SelectedTime;
             if (!ReminderFirstSetup)
             {
                 TrySetEndDateTime();
@@ -401,31 +427,72 @@ namespace Checkem.Views
         }
         #endregion
 
+        #endregion
+
+
+
+        #region Load available tag items coices
+        //Load all available tag choices from Tag.json
+        private void LoadAvailableTagItemsChoices()
+        {
+            if (tagManager.Inventory != null)
+            {
+                foreach (TagItem item in tagManager.Inventory)
+                {
+                    TagItemCombobox.Items.Add(new PreviewTag(item));
+                }
+            }
+        }
+
+
+        //Load in the current item's tags
+        private void LoadTagItems()
+        {
+            if (TagItems != null)
+            {
+                foreach (var item in TagItems)
+                {
+                    TagItemCombobox.Items.Add(new PreviewTag(item));
+                }
+            }
+        }
+        #endregion
+
+
+
+
+
+
         private void BeginDatePicker_LostFocus(object sender, RoutedEventArgs e)
         {
             //System.Windows.Forms.MessageBox.Show("Test");
         }
+
+
+
         //Due to itembar.TagItem or Todo.TagItems didn't
         //get a actual data(get;set;) so it cannot use "Add" or
         //"itembar.TagItems[x] = TagItem[y]"
         // I guseed you already knew it but I still want to make a note
         List<TagItem> Test = new List<TagItem>();
 
-        
+
         private void TagComBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //example
 
             //Dispose the choice (I don't how to say it... so I use a random word
-            if (TagComBox.SelectedIndex == 0 && itembar.TagItems != null)
+            if (TagItemCombobox.SelectedIndex == 0 && itembar.TagItems != null)
+            {
                 itembar.TagItems.RemoveAt(0);
-            
+            }
+
             //Tried to save tag choice and 
-            if (itembar.TagItems == null && TagComBox.SelectedIndex != 0)
+            if (itembar.TagItems == null && TagItemCombobox.SelectedIndex != 0)
             {
                 //itembar.Add(tagManager.Inventory[TagComBox.SelectedIndex-1]);
-                Test.Add(tagManager.Inventory.Find(x => x.ID == TagComBox.SelectedIndex - 1));
-                itembar.TagItems =Test;
+                Test.Add(tagManager.Inventory.Find(x => x.ID == TagItemCombobox.SelectedIndex - 1));
+                itembar.TagItems = Test;
             }
         }
     }

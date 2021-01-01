@@ -17,8 +17,7 @@ namespace Checkem.Models
         public bool IsStarred { get; set; } = false;
 
 
-        public bool IsReminderOn { get; set; } = false;
-        public bool IsAdvanceReminderOn { get; set; } = false;
+        public ReminderState ReminderState { get; set; } = ReminderState.None;
 
 
         public DateTime? BeginDateTime { get; set; }
