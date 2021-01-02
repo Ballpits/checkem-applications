@@ -86,5 +86,17 @@ namespace Checkem.CustomComponents
                 }
             }
         }
+
+        private void UserControl_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (this.IsEnabled)
+            {
+                this.Opacity = 1;
+            }
+            else
+            {
+                this.Opacity = 0.5;
+            }
+        }
     }
 }

@@ -37,7 +37,7 @@ namespace Checkem.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool Notification {
             get {
                 return ((bool)(this["Notification"]));
@@ -49,7 +49,7 @@ namespace Checkem.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool ShowPreviews {
             get {
                 return ((bool)(this["ShowPreviews"]));
@@ -61,7 +61,7 @@ namespace Checkem.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool PlaySound {
             get {
                 return ((bool)(this["PlaySound"]));
@@ -80,6 +80,30 @@ namespace Checkem.Properties {
             }
             set {
                 this["VacationMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LaunchOnStartUp {
+            get {
+                return ((bool)(this["LaunchOnStartUp"]));
+            }
+            set {
+                this["LaunchOnStartUp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool RunInBackground {
+            get {
+                return ((bool)(this["RunInBackground"]));
+            }
+            set {
+                this["RunInBackground"] = value;
             }
         }
     }

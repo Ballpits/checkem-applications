@@ -33,11 +33,28 @@
 
         <TabControl WindowChrome.IsHitTestVisibleInChrome="True" Background="{DynamicResource Color.WhiteSmoke}" FontSize="20" BorderBrush="{x:Null}" Grid.Row="1">
             <TabItem Header="{DynamicResource Dict_General}" Background="{DynamicResource Color.WhiteSmoke}">
-                <Grid>
-                    <TextBlock Text="{DynamicResource Dict_General}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,10,0"/>
+                <ScrollViewer>
+                    <Grid>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <TextBlock Text="Launch Checkem on start up" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
 
-                    <TextBlock Text="{DynamicResource Dict_General}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0"/>
-                </Grid>
+                            <customComponents:ToggleSwitch x:Name="LaunchOnStarup" Unchecked="LaunchOnStarup_Unchecked" Checked="LaunchOnStarup_Checked" StateChanged="SettingToggles_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=LaunchOnStartUp, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
+
+                            <TextBlock TextWrapping="Wrap" Text="Have Checkem open automatically when you log into your computer." Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0" TextAlignment="Left"/>
+                        </StackPanel>
+
+                        <Border BorderBrush="{DynamicResource OverDueColor}" BorderThickness="3" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,1,0,10">
+                            <StackPanel>
+                                <TextBlock Text="Danger zone" Foreground="{DynamicResource OverDueColor}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" FontWeight="Bold"/>
+                                <TextBlock Text="Reverse all settings" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+
+                                <Button Style="{StaticResource CheckemFlatButton.Round5}" Content="Reverse" Foreground="White" FontSize="24" Margin="10,5,0,5" Background="{DynamicResource OverDueColor}" HorizontalAlignment="Left" Width="110" Opacity="1" FontWeight="Normal" Click="ReverseButton_Click"/>
+
+                                <TextBlock TextWrapping="Wrap" Text="Whatch out ! Everything will be reversed, including themes." Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0" TextAlignment="Left"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
 
             <TabItem Header="{DynamicResource Dict_Notifications}" Background="{DynamicResource Color.WhiteSmoke}">
@@ -54,7 +71,7 @@
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0">
                             <TextBlock Text="Show details" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
 
-                            <customComponents:ToggleSwitch x:Name="ShowDetailsToggle" StateChanged="ShowDetailsToggle_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=ShowPreviews, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
+                            <customComponents:ToggleSwitch x:Name="ShowDetailsToggle" StateChanged="SettingToggles_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=ShowPreviews, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
 
                             <TextBlock TextWrapping="Wrap" Text="Show task details in notifications." Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" TextAlignment="Left"/>
                         </StackPanel>
@@ -62,7 +79,7 @@
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0">
                             <TextBlock Text="Play sound" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
 
-                            <customComponents:ToggleSwitch x:Name="PlaySoundToggle" StateChanged="PlaySoundToggle_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=PlaySound, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
+                            <customComponents:ToggleSwitch x:Name="PlaySoundToggle" StateChanged="SettingToggles_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=PlaySound, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
 
                             <TextBlock TextWrapping="Wrap" Text="Use sound to let you know about the upcoming tasks." Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" TextAlignment="Left"/>
                         </StackPanel>
@@ -70,7 +87,7 @@
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0">
                             <TextBlock Text="I'm in a vacation" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
 
-                            <customComponents:ToggleSwitch x:Name="VacationModeToggle" StateChanged="VacationModeToggle_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=VacationMode, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
+                            <customComponents:ToggleSwitch x:Name="VacationModeToggle" StateChanged="SettingToggles_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=VacationMode, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
 
                             <TextBlock TextWrapping="Wrap" Text="When turned on, all notifications will be muted." Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" TextAlignment="Left"/>
                         </StackPanel>

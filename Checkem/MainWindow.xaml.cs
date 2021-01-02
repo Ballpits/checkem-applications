@@ -88,7 +88,16 @@ namespace Checkem
         {
             SettingsWindow settings = new SettingsWindow();
             settings.Owner = this;
+            settings.Closed += Settings_Closed;
+
             settings.Show();
+
+            BlockerGrid.Visibility = Visibility.Visible;
+        }
+
+        private void Settings_Closed(object sender, EventArgs e)
+        {
+            BlockerGrid.Visibility = Visibility.Hidden;
         }
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)

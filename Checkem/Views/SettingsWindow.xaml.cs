@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,6 +22,8 @@ namespace Checkem.Views
         public SettingsWindow()
         {
             InitializeComponent();
+
+            NotificationwToggle_StateChanged(NotificationwToggle, new EventArgs());
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -27,6 +31,7 @@ namespace Checkem.Views
             this.Close();
         }
 
+        #region Notification settings
         private void NotificationwToggle_StateChanged(object sender, EventArgs e)
         {
             if (NotificationwToggle.IsChecked)
@@ -48,20 +53,38 @@ namespace Checkem.Views
 
             Properties.Settings.Default.Save();
         }
+        #endregion
 
-        private void ShowDetailsToggle_StateChanged(object sender, EventArgs e)
+        private void SettingToggles_StateChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
         }
 
-        private void PlaySoundToggle_StateChanged(object sender, EventArgs e)
+        private void ReverseButton_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.Save();
+            Properties.Settings.Default.Reset();
         }
 
-        private void VacationModeToggle_StateChanged(object sender, EventArgs e)
+        private void LaunchOnStarup_Checked(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Save();
+            try
+            {
+                Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                Assembly curAssembly = Assembly.GetExecutingAssembly();
+                key.SetValue(curAssembly.GetName().Name, curAssembly.Location);
+            }
+            catch { }
+        }
+
+        private void LaunchOnStarup_Unchecked(object sender, EventArgs e)
+        {
+            try
+            {
+                Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                Assembly curAssembly = Assembly.GetExecutingAssembly();
+                key.SetValue(curAssembly.GetName().Name, curAssembly.Location + "_");
+            }
+            catch { }
         }
     }
 }

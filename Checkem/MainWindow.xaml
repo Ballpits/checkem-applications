@@ -66,6 +66,8 @@
             <CustomUserControls:Tag Grid.Row="1" Text="test... test..." Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1" Margin="0,30,0,0"/>
             <CustomUserControls:ModeSelectionButtons2 Grid.Row="1" Option1Content="Basic" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,65,0,0" Panel.ZIndex="1" Option2Content="Advance"/>-->
 
+            <Grid x:Name="BlockerGrid" Visibility="Hidden" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#02000000" Panel.ZIndex="1" WindowChrome.IsHitTestVisibleInChrome="True"/>
+            
             <Grid x:Name="TitleBarGrid" Style="{StaticResource todoUSCTitlebar}" Grid.ColumnSpan="2" SizeChanged="Grid_SizeChanged" Visibility="Visible">
                 <Border x:Name="SearchBoxBorder" WindowChrome.IsHitTestVisibleInChrome="True" Background="White" CornerRadius="5" HorizontalAlignment="Left" Height="40" Width="400" Margin="75,0,0,0" Padding="0" VerticalAlignment="Center">
                     <Grid>
