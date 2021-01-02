@@ -152,6 +152,8 @@ namespace Checkem.CustomComponents
                 {
                     todo.TagItems = value;
 
+                    OnSelectedChange();
+
                     OnPropertyChanged();
                 }
             }
@@ -261,8 +263,9 @@ namespace Checkem.CustomComponents
         #endregion
 
 
-        private void LoadTagItems()
+        public void LoadTagItems()
         {
+            TagItemPreviewStackPanel.Children.Clear();
             if (TagItems != null)
             {
                 foreach (var item in TagItems)
@@ -377,6 +380,10 @@ namespace Checkem.CustomComponents
             //{
             //    //ReminderDetailTextBlock.SetBinding(TextBlock.ForegroundProperty, NormalTextColorBindings);
             //}
+        }
+        private void OnSelectedChange()
+        {
+            LoadTagItems();
         }
         #endregion
 

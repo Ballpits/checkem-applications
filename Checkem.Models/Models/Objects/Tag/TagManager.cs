@@ -26,29 +26,30 @@ namespace Checkem.Models
         #endregion
 
 
-        //Create new item in database
+        //Add new item and save to database
         public void Add(TagItem data)
         {
+            Inventory.Add(data);
+
             Save(Inventory);
         }
 
 
-        //Update item in database
+        //Update item and save to database
         public void Update(TagItem data)
         {
-            //Find to do item's index in Inventory
-            int index = Inventory.IndexOf(data);
-
-            Inventory[index] = data;
+            //Find to do item's index in Inventory than update
+            Inventory[Inventory.IndexOf(data)] = data;
 
             Save(Inventory);
         }
 
 
-        //Remove item in database
+        //Remove item and save to database
         public void Remove(TagItem data)
         {
             Inventory.Remove(data);
+
             Save(Inventory);
         }
     }

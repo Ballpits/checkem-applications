@@ -165,22 +165,6 @@ namespace Checkem.Views
             }
         }
 
-        public List<TagItem> TagItems
-        {
-            get
-            {
-                return todo.TagItems;
-            }
-            set
-            {
-                if (todo.TagItems != value)
-                {
-                    todo.TagItems = value;
-
-                    OnPropertyChanged();
-                }
-            }
-        }
         #endregion
 
 
@@ -448,11 +432,11 @@ namespace Checkem.Views
         //Load in the current item's tags
         private void LoadTagItems()
         {
-            if (TagItems != null)
+            if (todo.TagItems != null)
             {
-                foreach (var item in TagItems)
+                foreach (var item in todo.TagItems)
                 {
-                    TagItemCombobox.Items.Add(new PreviewTag(item));
+                    TagDisplay.Children.Add(new PreviewTag(item));
                 }
             }
         }
@@ -474,25 +458,33 @@ namespace Checkem.Views
         //get a actual data(get;set;) so it cannot use "Add" or
         //"itembar.TagItems[x] = TagItem[y]"
         // I guseed you already knew it but I still want to make a note
-        List<TagItem> Test = new List<TagItem>();
-
 
         private void TagComBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //example
-
-            //Dispose the choice (I don't how to say it... so I use a random word
-            if (TagItemCombobox.SelectedIndex == 0 && itembar.TagItems != null)
+            if (TagItemCombobox.SelectedItem.GetType().Name == "PreviewTag")
             {
-                itembar.TagItems.RemoveAt(0);
+                //MessageBox.Show(TagItemCombobox.SelectedItem.GetType().Name);
+                PreviewTag tag = TagItemCombobox.SelectedItem as PreviewTag;
+                TagItem tagItem = tag.tagItem;
+
+                todo.TagItems.Add(tagItem);
+                LoadTag();
+
+                TagItemCombobox.SelectedIndex = 0;
+                TagItemCombobox.Items.Remove(tag);
             }
+            itembar.LoadTagItems();
+        }
 
-            //Tried to save tag choice and 
-            if (itembar.TagItems == null && TagItemCombobox.SelectedIndex != 0)
+        private void LoadTag()
+        {
+            TagDisplay.Children.Clear();
+            foreach (var item in todo.TagItems)
             {
-                //itembar.Add(tagManager.Inventory[TagComBox.SelectedIndex-1]);
-                Test.Add(tagManager.Inventory.Find(x => x.ID == TagItemCombobox.SelectedIndex - 1));
-                itembar.TagItems = Test;
+                PreviewTag previewTag = new PreviewTag(item);
+                previewTag.tagItem = item;
+
+                TagDisplay.Children.Add(previewTag);
             }
         }
     }

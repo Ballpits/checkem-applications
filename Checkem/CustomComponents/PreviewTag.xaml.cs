@@ -34,7 +34,7 @@ namespace Checkem.CustomComponents
 
         #region Property
 
-        private TagItem tagItem;
+        public TagItem tagItem;
         public bool IsSelected { get; set; } = false;
 
 

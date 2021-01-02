@@ -284,5 +284,20 @@ namespace Checkem.Views
             ButtonClearSort.Visibility = Visibility.Collapsed;
         }
         #endregion
+
+        private void tagBar_RemoveTag(object sender, EventArgs e)
+        {
+            Tag tag = sender as Tag;
+
+            foreach (Todo item in currentInventory)
+            {
+                if (item.TagItems.Contains(tag.tagItem))
+                {
+                    item.TagItems.Remove(tag.tagItem);
+                    todoManager.Update(item);
+                }
+                
+            }
+        }
     }
 }

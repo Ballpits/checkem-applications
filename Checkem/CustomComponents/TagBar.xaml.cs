@@ -18,6 +18,7 @@ namespace Checkem.CustomComponents
         }
 
         public event EventHandler OpenPanel;
+        public event EventHandler RemoveTag;
 
         List<TagItem> currentTagList;
         TagManager tagManager = new TagManager();
@@ -41,7 +42,8 @@ namespace Checkem.CustomComponents
 
 
             tag.StateChanged += new EventHandler(this.Tag_StateChange);
-
+            tag.Remove += new EventHandler(this.Tag_Remove);
+            
             currentTagList.Add(tag.tagItem);
             tagManager.Add(tag.tagItem);
             StpTagList.Children.Add(tag);
@@ -67,8 +69,15 @@ namespace Checkem.CustomComponents
                 foreach (TagItem item in currentTagList)
                 {
                     StpTagList.Children.Add(new Tag() { Text = item.Content, Color = item.TagColor });
+
                 }
             }
+        }
+
+        private void Tag_Remove(object sender, EventArgs e)
+        { 
+            RemoveTag?.Invoke(this, EventArgs.Empty);
+
         }
     }
 }

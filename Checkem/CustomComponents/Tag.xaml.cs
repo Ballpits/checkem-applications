@@ -29,6 +29,7 @@ namespace Checkem.CustomComponents
         #region Event
         public event EventHandler StateChanged;
         public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler Remove;
         #endregion
 
 
@@ -128,6 +129,11 @@ namespace Checkem.CustomComponents
                 Color = tagItem.TagColor;
                 Text = tagItem.Content;
             }
+        }
+
+        private void MenuItem_Remove(object sender, RoutedEventArgs e)
+        {
+            Remove?.Invoke(this, EventArgs.Empty);
         }
     }
 }
