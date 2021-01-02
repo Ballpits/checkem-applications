@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="Dict_LanguageName">English-US</system:String>
 
     <!--Mainwindow-->
     <system:String x:Key="Dict_MyDay">My Day</system:String>
@@ -50,6 +49,7 @@
     <system:String x:Key="Dict_General">General</system:String>
     <system:String x:Key="Dict_Notifications">Notifications</system:String>
     <system:String x:Key="Dict_Appearance">Appearance</system:String>
+    <system:String x:Key="Dict_Language">Language</system:String>
     <!--#endregion-->
     
     <!--#region Languages-->

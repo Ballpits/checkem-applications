@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="Dict_LanguageName">中文 (繁體中文)</system:String>
 
     <!--Filters-->
     <system:String x:Key="Dict_MyDay">我的一天</system:String>
@@ -46,6 +45,13 @@
     <system:String x:Key="Dict_Task_EndDate">結束日期</system:String>
     <system:String x:Key="Dict_Task_EndTime">結束時間</system:String>
     <system:String x:Key="Dict_Task_Description">細節描述</system:String>
+
+    <!--#region Settings-->
+    <system:String x:Key="Dict_General">一般</system:String>
+    <system:String x:Key="Dict_Notifications">通知</system:String>
+    <system:String x:Key="Dict_Appearance">外觀</system:String>
+    <system:String x:Key="Dict_Language">語言</system:String>
+    <!--#endregion-->
 
     <!--#region Languages-->
     <system:String x:Key="Danish">丹麥文</system:String>

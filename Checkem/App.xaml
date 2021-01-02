@@ -22,7 +22,6 @@
 
                 <!--#region Language-->
                 <ResourceDictionary Source="Assets/LanguageResourceDictionary/Lng_English_US.xaml"/>
-                <!--<ResourceDictionary Source="Assets/LanguageResourceDictionary/Lng_Chinese_Traditional.xaml"/>-->
                 <!--#endregion-->
 
 

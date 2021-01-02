@@ -282,7 +282,7 @@
 
         <Setter Property="Width" Value="30"/>
         <Setter Property="Height" Value="30"/>
-        
+
         <Setter Property="Content" Value="{materialDesign:PackIcon Kind=Close, Size=20}"/>
 
         <Style.Triggers>
@@ -342,11 +342,15 @@
     <Style x:Key="LanguageBoxText-Big" TargetType="TextBlock" BasedOn="{StaticResource CheckemTextBlock.Base}">
         <Setter Property="Foreground" Value="{DynamicResource Color.Black}"/>
         <Setter Property="FontSize" Value="20"/>
+
+        <Setter Property="TextAlignment" Value="Left"/>
     </Style>
 
     <Style x:Key="LanguageBoxText-Small" TargetType="TextBlock" BasedOn="{StaticResource CheckemTextBlock.Base}">
-        <Setter Property="Foreground" Value="{DynamicResource Color.LightGray}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Black}"/>
         <Setter Property="FontSize" Value="14"/>
+
+        <Setter Property="TextAlignment" Value="Left"/>
     </Style>
     <!--#endregion-->
 </ResourceDictionary>

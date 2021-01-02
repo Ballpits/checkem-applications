@@ -1,19 +1,8 @@
-﻿using Microsoft.Win32;
+﻿using Checkem.Assets.LanguageHelper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Checkem.Views
 {
@@ -31,32 +20,12 @@ namespace Checkem.Views
             this.Close();
         }
 
-        #region Notification settings
-        private void NotificationwToggle_StateChanged(object sender, EventArgs e)
-        {
-            if (NotificationwToggle.IsChecked)
-            {
-                ShowDetailsToggle.IsEnabled = true;
-                VacationModeToggle.IsEnabled = true;
-            }
-            else
-            {
-                ShowDetailsToggle.IsEnabled = false;
-                VacationModeToggle.IsEnabled = false;
-
-                ShowDetailsToggle.IsChecked = false;
-                VacationModeToggle.IsChecked = false;
-            }
-
-            Properties.Settings.Default.Save();
-        }
-        #endregion
-
         private void SettingToggles_StateChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
         }
 
+        #region General settings
         private void ReverseButton_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Reset();
@@ -82,6 +51,49 @@ namespace Checkem.Views
                 key.SetValue(curAssembly.GetName().Name, curAssembly.Location + "_");
             }
             catch { }
+        }
+        #endregion
+
+        #region Notification settings
+        private void NotificationwToggle_StateChanged(object sender, EventArgs e)
+        {
+            if (NotificationwToggle.IsChecked)
+            {
+                ShowDetailsToggle.IsEnabled = true;
+                VacationModeToggle.IsEnabled = true;
+            }
+            else
+            {
+                ShowDetailsToggle.IsEnabled = false;
+                VacationModeToggle.IsEnabled = false;
+
+                ShowDetailsToggle.IsChecked = false;
+                VacationModeToggle.IsChecked = false;
+            }
+
+            Properties.Settings.Default.Save();
+        }
+        #endregion
+
+        private void LanguageCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch ((sender as ComboBox).SelectedIndex)
+            {
+                case 0:
+                    {
+                        LanguageHelper.ApplyLanguage("Lng_English_US");
+
+                        break;
+                    }
+                case 1:
+                    {
+                        LanguageHelper.ApplyLanguage("Lng_Chinese_Traditional");
+
+                        break;
+                    }
+                default:
+                    break;
+            }
         }
     }
 }
