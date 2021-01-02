@@ -64,13 +64,21 @@ namespace Checkem
 
         public void Notify(string title, string message)
         {
-            //prevent from displaying empty message string
-            if (message == "")
+            //Check if show preview setting is true
+            if (Checkem.Properties.Settings.Default.ShowPreviews)
+            {
+                //Prevent from displaying empty message string
+                if (message == string.Empty)
+                {
+                    message = " ";
+                }
+            }
+            else
             {
                 message = " ";
             }
 
-            //show notification with specified message and title
+            //Show notification with specified message and title
             TrayIcon.ShowBalloonTip(TimeOut, title, message, toolTipIcon);
         }
     }

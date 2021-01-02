@@ -37,17 +37,14 @@ namespace Checkem.Views
             if (NotificationwToggle.IsChecked)
             {
                 ShowDetailsToggle.IsEnabled = true;
-                PlaySoundToggle.IsEnabled = true;
                 VacationModeToggle.IsEnabled = true;
             }
             else
             {
                 ShowDetailsToggle.IsEnabled = false;
-                PlaySoundToggle.IsEnabled = false;
                 VacationModeToggle.IsEnabled = false;
 
                 ShowDetailsToggle.IsChecked = false;
-                PlaySoundToggle.IsChecked = false;
                 VacationModeToggle.IsChecked = false;
             }
 

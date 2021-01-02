@@ -77,14 +77,6 @@
                         </StackPanel>
 
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0">
-                            <TextBlock Text="Play sound" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
-
-                            <customComponents:ToggleSwitch x:Name="PlaySoundToggle" StateChanged="SettingToggles_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=PlaySound, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
-
-                            <TextBlock TextWrapping="Wrap" Text="Use sound to let you know about the upcoming tasks." Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" TextAlignment="Left"/>
-                        </StackPanel>
-
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0">
                             <TextBlock Text="I'm in a vacation" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
 
                             <customComponents:ToggleSwitch x:Name="VacationModeToggle" StateChanged="SettingToggles_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=VacationMode, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>

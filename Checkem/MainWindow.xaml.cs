@@ -38,47 +38,52 @@ namespace Checkem
             dispatcherTimer.Start();
         }
 
+
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-            TimerOffset = 60 - DateTime.Now.Second;
-
-            //Fix timer delay time
-            dispatcherTimer.Interval = TimeSpan.FromSeconds(TimerOffset);
-
-
-            foreach (var item in todoManager.Filter(FilterMethods.TaskToday))
+            if (Properties.Settings.Default.Notification && !Properties.Settings.Default.VacationMode)
             {
-                switch (item.ReminderState)
-                {
-                    case ReminderState.Basic:
-                        {
-                            if (DateTime.Now.Year == item.EndDateTime.Value.Year && DateTime.Now.Month == item.EndDateTime.Value.Month && DateTime.Now.Hour == item.EndDateTime.Value.Hour && DateTime.Now.Minute == item.EndDateTime.Value.Minute)
-                            {
-                                application.Notify(item.Title, item.Description);
-                            }
+                TimerOffset = 60 - DateTime.Now.Second;
 
-                            break;
-                        }
-                    case ReminderState.Advance:
-                        {
-                            if (DateTime.Now.Hour == item.BeginDateTime.Value.Hour && DateTime.Now.Minute == item.BeginDateTime.Value.Minute)
-                            {
-                                application.Notify(item.Title, item.Description);
-                            }
-                            else
+                //Fix timer delay time
+                dispatcherTimer.Interval = TimeSpan.FromSeconds(TimerOffset);
+
+
+                //Check if the begin or end time is matched with the current time
+                foreach (var item in todoManager.Filter(FilterMethods.TaskToday))
+                {
+                    switch (item.ReminderState)
+                    {
+                        case ReminderState.Basic:
                             {
                                 if (DateTime.Now.Year == item.EndDateTime.Value.Year && DateTime.Now.Month == item.EndDateTime.Value.Month && DateTime.Now.Hour == item.EndDateTime.Value.Hour && DateTime.Now.Minute == item.EndDateTime.Value.Minute)
                                 {
                                     application.Notify(item.Title, item.Description);
                                 }
-                            }
 
+                                break;
+                            }
+                        case ReminderState.Advance:
+                            {
+                                if (DateTime.Now.Hour == item.BeginDateTime.Value.Hour && DateTime.Now.Minute == item.BeginDateTime.Value.Minute)
+                                {
+                                    application.Notify(item.Title, item.Description);
+                                }
+                                else
+                                {
+                                    if (DateTime.Now.Year == item.EndDateTime.Value.Year && DateTime.Now.Month == item.EndDateTime.Value.Month && DateTime.Now.Hour == item.EndDateTime.Value.Hour && DateTime.Now.Minute == item.EndDateTime.Value.Minute)
+                                    {
+                                        application.Notify(item.Title, item.Description);
+                                    }
+                                }
+
+                                break;
+                            }
+                        default:
                             break;
-                        }
-                    default:
-                        break;
+                    }
                 }
-            }//Check if the begin or end time is matched with the current time
+            }
         }
 
 
