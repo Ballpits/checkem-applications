@@ -24,7 +24,44 @@ namespace Checkem.Views
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
 
+        private void NotificationwToggle_StateChanged(object sender, EventArgs e)
+        {
+            if (NotificationwToggle.IsChecked)
+            {
+                ShowDetailsToggle.IsEnabled = true;
+                PlaySoundToggle.IsEnabled = true;
+                VacationModeToggle.IsEnabled = true;
+            }
+            else
+            {
+                ShowDetailsToggle.IsEnabled = false;
+                PlaySoundToggle.IsEnabled = false;
+                VacationModeToggle.IsEnabled = false;
+
+                ShowDetailsToggle.IsChecked = false;
+                PlaySoundToggle.IsChecked = false;
+                VacationModeToggle.IsChecked = false;
+            }
+
+            Properties.Settings.Default.Save();
+        }
+
+        private void ShowDetailsToggle_StateChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
+
+        private void PlaySoundToggle_StateChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
+
+        private void VacationModeToggle_StateChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
         }
     }
 }

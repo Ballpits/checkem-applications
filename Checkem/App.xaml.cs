@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Checkem.Views;
+using System.Windows;
 
 namespace Checkem
 {
@@ -15,6 +16,7 @@ namespace Checkem
             base.OnStartup(e);
 
             MainWindow = new MainWindow(this);
+            //MainWindow = new SettingsWindow();
             MainWindow.Show();
 
             TrayIcon.Icon = Checkem.Properties.Resources.CheckemIcon;

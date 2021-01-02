@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="LanguageName">English-US</system:String>
+    <system:String x:Key="Dict_LanguageName">English-US</system:String>
 
     <!--Mainwindow-->
     <system:String x:Key="Dict_MyDay">My Day</system:String>
@@ -45,6 +45,12 @@
     <system:String x:Key="Dict_Task_EndDate">End date</system:String>
     <system:String x:Key="Dict_Task_EndTime">End time</system:String>
     <system:String x:Key="Dict_Task_Description">Description</system:String>
+    
+    <!--#region Settings-->
+    <system:String x:Key="Dict_General">General</system:String>
+    <system:String x:Key="Dict_Notifications">Notifications</system:String>
+    <system:String x:Key="Dict_Appearance">Appearance</system:String>
+    <!--#endregion-->
     
     <!--#region Languages-->
     <system:String x:Key="Danish">Danish</system:String>

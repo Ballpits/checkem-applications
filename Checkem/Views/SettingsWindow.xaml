@@ -4,15 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:customComponents="clr-namespace:Checkem.CustomComponents" 
+        xmlns:customComponents="clr-namespace:Checkem.CustomComponents"
+        xmlns:properties="clr-namespace:Checkem.Properties"
         mc:Ignorable="d"
-        d:DesignHeight="450"
-        d:DesignWidth="800"
+        Width="800"
+        Height="480"
+        ResizeMode="NoResize"
         Background="{DynamicResource Color.WhiteSmoke}"
         FontFamily="{DynamicResource Quicksand}"
         Title="Checkem-settings"
         WindowStyle="SingleBorderWindow"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         >
 
     <WindowChrome.WindowChrome>
@@ -29,21 +31,59 @@
             <Path Data="M578.19198,-0.066659417 L706.86698,23.4 814.70389,24.400132 840.23715,40.400214 939.63685,40.489548 939.5698,0.0080855492" Fill="{DynamicResource Color.WhiteSmoke}" HorizontalAlignment="Right" Height="30" Margin="0" Stretch="Fill" VerticalAlignment="Top" Width="150"/>
         </Grid>
 
-        <TabControl WindowChrome.IsHitTestVisibleInChrome="True" Grid.RowSpan="2" FontSize="20" BorderBrush="{x:Null}" Margin="0,10,0,0">
-            <TabItem Header="General">
-                General
-            </TabItem>
-            <TabItem Header="Appearence">
+        <TabControl WindowChrome.IsHitTestVisibleInChrome="True" Background="{DynamicResource Color.WhiteSmoke}" FontSize="20" BorderBrush="{x:Null}" Grid.Row="1">
+            <TabItem Header="{DynamicResource Dict_General}" Background="{DynamicResource Color.WhiteSmoke}">
                 <Grid>
-                    <customComponents:ModeSelectionButtons2 VerticalAlignment="Top" HorizontalAlignment="Left" Height="45" Margin="10,10,0,0" Option1Content="{materialDesign:PackIcon Kind=WbSunny}" Option2Content="{materialDesign:PackIcon Kind=NightSky}"/>
+                    <TextBlock Text="{DynamicResource Dict_General}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,10,0"/>
+
+                    <TextBlock Text="{DynamicResource Dict_General}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Notifications">
-                Notifications
+
+            <TabItem Header="{DynamicResource Dict_Notifications}" Background="{DynamicResource Color.WhiteSmoke}">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <TextBlock Text="Notifications" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+
+                            <customComponents:ToggleSwitch x:Name="NotificationwToggle" StateChanged="NotificationwToggle_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=Notification, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
+
+                            <TextBlock TextWrapping="Wrap" Text="Turn notifications on or off." Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" TextAlignment="Left"/>
+                        </StackPanel>
+
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0">
+                            <TextBlock Text="Show details" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+
+                            <customComponents:ToggleSwitch x:Name="ShowDetailsToggle" StateChanged="ShowDetailsToggle_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=ShowPreviews, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
+
+                            <TextBlock TextWrapping="Wrap" Text="Show task details in notifications." Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" TextAlignment="Left"/>
+                        </StackPanel>
+
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0">
+                            <TextBlock Text="Play sound" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+
+                            <customComponents:ToggleSwitch x:Name="PlaySoundToggle" StateChanged="PlaySoundToggle_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=PlaySound, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
+
+                            <TextBlock TextWrapping="Wrap" Text="Use sound to let you know about the upcoming tasks." Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" TextAlignment="Left"/>
+                        </StackPanel>
+
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0">
+                            <TextBlock Text="I'm in a vacation" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+
+                            <customComponents:ToggleSwitch x:Name="VacationModeToggle" StateChanged="VacationModeToggle_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=VacationMode, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
+
+                            <TextBlock TextWrapping="Wrap" Text="When turned on, all notifications will be muted." Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" TextAlignment="Left"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="{DynamicResource Dict_Appearance}" Background="{DynamicResource Color.WhiteSmoke}">
+                <TextBlock Text="{DynamicResource Dict_Appearance}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0"/>
             </TabItem>
         </TabControl>
 
-        <Button Style="{StaticResource CheckemChromeXButton}" Click="CloseButton_Click" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <Button Style="{StaticResource CheckemChromeXButton}" Click="CloseButton_Click" WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Right" VerticalAlignment="Top">
             <materialDesign:PackIcon Kind="Close"/>
         </Button>
     </Grid>

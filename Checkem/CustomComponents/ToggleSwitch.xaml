@@ -121,6 +121,6 @@
         <Rectangle x:Name="rectangleGreen" RadiusX="12.5" RadiusY="12.5" StrokeThickness="2" Fill="#FF51E84D" Stroke="#FFCACACA"/>
         <Rectangle x:Name="rectangle" RadiusX="12.5" RadiusY="12.5" StrokeThickness="2" Margin="1.8" Fill="White"/>
         <Ellipse x:Name="ellipse" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-26,0,0,0" Fill="White" Stroke="#FFCACACA" StrokeThickness="2"/>
-        <CheckBox x:Name="checkbox" Visibility="Hidden" Panel.ZIndex="-1"/>
+        <CheckBox x:Name="checkbox" IsChecked="{Binding IsChecked}" Visibility="Hidden" Panel.ZIndex="-1"/>
     </Grid>
 </UserControl>
