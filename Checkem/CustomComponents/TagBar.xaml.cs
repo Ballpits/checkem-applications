@@ -66,7 +66,20 @@ namespace Checkem.CustomComponents
             {
                 foreach (TagItem item in currentTagList)
                 {
-                    StpTagList.Children.Add(new Tag() { Text = item.Content, Color = item.TagColor });
+                    Tag tag = new Tag()
+                    {
+                        Text = item.Content,
+                        Color = item.TagColor,
+                        tagItem = new TagItem()
+                        {
+                            TagColor = item.TagColor,
+                            ID = item.ID,
+                            Content = item.Content
+                        }
+                    };
+                    tag.StateChanged += new EventHandler(Tag_StateChange);
+                    tag.Remove += new EventHandler(Tag_Remove);
+                    StpTagList.Children.Add(tag);
 
                 }
             }
@@ -74,7 +87,37 @@ namespace Checkem.CustomComponents
 
         private void Tag_Remove(object sender, EventArgs e)
         {
-            RemoveTag?.Invoke(this, EventArgs.Empty);
+
+            RemoveTag?.Invoke(sender, EventArgs.Empty);
+
+            Tag tagItem = sender as Tag;
+
+            currentTagList.RemoveAt(tagItem.tagItem.ID);
+            tagManager.Remove(tagItem.tagItem);
+            tagManager.ResetId();
+
+            StpTagList.Children.Clear();
+            if (currentTagList != null)
+            {
+                foreach (TagItem item in currentTagList)
+                {
+                    Tag tag = new Tag()
+                    {
+                        Text = item.Content,
+                        Color = item.TagColor,
+                        tagItem = new TagItem()
+                        {
+                            TagColor = item.TagColor,
+                            ID = item.ID,
+                            Content = item.Content
+                        }
+                    };
+                    tag.StateChanged += new EventHandler(Tag_StateChange);
+                    tag.Remove += new EventHandler(Tag_Remove);
+                    StpTagList.Children.Add(tag);
+
+                }
+            }
         }
     }
 }

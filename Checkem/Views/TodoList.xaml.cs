@@ -315,15 +315,35 @@ namespace Checkem.Views
         private void tagBar_RemoveTag(object sender, EventArgs e)
         {
             Tag tag = sender as Tag;
-
+            //MessageBox.Show(tag.tagItem.Content + Environment.NewLine + tag.tagItem.TagColor + Environment.NewLine + tag.tagItem.ID);
             foreach (Todo item in currentInventory)
             {
-                if (item.TagItems.Contains(tag.tagItem))
+                for (int o = 0; o < item.TagItems.Count; o++)
                 {
-                    item.TagItems.Remove(tag.tagItem);
-                    todoManager.Update(item);
-                }
+                    if (item.TagItems[o].ID == tag.tagItem.ID)
+                    {
+                        //MessageBox.Show("Succes");
+                        item.TagItems.RemoveAt(tag.tagItem.ID);
+                        todoManager.Update(item);
 
+                        break;
+                    }
+                }
+            }
+
+
+            if (TodoItemsStackPanel.Children.Count != 0)
+            {
+                TodoItemsStackPanel.Children.Clear();
+            }
+            foreach (var item in currentInventory)
+            {
+                Itembar itembar = new Itembar(item);
+                itembar.Click += new EventHandler(this.Itembar_Click);
+                itembar.Remove += new EventHandler(this.Itembar_Remove);
+                itembar.Update += new EventHandler(this.Itembar_Update);
+
+                TodoItemsStackPanel.Children.Add(itembar);
             }
         }
 
