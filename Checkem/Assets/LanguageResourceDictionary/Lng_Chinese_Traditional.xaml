@@ -16,6 +16,8 @@
     <system:String x:Key="Dict_Calendar">月曆</system:String>
     <system:String x:Key="Dict_OpenSideBar">開啟側排清單</system:String>
     <system:String x:Key="Dict_CollapseSideBar">合起側排清單</system:String>
+    <system:String x:Key="Dict_SearchHint1">在找什麼嗎 ?</system:String>
+    <system:String x:Key="Dict_SearchHint2">告訴我你要找什麼，不分大小寫</system:String>
     <!--#endregion-->
 
     <!--Context menu-->

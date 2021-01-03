@@ -7,7 +7,8 @@
              xmlns:properties="clr-namespace:Checkem.Properties"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="35"
+             Height="35" IsTabStop="True" TabIndex="0"
+             FocusVisualStyle="{DynamicResource CheckemFocusVisual.Primay}"
              >
 
     <UserControl.Resources>

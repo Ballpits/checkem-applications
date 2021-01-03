@@ -27,6 +27,18 @@
         </Setter>
     </Style>
     <!--#endregion-->
+
+    <!--#region Black focus visual-->
+    <Style x:Key="CheckemFocusVisual.PrimaryColor">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="0" StrokeThickness="3" Stroke="{DynamicResource Color.Primary}" RadiusX="5" RadiusY="5"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
     <!--#endregion-->
 
 

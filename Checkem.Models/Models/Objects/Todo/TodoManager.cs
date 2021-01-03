@@ -199,10 +199,10 @@ namespace Checkem.Models
 
         //Find to do items
         #region FindAll
-        public List<Todo> FindAll(string searchString)
+        public List<Todo> FindAll(string searchString, List<Todo> list)
         {
             //Ignore casing
-            return Inventory.FindAll(x => x.Title.ToLower().Contains(searchString.ToLower()));
+            return list.FindAll(x => x.Title.ToLower().Contains(searchString.ToLower()));
         }
         #endregion
 

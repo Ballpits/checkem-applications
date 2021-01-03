@@ -13,11 +13,11 @@
 
     <Grid Loaded="Grid_Loaded">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="110"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
-        <Button Style="{StaticResource CheckemFlatButton.Round20}" Content="{DynamicResource Dict_CreateTag}" Click="ButtonCreateTag_Click" Grid.ColumnSpan="1"/>
+
+        <Button Style="{StaticResource CheckemFlatButton.Round20}" Content="{DynamicResource Dict_CreateTag}" FocusVisualStyle="{DynamicResource CheckemFocusVisual.PrimaryColor}" Click="ButtonCreateTag_Click" Grid.ColumnSpan="1" Height="45" TabIndex="0" Width="100" HorizontalAlignment="Left"/>
 
         <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" Grid.Column="1">
             <StackPanel x:Name="StpTagList" Margin="0" Orientation="Horizontal"/>

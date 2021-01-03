@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Checkem.Models;
 using System.Windows.Threading;
 using System.Collections.Generic;
+using System.Windows.Media.Animation;
 
 namespace Checkem
 {
@@ -142,30 +143,45 @@ namespace Checkem
             {
                 TrainsitioningContent.Margin = new Thickness(0);
             }
-
-            CheckWidth();
-        }
-
-        private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            CheckWidth();
-        }
-
-        private void CheckWidth()
-        {
-            if (this.WindowState == WindowState.Maximized || this.Width >= 1400)
-            {
-                SearchBoxBorder.HorizontalAlignment = HorizontalAlignment.Center;
-            }
-            else
-            {
-                SearchBoxBorder.HorizontalAlignment = HorizontalAlignment.Left;
-            }
         }
         #endregion
 
 
         public FilterMethods filterMethod { get; set; } = FilterMethods.None;
+
+
+        #region Task bar button events
+        private void NewTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.NewTaskButton_Click(sender, e);
+        }
+
+        private void SortByStarButton_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.SortByStarButton_Click(sender, e);
+        }
+
+        private void SortByDueDateButton_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.SortByDueDateButton_Click(sender, e);
+        }
+
+        private void SortByAlphabeticalAscendingButton_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.SortByAlphabeticalAscendingButton_Click(sender, e);
+        }
+
+        private void SortByAlphabeticalDescendingButton_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.SortByAlphabeticalDescendingButton_Click(sender, e);
+        }
+
+        private void SortByCreationDateButton_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.SortByCreationDateButton_Click(sender, e);
+        }
+        #endregion
+
 
 
         #region Navigation bar
@@ -191,6 +207,8 @@ namespace Checkem
         private void ButtonMyDay_Click(object sender, RoutedEventArgs e)
         {
             filterMethod = FilterMethods.None;
+            todoList.ListName = this.FindResource("Dict_MyDay") as string;
+
             this.Dispatcher.Invoke(Filter);
         }
 
@@ -198,6 +216,8 @@ namespace Checkem
         private void ButtonAllTasks_Click(object sender, RoutedEventArgs e)
         {
             filterMethod = FilterMethods.None;
+            todoList.ListName = this.FindResource("Dict_AllItems") as string;
+
             this.Dispatcher.Invoke(Filter);
         }
 
@@ -205,6 +225,8 @@ namespace Checkem
         private void ButtonDueDateFilter_Click(object sender, RoutedEventArgs e)
         {
             filterMethod = FilterMethods.Planned;
+            todoList.ListName = this.FindResource("Dict_Reminder") as string;
+
             this.Dispatcher.Invoke(Filter);
         }
 
@@ -212,6 +234,8 @@ namespace Checkem
         private void ButtonStarredFilter_Click(object sender, RoutedEventArgs e)
         {
             filterMethod = FilterMethods.Starred;
+            todoList.ListName = this.FindResource("Dict_Starred") as string;
+
             this.Dispatcher.Invoke(Filter);
         }
 
@@ -234,17 +258,16 @@ namespace Checkem
 
 
         #region Searchbox
-
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            todoList.Search(SearchBox.Text);
         }
 
-        private void ButtonClearSearchBox_Click(object sender, RoutedEventArgs e)
+        private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
         {
-
+            SearchBox.Focus();
+            SearchBox.SelectAll();
         }
-
         #endregion
 
 
@@ -268,6 +291,9 @@ namespace Checkem
 
             if (IsLCtrlPressed && IsFPressed)
             {
+                Storyboard storyboard = this.FindResource("SearchBox_Open") as Storyboard;
+                storyboard.Begin();
+
                 SearchBox.Focus();
             }
 
@@ -303,36 +329,5 @@ namespace Checkem
         }
 
         #endregion
-
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            todoList.NewTaskButton_Click(sender, e);
-        }
-
-        private void SortByStarButton_Click(object sender, RoutedEventArgs e)
-        {
-            todoList.SortByStarButton_Click(sender, e);
-        }
-
-        private void SortByDueDateButton_Click(object sender, RoutedEventArgs e)
-        {
-            todoList.SortByDueDateButton_Click(sender, e);
-        }
-
-        private void SortByAlphabeticalAscendingButton_Click(object sender, RoutedEventArgs e)
-        {
-            todoList.SortByAlphabeticalAscendingButton_Click(sender, e);
-        }
-
-        private void SortByAlphabeticalDescendingButton_Click(object sender, RoutedEventArgs e)
-        {
-            todoList.SortByAlphabeticalDescendingButton_Click(sender, e);
-        }
-
-        private void SortByCreationDateButton_Click(object sender, RoutedEventArgs e)
-        {
-            todoList.SortByCreationDateButton_Click(sender, e);
-        }
     }
 }

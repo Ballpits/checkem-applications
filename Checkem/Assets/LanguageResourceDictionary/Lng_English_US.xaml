@@ -16,6 +16,8 @@
     <system:String x:Key="Dict_Calendar">Calendar</system:String>
     <system:String x:Key="Dict_OpenSideBar">Open side bar</system:String>
     <system:String x:Key="Dict_CollapseSideBar">Collapse side bar</system:String>
+    <system:String x:Key="Dict_SearchHint1">Looking for something ?</system:String>
+    <system:String x:Key="Dict_SearchHint2">Tell me what you wanna find, ignore case.</system:String>
     <!--#endregion-->
     
     <!--Context menu-->

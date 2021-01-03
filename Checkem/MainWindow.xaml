@@ -27,6 +27,9 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="280"/>
             </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NavigationBarGrid" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
 
         <Storyboard x:Key="CloseMenu">
@@ -34,6 +37,9 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="280"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NavigationBarGrid" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:0.1" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="SearchBox_Open">
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="SearchBoxBorder" Storyboard.TargetProperty="(FrameworkElement.Margin)">
@@ -90,20 +96,20 @@
 
             <Grid x:Name="BlockerGrid" Visibility="Hidden" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#02000000" Panel.ZIndex="1" WindowChrome.IsHitTestVisibleInChrome="True"/>
 
-            <Grid x:Name="TitleBarGrid" Style="{StaticResource todoUSCTitlebar}" Grid.ColumnSpan="2" SizeChanged="Grid_SizeChanged" Visibility="Visible" Panel.ZIndex="2">
+            <Grid x:Name="TitleBarGrid" Style="{StaticResource todoUSCTitlebar}" Grid.ColumnSpan="2" Visibility="Visible" Panel.ZIndex="2">
                 <Path Data="M578.19198,-0.066659417 L705.59193,24.947614 940.15567,26.328833 940.18084,-0.076811526" Fill="{DynamicResource Color.WhiteSmoke}" HorizontalAlignment="Right" Height="26" Margin="0" Stretch="Fill" VerticalAlignment="Top" Width="300"/>
 
                 <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Top" Height="20">
-                    <Button Style="{StaticResource CheckemChromeButton}" Click="ButtonSettings_Click">
+                    <Button Style="{StaticResource CheckemChromeButton}" Click="ButtonSettings_Click" IsTabStop="False">
                         <materialDesign:PackIcon Kind="SettingsOutline"/>
                     </Button>
-                    <Button Style="{StaticResource CheckemChromeButton}" Click="MinimizeButton_Click">
+                    <Button Style="{StaticResource CheckemChromeButton}" Click="MinimizeButton_Click" IsTabStop="False">
                         <materialDesign:PackIcon Kind="WindowMinimize"/>
                     </Button>
-                    <Button Style="{StaticResource CheckemChromeButton}" Click="RestoreButton_Click">
+                    <Button Style="{StaticResource CheckemChromeButton}" Click="RestoreButton_Click" IsTabStop="False">
                         <materialDesign:PackIcon Kind="WindowRestore"/>
                     </Button>
-                    <Button Style="{StaticResource CheckemChromeXButton}" Click="CloseButton_Click">
+                    <Button Style="{StaticResource CheckemChromeXButton}" Click="CloseButton_Click" IsTabStop="False">
                         <materialDesign:PackIcon Kind="Close"/>
                     </Button>
                 </StackPanel>
@@ -113,22 +119,22 @@
                         <materialDesign:PackIcon Kind="Menu" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
                     </Button>
 
-                    <Button x:Name="ButtonCollaps" ToolTip="{DynamicResource Dict_CollapseSideBar}" WindowChrome.IsHitTestVisibleInChrome="True" Background="{DynamicResource TransparentHighlightColor}" Visibility="Collapsed" Style="{StaticResource NavigationbarButton}" Click="ButtonCloseMenu_Click" TabIndex="0" MinWidth="0" MinHeight="0" Width="40" Height="40">
+                    <Button x:Name="ButtonCollaps" ToolTip="{DynamicResource Dict_CollapseSideBar}" WindowChrome.IsHitTestVisibleInChrome="True" Background="{DynamicResource TransparentHighlightColor}" Visibility="Collapsed" Style="{StaticResource NavigationbarButton}" Click="ButtonCloseMenu_Click" TabIndex="1" MinWidth="0" MinHeight="0" Width="40" Height="40">
                         <materialDesign:PackIcon Kind="Menu" Style="{StaticResource NavigationbarIcon}" MinWidth="0" MinHeight="0" Height="30" Width="30" Margin="0"/>
                     </Button>
                 </Grid>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" WindowChrome.IsHitTestVisibleInChrome="True">
-                    <Button Style="{StaticResource NavigationbarButton}" ToolTip="{DynamicResource Dict_NewTask}" Width="25" Height="25" Click="Button_Click">
+                    <Button Style="{StaticResource NavigationbarButton}" ToolTip="{DynamicResource Dict_NewTask}" Width="25" Height="25" Click="NewTaskButton_Click" TabIndex="2">
                         <materialDesign:PackIcon Kind="Add" Style="{StaticResource NavigationbarIcon}" Height="25" Width="25" Margin="0"/>
                     </Button>
                     
-                    <Button x:Name="SearchButton" Style="{StaticResource NavigationbarButton}" ToolTip="{DynamicResource Dict_Search}" Width="25" Height="25">
+                    <Button x:Name="SearchButton" Style="{StaticResource NavigationbarButton}" ToolTip="{DynamicResource Dict_Search}" Width="25" Height="25" TabIndex="2">
                         <materialDesign:PackIcon Kind="Search" Style="{StaticResource NavigationbarIcon}" Height="25" Width="25" Margin="0"/>
                     </Button>
 
-                    <Button Style="{StaticResource NavigationbarButton}" ToolTip="{DynamicResource Dict_Sort}" Width="25" Height="25">
-                        <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0" TabIndex="7" IsTabStop="False" VerticalAlignment="Center" ToolTip="{DynamicResource ResourceKey=Dict_Sort}" Foreground="{DynamicResource Color.Primary}">
+                    <Button Style="{StaticResource NavigationbarButton}" ToolTip="{DynamicResource Dict_Sort}" Width="25" Height="25" TabIndex="4">
+                        <materialDesign:PopupBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0" TabIndex="7" VerticalAlignment="Center" ToolTip="{DynamicResource ResourceKey=Dict_Sort}" Foreground="{DynamicResource Color.Primary}" IsTabStop="False">
                             <materialDesign:PopupBox.ToggleContent>
                                 <materialDesign:PackIcon Kind="Sort" Style="{StaticResource NavigationbarIcon}" Height="25" Width="25" Margin="0"/>
                             </materialDesign:PopupBox.ToggleContent>
@@ -136,7 +142,7 @@
                             <StackPanel>
                                 <TextBlock Text="{DynamicResource ResourceKey=Dict_SortBy}" Grid.Column="1" FontFamily="Quicksand" FontSize="20" Padding="0,1,0,0" TextAlignment="Center" Margin="0,0,5,10"/>
 
-                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortByStarButton_Click">
+                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortByStarButton_Click" TabIndex="0">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="20*" />
@@ -148,7 +154,7 @@
                                     </Grid>
                                 </Button>
 
-                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortByDueDateButton_Click">
+                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortByDueDateButton_Click" TabIndex="1">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="20*" />
@@ -160,7 +166,7 @@
                                     </Grid>
                                 </Button>
 
-                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortByAlphabeticalAscendingButton_Click">
+                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortByAlphabeticalAscendingButton_Click" TabIndex="2">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="20*" />
@@ -172,7 +178,7 @@
                                     </Grid>
                                 </Button>
 
-                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortByAlphabeticalDescendingButton_Click">
+                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortByAlphabeticalDescendingButton_Click" TabIndex="3">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="20*" />
@@ -184,7 +190,7 @@
                                     </Grid>
                                 </Button>
 
-                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortByCreationDateButton_Click">
+                                <Button VerticalContentAlignment="Center" Padding="10,0" Click="SortByCreationDateButton_Click" TabIndex="4">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="20*" />
@@ -199,7 +205,7 @@
                         </materialDesign:PopupBox>
                     </Button>
 
-                    <Button Style="{StaticResource NavigationbarButton}" ToolTip="{DynamicResource Dict_Calendar}" Width="25" Height="25">
+                    <Button Style="{StaticResource NavigationbarButton}" ToolTip="{DynamicResource Dict_Calendar}" Width="25" Height="25" TabIndex="5">
                         <materialDesign:PackIcon Kind="Calendar" Style="{StaticResource NavigationbarIcon}" Height="25" Width="25" Margin="0"/>
                     </Button>
                 </StackPanel>
@@ -213,18 +219,18 @@
                         <ColumnDefinition Width="180*" />
                     </Grid.ColumnDefinitions>
 
-                    <materialDesign:PackIcon Kind="Magnify" ToolTip="Tell me what you wanna find, ignore case." Opacity=".56" Height="30" Width="43" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <materialDesign:PackIcon Kind="Magnify" ToolTip="{DynamicResource Dict_SearchHint1}" Opacity="0.56" Height="30" Width="43" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-                    <TextBox x:Name="SearchBox" Grid.Column="1" Margin="0,5,30,5" ToolTip="Looking for something ?" materialDesign:HintAssist.Hint="Search" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" FontSize="16" TextChanged="SearchBox_TextChanged" IsTabStop="False"/>
+                    <TextBox x:Name="SearchBox" Grid.Column="1" Margin="0,5,30,5" ToolTip="{DynamicResource Dict_SearchHint2}" materialDesign:HintAssist.Hint="{DynamicResource Dict_Search}" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" FontSize="16" TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus" IsTabStop="False"/>
 
-                    <Button x:Name="CloseSearchBoxButton" Grid.Column="1" Margin="0,0,7,0" HorizontalAlignment="Right" Padding="0" Background="{DynamicResource Color.White}" BorderBrush="{x:Null}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Click="ButtonClearSearchBox_Click" Visibility="Visible">
+                    <Button x:Name="CloseSearchBoxButton" Grid.Column="1" Margin="0,0,7,0" HorizontalAlignment="Right" Padding="0" Background="{DynamicResource Color.White}" BorderBrush="{x:Null}" materialDesign:ShadowAssist.ShadowDepth="Depth0" IsTabStop="False">
                         <materialDesign:PackIcon Kind="Close" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Margin="0" Foreground="#FF424242"/>
                     </Button>
                 </Grid>
             </Border>
 
 
-            <Grid d:Width="0" x:Name="NavigationBarGrid" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="0" Grid.Row="2" Visibility="Visible">
+            <Grid x:Name="NavigationBarGrid" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="0" Grid.Row="2" Visibility="Hidden">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>

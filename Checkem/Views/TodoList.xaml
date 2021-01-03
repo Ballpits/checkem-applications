@@ -35,12 +35,12 @@
                 </Grid.ContextMenu>
 
                 <Grid Height="75" VerticalAlignment="Top">
-
-                    <TextBlock x:Name="ToDoListTitleTextBlock" Foreground="{DynamicResource Color.Primary}" Text="Name" Margin="0,5,0,0" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" FontWeight="Normal"/>
-
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                        <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="{Binding ItemCount}" d:Text="1" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Stretch" Foreground="{DynamicResource Color.Primary}" TextAlignment="Center" Margin="0,0,5,0"/>
-                        <TextBlock x:Name="ToDoListItemCounterStringTextBlock" Text="{Binding ItemCounterString}" d:Text="Item" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Stretch" Foreground="{DynamicResource Color.Primary}" TextAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0">
+                       
+                        <!--Bug: won't change language, hide it for now-->
+                        <TextBlock Visibility="Collapsed" x:Name="ToDoListTitleTextBlock" Foreground="{DynamicResource Color.Primary}" d:Text="Name" Text="{Binding ListName}" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="36" TextAlignment="Center" FontWeight="Normal"/>
+                        
+                        <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="{Binding ItemCount}" d:Text="1" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Stretch" Foreground="{DynamicResource Color.Primary}" TextAlignment="Center" Margin="20,0,0,0"/>
                     </StackPanel>
 
 

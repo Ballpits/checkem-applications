@@ -35,25 +35,26 @@ namespace Checkem.Views
 
 
         #region Property
+        private string _ListName = string.Empty;
+        public string ListName
+        {
+            get
+            {
+                return _ListName;
+            }
+            set
+            {
+                _ListName = value;
+
+                OnPropertyChanged();
+            }
+        }
+
         public string ItemCount
         {
             get
             {
-                if (currentInventory.Count > 0)
-                {
-                    if (ToDoListItemCounterTextBlock.Margin == new Thickness(0))
-                    {
-                        ToDoListItemCounterTextBlock.Margin = new Thickness(0, 0, 5, 0);
-                    }
-
-                    return currentInventory.Count.ToString();
-                }
-                else
-                {
-                    ToDoListItemCounterTextBlock.Margin = new Thickness(0);
-
-                    return string.Empty;
-                }
+                return currentInventory.Count.ToString();
             }
             set
             {
@@ -148,6 +149,31 @@ namespace Checkem.Views
 
                 TodoItemsStackPanel.Children.Add(itembar);
             }
+        }
+
+
+        private void LoadTodoList(string searchString)
+        {
+            currentInventory = todoManager.Filter(filterMethod);
+            currentInventory = todoManager.Sort(SortMethods.ID, currentInventory);
+            currentInventory = todoManager.FindAll(searchString, currentInventory);
+
+            if (TodoItemsStackPanel.Children.Count != 0)
+            {
+                TodoItemsStackPanel.Children.Clear();
+            }
+
+            foreach (var item in currentInventory)
+            {
+                Itembar itembar = new Itembar(item);
+                itembar.Click += new EventHandler(this.Itembar_Click);
+                itembar.Remove += new EventHandler(this.Itembar_Remove);
+                itembar.Update += new EventHandler(this.Itembar_Update);
+
+                TodoItemsStackPanel.Children.Add(itembar);
+            }
+
+            OnItemCountChanged();
         }
 
         private void Itembar_Click(object sender, EventArgs e)
@@ -285,6 +311,7 @@ namespace Checkem.Views
         }
         #endregion
 
+
         private void tagBar_RemoveTag(object sender, EventArgs e)
         {
             Tag tag = sender as Tag;
@@ -298,6 +325,12 @@ namespace Checkem.Views
                 }
 
             }
+        }
+
+
+        public void Search(string searchString)
+        {
+            LoadTodoList(searchString);
         }
     }
 }

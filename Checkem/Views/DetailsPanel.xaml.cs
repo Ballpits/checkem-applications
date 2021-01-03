@@ -176,6 +176,9 @@ namespace Checkem.Views
 
         private void StoryBoard_Completed(object sender, EventArgs e)
         {
+            TrySetBeginDateTime();
+            TrySetEndDateTime();
+
             Close?.Invoke(this, EventArgs.Empty);
         }
 
