@@ -27,7 +27,7 @@ namespace Checkem.Models
         public DateTime CreationDateTime { get; set; }
 
 
-        public List<TagItem> TagItems { get; set; }
+        public List<TagItem> TagItems { get; set; } = new List<TagItem>();
         #endregion
     }
 }

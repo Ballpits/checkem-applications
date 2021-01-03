@@ -10,8 +10,13 @@
     <system:String x:Key="Dict_Starred">已標星號</system:String>
     <system:String x:Key="Dict_NewList">新增清單</system:String>
 
-    <system:String x:Key="Dict_Task">個事項</system:String>
-    <system:String x:Key="Dict_Tasks">個事項</system:String>
+    <!--#region Title bar-->
+    <system:String x:Key="Dict_Search">搜尋</system:String>
+    <system:String x:Key="Dict_NewTask">新增事項</system:String>
+    <system:String x:Key="Dict_Calendar">月曆</system:String>
+    <system:String x:Key="Dict_OpenSideBar">開啟側排清單</system:String>
+    <system:String x:Key="Dict_CollapseSideBar">合起側排清單</system:String>
+    <!--#endregion-->
 
     <!--Context menu-->
     <system:String x:Key="Dict_MarkAsCompleted">完成</system:String>

@@ -6,11 +6,17 @@
     <!--Mainwindow-->
     <system:String x:Key="Dict_MyDay">My Day</system:String>
     <system:String x:Key="Dict_AllItems">All Tasks</system:String>
-    <system:String x:Key="Dict_Reminder">Reminder</system:String>
+    <system:String x:Key="Dict_Reminder">Planned</system:String>
     <system:String x:Key="Dict_Starred">Starred</system:String>
-    <system:String x:Key="Dict_NewList">Create new list</system:String>
-    <system:String x:Key="Dict_Task">Task</system:String>
-    <system:String x:Key="Dict_Tasks">Tasks</system:String>
+    <system:String x:Key="Dict_NewList">New list</system:String>
+    
+    <!--#region Title bar-->
+    <system:String x:Key="Dict_Search">Search</system:String>
+    <system:String x:Key="Dict_NewTask">New Task</system:String>
+    <system:String x:Key="Dict_Calendar">Calendar</system:String>
+    <system:String x:Key="Dict_OpenSideBar">Open side bar</system:String>
+    <system:String x:Key="Dict_CollapseSideBar">Collapse side bar</system:String>
+    <!--#endregion-->
     
     <!--Context menu-->
     <system:String x:Key="Dict_MarkAsCompleted">Complete</system:String>
@@ -26,7 +32,7 @@
     <system:String x:Key="Dict_Sort">Sort</system:String>
     <system:String x:Key="Dict_SortBy">Sort by</system:String>
     <system:String x:Key="Dict_Sort_Starred">Starred</system:String>
-    <system:String x:Key="Dict_Sort_DueDate">DueDate</system:String>
+    <system:String x:Key="Dict_Sort_DueDate">Due date</system:String>
     <system:String x:Key="Dict_Sort_AlphabeticalAscending">Alphabetical ascending</system:String>
     <system:String x:Key="Dict_Sort_AlphabeticalDescending">Alphabetical descending</system:String>
     <system:String x:Key="Dict_Sort_CreationDate">Creation date</system:String>
