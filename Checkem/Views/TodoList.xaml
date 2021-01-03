@@ -60,7 +60,7 @@
 
                 <Grid x:Name="GridTagList" Visibility="Visible" Margin="10,80,10,0" Height="45" VerticalAlignment="Top">
 
-                    <CustomComponents:TagBar x:Name="tagBar" OpenPanel="TagBar_OpenPanel" RemoveTag="tagBar_RemoveTag"/>
+                    <CustomComponents:TagBar x:Name="tagBar" OpenPanel="TagBar_OpenPanel" RemoveTag="tagBar_RemoveTag" TagSort="tagBar_TagSort"/>
 
                 </Grid>
 

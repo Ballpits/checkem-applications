@@ -323,7 +323,7 @@ namespace Checkem.Views
                     if (item.TagItems[o].ID == tag.tagItem.ID)
                     {
                         //MessageBox.Show("Succes");
-                        item.TagItems.RemoveAt(tag.tagItem.ID);
+                        item.TagItems.Remove(item.TagItems.Find(x => x.ID == tag.tagItem.ID));
                         todoManager.Update(item);
 
                         break;
@@ -352,5 +352,55 @@ namespace Checkem.Views
         {
             LoadTodoList(searchString);
         }
+
+        private void tagBar_TagSort(object sender, EventArgs e)
+        {
+            Tag tag = sender as Tag;
+            if (TodoItemsStackPanel.Children.Count != 0)
+            {
+                TodoItemsStackPanel.Children.Clear();
+            }
+
+            SortByTag(tag, tag.IsSelected);
+
+        }
+
+        private void SortByTag(Tag tag, bool Selected)
+        {
+            if (Selected)
+            {
+                foreach (Todo item in currentInventory)
+                {
+                    for (int o = 0; o < item.TagItems.Count; o++)
+                    {
+                        if (item.TagItems[o].ID == tag.tagItem.ID)
+                        {
+                            //MessageBox.Show("Succes");
+
+                            Itembar itembar = new Itembar(item);
+                            itembar.Click += new EventHandler(this.Itembar_Click);
+                            itembar.Remove += new EventHandler(this.Itembar_Remove);
+                            itembar.Update += new EventHandler(this.Itembar_Update);
+
+                            TodoItemsStackPanel.Children.Add(itembar);
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (var item in currentInventory)
+                {
+                    Itembar itembar = new Itembar(item);
+                    itembar.Click += new EventHandler(this.Itembar_Click);
+                    itembar.Remove += new EventHandler(this.Itembar_Remove);
+                    itembar.Update += new EventHandler(this.Itembar_Update);
+
+                    TodoItemsStackPanel.Children.Add(itembar);
+                }
+            }
+        }
+
     }
 }

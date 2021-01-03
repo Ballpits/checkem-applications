@@ -19,6 +19,7 @@ namespace Checkem.CustomComponents
 
         public event EventHandler OpenPanel;
         public event EventHandler RemoveTag;
+        public event EventHandler TagSort;
 
         List<TagItem> currentTagList;
         TagManager tagManager = new TagManager();
@@ -56,8 +57,7 @@ namespace Checkem.CustomComponents
 
         private void Tag_StateChange(object sender, EventArgs e)
         {
-            Tag tag = sender as Tag;
-            System.Windows.Forms.MessageBox.Show($"Tag.IsSelected = {tag.IsSelected}");
+            TagSort?.Invoke(sender, EventArgs.Empty);
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
