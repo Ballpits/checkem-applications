@@ -1,12 +1,1 @@
-[
-  {
-    "ID": 1,
-    "Content": "om my god it works",
-    "TagColor": "#FFE63838"
-  },
-  {
-    "ID": 1,
-    "Content": "wank",
-    "TagColor": "#FF2FDEEE"
-  }
-]
+[{"ID":0,"Content":"a","TagColor":"#FFFF0000"},{"ID":0,"Content":"a","TagColor":"#FFFF0000"},{"ID":2,"Content":"2","TagColor":"#FFFFB1B1"},{"ID":3,"Content":"3","TagColor":"#FF942EBE"}]

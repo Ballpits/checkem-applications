@@ -27,7 +27,6 @@ namespace Checkem.CustomComponents
         {
             #region create new tag function goes here
 
-            //I improved it, I gusee?
             Tag tag = new Tag()
             {
                 Text = text,
@@ -43,10 +42,9 @@ namespace Checkem.CustomComponents
 
             tag.StateChanged += new EventHandler(this.Tag_StateChange);
             tag.Remove += new EventHandler(this.Tag_Remove);
-            
-            currentTagList.Add(tag.tagItem);
-            tagManager.Add(tag.tagItem);
+
             StpTagList.Children.Add(tag);
+            tagManager.Add(tag.tagItem);
             #endregion
         }
 
@@ -75,9 +73,8 @@ namespace Checkem.CustomComponents
         }
 
         private void Tag_Remove(object sender, EventArgs e)
-        { 
+        {
             RemoveTag?.Invoke(this, EventArgs.Empty);
-
         }
     }
 }

@@ -303,5 +303,36 @@ namespace Checkem
         }
 
         #endregion
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.NewTaskButton_Click(sender, e);
+        }
+
+        private void SortByStarButton_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.SortByStarButton_Click(sender, e);
+        }
+
+        private void SortByDueDateButton_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.SortByDueDateButton_Click(sender, e);
+        }
+
+        private void SortByAlphabeticalAscendingButton_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.SortByAlphabeticalAscendingButton_Click(sender, e);
+        }
+
+        private void SortByAlphabeticalDescendingButton_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.SortByAlphabeticalDescendingButton_Click(sender, e);
+        }
+
+        private void SortByCreationDateButton_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.SortByCreationDateButton_Click(sender, e);
+        }
     }
 }

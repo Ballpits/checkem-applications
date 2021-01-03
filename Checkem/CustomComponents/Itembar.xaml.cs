@@ -27,7 +27,7 @@ namespace Checkem.CustomComponents
 
             TitleTextBox.Focus();
 
-            Create?.Invoke(this, EventArgs.Empty);
+            SaveNewTask?.Invoke(this, EventArgs.Empty);
         }
 
         public Itembar(Todo item)
@@ -57,7 +57,7 @@ namespace Checkem.CustomComponents
         public event PropertyChangedEventHandler PropertyChanged;
 
         public event EventHandler Click;
-        public event EventHandler Create;
+        public event EventHandler SaveNewTask;
         public event EventHandler Remove;
         public event EventHandler Update;
         #endregion
@@ -252,7 +252,7 @@ namespace Checkem.CustomComponents
                     CheckboxGrid.IsEnabled = true;
                     StarToggle.IsEnabled = true;
 
-                    Create?.Invoke(this, EventArgs.Empty);
+                    SaveNewTask?.Invoke(this, EventArgs.Empty);
                 }
                 else
                 {

@@ -163,13 +163,13 @@ namespace Checkem.Views
             DataGrid.Children.Add(detailsPanel);
         }
 
-        private void Itembar_Create(object sender, EventArgs e)
+        private void Itembar_SaveNewTask(object sender, EventArgs e)
         {
             //get triggered item bar;
             Itembar itembar = sender as Itembar;
 
             //create new task
-            todoManager.Add(itembar.todo);
+            todoManager.Update(itembar.todo);
         }
 
         private void Itembar_Remove(object sender, EventArgs e)
@@ -201,28 +201,28 @@ namespace Checkem.Views
         {
             //create tag creation panel and set close event handler
             TagCreationPanel tagCreationPanel = new TagCreationPanel();
+            tagCreationPanel.CreateButtonClicked += new EventHandler(this.CreateButton_Click);
             tagCreationPanel.Close += new EventHandler(this.Panel_Close);
-            tagCreationPanel.Create += new EventHandler(this.CreateNewTag);
 
             //show
             DataGrid.Children.Add(tagCreationPanel);
         }
 
-        private void CreateNewTag(object sender, EventArgs e)
+        private void CreateButton_Click(object sender, EventArgs e)
         {
-            TagCreationPanel Test = sender as TagCreationPanel;
+            TagCreationPanel tagCreationPanel = sender as TagCreationPanel;
 
-            tagBar.Create(Test.TextboxTagName.Text, Test.colorPicker.Color);
+            tagBar.Create(tagCreationPanel.TextboxTagName.Text, tagCreationPanel.colorPicker.Color);
         }
 
-        private void NewTaskButton_Click(object sender, RoutedEventArgs e)
+        public void NewTaskButton_Click(object sender, RoutedEventArgs e)
         {
             Itembar itembar = new Itembar();
 
             itembar.todo.CreationDateTime = DateTime.Now;
 
             itembar.Click += new EventHandler(this.Itembar_Click);
-            itembar.Create += new EventHandler(this.Itembar_Create);
+            itembar.SaveNewTask += new EventHandler(this.Itembar_SaveNewTask);
             itembar.Remove += new EventHandler(this.Itembar_Remove);
             itembar.Update += new EventHandler(this.Itembar_Update);
 
@@ -235,7 +235,7 @@ namespace Checkem.Views
 
 
         #region Sort button event handlers
-        private void SortByStarButton_Click(object sender, RoutedEventArgs e)
+        public void SortByStarButton_Click(object sender, RoutedEventArgs e)
         {
             SortIndicatorTextBlock.Text = this.FindResource("Dict_Sort_Starred") as string;
             ButtonClearSort.Visibility = Visibility.Visible;
@@ -243,7 +243,7 @@ namespace Checkem.Views
             LoadTodoList(this.filterMethod, SortMethods.StarredFirst);
         }
 
-        private void SortByDueDateButton_Click(object sender, RoutedEventArgs e)
+        public void SortByDueDateButton_Click(object sender, RoutedEventArgs e)
         {
             SortIndicatorTextBlock.Text = this.FindResource("Dict_Sort_DueDate") as string;
             ButtonClearSort.Visibility = Visibility.Visible;
@@ -251,7 +251,7 @@ namespace Checkem.Views
             LoadTodoList(this.filterMethod, SortMethods.EndTime);
         }
 
-        private void SortByAlphabeticalAscendingButton_Click(object sender, RoutedEventArgs e)
+        public void SortByAlphabeticalAscendingButton_Click(object sender, RoutedEventArgs e)
         {
             SortIndicatorTextBlock.Text = this.FindResource("Dict_Sort_AlphabeticalAscending") as string;
             ButtonClearSort.Visibility = Visibility.Visible;
@@ -259,7 +259,7 @@ namespace Checkem.Views
             LoadTodoList(this.filterMethod, SortMethods.AlphabeticalAscending);
         }
 
-        private void SortByAlphabeticalDescendingButton_Click(object sender, RoutedEventArgs e)
+        public void SortByAlphabeticalDescendingButton_Click(object sender, RoutedEventArgs e)
         {
             SortIndicatorTextBlock.Text = this.FindResource("Dict_Sort_AlphabeticalDescending") as string;
             ButtonClearSort.Visibility = Visibility.Visible;
@@ -267,7 +267,7 @@ namespace Checkem.Views
             LoadTodoList(this.filterMethod, SortMethods.AlphabeticalDescending);
         }
 
-        private void SortByCreationDateButton_Click(object sender, RoutedEventArgs e)
+        public void SortByCreationDateButton_Click(object sender, RoutedEventArgs e)
         {
             SortIndicatorTextBlock.Text = this.FindResource("Dict_Sort_CreationDate") as string;
             ButtonClearSort.Visibility = Visibility.Visible;
@@ -296,7 +296,7 @@ namespace Checkem.Views
                     item.TagItems.Remove(tag.tagItem);
                     todoManager.Update(item);
                 }
-                
+
             }
         }
     }
