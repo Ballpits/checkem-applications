@@ -329,5 +329,29 @@ namespace Checkem
         }
 
         #endregion
+
+        private void OpenCalendarButton_Click(object sender, RoutedEventArgs e)
+        {
+            calendar.Visibility = Visibility.Visible;
+
+            OpenCalendarButton.Visibility = Visibility.Collapsed;
+            CloseCalendarButton.Visibility = Visibility.Visible;
+
+            AddButton.Visibility = Visibility.Collapsed;
+            SearchButton.Visibility = Visibility.Collapsed;
+            SortButton.Visibility = Visibility.Collapsed;
+        }
+
+        private void CloseCalendarButton_Click(object sender, RoutedEventArgs e)
+        {
+            calendar.Visibility = Visibility.Hidden;
+
+            OpenCalendarButton.Visibility = Visibility.Visible;
+            CloseCalendarButton.Visibility = Visibility.Collapsed;
+
+            AddButton.Visibility = Visibility.Visible;
+            SearchButton.Visibility = Visibility.Visible;
+            SortButton.Visibility = Visibility.Visible;
+        }
     }
 }
