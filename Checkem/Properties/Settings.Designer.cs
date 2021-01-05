@@ -25,13 +25,13 @@ namespace Checkem.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Language {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LanguageIndex {
             get {
-                return ((string)(this["Language"]));
+                return ((int)(this["LanguageIndex"]));
             }
             set {
-                this["Language"] = value;
+                this["LanguageIndex"] = value;
             }
         }
         

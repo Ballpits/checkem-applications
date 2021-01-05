@@ -77,23 +77,7 @@ namespace Checkem.Views
 
         private void LanguageCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch ((sender as ComboBox).SelectedIndex)
-            {
-                case 0:
-                    {
-                        LanguageHelper.ApplyLanguage("Lng_English_US");
-
-                        break;
-                    }
-                case 1:
-                    {
-                        LanguageHelper.ApplyLanguage("Lng_Chinese_Traditional");
-
-                        break;
-                    }
-                default:
-                    break;
-            }
+            LanguageHelper.ApplyLanguage((sender as ComboBox).SelectedIndex);
         }
     }
 }
