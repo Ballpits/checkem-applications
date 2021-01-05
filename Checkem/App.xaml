@@ -13,7 +13,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
-                <!--<ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />-->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml" />
@@ -37,7 +37,7 @@
                 <!--#region Checkem themes-->
                 <ResourceDictionary Source="Assets/ThemeResourceDictionary/Base/ThemeBase.xaml"/>
 
-                <ResourceDictionary Source="Assets/ThemeResourceDictionary/Theme/Light.xaml"/>
+                <ResourceDictionary Source="Assets/ThemeResourceDictionary/Theme/Dark.xaml"/>
 
                 <ResourceDictionary Source="Assets/ThemeResourceDictionary/Color/CheckemDefault.xaml"/>
                 <!--#endregion-->

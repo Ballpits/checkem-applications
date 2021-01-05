@@ -236,7 +236,7 @@
             </Border>
 
 
-            <Grid x:Name="NavigationBarGrid" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="0" Grid.Row="2" Visibility="Hidden">
+            <Grid d:Width="280" d:Visibility="Visible" x:Name="NavigationBarGrid" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="0" Grid.Row="2" Visibility="Hidden">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
@@ -280,7 +280,7 @@
 
                 <ScrollViewer Margin="0" Grid.RowSpan="3" Grid.Row="6"/>
 
-                <Button FocusVisualStyle="{DynamicResource CheckemFocusVisual.White}" IsEnabled="True" x:Name="ButtonAddNewList" Margin="10,0,10,0" materialDesign:ShadowAssist.ShadowDepth="Depth0" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonAddNewList_Click" Padding="0" Grid.Row="6" TabIndex="0" HorizontalAlignment="Stretch" Height="40">
+                <Button x:Name="ButtonAddNewList" Style="{StaticResource NavigationbarButton}" Click="ButtonAddNewList_Click" Grid.Row="6" TabIndex="0">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="Add" Style="{StaticResource NavigationbarIcon}"/>
                         <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Dict_NewList}"/>

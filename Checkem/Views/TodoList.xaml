@@ -47,7 +47,7 @@
                     <Grid Margin="0,0,20,0" HorizontalAlignment="Right">
                         <Button x:Name="ButtonClearSort" Visibility="Collapsed" Margin="0,0,45,0" Height="40" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" ToolTip="Clear sort" VerticalAlignment="Center" Click="ClearSortButton_Click">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Close" Width="25" Height="25" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="{DynamicResource OverDueColor}" Margin="0,1,5,0"/>
+                                <materialDesign:PackIcon Kind="Close" Width="25" Height="25" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="{DynamicResource SolidColorBrush.Warning}" Margin="0,1,5,0"/>
                                 <TextBlock x:Name="SortIndicatorTextBlock" Margin="0" HorizontalAlignment="Right" Text="Sorting_Method" FontFamily="{StaticResource ResourceKey=Quicksand}" TextAlignment="Center" FontSize="20" Foreground="{DynamicResource Color.Black}"/>
                             </StackPanel>
                         </Button>

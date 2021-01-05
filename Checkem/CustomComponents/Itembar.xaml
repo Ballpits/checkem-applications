@@ -112,7 +112,7 @@
     </UserControl.Triggers>
 
     <Grid x:Name="grid" Margin="10,5,10,5">
-        <Border x:Name="RemoveBoder" Background="{DynamicResource OverDueColor}" CornerRadius="5" Visibility="Hidden" Margin="0,0,0,0">
+        <Border x:Name="RemoveBoder" Background="{DynamicResource SolidColorBrush.Warning}" CornerRadius="5" Visibility="Hidden" Margin="0,0,0,0">
             <materialDesign:PackIcon Kind="TrashCanOutline" Foreground="{DynamicResource Color.White}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35" Height="35"/>
         </Border>
 
