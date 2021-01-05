@@ -316,21 +316,21 @@ namespace Checkem.Views
         {
             Tag tag = sender as Tag;
             //MessageBox.Show(tag.tagItem.Content + Environment.NewLine + tag.tagItem.TagColor + Environment.NewLine + tag.tagItem.ID);
-            foreach (Todo item in currentInventory)
+            currentInventory = todoManager.Filter(FilterMethods.None);
+            for ( int u = 0; u< currentInventory.Count;u++)
             {
-                for (int o = 0; o < item.TagItems.Count; o++)
+                for (int i = 0; i < currentInventory[u].TagItems.Count; i++)
                 {
-                    if (item.TagItems[o].ID == tag.tagItem.ID)
+                    if (currentInventory[u].TagItems[i].ID == tag.tagItem.ID)
                     {
-                        //MessageBox.Show("Succes");
-                        item.TagItems.Remove(item.TagItems.Find(x => x.ID == tag.tagItem.ID));
-                        todoManager.Update(item);
+                        currentInventory[u].TagItems.Remove(currentInventory[u].TagItems.Find(x => x.ID == tag.tagItem.ID));
+                        todoManager.Update(currentInventory[u]);
 
                         break;
                     }
                 }
             }
-
+            currentInventory = todoManager.Filter(filterMethod);
 
             if (TodoItemsStackPanel.Children.Count != 0)
             {
