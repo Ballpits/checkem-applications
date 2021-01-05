@@ -14,7 +14,7 @@ namespace Checkem.Views
         public TodoList()
         {
             //todoManager.StoreTestData();
-
+            todoManager.ResetId();
             currentInventory = todoManager.Filter(FilterMethods.None);
 
             DataContext = this;
@@ -317,7 +317,7 @@ namespace Checkem.Views
             Tag tag = sender as Tag;
             //MessageBox.Show(tag.tagItem.Content + Environment.NewLine + tag.tagItem.TagColor + Environment.NewLine + tag.tagItem.ID);
             currentInventory = todoManager.Filter(FilterMethods.None);
-            for ( int u = 0; u< currentInventory.Count;u++)
+            for (int u = 0; u < currentInventory.Count; u++)
             {
                 for (int i = 0; i < currentInventory[u].TagItems.Count; i++)
                 {
