@@ -62,6 +62,6 @@
         </Grid>
 
         <TextBlock x:Name="textBlock" Panel.ZIndex="2" Text="{Binding Text}" Foreground="{DynamicResource Color.Black}" Style="{StaticResource CheckemTextBlock.Base}" Padding="5,0,0,3" Margin="30,0,10,0" VerticalAlignment="Center" FontSize="20"/>
-        <CheckBox x:Name="checkbox" Visibility="Hidden" Panel.ZIndex="-1" Checked="checkbox_Checked" Unchecked="checkbox_Unchecked"/>
+        <CheckBox x:Name="checkbox" Visibility="Hidden" Panel.ZIndex="-1" IsChecked="{Binding IsSelected}" Checked="checkbox_Checked" Unchecked="checkbox_Unchecked"/>
     </Grid>
 </UserControl>

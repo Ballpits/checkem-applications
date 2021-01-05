@@ -19,11 +19,12 @@
 
                     <materialDesign:ColorPicker x:Name="colorPicker" IsTabStop="False" Margin="10,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="300" Width="300" Color="Black"/>
 
-                    <TextBox x:Name="TextboxTagName" materialDesign:HintAssist.Hint="Tag name" Style="{StaticResource TextBox.Animated}" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Height="80"/>
+                    <TextBox d:Text="Heyllo" x:Name="TextboxTagName" materialDesign:HintAssist.Hint="Tag name" Style="{StaticResource TextBox.Animated}" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Height="80"/>
 
-                    <!--<customComponents:PreviewTag Color="{Binding ElementName=colorPicker, Path=Color, Converter={StaticResource BindingToStringConverter}}" Margin="315,182,0,182"/>-->
-                    
-                    <Ellipse Fill="{Binding ElementName=colorPicker, Path=Color, Mode=TwoWay, Converter={StaticResource BindingToStringConverter}}" HorizontalAlignment="Right" Height="100" Margin="0,90,200,0" Stroke="Black" VerticalAlignment="Top" Width="100"/>
+                    <StackPanel Margin="320,50,10,65">
+                        <customComponents:Tag IsEnabled="False" Color="{Binding Color, ElementName=colorPicker, Converter={StaticResource BindingToStringConverter}}" Text="{Binding Text, ElementName=TextboxTagName}" Margin="0,60,0,100" HorizontalAlignment="Center"/>
+                        <customComponents:Tag IsEnabled="False" IsSelected="True" Color="{Binding Color, ElementName=colorPicker, Converter={StaticResource BindingToStringConverter}}" Text="{Binding Text, ElementName=TextboxTagName}" HorizontalAlignment="Center"/>
+                    </StackPanel>
 
                     <Button Style="{StaticResource CheckemFlatButton.Round5}" Content="Create" Background="{DynamicResource Color.Primary}" Foreground="White" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="50" Width="120" FontSize="22" Click="CreateButton_Click"/>
                 </Grid>

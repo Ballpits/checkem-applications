@@ -40,6 +40,7 @@ namespace Checkem
         }
 
 
+        #region Notification Timer
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.Notification && !Properties.Settings.Default.VacationMode)
@@ -86,7 +87,7 @@ namespace Checkem
                 }
             }
         }
-
+        #endregion
 
 
         #region Window chrome buttons
@@ -201,8 +202,8 @@ namespace Checkem
         }
 
         #endregion
-        #region Buttons
 
+        #region Buttons
 
         private void ButtonMyDay_Click(object sender, RoutedEventArgs e)
         {

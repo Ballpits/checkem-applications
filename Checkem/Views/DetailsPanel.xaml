@@ -97,7 +97,7 @@
                                     </Grid>
                                 </Border>
 
-                                <TextBlock x:Name="BeginDateTimeWarningTextBlock" Visibility="Collapsed" Text="invalid begin date time" FontSize="16" Margin="10,0,0,0" Foreground="{DynamicResource OverDueColor}"/>
+                                <TextBlock x:Name="BeginDateTimeWarningTextBlock" Visibility="Collapsed" Text="invalid begin date time" FontSize="16" Margin="10,0,0,0" Foreground="{DynamicResource SolidColorBrush.Warning}"/>
 
                                 <Border x:Name="EndDateTimeField" d:Visibility="Visible" Visibility="Collapsed" Margin="0,5,0,0">
                                     <Grid>
@@ -106,7 +106,7 @@
                                     </Grid>
                                 </Border>
 
-                                <TextBlock x:Name="EndDateTimeWarningTextBlock" Visibility="Collapsed" Text="invalid end date time" FontSize="16" Margin="10,0,0,0" Foreground="{DynamicResource OverDueColor}"/>
+                                <TextBlock x:Name="EndDateTimeWarningTextBlock" Visibility="Collapsed" Text="invalid end date time" FontSize="16" Margin="10,0,0,0" Foreground="{DynamicResource SolidColorBrush.Warning}"/>
                             </StackPanel>
                         </Border>
 
