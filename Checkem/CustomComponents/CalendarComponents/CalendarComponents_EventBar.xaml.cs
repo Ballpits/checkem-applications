@@ -49,7 +49,7 @@ namespace Checkem.CustomComponents.CalendarComponents
 
         // Using a DependencyProperty as the backing store for EventColumnDuration.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty EventColumnDurationProperty =
-            DependencyProperty.Register(nameof(EventColumnSpan), typeof(int), typeof(CalendarComponents_EventBar), new PropertyMetadata(0));
+            DependencyProperty.Register(nameof(EventColumnSpan), typeof(int), typeof(CalendarComponents_EventBar), new PropertyMetadata(1));
 
 
 
