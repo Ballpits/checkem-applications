@@ -3,11 +3,11 @@ using System.Windows;
 
 namespace Checkem.Assets.LanguageHelper
 {
-    static class LanguageHelper
+    public static class LanguageHelper
     {
         public static void LanguageSetup()
         {
-            //ApplyLanguage(Properties.Settings.Default.LanguageIndex);
+            ApplyLanguage(Properties.Settings.Default.LanguageIndex);
         }
 
         private static void ApplyLanguage(string language)

@@ -2,12 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     >
 
-    <Color x:Key="Color.White">#FFFFFFFF</Color>
-    <Color x:Key="Color.Black">#FF000000</Color>
+    <Color x:Key="Color.White.Constant">#FFFFFFFF</Color>
+    <Color x:Key="Color.Black.Constant">#FF000000</Color>
 
-    <SolidColorBrush x:Key="SolidColorBrush.White.Constant" Color="{StaticResource Color.White}"/>
-    <SolidColorBrush x:Key="SolidColorBrush.Black.Constant" Color="{StaticResource Color.Black}"/>
-
+    <SolidColorBrush x:Key="SolidColorBrush.White.Constant" Color="{StaticResource Color.White.Constant}"/>
+    <SolidColorBrush x:Key="SolidColorBrush.Black.Constant" Color="{StaticResource Color.Black.Constant}"/>
 
     <Color x:Key="Color.Warning">#FFEC5433</Color>
     <Color x:Key="Color.Strikethrough">#FF969696</Color>

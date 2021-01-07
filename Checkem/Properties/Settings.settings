@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="LanguageIndex" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="Notification" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -15,10 +15,13 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="LaunchOnStartUp" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="RunInBackground" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ThemeIndex" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

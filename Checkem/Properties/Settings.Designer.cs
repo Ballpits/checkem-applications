@@ -25,7 +25,7 @@ namespace Checkem.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public int LanguageIndex {
             get {
                 return ((int)(this["LanguageIndex"]));
@@ -73,7 +73,7 @@ namespace Checkem.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool LaunchOnStartUp {
             get {
                 return ((bool)(this["LaunchOnStartUp"]));
@@ -92,6 +92,18 @@ namespace Checkem.Properties {
             }
             set {
                 this["RunInBackground"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ThemeIndex {
+            get {
+                return ((int)(this["ThemeIndex"]));
+            }
+            set {
+                this["ThemeIndex"] = value;
             }
         }
     }

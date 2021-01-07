@@ -1,4 +1,5 @@
 ﻿using Checkem.Assets.LanguageHelper;
+using Checkem.Assets.ThemeHelper;
 using System;
 using System.Reflection;
 using System.Windows;
@@ -29,6 +30,8 @@ namespace Checkem.Views
         private void ReverseButton_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Reset();
+
+            EnableNotificationSettingVarients();
         }
 
         private void LaunchOnStarup_Checked(object sender, EventArgs e)
@@ -59,25 +62,40 @@ namespace Checkem.Views
         {
             if (NotificationwToggle.IsChecked)
             {
-                ShowDetailsToggle.IsEnabled = true;
-                VacationModeToggle.IsEnabled = true;
+                EnableNotificationSettingVarients();
             }
             else
             {
-                ShowDetailsToggle.IsEnabled = false;
-                VacationModeToggle.IsEnabled = false;
-
-                ShowDetailsToggle.IsChecked = false;
-                VacationModeToggle.IsChecked = false;
+                DisableNotificationSettingVarients();
             }
 
             Properties.Settings.Default.Save();
+        }
+
+        private void EnableNotificationSettingVarients()
+        {
+            ShowDetailsToggle.IsEnabled = true;
+            VacationModeToggle.IsEnabled = true;
+        }
+
+        private void DisableNotificationSettingVarients()
+        {
+            ShowDetailsToggle.IsEnabled = false;
+            VacationModeToggle.IsEnabled = false;
+
+            ShowDetailsToggle.IsChecked = false;
+            VacationModeToggle.IsChecked = false;
         }
         #endregion
 
         private void LanguageCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LanguageHelper.ApplyLanguage((sender as ComboBox).SelectedIndex);
+        }
+
+        private void ThemeCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ThemeHelper.ApplyTheme((sender as ComboBox).SelectedIndex);
         }
     }
 }

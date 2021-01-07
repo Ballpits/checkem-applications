@@ -90,6 +90,7 @@ namespace Checkem
         #endregion
 
 
+
         #region Window chrome buttons
         private void ButtonSettings_Click(object sender, RoutedEventArgs e)
         {
