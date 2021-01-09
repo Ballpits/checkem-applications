@@ -40,6 +40,12 @@ namespace Checkem
         }
 
 
+        public void Reload()
+        {
+            todoList.Reload();
+        }
+
+
         #region Notification Timer
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
@@ -94,7 +100,7 @@ namespace Checkem
         #region Window chrome buttons
         private void ButtonSettings_Click(object sender, RoutedEventArgs e)
         {
-            SettingsWindow settings = new SettingsWindow();
+            SettingsWindow settings = new SettingsWindow(this);
             settings.Owner = this;
             settings.Closed += Settings_Closed;
 

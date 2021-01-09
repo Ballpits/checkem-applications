@@ -8,6 +8,66 @@ namespace Checkem.Assets.ThemeHelper
         public static void ThemeSetup()
         {
             ApplyTheme(Properties.Settings.Default.ThemeIndex);
+
+            DarkModeSetup();
+        }
+
+        public static void DarkModeSetup()
+        {
+            if (Properties.Settings.Default.IsDarkModeOn)
+            {
+                ApplyDarkMode();
+            }
+            else
+            {
+                ApplyLightMode();
+            }
+        }
+
+        public static void ApplyLightMode()
+        {
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
+            {
+                Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml", UriKind.RelativeOrAbsolute)
+            });
+
+            Application.Current.Resources.MergedDictionaries.Remove(new ResourceDictionary()
+            {
+                Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml", UriKind.RelativeOrAbsolute)
+            });
+
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
+            {
+                Source = new Uri("Assets/ThemeResourceDictionary/Theme/Light.xaml", UriKind.RelativeOrAbsolute)
+            });
+
+            Application.Current.Resources.MergedDictionaries.Remove(new ResourceDictionary()
+            {
+                Source = new Uri("Assets/ThemeResourceDictionary/Theme/Dark.xaml", UriKind.RelativeOrAbsolute)
+            });
+        }
+
+        public static void ApplyDarkMode()
+        {
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
+            {
+                Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml", UriKind.RelativeOrAbsolute)
+            });
+
+            Application.Current.Resources.MergedDictionaries.Remove(new ResourceDictionary()
+            {
+                Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml", UriKind.RelativeOrAbsolute)
+            });
+
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
+            {
+                Source = new Uri("Assets/ThemeResourceDictionary/Theme/Dark.xaml", UriKind.RelativeOrAbsolute)
+            });
+
+            Application.Current.Resources.MergedDictionaries.Remove(new ResourceDictionary()
+            {
+                Source = new Uri("Assets/ThemeResourceDictionary/Theme/Light.xaml", UriKind.RelativeOrAbsolute)
+            });
         }
 
         public static void ApplyTheme(string theme)

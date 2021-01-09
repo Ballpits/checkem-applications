@@ -25,7 +25,7 @@ namespace Checkem.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int LanguageIndex {
             get {
                 return ((int)(this["LanguageIndex"]));
@@ -104,6 +104,18 @@ namespace Checkem.Properties {
             }
             set {
                 this["ThemeIndex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsDarkModeOn {
+            get {
+                return ((bool)(this["IsDarkModeOn"]));
+            }
+            set {
+                this["IsDarkModeOn"] = value;
             }
         }
     }

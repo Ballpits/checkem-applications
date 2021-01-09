@@ -59,6 +59,8 @@
 
         <Setter Property="Margin" Value="5,0,0,0"/>
         <Setter Property="Padding" Value="0,3,0,0"/>
+
+        <Setter Property="Foreground" Value="{DynamicResource Color.TextOnPrimaryColor}"/>
     </Style>
 
     <Style x:Key="NavigationbarButtonStackPanel" TargetType="StackPanel">

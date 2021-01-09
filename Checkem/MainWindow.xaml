@@ -280,7 +280,7 @@
 
                 <ScrollViewer Margin="0" Grid.RowSpan="3" Grid.Row="6"/>
 
-                <Button x:Name="ButtonAddNewList" Style="{StaticResource NavigationbarButton}" Click="ButtonAddNewList_Click" Grid.Row="6" TabIndex="0">
+                <Button Visibility="Hidden" x:Name="ButtonAddNewList" Style="{StaticResource NavigationbarButton}" Click="ButtonAddNewList_Click" Grid.Row="6" TabIndex="0">
                     <StackPanel Style="{StaticResource NavigationbarButtonStackPanel}">
                         <materialDesign:PackIcon Kind="Add" Style="{StaticResource NavigationbarIcon}"/>
                         <TextBlock Style="{StaticResource NavigationbarTextBlock}" Text="{DynamicResource ResourceKey=Dict_NewList}"/>

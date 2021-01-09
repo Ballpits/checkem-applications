@@ -70,6 +70,7 @@
     <system:String x:Key="Dict_ReverseAllSettings_Title">Reverse all settings.</system:String>
     <system:String x:Key="Dict_ReverseAllSettings_Reverse">Reverse</system:String>
     <system:String x:Key="Dict_ReverseAllSettings_Description">Whatch out ! Everything will be reversed, including themes.</system:String>
+    <system:String x:Key="Dict_DarkMode_Title">Dark mode</system:String>
     <!--#endregion-->
 
     <!--#region Notification-->

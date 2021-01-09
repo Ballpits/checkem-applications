@@ -1,4 +1,5 @@
 ﻿using Checkem.Assets.LanguageHelper;
+using Checkem.Assets.ThemeHelper;
 using Checkem.Views;
 using System.Windows;
 
@@ -16,6 +17,7 @@ namespace Checkem
         {
             base.OnStartup(e);
 
+            ThemeHelper.ThemeSetup();
             LanguageHelper.LanguageSetup();
 
             MainWindow = new MainWindow(this);

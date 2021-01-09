@@ -9,12 +9,16 @@ namespace Checkem.Views
 {
     public partial class SettingsWindow : Window
     {
-        public SettingsWindow()
+        public SettingsWindow(MainWindow mainWindow)
         {
             InitializeComponent();
 
+            this.mainWindow = mainWindow;
+
             NotificationwToggle_StateChanged(NotificationwToggle, new EventArgs());
         }
+
+        MainWindow mainWindow;
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
@@ -96,6 +100,18 @@ namespace Checkem.Views
         private void ThemeCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ThemeHelper.ApplyTheme((sender as ComboBox).SelectedIndex);
+        }
+
+        private void DarkModeToggle_Checked(object sender, EventArgs e)
+        {
+            ThemeHelper.ApplyDarkMode();
+            mainWindow.Reload();
+        }
+
+        private void DarkModeToggle_Unchecked(object sender, EventArgs e)
+        {
+            ThemeHelper.ApplyLightMode();
+            mainWindow.Reload();
         }
     }
 }

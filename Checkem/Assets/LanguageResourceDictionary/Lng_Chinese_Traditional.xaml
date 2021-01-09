@@ -68,6 +68,7 @@
     <system:String x:Key="Dict_ReverseAllSettings_Title">復原所有設定</system:String>
     <system:String x:Key="Dict_ReverseAllSettings_Reverse">重製</system:String>
     <system:String x:Key="Dict_ReverseAllSettings_Description">注意!所有的設定會設定回預設值，這包含了通知、顏色等等</system:String>
+    <system:String x:Key="Dict_DarkMode_Title">黑夜模式</system:String>
     <!--#endregion-->
 
     <!--#region Notification-->

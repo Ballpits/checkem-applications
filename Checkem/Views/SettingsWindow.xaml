@@ -12,6 +12,7 @@
         ResizeMode="NoResize"
         Background="{DynamicResource Color.WhiteSmoke}"
         FontFamily="{DynamicResource Quicksand}"
+        Foreground="{DynamicResource Color.Black}"
         Title="Checkem-settings"
         WindowStyle="SingleBorderWindow"
         WindowStartupLocation="CenterScreen"
@@ -32,7 +33,7 @@
         </Grid>
 
         <TabControl WindowChrome.IsHitTestVisibleInChrome="True" Background="{DynamicResource Color.WhiteSmoke}" FontSize="20" BorderBrush="{x:Null}" Grid.Row="0" Grid.RowSpan="2">
-            <TabItem Header="{DynamicResource Dict_General}" Background="{DynamicResource Color.WhiteSmoke}" Style="{StaticResource CheckemTabItemStyle}">
+            <TabItem Foreground="{DynamicResource Color.Primary}" Header="{DynamicResource Dict_General}" Background="{DynamicResource Color.WhiteSmoke}" Style="{StaticResource CheckemTabItemStyle}">
                 <ScrollViewer>
                     <Grid>
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -57,7 +58,7 @@
                 </ScrollViewer>
             </TabItem>
 
-            <TabItem Header="{DynamicResource Dict_Notifications}" Background="{DynamicResource Color.WhiteSmoke}" Style="{StaticResource CheckemTabItemStyle}">
+            <TabItem Foreground="{DynamicResource Color.Primary}" Header="{DynamicResource Dict_Notifications}" Background="{DynamicResource Color.WhiteSmoke}" Style="{StaticResource CheckemTabItemStyle}">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -87,34 +88,42 @@
                 </ScrollViewer>
             </TabItem>
 
-            <TabItem Header="{DynamicResource Dict_Appearance}" Background="{DynamicResource Color.WhiteSmoke}" Style="{StaticResource CheckemTabItemStyle}">
+            <TabItem Foreground="{DynamicResource Color.Primary}" Header="{DynamicResource Dict_Appearance}" Background="{DynamicResource Color.WhiteSmoke}" Style="{StaticResource CheckemTabItemStyle}">
                 <StackPanel>
-                    <ComboBox x:Name="ThemeCombobox" SelectedIndex="{Binding Source={x:Static properties:Settings.Default}, Path=ThemeIndex}" Style="{StaticResource MaterialDesignFilledComboBox}" SelectionChanged="ThemeCombobox_SelectionChanged" Margin="10,10,0,0" Height="60" HorizontalAlignment="Left" Padding="0,-15,0,0" HorizontalContentAlignment="Left" MaxDropDownHeight="400">
-                        <customComponents:ThemePreviewBar Text="Galaxy Slerpy" Foreground="White" Gradient1="#FF2196F3" Gradient2="#FF9708CC"/>
-                        <customComponents:ThemePreviewBar Text="Ver" Foreground="Black" Gradient1="#FFFFE000" Gradient2="#FF799F0C"/>
-                        <customComponents:ThemePreviewBar Text="Shine" Foreground="White" Gradient1="#FF12C2E9" Gradient2="#FFF64F59"/>
-                        <customComponents:ThemePreviewBar Text="Peach" Foreground="White" Gradient1="#FFF7797D" Gradient2="#FFF6CA4B"/>
-                        <customComponents:ThemePreviewBar Text="Evening" Foreground="White" Gradient1="#FFB92B27" Gradient2="#FF1565C0"/>
-                        <customComponents:ThemePreviewBar Text="Dark Ocean" Foreground="White" Gradient1="#FF373B44" Gradient2="#FF4286F4"/>
-                        <customComponents:ThemePreviewBar Text="Memory" Foreground="White" Gradient1="#FFFF0099" Gradient2="#FF493240"/>
-                        <customComponents:ThemePreviewBar Text="Amin" Foreground="White" Gradient1="#FF8E2DE2" Gradient2="#FF4A00E0"/>
-                        <customComponents:ThemePreviewBar Text="Harvey" Foreground="White" Gradient1="#FF1F886B" Gradient2="#FF99F2C8"/>
-                        <customComponents:ThemePreviewBar Text="Neuromancer" Foreground="White" Gradient1="#FFF953C6" Gradient2="#FFB91D73"/>
-                        <customComponents:ThemePreviewBar Text="Azur" Foreground="White" Gradient1="#FF7F7FD5" Gradient2="#FF91EAE4"/>
-                        <customComponents:ThemePreviewBar Text="The Whitch" Foreground="White" Gradient1="#FFC31432" Gradient2="#FF390E59"/>
-                        <customComponents:ThemePreviewBar Text="Flare" Foreground="White" Gradient1="#FFF12711" Gradient2="#FFF5AF19"/>
-                        <customComponents:ThemePreviewBar Text="Violet" Foreground="White" Gradient1="#FF654EA3" Gradient2="#FFEAAFC8"/>
-                        <customComponents:ThemePreviewBar Text="Burning Orange" Foreground="White" Gradient1="#FFFF416C" Gradient2="#FFFF4B2B"/>
-                        <customComponents:ThemePreviewBar Text="Summer Days" Foreground="Black" Gradient1="#FFA8FF78" Gradient2="#FF78FFD9"/>
-                        <customComponents:ThemePreviewBar Text="Shifter" Foreground="White" Gradient1="#FFFF1900" Gradient2="#FF0014A6"/>
-                        <customComponents:ThemePreviewBar Text="Pun Yeta" Foreground="White" Gradient1="#FF108DC7" Gradient2="#FFEF8E38"/>
-                    </ComboBox>
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox x:Name="ThemeCombobox" SelectedIndex="{Binding Source={x:Static properties:Settings.Default}, Path=ThemeIndex}" Style="{StaticResource MaterialDesignFilledComboBox}" SelectionChanged="ThemeCombobox_SelectionChanged" Margin="10,10,0,0" Height="60" HorizontalAlignment="Left" Padding="0,-15,0,0" HorizontalContentAlignment="Left" MaxDropDownHeight="400">
+                            <customComponents:ThemePreviewBar Text="Galaxy Slerpy" Foreground="White" Gradient1="#FF2196F3" Gradient2="#FF9708CC"/>
+                            <customComponents:ThemePreviewBar Text="Ver" Foreground="Black" Gradient1="#FFFFE000" Gradient2="#FF799F0C"/>
+                            <customComponents:ThemePreviewBar Text="Shine" Foreground="White" Gradient1="#FF12C2E9" Gradient2="#FFF64F59"/>
+                            <customComponents:ThemePreviewBar Text="Peach" Foreground="White" Gradient1="#FFF7797D" Gradient2="#FFF6CA4B"/>
+                            <customComponents:ThemePreviewBar Text="Evening" Foreground="White" Gradient1="#FFB92B27" Gradient2="#FF1565C0"/>
+                            <customComponents:ThemePreviewBar Text="Dark Ocean" Foreground="White" Gradient1="#FF373B44" Gradient2="#FF4286F4"/>
+                            <customComponents:ThemePreviewBar Text="Memory" Foreground="White" Gradient1="#FFFF0099" Gradient2="#FF493240"/>
+                            <customComponents:ThemePreviewBar Text="Amin" Foreground="White" Gradient1="#FF8E2DE2" Gradient2="#FF4A00E0"/>
+                            <customComponents:ThemePreviewBar Text="Harvey" Foreground="White" Gradient1="#FF1F886B" Gradient2="#FF99F2C8"/>
+                            <customComponents:ThemePreviewBar Text="Neuromancer" Foreground="White" Gradient1="#FFF953C6" Gradient2="#FFB91D73"/>
+                            <customComponents:ThemePreviewBar Text="Azur" Foreground="White" Gradient1="#FF7F7FD5" Gradient2="#FF91EAE4"/>
+                            <customComponents:ThemePreviewBar Text="The Whitch" Foreground="White" Gradient1="#FFC31432" Gradient2="#FF390E59"/>
+                            <customComponents:ThemePreviewBar Text="Flare" Foreground="White" Gradient1="#FFF12711" Gradient2="#FFF5AF19"/>
+                            <customComponents:ThemePreviewBar Text="Violet" Foreground="White" Gradient1="#FF654EA3" Gradient2="#FFEAAFC8"/>
+                            <customComponents:ThemePreviewBar Text="Burning Orange" Foreground="White" Gradient1="#FFFF416C" Gradient2="#FFFF4B2B"/>
+                            <customComponents:ThemePreviewBar Text="Summer Days" Foreground="Black" Gradient1="#FFA8FF78" Gradient2="#FF78FFD9"/>
+                            <customComponents:ThemePreviewBar Text="Shifter" Foreground="White" Gradient1="#FFFF1900" Gradient2="#FF0014A6"/>
+                            <customComponents:ThemePreviewBar Text="Pun Yeta" Foreground="White" Gradient1="#FF108DC7" Gradient2="#FFEF8E38"/>
+                        </ComboBox>
+
+                        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,10,0,0">
+                            <TextBlock Text="{DynamicResource Dict_DarkMode_Title}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+
+                            <customComponents:ToggleSwitch x:Name="DarkModeToggle" Unchecked="DarkModeToggle_Unchecked" Checked="DarkModeToggle_Checked" StateChanged="SettingToggles_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=IsDarkModeOn, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
+                        </StackPanel>
+                    </StackPanel>
 
                     <customComponents:ThemePreviewer Height="340" Margin="10" Width="770"/>
                 </StackPanel>
             </TabItem>
 
-            <TabItem Header="{DynamicResource Dict_Language}" Background="{DynamicResource Color.WhiteSmoke}" Style="{StaticResource CheckemTabItemStyle}">
+            <TabItem Foreground="{DynamicResource Color.Primary}" Header="{DynamicResource Dict_Language}" Background="{DynamicResource Color.WhiteSmoke}" Style="{StaticResource CheckemTabItemStyle}">
                 <StackPanel>
                     <ComboBox x:Name="LanguageCombobox" SelectedIndex="{Binding Source={x:Static properties:Settings.Default}, Path=LanguageIndex}" Style="{StaticResource MaterialDesignFilledComboBox}" SelectionChanged="LanguageCombobox_SelectionChanged" Margin="10,10,0,0" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,-15,0,0" Width="200" HorizontalContentAlignment="Left">
                         <TextBlock Text="English (US)" Style="{StaticResource LanguageBoxText-Big}"/>
