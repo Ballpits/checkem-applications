@@ -171,12 +171,14 @@
                         <TextBlock x:Name="ReminderDetailTextBlock" VerticalAlignment="Stretch" TextAlignment="Left" Text="Due date..." Style="{DynamicResource CheckemTextBlock.Base}" HorizontalAlignment="Left" FontSize="20" Foreground="{DynamicResource Color.Black}"/>
                     </StackPanel>
 
-                    <StackPanel x:Name="TagItemPreviewStackPanel" d:Visibility="Visible" Visibility="Visible" VerticalAlignment="Stretch" Orientation="Horizontal" Margin="0,5,0,0">
-                        <!--<local:PreviewTag Color="BlueViolet" Text="Tag 1"/>
+                    <Grid Background="#02000000">
+                        <StackPanel x:Name="TagItemPreviewStackPanel" d:Visibility="Visible" Visibility="Visible" VerticalAlignment="Stretch" Orientation="Horizontal" Margin="0,5,0,0">
+                            <!--<local:PreviewTag Color="BlueViolet" Text="Tag 1"/>
                         <local:PreviewTag Color="PaleVioletRed" Text="Tag 2"/>
                         <local:PreviewTag Color="Orange" Text="Tag 3"/>
                         <local:PreviewTag Color="LawnGreen" Text="Tag 4"/>-->
-                    </StackPanel>
+                        </StackPanel>
+                    </Grid>
 
                     <!--<Grid>
                         <ProgressBar x:Name="ProgressBar" Style="{StaticResource MaterialDesignCircularProgressBar}" Height="30" Value="70" Foreground="#FF2196F3" BorderBrush="{x:Null}" Background="{x:Null}" Width="30" HorizontalAlignment="Left" VerticalAlignment="Stretch"/>

@@ -70,12 +70,6 @@
 
                         <TextBox Text="{Binding Title,Mode=TwoWay}" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_Title}" Style="{StaticResource TextBox.Animated}" MaxLength="100" />
 
-                        <StackPanel x:Name="TagDisplay">
-                        </StackPanel>
-                        <ComboBox x:Name="TagItemCombobox" Foreground="{DynamicResource Color.Black}" Style="{StaticResource MaterialDesignFilledComboBox}" FontFamily="{DynamicResource Quicksand}" Margin="10,20,10,0" FontSize="20" Height="70" SelectedIndex="0" SelectionChanged="TagComBox_SelectionChanged">
-                            <ComboBoxItem/>
-                        </ComboBox>
-
                         <Grid Margin="10,20,10,0">
                             <TextBlock Style="{StaticResource CheckemTextBlock.Base}" Text="{DynamicResource Dict_Task_Reminder}" FontSize="20" Padding="0,4,0,0" Margin="0,0,10,0" HorizontalAlignment="Left"/>
 
@@ -107,6 +101,16 @@
                                 <TextBlock x:Name="EndDateTimeWarningTextBlock" Visibility="Collapsed" Text="invalid end date time" FontSize="16" Margin="10,0,0,0" Foreground="{DynamicResource SolidColorBrush.Warning}"/>
                             </StackPanel>
                         </Border>
+
+                        <Grid Margin="10,10,10,0" Height="60">
+                            <ComboBox x:Name="TagItemCombobox" Foreground="{DynamicResource Color.Black}" Style="{StaticResource MaterialDesignFilledComboBox}" FontFamily="{DynamicResource Quicksand}" FontSize="20" SelectedIndex="0" SelectionChanged="TagComBox_SelectionChanged" HorizontalAlignment="Left" Width="200">
+                                <ComboBoxItem/>
+                            </ComboBox>
+
+                            <ScrollViewer HorizontalAlignment="Right" VerticalScrollBarVisibility="Auto">
+                                <StackPanel x:Name="TagDisplay" Orientation="Vertical"/>
+                            </ScrollViewer>
+                        </Grid>
 
                         <TextBox Text="{Binding Description,Mode=TwoWay}" AcceptsReturn="True" MaxLength="1000" materialDesign:HintAssist.Hint="{DynamicResource ResourceKey=Dict_Task_Description}" Style="{StaticResource TextBox.Animated}"/>
 

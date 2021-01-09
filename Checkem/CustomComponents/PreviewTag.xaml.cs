@@ -74,5 +74,9 @@ namespace Checkem.CustomComponents
             }
         }
 
+        private void MenuItem_Remove(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
