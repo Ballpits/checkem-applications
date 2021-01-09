@@ -426,7 +426,10 @@ namespace Checkem.Views
             {
                 foreach (TagItem item in tagManager.Inventory)
                 {
-                    TagItemCombobox.Items.Add(new PreviewTag(item));
+                    if (itembar.TagItems.FindIndex(x => x.ID == item.ID) == -1)
+                    {
+                        TagItemCombobox.Items.Add(new PreviewTag(item));
+                    }
                 }
             }
         }
