@@ -20,6 +20,7 @@ namespace Checkem.CustomComponents
         public event EventHandler OpenPanel;
         public event EventHandler RemoveTag;
         public event EventHandler TagSort;
+        public event EventHandler ItemTagRestId;
 
         List<TagItem> currentTagList;
         TagManager tagManager = new TagManager();
@@ -95,7 +96,7 @@ namespace Checkem.CustomComponents
             currentTagList.RemoveAt(tagItem.tagItem.ID);
             tagManager.Remove(tagItem.tagItem);
             tagManager.ResetId();
-
+            ItemTagRestId?.Invoke(tagManager,EventArgs.Empty);
             StpTagList.Children.Clear();
             if (currentTagList != null)
             {

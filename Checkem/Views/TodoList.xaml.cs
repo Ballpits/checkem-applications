@@ -408,5 +408,30 @@ namespace Checkem.Views
             }
         }
 
+        private void tagBar_ItemTagRestId(object sender, EventArgs e)
+        {
+            TagManager tagManager = sender as TagManager;
+
+            currentInventory = todoManager.Filter(FilterMethods.None);
+
+            foreach (TagItem item in tagManager.Inventory)
+            {
+                for (int i = 0; i < currentInventory.Count; i++)
+                {
+                    if (currentInventory[i].TagItems.Exists(x => x.Content == item.Content))
+                    {
+                        currentInventory[i].TagItems[currentInventory[i].TagItems.FindIndex(x => x.Content == item.Content)].ID = item.ID;
+                        todoManager.Update(currentInventory[i]);
+                    }                    
+                }
+            }
+            foreach (Todo item in currentInventory)
+            {
+                foreach (TagItem test in item.TagItems)
+                    MessageBox.Show(test.ID.ToString());
+            }
+
+            currentInventory = todoManager.Filter(filterMethod);
+        }
     }
 }
