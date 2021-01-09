@@ -31,69 +31,92 @@
             <Path Data="M578.19198,-0.066659417 L706.86698,23.4 814.70389,24.400132 840.23715,40.400214 939.63685,40.489548 939.5698,0.0080855492" Fill="{DynamicResource Color.WhiteSmoke}" HorizontalAlignment="Right" Height="30" Margin="0" Stretch="Fill" VerticalAlignment="Top" Width="150"/>
         </Grid>
 
-        <TabControl WindowChrome.IsHitTestVisibleInChrome="True" Background="{DynamicResource Color.WhiteSmoke}" FontSize="20" BorderBrush="{x:Null}" Grid.Row="1">
-            <TabItem Header="{DynamicResource Dict_General}" Background="{DynamicResource Color.WhiteSmoke}">
+        <TabControl WindowChrome.IsHitTestVisibleInChrome="True" Background="{DynamicResource Color.WhiteSmoke}" FontSize="20" BorderBrush="{x:Null}" Grid.Row="0" Grid.RowSpan="2">
+            <TabItem Header="{DynamicResource Dict_General}" Background="{DynamicResource Color.WhiteSmoke}" Style="{StaticResource CheckemTabItemStyle}">
                 <ScrollViewer>
                     <Grid>
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <TextBlock Text="Launch Checkem on start up" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+                            <TextBlock Text="{DynamicResource Dict_LaunchOnStatup_Title}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
 
-                            <customComponents:ToggleSwitch x:Name="LaunchOnStarup" Unchecked="LaunchOnStarup_Unchecked" Checked="LaunchOnStarup_Checked" StateChanged="SettingToggles_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=LaunchOnStartUp, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
+                            <customComponents:ToggleSwitch IsEnabled="False" x:Name="LaunchOnStarup" Unchecked="LaunchOnStarup_Unchecked" Checked="LaunchOnStarup_Checked" StateChanged="SettingToggles_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=LaunchOnStartUp, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
 
-                            <TextBlock TextWrapping="Wrap" Text="Have Checkem open automatically when you log into your computer." Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0" TextAlignment="Left"/>
+                            <TextBlock TextWrapping="Wrap" Text="{DynamicResource Dict_LaunchOnStatup_Description}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0" TextAlignment="Left"/>
                         </StackPanel>
 
                         <Border BorderBrush="{DynamicResource SolidColorBrush.Warning}" BorderThickness="3" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,1,0,10">
                             <StackPanel>
-                                <TextBlock Text="Danger zone" Foreground="{DynamicResource SolidColorBrush.Warning}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" FontWeight="Bold"/>
-                                <TextBlock Text="Reverse all settings" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+                                <TextBlock Text="{DynamicResource Dict_ReverseAllSettings_Warning}" Foreground="{DynamicResource SolidColorBrush.Warning}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" FontWeight="Bold"/>
+                                <TextBlock Text="{DynamicResource Dict_ReverseAllSettings_Title}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
 
-                                <Button Style="{StaticResource CheckemFlatButton.Round5}" Content="Reverse" Foreground="White" FontSize="24" Margin="10,5,0,5" Background="{DynamicResource SolidColorBrush.Warning}" HorizontalAlignment="Left" Width="110" Opacity="1" FontWeight="Normal" Click="ReverseButton_Click"/>
+                                <Button Style="{StaticResource CheckemFlatButton.Round5}" Content="{DynamicResource Dict_ReverseAllSettings_Reverse}" Foreground="White" FontSize="24" Margin="10,5,0,5" Background="{DynamicResource SolidColorBrush.Warning}" HorizontalAlignment="Left" Width="110" Opacity="1" FontWeight="Normal" Click="ReverseButton_Click"/>
 
-                                <TextBlock TextWrapping="Wrap" Text="Whatch out ! Everything will be reversed, including themes." Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0" TextAlignment="Left"/>
+                                <TextBlock TextWrapping="Wrap" Text="{DynamicResource Dict_ReverseAllSettings_Description}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0" TextAlignment="Left"/>
                             </StackPanel>
                         </Border>
                     </Grid>
                 </ScrollViewer>
             </TabItem>
 
-            <TabItem Header="{DynamicResource Dict_Notifications}" Background="{DynamicResource Color.WhiteSmoke}">
+            <TabItem Header="{DynamicResource Dict_Notifications}" Background="{DynamicResource Color.WhiteSmoke}" Style="{StaticResource CheckemTabItemStyle}">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <TextBlock Text="Notifications" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+                            <TextBlock Text="{DynamicResource Dict_Notifications}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
 
                             <customComponents:ToggleSwitch x:Name="NotificationwToggle" StateChanged="NotificationwToggle_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=Notification, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
 
-                            <TextBlock TextWrapping="Wrap" Text="Turn notifications on or off." Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" TextAlignment="Left"/>
+                            <TextBlock TextWrapping="Wrap" Text="{DynamicResource Dict_NotificationsSwitch_Description}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" TextAlignment="Left"/>
                         </StackPanel>
 
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0">
-                            <TextBlock Text="Show details" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+                            <TextBlock Text="{DynamicResource Dict_ShowDetails_Title}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
 
                             <customComponents:ToggleSwitch x:Name="ShowDetailsToggle" StateChanged="SettingToggles_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=ShowPreviews, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
 
-                            <TextBlock TextWrapping="Wrap" Text="Show task details in notifications." Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" TextAlignment="Left"/>
+                            <TextBlock TextWrapping="Wrap" Text="{DynamicResource Dict_Notifications_Description}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" TextAlignment="Left"/>
                         </StackPanel>
 
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0">
-                            <TextBlock Text="I'm in a vacation" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+                            <TextBlock Text="{DynamicResource Dict_Vacation_Title}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
 
                             <customComponents:ToggleSwitch x:Name="VacationModeToggle" StateChanged="SettingToggles_StateChanged" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=VacationMode, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,5"/>
 
-                            <TextBlock TextWrapping="Wrap" Text="When turned on, all notifications will be muted." Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" TextAlignment="Left"/>
+                            <TextBlock TextWrapping="Wrap" Text="{DynamicResource Dict_Vacation_Description}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" TextAlignment="Left"/>
                         </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
 
-            <TabItem Header="{DynamicResource Dict_Appearance}" Background="{DynamicResource Color.WhiteSmoke}">
-                <TextBlock Text="{DynamicResource Dict_Appearance}" Style="{StaticResource CheckemTextBlock.Base}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0"/>
+            <TabItem Header="{DynamicResource Dict_Appearance}" Background="{DynamicResource Color.WhiteSmoke}" Style="{StaticResource CheckemTabItemStyle}">
+                <StackPanel>
+                    <ComboBox x:Name="ThemeCombobox" SelectedIndex="{Binding Source={x:Static properties:Settings.Default}, Path=ThemeIndex}" Style="{StaticResource MaterialDesignFilledComboBox}" SelectionChanged="ThemeCombobox_SelectionChanged" Margin="10,10,0,0" Height="60" HorizontalAlignment="Left" Padding="0,-15,0,0" HorizontalContentAlignment="Left" MaxDropDownHeight="400">
+                        <customComponents:ThemePreviewBar Text="Galaxy Slerpy" Foreground="White" Gradient1="#FF2196F3" Gradient2="#FF9708CC"/>
+                        <customComponents:ThemePreviewBar Text="Ver" Foreground="Black" Gradient1="#FFFFE000" Gradient2="#FF799F0C"/>
+                        <customComponents:ThemePreviewBar Text="Shine" Foreground="White" Gradient1="#FF12C2E9" Gradient2="#FFF64F59"/>
+                        <customComponents:ThemePreviewBar Text="Peach" Foreground="White" Gradient1="#FFF7797D" Gradient2="#FFF6CA4B"/>
+                        <customComponents:ThemePreviewBar Text="Evening" Foreground="White" Gradient1="#FFB92B27" Gradient2="#FF1565C0"/>
+                        <customComponents:ThemePreviewBar Text="Dark Ocean" Foreground="White" Gradient1="#FF373B44" Gradient2="#FF4286F4"/>
+                        <customComponents:ThemePreviewBar Text="Memory" Foreground="White" Gradient1="#FFFF0099" Gradient2="#FF493240"/>
+                        <customComponents:ThemePreviewBar Text="Amin" Foreground="White" Gradient1="#FF8E2DE2" Gradient2="#FF4A00E0"/>
+                        <customComponents:ThemePreviewBar Text="Harvey" Foreground="White" Gradient1="#FF1F886B" Gradient2="#FF99F2C8"/>
+                        <customComponents:ThemePreviewBar Text="Neuromancer" Foreground="White" Gradient1="#FFF953C6" Gradient2="#FFB91D73"/>
+                        <customComponents:ThemePreviewBar Text="Azur" Foreground="White" Gradient1="#FF7F7FD5" Gradient2="#FF91EAE4"/>
+                        <customComponents:ThemePreviewBar Text="The Whitch" Foreground="White" Gradient1="#FFC31432" Gradient2="#FF390E59"/>
+                        <customComponents:ThemePreviewBar Text="Flare" Foreground="White" Gradient1="#FFF12711" Gradient2="#FFF5AF19"/>
+                        <customComponents:ThemePreviewBar Text="Violet" Foreground="White" Gradient1="#FF654EA3" Gradient2="#FFEAAFC8"/>
+                        <customComponents:ThemePreviewBar Text="Burning Orange" Foreground="White" Gradient1="#FFFF416C" Gradient2="#FFFF4B2B"/>
+                        <customComponents:ThemePreviewBar Text="Summer Days" Foreground="Black" Gradient1="#FFA8FF78" Gradient2="#FF78FFD9"/>
+                        <customComponents:ThemePreviewBar Text="Shifter" Foreground="White" Gradient1="#FFFF1900" Gradient2="#FF0014A6"/>
+                        <customComponents:ThemePreviewBar Text="Pun Yeta" Foreground="White" Gradient1="#FF108DC7" Gradient2="#FFEF8E38"/>
+                    </ComboBox>
+
+                    <customComponents:ThemePreviewer Height="340" Margin="10" Width="770"/>
+                </StackPanel>
             </TabItem>
 
-            <TabItem Header="{DynamicResource Dict_Language}" Background="{DynamicResource Color.WhiteSmoke}">
+            <TabItem Header="{DynamicResource Dict_Language}" Background="{DynamicResource Color.WhiteSmoke}" Style="{StaticResource CheckemTabItemStyle}">
                 <StackPanel>
-                    <ComboBox x:Name="LanguageCombobox" Style="{StaticResource MaterialDesignFilledComboBox}" SelectionChanged="LanguageCombobox_SelectionChanged" Margin="10,10,0,0" Height="60" SelectedIndex="-1" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,-15,0,0" Width="200" HorizontalContentAlignment="Left">
+                    <ComboBox x:Name="LanguageCombobox" SelectedIndex="{Binding Source={x:Static properties:Settings.Default}, Path=LanguageIndex}" Style="{StaticResource MaterialDesignFilledComboBox}" SelectionChanged="LanguageCombobox_SelectionChanged" Margin="10,10,0,0" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,-15,0,0" Width="200" HorizontalContentAlignment="Left">
                         <TextBlock Text="English (US)" Style="{StaticResource LanguageBoxText-Big}"/>
                         <TextBlock Text="繁體中文" Style="{StaticResource LanguageBoxText-Big}"/>
                     </ComboBox>

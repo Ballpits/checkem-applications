@@ -3,33 +3,44 @@ using System.Windows;
 
 namespace Checkem.Assets.LanguageHelper
 {
-    static class LanguageHelper
+    public static class LanguageHelper
     {
         public static void LanguageSetup()
         {
-            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
-            {
-                Source = new Uri($"Assets/LanguageResourceDictionary/{Properties.Settings.Default.Language}.xaml", UriKind.RelativeOrAbsolute)
-            });
+            ApplyLanguage(Properties.Settings.Default.LanguageIndex);
         }
 
-        public static void ApplyLanguage(string language)
+        private static void ApplyLanguage(string language)
         {
             string path = "Assets/LanguageResourceDictionary/";//Path for the directory of the dictionary
-
 
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
             {
                 Source = new Uri($"{path}{language}.xaml", UriKind.RelativeOrAbsolute)
             });
+        }
 
-            Application.Current.Resources.MergedDictionaries.Remove(new ResourceDictionary()
+        public static void ApplyLanguage(int index)
+        {
+            switch (index)
             {
-                Source = new Uri($"{path}{Properties.Settings.Default.Language}.xaml", UriKind.RelativeOrAbsolute)
-            });
+                case 0:
+                    {
+                        LanguageHelper.ApplyLanguage("Lng_English_US");
 
-            Properties.Settings.Default.Language = language;
+                        break;
+                    }
+                case 1:
+                    {
+                        LanguageHelper.ApplyLanguage("Lng_Chinese_Traditional");
 
+                        break;
+                    }
+                default:
+                    break;
+            }
+
+            Properties.Settings.Default.LanguageIndex = index;
             Properties.Settings.Default.Save();
         }
     }

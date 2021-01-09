@@ -3,15 +3,17 @@
                     >
 
 
-    <Color x:Key="PrimaryColor">#FF2196F3</Color>
-    <Color x:Key="SecondaryColor">#FF9708CC</Color>
+    <Color x:Key="PrimaryColor">#FF108DC7</Color>
+    <Color x:Key="SecondaryColor">#FFEF8E38</Color>
 
-    <Color x:Key="PrimaryHighlightColor">#322196F3</Color>
-    <Color x:Key="SecondaryHighlightColor">#7B9708CC</Color>
+    <Color x:Key="PrimaryHighlightColor">#32108DC7</Color>
+    <Color x:Key="SecondaryHighlightColor">#FFEF8E38</Color>
 
 
     <SolidColorBrush x:Key="Color.Primary" Color="{DynamicResource PrimaryColor}"/>
     <SolidColorBrush x:Key="Color.Secondary" Color="{DynamicResource SecondaryColor}"/>
+
+    <SolidColorBrush x:Key="Color.TextOnPrimaryColor" Color="{DynamicResource Color.White.Constant}"/>
 
     <SolidColorBrush x:Key="HighlightColor.Primary" Color="{DynamicResource PrimaryHighlightColor}"/>
     <SolidColorBrush x:Key="HighlightColor.Secondary" Color="{DynamicResource SecondaryHighlightColor}"/>

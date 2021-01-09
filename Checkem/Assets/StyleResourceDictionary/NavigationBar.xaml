@@ -32,7 +32,7 @@
 
         <Setter Property="Background" Value="{DynamicResource ResourceKey=SolidColorBrush.Transparent}"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=Color.White}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=Color.TextOnPrimaryColor}"/>
 
         <Setter Property="TabIndex" Value="0"/>
 
@@ -40,7 +40,7 @@
     </Style>
 
     <Style x:Key="NavigationbarIcon" TargetType="materialDesign:PackIcon">
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=Color.TextOnPrimaryColor}"/>
 
         <Setter Property="Height" Value="30"/>
         <Setter Property="Width" Value="30"/>
@@ -55,7 +55,6 @@
     </Style>
 
     <Style x:Key="NavigationbarTextBlock" TargetType="TextBlock" BasedOn="{StaticResource CheckemTextBlock.Base}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=Color.White}"/>
         <Setter Property="FontSize" Value="18"/>
 
         <Setter Property="Margin" Value="5,0,0,0"/>

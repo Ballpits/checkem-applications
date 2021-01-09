@@ -72,16 +72,14 @@
 
                         <StackPanel x:Name="TagDisplay">
                         </StackPanel>
-                        <ComboBox x:Name="TagItemCombobox" Style="{StaticResource MaterialDesignFilledComboBox}" FontFamily="{DynamicResource Quicksand}" Margin="10,20,10,0" FontSize="20" Height="70" SelectedIndex="0" SelectionChanged="TagComBox_SelectionChanged">
-                            <ComboBoxItem Content="None" />
-                            <!--<customComponents:PreviewTag Content="tag 1"/>
-                            <customComponents:PreviewTag Text="tag 2" Color="Red"/>-->
+                        <ComboBox x:Name="TagItemCombobox" Foreground="{DynamicResource Color.Black}" Style="{StaticResource MaterialDesignFilledComboBox}" FontFamily="{DynamicResource Quicksand}" Margin="10,20,10,0" FontSize="20" Height="70" SelectedIndex="0" SelectionChanged="TagComBox_SelectionChanged">
+                            <ComboBoxItem/>
                         </ComboBox>
 
                         <Grid Margin="10,20,10,0">
-                            <TextBlock Style="{StaticResource CheckemTextBlock.Base}" Text="Reminder" FontSize="20" Padding="0,4,0,0" Margin="0,0,10,0" HorizontalAlignment="Left"/>
+                            <TextBlock Style="{StaticResource CheckemTextBlock.Base}" Text="{DynamicResource Dict_Task_Reminder}" FontSize="20" Padding="0,4,0,0" Margin="0,0,10,0" HorizontalAlignment="Left"/>
 
-                            <ListBox x:Name="ReminderSelecter" Style="{StaticResource MaterialDesignToolToggleListBox}" Foreground="White" FontFamily="{DynamicResource Quicksand}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="35" FontSize="18" Background="{DynamicResource Color.Primary}" SelectionMode="Single" HorizontalAlignment="Right">
+                            <ListBox x:Name="ReminderSelecter" Style="{StaticResource MaterialDesignToolToggleListBox}" Foreground="{DynamicResource Color.TextOnPrimaryColor}" FontFamily="{DynamicResource Quicksand}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="35" FontSize="18" Background="{DynamicResource Color.Primary}" SelectionMode="Single" HorizontalAlignment="Right">
                                 <ListBoxItem Content="{DynamicResource Dict_Task_Basic}" Selected="ListBoxItem_BasicReminder_Selected"/>
                                 <ListBoxItem Content="{DynamicResource Dict_Task_Advance}" Selected="ListBoxItem_AdvanceReminder_Selected"/>
                                 <ListBoxItem Content="{DynamicResource Dict_Task_None}" Selected="ListBoxItem_NoReminder_Selected"/>

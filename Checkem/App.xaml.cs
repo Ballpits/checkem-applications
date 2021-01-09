@@ -1,4 +1,5 @@
-﻿using Checkem.Views;
+﻿using Checkem.Assets.LanguageHelper;
+using Checkem.Views;
 using System.Windows;
 
 namespace Checkem
@@ -14,6 +15,8 @@ namespace Checkem
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
+            LanguageHelper.LanguageSetup();
 
             MainWindow = new MainWindow(this);
             //MainWindow = new SettingsWindow();

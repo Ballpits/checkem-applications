@@ -14,7 +14,7 @@ namespace Checkem.Views
         public TodoList()
         {
             //todoManager.StoreTestData();
-
+            todoManager.ResetId();
             currentInventory = todoManager.Filter(FilterMethods.None);
 
             DataContext = this;

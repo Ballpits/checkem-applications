@@ -365,4 +365,33 @@
         <Setter Property="TextAlignment" Value="Left"/>
     </Style>
     <!--#endregion-->
+
+
+    <!--#region Tab control style-->
+    <Style x:Key="CheckemTabItemStyle" TargetType="TabItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border Name="Border" CornerRadius="5,5,0,0" Background="{DynamicResource Color.WhiteSmoke}" BorderThickness="2,2,2,1" BorderBrush="{DynamicResource Color.Black}">
+                        <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="Margin" Value="0,0,0,-1"/>
+                        </Trigger>
+                        
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Border" Property="Margin" Value="2,2,2,-1"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
 </ResourceDictionary>
