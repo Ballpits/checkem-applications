@@ -3,6 +3,7 @@ using Checkem.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -251,6 +252,7 @@ namespace Checkem.Views
         {
             Itembar itembar = new Itembar();
 
+            itembar.ID = currentInventory.Count;
             itembar.todo.CreationDateTime = DateTime.Now;
 
             itembar.Click += new EventHandler(this.Itembar_Click);
@@ -422,7 +424,7 @@ namespace Checkem.Views
                     {
                         currentInventory[i].TagItems[currentInventory[i].TagItems.FindIndex(x => x.Content == item.Content)].ID = item.ID;
                         todoManager.Update(currentInventory[i]);
-                    }                    
+                    }
                 }
             }
             foreach (Todo item in currentInventory)

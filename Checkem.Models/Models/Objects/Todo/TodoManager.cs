@@ -264,7 +264,7 @@ namespace Checkem.Models
         public void Update(Todo data)
         {
             //Find to do item's index in Inventory than update
-            Inventory[Inventory.IndexOf(data)] = data;
+            Inventory[Inventory.FindIndex(x => x.ID == data.ID)] = data;
 
             Save(Inventory);
         }
@@ -273,7 +273,11 @@ namespace Checkem.Models
         //Remove item and save to database
         public void Remove(Todo data)
         {
-            Inventory.Remove(data);
+            //Find to do item's index in Inventory than remove
+            Inventory.RemoveAt(Inventory.FindIndex(x => x.ID == data.ID));
+
+            //Rearrange ID after remove action is done
+            ResetId();
 
             Save(Inventory);
         }

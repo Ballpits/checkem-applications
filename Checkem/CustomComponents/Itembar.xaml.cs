@@ -66,6 +66,23 @@ namespace Checkem.CustomComponents
         #region Properties
         public Todo todo = new Todo();
 
+        public int ID
+        {
+            get
+            {
+                return todo.ID;
+            }
+            set
+            {
+                if (todo.ID != value)
+                {
+                    todo.ID = value;
+
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public string Title
         {
             get
@@ -245,8 +262,8 @@ namespace Checkem.CustomComponents
                 if (TitleTextBox.Text != string.Empty)
                 {
                     Title = TitleTextBox.Text;
-                    TitleTextBlock.Visibility = Visibility.Visible;
 
+                    TitleTextBlock.Visibility = Visibility.Visible;
                     TitleTextBox.Visibility = Visibility.Collapsed;
 
                     CheckboxGrid.IsEnabled = true;
