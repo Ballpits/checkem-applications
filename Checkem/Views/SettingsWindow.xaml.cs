@@ -105,13 +105,12 @@ namespace Checkem.Views
         private void DarkModeToggle_Checked(object sender, EventArgs e)
         {
             ThemeHelper.ApplyDarkMode();
-            mainWindow.Reload();
         }
 
         private void DarkModeToggle_Unchecked(object sender, EventArgs e)
         {
             ThemeHelper.ApplyLightMode();
-            mainWindow.Reload();
+
         }
     }
 }

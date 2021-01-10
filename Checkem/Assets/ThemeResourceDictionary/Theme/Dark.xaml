@@ -11,7 +11,7 @@
     <SolidColorBrush x:Key="Color.WhiteSmoke" Color="#FF0A0A0A"/>
 
     <SolidColorBrush x:Key="Color.LightGray" Color="#191919"/>
-    <SolidColorBrush x:Key="Color.Gray" Color="#343434"/>
+    <SolidColorBrush x:Key="Color.Gray" Color="#7FCBCBCB"/>
     <SolidColorBrush x:Key="Color.DarkGray" Color="DarkGray"/>
 
     <SolidColorBrush x:Key="Color.Black" Color="White"/>

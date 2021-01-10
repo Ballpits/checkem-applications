@@ -304,7 +304,7 @@ namespace Checkem.CustomComponents
             if (todo.IsCompleted)
             {
                 //set foregrond to dark gray and strike out title text
-                TitleTextBlock.Foreground = this.FindResource("Color.DarkGray") as SolidColorBrush;
+                TitleTextBlock.Opacity = 0.5;
                 TitleTextBlock.TextDecorations = TextDecorations.Strikethrough;
 
                 //change context menu text
@@ -313,7 +313,7 @@ namespace Checkem.CustomComponents
             else
             {
                 //set foregrond back to black and clear text decoration
-                TitleTextBlock.Foreground = this.FindResource("Color.Black") as SolidColorBrush;
+                TitleTextBlock.Opacity = 1.0;
                 TitleTextBlock.TextDecorations = null;
 
                 //change context menu text
@@ -410,14 +410,14 @@ namespace Checkem.CustomComponents
         {
             //item bar highlight
             ItembarBorder.Background = this.FindResource("HighlightColor.Primary") as Brush;
-            ItembarBorder.BorderBrush = this.FindResource("HighlightColor.Secondary") as Brush;
+            ItembarBackBorder.BorderBrush = this.FindResource("HighlightColor.Secondary") as Brush;
         }
 
         private void ItembarBorder_MouseLeave(object sender, MouseEventArgs e)
         {
             //item bar highlight
-            ItembarBorder.Background = this.FindResource("Color.White") as Brush;
-            ItembarBorder.BorderBrush = this.FindResource("Color.Gray") as Brush;
+            ItembarBorder.Background = this.FindResource("SolidColorBrush.Transparent") as Brush;
+            ItembarBackBorder.BorderBrush = this.FindResource("Color.Gray") as Brush;
         }
 
         private void Itembar_MouseDown(object sender, MouseButtonEventArgs e)

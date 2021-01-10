@@ -40,12 +40,6 @@ namespace Checkem
         }
 
 
-        public void Reload()
-        {
-            todoList.Reload();
-        }
-
-
         #region Notification Timer
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
