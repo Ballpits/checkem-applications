@@ -60,6 +60,8 @@ namespace Checkem.CustomComponents
         public event EventHandler SaveNewTask;
         public event EventHandler Remove;
         public event EventHandler Update;
+
+        public event EventHandler UpdateChosenTag;
         #endregion
 
 
@@ -287,11 +289,21 @@ namespace Checkem.CustomComponents
             {
                 foreach (var item in TagItems)
                 {
-                    TagItemPreviewStackPanel.Children.Add(new PreviewTag() { Color = item.TagColor, Text = item.Content });
+                    PreviewTag previewTag = new PreviewTag() { Color = item.TagColor, Text = item.Content ,tagItem =item };
+                    previewTag.RemovePreTag += new EventHandler(this.RemovePreTag);
+                    TagItemPreviewStackPanel.Children.Add(previewTag);
                 }
             }
         }
 
+        private void RemovePreTag(object sender, EventArgs e)
+        {
+            PreviewTag tag = sender as PreviewTag;
+
+            todo.TagItems.RemoveAt(todo.TagItems.FindIndex(x => x.ID == tag.tagItem.ID));
+            LoadTagItems();
+            UpdateChosenTag?.Invoke(this,EventArgs.Empty);
+        }
 
         #region Property Changed event handler
         protected void OnPropertyChanged([CallerMemberName] string name = null)

@@ -149,6 +149,8 @@ namespace Checkem.Views
                 itembar.Remove += new EventHandler(this.Itembar_Remove);
                 itembar.Update += new EventHandler(this.Itembar_Update);
 
+                itembar.UpdateChosenTag += new EventHandler(this.Itembar_UpdateChosenTag);
+
                 TodoItemsStackPanel.Children.Add(itembar);
             }
         }
@@ -171,6 +173,8 @@ namespace Checkem.Views
                 itembar.Click += new EventHandler(this.Itembar_Click);
                 itembar.Remove += new EventHandler(this.Itembar_Remove);
                 itembar.Update += new EventHandler(this.Itembar_Update);
+
+                itembar.UpdateChosenTag += new EventHandler(this.Itembar_UpdateChosenTag);
 
                 TodoItemsStackPanel.Children.Add(itembar);
             }
@@ -219,6 +223,12 @@ namespace Checkem.Views
             todoManager.Update(itembar.todo);
         }
 
+        private void Itembar_UpdateChosenTag(object sender, EventArgs e)
+        {
+            Itembar itembar = sender as Itembar;
+
+            todoManager.Update(itembar.todo);
+        }
         private void Panel_Close(object sender, EventArgs e)
         {
             //remove the last child in DataGrid to remove panel
@@ -254,6 +264,7 @@ namespace Checkem.Views
             itembar.SaveNewTask += new EventHandler(this.Itembar_SaveNewTask);
             itembar.Remove += new EventHandler(this.Itembar_Remove);
             itembar.Update += new EventHandler(this.Itembar_Update);
+            itembar.UpdateChosenTag += new EventHandler(this.Itembar_UpdateChosenTag);
 
             TodoItemsStackPanel.Children.Insert(0, itembar);
             currentInventory.Add(itembar.todo);

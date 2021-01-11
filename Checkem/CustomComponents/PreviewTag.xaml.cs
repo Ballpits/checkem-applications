@@ -1,7 +1,9 @@
-﻿using Checkem.Models;
+﻿using System;
+using Checkem.Models;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+
 
 namespace Checkem.CustomComponents
 {
@@ -27,7 +29,7 @@ namespace Checkem.CustomComponents
 
 
         #region Event
-
+        public event EventHandler RemovePreTag;
         #endregion
 
 
@@ -76,7 +78,7 @@ namespace Checkem.CustomComponents
 
         private void MenuItem_Remove(object sender, RoutedEventArgs e)
         {
-
+            RemovePreTag?.Invoke(this, EventArgs.Empty);
         }
     }
 }
