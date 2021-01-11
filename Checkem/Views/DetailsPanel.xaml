@@ -38,7 +38,7 @@
             <BeginStoryboard Storyboard="{StaticResource DetailsPanelOpen}"/>
         </EventTrigger>
 
-        <EventTrigger RoutedEvent="Grid.MouseDown" SourceName="DimBackground">
+        <EventTrigger RoutedEvent="Grid.MouseLeftButtonDown" SourceName="DimBackground">
             <BeginStoryboard Storyboard="{StaticResource DetailsPanelClose}"/>
         </EventTrigger>
 
