@@ -190,7 +190,7 @@ namespace Checkem.Views
             //create details creation panel and set close event handler
             DetailsPanel detailsPanel = new DetailsPanel(itembar);
             detailsPanel.Close += new EventHandler(this.Panel_Close);
-
+            detailsPanel.UpdateChosenTag += new EventHandler(Itembar_UpdateChosenTag);
             //show
             DataGrid.Children.Add(detailsPanel);
         }

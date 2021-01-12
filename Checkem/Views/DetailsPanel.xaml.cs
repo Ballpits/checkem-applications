@@ -42,6 +42,8 @@ namespace Checkem.Views
         #region Event
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler Close;
+
+        public event EventHandler UpdateChosenTag;
         #endregion
 
 
@@ -442,9 +444,25 @@ namespace Checkem.Views
             {
                 foreach (var item in todo.TagItems)
                 {
-                    TagDisplay.Children.Add(new PreviewTag(item));
+                    PreviewTag tag = new PreviewTag(item);
+                    tag.RemovePreTag += new EventHandler(this.RemovePreTag);
+                    TagDisplay.Children.Add(tag);
                 }
             }
+        }
+
+        private void RemovePreTag(object sender, EventArgs e)
+        {
+            PreviewTag tag = sender as PreviewTag;
+
+            todo.TagItems.RemoveAt(todo.TagItems.FindIndex(x => x.ID == tag.tagItem.ID));
+
+            UpdateChosenTag?.Invoke(itembar,EventArgs.Empty);
+            
+            LoadTag();
+
+            itembar.LoadTagItems();
+            LoadAvailableTagItemsChoices();
         }
         #endregion
 
@@ -489,7 +507,7 @@ namespace Checkem.Views
             {
                 PreviewTag previewTag = new PreviewTag(item);
                 previewTag.tagItem = item;
-
+                previewTag.RemovePreTag += new EventHandler(this.RemovePreTag);
                 TagDisplay.Children.Add(previewTag);
             }
         }
