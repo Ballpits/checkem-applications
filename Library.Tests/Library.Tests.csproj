@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sphere.Data\Sphere.Data.csproj" />
+    <ProjectReference Include="..\Sphere.DateTime\Sphere.DateTime.csproj" />
+    <ProjectReference Include="..\Sphere.Monitor\Sphere.Monitor.csproj" />
+    <ProjectReference Include="..\Sphere.Readable\Sphere.Readable.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,12 +1,12 @@
 ﻿using Checkem.CustomComponents;
 using Checkem.Models;
+using Sphere.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using Sphere.Data;
 
 namespace Checkem.Views
 {
@@ -47,6 +47,7 @@ namespace Checkem.Views
                 else
                 {
                     ToDoListItemCounterTextBlock.Margin = new Thickness(0);
+
                     return string.Empty;
                 }
             }

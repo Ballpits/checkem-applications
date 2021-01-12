@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ProjectSC.Views.Calendar
 {
@@ -26,11 +14,17 @@ namespace ProjectSC.Views.Calendar
 
         private void DateGrid_Loaded(object sender, RoutedEventArgs e)
         {
+            int currnenYear = DateTime.Now.Year;
+            int currentMounth = DateTime.Now.Month;
+            int lastMounth = DateTime.Now.Month - 1;
+            int lastDayOfCurrentMonth = DateTime.DaysInMonth(currnenYear, currentMounth);
+            int lastDayOfLastMounth = DateTime.DaysInMonth(currnenYear, lastMounth);
+
             for (int r = 1; r < 6; r++)
             {
                 for (int c = 0; c < 7; c++)
                 {
-                    CalendarDay_View caledar_View = new CalendarDay_View() { Day = c };
+                    CalendarDay_View caledar_View = new CalendarDay_View(c);
                     Grid.SetColumn(caledar_View, c);
                     Grid.SetRow(caledar_View, r);
                     DateGrid.Children.Add(caledar_View);
