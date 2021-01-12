@@ -231,8 +231,11 @@ namespace Checkem.Views
         }
         private void Panel_Close(object sender, EventArgs e)
         {
-            //remove the last child in DataGrid to remove panel
-            DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
+            if (DataGrid.Children.Count > 1)
+            {
+                //remove the last child in DataGrid to remove panel
+                DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
+            }
         }
 
         private void TagBar_OpenPanel(object sender, EventArgs e)
