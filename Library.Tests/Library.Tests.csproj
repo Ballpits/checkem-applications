@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Sphere.Data\Sphere.Data.csproj" />
     <ProjectReference Include="..\Sphere.DateTime\Sphere.DateTime.csproj" />
   </ItemGroup>
 
