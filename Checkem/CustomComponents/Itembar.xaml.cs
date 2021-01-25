@@ -10,7 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
-namespace Checkem.CustomComponents
+namespace Checkem.Windows.CustomComponents
 {
     public partial class Itembar : UserControl, INotifyPropertyChanged
     {
@@ -289,7 +289,7 @@ namespace Checkem.CustomComponents
             {
                 foreach (var item in TagItems)
                 {
-                    PreviewTag previewTag = new PreviewTag() { Color = item.TagColor, Text = item.Content ,tagItem =item };
+                    PreviewTag previewTag = new PreviewTag() { Color = item.TagColor, Text = item.Content, tagItem = item };
                     previewTag.RemovePreTag += new EventHandler(this.RemovePreTag);
                     TagItemPreviewStackPanel.Children.Add(previewTag);
                 }
@@ -302,7 +302,7 @@ namespace Checkem.CustomComponents
 
             todo.TagItems.RemoveAt(todo.TagItems.FindIndex(x => x.ID == tag.tagItem.ID));
             LoadTagItems();
-            UpdateChosenTag?.Invoke(this,EventArgs.Empty);
+            UpdateChosenTag?.Invoke(this, EventArgs.Empty);
         }
 
         #region Property Changed event handler

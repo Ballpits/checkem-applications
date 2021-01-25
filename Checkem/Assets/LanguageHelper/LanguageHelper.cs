@@ -7,7 +7,7 @@ namespace Checkem.Assets.LanguageHelper
     {
         public static void LanguageSetup()
         {
-            ApplyLanguage(Properties.Settings.Default.LanguageIndex);
+            ApplyLanguage(Windows.Properties.Settings.Default.LanguageIndex);
         }
 
         private static void ApplyLanguage(string language)
@@ -40,8 +40,8 @@ namespace Checkem.Assets.LanguageHelper
                     break;
             }
 
-            Properties.Settings.Default.LanguageIndex = index;
-            Properties.Settings.Default.Save();
+            Windows.Properties.Settings.Default.LanguageIndex = index;
+            Windows.Properties.Settings.Default.Save();
         }
     }
 }

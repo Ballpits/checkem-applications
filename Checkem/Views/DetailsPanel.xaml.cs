@@ -1,4 +1,4 @@
-﻿using Checkem.CustomComponents;
+﻿using Checkem.Windows.CustomComponents;
 using Checkem.Models;
 using System;
 using Sphere.Readable;
@@ -457,8 +457,8 @@ namespace Checkem.Views
 
             todo.TagItems.RemoveAt(todo.TagItems.FindIndex(x => x.ID == tag.tagItem.ID));
 
-            UpdateChosenTag?.Invoke(itembar,EventArgs.Empty);
-            
+            UpdateChosenTag?.Invoke(itembar, EventArgs.Empty);
+
             LoadTag();
 
             itembar.LoadTagItems();

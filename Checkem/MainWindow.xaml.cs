@@ -43,7 +43,7 @@ namespace Checkem
         #region Notification Timer
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.Notification && !Properties.Settings.Default.VacationMode)
+            if (Windows.Properties.Settings.Default.Notification && !Windows.Properties.Settings.Default.VacationMode)
             {
                 TimerOffset = 60 - DateTime.Now.Second;
 

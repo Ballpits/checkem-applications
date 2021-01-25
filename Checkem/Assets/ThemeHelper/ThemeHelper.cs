@@ -7,14 +7,14 @@ namespace Checkem.Assets.ThemeHelper
     {
         public static void ThemeSetup()
         {
-            ApplyTheme(Properties.Settings.Default.ThemeIndex);
+            ApplyTheme(Windows.Properties.Settings.Default.ThemeIndex);
 
             DarkModeSetup();
         }
 
         public static void DarkModeSetup()
         {
-            if (Properties.Settings.Default.IsDarkModeOn)
+            if (Windows.Properties.Settings.Default.IsDarkModeOn)
             {
                 ApplyDarkMode();
             }
@@ -196,8 +196,8 @@ namespace Checkem.Assets.ThemeHelper
                     break;
             }
 
-            Properties.Settings.Default.ThemeIndex = index;
-            Properties.Settings.Default.Save();
+            Windows.Properties.Settings.Default.ThemeIndex = index;
+            Windows.Properties.Settings.Default.Save();
         }
     }
 }

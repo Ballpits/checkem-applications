@@ -24,7 +24,7 @@ namespace Checkem
             //MainWindow = new SettingsWindow();
             MainWindow.Show();
 
-            TrayIcon.Icon = Checkem.Properties.Resources.CheckemIcon;
+            TrayIcon.Icon = Checkem.Windows.Properties.Resources.CheckemIcon;
 
             TrayIcon.Click += (s, args) => OpenMainWindow();
             TrayIcon.DoubleClick += (s, args) => OpenMainWindow();
@@ -70,7 +70,7 @@ namespace Checkem
         public void Notify(string title, string message)
         {
             //Check if show preview setting is true
-            if (Checkem.Properties.Settings.Default.ShowPreviews)
+            if (Checkem.Windows.Properties.Settings.Default.ShowPreviews)
             {
                 //Prevent from displaying empty message string
                 if (message == string.Empty)

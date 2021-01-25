@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 
-namespace Checkem.CustomComponents
+namespace Checkem.Windows.CustomComponents
 {
     public partial class ToggleSwitch : UserControl
     {

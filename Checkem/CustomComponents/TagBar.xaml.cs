@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Checkem.Models;
 
 
-namespace Checkem.CustomComponents
+namespace Checkem.Windows.CustomComponents
 {
     public partial class TagBar : UserControl
     {
@@ -96,7 +96,7 @@ namespace Checkem.CustomComponents
             currentTagList.RemoveAt(tagItem.tagItem.ID);
             tagManager.Remove(tagItem.tagItem);
             tagManager.ResetId();
-            ItemTagRestId?.Invoke(tagManager,EventArgs.Empty);
+            ItemTagRestId?.Invoke(tagManager, EventArgs.Empty);
             StpTagList.Children.Clear();
             if (currentTagList != null)
             {

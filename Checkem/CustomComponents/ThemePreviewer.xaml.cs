@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Checkem.CustomComponents
+namespace Checkem.Windows.CustomComponents
 {
     /// <summary>
     /// Interaction logic for ThemePreviewer.xaml

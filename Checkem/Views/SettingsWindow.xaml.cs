@@ -27,13 +27,13 @@ namespace Checkem.Views
 
         private void SettingToggles_StateChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Save();
+            Windows.Properties.Settings.Default.Save();
         }
 
         #region General settings
         private void ReverseButton_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.Reset();
+            Windows.Properties.Settings.Default.Reset();
 
             EnableNotificationSettingVarients();
         }
@@ -73,7 +73,7 @@ namespace Checkem.Views
                 DisableNotificationSettingVarients();
             }
 
-            Properties.Settings.Default.Save();
+            Windows.Properties.Settings.Default.Save();
         }
 
         private void EnableNotificationSettingVarients()

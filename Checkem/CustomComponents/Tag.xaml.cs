@@ -7,7 +7,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using Checkem.Models;
 
-namespace Checkem.CustomComponents
+namespace Checkem.Windows.CustomComponents
 {
     public partial class Tag : UserControl
     {
