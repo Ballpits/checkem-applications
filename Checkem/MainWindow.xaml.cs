@@ -1,31 +1,111 @@
-﻿using Checkem.CustomComponents;
-using System;
+﻿using System;
+using Checkem.Views;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Checkem.Models;
+using System.Windows.Threading;
+using System.Collections.Generic;
+using System.Windows.Media.Animation;
 
 namespace Checkem
 {
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(App app)
         {
+            application = app;
+
             InitializeComponent();
         }
 
 
+        #region Variables
+        App application;
+
+        //timer for notifications
+        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
+
+        //fix time offset
+        private int TimerOffset = 60 - DateTime.Now.Second;
+
+        TodoManager todoManager = new TodoManager();
+        #endregion
+
+
         private void MainGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            //System.Windows.Forms.MessageBox.Show(ScreenResolution.Vertical.ToString());
+            dispatcherTimer.Tick += DispatcherTimer_Tick;
+            dispatcherTimer.Start();
         }
+
+
+        #region Notification Timer
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            if (Windows.Properties.Settings.Default.Notification && !Windows.Properties.Settings.Default.VacationMode)
+            {
+                TimerOffset = 60 - DateTime.Now.Second;
+
+                //Fix timer delay time
+                dispatcherTimer.Interval = TimeSpan.FromSeconds(TimerOffset);
+
+
+                //Check if the begin or end time is matched with the current time
+                foreach (var item in todoManager.Filter(FilterMethods.TaskToday))
+                {
+                    switch (item.ReminderState)
+                    {
+                        case ReminderState.Basic:
+                            {
+                                if (DateTime.Now.Year == item.EndDateTime.Value.Year && DateTime.Now.Month == item.EndDateTime.Value.Month && DateTime.Now.Hour == item.EndDateTime.Value.Hour && DateTime.Now.Minute == item.EndDateTime.Value.Minute)
+                                {
+                                    application.Notify(item.Title, item.Description);
+                                }
+
+                                break;
+                            }
+                        case ReminderState.Advance:
+                            {
+                                if (DateTime.Now.Hour == item.BeginDateTime.Value.Hour && DateTime.Now.Minute == item.BeginDateTime.Value.Minute)
+                                {
+                                    application.Notify(item.Title, item.Description);
+                                }
+                                else
+                                {
+                                    if (DateTime.Now.Year == item.EndDateTime.Value.Year && DateTime.Now.Month == item.EndDateTime.Value.Month && DateTime.Now.Hour == item.EndDateTime.Value.Hour && DateTime.Now.Minute == item.EndDateTime.Value.Minute)
+                                    {
+                                        application.Notify(item.Title, item.Description);
+                                    }
+                                }
+
+                                break;
+                            }
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+        #endregion
 
 
 
         #region Window chrome buttons
-
         private void ButtonSettings_Click(object sender, RoutedEventArgs e)
         {
+            SettingsWindow settings = new SettingsWindow(this);
+            settings.Owner = this;
+            settings.Closed += Settings_Closed;
 
+            settings.Show();
+
+            BlockerGrid.Visibility = Visibility.Visible;
+        }
+
+        private void Settings_Closed(object sender, EventArgs e)
+        {
+            BlockerGrid.Visibility = Visibility.Hidden;
         }
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
@@ -65,32 +145,48 @@ namespace Checkem
             {
                 TrainsitioningContent.Margin = new Thickness(0);
             }
+        }
+        #endregion
 
-            CheckWidth();
+
+        public FilterMethods filterMethod { get; set; } = FilterMethods.None;
+
+
+        #region Task bar button events
+        private void NewTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.NewTaskButton_Click(sender, e);
         }
 
-        private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void SortByStarButton_Click(object sender, RoutedEventArgs e)
         {
-            CheckWidth();
+            todoList.SortByStarButton_Click(sender, e);
         }
 
-        private void CheckWidth()
+        private void SortByDueDateButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.WindowState == WindowState.Maximized || this.Width >= 1400)
-            {
-                SearchBoxBorder.HorizontalAlignment = HorizontalAlignment.Center;
-            }
-            else
-            {
-                SearchBoxBorder.HorizontalAlignment = HorizontalAlignment.Left;
-            }
+            todoList.SortByDueDateButton_Click(sender, e);
+        }
+
+        private void SortByAlphabeticalAscendingButton_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.SortByAlphabeticalAscendingButton_Click(sender, e);
+        }
+
+        private void SortByAlphabeticalDescendingButton_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.SortByAlphabeticalDescendingButton_Click(sender, e);
+        }
+
+        private void SortByCreationDateButton_Click(object sender, RoutedEventArgs e)
+        {
+            todoList.SortByCreationDateButton_Click(sender, e);
         }
         #endregion
 
 
 
         #region Navigation bar
-
         #region Expander buttons
 
         private void ButtonExpand_Click(object sender, RoutedEventArgs e)
@@ -112,29 +208,37 @@ namespace Checkem
 
         private void ButtonMyDay_Click(object sender, RoutedEventArgs e)
         {
-            Grid.SetRow(NavbarCursor, 0);
-            todoList.SetFilter(Models.FilterMethods.None);
+            filterMethod = FilterMethods.None;
+            todoList.ListName = this.FindResource("Dict_MyDay") as string;
+
+            this.Dispatcher.Invoke(Filter);
         }
 
 
         private void ButtonAllTasks_Click(object sender, RoutedEventArgs e)
         {
-            Grid.SetRow(NavbarCursor, 1);
-            todoList.SetFilter(Models.FilterMethods.None);
+            filterMethod = FilterMethods.None;
+            todoList.ListName = this.FindResource("Dict_AllItems") as string;
+
+            this.Dispatcher.Invoke(Filter);
         }
 
 
         private void ButtonDueDateFilter_Click(object sender, RoutedEventArgs e)
         {
-            Grid.SetRow(NavbarCursor, 2);
-            todoList.SetFilter(Models.FilterMethods.Planned);
+            filterMethod = FilterMethods.Planned;
+            todoList.ListName = this.FindResource("Dict_Reminder") as string;
+
+            this.Dispatcher.Invoke(Filter);
         }
 
 
         private void ButtonStarredFilter_Click(object sender, RoutedEventArgs e)
         {
-            Grid.SetRow(NavbarCursor, 3);
-            todoList.SetFilter(Models.FilterMethods.Starred);
+            filterMethod = FilterMethods.Starred;
+            todoList.ListName = this.FindResource("Dict_Starred") as string;
+
+            this.Dispatcher.Invoke(Filter);
         }
 
 
@@ -145,15 +249,10 @@ namespace Checkem
 
         #endregion
 
-        private void MoveNavbarCursor(int index)
+        private void Filter()
         {
-
-        }
-
-
-        public void ChangeFilter(int mode)
-        {
-
+            Grid.SetRow(NavbarCursor, (int)filterMethod + 1);
+            todoList.filterMethod = this.filterMethod;
         }
 
         #endregion
@@ -161,17 +260,16 @@ namespace Checkem
 
 
         #region Searchbox
-
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            todoList.Search(SearchBox.Text);
         }
 
-        private void ButtonClearSearchBox_Click(object sender, RoutedEventArgs e)
+        private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
         {
-
+            SearchBox.Focus();
+            SearchBox.SelectAll();
         }
-
         #endregion
 
 
@@ -195,6 +293,9 @@ namespace Checkem
 
             if (IsLCtrlPressed && IsFPressed)
             {
+                Storyboard storyboard = this.FindResource("SearchBox_Open") as Storyboard;
+                storyboard.Begin();
+
                 SearchBox.Focus();
             }
 
@@ -231,13 +332,28 @@ namespace Checkem
 
         #endregion
 
-
-
-        private void Tag_StateChanged(object sender, EventArgs e)
+        private void OpenCalendarButton_Click(object sender, RoutedEventArgs e)
         {
-            Tag tag = sender as Tag;
+            calendar.Visibility = Visibility.Visible;
 
-            System.Windows.Forms.MessageBox.Show($"Tag.IsSelected = {tag.IsSelected}");
+            OpenCalendarButton.Visibility = Visibility.Collapsed;
+            CloseCalendarButton.Visibility = Visibility.Visible;
+
+            AddButton.Visibility = Visibility.Collapsed;
+            SearchButton.Visibility = Visibility.Collapsed;
+            SortButton.Visibility = Visibility.Collapsed;
+        }
+
+        private void CloseCalendarButton_Click(object sender, RoutedEventArgs e)
+        {
+            calendar.Visibility = Visibility.Hidden;
+
+            OpenCalendarButton.Visibility = Visibility.Visible;
+            CloseCalendarButton.Visibility = Visibility.Collapsed;
+
+            AddButton.Visibility = Visibility.Visible;
+            SearchButton.Visibility = Visibility.Visible;
+            SortButton.Visibility = Visibility.Visible;
         }
     }
 }

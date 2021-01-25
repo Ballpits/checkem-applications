@@ -1,5 +1,5 @@
-﻿using Checkem.CustomComponents;
-using Checkem.Models;
+﻿using Checkem.Models;
+using Checkem.Windows.CustomComponents;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +13,9 @@ namespace Checkem.Views
     {
         public TodoList()
         {
-            //Manager.StoreTestData();
-
-            currentInventory = Manager.Filter(FilterMethods.None);
+            //todoManager.StoreTestData();
+            todoManager.ResetId();
+            currentInventory = todoManager.Filter(FilterMethods.None);
 
             DataContext = this;
 
@@ -29,31 +29,32 @@ namespace Checkem.Views
 
 
         #region Variable
-        TodoManager Manager = new TodoManager();
+        TodoManager todoManager = new TodoManager();
         List<Todo> currentInventory;
         #endregion
 
 
         #region Property
+        private string _ListName = string.Empty;
+        public string ListName
+        {
+            get
+            {
+                return _ListName;
+            }
+            set
+            {
+                _ListName = value;
+
+                OnPropertyChanged();
+            }
+        }
+
         public string ItemCount
         {
             get
             {
-                if (currentInventory.Count > 0)
-                {
-                    if (ToDoListItemCounterTextBlock.Margin == new Thickness(0))
-                    {
-                        ToDoListItemCounterTextBlock.Margin = new Thickness(0, 0, 5, 0);
-                    }
-
-                    return currentInventory.Count.ToString();
-                }
-                else
-                {
-                    ToDoListItemCounterTextBlock.Margin = new Thickness(0);
-
-                    return string.Empty;
-                }
+                return currentInventory.Count.ToString();
             }
             set
             {
@@ -79,6 +80,24 @@ namespace Checkem.Views
                 }
             }
         }
+
+        private FilterMethods _filterMethod = FilterMethods.None;
+        public FilterMethods filterMethod
+        {
+            get
+            {
+                return _filterMethod;
+            }
+            set
+            {
+                if (_filterMethod != value)
+                {
+                    _filterMethod = value;
+
+                    SetFilter(_filterMethod);
+                }
+            }
+        }
         #endregion
 
 
@@ -91,28 +110,32 @@ namespace Checkem.Views
         }
 
 
+
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
 
-        private void ItemCountChanged()
+        private void OnItemCountChanged()
         {
             ItemCount = currentInventory.Count.ToString();
         }
 
 
-        public void SetFilter(FilterMethods method)
+        private void SetFilter(FilterMethods filterMethod)
         {
-            currentInventory = Manager.Filter(method);
+            LoadTodoList(filterMethod, SortMethods.ID);
 
-            LoadTodoList();
+            OnItemCountChanged();
         }
 
 
-        private void LoadTodoList()
+        private void LoadTodoList(FilterMethods filterMethod, SortMethods sortMethods)
         {
+            currentInventory = todoManager.Filter(filterMethod);
+            currentInventory = todoManager.Sort(sortMethods, currentInventory);
+
             if (TodoItemsStackPanel.Children.Count != 0)
             {
                 TodoItemsStackPanel.Children.Clear();
@@ -125,41 +148,300 @@ namespace Checkem.Views
                 itembar.Remove += new EventHandler(this.Itembar_Remove);
                 itembar.Update += new EventHandler(this.Itembar_Update);
 
+                itembar.UpdateChosenTag += new EventHandler(this.Itembar_UpdateChosenTag);
+
                 TodoItemsStackPanel.Children.Add(itembar);
             }
         }
 
+
+        private void LoadTodoList(string searchString)
+        {
+            currentInventory = todoManager.Filter(filterMethod);
+            currentInventory = todoManager.Sort(SortMethods.ID, currentInventory);
+            currentInventory = todoManager.FindAll(searchString, currentInventory);
+
+            if (TodoItemsStackPanel.Children.Count != 0)
+            {
+                TodoItemsStackPanel.Children.Clear();
+            }
+
+            foreach (var item in currentInventory)
+            {
+                Itembar itembar = new Itembar(item);
+                itembar.Click += new EventHandler(this.Itembar_Click);
+                itembar.Remove += new EventHandler(this.Itembar_Remove);
+                itembar.Update += new EventHandler(this.Itembar_Update);
+
+                itembar.UpdateChosenTag += new EventHandler(this.Itembar_UpdateChosenTag);
+
+                TodoItemsStackPanel.Children.Add(itembar);
+            }
+
+            OnItemCountChanged();
+        }
+
         private void Itembar_Click(object sender, EventArgs e)
         {
+            //get triggered item bar;
             Itembar itembar = sender as Itembar;
 
+            //create details creation panel and set close event handler
             DetailsPanel detailsPanel = new DetailsPanel(itembar);
-            detailsPanel.Close += new EventHandler(this.DetailsPanel_Close);
-
+            detailsPanel.Close += new EventHandler(this.Panel_Close);
+            detailsPanel.UpdateChosenTag += new EventHandler(Itembar_UpdateChosenTag);
+            //show
             DataGrid.Children.Add(detailsPanel);
+        }
+
+        private void Itembar_SaveNewTask(object sender, EventArgs e)
+        {
+            //get triggered item bar;
+            Itembar itembar = sender as Itembar;
+
+            //create new task
+            todoManager.Update(itembar.todo);
         }
 
         private void Itembar_Remove(object sender, EventArgs e)
         {
+            //get triggered item bar;
             Itembar itembar = sender as Itembar;
 
             TodoItemsStackPanel.Children.Remove(itembar);
             currentInventory.Remove(itembar.todo);
-            Manager.Remove(itembar.todo);
+            todoManager.Remove(itembar.todo);
 
-            ItemCountChanged();
+            OnItemCountChanged();
         }
 
         private void Itembar_Update(object sender, EventArgs e)
         {
             Itembar itembar = sender as Itembar;
 
-            Manager.Update(itembar.todo);
+            todoManager.Update(itembar.todo);
         }
 
-        private void DetailsPanel_Close(object sender, EventArgs e)
+        private void Itembar_UpdateChosenTag(object sender, EventArgs e)
         {
-            DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
+            Itembar itembar = sender as Itembar;
+
+            todoManager.Update(itembar.todo);
+        }
+        private void Panel_Close(object sender, EventArgs e)
+        {
+            if (DataGrid.Children.Count > 1)
+            {
+                //remove the last child in DataGrid to remove panel
+                DataGrid.Children.RemoveAt(DataGrid.Children.Count - 1);
+            }
+        }
+
+        private void TagBar_OpenPanel(object sender, EventArgs e)
+        {
+            //create tag creation panel and set close event handler
+            TagCreationPanel tagCreationPanel = new TagCreationPanel();
+            tagCreationPanel.CreateButtonClicked += new EventHandler(this.CreateButton_Click);
+            tagCreationPanel.Close += new EventHandler(this.Panel_Close);
+
+            //show
+            DataGrid.Children.Add(tagCreationPanel);
+        }
+
+        private void CreateButton_Click(object sender, EventArgs e)
+        {
+            TagCreationPanel tagCreationPanel = sender as TagCreationPanel;
+
+            tagBar.Create(tagCreationPanel.TextboxTagName.Text, tagCreationPanel.colorPicker.Color);
+        }
+
+        public void NewTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            Itembar itembar = new Itembar();
+
+            itembar.ID = currentInventory.Count;
+            itembar.todo.CreationDateTime = DateTime.Now;
+
+            itembar.Click += new EventHandler(this.Itembar_Click);
+            itembar.SaveNewTask += new EventHandler(this.Itembar_SaveNewTask);
+            itembar.Remove += new EventHandler(this.Itembar_Remove);
+            itembar.Update += new EventHandler(this.Itembar_Update);
+            itembar.UpdateChosenTag += new EventHandler(this.Itembar_UpdateChosenTag);
+
+            TodoItemsStackPanel.Children.Insert(0, itembar);
+            currentInventory.Add(itembar.todo);
+            todoManager.Add(itembar.todo);
+
+            OnItemCountChanged();
+        }
+
+
+        #region Sort button event handlers
+        public void SortByStarButton_Click(object sender, RoutedEventArgs e)
+        {
+            SortIndicatorTextBlock.Text = this.FindResource("Dict_Sort_Starred") as string;
+            ButtonClearSort.Visibility = Visibility.Visible;
+
+            LoadTodoList(this.filterMethod, SortMethods.StarredFirst);
+        }
+
+        public void SortByDueDateButton_Click(object sender, RoutedEventArgs e)
+        {
+            SortIndicatorTextBlock.Text = this.FindResource("Dict_Sort_DueDate") as string;
+            ButtonClearSort.Visibility = Visibility.Visible;
+
+            LoadTodoList(this.filterMethod, SortMethods.EndTime);
+        }
+
+        public void SortByAlphabeticalAscendingButton_Click(object sender, RoutedEventArgs e)
+        {
+            SortIndicatorTextBlock.Text = this.FindResource("Dict_Sort_AlphabeticalAscending") as string;
+            ButtonClearSort.Visibility = Visibility.Visible;
+
+            LoadTodoList(this.filterMethod, SortMethods.AlphabeticalAscending);
+        }
+
+        public void SortByAlphabeticalDescendingButton_Click(object sender, RoutedEventArgs e)
+        {
+            SortIndicatorTextBlock.Text = this.FindResource("Dict_Sort_AlphabeticalDescending") as string;
+            ButtonClearSort.Visibility = Visibility.Visible;
+
+            LoadTodoList(this.filterMethod, SortMethods.AlphabeticalDescending);
+        }
+
+        public void SortByCreationDateButton_Click(object sender, RoutedEventArgs e)
+        {
+            SortIndicatorTextBlock.Text = this.FindResource("Dict_Sort_CreationDate") as string;
+            ButtonClearSort.Visibility = Visibility.Visible;
+
+            LoadTodoList(this.filterMethod, SortMethods.CreationDate);
+        }
+
+
+        //clear sort and hide clear sort button
+        private void ClearSortButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadTodoList(this.filterMethod, SortMethods.ID);
+
+            ButtonClearSort.Visibility = Visibility.Collapsed;
+        }
+        #endregion
+
+
+        private void tagBar_RemoveTag(object sender, EventArgs e)
+        {
+            Tag tag = sender as Tag;
+            //MessageBox.Show(tag.tagItem.Content + Environment.NewLine + tag.tagItem.TagColor + Environment.NewLine + tag.tagItem.ID);
+            currentInventory = todoManager.Filter(FilterMethods.None);
+            for (int u = 0; u < currentInventory.Count; u++)
+            {
+                for (int i = 0; i < currentInventory[u].TagItems.Count; i++)
+                {
+                    if (currentInventory[u].TagItems[i].ID == tag.tagItem.ID)
+                    {
+                        currentInventory[u].TagItems.Remove(currentInventory[u].TagItems.Find(x => x.ID == tag.tagItem.ID));
+                        todoManager.Update(currentInventory[u]);
+
+                        break;
+                    }
+                }
+            }
+            currentInventory = todoManager.Filter(filterMethod);
+
+            if (TodoItemsStackPanel.Children.Count != 0)
+            {
+                TodoItemsStackPanel.Children.Clear();
+            }
+            foreach (var item in currentInventory)
+            {
+                Itembar itembar = new Itembar(item);
+                itembar.Click += new EventHandler(this.Itembar_Click);
+                itembar.Remove += new EventHandler(this.Itembar_Remove);
+                itembar.Update += new EventHandler(this.Itembar_Update);
+
+                TodoItemsStackPanel.Children.Add(itembar);
+            }
+        }
+
+
+        public void Search(string searchString)
+        {
+            LoadTodoList(searchString);
+        }
+
+        private void tagBar_TagSort(object sender, EventArgs e)
+        {
+            Tag tag = sender as Tag;
+            if (TodoItemsStackPanel.Children.Count != 0)
+            {
+                TodoItemsStackPanel.Children.Clear();
+            }
+
+            SortByTag(tag, tag.IsSelected);
+
+        }
+
+        private void SortByTag(Tag tag, bool Selected)
+        {
+            if (Selected)
+            {
+                foreach (Todo item in currentInventory)
+                {
+                    for (int o = 0; o < item.TagItems.Count; o++)
+                    {
+                        if (item.TagItems[o].ID == tag.tagItem.ID)
+                        {
+                            //MessageBox.Show("Succes");
+
+                            Itembar itembar = new Itembar(item);
+                            itembar.Click += new EventHandler(this.Itembar_Click);
+                            itembar.Remove += new EventHandler(this.Itembar_Remove);
+                            itembar.Update += new EventHandler(this.Itembar_Update);
+
+                            TodoItemsStackPanel.Children.Add(itembar);
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (var item in currentInventory)
+                {
+                    Itembar itembar = new Itembar(item);
+                    itembar.Click += new EventHandler(this.Itembar_Click);
+                    itembar.Remove += new EventHandler(this.Itembar_Remove);
+                    itembar.Update += new EventHandler(this.Itembar_Update);
+
+                    TodoItemsStackPanel.Children.Add(itembar);
+                }
+            }
+        }
+
+        private void tagBar_ItemTagRestId(object sender, EventArgs e)
+        {
+            TagManager tagManager = sender as TagManager;
+
+            currentInventory = todoManager.Filter(FilterMethods.None);
+
+            foreach (TagItem item in tagManager.Inventory)
+            {
+                for (int i = 0; i < currentInventory.Count; i++)
+                {
+                    if (currentInventory[i].TagItems.Exists(x => x.Content == item.Content))
+                    {
+                        currentInventory[i].TagItems[currentInventory[i].TagItems.FindIndex(x => x.Content == item.Content)].ID = item.ID;
+                        todoManager.Update(currentInventory[i]);
+                    }
+                }
+            }
+            foreach (Todo item in currentInventory)
+            {
+                foreach (TagItem test in item.TagItems)
+                    MessageBox.Show(test.ID.ToString());
+            }
+
+            currentInventory = todoManager.Filter(filterMethod);
         }
     }
 }

@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Checkem.CustomComponents.CalendarComponents.CalendarComponents_EventBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Checkem.CustomComponents"
+             mc:Ignorable="d" 
+             Height="40"
+             d:DesignWidth="1960"
+             FontSize="32"
+             FontFamily="{DynamicResource Quicksand}"
+             >
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Height="40" CornerRadius="20" Padding="15,0,0,0" Grid.Column="{Binding EventBeginColumn}" Grid.ColumnSpan="{Binding EventColumnSpan}" Background="{Binding Color}">
+            <TextBlock Text="{Binding Title}"/>
+        </Border>
+    </Grid>
+</UserControl>

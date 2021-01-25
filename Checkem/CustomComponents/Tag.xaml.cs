@@ -5,10 +5,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using Checkem.Models;
 
-namespace Checkem.CustomComponents
+namespace Checkem.Windows.CustomComponents
 {
-    public partial class Tag : UserControl, INotifyPropertyChanged
+    public partial class Tag : UserControl
     {
         public Tag()
         {
@@ -17,58 +18,65 @@ namespace Checkem.CustomComponents
             InitializeComponent();
         }
 
+        public Tag(TagItem item)
+        {
+            InitializeComponent();
+
+            tagItem = item;
+
+            LoadupTag();
+        }
+
 
         #region Event
         public event EventHandler StateChanged;
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler Remove;
         #endregion
 
 
         #region Property
-        public bool IsSelected { get; set; } = false;
+        public TagItem tagItem = new TagItem();
 
-        private SolidColorBrush _color;
+
+
+
+        public bool IsSelected
+        {
+            get { return (bool)GetValue(IsSelectedProperty); }
+            set { SetValue(IsSelectedProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsSelected.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsSelectedProperty =
+            DependencyProperty.Register("IsSelected", typeof(bool), typeof(Tag), new PropertyMetadata(false));
+
+
+
+
         public SolidColorBrush Color
         {
-            get
-            {
-                return _color;
-            }
-            set
-            {
-                if (_color != value)
-                {
-                    _color = value;
-
-                    OnPropertyChanged();
-                }
-            }
+            get { return (SolidColorBrush)GetValue(ColorProperty); }
+            set { SetValue(ColorProperty, value); }
         }
 
-        private string _text;
+        // Using a DependencyProperty as the backing store for Color.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ColorProperty =
+            DependencyProperty.Register("Color", typeof(SolidColorBrush), typeof(Tag), new PropertyMetadata(Brushes.Transparent));
+
+
+
+
         public string Text
         {
-            get
-            {
-                return _text;
-            }
-            set
-            {
-                if (_text != value)
-                {
-                    _text = value;
-
-                    OnPropertyChanged();
-                }
-            }
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
         }
+
+        // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(Tag), new PropertyMetadata(string.Empty));
         #endregion
 
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
 
         private void checkbox_Checked(object sender, RoutedEventArgs e)
         {
@@ -108,6 +116,21 @@ namespace Checkem.CustomComponents
 
                 StateChanged?.Invoke(this, EventArgs.Empty);
             }
+        }
+        //It was used get all the tag has been created
+        //It didn't work, but I think I did something wrong so I keep it and want to fix it later
+        private void LoadupTag()
+        {
+            if (tagItem != null)
+            {
+                Color = tagItem.TagColor;
+                Text = tagItem.Content;
+            }
+        }
+
+        private void MenuItem_Remove(object sender, RoutedEventArgs e)
+        {
+            Remove?.Invoke(this, EventArgs.Empty);
         }
     }
 }

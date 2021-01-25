@@ -1,13 +1,12 @@
-﻿<UserControl x:Class="Checkem.CustomComponents.Tag"
+﻿<UserControl x:Class="Checkem.Windows.CustomComponents.Tag"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Checkem.CustomComponents"
-             xmlns:properties="clr-namespace:Checkem.Properties"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="35"
+             Height="35" IsTabStop="True" TabIndex="0"
+             FocusVisualStyle="{DynamicResource CheckemFocusVisual.Primay}"
              >
 
     <UserControl.Resources>
@@ -44,11 +43,11 @@
         </EventTrigger>
     </UserControl.Triggers>
 
-    <Grid x:Name="TagGrid" MouseDown="TagGrid_MouseDown" MouseUp="TagGrid_MouseUp">
+    <Grid x:Name="TagGrid" MouseDown="TagGrid_MouseDown" MouseUp="TagGrid_MouseUp" Margin="0,0,7.5,0">
 
         <Grid.ContextMenu>
             <ContextMenu>
-                <MenuItem Header="{DynamicResource Dict_RemoveTag}" Icon="{materialDesign:PackIcon Kind=TrashOutline, Size=18}" Foreground="Red"/>
+                <MenuItem Header="{DynamicResource Dict_RemoveTag}" Icon="{materialDesign:PackIcon Kind=TrashOutline, Size=18}" Foreground="Red" Click="MenuItem_Remove"/>
             </ContextMenu>
         </Grid.ContextMenu>
 
@@ -57,10 +56,10 @@
 
         <Grid Panel.ZIndex="1" HorizontalAlignment="Left" Margin="10,0,0,0" Width="20">
             <Ellipse x:Name="ellipse" HorizontalAlignment="Center" Fill="{DynamicResource Color.White}" VerticalAlignment="Center" Height="20" Width="20"/>
-            <Ellipse x:Name="ellipse1" HorizontalAlignment="Center" Fill="{Binding Color}" d:Fill="PaleVioletRed" VerticalAlignment="Center" Height="20" Width="20"/>
+            <Ellipse x:Name="ellipse1" HorizontalAlignment="Center" Fill="{Binding Color}" VerticalAlignment="Center" Height="20" Width="20"/>
         </Grid>
 
-        <TextBlock x:Name="textBlock" Panel.ZIndex="2" Text="{Binding Text}" d:Text="Tag content" Foreground="{DynamicResource Color.Black}" Style="{StaticResource CheckemTextBlock.Base}" Padding="5,0,0,3" Margin="30,0,10,0" VerticalAlignment="Center" FontSize="20"/>
-        <CheckBox x:Name="checkbox" Visibility="Hidden" Panel.ZIndex="-1" Checked="checkbox_Checked" Unchecked="checkbox_Unchecked"/>
+        <TextBlock x:Name="textBlock" Panel.ZIndex="2" Text="{Binding Text}" Foreground="{DynamicResource Color.Black}" Style="{StaticResource CheckemTextBlock.Base}" Padding="5,0,0,3" Margin="30,0,10,0" VerticalAlignment="Center" FontSize="20"/>
+        <CheckBox x:Name="checkbox" Visibility="Hidden" Panel.ZIndex="-1" IsChecked="{Binding IsSelected}" Checked="checkbox_Checked" Unchecked="checkbox_Unchecked"/>
     </Grid>
 </UserControl>

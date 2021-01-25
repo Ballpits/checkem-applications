@@ -1,15 +1,13 @@
 ﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Checkem.CustomComponents"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:properties="clr-namespace:Checkem.Properties"
-             x:Name="userControl" x:Class="Checkem.CustomComponents.Itembar"
+             x:Name="userControl" x:Class="Checkem.Windows.CustomComponents.Itembar"
              mc:Ignorable="d"
              d:DesignWidth="800"
              Background="#02000000"
-             MouseDown="Itembar_MouseDown" 
+             MouseDown="Itembar_MouseDown"
              >
 
     <UserControl.Resources>
@@ -47,9 +45,41 @@
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                 </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItembarBackBorder" Storyboard.TargetProperty="(Border.CornerRadius)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>5</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.0170000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>7</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.0330000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>9</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.0500000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>11</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.0670000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>13</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.0830000">
+                        <DiscreteObjectKeyFrame.Value>
+                            <CornerRadius>15</CornerRadius>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                </ObjectAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Key="ItembarMouseLeave">
-                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItembarBorder" Storyboard.TargetProperty="(Border.CornerRadius)">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItembarBackBorder" Storyboard.TargetProperty="(Border.CornerRadius)">
                     <DiscreteObjectKeyFrame KeyTime="00:00:00">
                         <DiscreteObjectKeyFrame.Value>
                             <CornerRadius>15</CornerRadius>
@@ -81,10 +111,6 @@
                         </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                 </ObjectAnimationUsingKeyFrames>
-                <!--<ColorAnimationUsingKeyFrames Storyboard.TargetName="ItembarBorder" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
-                    <EasingColorKeyFrame KeyTime="00:00:00" Value="{StaticResource ResourceKey=PrimaryHighlightColor}"/>
-                    <EasingColorKeyFrame KeyTime="00:00:00.0830000" Value="{StaticResource ResourceKey=WhiteColor}"/>
-                </ColorAnimationUsingKeyFrames>-->
             </Storyboard>
             <Storyboard x:Key="ItembarRemove" Completed="Storyboard_ItembarRemove_Completed">
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ItembarBorder" Storyboard.TargetProperty="(UIElement.Opacity)">
@@ -112,7 +138,7 @@
     </UserControl.Triggers>
 
     <Grid x:Name="grid" Margin="10,5,10,5">
-        <Border x:Name="RemoveBoder" Background="{DynamicResource OverDueColor}" CornerRadius="5" Visibility="Hidden" Margin="0,0,0,0">
+        <Border x:Name="RemoveBoder" Background="{DynamicResource SolidColorBrush.Warning}" CornerRadius="5" Visibility="Hidden" Margin="0,0,0,0">
             <materialDesign:PackIcon Kind="TrashCanOutline" Foreground="{DynamicResource Color.White}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35" Height="35"/>
         </Border>
 
@@ -120,68 +146,76 @@
             <materialDesign:PackIcon Kind="Check" Foreground="{DynamicResource Color.White}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35" Height="35"/>
         </Border>-->
 
-        <Border x:Name="ItembarBorder" Style="{StaticResource ItembarBorderStyle}" BorderThickness="3" BorderBrush="{DynamicResource Color.Gray}" Panel.ZIndex="1" Visibility="Visible" MouseEnter="ItembarBorder_MouseEnter" MouseLeave="ItembarBorder_MouseLeave" Background="{DynamicResource Color.White}">
-            <Border.ContextMenu>
-                <ContextMenu FontFamily="{DynamicResource Quicksand}">
-                    <MenuItem x:Name="MenuItemIsCompleted" Header="Mark as completed" Icon="{materialDesign:PackIcon Kind=Check, Size=18}" Click="MenuItemCompletion_Click"/>
-                    <MenuItem x:Name="MenuItemIsStarred" Header="Mark as starred" Icon="{materialDesign:PackIcon Kind=StarOutline, Size=18}" Click="MenuItemIsStarred_Click"/>
+        <Border x:Name="ItembarBackBorder" Style="{StaticResource ItembarBorderStyle}" Background="{DynamicResource Color.White}" BorderThickness="3" BorderBrush="{DynamicResource Color.Gray}" Panel.ZIndex="1" Visibility="Visible" MouseEnter="ItembarBorder_MouseEnter" MouseLeave="ItembarBorder_MouseLeave">
+            <Border x:Name="ItembarBorder">
+                <Border.ContextMenu>
+                    <ContextMenu FontFamily="{DynamicResource Quicksand}">
+                        <MenuItem x:Name="MenuItemIsCompleted" Header="Mark as completed" Icon="{materialDesign:PackIcon Kind=Check, Size=18}" Click="MenuItemCompletion_Click"/>
+                        <MenuItem x:Name="MenuItemIsStarred" Header="Mark as starred" Icon="{materialDesign:PackIcon Kind=StarOutline, Size=18}" Click="MenuItemIsStarred_Click"/>
 
-                    <Separator />
+                        <Separator />
 
-                    <MenuItem Header="Multi select" Icon="{materialDesign:PackIcon Kind=SelectionEllipseArrowInside, Size=18}"/>
+                        <MenuItem Header="Multi select" Icon="{materialDesign:PackIcon Kind=SelectionEllipseArrowInside, Size=18}"/>
 
-                    <Separator />
+                        <Separator />
 
-                    <MenuItem Header="Move task to" Icon="{materialDesign:PackIcon Kind=VectorUnion, Size=18}">
-                        <Grid/>
-                    </MenuItem>
+                        <MenuItem Header="Move task to" Icon="{materialDesign:PackIcon Kind=VectorUnion, Size=18}">
+                            <Grid/>
+                        </MenuItem>
 
-                    <Separator/>
+                        <Separator/>
 
-                    <MenuItem Header="Add tag" Icon="{materialDesign:PackIcon Kind=TagAdd, Size=18}">
-                        <Grid/>
-                    </MenuItem>
+                        <MenuItem Header="Add tag" Icon="{materialDesign:PackIcon Kind=TagAdd, Size=18}">
+                            <Grid/>
+                        </MenuItem>
 
-                    <MenuItem Header="Add sub tasks" Icon="{materialDesign:PackIcon Kind=Subtasks, Size=18}">
-                        <Grid/>
-                    </MenuItem>
+                        <MenuItem Header="Add sub tasks" Icon="{materialDesign:PackIcon Kind=Subtasks, Size=18}">
+                            <Grid/>
+                        </MenuItem>
 
-                    <Separator/>
+                        <Separator/>
 
-                    <MenuItem Header="Remove" Icon="{materialDesign:PackIcon Kind=TrashOutline, Size=18}" Click="MenuItem_Remove_Click" Foreground="Red"/>
-                </ContextMenu>
-            </Border.ContextMenu>
+                        <MenuItem Header="Remove" Icon="{materialDesign:PackIcon Kind=TrashOutline, Size=18}" Click="MenuItem_Remove_Click" Foreground="Red"/>
+                    </ContextMenu>
+                </Border.ContextMenu>
 
-            <Grid>
-                <Grid x:Name="CheckboxGrid" Style="{DynamicResource CheckboxGrid}" Width="60">
-                    <CheckBox x:Name="CompletionCheckBox" IsChecked="{Binding IsCompleted, Mode=TwoWay}" Style="{DynamicResource ItembarCheckbox}" Checked="checkBox_Checked" Unchecked="checkBox_Unchecked">
-                        <materialDesign:PackIcon Style="{DynamicResource ItembarCheckboxCircleIcon}"/>
-                    </CheckBox>
-                </Grid>
+                <Grid>
+                    <Grid x:Name="CheckboxGrid" Style="{DynamicResource CheckboxGrid}" Width="60">
+                        <CheckBox x:Name="CompletionCheckBox" IsChecked="{Binding IsCompleted, Mode=TwoWay}" Style="{DynamicResource ItembarCheckbox}" Checked="checkBox_Checked" Unchecked="checkBox_Unchecked" IsTabStop="False">
+                            <materialDesign:PackIcon Style="{DynamicResource ItembarCheckboxCircleIcon}"/>
+                        </CheckBox>
+                    </Grid>
 
-                <StackPanel Margin="70,10,55,10" ScrollViewer.VerticalScrollBarVisibility="Disabled" Orientation="Vertical">
-                    <TextBlock x:Name="TitleTextBlock" VerticalAlignment="Stretch" TextAlignment="Left" Text="{Binding Title, Mode=TwoWay}" Style="{DynamicResource CheckemTextBlock.Base}" HorizontalAlignment="Stretch" FontSize="27" Foreground="{DynamicResource Color.Black}"/>
+                    <StackPanel Margin="70,10,55,10" ScrollViewer.VerticalScrollBarVisibility="Disabled" Orientation="Vertical">
+                        <Grid>
+                            <TextBlock x:Name="TitleTextBlock" Visibility="Visible" VerticalAlignment="Stretch" TextAlignment="Left" Text="{Binding Title, Mode=TwoWay}" Style="{DynamicResource CheckemTextBlock.Base}" HorizontalAlignment="Stretch" FontSize="27" Foreground="{DynamicResource Color.Black}"/>
 
-                    <StackPanel x:Name="ReminderDetailStackPanel" d:Visibility="Visible" VerticalAlignment="Stretch" Orientation="Horizontal" Margin="0,5,0,0">
-                        <materialDesign:PackIcon Width="25" VerticalAlignment="Stretch" Kind="Bell" Height="25" HorizontalAlignment="Left" Foreground="#FFE3F321"/>
-                        <TextBlock x:Name="ReminderDetailTextBlock" VerticalAlignment="Stretch" TextAlignment="Left" Text="Due date..." Style="{DynamicResource CheckemTextBlock.Base}" HorizontalAlignment="Left" FontSize="20" Foreground="{DynamicResource Color.Black}"/>
-                    </StackPanel>
+                            <TextBox x:Name="TitleTextBox" d:Text="Content" d:Visibility="Collapsed" Visibility="Collapsed" CaretBrush="{DynamicResource Color.Primary}" SelectionBrush="{DynamicResource Color.Primary}" Foreground="{DynamicResource Color.Black}" VerticalAlignment="Stretch" TextAlignment="Left" Text="{Binding Title, Mode=TwoWay}" FontFamily="{DynamicResource Quicksand}" HorizontalAlignment="Stretch" FontSize="27" Height="33.75" Padding="0,-2,0,0" VerticalContentAlignment="Stretch" BorderBrush="{DynamicResource Color.Secondary}" LostFocus="TitleTextBox_LostFocus" KeyDown="TitleTextBox_KeyDown"/>
+                        </Grid>
 
-                    <!--<Grid>
+                        <StackPanel x:Name="ReminderDetailStackPanel" d:Visibility="Collapsed" Visibility="Collapsed" VerticalAlignment="Stretch" Orientation="Horizontal" Margin="0,5,0,0">
+                            <materialDesign:PackIcon Width="25" VerticalAlignment="Stretch" Kind="Bell" Height="25" HorizontalAlignment="Left" Foreground="#FFE3F321"/>
+                            <TextBlock x:Name="ReminderDetailTextBlock" VerticalAlignment="Stretch" TextAlignment="Left" Text="Due date..." Style="{DynamicResource CheckemTextBlock.Base}" HorizontalAlignment="Left" FontSize="20" Foreground="{DynamicResource Color.Black}"/>
+                        </StackPanel>
+
+                        <StackPanel x:Name="TagItemPreviewStackPanel" d:Visibility="Visible" Visibility="Visible" VerticalAlignment="Stretch" Orientation="Horizontal" Margin="0,5,0,0"/>
+
+                        <!--<Grid>
                         <ProgressBar x:Name="ProgressBar" Style="{StaticResource MaterialDesignCircularProgressBar}" Height="30" Value="70" Foreground="#FF2196F3" BorderBrush="{x:Null}" Background="{x:Null}" Width="30" HorizontalAlignment="Left" VerticalAlignment="Stretch"/>
                         <TextBlock x:Name="ProgressIndicator" Text="56%" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="30" TextAlignment="Center" FontFamily="Quicksand"/>
                     </Grid>-->
-                </StackPanel>
+                    </StackPanel>
 
 
-                <ToggleButton x:Name="StarToggle" IsChecked="{Binding IsStarred}" Style="{DynamicResource ItembarStarToggle}" ToolTip="Mark As Important" Checked="StarToggle_Checked" Unchecked="StarToggle_Unchecked">
-                    <materialDesign:PackIcon x:Name="StarButtonStarBorderIcon" Style="{DynamicResource StarBorderIcon}"/>
+                    <ToggleButton x:Name="StarToggle" IsChecked="{Binding IsStarred}" Style="{DynamicResource ItembarStarToggle}" ToolTip="Mark As Important" Checked="StarToggle_Checked" Unchecked="StarToggle_Unchecked" IsTabStop="False">
+                        <materialDesign:PackIcon x:Name="StarButtonStarBorderIcon" Style="{DynamicResource StarBorderIcon}"/>
 
-                    <materialDesign:ToggleButtonAssist.OnContent>
-                        <materialDesign:PackIcon x:Name="StarButtonStarIcon" Style="{DynamicResource StarIcon}"/>
-                    </materialDesign:ToggleButtonAssist.OnContent>
-                </ToggleButton>
-            </Grid>
+                        <materialDesign:ToggleButtonAssist.OnContent>
+                            <materialDesign:PackIcon x:Name="StarButtonStarIcon" Style="{DynamicResource StarIcon}"/>
+                        </materialDesign:ToggleButtonAssist.OnContent>
+                    </ToggleButton>
+                </Grid>
+            </Border>
         </Border>
     </Grid>
 </UserControl>

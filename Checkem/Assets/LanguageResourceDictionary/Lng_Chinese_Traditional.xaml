@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="LanguageName">中文 (繁體中文)</system:String>
 
     <!--Filters-->
     <system:String x:Key="Dict_MyDay">我的一天</system:String>
@@ -11,8 +10,15 @@
     <system:String x:Key="Dict_Starred">已標星號</system:String>
     <system:String x:Key="Dict_NewList">新增清單</system:String>
 
-    <system:String x:Key="Dict_Task">個事項</system:String>
-    <system:String x:Key="Dict_Tasks">個事項</system:String>
+    <!--#region Title bar-->
+    <system:String x:Key="Dict_Search">搜尋</system:String>
+    <system:String x:Key="Dict_NewTask">新增事項</system:String>
+    <system:String x:Key="Dict_Calendar">月曆</system:String>
+    <system:String x:Key="Dict_OpenSideBar">開啟側排清單</system:String>
+    <system:String x:Key="Dict_CollapseSideBar">闔起側排清單</system:String>
+    <system:String x:Key="Dict_SearchHint1">在找什麼嗎 ?</system:String>
+    <system:String x:Key="Dict_SearchHint2">告訴我你要找什麼，不分大小寫</system:String>
+    <!--#endregion-->
 
     <!--Context menu-->
     <system:String x:Key="Dict_MarkAsCompleted">完成</system:String>
@@ -46,6 +52,34 @@
     <system:String x:Key="Dict_Task_EndDate">結束日期</system:String>
     <system:String x:Key="Dict_Task_EndTime">結束時間</system:String>
     <system:String x:Key="Dict_Task_Description">細節描述</system:String>
+
+    <!--#region Settings-->
+    <!--#region Tabs-->
+    <system:String x:Key="Dict_General">一般</system:String>
+    <system:String x:Key="Dict_Notifications">通知</system:String>
+    <system:String x:Key="Dict_Appearance">外觀</system:String>
+    <system:String x:Key="Dict_Language">語言</system:String>
+    <!--#endregion-->
+
+    <!--#region Texts-->
+    <system:String x:Key="Dict_LaunchOnStatup_Title">在開機時開啟Checkem</system:String>
+    <system:String x:Key="Dict_LaunchOnStatup_Description">當開機時Checkem會在背景自動開啟</system:String>
+    <system:String x:Key="Dict_ReverseAllSettings_Warning">危險區域</system:String>
+    <system:String x:Key="Dict_ReverseAllSettings_Title">復原所有設定</system:String>
+    <system:String x:Key="Dict_ReverseAllSettings_Reverse">重製</system:String>
+    <system:String x:Key="Dict_ReverseAllSettings_Description">注意!所有的設定會設定回預設值，這包含了通知、顏色等等</system:String>
+    <system:String x:Key="Dict_DarkMode_Title">黑夜模式</system:String>
+    <!--#endregion-->
+
+    <!--#region Notification-->
+    <system:String x:Key="Dict_NotificationsSwitch_Description">開啟會關閉通知</system:String>
+    <system:String x:Key="Dict_ShowDetails_Title">顯示細節</system:String>
+    <system:String x:Key="Dict_Notifications_Description">在通知中顯示事項的細節</system:String>
+    <system:String x:Key="Dict_Vacation_Title">我在度假啦!</system:String>
+    <system:String x:Key="Dict_Vacation_Description">當開啟時，通知將會被關閉</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+    <!--#endregion-->
 
     <!--#region Languages-->
     <system:String x:Key="Danish">丹麥文</system:String>

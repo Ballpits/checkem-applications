@@ -2,8 +2,18 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     >
 
-    <SolidColorBrush x:Key="OverDueColor" Color="#FFEC5433"/>
-    <SolidColorBrush x:Key="CompletedColor" Color="#FF969696"/>
+    <Color x:Key="Color.White.Constant">#FFFFFFFF</Color>
+    <Color x:Key="Color.Black.Constant">#FF000000</Color>
 
-    <SolidColorBrush x:Key="TransparentColor" Color="Transparent"/>
+    <SolidColorBrush x:Key="SolidColorBrush.White.Constant" Color="{StaticResource Color.White.Constant}"/>
+    <SolidColorBrush x:Key="SolidColorBrush.Black.Constant" Color="{StaticResource Color.Black.Constant}"/>
+
+    <Color x:Key="Color.Warning">#FFEC5433</Color>
+    <Color x:Key="Color.Strikethrough">#FF969696</Color>
+    <Color x:Key="Color.Transparent">#00000000</Color>
+    
+    <SolidColorBrush x:Key="SolidColorBrush.Warning" Color="{StaticResource Color.Warning}"/>
+    <SolidColorBrush x:Key="SolidColorBrush.Strikethrough" Color="{StaticResource Color.Strikethrough}"/>
+
+    <SolidColorBrush x:Key="SolidColorBrush.Transparent" Color="{StaticResource Color.Transparent}"/>
 </ResourceDictionary>

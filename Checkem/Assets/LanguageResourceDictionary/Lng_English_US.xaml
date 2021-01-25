@@ -2,24 +2,30 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="LanguageName">English-US</system:String>
 
     <!--Mainwindow-->
     <system:String x:Key="Dict_MyDay">My Day</system:String>
     <system:String x:Key="Dict_AllItems">All Tasks</system:String>
-    <system:String x:Key="Dict_Reminder">Reminder</system:String>
+    <system:String x:Key="Dict_Reminder">Planned</system:String>
     <system:String x:Key="Dict_Starred">Starred</system:String>
-    <system:String x:Key="Dict_NewList">Create new list</system:String>
+    <system:String x:Key="Dict_NewList">New list</system:String>
 
-    <system:String x:Key="Dict_Task">Task</system:String>
-    <system:String x:Key="Dict_Tasks">Tasks</system:String>
+    <!--#region Title bar-->
+    <system:String x:Key="Dict_Search">Search</system:String>
+    <system:String x:Key="Dict_NewTask">New Task</system:String>
+    <system:String x:Key="Dict_Calendar">Calendar</system:String>
+    <system:String x:Key="Dict_OpenSideBar">Open side bar</system:String>
+    <system:String x:Key="Dict_CollapseSideBar">Collapse side bar</system:String>
+    <system:String x:Key="Dict_SearchHint1">Looking for something ?</system:String>
+    <system:String x:Key="Dict_SearchHint2">Tell me what you wanna find, ignore case.</system:String>
+    <!--#endregion-->
 
     <!--Context menu-->
     <system:String x:Key="Dict_MarkAsCompleted">Complete</system:String>
     <system:String x:Key="Dict_MarkAsNotCompleted">Not complete</system:String>
     <system:String x:Key="Dict_MarkAsStarred">Mark star</system:String>
     <system:String x:Key="Dict_MarkAsNotStarred">Unmark star</system:String>
-    
+
     <!--Tag-->
     <system:String x:Key="Dict_CreateTag">Create tag</system:String>
     <system:String x:Key="Dict_RemoveTag">Remove tag</system:String>
@@ -28,12 +34,12 @@
     <system:String x:Key="Dict_Sort">Sort</system:String>
     <system:String x:Key="Dict_SortBy">Sort by</system:String>
     <system:String x:Key="Dict_Sort_Starred">Starred</system:String>
-    <system:String x:Key="Dict_Sort_DueDate">DueDate</system:String>
+    <system:String x:Key="Dict_Sort_DueDate">Due date</system:String>
     <system:String x:Key="Dict_Sort_AlphabeticalAscending">Alphabetical ascending</system:String>
     <system:String x:Key="Dict_Sort_AlphabeticalDescending">Alphabetical descending</system:String>
     <system:String x:Key="Dict_Sort_CreationDate">Creation date</system:String>
-    
-    <!--Details panel-->
+
+    <!--#region Details panel-->
     <system:String x:Key="Dict_Task_Title">Title</system:String>
     <system:String x:Key="Dict_Task_Reminder">Reminder</system:String>
     <system:String x:Key="Dict_Task_Basic">Basic</system:String>
@@ -46,7 +52,37 @@
     <system:String x:Key="Dict_Task_EndDate">End date</system:String>
     <system:String x:Key="Dict_Task_EndTime">End time</system:String>
     <system:String x:Key="Dict_Task_Description">Description</system:String>
+    <!--#endregion-->
+
+    <!--#region Settings-->
+    <!--#region Tabs-->
+    <system:String x:Key="Dict_General">General</system:String>
+    <system:String x:Key="Dict_Notifications">Notifications</system:String>
+    <system:String x:Key="Dict_Appearance">Appearance</system:String>
+    <system:String x:Key="Dict_Language">Language</system:String>
+    <!--#endregion-->
     
+    <!--#region Texts-->
+    <!--#region General-->
+    <system:String x:Key="Dict_LaunchOnStatup_Title">Launch Checkem on start up.</system:String>
+    <system:String x:Key="Dict_LaunchOnStatup_Description">Have Checkem open automatically when you log into your computer.</system:String>
+    <system:String x:Key="Dict_ReverseAllSettings_Warning">Danger zone</system:String>
+    <system:String x:Key="Dict_ReverseAllSettings_Title">Reverse all settings.</system:String>
+    <system:String x:Key="Dict_ReverseAllSettings_Reverse">Reverse</system:String>
+    <system:String x:Key="Dict_ReverseAllSettings_Description">Whatch out ! Everything will be reversed, including themes.</system:String>
+    <system:String x:Key="Dict_DarkMode_Title">Dark mode</system:String>
+    <!--#endregion-->
+
+    <!--#region Notification-->
+    <system:String x:Key="Dict_NotificationsSwitch_Description">Turn notifications on or off.</system:String>
+    <system:String x:Key="Dict_ShowDetails_Title">Show details</system:String>
+    <system:String x:Key="Dict_Notifications_Description">Show task details in notifications.</system:String>
+    <system:String x:Key="Dict_Vacation_Title">I'm in a vacation !</system:String>
+    <system:String x:Key="Dict_Vacation_Description">When turned on, all notifications will be muted.</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+    <!--#endregion-->
+
     <!--#region Languages-->
     <system:String x:Key="Danish">Danish</system:String>
     <system:String x:Key="German">German</system:String>

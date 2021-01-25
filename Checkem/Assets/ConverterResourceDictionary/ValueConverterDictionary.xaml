@@ -3,7 +3,8 @@
                     xmlns:local="clr-namespace:Checkem.Assets.ValueConverter"
                     >
 
-    <local:ColorToBrushConverter x:Key="ColorToBrushConverter"/>
+    <local:DrawingColorToBrushConverter x:Key="DrawingColorToBrushConverter"/>
+    <local:DrawingColorToBrushConverter x:Key="MediaColorToBrushConverter"/>
     <local:ColorToGradientStopConverter x:Key="ColorToGradientStopConverter"/>
 
     <local:BindingToStringConverter x:Key="BindingToStringConverter"/>

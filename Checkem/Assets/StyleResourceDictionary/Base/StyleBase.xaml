@@ -1,5 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                    >
 
     <!--#region Focus visual-->
     <!--#region White focus visual-->
@@ -20,6 +22,18 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Rectangle Margin="0" StrokeThickness="3" Stroke="{DynamicResource Color.Black}" RadiusX="5" RadiusY="5"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Black focus visual-->
+    <Style x:Key="CheckemFocusVisual.PrimaryColor">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="0" StrokeThickness="3" Stroke="{DynamicResource Color.Primary}" RadiusX="5" RadiusY="5"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -119,6 +133,12 @@
 
 
     <!--#region Button style-->
+    <!--#region Button border-->
+    <Style x:Key="BaseButtonBorder" TargetType="Border">
+        <Setter Property="Padding" Value="10,0,10,0"/>
+    </Style>
+    <!--#endregion-->
+
     <!--#region Flat button-->
     <!--#region Square flat button-->
     <Style x:Key="CheckemFlatButton.Square" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
@@ -126,12 +146,12 @@
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=Color.Black}"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
 
-        <Setter Property="Padding" Value="0"/>
+        <Setter Property="FontFamily" Value="{DynamicResource Quicksand}"/>
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}">
+                    <Border Background="{TemplateBinding Background}" Style="{StaticResource BaseButtonBorder}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
@@ -163,7 +183,19 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border CornerRadius="10" Background="{TemplateBinding Background}">
+                    <Border CornerRadius="10" Background="{TemplateBinding Background}" Style="{StaticResource BaseButtonBorder}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CheckemFlatButton.Round20" TargetType="Button" BasedOn="{StaticResource CheckemFlatButton.Square}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border CornerRadius="20" Background="{TemplateBinding Background}" Style="{StaticResource BaseButtonBorder}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
@@ -255,6 +287,27 @@
         </Style.Triggers>
     </Style>
     <!--#endregion-->
+
+    <!--#region Close button-->
+    <Style x:Key="CloseButton" TargetType="Button" BasedOn="{StaticResource CheckemFlatButton.Circle}">
+        <Setter Property="Background" Value="{DynamicResource Color.LightGray}"/>
+
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+
+        <Setter Property="Content" Value="{materialDesign:PackIcon Kind=Close, Size=20}"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Color.Gray}"/>
+            </Trigger>
+
+            <Trigger Property="IsMouseCaptureWithin" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Color.DarkGray}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
     <!--#endregion-->
 
 
@@ -266,11 +319,13 @@
         <Setter Property="Padding" Value="0,0,0,0"/>
 
         <Setter Property="FontFamily" Value="{DynamicResource ResourceKey=Quicksand}"/>
+
+        <Setter Property="Foreground" Value="{DynamicResource Color.Black}"/>
     </Style>
     <!--#endregion-->
     <!--#endregion-->
 
-    
+
     <!--#region TextBox style-->
     <Style x:Key="TextBox.Animated" TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFilledTextFieldTextBox}">
         <Setter Property="CaretBrush" Value="{DynamicResource Color.Primary}"/>
@@ -282,8 +337,8 @@
         <Setter Property="Margin" Value="10,20,10,0"/>
     </Style>
     <!--#endregion-->
-    
-    
+
+
     <!--#region LanguageBox-->
     <Style x:Key="LanguageBoxStackPanel" TargetType="StackPanel">
         <Setter Property="Orientation" Value="Horizontal"/>
@@ -301,11 +356,44 @@
     <Style x:Key="LanguageBoxText-Big" TargetType="TextBlock" BasedOn="{StaticResource CheckemTextBlock.Base}">
         <Setter Property="Foreground" Value="{DynamicResource Color.Black}"/>
         <Setter Property="FontSize" Value="20"/>
+
+        <Setter Property="TextAlignment" Value="Left"/>
     </Style>
 
     <Style x:Key="LanguageBoxText-Small" TargetType="TextBlock" BasedOn="{StaticResource CheckemTextBlock.Base}">
-        <Setter Property="Foreground" Value="{DynamicResource Color.LightGray}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Black}"/>
         <Setter Property="FontSize" Value="14"/>
+
+        <Setter Property="TextAlignment" Value="Left"/>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Tab control style-->
+    <Style x:Key="CheckemTabItemStyle" TargetType="TabItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border Name="Border" CornerRadius="5,5,0,0" Background="{DynamicResource Color.WhiteSmoke}" BorderThickness="2,2,2,1" BorderBrush="{DynamicResource Color.Black}">
+                        <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="Margin" Value="0,0,0,-1"/>
+                        </Trigger>
+                        
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Border" Property="Margin" Value="2,2,2,-1"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
     <!--#endregion-->
 </ResourceDictionary>

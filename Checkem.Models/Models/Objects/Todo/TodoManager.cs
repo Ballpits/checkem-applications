@@ -1,15 +1,15 @@
-﻿using Sphere.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Media;
 
 namespace Checkem.Models
 {
-    public class TodoManager : DataAccess_Json<Todo>
+    public class TodoManager : Todo_DataAccess_Json<Todo>
     {
         public TodoManager()
         {
-            DataBasePath = @"./Inventory.json";
+            JsonFilePath = @"./Inventory.json";
         }
 
 
@@ -17,6 +17,8 @@ namespace Checkem.Models
         #region Filter
         public List<Todo> Filter(FilterMethods method)
         {
+            Inventory = Retrieve();
+
             switch (method)
             {
                 //return all items in Inventory list
@@ -32,7 +34,7 @@ namespace Checkem.Models
 
                         foreach (var item in Inventory)
                         {
-                            if (item.IsReminderOn)
+                            if (item.ReminderState != ReminderState.None)
                             {
                                 list.Add(item);
                             }
@@ -67,6 +69,41 @@ namespace Checkem.Models
                             if (item.IsCompleted)
                             {
                                 list.Add(item);
+                            }
+                        }
+
+                        return list;
+                    }
+
+                //return completed item in Inventory list
+                case FilterMethods.TaskToday:
+                    {
+                        List<Todo> list = new List<Todo>();
+
+                        foreach (var item in Filter(FilterMethods.Planned))
+                        {
+                            switch (item.ReminderState)
+                            {
+                                case ReminderState.Basic:
+                                    {
+                                        if (item.EndDateTime.Value.Date == DateTime.Today)
+                                        {
+                                            list.Add(item);
+                                        }
+
+                                        break;
+                                    }
+                                case ReminderState.Advance:
+                                    {
+                                        if (item.BeginDateTime.Value.Date == DateTime.Today || item.EndDateTime.Value.Date == DateTime.Today)
+                                        {
+                                            list.Add(item);
+                                        }
+
+                                        break;
+                                    }
+                                default:
+                                    break;
                             }
                         }
 
@@ -162,10 +199,10 @@ namespace Checkem.Models
 
         //Find to do items
         #region FindAll
-        public List<Todo> FindAll(string searchString)
+        public List<Todo> FindAll(string searchString, List<Todo> list)
         {
             //Ignore casing
-            return Inventory.FindAll(x => x.Title.ToLower().Contains(searchString.ToLower()));
+            return list.FindAll(x => x.Title.ToLower().Contains(searchString.ToLower()));
         }
         #endregion
 
@@ -180,17 +217,27 @@ namespace Checkem.Models
             //Inventory.Add(new Todo { ID = 1, Title = "Item 1", Description = "Item 1's details !" });
             //Inventory.Add(new Todo { ID = 2, Title = "Item 2", Description = "Item 2's details !" });
 
-            //Inventory.Add(new Todo { ID = 0, Title = "Notify Test", Description = "It works !" });
+            Inventory.Add(new Todo { ID = 0, Title = "Notify Test 0", Description = "It works !", ReminderState = ReminderState.Basic, EndDateTime = DateTime.Now });
+            //Inventory.Add(new Todo { ID = 1, Title = "Notify Test 1", Description = "It works !", ReminderState = ReminderState.Basic, EndDateTime = DateTime.Now });
 
-            Inventory.Add(new Todo { ID = 1, Title = "Update", Description = "windows 10 update", IsReminderOn = true, EndDateTime = DateTime.Now.AddDays(5) });
-            Inventory.Add(new Todo { ID = 2, Title = "Meeting", IsStarred = true });
-            Inventory.Add(new Todo { ID = 3, Title = "Math Homework", Description = "kinda hard", IsReminderOn = true, EndDateTime = DateTime.Now.AddMinutes(30) });
-            Inventory.Add(new Todo { ID = 4, Title = "Read Pro Angular 6", IsCompleted = true, IsReminderOn = true, IsAdvanceReminderOn = true, BeginDateTime = DateTime.Now.AddMinutes(1), EndDateTime = DateTime.Now.AddHours(1) });
-            Inventory.Add(new Todo { ID = 5, Title = "Call someone", Description = "I forgot who it was ;p", IsStarred = true });
-            Inventory.Add(new Todo { ID = 6, Title = "Review electronic", Description = "prepare for the test", IsStarred = true });
-            Inventory.Add(new Todo { ID = 7, Title = "Program", Description = "Angular + JS", IsCompleted = true, IsStarred = true });
-            Inventory.Add(new Todo { ID = 8, Title = "electronic test", Description = "1-1:RC coupler", IsStarred = true });
-            Inventory.Add(new Todo { ID = 9, Title = "Math test", Description = "test ?! again ?!", IsCompleted = true, IsReminderOn = true, EndDateTime = DateTime.Now.AddDays(1) });
+            //List<TagItem> tagItems = new List<TagItem>();
+            //tagItems.Add(new TagItem() { ID = 0, Content = "test tag", TagColor = Brushes.Brown });
+            //tagItems.Add(new TagItem() { ID = 1, Content = "test tag", TagColor = Brushes.PaleVioletRed });
+            //tagItems.Add(new TagItem() { ID = 2, Content = "test tag", TagColor = Brushes.GreenYellow });
+            //tagItems.Add(new TagItem() { ID = 3, Content = "test tag", TagColor = Brushes.BlueViolet });
+            //tagItems.Add(new TagItem() { ID = 4, Content = "test tag", TagColor = Brushes.Orange });
+
+            //Inventory.Add(new Todo { ID = 0, Title = "Tag Test", Description = "It works !", /*TagItems = tagItems*/ });
+
+            //Inventory.Add(new Todo { ID = 1, Title = "Update", Description = "windows 10 update", IsReminderOn = true, EndDateTime = DateTime.Now.AddDays(5) });
+            //Inventory.Add(new Todo { ID = 2, Title = "Meeting", IsStarred = true });
+            //Inventory.Add(new Todo { ID = 3, Title = "Math Homework", Description = "kinda hard", IsReminderOn = true, EndDateTime = DateTime.Now.AddMinutes(30) });
+            //Inventory.Add(new Todo { ID = 4, Title = "Read Pro Angular 6", IsCompleted = true, IsReminderOn = true, IsAdvanceReminderOn = true, BeginDateTime = DateTime.Now.AddMinutes(1), EndDateTime = DateTime.Now.AddHours(1) });
+            //Inventory.Add(new Todo { ID = 5, Title = "Call someone", Description = "I forgot who it was ;p", IsStarred = true });
+            //Inventory.Add(new Todo { ID = 6, Title = "Review electronic", Description = "prepare for the test", IsStarred = true });
+            //Inventory.Add(new Todo { ID = 7, Title = "Program", Description = "Angular + JS", IsCompleted = true, IsStarred = true });
+            //Inventory.Add(new Todo { ID = 8, Title = "electronic test", Description = "1-1:RC coupler", IsStarred = true });
+            //Inventory.Add(new Todo { ID = 9, Title = "Math test", Description = "test ?! again ?!", IsCompleted = true, IsReminderOn = true, EndDateTime = DateTime.Now.AddDays(1) });
 
             //Inventory.Add(new Todo
             //{
@@ -204,7 +251,7 @@ namespace Checkem.Models
         #endregion
 
 
-        //Create new item in database
+        //Add new item and save to database
         public void Add(Todo data)
         {
             Inventory.Add(data);
@@ -213,22 +260,25 @@ namespace Checkem.Models
         }
 
 
-        //Update item in database
+        //Update item and save to database
         public void Update(Todo data)
         {
-            //Find to do item's index in Inventory
-            int index = Inventory.IndexOf(data);
-
-            Inventory[index] = data;
+            //Find to do item's index in Inventory than update
+            Inventory[Inventory.FindIndex(x => x.ID == data.ID)] = data;
 
             Save(Inventory);
         }
 
 
-        //Remove item in database
+        //Remove item and save to database
         public void Remove(Todo data)
         {
-            Inventory.Remove(data);
+            //Find to do item's index in Inventory than remove
+            Inventory.RemoveAt(Inventory.FindIndex(x => x.ID == data.ID));
+
+            //Rearrange ID after remove action is done
+            ResetId();
+
             Save(Inventory);
         }
     }

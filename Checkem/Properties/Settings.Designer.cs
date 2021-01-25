@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Checkem.Properties {
+namespace Checkem.Windows.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -20,6 +20,102 @@ namespace Checkem.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LanguageIndex {
+            get {
+                return ((int)(this["LanguageIndex"]));
+            }
+            set {
+                this["LanguageIndex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Notification {
+            get {
+                return ((bool)(this["Notification"]));
+            }
+            set {
+                this["Notification"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowPreviews {
+            get {
+                return ((bool)(this["ShowPreviews"]));
+            }
+            set {
+                this["ShowPreviews"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool VacationMode {
+            get {
+                return ((bool)(this["VacationMode"]));
+            }
+            set {
+                this["VacationMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LaunchOnStartUp {
+            get {
+                return ((bool)(this["LaunchOnStartUp"]));
+            }
+            set {
+                this["LaunchOnStartUp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool RunInBackground {
+            get {
+                return ((bool)(this["RunInBackground"]));
+            }
+            set {
+                this["RunInBackground"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ThemeIndex {
+            get {
+                return ((int)(this["ThemeIndex"]));
+            }
+            set {
+                this["ThemeIndex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsDarkModeOn {
+            get {
+                return ((bool)(this["IsDarkModeOn"]));
+            }
+            set {
+                this["IsDarkModeOn"] = value;
             }
         }
     }

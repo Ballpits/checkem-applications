@@ -9,9 +9,9 @@
              d:DesignHeight="45" d:DesignWidth="940" Height="Auto">
 
     <Grid Visibility="Visible" Loaded="TagList_Loaded">
-        <Button Style="{StaticResource TagButton}" Content="{DynamicResource Dict_CreateTag}" Click="ButtonCreateTag_Click" Margin="0"/>
+        <Button Style="{StaticResource TagButton}" Content="{DynamicResource Dict_CreateTag}" Click="ButtonCreateTag_Click" Margin="0" VerticalAlignment="Center"/>
 
-        <ScrollViewer Margin="99,0,0,-0.2" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+        <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" Grid.Column="1">
             <StackPanel x:Name="StpTagList" Margin="0" Orientation="Horizontal"/>
         </ScrollViewer>
     </Grid>

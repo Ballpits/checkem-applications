@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Checkem.Models
 {
@@ -12,12 +13,12 @@ namespace Checkem.Models
         public string Description { get; set; } = string.Empty;
 
 
+        public bool IsInMyday { get; set; } = false;
         public bool IsCompleted { get; set; } = false;
         public bool IsStarred { get; set; } = false;
 
 
-        public bool IsReminderOn { get; set; } = false;
-        public bool IsAdvanceReminderOn { get; set; } = false;
+        public ReminderState ReminderState { get; set; } = ReminderState.None;
 
 
         public DateTime? BeginDateTime { get; set; }
@@ -27,7 +28,7 @@ namespace Checkem.Models
         public DateTime CreationDateTime { get; set; }
 
 
-        public int[] Tags { get; set; }
+        public List<TagItem> TagItems { get; set; } = new List<TagItem>();
         #endregion
     }
 }

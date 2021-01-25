@@ -5,6 +5,7 @@
         None = 0,
         Planned = 1,
         Starred = 2,
-        Completed = 3
+        Completed = 3,
+        TaskToday = 4
     }
 }
