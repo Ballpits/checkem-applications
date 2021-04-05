@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:CustomUserControls="clr-namespace:Checkem.CustomComponents"
         xmlns:Views="clr-namespace:Checkem.Views"
         mc:Ignorable="d"
         Title="Checkem"
@@ -236,7 +235,7 @@
             </Border>
 
 
-            <Grid d:Width="280" d:Visibility="Visible" x:Name="NavigationBarGrid" Style="{StaticResource NavigationbarGrid}" Margin="0" Width="0" Grid.Row="2" Visibility="Hidden">
+            <Grid d:Width="280" d:Visibility="Visible" x:Name="NavigationBarGrid" Margin="0" Width="0" Grid.Row="2" Visibility="Hidden">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
@@ -245,6 +244,8 @@
                     <RowDefinition/>
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
+
+                <Border Style="{StaticResource NavigationbarBorder}" Grid.RowSpan="6" CornerRadius="0,0,30,0"/>
 
                 <Border x:Name="NavbarCursor" Background="#4CFFFFFF" Margin="10,0,10,0" CornerRadius="5" Height="40" Grid.Row="1"/>
 

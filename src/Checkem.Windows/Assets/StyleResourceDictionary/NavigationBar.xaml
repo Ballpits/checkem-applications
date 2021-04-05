@@ -3,7 +3,7 @@
                     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                     >
 
-    <Style x:Key="NavigationbarGrid" TargetType="Grid">
+    <Style x:Key="NavigationbarBorder" TargetType="Border">
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="1,0" EndPoint="4,1">
