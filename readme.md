@@ -1,6 +1,6 @@
 Cyclops:deals with the data,including data base,sort,filter,CRUD.
 
-Visual:make the data more readable for human eye. e.g.dealing with shortening date time.
+Visual:make the data more readable for human eye. e.g.dealing with shortened date time.
 
 Monitor:get screen resolution etc.
 
