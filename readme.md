@@ -1,1 +1,1 @@
-checkem is a todo app with clean UI
+Checkem is a todo app with clean UI
