@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using Checkem.Assets.ValueConverter;
 using Checkem.Models;
 
 namespace Checkem.Windows.CustomComponents
@@ -22,11 +23,13 @@ namespace Checkem.Windows.CustomComponents
         {
             InitializeComponent();
 
-            tagItem = item;
+            this.item = item;
 
-            LoadupTag();
+            LoadTag();
         }
 
+
+        DrawingColorToBrushConverter DrawingColorToBrushConverter = new DrawingColorToBrushConverter();
 
         #region Event
         public event EventHandler StateChanged;
@@ -35,7 +38,7 @@ namespace Checkem.Windows.CustomComponents
 
 
         #region Property
-        public TagItem tagItem = new TagItem();
+        public TagItem item = new TagItem();
 
 
 
@@ -119,12 +122,12 @@ namespace Checkem.Windows.CustomComponents
         }
         //It was used get all the tag has been created
         //It didn't work, but I think I did something wrong so I keep it and want to fix it later
-        private void LoadupTag()
+        private void LoadTag()
         {
-            if (tagItem != null)
+            if (item != null)
             {
-                Color = tagItem.TagColor;
-                Text = tagItem.Content;
+                Color = (SolidColorBrush)DrawingColorToBrushConverter.ConvertBack(item.TagColor);
+                Text = item.Content;
             }
         }
 

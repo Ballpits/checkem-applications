@@ -11,7 +11,7 @@
     <Grid x:Name="TagGrid" Margin="0,0,7.5,0">
         <Grid.ContextMenu>
             <ContextMenu>
-                <MenuItem Header="{DynamicResource Dict_RemoveTag}" Icon="{materialDesign:PackIcon Kind=TrashOutline, Size=18}" Foreground="Red" Click="MenuItem_Remove"/>
+                <MenuItem Header="{DynamicResource Dict_RemoveTag}" Icon="{materialDesign:PackIcon Kind=TrashOutline, Size=18}" Foreground="Red" Click="RemoveMenuItem"/>
             </ContextMenu>
         </Grid.ContextMenu>
 

@@ -17,7 +17,7 @@
         FontFamily="{DynamicResource Quicksand}"
         StateChanged="AppWindow_StateChanged"
         KeyUp="MainWindow_KeyUp"
-        KeyDown="MainWindow_KeyDown"
+        KeyDown="MainWindow_KeyDown" Background="{x:Null}"
         >
 
     <Window.Resources>
@@ -226,7 +226,7 @@
 
                     <materialDesign:PackIcon Kind="Magnify" ToolTip="{DynamicResource Dict_SearchHint1}" Opacity="0.56" Height="30" Width="43" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-                    <TextBox x:Name="SearchBox" Grid.Column="1" Margin="0,5,30,5" ToolTip="{DynamicResource Dict_SearchHint2}" materialDesign:HintAssist.Hint="{DynamicResource Dict_Search}" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" FontSize="16" TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus" IsTabStop="False"/>
+                    <TextBox x:Name="SearchBox" Grid.Column="1" Margin="0,5,30,5" ToolTip="{DynamicResource Dict_SearchHint2}" Foreground="{DynamicResource Color.Black}" materialDesign:HintAssist.Hint="{DynamicResource Dict_Search}" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" FontSize="16" TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus" IsTabStop="False"/>
 
                     <Button x:Name="CloseSearchBoxButton" Grid.Column="1" Margin="0,0,7,0" HorizontalAlignment="Right" Padding="0" Background="{DynamicResource Color.White}" BorderBrush="{x:Null}" materialDesign:ShadowAssist.ShadowDepth="Depth0" IsTabStop="False">
                         <materialDesign:PackIcon Kind="Close" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Margin="0" Foreground="#FF424242"/>
@@ -245,7 +245,7 @@
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
 
-                <Border Style="{StaticResource NavigationbarBorder}" Grid.RowSpan="6" CornerRadius="0,0,30,0"/>
+                <Border Style="{StaticResource NavigationbarBorder}" Grid.RowSpan="6" CornerRadius="0,0,0,0"/>
 
                 <Border x:Name="NavbarCursor" Background="#4CFFFFFF" Margin="10,0,10,0" CornerRadius="5" Height="40" Grid.Row="1"/>
 

@@ -18,5 +18,12 @@ namespace Checkem.Assets.ValueConverter
         {
             throw new NotImplementedException();
         }
+
+        public object ConvertBack(object value)
+        {
+            var solidColorBrush = (SolidColorBrush)value;
+
+            return System.Drawing.Color.FromArgb(solidColorBrush.Color.A, solidColorBrush.Color.R, solidColorBrush.Color.G, solidColorBrush.Color.B);
+        }
     }
 }

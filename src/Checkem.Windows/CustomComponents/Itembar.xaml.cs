@@ -1,4 +1,5 @@
-﻿using Checkem.Models;
+﻿using Checkem.Assets.ValueConverter;
+using Checkem.Models;
 using Sphere.Readable;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,9 @@ namespace Checkem.Windows.CustomComponents
             //Update itembar height for reminder details
             OnReminderStateChanged();
         }
+
+
+        DrawingColorToBrushConverter DrawingColorToBrushConverter = new DrawingColorToBrushConverter();
 
 
         #region Event
@@ -284,12 +288,15 @@ namespace Checkem.Windows.CustomComponents
 
         public void LoadTagItems()
         {
+
             TagItemPreviewStackPanel.Children.Clear();
+
             if (TagItems != null)
             {
                 foreach (var item in TagItems)
                 {
-                    PreviewTag previewTag = new PreviewTag() { Color = item.TagColor, Text = item.Content, tagItem = item };
+                    PreviewTag previewTag = new PreviewTag() { Color = (SolidColorBrush)DrawingColorToBrushConverter.ConvertBack(item.TagColor), Text = item.Content, tagItem = item };
+
                     previewTag.RemovePreTag += new EventHandler(this.RemovePreTag);
                     TagItemPreviewStackPanel.Children.Add(previewTag);
                 }

@@ -34,11 +34,9 @@
 
                 <Grid Height="75" VerticalAlignment="Top">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0">
-                       
-                        <!--Bug: won't change language, hide it for now-->
-                        <TextBlock Visibility="Collapsed" x:Name="ToDoListTitleTextBlock" Foreground="{DynamicResource Color.Primary}" d:Text="Name" Text="{Binding ListName}" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="36" TextAlignment="Center" FontWeight="Normal"/>
-                        
                         <TextBlock x:Name="ToDoListItemCounterTextBlock" Text="{Binding ItemCount}" d:Text="1" FontFamily="{StaticResource ResourceKey=Quicksand}" FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Stretch" Foreground="{DynamicResource Color.Primary}" TextAlignment="Center" Margin="20,0,0,0"/>
+
+                        <CustomComponents:TagBar x:Name="tagBar" OpenPanel="TagBar_OpenPanel" RemoveTag="tagBar_RemoveTag" TagSort="tagBar_TagSort" ItemTagRestId="tagBar_ItemTagRestId" Margin="20,0,0,0"/>
                     </StackPanel>
 
 
@@ -54,12 +52,6 @@
                     <Button WindowChrome.IsHitTestVisibleInChrome="True" x:Name="ButtonToolbox" Visibility="Hidden" Margin="0,0,237,0" Height="Auto" materialDesign:ShadowAssist.ShadowDepth="Depth0" BorderBrush="{x:Null}" Padding="15,5" Grid.IsSharedSizeScope="True" HorizontalAlignment="Right">
                         <materialDesign:PackIcon Kind="Toolbox" Height="20" Width="20"/>
                     </Button>
-                </Grid>
-
-                <Grid x:Name="GridTagList" Visibility="Visible" Margin="10,80,10,0" Height="45" VerticalAlignment="Top">
-
-                    <CustomComponents:TagBar x:Name="tagBar" OpenPanel="TagBar_OpenPanel" RemoveTag="tagBar_RemoveTag" TagSort="tagBar_TagSort" ItemTagRestId="tagBar_ItemTagRestId"/>
-
                 </Grid>
 
                 <ScrollViewer Style="{DynamicResource MaterialDesignScrollViewer}" Visibility="Visible" x:Name="scrollBar" BorderThickness="0" Margin="0,130,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto" UseLayoutRounding="True" VerticalAlignment="Top">

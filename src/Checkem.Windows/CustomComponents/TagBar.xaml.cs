@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Collections.Generic;
 using Checkem.Models;
+using Checkem.Assets.ValueConverter;
 
 
 namespace Checkem.Windows.CustomComponents
@@ -25,6 +26,8 @@ namespace Checkem.Windows.CustomComponents
         List<TagItem> currentTagList;
         TagManager tagManager = new TagManager();
 
+        DrawingColorToBrushConverter DrawingColorToBrushConverter = new DrawingColorToBrushConverter();
+
         public void Create(string text, Color color)
         {
             #region create new tag function goes here
@@ -33,9 +36,9 @@ namespace Checkem.Windows.CustomComponents
             {
                 Text = text,
                 Color = new SolidColorBrush(color),
-                tagItem = new TagItem()
+                item = new TagItem()
                 {
-                    TagColor = new SolidColorBrush(color),
+                    TagColor = new System.Drawing.Color(),
                     Content = text,
                     ID = currentTagList.Count
                 }
@@ -46,7 +49,7 @@ namespace Checkem.Windows.CustomComponents
             tag.Remove += new EventHandler(this.Tag_Remove);
 
             StpTagList.Children.Add(tag);
-            tagManager.Add(tag.tagItem);
+            tagManager.Add(tag.item);
             #endregion
         }
 
@@ -70,8 +73,8 @@ namespace Checkem.Windows.CustomComponents
                     Tag tag = new Tag()
                     {
                         Text = item.Content,
-                        Color = item.TagColor,
-                        tagItem = new TagItem()
+                        Color = (SolidColorBrush)DrawingColorToBrushConverter.ConvertBack(item.TagColor),
+                        item = new TagItem()
                         {
                             TagColor = item.TagColor,
                             ID = item.ID,
@@ -93,8 +96,8 @@ namespace Checkem.Windows.CustomComponents
 
             Tag tagItem = sender as Tag;
 
-            currentTagList.RemoveAt(tagItem.tagItem.ID);
-            tagManager.Remove(tagItem.tagItem);
+            currentTagList.RemoveAt(tagItem.item.ID);
+            tagManager.Remove(tagItem.item);
             tagManager.ResetId();
             ItemTagRestId?.Invoke(tagManager, EventArgs.Empty);
             StpTagList.Children.Clear();
@@ -105,8 +108,8 @@ namespace Checkem.Windows.CustomComponents
                     Tag tag = new Tag()
                     {
                         Text = item.Content,
-                        Color = item.TagColor,
-                        tagItem = new TagItem()
+                        Color = (SolidColorBrush)DrawingColorToBrushConverter.ConvertBack(item.TagColor),
+                        item = new TagItem()
                         {
                             TagColor = item.TagColor,
                             ID = item.ID,

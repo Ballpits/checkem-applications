@@ -3,7 +3,7 @@ using Checkem.Models;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-
+using Checkem.Assets.ValueConverter;
 
 namespace Checkem.Windows.CustomComponents
 {
@@ -65,18 +65,21 @@ namespace Checkem.Windows.CustomComponents
         #endregion
 
 
+
         //Get Data from Tag and show it as preview
-        //my English Suck
         private void ValueSetting()
         {
+            DrawingColorToBrushConverter DrawingColorToBrushConverter = new DrawingColorToBrushConverter();
+
             if (tagItem != null)
             {
                 Text = tagItem.Content;
-                Color = tagItem.TagColor;
+                Color = (SolidColorBrush)DrawingColorToBrushConverter.ConvertBack(tagItem.TagColor);
             }
         }
 
-        private void MenuItem_Remove(object sender, RoutedEventArgs e)
+
+        private void RemoveMenuItem(object sender, RoutedEventArgs e)
         {
             RemovePreTag?.Invoke(this, EventArgs.Empty);
         }

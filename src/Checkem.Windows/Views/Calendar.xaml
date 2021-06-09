@@ -14,9 +14,7 @@
 
     <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Duration=0:0:0.3, Kind=ExpandIn}" Grid.ColumnSpan="2" Grid.Row="1">
         <Grid>
-
             <CalendarComponents:CalendarComponents_Month/>
-
         </Grid>
     </materialDesign:TransitioningContent>
 </UserControl>

@@ -1,4 +1,4 @@
-﻿using System.Windows.Media;
+﻿using System.Drawing;
 
 namespace Checkem.Models
 {
@@ -8,6 +8,6 @@ namespace Checkem.Models
 
         public string Content { get; set; }
 
-        public SolidColorBrush TagColor { get; set; }
+        public Color TagColor { get; set; }
     }
 }

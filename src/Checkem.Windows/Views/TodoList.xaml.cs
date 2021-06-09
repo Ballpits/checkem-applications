@@ -337,9 +337,9 @@ namespace Checkem.Views
             {
                 for (int i = 0; i < currentInventory[u].TagItems.Count; i++)
                 {
-                    if (currentInventory[u].TagItems[i].ID == tag.tagItem.ID)
+                    if (currentInventory[u].TagItems[i].ID == tag.item.ID)
                     {
-                        currentInventory[u].TagItems.Remove(currentInventory[u].TagItems.Find(x => x.ID == tag.tagItem.ID));
+                        currentInventory[u].TagItems.Remove(currentInventory[u].TagItems.Find(x => x.ID == tag.item.ID));
                         todoManager.Update(currentInventory[u]);
 
                         break;
@@ -389,7 +389,7 @@ namespace Checkem.Views
                 {
                     for (int o = 0; o < item.TagItems.Count; o++)
                     {
-                        if (item.TagItems[o].ID == tag.tagItem.ID)
+                        if (item.TagItems[o].ID == tag.item.ID)
                         {
                             //MessageBox.Show("Succes");
 
