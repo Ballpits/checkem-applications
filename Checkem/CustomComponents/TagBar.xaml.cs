@@ -14,30 +14,43 @@ namespace Checkem.Windows.CustomComponents
         {
             InitializeComponent();
 
-            currentTagList = tagManager.Inventory;
+            TagItems = tagManager.Inventory;
         }
 
+
+        #region Events
         public event EventHandler OpenPanel;
         public event EventHandler RemoveTag;
         public event EventHandler TagSort;
         public event EventHandler ItemTagRestId;
+        #endregion
 
-        List<TagItem> currentTagList;
+
+        List<TagItem> TagItems;
         TagManager tagManager = new TagManager();
 
+<<<<<<< Updated upstream:Checkem/CustomComponents/TagBar.xaml.cs
+=======
+        DrawingColorToBrushConverter DrawingColorToBrushConverter = new DrawingColorToBrushConverter();
+
+
+>>>>>>> Stashed changes:src/Checkem.Windows/CustomComponents/TagBar.xaml.cs
         public void Create(string text, Color color)
         {
-            #region create new tag function goes here
-
+            // Create a new tag control
             Tag tag = new Tag()
             {
                 Text = text,
                 Color = new SolidColorBrush(color),
                 tagItem = new TagItem()
                 {
+<<<<<<< Updated upstream:Checkem/CustomComponents/TagBar.xaml.cs
                     TagColor = new SolidColorBrush(color),
+=======
+                    Color = (System.Drawing.Color)DrawingColorToBrushConverter.ConvertBack(color),
+>>>>>>> Stashed changes:src/Checkem.Windows/CustomComponents/TagBar.xaml.cs
                     Content = text,
-                    ID = currentTagList.Count
+                    ID = TagItems.Count
                 }
             };
 
@@ -46,13 +59,17 @@ namespace Checkem.Windows.CustomComponents
             tag.Remove += new EventHandler(this.Tag_Remove);
 
             StpTagList.Children.Add(tag);
+<<<<<<< Updated upstream:Checkem/CustomComponents/TagBar.xaml.cs
             tagManager.Add(tag.tagItem);
             #endregion
+=======
+            tagManager.Add(tag.item);
+>>>>>>> Stashed changes:src/Checkem.Windows/CustomComponents/TagBar.xaml.cs
         }
 
         private void ButtonCreateTag_Click(object sender, RoutedEventArgs e)
         {
-            //tell parent control to open panel
+            // Tell the parent control to open tag creation panel
             OpenPanel?.Invoke(this, EventArgs.Empty);
         }
 
@@ -63,13 +80,14 @@ namespace Checkem.Windows.CustomComponents
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            if (currentTagList != null)
+            if (TagItems != null)
             {
-                foreach (TagItem item in currentTagList)
+                foreach (TagItem item in TagItems)
                 {
-                    Tag tag = new Tag()
+                    Tag tag = new Tag(item)
                     {
                         Text = item.Content,
+<<<<<<< Updated upstream:Checkem/CustomComponents/TagBar.xaml.cs
                         Color = item.TagColor,
                         tagItem = new TagItem()
                         {
@@ -77,11 +95,15 @@ namespace Checkem.Windows.CustomComponents
                             ID = item.ID,
                             Content = item.Content
                         }
+=======
+                        Color = (SolidColorBrush)DrawingColorToBrushConverter.Convert(item.Color)
+>>>>>>> Stashed changes:src/Checkem.Windows/CustomComponents/TagBar.xaml.cs
                     };
+
                     tag.StateChanged += new EventHandler(Tag_StateChange);
                     tag.Remove += new EventHandler(Tag_Remove);
-                    StpTagList.Children.Add(tag);
 
+                    StpTagList.Children.Add(tag);
                 }
             }
         }
@@ -93,18 +115,25 @@ namespace Checkem.Windows.CustomComponents
 
             Tag tagItem = sender as Tag;
 
+<<<<<<< Updated upstream:Checkem/CustomComponents/TagBar.xaml.cs
             currentTagList.RemoveAt(tagItem.tagItem.ID);
             tagManager.Remove(tagItem.tagItem);
+=======
+            TagItems.RemoveAt(tagItem.item.ID);
+            tagManager.Remove(tagItem.item);
+>>>>>>> Stashed changes:src/Checkem.Windows/CustomComponents/TagBar.xaml.cs
             tagManager.ResetId();
             ItemTagRestId?.Invoke(tagManager, EventArgs.Empty);
             StpTagList.Children.Clear();
-            if (currentTagList != null)
+
+            if (TagItems != null)
             {
-                foreach (TagItem item in currentTagList)
+                foreach (TagItem item in TagItems)
                 {
-                    Tag tag = new Tag()
+                    Tag tag = new Tag(item)
                     {
                         Text = item.Content,
+<<<<<<< Updated upstream:Checkem/CustomComponents/TagBar.xaml.cs
                         Color = item.TagColor,
                         tagItem = new TagItem()
                         {
@@ -112,11 +141,15 @@ namespace Checkem.Windows.CustomComponents
                             ID = item.ID,
                             Content = item.Content
                         }
+=======
+                        Color = (SolidColorBrush)DrawingColorToBrushConverter.Convert(item.Color)
+>>>>>>> Stashed changes:src/Checkem.Windows/CustomComponents/TagBar.xaml.cs
                     };
+
                     tag.StateChanged += new EventHandler(Tag_StateChange);
                     tag.Remove += new EventHandler(Tag_Remove);
-                    StpTagList.Children.Add(tag);
 
+                    StpTagList.Children.Add(tag);
                 }
             }
         }

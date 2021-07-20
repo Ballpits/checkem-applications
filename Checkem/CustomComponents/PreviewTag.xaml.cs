@@ -72,7 +72,11 @@ namespace Checkem.Windows.CustomComponents
             if (tagItem != null)
             {
                 Text = tagItem.Content;
+<<<<<<< Updated upstream:Checkem/CustomComponents/PreviewTag.xaml.cs
                 Color = tagItem.TagColor;
+=======
+                Color = (SolidColorBrush)DrawingColorToBrushConverter.ConvertBack(tagItem.Color);
+>>>>>>> Stashed changes:src/Checkem.Windows/CustomComponents/PreviewTag.xaml.cs
             }
         }
 

@@ -289,7 +289,17 @@ namespace Checkem.Windows.CustomComponents
             {
                 foreach (var item in TagItems)
                 {
+<<<<<<< Updated upstream:Checkem/CustomComponents/Itembar.xaml.cs
                     PreviewTag previewTag = new PreviewTag() { Color = item.TagColor, Text = item.Content, tagItem = item };
+=======
+                    PreviewTag previewTag = new PreviewTag()
+                    {
+                        Text = item.Content,
+                        Color = (SolidColorBrush)DrawingColorToBrushConverter.Convert(item.Color),
+                        tagItem = item
+                    };
+
+>>>>>>> Stashed changes:src/Checkem.Windows/CustomComponents/Itembar.xaml.cs
                     previewTag.RemovePreTag += new EventHandler(this.RemovePreTag);
                     TagItemPreviewStackPanel.Children.Add(previewTag);
                 }

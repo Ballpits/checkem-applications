@@ -28,6 +28,12 @@ namespace Checkem.Windows.CustomComponents
         }
 
 
+<<<<<<< Updated upstream:Checkem/CustomComponents/Tag.xaml.cs
+=======
+        DrawingColorToBrushConverter DrawingColorToBrushConverter = new DrawingColorToBrushConverter();
+
+
+>>>>>>> Stashed changes:src/Checkem.Windows/CustomComponents/Tag.xaml.cs
         #region Event
         public event EventHandler StateChanged;
         public event EventHandler Remove;
@@ -36,8 +42,6 @@ namespace Checkem.Windows.CustomComponents
 
         #region Property
         public TagItem tagItem = new TagItem();
-
-
 
 
         public bool IsSelected
@@ -51,6 +55,15 @@ namespace Checkem.Windows.CustomComponents
             DependencyProperty.Register("IsSelected", typeof(bool), typeof(Tag), new PropertyMetadata(false));
 
 
+        public string Text
+        {
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(Tag), new PropertyMetadata(string.Empty));
 
 
         public SolidColorBrush Color
@@ -62,19 +75,6 @@ namespace Checkem.Windows.CustomComponents
         // Using a DependencyProperty as the backing store for Color.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorProperty =
             DependencyProperty.Register("Color", typeof(SolidColorBrush), typeof(Tag), new PropertyMetadata(Brushes.Transparent));
-
-
-
-
-        public string Text
-        {
-            get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(Tag), new PropertyMetadata(string.Empty));
         #endregion
 
 
@@ -117,14 +117,25 @@ namespace Checkem.Windows.CustomComponents
                 StateChanged?.Invoke(this, EventArgs.Empty);
             }
         }
+<<<<<<< Updated upstream:Checkem/CustomComponents/Tag.xaml.cs
         //It was used get all the tag has been created
         //It didn't work, but I think I did something wrong so I keep it and want to fix it later
         private void LoadupTag()
+=======
+
+
+        private void LoadTag()
+>>>>>>> Stashed changes:src/Checkem.Windows/CustomComponents/Tag.xaml.cs
         {
             if (tagItem != null)
             {
+<<<<<<< Updated upstream:Checkem/CustomComponents/Tag.xaml.cs
                 Color = tagItem.TagColor;
                 Text = tagItem.Content;
+=======
+                Color = (SolidColorBrush)DrawingColorToBrushConverter.Convert(item.Color);
+                Text = item.Content;
+>>>>>>> Stashed changes:src/Checkem.Windows/CustomComponents/Tag.xaml.cs
             }
         }
 
